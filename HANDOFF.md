@@ -18,12 +18,20 @@ The initial design is approved in principle:
 - Backplane can adopt a sibling Superpowers checkout or obtain one for the
   user while preserving upstream provenance and updateability.
 
-The first skill and its reference contracts are present for review and further
-pressure testing. Stable upstream Superpowers `v6.3.0` is installed at
+The first skill and its reference contracts have passed the bootstrap
+pressure scenarios plus a five-control/five-skill read-only status and
+selection micro-test. The no-skill arm supplied complete native intake in 0/5
+samples; the skill-enabled arm supplied it in 5/5 while both arms refused to
+invent priority or mutate state. The verbatim response records are under
+`tests/scenarios/transcripts/`.
+
+Stable upstream Superpowers `v6.3.0` is installed at
 `.agents/superpowers` at commit
 `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`. Discovery junctions expose both
 upstream Superpowers and `managing-superpowers-backlog` under `.agents/skills`.
-No remote repository has been created and nothing has been published.
+No remote repository has been created and nothing has been published. The
+configured GitHub CLI account had an invalid token at the last verification,
+so real backlog operations require re-authentication.
 
 ## Re-entry sequence
 
@@ -33,8 +41,7 @@ No remote repository has been created and nothing has been published.
 4. Confirm that the Git top-level directory is exactly this repository root.
 5. Inspect `skills/managing-superpowers-backlog/`.
 6. Review the RED/GREEN/REFACTOR evidence in `tests/scenarios/`.
-7. Continue pressure testing before treating the skill as
-   deployable.
+7. Confirm `gh auth status` succeeds before any real backlog operation.
 8. Decide repository visibility and remote ownership before creating the
    GitHub repository.
 

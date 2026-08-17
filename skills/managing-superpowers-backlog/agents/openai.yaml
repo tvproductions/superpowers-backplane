@@ -1,0 +1,4 @@
+interface:
+  display_name: "Superpowers Backlog"
+  short_description: "Connect Superpowers work to GitHub backlog continuity"
+  default_prompt: "Use $managing-superpowers-backlog to select and manage the next Superpowers work item."

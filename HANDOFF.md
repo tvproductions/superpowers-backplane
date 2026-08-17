@@ -29,9 +29,11 @@ Stable upstream Superpowers `v6.3.0` is installed at
 `.agents/superpowers` at commit
 `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`. Discovery junctions expose both
 upstream Superpowers and `managing-superpowers-backlog` under `.agents/skills`.
-No remote repository has been created and nothing has been published. The
-configured GitHub CLI account had an invalid token at the last verification,
-so real backlog operations require re-authentication.
+The repository is published publicly at
+`https://github.com/tvproductions/superpowers-backplane`, and `main` tracks
+`origin/main`. GitHub CLI authentication was verified for `ahuimanu` with
+keyring-stored credentials. The repository-local Git identity uses GitHub's
+noreply address. Re-check `gh auth status` before real backlog operations.
 
 ## Re-entry sequence
 
@@ -42,8 +44,9 @@ so real backlog operations require re-authentication.
 5. Inspect `skills/managing-superpowers-backlog/`.
 6. Review the RED/GREEN/REFACTOR evidence in `tests/scenarios/`.
 7. Confirm `gh auth status` succeeds before any real backlog operation.
-8. Decide repository visibility and remote ownership before creating the
-   GitHub repository.
+8. Confirm `origin` resolves exactly to
+   `https://github.com/tvproductions/superpowers-backplane.git` before any
+   real backlog operation or push.
 
 ## Next design decisions
 

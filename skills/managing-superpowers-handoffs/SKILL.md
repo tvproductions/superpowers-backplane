@@ -37,7 +37,9 @@ or ambiguous, record `UNVERIFIED` and ask for evidence. Never guess a root or pa
 4. Heuristically screen secrets, credentials, personal data, and private URLs.
    Redact safely or refuse when meaning cannot survive redaction.
 5. Compute the unique append-only destination; check immediately before writing;
-   refuse collisions and unsupported required authority anchors.
+   refuse collisions and unsupported required authority anchors. When required
+   identity or authority anchors are unavailable, report the narrow probes and
+   do not present a partial artifact as a handoff.
 6. Write once, then re-read for required fields, attribution, reference-not-copy,
    and the exact resume instruction. Report the path and intentional unknowns.
 
@@ -58,7 +60,7 @@ or ambiguous, record `UNVERIFIED` and ask for evidence. Never guess a root or pa
 
 | Pressure or shortcut | Required response |
 | --- | --- |
-| "Pick the newest" | Select only with unambiguous anchors and lineage; otherwise request the path. |
+| "Pick the newest" | Select only with unambiguous current anchors **and verified lineage**; a lone nonconflicting candidate with unresolved lineage still requires the operator's path and intended thread. |
 | "The predecessor was confident" | Reconcile claims against current probes; leave gaps `UNVERIFIED`. |
 | "Copy the plan" | Reference durable authority; preserve only the live thread. |
 | "We know what happened" | Use an attributed claim form and name evidence or probe. |

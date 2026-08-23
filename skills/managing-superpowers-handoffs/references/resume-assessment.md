@@ -165,12 +165,14 @@ into a hard failure that suppresses the session-entry warning.
 
 ## Required incoming-session report
 
-Every RESUME response unconditionally uses all eight labels below in exactly
-this order. This includes unmet-prerequisite reports, refusals, `VERIFY`
-bearings, insufficient evidence, and no safe candidate. Never substitute a
-prose response, preamble, or abbreviated report. Keep each item concise but
-evidence-backed; do not hide an unsafe candidate or an unavailable probe behind
-a generic success statement.
+Every RESUME response unconditionally contains all eight semantic fields below
+in this order. This includes unmet-prerequisite reports, refusals, `VERIFY`
+bearings, insufficient evidence, and no safe candidate. The canonical `Label:`
+rendering is recommended, but colon punctuation and harmless Markdown wrapping
+as headings, bullets, or emphasis are not semantic. Never omit a field, rename
+it beyond recognition, reorder it, merge it with another field, or substitute a
+prose response. Keep each item concise but evidence-backed; do not hide an
+unsafe candidate or an unavailable probe behind a generic success statement.
 
 Include Superpowers prerequisite and derivation-provenance observations under
 `Current anchors`, `Confirmed claims`, `Drifted claims`, or `Unverified claims`
@@ -186,6 +188,8 @@ Next-step assessment: <preconditions and result>
 Bearing: CONTINUE | REVISE | ABANDON | VERIFY
 Start here because: <current-evidence explanation>
 ```
+
+The Bearing value uses exactly one of the four vocabulary terms above.
 
 If no safe candidate was selected, say so in `Selected handoff`, list the
 candidate evidence and the requested operator choice under `Unverified claims`,

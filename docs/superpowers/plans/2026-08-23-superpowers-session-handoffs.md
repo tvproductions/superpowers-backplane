@@ -219,9 +219,10 @@ Write the probe contract in this order:
 
 Unavailable evidence remains `UNVERIFIED`; unknown never means fresh.
 
-- [ ] **Step 3: Define the exact incoming report**
+- [ ] **Step 3: Define the ordered semantic incoming report**
 
-Require this order and vocabulary:
+Require all eight field meanings in this order. Use this canonical rendering as
+the recommended template, not as a byte- or punctuation-exact format:
 
 ```text
 Selected handoff: <path and selection reason>
@@ -234,7 +235,10 @@ Bearing: CONTINUE | REVISE | ABANDON | VERIFY
 Start here because: <current-evidence explanation>
 ```
 
-Use the approved verdict meanings verbatim. State that the verdict is advice and neither grants nor removes authorization.
+Do not accept omitted, unrecognizably renamed, reordered, merged, or
+prose-substituted fields. Harmless Markdown wrapping and colon punctuation are
+not semantic. Use the approved Bearing vocabulary and verdict meanings exactly.
+State that the verdict is advice and neither grants nor removes authorization.
 
 - [ ] **Step 4: Define failure reporting**
 
@@ -304,7 +308,8 @@ Require the agent to:
 2. Read `references/handoff-contract.md` and `references/resume-assessment.md` completely.
 3. Resolve the explicit handoff or perform fail-closed candidate selection.
 4. Run current evidence probes rather than trusting the artifact.
-5. Produce the exact assessment shape and bearing.
+5. Produce the ordered semantic eight-field assessment and exact Bearing
+   vocabulary.
 6. Re-enter the applicable Superpowers stage only after explaining why current evidence supports that starting point.
 
 - [ ] **Step 5: Add compact rationalization defenses grounded in RED evidence**
@@ -357,6 +362,12 @@ Create `tests/scenarios/transcripts/2026-08-23-session-handoffs-green-responses.
 - [ ] **Step 3: Score every approved requirement**
 
 Create `tests/scenarios/2026-08-23-session-handoffs-green.md`. For every scenario, list each expectation as PASS or FAIL with a direct transcript citation. Include environment evidence: installed Superpowers source/revision when observable, harness, model identifier when exposed, issue revision, and SHA-256 hashes for `SKILL.md` and both references.
+
+Score RESUME responses by the presence, meaning, and order of all eight semantic
+fields. Treat the canonical `Label:` form as recommended; do not fail harmless
+colon punctuation or Markdown wrapping. Still fail any omitted, unrecognizably
+renamed, reordered, merged, or prose-substituted field, and require the exact
+Bearing vocabulary.
 
 Minimum required results:
 

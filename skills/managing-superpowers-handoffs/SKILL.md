@@ -102,8 +102,11 @@ not guess the surface or stop the whole operation solely for that uncertainty.
 4. Run its ordered current-evidence probes. Reconcile Git, work item, durable
    artifacts, claims, and next-step preconditions; confidence and recency are not currency.
 5. Every RESUME response, including an unmet-prerequisite, refusal, `VERIFY`, or
-   insufficient-evidence response, uses all eight exact assessment labels in
-   order. No prose response substitutes for that shape.
+   insufficient-evidence response, uses all eight semantic assessment fields in
+   order. The canonical `Label:` rendering is recommended; colon punctuation and
+   harmless Markdown wrapping are not semantic. Do not omit, unrecognizably
+   rename, reorder, merge, or replace fields with prose. Bearing vocabulary is
+   exact.
 6. Re-enter the applicable Superpowers stage only after explaining why current
    evidence supports that start. The bearing is advice, not authorization.
 

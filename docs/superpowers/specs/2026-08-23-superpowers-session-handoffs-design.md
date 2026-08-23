@@ -207,6 +207,15 @@ Bearing: CONTINUE | REVISE | ABANDON | VERIFY
 Start here because: <one evidence-backed sentence>
 ```
 
+This is an ordered semantic eight-field schema. All eight field meanings and
+their order are mandatory: Selected handoff; Current anchors; Confirmed claims;
+Drifted claims; Unverified claims; Next-step assessment; Bearing; Start here
+because. The canonical `Label:` rendering above is recommended, but colon
+punctuation and harmless Markdown wrapping such as headings, bullets, or
+emphasis are not semantic. A response may not omit a field, rename it beyond
+recognition, reorder it, merge it with another field, or replace the schema with
+prose. The Bearing values remain exact vocabulary.
+
 Verdicts mean:
 
 - **CONTINUE** — the objective and next action remain supported by current

@@ -35,11 +35,15 @@ or ambiguous, record `UNVERIFIED` and ask for evidence. Never guess a root or pa
 3. Keep only purpose-relevant live claims. Tag each load-bearing claim
    `VERIFIED`, `INFERRED`, or `UNVERIFIED`; reference durable material, do not copy it.
 4. Heuristically screen secrets, credentials, personal data, and private URLs.
-   Redact safely or refuse when meaning cannot survive redaction.
+   Redact safely or refuse when meaning cannot survive redaction. Retain a
+   supplied safe result exactly; when its text is absent, leave it
+   `UNVERIFIED` and request it rather than inventing a finding or retry rule.
 5. Compute the unique append-only destination; check immediately before writing;
    refuse collisions and unsupported required authority anchors. When required
-   identity or authority anchors are unavailable, report the narrow probes and
-   do not present a partial artifact as a handoff.
+   anchors or safe redaction are unavailable, do not persist or represent a
+   partial artifact as a completed durable handoff. A clearly labeled
+   non-durable redacted draft or safe summary is permitted when useful, names
+   the missing probes, and exposes no sensitive value.
 6. Write once, then re-read for required fields, attribution, reference-not-copy,
    and the exact resume instruction. Report the path and intentional unknowns.
 

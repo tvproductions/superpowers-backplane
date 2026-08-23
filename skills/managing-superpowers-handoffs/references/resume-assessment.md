@@ -21,17 +21,16 @@ or the project.
 
 Before relying on this procedure, read current upstream Superpowers installation
 documentation through its active documentation surface, then use its current
-expectations to validate the harness's observed active discovery and loadability
-of every Superpowers skill required by RESUME. Do not infer this from a
-remembered installation, a handoff, or a guessed checkout. A project-local
-dependency or version record can evidence observed project state, but it is not
-current upstream installation documentation. If the upstream documentation is
-unavailable, a required skill cannot be discovered or loaded, observed behavior
-mismatches the documentation, or operational state remains unconfirmable,
-report `UNMET SUPERPOWERS PREREQUISITE`, name the failed
-observation, direct the operator to the current upstream installation
-documentation, and return `VERIFY`. Do not install or repair Superpowers. A
-successful observation is not a compatibility guarantee.
+expectations to validate the harness's observed active Superpowers discovery and
+invocation behavior. Do not infer this from a remembered installation, a
+handoff, or a guessed checkout. A project-local dependency or version record can
+evidence observed project state, but it is not current upstream installation
+documentation. If the upstream installation documentation is unavailable, or
+the operational installation is absent, misconfigured, or unconfirmable, report
+`UNMET SUPERPOWERS PREREQUISITE`, name the failed observation, direct the
+operator to the current upstream installation documentation, and return
+`VERIFY`. Do not install or repair Superpowers. A successful observation is not
+a compatibility guarantee.
 
 ## Candidate validation and selection
 
@@ -56,9 +55,14 @@ failure.
 Without an explicit path:
 
 1. Derive the project-owned handoff location from `handoff-contract.md`; do
-   not guess another root or search arbitrary repository files. Discover only
-   candidate artifacts under that derived location; never discover an external
-   or ephemeral candidate automatically.
+   not guess another root or search arbitrary repository files. Before listing
+   or reading any candidate, canonically resolve the repository root and derived
+   storage root, accounting for symlink, junction, reparse-point, and traversal
+   effects. Require canonical containment; textual containment is insufficient.
+   If resolution cannot be established or escapes the repository, do not
+   enumerate or read that storage and return `VERIFY` with the exact probe.
+   Otherwise discover only candidate artifacts under that canonical location;
+   never discover an external or ephemeral candidate automatically.
 2. For every candidate that can be inspected, compare its repository identity,
    branch, work item and consumed revision, specification identity, plan
    identity, and predecessor lineage with current evidence. Mark each anchor
@@ -101,9 +105,10 @@ earlier unavailable or contradictory probe.
 2. **Refresh guidance.** Re-read current project instructions and the
    applicable installed Backplane and Superpowers skills. A prior handoff's
    description of a rule or skill is historical context, not a replacement for
-   the active source. A source skill required by this RESUME operation that
-   cannot be discovered or loaded is an unmet prerequisite, not guidance to
-   classify as `UNVERIFIED`.
+   the active source. After the installation is operationally confirmed, an
+   applicable convention-source skill that cannot be read or yields ambiguous
+   artifact guidance makes only that artifact surface `UNVERIFIED`; name its
+   exact probe and do not guess a path.
 3. **Reconcile Git state.** Establish the repository root, branch, HEAD
    relationship, relevant commits, dirty state, and changed relevant files.
    Compare that observed state to every corresponding artifact anchor and live
@@ -118,6 +123,8 @@ earlier unavailable or contradictory probe.
    before resolving the current specification and plan. Compare their current
    existence and Git identities with the handoff anchors. Do not guess an
    installation root or use an old default path merely because it is familiar.
+   Unreadable or ambiguous convention guidance leaves only the affected artifact
+   surface `UNVERIFIED`; it does not stop an otherwise operational installation.
 6. **Reconcile derivation provenance.** Compare every recorded Superpowers
     source skill, locator, and available digest or revision with the current
     active-discovery evidence. Mark an unchanged observed source confirmed, a

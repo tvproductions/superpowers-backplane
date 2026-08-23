@@ -16,6 +16,17 @@ Project-local storage is the default because it can move across sessions, models
 
 An external location is permitted only after an explicit operator request for that location. Record that it is external and ephemeral, its exact location, and the operator's request in the artifact or outgoing report as applicable. Do not imply that an external artifact is project-local, durable, committed, or available to a future session. If the external location cannot safely preserve the required content, refuse CREATE and ask for a safe location.
 
+Before computing or writing a project-local destination, canonically resolve the
+repository root and the storage root. If the storage root does not yet exist,
+canonically resolve its nearest existing parent and the prospective storage root.
+Account for symlink, junction, reparse-point, and traversal effects. Require the
+canonical storage root and existing destination parent to remain within the
+canonical repository root. Immediately before writing, repeat resolution for the
+existing destination parent and the destination as applicable. Textual
+containment is never sufficient. If any required resolution cannot be
+established or escapes the repository, refuse CREATE and use the mandatory
+non-durable summary; do not compute or write the destination.
+
 ## Document shape
 
 Use Markdown. Start with an identity block that supplies the following fields. An unknown value is not invented: record it as `UNVERIFIED` with its required probe, or omit the optional creator identity.
@@ -194,6 +205,9 @@ Refuse CREATE when safe redaction cannot be established without destroying the h
 Refuse to write when any of these conditions applies:
 
 - The destination already exists.
+- Canonical containment for project-local storage, its existing destination
+  parent, or the destination as applicable cannot be established or escapes the
+  repository.
 - Repository identity cannot be established.
 - A required authority anchor is claimed but cannot be identified.
 - Sensitive content cannot be safely redacted.

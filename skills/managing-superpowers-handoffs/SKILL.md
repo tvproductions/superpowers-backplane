@@ -13,25 +13,31 @@ instructions, issues, specifications, plans, and operator direction govern.
 
 Use `superpowers:using-superpowers`, then the applicable upstream workflow
 skill. When a GitHub work item exists, use `managing-superpowers-backlog` for
-complete native intake. CREATE and RESUME are read-only; mutation needs a
-separate explicit backlog operation.
+complete native intake. CREATE and RESUME are read-only with respect to GitHub
+and backlog state; CREATE still writes its append-only handoff artifact. GitHub
+or backlog mutation needs a separate explicit backlog operation.
 
 Use this skill at an interruption, model or harness switch, context-risk point,
 or return to unfinished work. Continue normally when primary context is intact
 and cheaper. An explicit CREATE or RESUME request wins; otherwise infer only an
 unambiguous direction, or ask one short question.
 
+When both CREATE and RESUME are requested, load both references before
+prerequisite validation, then execute and report CREATE followed by RESUME.
+Keep both response contracts: neither shape substitutes for the other. If
+CREATE refuses, emit its mandatory six-line non-durable summary, then emit the
+eight-label RESUME report with no usable target and bearing `VERIFY`.
+
 For either operation, first read the Backplane references named in its step 1 so
 the stop-path output contract is available. Those references are not upstream
 installation evidence. Then read current upstream Superpowers installation
 documentation through its active documentation surface and use its current
-expectations to validate the harness's observed active discovery and loadability
-of every Superpowers skill required by the operation. Never infer this from a
-presumed install root or version. A project-local dependency or version record
-is evidence about observed project state, not a substitute for current upstream
-installation documentation. If the upstream documentation is unavailable, a
-required skill cannot be discovered or loaded, observed behavior mismatches the
-documentation, or operational state remains unconfirmable, report `UNMET
+expectations to validate the harness's observed active Superpowers discovery and
+invocation behavior. Never infer this from a presumed install root or version. A
+project-local dependency or version record is evidence about observed project
+state, not a substitute for current upstream installation documentation. If the
+upstream installation documentation is unavailable, or the operational
+installation is absent, misconfigured, or unconfirmable, report `UNMET
 SUPERPOWERS PREREQUISITE` with the failed observation and direct the operator to
 the current upstream installation documentation, then stop the operation: do
 not persist CREATE and return `VERIFY` from RESUME. Do not install, repair, or
@@ -41,10 +47,10 @@ For each needed Superpowers artifact, use that active discovery to read installe
 `superpowers:brainstorming`, `superpowers:writing-plans`, and applicable
 execution guidance; derive current conventions and overrides from them. Record
 every source skill used and its observable locator, digest, or installed revision
-when available. A required source skill that cannot be discovered or loaded is
-an unmet prerequisite, not artifact guidance to mark `UNVERIFIED`. Reserve
-`UNVERIFIED` for ambiguous or unavailable artifact guidance after the
-installation is otherwise operationally confirmed. Never guess a root or path.
+when available. After the installation is operationally confirmed, an applicable
+convention-source skill that cannot be read or yields ambiguous artifact guidance
+makes only that artifact surface `UNVERIFIED`; name the exact probe needed. Do
+not guess the surface or stop the whole operation solely for that uncertainty.
 
 ## CREATE
 
@@ -63,9 +69,12 @@ installation is otherwise operationally confirmed. Never guess a root or path.
    Redact safely or refuse when meaning cannot survive redaction. Retain a
    supplied safe result exactly; when its text is absent, leave it
    `UNVERIFIED` and request it rather than inventing a finding or retry rule.
-5. Compute the unique append-only destination; check immediately before writing;
-   refuse collisions and unsupported required authority anchors. When required
-   anchors or safe redaction inputs are unavailable, do not persist or represent
+5. Before computing a project-local destination, follow the contract's canonical
+   storage-root and destination-parent containment checks. Then compute the
+   unique append-only destination and recheck containment and collision
+   immediately before writing. Refuse escaping or unresolvable storage,
+   collisions, and unsupported required authority anchors. When required anchors
+   or safe redaction inputs are unavailable, do not persist or represent
    a partial artifact as a completed durable handoff. Never emit a handoff-shaped
    draft for a blocked or refused CREATE. When a safe response is useful, emit
    only the contract's mandatory non-durable summary; it names the missing probes
@@ -102,4 +111,4 @@ installation is otherwise operationally confirmed. Never guess a root or path.
 | "We know what happened" | Use an attributed claim form and name evidence or probe. |
 | "Skip checks" | Produce the required current-evidence assessment before selecting a start. |
 | "Record everything" | Redact safely while retaining the non-secret result, or refuse. |
-| "Update GitHub" | Keep handoff work read-only; request a separate backlog operation. |
+| "Update GitHub" | Keep GitHub and backlog state read-only; request a separate backlog operation. |

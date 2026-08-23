@@ -24,9 +24,15 @@ unambiguous direction, or ask one short question.
 
 When both CREATE and RESUME are requested, load both references before
 prerequisite validation, then execute and report CREATE followed by RESUME.
-Keep both response contracts: neither shape substitutes for the other. If
-CREATE refuses, emit its mandatory six-line non-durable summary, then emit the
-eight-label RESUME report with no usable target and bearing `VERIFY`.
+Keep both response contracts: neither shape substitutes for the other. When
+RESUME is meant to assess the artifact just created, a successful CREATE passes
+its exact path directly as RESUME's explicit candidate; do not use automatic
+discovery. If that CREATE refuses, emit its mandatory six-line non-durable
+summary, then emit the eight-label RESUME report with no usable target and
+bearing `VERIFY`. When the combined request independently supplies an explicit
+RESUME path, preserve and assess that path under normal validation regardless of
+CREATE success or refusal; do not replace it with CREATE output or no-target
+handling.
 
 For either operation, first read the Backplane references named in its step 1 so
 the stop-path output contract is available. Those references are not upstream

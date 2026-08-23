@@ -1,0 +1,4 @@
+interface:
+  display_name: "Superpowers Handoffs"
+  short_description: "Preserve and reconcile Superpowers session continuity"
+  default_prompt: "Use $managing-superpowers-handoffs to create or resume a project handoff."

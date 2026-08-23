@@ -152,7 +152,7 @@ not a handoff-shaped draft. It uses these labels in this order:
 ```text
 NON-DURABLE SUMMARY: not persisted; no usable RESUME target
 Incoming purpose: <purpose in claim form, or UNVERIFIED with required probe>
-Intended destination rule: append-only project-local destination derived only after prerequisites; collision checked immediately before writing; no path invented here
+Intended destination rule: <project-local default or explicitly requested external/ephemeral location>; establish eligibility and derive or verify the destination only after prerequisites; append-only and collision checked immediately before writing; no path invented here
 Attribution state: <load-bearing claims in VERIFIED, INFERRED, or UNVERIFIED form, with evidence or required probes>
 Missing probes: <every probe required before durable CREATE>
 CREATE result: no handoff created
@@ -199,4 +199,7 @@ Refuse to write when any of these conditions applies:
 - Sensitive content cannot be safely redacted.
 - The artifact would label unverified belief as verified fact.
 
-Report the specific failed condition and the narrowest required probe or operator decision. Do not create a partial durable handoff that conceals the failure.
+Report the specific failed condition and the narrowest required probe or
+operator decision. A blocked or refused CREATE never emits a handoff-shaped
+draft. If a safe summary is useful, emit only the mandatory non-durable safe
+summary above. Do not create a partial durable handoff that conceals the failure.

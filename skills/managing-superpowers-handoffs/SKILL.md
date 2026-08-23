@@ -21,8 +21,10 @@ or return to unfinished work. Continue normally when primary context is intact
 and cheaper. An explicit CREATE or RESUME request wins; otherwise infer only an
 unambiguous direction, or ask one short question.
 
-Before either operation, read current upstream Superpowers installation
-documentation through its active documentation surface, then use its current
+For either operation, first read the Backplane references named in its step 1 so
+the stop-path output contract is available. Those references are not upstream
+installation evidence. Then read current upstream Superpowers installation
+documentation through its active documentation surface and use its current
 expectations to validate the harness's observed active discovery and loadability
 of every Superpowers skill required by the operation. Never infer this from a
 presumed install root or version. A project-local dependency or version record
@@ -46,13 +48,17 @@ installation is otherwise operationally confirmed. Never guess a root or path.
 
 ## CREATE
 
-1. Confirm the operational Superpowers prerequisite above, then establish the
+1. Read the complete [handoff contract](references/handoff-contract.md) before
+   prerequisite validation, so its refusal response is available even when the
+   operation must stop. This reference defines Backplane output; it is not
+   upstream installation evidence.
+2. Confirm the operational Superpowers prerequisite above, then establish the
    repository root and incoming purpose. Read current instructions and directly
    relevant durable authorities.
-2. Read the complete [handoff contract](references/handoff-contract.md). Follow
-   its storage, identity, claim, lineage, redaction, and refusal rules.
-3. Keep only purpose-relevant live claims. Tag each load-bearing claim
-   `VERIFIED`, `INFERRED`, or `UNVERIFIED`; reference durable material, do not copy it.
+3. Follow the contract's storage, identity, claim, lineage, redaction, and
+   refusal rules. Keep only purpose-relevant live claims. Tag each load-bearing
+   claim `VERIFIED`, `INFERRED`, or `UNVERIFIED`; reference durable material,
+   do not copy it.
 4. Heuristically screen secrets, credentials, personal data, and private URLs.
    Redact safely or refuse when meaning cannot survive redaction. Retain a
    supplied safe result exactly; when its text is absent, leave it
@@ -60,28 +66,30 @@ installation is otherwise operationally confirmed. Never guess a root or path.
 5. Compute the unique append-only destination; check immediately before writing;
    refuse collisions and unsupported required authority anchors. When required
    anchors or safe redaction inputs are unavailable, do not persist or represent
-   a partial artifact as a completed durable handoff. Any handoff-shaped output
-   in that state must prominently say `NON-DURABLE DRAFT — not persisted` and
-   must not imply a durable artifact or usable RESUME target. A safe summary is
-   permitted when useful only in the contract's mandatory non-durable summary
-   shape; it names the missing probes and exposes no sensitive value.
+   a partial artifact as a completed durable handoff. Never emit a handoff-shaped
+   draft for a blocked or refused CREATE. When a safe response is useful, emit
+   only the contract's mandatory non-durable summary; it names the missing probes
+   and exposes no sensitive value.
 6. Write once, then re-read for required fields, attribution, reference-not-copy,
    and the exact resume instruction. Report the path and intentional unknowns.
 
 ## RESUME
 
-1. Confirm the operational Superpowers prerequisite above, then establish the
-   repository root and incoming purpose. Read the complete [handoff
-   contract](references/handoff-contract.md) and [resume
-   assessment](references/resume-assessment.md).
-2. Validate an explicit path, or use the assessment's fail-closed candidate
+1. Read the complete [handoff contract](references/handoff-contract.md) and
+   [resume assessment](references/resume-assessment.md) before prerequisite
+   validation, so the response shape is available even when the operation must
+   stop. These references define Backplane output; they are not upstream
+   installation evidence.
+2. Confirm the operational Superpowers prerequisite above, then establish the
+   repository root and incoming purpose.
+3. Validate an explicit path, or use the assessment's fail-closed candidate
    selection. Never choose by recency alone.
-3. Run its ordered current-evidence probes. Reconcile Git, work item, durable
+4. Run its ordered current-evidence probes. Reconcile Git, work item, durable
    artifacts, claims, and next-step preconditions; confidence and recency are not currency.
-4. Every RESUME response, including an unmet-prerequisite, refusal, `VERIFY`, or
+5. Every RESUME response, including an unmet-prerequisite, refusal, `VERIFY`, or
    insufficient-evidence response, uses all eight exact assessment labels in
    order. No prose response substitutes for that shape.
-5. Re-enter the applicable Superpowers stage only after explaining why current
+6. Re-enter the applicable Superpowers stage only after explaining why current
    evidence supports that start. The bearing is advice, not authorization.
 
 ## Red flags

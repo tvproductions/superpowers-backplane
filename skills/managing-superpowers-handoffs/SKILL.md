@@ -21,15 +21,28 @@ or return to unfinished work. Continue normally when primary context is intact
 and cheaper. An explicit CREATE or RESUME request wins; otherwise infer only an
 unambiguous direction, or ask one short question.
 
-For each needed Superpowers artifact, use active skill discovery; read installed
+Before either operation, confirm that the adopting harness actively discovers
+Superpowers and that current upstream Superpowers installation documentation is
+available. Use the harness's active discovery and documentation surfaces, never
+a presumed install root or version. If either observation is absent,
+misconfigured, or unconfirmable, report `UNMET SUPERPOWERS PREREQUISITE` with
+the failed observation and direct the operator to the current upstream
+installation documentation, then stop the operation: do not persist CREATE and
+return `VERIFY` from RESUME. Do not install, repair, or claim compatibility;
+successful observations are evidence only.
+
+For each needed Superpowers artifact, use that active discovery to read installed
 `superpowers:brainstorming`, `superpowers:writing-plans`, and applicable
-execution guidance; then derive current conventions and overrides. If unavailable
-or ambiguous, record `UNVERIFIED` and ask for evidence. Never guess a root or path.
+execution guidance; derive current conventions and overrides from them. Record
+every source skill used and its observable locator, digest, or installed revision
+when available. If a source is unavailable or ambiguous, record `UNVERIFIED` and
+ask for evidence. Never guess a root or path.
 
 ## CREATE
 
-1. Establish repository root and incoming purpose. Read current instructions and
-   directly relevant durable authorities.
+1. Confirm the operational Superpowers prerequisite above, then establish the
+   repository root and incoming purpose. Read current instructions and directly
+   relevant durable authorities.
 2. Read the complete [handoff contract](references/handoff-contract.md). Follow
    its storage, identity, claim, lineage, redaction, and refusal rules.
 3. Keep only purpose-relevant live claims. Tag each load-bearing claim
@@ -51,9 +64,10 @@ or ambiguous, record `UNVERIFIED` and ask for evidence. Never guess a root or pa
 
 ## RESUME
 
-1. Establish repository root and incoming purpose. Read the complete
-   [handoff contract](references/handoff-contract.md) and
-   [resume assessment](references/resume-assessment.md).
+1. Confirm the operational Superpowers prerequisite above, then establish the
+   repository root and incoming purpose. Read the complete [handoff
+   contract](references/handoff-contract.md) and [resume
+   assessment](references/resume-assessment.md).
 2. Validate an explicit path, or use the assessment's fail-closed candidate
    selection. Never choose by recency alone.
 3. Run its ordered current-evidence probes. Reconcile Git, work item, durable

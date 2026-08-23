@@ -19,12 +19,25 @@ applicable Superpowers workflow guidance govern their own layers. The verdict
 is advice and neither grants nor removes authorization to mutate Git, GitHub,
 or the project.
 
+Before relying on this procedure, confirm that the harness actively discovers
+Superpowers and that current upstream Superpowers installation documentation is
+available through its active documentation surface. Do not infer either from a
+remembered installation, a handoff, or a guessed checkout. If absent,
+misconfigured, or unconfirmable, report `UNMET SUPERPOWERS PREREQUISITE`, name
+the failed observation, direct the operator to the current upstream installation
+documentation, and return `VERIFY`. Do not install or repair Superpowers. A
+successful observation is not a compatibility guarantee.
+
 ## Candidate validation and selection
 
 An explicitly supplied handoff path is the candidate to assess; it is not a
 waiver of validation. Record that the selection reason was the explicit path,
 then validate it under the first reconciliation probe. Require containment for
-an explicitly supplied project-local candidate. An explicitly supplied external
+an explicitly supplied project-local candidate: canonically resolve both its
+path and the repository root before the containment comparison, retaining the
+supplied path and observed resolution. An escaping, unresolved, symlink,
+junction, or traversal-sensitive path remains visible and normally produces
+`VERIFY`. An explicitly supplied external
 candidate is eligible only when its contract-required external and ephemeral
 status, exact location, and operator request are established from the artifact
 together with its associated outgoing report and/or a current explicit operator
@@ -68,8 +81,11 @@ earlier unavailable or contradictory probe.
 
 1. **Validate the artifact.** Check the format identifier, required sections,
    timestamps, repository identity, and every predecessor path that can be
-   inspected. Require project-local path containment for a project-local
-   candidate. For an explicitly supplied external/ephemeral candidate, verify
+   inspected. Canonically resolve the repository root and every project-local
+   candidate or predecessor before containment decisions, including link,
+   junction, and traversal effects; preserve each supplied path and resolution.
+   Escaping or unresolved paths remain visible and normally produce `VERIFY`.
+   For an explicitly supplied external/ephemeral candidate, verify
    external status, exact location, and operator request from the artifact
    together with its associated outgoing report and/or a current explicit
    operator request; then verify provenance, repository identity, and
@@ -95,13 +111,18 @@ earlier unavailable or contradictory probe.
    before resolving the current specification and plan. Compare their current
    existence and Git identities with the handoff anchors. Do not guess an
    installation root or use an old default path merely because it is familiar.
-6. **Reclassify claims.** Reclassify every load-bearing handoff claim as
+6. **Reconcile derivation provenance.** Compare every recorded Superpowers
+    source skill, locator, and available digest or revision with the current
+    active-discovery evidence. Mark an unchanged observed source confirmed, a
+    changed source drifted, and an unavailable or insufficient comparison
+    unverified. Neither result promises compatibility.
+7. **Reclassify claims.** Reclassify every load-bearing handoff claim as
    confirmed, drifted, or unverified. A current probe or authoritative source
    can confirm a claim; changed or contradictory current evidence makes it
    drifted; an unavailable, insufficient, or unresolved source leaves it
    unverified. A remembered result, digest, stale handoff, or elapsed time is
    not current proof.
-7. **Test proposed next steps.** For every proposed step, check its stated and
+8. **Test proposed next steps.** For every proposed step, check its stated and
    implied preconditions against current authority and observed evidence.
    Record whether each precondition is met, drifted, blocked, or unverified,
    and name the narrowest next probe or operator decision where one is needed.
@@ -133,6 +154,10 @@ into a hard failure that suppresses the session-entry warning.
 Report the assessment in exactly this order and preserve the vocabulary below.
 Keep each item concise but evidence-backed; do not hide an unsafe candidate or
 an unavailable probe behind a generic success statement.
+
+Include Superpowers prerequisite and derivation-provenance observations under
+`Current anchors`, `Confirmed claims`, `Drifted claims`, or `Unverified claims`
+as their classification requires.
 
 ```text
 Selected handoff: <path and selection reason>

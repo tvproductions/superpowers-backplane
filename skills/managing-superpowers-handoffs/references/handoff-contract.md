@@ -31,6 +31,7 @@ Use Markdown. Start with an identity block that supplies the following fields. A
 | Work item | URL and observed `updatedAt` when work is backlog-tracked; otherwise state that no work item was identified. |
 | Specification | Path and observed Git identity when a specification is present; otherwise state its absence or uncertainty. |
 | Plan | Path and observed Git identity when a plan is present; otherwise state its absence or uncertainty. |
+| Superpowers derivation provenance | Every installed Superpowers skill used to derive artifact conventions, with its observable locator and digest or installed revision when available. |
 | Predecessors | Zero or more predecessor handoff paths; preserve every known path without fabricating a successor. |
 | Creator | Identity only when known; do not invent a session identifier. |
 | Storage location | The project-local destination or explicitly requested external location. |
@@ -81,6 +82,7 @@ do not insert a CREATE section between the required headings:
 - Work item: VERIFIED — <URL and observed updatedAt>, or UNVERIFIED — <no work item identified>. Required probe: <check>
 - Specification: VERIFIED — <path and blob ID>, or UNVERIFIED — <absence or unresolved identity>. Required probe: <check>
 - Plan: VERIFIED — <path and blob ID>, or UNVERIFIED — <absence or unresolved identity>. Required probe: <check>
+- Superpowers derivation provenance: VERIFIED — <each source skill, locator, and observed digest or revision when available>. Evidence: <active-discovery observation>
 - Predecessors: VERIFIED — <zero or more explicit paths, including none>. Evidence: <source>
 - Creator (omit when unknown): VERIFIED — <known identity>. Evidence: <source>
 - Storage location: VERIFIED — <destination>. Evidence: <source>
@@ -124,6 +126,12 @@ do not insert a CREATE section between the required headings:
 
 **Decisions and provenance** separates an operator ruling from an agent choice. For each decision, identify the source, evidence, and whether it remains only a recommendation.
 
+For every Superpowers convention used to locate or identify an artifact, record
+the exact installed source skill and its observable locator. Include a digest or
+installed revision when the harness makes one observable; otherwise say it is
+unavailable. This provenance is evidence of the observed source, not a
+compatibility guarantee.
+
 **Negative results** preserves each attempted approach, concrete observed failure, and the condition under which it should not be retried without new evidence. Do not replace this with a vague statement that an approach failed.
 
 **Deferred obligations** preserves discovered work that must survive the handoff but is not silently added to the current scope. Reference the proper authority or ask the operator to create or amend one; do not mutate backlog state.
@@ -144,7 +152,16 @@ Reference durable material rather than reproducing it. Omit issue objective, acc
 
 Record every known predecessor as a path, preserving the order needed to understand the live thread. A missing, dangling, or uninspectable predecessor remains visible as `UNVERIFIED`; do not invent a link, delete the reference, or declare the newest file authoritative. CREATE does not select a predecessor automatically merely because it is recent.
 
-Paths in a project-local artifact must be explicit and suitable for later containment checks. A path outside the repository or an external handoff is never treated as project-local evidence solely because its text appears in the artifact.
+Paths in a project-local artifact must be explicit and suitable for later
+containment checks. Before treating a candidate or predecessor as project-local,
+canonically resolve its path and the repository root, including link, junction,
+and traversal effects, then compare the resolved locations. Textual containment
+is not sufficient. Preserve the supplied path and the observed resolution. A
+path that escapes the canonical repository root, cannot be resolved, or has an
+unresolved link, junction, or traversal-sensitive component remains visible as
+`UNVERIFIED`; on RESUME it normally produces `VERIFY`. A path outside the
+repository or an external handoff is never treated as project-local evidence
+solely because its text appears in the artifact.
 
 ## Sensitive-content screen and redaction
 

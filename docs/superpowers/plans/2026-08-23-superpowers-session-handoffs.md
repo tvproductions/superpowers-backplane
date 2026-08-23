@@ -439,6 +439,6 @@ Re-run structural checks, supplemental skill validation, and the complete GREEN 
 
 Re-fetch the complete issue contract and reconcile `updatedAt`. Require exactly `backplane:active`, no blockers, committed implementation, review completion, and fresh verification. Replace `backplane:active` with `backplane:review` in one `gh issue edit` call, preserve unrelated labels, add concise evidence only where native commits/PRs do not already represent it, and re-fetch to verify. Do not close the issue before integrated acceptance and fresh target-branch verification.
 
-- [ ] **Step 7: Finish the branch through Superpowers**
+- [x] **Step 7: Finish the branch through Superpowers**
 
 Use `superpowers:verification-before-completion`, then `superpowers:finishing-a-development-branch`. Present integration choices to the operator. Do not publish, release, or close issue `#10` without the required integration evidence and explicit authority.

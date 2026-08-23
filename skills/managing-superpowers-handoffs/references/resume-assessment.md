@@ -23,16 +23,22 @@ or the project.
 
 An explicitly supplied handoff path is the candidate to assess; it is not a
 waiver of validation. Record that the selection reason was the explicit path,
-then validate it under the first reconciliation probe. If the supplied path is
-outside the repository, malformed, inaccessible, or mismatched, keep that
-failure visible and normally return `VERIFY` rather than substituting another
-file.
+then validate it under the first reconciliation probe. Require containment for
+an explicitly supplied project-local candidate. An explicitly supplied external
+candidate is eligible only when the artifact records the contract-required
+external and ephemeral status, exact location, and operator request. Preserve
+that external/ephemeral status visibly in `Selected handoff` and `Current
+anchors`; verify provenance, repository identity, and accessibility before
+relying on it. If its provenance, identity, or accessibility is unestablished,
+keep that failure visible and normally return `VERIFY` rather than substituting
+another file. External location alone is not a validation failure.
 
 Without an explicit path:
 
 1. Derive the project-owned handoff location from `handoff-contract.md`; do
    not guess another root or search arbitrary repository files. Discover only
-   candidate artifacts under that derived location.
+   candidate artifacts under that derived location; never discover an external
+   or ephemeral candidate automatically.
 2. For every candidate that can be inspected, compare its repository identity,
    branch, work item and consumed revision, specification identity, plan
    identity, and predecessor lineage with current evidence. Mark each anchor
@@ -59,9 +65,13 @@ Run these probes in this order. Do not use a later conclusion to bypass an
 earlier unavailable or contradictory probe.
 
 1. **Validate the artifact.** Check the format identifier, required sections,
-   timestamps, repository identity, project-local path containment, and every
-   predecessor path that can be inspected. Report malformed timestamps,
-   missing sections, containment failures, repository mismatch, and dangling
+   timestamps, repository identity, and every predecessor path that can be
+   inspected. Require project-local path containment for a project-local
+   candidate. For an explicitly supplied external/ephemeral candidate, verify
+   the recorded operator request, external status, provenance, repository
+   identity, and accessibility instead. Report malformed timestamps, missing
+   sections, containment failures for project-local candidates, unestablished
+   external provenance or accessibility, repository mismatch, and dangling
    predecessors as current evidence.
 2. **Refresh guidance.** Re-read current project instructions and the
    applicable installed Backplane and Superpowers skills. A prior handoff's

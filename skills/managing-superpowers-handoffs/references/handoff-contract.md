@@ -81,8 +81,8 @@ do not insert a CREATE section between the required headings:
 - Work item: VERIFIED — <URL and observed updatedAt>, or UNVERIFIED — <no work item identified>. Required probe: <check>
 - Specification: VERIFIED — <path and blob ID>, or UNVERIFIED — <absence or unresolved identity>. Required probe: <check>
 - Plan: VERIFIED — <path and blob ID>, or UNVERIFIED — <absence or unresolved identity>. Required probe: <check>
-- Predecessors: <zero or more explicit paths>
-- Creator: <known identity only>
+- Predecessors: VERIFIED — <zero or more explicit paths, including none>. Evidence: <source>
+- Creator (omit when unknown): VERIFIED — <known identity>. Evidence: <source>
 - Storage location: VERIFIED — <destination>. Evidence: <source>
 
 ## Incoming purpose

@@ -427,15 +427,15 @@ Resolve the active skill-creator source from its skill locator and run its `scri
 
 Read the active installed `superpowers:brainstorming`, `superpowers:writing-plans`, and applicable execution skill. Confirm the skill instructs agents to derive conventions from these sources, not from `.agents/superpowers` or hard-coded v6.3.0 defaults. Confirm baseline fixture values are clearly labeled as revision-specific evidence.
 
-- [ ] **Step 4: Request independent skill review**
+- [x] **Step 4: Request independent skill review**
 
 Use `superpowers:requesting-code-review` with issue `#10`, the approved spec, this plan, the full skill package, RED/GREEN evidence, and the implementation commit range. Require findings to distinguish design noncompliance, behavioral-evidence gaps, and optional improvements. Apply valid findings through `superpowers:receiving-code-review` and rerun affected conformance scenarios.
 
-- [ ] **Step 5: Run final verification from the implementation worktree**
+- [x] **Step 5: Run final verification from the implementation worktree**
 
 Re-run structural checks, supplemental skill validation, and the complete GREEN scoring pass. Run `git status --short` and account for every path. Do not claim success from cached or pre-fix output.
 
-- [ ] **Step 6: Transition issue `#10` to review without closing it**
+- [x] **Step 6: Transition issue `#10` to review without closing it**
 
 Re-fetch the complete issue contract and reconcile `updatedAt`. Require exactly `backplane:active`, no blockers, committed implementation, review completion, and fresh verification. Replace `backplane:active` with `backplane:review` in one `gh issue edit` call, preserve unrelated labels, add concise evidence only where native commits/PRs do not already represent it, and re-fetch to verify. Do not close the issue before integrated acceptance and fresh target-branch verification.
 

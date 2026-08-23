@@ -9,6 +9,18 @@
 - Context isolation: fresh thread per prompt; no plan, rubric, expected answer, repository inspection, or peer response supplied
 - Source record: `.superpowers/sdd/2026-08-23-superpowers-session-handoffs/red-eval-raw.md`
 
+### Shared control preamble
+
+Each fresh agent received only:
+
+- its exact scenario prompt;
+- the repository control instructions needed to act safely;
+- an explicit prohibition on loading or inspecting any handoff skill or this
+  implementation plan.
+
+The controller record does not preserve the literal wording of the safe
+repository-control instructions. No additional content is inferred here.
+
 The material in each **Verbatim response** block below is copied exactly from
 the source record. Analysis belongs only in the companion baseline file.
 

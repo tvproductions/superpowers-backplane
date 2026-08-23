@@ -10,17 +10,11 @@ in `transcripts/2026-08-23-session-handoffs-red-responses.md`.
 
 ### Shared control preamble
 
-Each fresh agent received only:
+The exact shared preamble sent before every scenario was:
 
-- its exact scenario prompt;
-- the repository control instructions needed to act safely;
-- an explicit prohibition on loading or inspecting any handoff skill or this
-  implementation plan.
-
-The controller did not provide a plan, rubric, expected answer, repository
-inspection, or another agent's response. The raw evaluation record preserves
-this control pattern but not the literal wording of the safe repository-control
-instructions; this baseline makes no further claim about their content.
+```text
+You are a fresh evaluation agent. Do not inspect any repository or conversation history, do not load or use any handoff skill, and do not discuss evaluation methodology. Answer only the hypothetical user request below as you naturally would. Do not call tools or modify files.
+```
 
 The approved GREEN expectations below are derived from the approved handoff
 design. Each observed-failure section was written only after the corresponding

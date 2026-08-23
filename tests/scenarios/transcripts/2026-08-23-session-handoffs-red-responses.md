@@ -11,15 +11,11 @@
 
 ### Shared control preamble
 
-Each fresh agent received only:
+The exact shared preamble sent before every scenario was:
 
-- its exact scenario prompt;
-- the repository control instructions needed to act safely;
-- an explicit prohibition on loading or inspecting any handoff skill or this
-  implementation plan.
-
-The controller record does not preserve the literal wording of the safe
-repository-control instructions. No additional content is inferred here.
+```text
+You are a fresh evaluation agent. Do not inspect any repository or conversation history, do not load or use any handoff skill, and do not discuss evaluation methodology. Answer only the hypothetical user request below as you naturally would. Do not call tools or modify files.
+```
 
 The material in each **Verbatim response** block below is copied exactly from
 the source record. Analysis belongs only in the companion baseline file.

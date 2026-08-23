@@ -281,20 +281,6 @@ The issue, specification, and plan remain layered authorities. This design is
 the handoff capability's design authority after operator approval; the issue
 owns backlog identity and lifecycle; the plan owns bounded execution.
 
-## gzkit Dossier
-
-The companion deliverable is an advisory gzkit dossier under its governed
-technical-debt audit surface. It records the verified implementation findings,
-comparative advantages, recommended fix shapes, and routing suggestions without
-changing gzkit canon, filing multiple issues, or implementing corrections.
-
-The dossier distinguishes:
-
-- direct corrections under already-settled intent;
-- one candidate design effort for a unified session-entry bearing assessment;
-- known debt already represented by gzkit backlog artifacts;
-- deliberate safety tradeoffs such as conservative archive retention.
-
 ## Success Criteria
 
 - An outgoing session can create a concise, evidence-attributed handoff whose
@@ -306,5 +292,3 @@ The dossier distinguishes:
 - The skill remains language-neutral and fitted to current stable upstream
   Superpowers.
 - Transcript evidence demonstrates improved behavior over a no-skill control.
-- gzkit receives a line-grounded dossier it can route through its own
-  GHI/chore/design governance.

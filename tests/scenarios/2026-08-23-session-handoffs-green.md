@@ -44,16 +44,14 @@ The following checks ran from the implementation worktree on 2026-08-23.
 
 ```text
 git diff --check
-rg -n "TBD|TODO|PLACEHOLDER" skills/managing-superpowers-handoffs tests/scenarios/2026-08-23-session-handoffs-baseline.md tests/scenarios/2026-08-23-session-handoffs-green.md
+rg -n "T[B]D|T[O]DO|P[L]ACEHOLDER" skills/managing-superpowers-handoffs tests/scenarios/2026-08-23-session-handoffs-baseline.md tests/scenarios/2026-08-23-session-handoffs-green.md
 rg -n "handoff-contract.md|resume-assessment.md" skills/managing-superpowers-handoffs/SKILL.md
 rg -n "^name: managing-superpowers-handoffs$|^description: Use when" skills/managing-superpowers-handoffs/SKILL.md
 ```
 
-Results: `git diff --check` exited 0. Because this durable record contains the
-exact placeholder-scan command, that scan exits 0 for its one intentional
-self-match; it found no placeholder content. Both references are directly
-linked, and the name plus trigger-style description exactly match the contract.
-The package tree contains only
+Results: `git diff --check` exited 0; the placeholder scan found no matches
+(exit 1). Both references are directly linked, and the name plus trigger-style
+description exactly match the contract. The package tree contains only
 `SKILL.md`, `agents/openai.yaml`, and the two approved Markdown references;
 a scan for scripts, assets, executables, runtime manifests, hooks, and extra
 documentation found zero paths.

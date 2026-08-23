@@ -25,13 +25,15 @@ An explicitly supplied handoff path is the candidate to assess; it is not a
 waiver of validation. Record that the selection reason was the explicit path,
 then validate it under the first reconciliation probe. Require containment for
 an explicitly supplied project-local candidate. An explicitly supplied external
-candidate is eligible only when the artifact records the contract-required
-external and ephemeral status, exact location, and operator request. Preserve
-that external/ephemeral status visibly in `Selected handoff` and `Current
-anchors`; verify provenance, repository identity, and accessibility before
-relying on it. If its provenance, identity, or accessibility is unestablished,
-keep that failure visible and normally return `VERIFY` rather than substituting
-another file. External location alone is not a validation failure.
+candidate is eligible only when its contract-required external and ephemeral
+status, exact location, and operator request are established from the artifact
+together with its associated outgoing report and/or a current explicit operator
+request. Preserve that external/ephemeral status visibly in `Selected handoff`
+and `Current anchors`; verify provenance, repository identity, and accessibility
+before relying on it. If its status, provenance, identity, or accessibility is
+unestablished, keep that failure visible and normally return `VERIFY` rather
+than substituting another file. External location alone is not a validation
+failure.
 
 Without an explicit path:
 
@@ -68,10 +70,12 @@ earlier unavailable or contradictory probe.
    timestamps, repository identity, and every predecessor path that can be
    inspected. Require project-local path containment for a project-local
    candidate. For an explicitly supplied external/ephemeral candidate, verify
-   the recorded operator request, external status, provenance, repository
-   identity, and accessibility instead. Report malformed timestamps, missing
-   sections, containment failures for project-local candidates, unestablished
-   external provenance or accessibility, repository mismatch, and dangling
+   external status, exact location, and operator request from the artifact
+   together with its associated outgoing report and/or a current explicit
+   operator request; then verify provenance, repository identity, and
+   accessibility. Report malformed timestamps, missing sections, containment
+   failures for project-local candidates, unestablished external status,
+   provenance, identity, or accessibility, repository mismatch, and dangling
    predecessors as current evidence.
 2. **Refresh guidance.** Re-read current project instructions and the
    applicable installed Backplane and Superpowers skills. A prior handoff's

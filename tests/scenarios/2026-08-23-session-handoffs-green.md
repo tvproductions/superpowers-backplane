@@ -38,6 +38,50 @@
 
 The final seven-prompt suite below was rerun fresh after the third refactor.
 
+## Durable Task 6 validation
+
+The following checks ran from the implementation worktree on 2026-08-23.
+
+```text
+git diff --check
+rg -n "TBD|TODO|PLACEHOLDER" skills/managing-superpowers-handoffs tests/scenarios/2026-08-23-session-handoffs-baseline.md tests/scenarios/2026-08-23-session-handoffs-green.md
+rg -n "handoff-contract.md|resume-assessment.md" skills/managing-superpowers-handoffs/SKILL.md
+rg -n "^name: managing-superpowers-handoffs$|^description: Use when" skills/managing-superpowers-handoffs/SKILL.md
+```
+
+Results: `git diff --check` exited 0. Because this durable record contains the
+exact placeholder-scan command, that scan exits 0 for its one intentional
+self-match; it found no placeholder content. Both references are directly
+linked, and the name plus trigger-style description exactly match the contract.
+The package tree contains only
+`SKILL.md`, `agents/openai.yaml`, and the two approved Markdown references;
+a scan for scripts, assets, executables, runtime manifests, hooks, and extra
+documentation found zero paths.
+
+The active authoring validator was
+`C:\Users\Jeff\.codex\skills\.system\skill-creator\scripts\quick_validate.py`:
+
+```text
+python C:\Users\Jeff\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills/managing-superpowers-handoffs
+```
+
+Result: exit 0, `Skill is valid!` This is supplemental authoring evidence,
+not a Python or other runtime dependency for adopters.
+
+The observed installed Superpowers sources were
+`.agents/superpowers/skills/brainstorming/SKILL.md`,
+`.agents/superpowers/skills/writing-plans/SKILL.md`, and the applicable
+execution source `.agents/superpowers/skills/subagent-driven-development/SKILL.md`.
+They currently specify design output under
+`docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and plan output under
+`docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`, with user/project
+preferences overriding each default; the execution source governs the
+fresh-implementer, review, and final-review workflow. These are observed
+sources for this validation environment, not path constants in the candidate.
+`SKILL.md` and `resume-assessment.md` instead require active discovery and
+derivation from installed sources. A candidate-package scan found no
+`.agents/superpowers`, `v6.3.0`, or resolved-revision hard-code.
+
 ## Required scenario score
 
 | Approved requirement | Result | Direct evidence |

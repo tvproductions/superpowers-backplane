@@ -25,7 +25,9 @@ Before either operation, read current upstream Superpowers installation
 documentation through its active documentation surface, then use its current
 expectations to validate the harness's observed active discovery and loadability
 of every Superpowers skill required by the operation. Never infer this from a
-presumed install root or version. If the documentation is unavailable, a
+presumed install root or version. A project-local dependency or version record
+is evidence about observed project state, not a substitute for current upstream
+installation documentation. If the upstream documentation is unavailable, a
 required skill cannot be discovered or loaded, observed behavior mismatches the
 documentation, or operational state remains unconfirmable, report `UNMET
 SUPERPOWERS PREREQUISITE` with the failed observation and direct the operator to
@@ -61,8 +63,8 @@ installation is otherwise operationally confirmed. Never guess a root or path.
    a partial artifact as a completed durable handoff. Any handoff-shaped output
    in that state must prominently say `NON-DURABLE DRAFT — not persisted` and
    must not imply a durable artifact or usable RESUME target. A safe summary is
-   permitted when useful, names the missing probes, and exposes no sensitive
-   value.
+   permitted when useful only in the contract's mandatory non-durable summary
+   shape; it names the missing probes and exposes no sensitive value.
 6. Write once, then re-read for required fields, attribution, reference-not-copy,
    and the exact resume instruction. Report the path and intentional unknowns.
 
@@ -76,7 +78,9 @@ installation is otherwise operationally confirmed. Never guess a root or path.
    selection. Never choose by recency alone.
 3. Run its ordered current-evidence probes. Reconcile Git, work item, durable
    artifacts, claims, and next-step preconditions; confidence and recency are not currency.
-4. Emit its exact assessment shape, one bearing, and evidence-backed `Start here because`.
+4. Every RESUME response, including an unmet-prerequisite, refusal, `VERIFY`, or
+   insufficient-evidence response, uses all eight exact assessment labels in
+   order. No prose response substitutes for that shape.
 5. Re-enter the applicable Superpowers stage only after explaining why current
    evidence supports that start. The bearing is advice, not authorization.
 

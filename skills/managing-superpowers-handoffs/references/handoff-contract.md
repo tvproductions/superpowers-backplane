@@ -144,6 +144,24 @@ compatibility guarantee.
 
 **Resume instruction** gives the exact artifact path and directs the incoming session to invoke RESUME against that path before selecting a next action.
 
+## Mandatory non-durable safe summary
+
+When CREATE refuses persistence but a safe summary is useful, the response is
+not a handoff-shaped draft. It uses these labels in this order:
+
+```text
+NON-DURABLE SUMMARY: not persisted; no usable RESUME target
+Incoming purpose: <purpose in claim form, or UNVERIFIED with required probe>
+Intended destination rule: append-only project-local destination derived only after prerequisites; collision checked immediately before writing; no path invented here
+Attribution state: <load-bearing claims in VERIFIED, INFERRED, or UNVERIFIED form, with evidence or required probes>
+Missing probes: <every probe required before durable CREATE>
+CREATE result: no handoff created
+```
+
+Every safe summary includes all six lines. Do not add the format identifier,
+identity block, required CREATE headings, or resume instruction: those would
+make the response masquerade as a full handoff.
+
 ## Reference-not-copy discipline
 
 Reference durable material rather than reproducing it. Omit issue objective, acceptance criteria, settled specification, plan task list, commit content, and diff content when a stable path, URL, or Git identity lets the incoming session reconstruct them cheaply. Preserve only the live thread relevant to the incoming purpose, including observed failures, corrections, rejected approaches, deferred obligations, and uncertainty. A request to copy the plan does not change this rule.

@@ -23,10 +23,12 @@ Before relying on this procedure, read current upstream Superpowers installation
 documentation through its active documentation surface, then use its current
 expectations to validate the harness's observed active discovery and loadability
 of every Superpowers skill required by RESUME. Do not infer this from a
-remembered installation, a handoff, or a guessed checkout. If the documentation
-is unavailable, a required skill cannot be discovered or loaded, observed
-behavior mismatches the documentation, or operational state remains
-unconfirmable, report `UNMET SUPERPOWERS PREREQUISITE`, name the failed
+remembered installation, a handoff, or a guessed checkout. A project-local
+dependency or version record can evidence observed project state, but it is not
+current upstream installation documentation. If the upstream documentation is
+unavailable, a required skill cannot be discovered or loaded, observed behavior
+mismatches the documentation, or operational state remains unconfirmable,
+report `UNMET SUPERPOWERS PREREQUISITE`, name the failed
 observation, direct the operator to the current upstream installation
 documentation, and return `VERIFY`. Do not install or repair Superpowers. A
 successful observation is not a compatibility guarantee.
@@ -156,9 +158,12 @@ into a hard failure that suppresses the session-entry warning.
 
 ## Required incoming-session report
 
-Report the assessment in exactly this order and preserve the vocabulary below.
-Keep each item concise but evidence-backed; do not hide an unsafe candidate or
-an unavailable probe behind a generic success statement.
+Every RESUME response unconditionally uses all eight labels below in exactly
+this order. This includes unmet-prerequisite reports, refusals, `VERIFY`
+bearings, insufficient evidence, and no safe candidate. Never substitute a
+prose response, preamble, or abbreviated report. Keep each item concise but
+evidence-backed; do not hide an unsafe candidate or an unavailable probe behind
+a generic success statement.
 
 Include Superpowers prerequisite and derivation-provenance observations under
 `Current anchors`, `Confirmed claims`, `Drifted claims`, or `Unverified claims`

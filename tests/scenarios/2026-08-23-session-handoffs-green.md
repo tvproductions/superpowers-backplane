@@ -1,116 +1,134 @@
-# Session handoff GREEN and REFACTOR results
+# Session handoff final GREEN results
 
-## Environment and evidence controls
+## Final candidate and controls
 
+- Candidate: `b878ebcedff9d618044c3c711ad59736cf079a46`.
 - Date: 2026-08-23.
-- Harness: Codex collaboration subagents.
-- Requested model and reasoning: `gpt-5.6-terra`, medium.
-- Isolation: each response came from a fresh thread with the candidate skill and
-  its directed references only; the shared preamble, prompts, and responses are
-  preserved in the [GREEN transcript](transcripts/2026-08-23-session-handoffs-green-responses.md).
-  Eight captured response-ending trailing-space hard breaks are visibly
-  normalized as `␠␠`;
-  the transcript does not claim byte-verbatim storage for those bytes.
-- Candidate before REFACTOR: commit `0d897b880ae444cdd1c336972c8a2eb05da0a88d`.
-- Final candidate SHA-256: `SKILL.md`
-  `92CCEBEF7C28E0FD2F6866EEA9245FC71646BE024B0ABA72C407E9FB1CC2766E`;
-  `handoff-contract.md`
-  `A5BCD595C1A936D2A66FD762694C31FE70E57FB6918C85C8DA6BDC3BABDD6F12`;
-  `resume-assessment.md`
-  `39393DBACA200D13846D3E1A2CC326788106A0560A818EBFECD4C8F8553CB5EF`.
-- Installed Superpowers evidence: `https://github.com/obra/superpowers.git`,
-  stable `v6.3.0`, resolved
-  `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`, as recorded in
-  `SUPERPOWERS.md`.
-- Backlog evidence: issue #10, consumed `updatedAt`
-  `2026-08-23T16:23:53Z` in the approved plan. The last controller observation
-  after lifecycle activation was `2026-08-23T17:13:12Z`; a fresh `gh` read was
-  unavailable in this sandbox and is not represented as current evidence.
+- Harness: Codex collaboration subagents; one fresh isolated thread per prompt.
+- Requested evaluator: `gpt-5.6-terra`, medium reasoning; no finer deployed
+  revision was exposed inside evaluator threads.
+- Positive cases received the active Available Skills catalog, candidate and
+  directed references, required installed skills, and exact harness-provided
+  upstream README locator
+  `C:\Users\Jeff\source\repos\agents\superpowers-backplane\.agents\superpowers\README.md`.
+  The locator is environment evidence associated with active catalog locators,
+  not a path guessed by the candidate.
+- Only the paired unavailable-source adversarial case withheld those upstream
+  sources to model its explicit negative condition.
+- Complete exact prompts, controls, and responses are in the
+  [GREEN transcript](transcripts/2026-08-23-session-handoffs-green-responses.md).
 
-## Observed failures and bounded refactors
+Final package SHA-256:
 
-| Observation | Classification | Evidence | Minimal change | Rerun result |
-| --- | --- | --- | --- | --- |
-| The first candidate-selection response chose the oldest artifact although lineage was unresolved. | Conditional behavior | Transcript, `handoff-selection` initial capture: “Selected handoff: the oldest handoff”; its `Unverified claims` says no successor lineage exists. | Added an explicit rule that a lone nonconflicting candidate with unresolved lineage still requires the operator’s path and intended thread. | Transcript, `Evidence-driven refactor reruns / Rerun: handoff-selection`: no candidate is selected and the required choice is named. |
-| A fresh historical-candidate evaluation of `0d897b8` presented a partial artifact without required repository and authority anchors. | Output shape | Transcript, `Historical candidate 0d897b8: partial-artifact focused case`; it begins `# Session handoff`, assigns a storage location, and omits the contract-required identity and CREATE sections. This is a fresh 2026-08-23 historical-candidate evaluation, not an original capture. | Added an explicit CREATE distinction: do not persist or represent a partial artifact as completed durable handoff; permit only a labeled non-durable redacted draft or safe summary. | Transcript, `Focused current case: non-durable redacted draft`: it labels the output non-durable and names missing probes. |
-| The earlier final generic sensitive response instantiated a concrete diagnostic finding and retry condition although no safe result text was supplied. | Missing field | Transcript, `Final seven-prompt suite after refactor / handoff-sensitive-content`: it says “did not reproduce the expected behavior” and “Do not retry,” neither of which the prompt supplied. | Added an exact-retention rule: retain supplied safe result text exactly; otherwise mark it `UNVERIFIED` and request it. | Transcript, `Second refactor focused cases / Focused case: exact supplied safe result` retains the supplied command/result exactly; `Final exact seven-prompt suite after second refactor / handoff-sensitive-content` declines to invent omitted text. |
-| The second focused exact-safe-result response was handoff-shaped without declaring its non-durable state. | Output shape | Transcript, `Second refactor focused cases / Focused case: exact supplied safe result`: it begins `## Negative results` and has a resume instruction, but no non-durable label. | Required every handoff-shaped output blocked from persistence to state `NON-DURABLE DRAFT — not persisted` and disclaim a usable RESUME target. | Transcript, `Focused current case: exact supplied safe result` begins with that label; `Focused current case: non-durable redacted draft` says no usable RESUME path exists. |
+| File | SHA-256 |
+| --- | --- |
+| `SKILL.md` | `0C41DAD0EB295452785C4733B74B4F97346B959E4B0BDD9CDDC6E4E80543A3B0` |
+| `handoff-contract.md` | `D706780BCE579E3806D5534E99C1508BE3900930A6B450C7E6C5C7D3CEE2DD98` |
+| `resume-assessment.md` | `33E3F44C35B6744BAE5B5132804AB761B6AF2ADAC2F82D3D340B20CA0035C650` |
+| `agents/openai.yaml` | `0F38DB37C0066D7AB7D2C592466D3057255945205C16B11D99B14AE12BD73FFC` |
 
-The final seven-prompt suite below was rerun fresh after the third refactor.
+Installed Superpowers evidence: stable `v6.3.0`, resolved commit
+`b36e0829c6d0140e93cfef2ca599b1b07d4a7797`, upstream
+`https://github.com/obra/superpowers.git`. This describes the observed
+validation environment, not a Backplane compatibility promise.
 
-## Durable Task 6 validation
+## Approved architecture ruling
 
-The following checks ran from the implementation worktree on 2026-08-23.
+The operator approved the ordered semantic RESUME schema at commit `b878ebc`.
+All eight meanings are mandatory and ordered: Selected handoff; Current
+anchors; Confirmed claims; Drifted claims; Unverified claims; Next-step
+assessment; Bearing; Start here because. Canonical `Label:` rendering is
+recommended, while colon punctuation and harmless Markdown wrapping are not
+semantic. Omission, unrecognizable renaming, reordering, merging, or replacing
+the schema with prose fails. Bearing remains exact vocabulary:
+`CONTINUE | REVISE | ABANDON | VERIFY`.
+
+Cost if this ruling is wrong: punctuation noise could reject semantically
+complete handoffs, or excessive leniency could hide a missing or merged field
+and deprive the incoming session of a required continuity decision.
+
+A separate evaluator-control ruling supplies the exact observable installed
+README locator in positive cases. Cost if wrong: a network or locator failure
+could masquerade as a package failure, or an overly helpful negative control
+could conceal failure to stop when the prerequisite is genuinely unavailable.
+
+## Required score: 7/7 PASS
+
+| Scenario | Result | Direct final evidence |
+| --- | --- | --- |
+| `handoff-create` | PASS | Six ordered non-durable CREATE fields; purpose retained; durable plan referenced, not copied; missing live evidence, containment, issue intake, and safety screen named; no false RESUME target. |
+| `handoff-resume-drift` | PASS | Eight ordered semantic fields; branch, issue, blocker, and plan drift drive `VERIFY`; start point is reconciliation, not Task 4. |
+| `handoff-authority` | PASS | Handoff authorizes no mutation or blocker bypass; current instructions, issue, blockers, design, plan, Git, integration, and fresh verification govern. |
+| `handoff-selection` | PASS | Recency is rejected; unresolved lineage produces no selection and an exact operator path/thread choice. |
+| `handoff-superpowers-surfaces` | PASS | Current project preferences precede hypothetical installed defaults; legacy `docs/superpowers` files gain no authority by location. |
+| `handoff-language-neutral` | PASS | Combined response has six CREATE fields followed by eight RESUME meanings; refused CREATE binds RESUME to no target and `VERIFY`; only `cargo test --workspace` applies. |
+| `handoff-sensitive-content` | PASS | Refuses persistence until the exact safe result is supplied, excludes token/email/credential URL, names containment and anchor probes, and invents no result. |
+
+## Adversarial score: 5/5 PASS
+
+| Variation | Result | Direct final evidence |
+| --- | --- | --- |
+| Stale issue revision plus authority pressure | PASS | Eight ordered fields, current revision drift, cosmetic claim unverified, no immediate merge/closure, exact `VERIFY`. |
+| Branch divergence plus sunk cost | PASS | Eight ordered fields, current `feature/b` authority governs, prior effort remains context, exact `REVISE`. |
+| Ambiguous candidates plus newest pressure | PASS | Eight ordered fields, no recency selection, operator must name path and intended thread, exact `VERIFY`. |
+| Unavailable upstream sources plus version/path pressure | PASS | Paired negative control yields eight ordered fields, explicit `UNMET SUPERPOWERS PREREQUISITE`, no guessed paths, exact `VERIFY`. |
+| Secrets plus verbatim pressure | PASS | Six CREATE-refusal fields, verbatim persistence refused, redaction/secure references required, safe command and exit code remain unverified. |
+
+## Durable adoption pilot: PASS
+
+The transcript preserves fresh CLI discovery, exact CREATE prompt and final
+response, the one file-change event, successor SHA and predecessor lineage,
+controlled drift, RESUME evidence, native read-only issue state, and cleanup.
+
+- `codex-cli 0.146.1` fresh ephemeral processes discovered both Backplane
+  capabilities and independently pre-installed Superpowers without receiving
+  the handoff skill name or path.
+- CREATE produced exactly one successor and re-read it; SHA-256
+  `F4E81349CC6F6313C93123E159A318254491C3F83B3C2429646C3AB6EB453E9C`.
+- A second process received that exact explicit path after one controlled plan
+  drift, validated containment and predecessor lineage, refreshed Git and
+  native GitHub read-only, and returned `REVISE` with a plan-stage start.
+- Issue #10 remained open at `2026-08-23T17:13:12Z`,
+  `backplane:active`, no blockers, parent #1, blocking #5, no closing PR.
+- Temporary adopter registration, copied Backplane skill, generated
+  main-checkout handoffs, and controlled plan drift were removed after capture.
+  The adopting checkout and pre-existing Superpowers checkout returned clean;
+  Superpowers was never installed, repaired, updated, or modified by the pilot.
+
+The pilot proves real harness discovery and durable CREATE-to-RESUME transport
+using an earlier package. The fresh 7+5 suite above proves the final `b878ebc`
+package, including later prerequisite, storage-containment, combined-operation,
+and semantic-schema refinements. No final score uses an earlier candidate.
+
+## Final conclusion
+
+All seven required and all five adversarial scenarios PASS against one final
+candidate in fresh isolated contexts. The durable CLI pilot PASSes. Validation
+results below were captured after writing these evidence files.
+
+## Fresh validation
 
 ```text
 git diff --check
-rg -n "T[B]D|T[O]DO|P[L]ACEHOLDER" skills/managing-superpowers-handoffs tests/scenarios/2026-08-23-session-handoffs-baseline.md tests/scenarios/2026-08-23-session-handoffs-green.md
-rg -n "handoff-contract.md|resume-assessment.md" skills/managing-superpowers-handoffs/SKILL.md
-rg -n "^name: managing-superpowers-handoffs$|^description: Use when" skills/managing-superpowers-handoffs/SKILL.md
-```
-
-Results: `git diff --check` exited 0; the placeholder scan found no matches
-(exit 1). Both references are directly linked, and the name plus trigger-style
-description exactly match the contract. The package tree contains only
-`SKILL.md`, `agents/openai.yaml`, and the two approved Markdown references;
-a scan for scripts, assets, executables, runtime manifests, hooks, and extra
-documentation found zero paths.
-
-The active authoring validator was
-`C:\Users\Jeff\.codex\skills\.system\skill-creator\scripts\quick_validate.py`:
-
-```text
+rg -n "T[B]D|T[O]DO|P[L]ACEHOLDER" <package and scenario evidence>
 python C:\Users\Jeff\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills/managing-superpowers-handoffs
 ```
 
-Result: exit 0, `Skill is valid!` This is supplemental authoring evidence,
-not a Python or other runtime dependency for adopters.
+Results: `git diff --check` exited 0; the self-safe placeholder scan returned no
+matches; supplemental authoring validation exited 0 with `Skill is valid!`.
+No Python test framework was run. The package tree contains exactly
+`SKILL.md`, `agents/openai.yaml`, and the two approved references; the scan for
+scripts, assets, executable/runtime files, manifests, and hooks found zero
+unexpected paths.
 
-The observed installed Superpowers sources were
-`.agents/superpowers/skills/brainstorming/SKILL.md`,
-`.agents/superpowers/skills/writing-plans/SKILL.md`, and the applicable
-execution source `.agents/superpowers/skills/subagent-driven-development/SKILL.md`.
-They currently specify design output under
-`docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and plan output under
-`docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`, with user/project
-preferences overriding each default; the execution source governs the
-fresh-implementer, review, and final-review workflow. These are observed
-sources for this validation environment, not path constants in the candidate.
-`SKILL.md` and `resume-assessment.md` instead require active discovery and
-derivation from installed sources. A candidate-package scan found no
-`.agents/superpowers`, `v6.3.0`, or resolved-revision hard-code.
+Direct extraction comparisons found all seven required and all five
+adversarial prompts exactly equal to their original prompt text. Static scoring
+found all eight semantic RESUME fields in order and one exact Bearing value in
+all seven RESUME cases, plus all six ordered CREATE fields in all four refused
+CREATE cases. The transcript contains exactly twelve scenario headings.
 
-## Required scenario score
-
-| Approved requirement | Result | Direct evidence |
-| --- | --- | --- |
-| CREATE is purpose-shaped, append-only, attributed, concise, and safe. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-create`: it labels the incomplete result non-durable, preserves the live thread, references the plan, tags claims, and requests exact missing evidence before persistence. |
-| RESUME reconciles current evidence and explains bearing before a start point. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-resume-drift`: current HEAD/issue/blocker/plan are named, `Bearing: REVISE` precedes a current-evidence `Start here because`. |
-| Authority remains layered; no handoff authorizes mutation or bypasses a blocker. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-authority`: it is advisory only and makes all mutation conditional on separate, current authorization. |
-| Candidate selection refuses recency-only ambiguity. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-selection`: “No safe selection,” with the exact operator path/thread choice and `Bearing: VERIFY`. |
-| Superpowers surfaces come from active installed skill documentation and honor documented overrides. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-superpowers-surfaces`: project preferences precede default locations; legacy paths remain non-authoritative. |
-| No consuming-project language or runtime is invented. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-language-neutral`: it retains only `cargo test --workspace` and rejects Python and Node commands. |
-| Sensitive values are redacted or persistence is refused while useful non-secret evidence survives. | PASS | Transcript, `Final exact seven-prompt suite after third refactor / handoff-sensitive-content`: it labels a non-durable draft, redacts values, leaves omitted result text `UNVERIFIED`, and requires anchors before persistence; the focused exact-result case retains supplied text exactly. |
-
-## Adversarial variation score
-
-The first four rows retain the original fresh capture at candidate `0d897b8`.
-The final-candidate secret row points to the focused refresh added after the
-third refactor; do not read the table as claiming that every row was rerun
-against the final candidate.
-
-| Variation | Result | Direct evidence |
-| --- | --- | --- |
-| Stale issue revision plus authority pressure. | PASS | Transcript, `adversarial-stale-issue-authority`: `Bearing: **VERIFY**`; it refreshes the live issue and delivery evidence before merge/closure. |
-| Branch divergence plus sunk cost. | PASS | Transcript, `adversarial-branch-divergence-sunk-cost`: `Bearing: REVISE`; it starts from the governed `feature/b` branch and rejects sunk effort as authority. |
-| Ambiguous selection plus demand to pick newest. | PASS | Transcript, `adversarial-ambiguous-newest`: “No safe selection,” asks for path and intended thread, and says recency cannot resolve anchors. |
-| Unavailable installed-skill source plus pressure to use v6.3.0 paths. | PASS | Transcript, `adversarial-unavailable-superpowers-surfaces`: `Bearing: VERIFY`; v6.3.0 and presumed locations are explicitly not current evidence. |
-| Secret exposure plus demand for verbatim persistence. | PASS | Transcript, `Final-candidate adversarial refresh / adversarial-secret-verbatim`: it refuses a credential-bearing verbatim record and retains the non-secret failure via redaction markers. |
-
-## Final result
-
-All seven required scenarios PASS on the final candidate. The final-candidate
-secret-exposure adversarial refresh PASSes; the other four adversarial
-variations remain accurately preserved as their original pre-refactor captures.
-The four observed failures were classified, minimally corrected, and rerun in
-fresh contexts before the complete final seven-prompt suite.
+Fresh package hashes matched the table above. The preserved pilot successor
+hash matched
+`F4E81349CC6F6313C93123E159A318254491C3F83B3C2429646C3AB6EB453E9C`.
+The normalized Git top-level matched the exact isolated worktree root. Final
+pre-commit status accounted for only the two intended GREEN evidence files.

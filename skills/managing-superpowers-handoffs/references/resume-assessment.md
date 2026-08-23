@@ -19,12 +19,15 @@ applicable Superpowers workflow guidance govern their own layers. The verdict
 is advice and neither grants nor removes authorization to mutate Git, GitHub,
 or the project.
 
-Before relying on this procedure, confirm that the harness actively discovers
-Superpowers and that current upstream Superpowers installation documentation is
-available through its active documentation surface. Do not infer either from a
-remembered installation, a handoff, or a guessed checkout. If absent,
-misconfigured, or unconfirmable, report `UNMET SUPERPOWERS PREREQUISITE`, name
-the failed observation, direct the operator to the current upstream installation
+Before relying on this procedure, read current upstream Superpowers installation
+documentation through its active documentation surface, then use its current
+expectations to validate the harness's observed active discovery and loadability
+of every Superpowers skill required by RESUME. Do not infer this from a
+remembered installation, a handoff, or a guessed checkout. If the documentation
+is unavailable, a required skill cannot be discovered or loaded, observed
+behavior mismatches the documentation, or operational state remains
+unconfirmable, report `UNMET SUPERPOWERS PREREQUISITE`, name the failed
+observation, direct the operator to the current upstream installation
 documentation, and return `VERIFY`. Do not install or repair Superpowers. A
 successful observation is not a compatibility guarantee.
 
@@ -96,7 +99,9 @@ earlier unavailable or contradictory probe.
 2. **Refresh guidance.** Re-read current project instructions and the
    applicable installed Backplane and Superpowers skills. A prior handoff's
    description of a rule or skill is historical context, not a replacement for
-   the active source.
+   the active source. A source skill required by this RESUME operation that
+   cannot be discovered or loaded is an unmet prerequisite, not guidance to
+   classify as `UNVERIFIED`.
 3. **Reconcile Git state.** Establish the repository root, branch, HEAD
    relationship, relevant commits, dirty state, and changed relevant files.
    Compare that observed state to every corresponding artifact anchor and live

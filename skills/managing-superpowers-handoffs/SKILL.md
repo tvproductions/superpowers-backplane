@@ -21,22 +21,26 @@ or return to unfinished work. Continue normally when primary context is intact
 and cheaper. An explicit CREATE or RESUME request wins; otherwise infer only an
 unambiguous direction, or ask one short question.
 
-Before either operation, confirm that the adopting harness actively discovers
-Superpowers and that current upstream Superpowers installation documentation is
-available. Use the harness's active discovery and documentation surfaces, never
-a presumed install root or version. If either observation is absent,
-misconfigured, or unconfirmable, report `UNMET SUPERPOWERS PREREQUISITE` with
-the failed observation and direct the operator to the current upstream
-installation documentation, then stop the operation: do not persist CREATE and
-return `VERIFY` from RESUME. Do not install, repair, or claim compatibility;
-successful observations are evidence only.
+Before either operation, read current upstream Superpowers installation
+documentation through its active documentation surface, then use its current
+expectations to validate the harness's observed active discovery and loadability
+of every Superpowers skill required by the operation. Never infer this from a
+presumed install root or version. If the documentation is unavailable, a
+required skill cannot be discovered or loaded, observed behavior mismatches the
+documentation, or operational state remains unconfirmable, report `UNMET
+SUPERPOWERS PREREQUISITE` with the failed observation and direct the operator to
+the current upstream installation documentation, then stop the operation: do
+not persist CREATE and return `VERIFY` from RESUME. Do not install, repair, or
+claim compatibility; successful observations are evidence only.
 
 For each needed Superpowers artifact, use that active discovery to read installed
 `superpowers:brainstorming`, `superpowers:writing-plans`, and applicable
 execution guidance; derive current conventions and overrides from them. Record
 every source skill used and its observable locator, digest, or installed revision
-when available. If a source is unavailable or ambiguous, record `UNVERIFIED` and
-ask for evidence. Never guess a root or path.
+when available. A required source skill that cannot be discovered or loaded is
+an unmet prerequisite, not artifact guidance to mark `UNVERIFIED`. Reserve
+`UNVERIFIED` for ambiguous or unavailable artifact guidance after the
+installation is otherwise operationally confirmed. Never guess a root or path.
 
 ## CREATE
 

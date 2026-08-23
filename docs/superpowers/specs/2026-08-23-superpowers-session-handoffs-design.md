@@ -1,6 +1,6 @@
 # Superpowers Backplane Session Handoffs Design
 
-**Status:** Proposed for operator review
+**Status:** Approved by operator on 2026-08-23
 
 ## Purpose
 
@@ -16,6 +16,19 @@ Superpowers. It will help an outgoing session preserve that live thread and help
 an incoming session reconcile it against current authority before choosing
 where to start.
 
+The adopting project is responsible for having already onboarded Superpowers
+into its agent harness and operating environment according to current upstream
+Superpowers documentation. Backplane may confirm that prerequisite from
+observable evidence. It does not install, bootstrap, inject, repair, or manage
+Superpowers for the harness.
+
+Backplane cooperates with the upstream behavior it can observe and adapts as
+Superpowers evolves. Because Backplane does not control Superpowers, it does not
+claim ownership or permanence for upstream file layout, triggers, installation
+surfaces, or lifecycle behavior. It may rely on current, documented Superpowers
+artifact conventions as interoperability surfaces and must reassess them when
+upstream changes.
+
 The capability is advisory. A handoff never becomes design authority,
 execution authority, backlog authority, or an authorization gate.
 
@@ -29,13 +42,17 @@ execution authority, backlog authority, or an authorization gate.
 - Git, GitHub issue, specification, and plan drift reconciliation.
 - A resume assessment that answers what bearing prior state has on the next
   action.
-- Integration with `managing-superpowers-backlog` and upstream Superpowers
-  skills without modifying or copying upstream Superpowers.
+- Cooperation between `managing-superpowers-backlog` and applicable upstream
+  Superpowers skills without modifying or copying upstream Superpowers.
 - Transcript-based RED/GREEN/REFACTOR conformance evidence.
 
 ### Excluded
 
 - A Backplane executable, daemon, hook, MCP server, or required project runtime.
+- Installing or bootstrapping Superpowers, integrating it with an agent harness,
+  or supplying harness lifecycle and post-compaction injection behavior.
+- A project-wide Superpowers prerequisite or release-freshness checker; that is
+  a separate Backplane capability.
 - Automatic session-start loading or context-limit detection.
 - Transactional runtime checkpointing, replay, or restoration of model state.
 - Automatic Git commits, pushes, issue transitions, or handoff archival.
@@ -205,7 +222,55 @@ Verdicts mean:
 The verdict is advice. It does not arm or lift a gate and does not itself permit
 or forbid mutation.
 
-## Superpowers and Backplane Binding
+## Superpowers Cooperation Boundary
+
+An operational Superpowers installation is a precondition. Confirm it against
+current upstream installation documentation and observable skill discovery
+before relying on Backplane. If it is absent, misconfigured, or cannot be
+confirmed, report the unmet prerequisite and direct the operator to upstream
+Superpowers documentation; do not install or repair it. A successful check is
+evidence about the observed installation, not a compatibility guarantee or a
+Backplane-owned contract with upstream.
+
+Backplane relies on the adopting harness's existing skill discovery and
+invocation behavior. Any project-local instruction encouraging handoff use is
+adopter-owned policy, not part of the distributed handoff capability and not a
+substitute for Superpowers harness integration.
+
+Backplane does consume the common project documentation surfaces produced by
+Superpowers, but it must derive those surface expectations from the active
+installed Superpowers documentation rather than from a timeless Backplane
+constant. For each operation that needs a Superpowers artifact:
+
+1. Use the harness's active skill discovery surface to find and load the
+   installed Superpowers skills. Do not guess an installation root such as
+   `.agents/superpowers`.
+2. Read the applicable installed skill directly. At minimum,
+   `superpowers:brainstorming` is the source for design-output conventions and
+   `superpowers:writing-plans` is the source for plan-output conventions. Read
+   the applicable execution skill when stage or execution semantics matter.
+3. Derive the current default path, filename convention, and override behavior
+   from that skill content. Record the source skill and its locator, digest, or
+   installed revision when the harness makes one observable.
+4. Apply explicit operator or project overrides as the installed Superpowers
+   documentation directs, then resolve paths named by project instructions,
+   backlog items, plans, or handoffs before using a documented default.
+5. Search only the derived or explicitly referenced project surfaces. If the
+   installed source cannot be read or yields ambiguous guidance, mark the
+   surface `UNVERIFIED` and request evidence; do not invent a path.
+
+At this design's verified authoring baseline, installed Superpowers v6.3.0
+directs architectural designs to
+`docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and plans to
+`docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`, with user preferences
+overriding both defaults. These values are conformance fixtures for that
+revision, not permanent fallback constants.
+
+The absence of a design or plan is valid when the applicable Superpowers stage
+has not produced one; it is not by itself an installation failure. When
+upstream documentation changes a convention, report the observed drift and
+adapt Backplane rather than asserting that upstream violated a Backplane
+contract.
 
 Use the handoff at a deliberate phase boundary, interruption, model or harness
 switch, context-risk point, or return to unfinished work. Do not hand off merely
@@ -265,6 +330,10 @@ The minimum conformance set is:
   authority;
 - `handoff-selection` — does not choose the newest candidate when identity is
   ambiguous;
+- `handoff-superpowers-surfaces` — derives spec and plan expectations from the
+  installed Superpowers skills, honors their documented override rule, and
+  reports unavailable or ambiguous source guidance as `UNVERIFIED` instead of
+  guessing a path;
 - `handoff-language-neutral` — introduces no consuming-project runtime or test
   framework;
 - `handoff-sensitive-content` — redacts or refuses unsafe material.
@@ -274,8 +343,8 @@ The minimum conformance set is:
 Create one executable native GitHub issue under the v0.1 product arc for the
 skills-only handoff capability. Its implementation must precede Backplane
 self-hosting evidence so self-hosting exercises both backlog continuity and
-session continuity. The external pilot must install and test both Backplane
-skills before release.
+session continuity. The external pilot must test both Backplane skills in a
+project where Superpowers was independently installed before release.
 
 The issue, specification, and plan remain layered authorities. This design is
 the handoff capability's design authority after operator approval; the issue
@@ -289,6 +358,6 @@ owns backlog identity and lifecycle; the plan owns bounded execution.
   recommending where to start.
 - The skill never claims automatic hooks, runtime checkpointing, transactional
   lineage, or authorization enforcement.
-- The skill remains language-neutral and fitted to current stable upstream
-  Superpowers.
+- The skill remains language-neutral, cooperates with observed current stable
+  upstream Superpowers behavior, and does not claim an upstream contract.
 - Transcript evidence demonstrates improved behavior over a no-skill control.

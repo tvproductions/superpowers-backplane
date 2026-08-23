@@ -41,7 +41,7 @@
 - Consumes: approved design, issue `#10`, and fresh agents without `managing-superpowers-handoffs`
 - Produces: exact prompts, verbatim responses, observed failures, and the minimum behavior the skill must teach
 
-- [ ] **Step 1: Re-read and reconcile issue `#10` before execution**
+- [x] **Step 1: Re-read and reconcile issue `#10` before execution**
 
 Run:
 
@@ -51,11 +51,11 @@ gh issue view 10 --repo tvproductions/superpowers-backplane --json number,title,
 
 Expected: the issue is open, is a child of `#1`, blocks `#5`, has no blocker, and carries exactly one `backplane:*` label. If `updatedAt` differs from the revision above, classify the change under the Backplane revision-safety contract before continuing.
 
-- [ ] **Step 2: Confirm the plan was operator-approved and transition the issue to execution**
+- [x] **Step 2: Confirm the plan was operator-approved and transition the issue to execution**
 
 After plan approval, use one `gh issue edit` call to replace `backplane:designing` with `backplane:ready`, re-fetch, and verify label cardinality. Immediately before dispatching the first RED scenario, re-fetch again and replace `backplane:ready` with `backplane:active`. Preserve unrelated labels. Do not transition if the plan is not approved or issue eligibility changed.
 
-- [ ] **Step 3: Write the RED scenario specification before creating any skill file**
+- [x] **Step 3: Write the RED scenario specification before creating any skill file**
 
 Create `tests/scenarios/2026-08-23-session-handoffs-baseline.md` with seven named scenarios and these exact prompts:
 
@@ -103,15 +103,15 @@ Create `tests/scenarios/2026-08-23-session-handoffs-baseline.md` with seven name
 
 For each scenario, state the approved GREEN expectations from the specification and leave observed-failure analysis until after the response is captured. Do not write skill language yet.
 
-- [ ] **Step 4: Run each RED prompt in a fresh agent context without the candidate skill**
+- [x] **Step 4: Run each RED prompt in a fresh agent context without the candidate skill**
 
 Use seven independent agents. Give each agent only its exact prompt, the repository control instructions needed to act safely, and an explicit prohibition on loading or inspecting any handoff skill or this implementation plan. Do not disclose the expected answer, the suspected failure, or another agent's response.
 
-- [ ] **Step 5: Preserve the RED responses verbatim and analyze only afterward**
+- [x] **Step 5: Preserve the RED responses verbatim and analyze only afterward**
 
 Create `tests/scenarios/transcripts/2026-08-23-session-handoffs-red-responses.md`. Record the date, harness, model identifier when exposed, prompt, and exact response for each scenario. Clearly distinguish verbatim response text from later analysis. In the baseline scenario file, record concrete omissions, wrong shapes, unsafe claims, and rationalizations observed in each response.
 
-- [ ] **Step 6: Verify the RED evidence is genuine**
+- [x] **Step 6: Verify the RED evidence is genuine**
 
 Run:
 
@@ -121,7 +121,7 @@ rg -n "handoff-create|handoff-resume-drift|handoff-authority|handoff-selection|h
 
 Expected: every scenario appears in both files, every transcript contains a response, and at least one material approved expectation fails without the skill. If all expectations already pass, stop and reassess whether a skill is justified.
 
-- [ ] **Step 7: Commit the RED evidence**
+- [x] **Step 7: Commit the RED evidence**
 
 ```text
 git add tests/scenarios/2026-08-23-session-handoffs-baseline.md tests/scenarios/transcripts/2026-08-23-session-handoffs-red-responses.md
@@ -141,11 +141,11 @@ git commit -m "test: capture session handoff red baselines"
 - Consumes: observed RED failures, approved storage/identity/CREATE design, and the active skill-creator instructions
 - Produces: initialized skill package and a complete versioned Markdown handoff contract
 
-- [ ] **Step 1: Read the active authoring contracts before scaffolding**
+- [x] **Step 1: Read the active authoring contracts before scaffolding**
 
 Read `superpowers:writing-skills`, `superpowers:test-driven-development`, the active `skill-creator` skill, and its `references/openai_yaml.md` completely. Resolve the active skill-creator source from the harness-provided skill locator; do not assume its home-directory path is portable.
 
-- [ ] **Step 2: Initialize the skill only after RED evidence exists**
+- [x] **Step 2: Initialize the skill only after RED evidence exists**
 
 Run the active skill-creator `scripts/init_skill.py` with:
 
@@ -164,7 +164,7 @@ Do not stage generated `SKILL.md` or `agents/openai.yaml` placeholders. Replace
 them completely in Task 4 before their first commit. Remove any generated file
 outside the approved package architecture with `apply_patch`.
 
-- [ ] **Step 3: Create the complete artifact contract reference**
+- [x] **Step 3: Create the complete artifact contract reference**
 
 Write `references/handoff-contract.md` with these normative sections:
 
@@ -179,11 +179,11 @@ Write `references/handoff-contract.md` with these normative sections:
 - Lineage, redaction, collision, explicit external-location, and transport rules from the approved design.
 - Sensitive-content rule: screen common secret, credential, PII, and private-URL patterns; redact while preserving the useful result; refuse CREATE when safe redaction cannot be established; never claim exhaustive secret detection.
 
-- [ ] **Step 4: Check the contract against the CREATE and sensitive-content RED failures**
+- [x] **Step 4: Check the contract against the CREATE and sensitive-content RED failures**
 
 Read the two corresponding verbatim RED responses. Confirm each observed failure maps to a positive required field/section or an explicit fail-closed rule. Remove guidance unsupported by the design or baseline.
 
-- [ ] **Step 5: Commit the artifact contract**
+- [x] **Step 5: Commit the artifact contract**
 
 ```text
 git add skills/managing-superpowers-handoffs/references/handoff-contract.md
@@ -201,11 +201,11 @@ git commit -m "feat: define session handoff artifact contract"
 - Consumes: approved RESUME design and RED failures for drift, authority, and candidate selection
 - Produces: one evidence-first incoming-session assessment procedure
 
-- [ ] **Step 1: Define candidate validation and selection**
+- [x] **Step 1: Define candidate validation and selection**
 
 Require an explicit handoff path when supplied. Without one, discover only under the project-owned handoff location derived from the contract, inspect repository/branch/work-item/plan/lineage identity, and select only when those anchors make one candidate unambiguous. Recency is one signal, never authority. Ambiguity must produce an operator choice, not newest-file selection.
 
-- [ ] **Step 2: Define the ordered reconciliation probes**
+- [x] **Step 2: Define the ordered reconciliation probes**
 
 Write the probe contract in this order:
 
@@ -219,7 +219,7 @@ Write the probe contract in this order:
 
 Unavailable evidence remains `UNVERIFIED`; unknown never means fresh.
 
-- [ ] **Step 3: Define the ordered semantic incoming report**
+- [x] **Step 3: Define the ordered semantic incoming report**
 
 Require all eight field meanings in this order. Use this canonical rendering as
 the recommended template, not as a byte- or punctuation-exact format:
@@ -240,11 +240,11 @@ prose-substituted fields. Harmless Markdown wrapping and colon punctuation are
 not semantic. Use the approved Bearing vocabulary and verdict meanings exactly.
 State that the verdict is advice and neither grants nor removes authorization.
 
-- [ ] **Step 4: Define failure reporting**
+- [x] **Step 4: Define failure reporting**
 
 Malformed timestamps, missing sections, dangling predecessors, repository mismatch, ambiguous selection, and unavailable probes remain visible in the report and normally produce `VERIFY`. Do not silently suppress an unsafe candidate or convert uncertainty into a hard failure that hides the session-entry warning.
 
-- [ ] **Step 5: Commit the RESUME contract**
+- [x] **Step 5: Commit the RESUME contract**
 
 ```text
 git add skills/managing-superpowers-handoffs/references/resume-assessment.md
@@ -263,7 +263,7 @@ git commit -m "feat: define handoff resume assessment"
 - Consumes: artifact and assessment references plus all observed RED failures
 - Produces: one concise, discoverable skill that selects and executes CREATE or RESUME
 
-- [ ] **Step 1: Replace generated frontmatter with the exact trigger contract**
+- [x] **Step 1: Replace generated frontmatter with the exact trigger contract**
 
 Use only:
 
@@ -276,7 +276,7 @@ description: Use when work in a Superpowers project must cross a session, model,
 
 The description names triggering conditions only; it must not summarize CREATE or RESUME.
 
-- [ ] **Step 2: Write the core operation-selection and phase-boundary guidance**
+- [x] **Step 2: Write the core operation-selection and phase-boundary guidance**
 
 Keep `SKILL.md` concise and imperative. Include:
 
@@ -287,7 +287,7 @@ Keep `SKILL.md` concise and imperative. Include:
 - authority rule: handoffs advise and preserve evidence; issues/specs/plans/current instructions govern their own layers;
 - GitHub rule: CREATE and RESUME are read-only; mutations require a separate explicit backlog operation.
 
-- [ ] **Step 3: Write the CREATE procedure**
+- [x] **Step 3: Write the CREATE procedure**
 
 Require the agent to:
 
@@ -300,7 +300,7 @@ Require the agent to:
 7. Write the artifact once, then re-read it for required fields, claim attribution, reference-not-copy discipline, and resume instruction.
 8. Report the exact path and what was intentionally left unverified.
 
-- [ ] **Step 4: Write the RESUME procedure**
+- [x] **Step 4: Write the RESUME procedure**
 
 Require the agent to:
 
@@ -312,11 +312,11 @@ Require the agent to:
    vocabulary.
 6. Re-enter the applicable Superpowers stage only after explaining why current evidence supports that starting point.
 
-- [ ] **Step 5: Add compact rationalization defenses grounded in RED evidence**
+- [x] **Step 5: Add compact rationalization defenses grounded in RED evidence**
 
 Add a short `Common mistakes` or `Red flags` table only for discipline failures actually observed in Task 1. Cover pressure to choose newest, trust a confident predecessor, copy durable artifacts, present inference as fact, skip current probes, persist secrets, or mutate GitHub as part of handoff work. Use positive output contracts for shape failures rather than a long prohibition list.
 
-- [ ] **Step 6: Regenerate and inspect `agents/openai.yaml`**
+- [x] **Step 6: Regenerate and inspect `agents/openai.yaml`**
 
 The file must contain exactly:
 
@@ -329,7 +329,7 @@ interface:
 
 Use the active skill-creator generator when available, then inspect the result against `SKILL.md`. Do not add optional interface fields.
 
-- [ ] **Step 7: Commit the minimal skill**
+- [x] **Step 7: Commit the minimal skill**
 
 ```text
 git add skills/managing-superpowers-handoffs
@@ -351,15 +351,15 @@ git commit -m "feat: add skills-only session handoffs"
 - Consumes: the unchanged RED prompts and completed candidate skill
 - Produces: fresh-agent GREEN evidence, adversarial refactors, and a traceable score for every minimum scenario
 
-- [ ] **Step 1: Re-run the exact seven prompts with the candidate skill**
+- [x] **Step 1: Re-run the exact seven prompts with the candidate skill**
 
 Use seven fresh independent agents. Give each the same task-local context used in RED plus an explicit request to load `skills/managing-superpowers-handoffs/SKILL.md`. Do not provide the rubric, intended answer, earlier responses, or implementation rationale. Prevent agents from inspecting other transcript outputs.
 
-- [ ] **Step 2: Preserve GREEN responses verbatim**
+- [x] **Step 2: Preserve GREEN responses verbatim**
 
 Create `tests/scenarios/transcripts/2026-08-23-session-handoffs-green-responses.md` with the same metadata and separation between raw response and analysis used for RED.
 
-- [ ] **Step 3: Score every approved requirement**
+- [x] **Step 3: Score every approved requirement**
 
 Create `tests/scenarios/2026-08-23-session-handoffs-green.md`. For every scenario, list each expectation as PASS or FAIL with a direct transcript citation. Include environment evidence: installed Superpowers source/revision when observable, harness, model identifier when exposed, issue revision, and SHA-256 hashes for `SKILL.md` and both references.
 
@@ -379,15 +379,15 @@ Minimum required results:
 - No consuming-project language or runtime is invented.
 - Sensitive values are redacted or persistence is refused while useful non-secret evidence survives.
 
-- [ ] **Step 4: Add adversarial variations**
+- [x] **Step 4: Add adversarial variations**
 
 Run fresh-agent variations combining: stale issue revision plus authority pressure; branch divergence plus sunk cost; ambiguous candidate selection plus a demand to pick newest; unavailable installed-skill source plus pressure to use v6.3.0 paths; and secret exposure plus a demand for a complete verbatim record. Append exact prompts and responses to the GREEN transcript file and score them in the GREEN result file.
 
-- [ ] **Step 5: Refactor from observed failures only**
+- [x] **Step 5: Refactor from observed failures only**
 
 For each FAIL, identify whether the failure is discipline, output shape, missing field, or conditional behavior. Make the smallest corresponding change under the writing-skills guidance, rerun the affected scenario in a fresh context, and then rerun the complete seven-scenario set. Do not add speculative prose unsupported by a failure or the approved design.
 
-- [ ] **Step 6: Commit behavioral evidence and any justified refactor**
+- [x] **Step 6: Commit behavioral evidence and any justified refactor**
 
 ```text
 git add skills/managing-superpowers-handoffs tests/scenarios/2026-08-23-session-handoffs-green.md tests/scenarios/transcripts/2026-08-23-session-handoffs-green-responses.md
@@ -406,7 +406,7 @@ git commit -m "test: verify session handoff behavior"
 - Consumes: GREEN skill package and transcript evidence
 - Produces: structural validation, independent review, verified worktree evidence, and a correctly transitioned issue
 
-- [ ] **Step 1: Run language-neutral structural checks**
+- [x] **Step 1: Run language-neutral structural checks**
 
 Run:
 
@@ -419,11 +419,11 @@ rg -n "^name: managing-superpowers-handoffs$|^description: Use when" skills/mana
 
 Expected: no whitespace or placeholder failures; both references are directly linked; exact name and trigger-style description are present. Inspect the package tree and confirm it contains no scripts, assets, executable, runtime manifest, hook, or extra documentation.
 
-- [ ] **Step 2: Run the active skill-creator validator as supplemental authoring evidence**
+- [x] **Step 2: Run the active skill-creator validator as supplemental authoring evidence**
 
 Resolve the active skill-creator source from its skill locator and run its `scripts/quick_validate.py` against `skills/managing-superpowers-handoffs`. Record the command, tool source, and result in the GREEN evidence. This authoring check supplements rather than creates a Python dependency for adopters. Do not run any Python test framework.
 
-- [ ] **Step 3: Audit Superpowers surface derivation**
+- [x] **Step 3: Audit Superpowers surface derivation**
 
 Read the active installed `superpowers:brainstorming`, `superpowers:writing-plans`, and applicable execution skill. Confirm the skill instructs agents to derive conventions from these sources, not from `.agents/superpowers` or hard-coded v6.3.0 defaults. Confirm baseline fixture values are clearly labeled as revision-specific evidence.
 

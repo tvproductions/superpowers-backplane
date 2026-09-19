@@ -80,3 +80,67 @@ disposable fixture; it is not a product blocker on issue #3. The fixture
 transitions prove the native label mechanics and preservation checks. Its
 backlog-to-active path does not replace issue #3's genuine eligibility and
 revision-binding evidence.
+## Fixture review change request and rework
+
+After commit `6cba46f52a32c67a5179e64ffb5f38409b39c1ff` was pushed, issue #13
+moved from `backplane:active` to `backplane:review` in one `gh issue edit` call
+after a full 15-field intake and a submission comment. The result was `OPEN`,
+`documentation`, `backplane:review`, `updatedAt=2026-09-19T22:21:19Z`.
+
+A fresh read-only reviewer fetched the complete native issue and all three
+then-existing comments. It requested evidence for Acceptance Criterion 3. The
+exact prompt and final response are below. A review change-request comment
+was added at 2026-09-19T22:23:40Z. After another complete intake,
+`gh issue edit 13 --repo tvproductions/superpowers-backplane --remove-label
+backplane:review --add-label backplane:active` returned `OPEN`,
+`documentation`, `backplane:active`,
+`updatedAt=2026-09-19T22:23:42Z`. No other label changed. This is fixture
+rework; the return to review is still pending at this checkpoint.
+
+### Exact review prompt
+````text
+Use managing-superpowers-backlog and every required reference. Read only: do not edit files, comments, labels, or any issue. Review disposable verification issue #13 in tvproductions/superpowers-backplane against its own acceptance criteria and the committed evidence in tests/scenarios/transcripts/2026-09-19-codex-native-lifecycle.md. Fetch the complete native issue fields and comments. Decide whether the evidence is ready for verified completion or whether implementation changes are required; name one concrete missing or incorrect item and the exact recovery action. This is a fixture review for Codex issue #3, not a product implementation approval.````
+
+### Exact review final response
+
+````text
+## Decision
+
+**Implementation evidence changes are required. Issue #13 is not ready for verified completion.**
+
+The concrete missing item is **Acceptance Criterion 3**: there is no observed or committed `backplane:review → backplane:active → backplane:review` change request and resubmission sequence. The transcript explicitly says review reversal remains pending.
+
+## Current native state
+
+- State: `OPEN`
+- Lifecycle: exactly one label, `backplane:review`
+- Unrelated label preserved: `documentation`
+- `updatedAt`: `2026-09-19T22:21:19Z`
+- Parent: none
+- Subissues: none
+- Blocked by: none
+- Blocking: none
+- Linked closing PRs: none
+- Issue type: `UNKNOWN` (`null`)
+- State reason: `UNKNOWN` (empty)
+- Comments: three complete comments fetched:
+  1. Blocked reason, active resume target, and release condition
+  2. Release condition confirmation and active gate revalidation
+  3. First pass review submission, explicitly without integration or closure
+
+Acceptance Criteria 1, 2, and the recorded read-only portion of 4 have evidence. Criteria 3 and 5 remain unmet.
+
+## Exact recovery action
+
+On disposable issue #13:
+
+1. Record a concrete review change request.
+2. Re-fetch all native fields.
+3. Atomically replace `backplane:review` with `backplane:active`, preserving `documentation`.
+4. Address the fixture evidence request and run fresh verification.
+5. Re-fetch, then atomically replace `backplane:active` with `backplane:review`.
+6. Record both transitions and results in [2026-09-19-codex-native-lifecycle.md](C:/Users/Jeff/source/repos/agents/superpowers-backplane/tests/scenarios/transcripts/2026-09-19-codex-native-lifecycle.md).
+7. After that evidence is committed and integrated, freshly recheck every acceptance criterion before closing #13 with reason `completed`.
+
+This finding concerns the disposable lifecycle fixture for Codex issue #3. It does not approve or reject the product implementation. No files or GitHub data were modified.
+````

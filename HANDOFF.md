@@ -3,9 +3,8 @@
 ## Current state
 
 The standalone local repository is at
-`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on the local
-`issue-2-contract-completion` branch. Before
-Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
+`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on local `main`.
+Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
 The initial design is approved in principle:
@@ -72,7 +71,9 @@ on 2026-09-19. The approved plan is
 It records issue #2's consumed semantic revision `2026-09-19T13:06:19Z`.
 The issue body now links both approved artifacts and was reconciled at
 `2026-09-19T14:07:17Z`; its only lifecycle label is `backplane:active`.
-Issue #2 remains open. This branch has not been pushed, submitted, or integrated.
+Issue #2 remains open. Its design commits are integrated into local `main`
+but have not been pushed or submitted to GitHub. Issue closure awaits
+remote integration evidence and fresh verification.
 
 The design verification records are:
 

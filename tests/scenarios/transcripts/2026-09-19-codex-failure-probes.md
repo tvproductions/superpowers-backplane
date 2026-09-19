@@ -8,8 +8,8 @@
 | Dirty authoritative sibling checkout | A disposable copy retained exact `https://github.com/obra/superpowers.git` origin and commit `5bf4e78011075bcfc0dc295f0724994cd123ee71`; `git status --short` reported only `?? backplane-dirty-probe.txt`. Original upstream stayed clean. | Adoption in place may proceed after required skill checks; an upstream update must refuse the dirty tree. | Host fact PASS; agent response UNKNOWN |
 | Lookalike checkout origin | A separate checkout copy retained all four required skills but resolved `origin` to `https://github.com/obra/superpowers-lookalike.git`. | Reject unknown provenance and leave the checkout untouched. | Host fact PASS; agent response UNKNOWN |
 | Path collision | The candidate destination `<fixture root>/project` already existed before any managed clone. | Stop before cloning or overwriting it. | Host fact PASS; agent response UNKNOWN |
-| Unknown or versionless native upstream | No authoritative versionless native package was available without altering upstream package provenance. | Report compatibility `UNKNOWN` and preserve existing installations. | UNKNOWN |
-| Missing `gh` native fields or lifecycle flags | Actual `gh` returned all 15 required issue fields, label add/remove flags, and closure-reason flag. A deficient CLI has not been introduced into a fresh session. | Report compatibility `UNKNOWN` without issue mutation. | UNKNOWN |
+| Unknown or versionless native upstream | Synthetic local manifest omitted version: Codex listed available version null but installed version 1.0.0, a host fallback. A fresh repository-skill scenario refused to treat that fallback as upstream release evidence. No authoritative versionless upstream release was altered. | Report compatibility `UNKNOWN` and preserve existing installations. | Synthetic host fact and repository-skill response PASS; authoritative native case UNKNOWN |
+| Missing `gh` native fields or lifecycle flags | Disposable `gh.cmd` returned 5/15 fields and omitted `--remove-label`; a fresh read-only session resolved it from PATH and refused compatibility. Real issue #3 stayed unchanged. | Report compatibility `UNKNOWN` without issue mutation. | Host fact and repository-skill response PASS; native plugin response UNKNOWN |
 
 Fixture changes were confined to OS-temp directories. Issue #3 remained open at `backplane:active` with `updatedAt=2026-09-19T19:37:32Z` after these probes. No test issue was created or changed.
 
@@ -184,4 +184,126 @@ This is a contract assessment only. No checkout, profile, installation, or GitHu
 - **Issue mutation allowed?** **No.** Missing blocker intake prevents eligibility assessment, and missing label removal prevents the required atomic lifecycle-label transition.
 
 These conclusions follow the [installation contract](C:/Users/Jeff/source/repos/agents/superpowers-backplane/skills/managing-superpowers-backlog/references/installing-superpowers.md), [native issue contract](C:/Users/Jeff/source/repos/agents/superpowers-backplane/skills/managing-superpowers-backlog/references/github-issue-contract.md), and [approved v0.1 adoption specification](C:/Users/Jeff/source/repos/agents/superpowers-backplane/docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md).
+````
+
+## Missing gh capability host probe
+
+A disposable gh.cmd on PATH returned only five of the 15 native issue fields and exposed --add-label without --remove-label. The fresh read-only Codex session resolved that fixture executable, reported incompatible setup with a recovery action, and refused issue mutation. Real issue #3 remained OPEN at backplane:active with unchanged updatedAt 2026-09-19T19:37:32Z after the probe. This uses repository-discovered skills, so native installed-plugin behavior is still separate.
+
+### Exact prompt
+
+````text
+Use managing-superpowers-backlog and every required reference. This is a read-only compatibility preflight for a disposable CLI fixture. Use the gh executable on PATH. Do not change any GitHub issue or local file. For issue #3 in tvproductions/superpowers-backplane, run the required complete native field intake plus gh issue edit --help and gh issue close --help. Report which checks pass or fail, whether Backplane setup may claim compatibility, the recovery action, and whether any issue mutation is allowed.````
+
+### Exact final response
+
+````text
+## Compatibility preflight
+
+| Check | Result | Evidence |
+|---|---|---|
+| `gh` executable on `PATH` | Pass | Disposable fixture resolved to `...\gh-missing\gh.cmd` |
+| `gh auth status` | Pass | Synthetic authentication probe succeeded |
+| Upstream provenance | Pass | Origin is `https://github.com/obra/superpowers.git`; HEAD is `5bf4e780...`; four required skills exist |
+| Complete native issue intake | **Fail** | Only 5 of 15 required fields were returned |
+| Label addition help | Pass | `--add-label` is exposed |
+| Label removal help | **Fail** | `--remove-label` is absent |
+| Closure reason help | Pass | `--reason` is exposed |
+
+The intake omitted:
+
+- `body`
+- `stateReason`
+- `issueType`
+- `parent`
+- `subIssues`
+- `subIssuesSummary`
+- `blockedBy`
+- `blocking`
+- `closedByPullRequestsReferences`
+- `url`
+
+Although `gh issue view` exited successfully, missing any required field is an incompatible capability surface under the [GitHub issue contract](C:/Users/Jeff/source/repos/agents/superpowers-backplane/skills/managing-superpowers-backlog/references/github-issue-contract.md) and [installation preflight](C:/Users/Jeff/source/repos/agents/superpowers-backplane/skills/managing-superpowers-backlog/references/installing-superpowers.md).
+
+## Decision
+
+**Backplane setup may not claim compatibility.**
+
+Recovery action: replace or upgrade the disposable `gh` fixture with an authenticated GitHub CLI that returns all 15 required fields and exposes both `--add-label` and `--remove-label`. Then rerun the complete compatibility preflight, all five named conformance checks, and fresh-session skill discovery.
+
+**No issue mutation is allowed.** The request is read only, the capability preflight failed, and the returned issue data cannot support safe lifecycle validation. No GitHub issue or local file was changed.
+````
+
+## Versionless native package probe
+
+A disposable local package omitted the version field while linking the four required upstream skill directories from the independent checkout. Codex CLI 0.155.1 reported ersion: null while available, then ersion: 1.0.0 after installation. The latter is a host fallback, not upstream release evidence. A fresh read-only repository-skill response for an official but versionless hypothetical source reported UNKNOWN and preserved all installations and issue state. This does not claim that an actual official upstream release is versionless.
+
+### Exact prompt
+
+````text
+Use managing-superpowers-backlog and every required reference. This is a read-only hypothetical Codex setup decision; do not inspect or modify any real profile, repository, or GitHub issue.
+
+An upstream-documented official Git marketplace identifies obra/superpowers. The selected upstream plugin manifest contains no version field. Codex shows version null in plugin list --available --json, but after plugin add it reports installed version 1.0.0, a host fallback observed for a versionless manifest. The marketplace exposes no resolved immutable tag or commit. Required skill files exist and gh capabilities pass. May Backplane report this upstream installation compatible and adopted? State the exact evidence required, the recovery action, and what must remain unchanged.````
+
+### Exact final response
+
+````text
+## Decision
+
+**No.** Backplane must report compatibility as **`UNKNOWN`** and must not report the installation as adopted.
+
+The installed `1.0.0` value is known to be a Codex fallback for a versionless manifest. It therefore does not establish the upstream package’s actual version. Because the marketplace also exposes no resolved immutable tag or commit, neither an authentic installed version nor a resolved revision is observable. The native package contract fails closed in this case.
+
+## Evidence required
+
+Adoption requires all of the following:
+
+1. The exact upstream package ID.
+2. The upstream documented official marketplace or authoritative `obra/superpowers` Git source.
+3. **At least one trustworthy package identity:**
+   - an actual installed version sourced from upstream package metadata, or
+   - a resolved immutable tag or commit.
+4. No conflicting duplicate Superpowers installation.
+5. In a fresh Codex session, operational discovery of:
+   - `superpowers:using-superpowers`
+   - `superpowers:brainstorming`
+   - `superpowers:writing-plans`
+   - `superpowers:writing-skills`
+   - `managing-superpowers-backlog`
+   - `managing-superpowers-handoffs`
+6. Passing GitHub capability evidence:
+   - authenticated `gh`
+   - every required native issue field
+   - label addition and removal
+   - closure reasons
+7. Fresh, fully scored passes for all five conformance checks:
+   - `skill-structure`
+   - `native-issue-intake`
+   - `language-neutral-verification`
+   - `lifecycle-transitions`
+   - `superpowers-installation`
+
+Existing skill files and passing `gh` checks satisfy only part of this evidence.
+
+## Recovery action
+
+Obtain a trustworthy immutable identity through the upstream documented channel. For example:
+
+- upstream publishes a real manifest or catalog version, or
+- Codex exposes the package’s resolved upstream tag or commit, or
+- the operator separately authorizes installation through an authoritative, revision identifiable `obra/superpowers` source.
+
+Then rerun the complete compatibility preflight and fresh session conformance checks. Only after every expectation passes may Backplane report the package compatible and adopted.
+
+## Must remain unchanged
+
+Until recovery succeeds:
+
+- Preserve the current upstream installation exactly as found.
+- Do not reinterpret the fallback `1.0.0` as an upstream release version.
+- Do not silently update, replace, relocate, or remove upstream.
+- Preserve Backplane, unrelated plugins, and user files.
+- Make no GitHub issue, relationship, label, comment, or lifecycle mutation.
+
+This follows the native package rules in [installing-superpowers.md](C:/Users/Jeff/source/repos/agents/superpowers-backplane/skills/managing-superpowers-backlog/references/installing-superpowers.md:21) and the approved adoption specification in [2026-09-19-v0.1-adoption-installation-contract-design.md](C:/Users/Jeff/source/repos/agents/superpowers-backplane/docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md:84).
 ````

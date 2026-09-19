@@ -39,3 +39,44 @@ Current checkpoint: [HANDOFF.md](C:/Users/Jeff/source/repos/agents/superpowers-b
 
 No files or GitHub data were modified.
 ````
+
+## Disposable native lifecycle issue #13
+
+The approved plan's Task 4, Step 2 uses a disposable issue for transitions that
+would misrepresent the real implementation issue. The fixture is
+https://github.com/tvproductions/superpowers-backplane/issues/13. Its body
+limits scope to lifecycle verification, links the approved design and plan,
+and names `documentation` as the unrelated label to preserve.
+
+The first pass used `gh issue view 13 --repo tvproductions/superpowers-backplane
+--json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url`
+before every mutation, and re-fetched after every mutation. Each read returned
+all 15 top-level fields, one expected `backplane:*` label, the
+`documentation` label, and no native blocker. Two consecutive read-only
+intakes left `updatedAt` unchanged.
+
+| Transition | Exact `gh issue edit 13 --repo tvproductions/superpowers-backplane` label flags | Observed labels after |
+|---|---|---|
+| backlog → designing | `--remove-label backplane:backlog --add-label backplane:designing` | `documentation`, `backplane:designing` |
+| designing → ready | `--remove-label backplane:designing --add-label backplane:ready` | `documentation`, `backplane:ready` |
+| ready → active | `--remove-label backplane:ready --add-label backplane:active` | `documentation`, `backplane:active` |
+| active → blocked | `--remove-label backplane:active --add-label backplane:blocked` | `documentation`, `backplane:blocked` |
+| blocked → active | `--remove-label backplane:blocked --add-label backplane:active` | `documentation`, `backplane:active` |
+
+Before blocking, `gh issue comment 13 --repo ... --body` recorded a concrete
+fixture pause, `Resume target: backplane:active`, and the release condition:
+full blocked-state intake confirms one blocked label and preserves
+`documentation`. A second comment recorded that the condition passed, no
+native blocker existed, and the active entry gate remained valid. Each comment
+changed `updatedAt`; the script re-fetched the complete issue before the
+subsequent atomic label edit.
+
+The final native query returned `OPEN`, `documentation`,
+`backplane:active`, no native blocker, and
+`updatedAt=2026-09-19T22:16:19Z`. Real issue #3 remained `OPEN` with exactly
+`backplane:active` and `updatedAt=2026-09-19T19:37:32Z`. Review reversal and
+verified closure remain pending. This was a simulated impediment in a named
+disposable fixture; it is not a product blocker on issue #3. The fixture
+transitions prove the native label mechanics and preservation checks. Its
+backlog-to-active path does not replace issue #3's genuine eligibility and
+revision-binding evidence.

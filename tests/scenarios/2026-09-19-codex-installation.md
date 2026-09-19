@@ -72,13 +72,13 @@ The install guide does not yet exist. These four failures are documentation gaps
 | Compatible upstream sibling adoption | UNKNOWN | Exact upstream origin/commit and skill files verified; setup response pending. |
 | Upstream absent, stable setup | UNKNOWN | Stable v6.4.1 obtained in isolated Codex state; setup response pending. |
 | Repeat install | PASS | Exactly one effective Backplane plugin after a second `plugin add` in disposable state. |
-| Compatibility preflight | UNKNOWN | Real `gh` native fields and lifecycle flags passed; agent preflight response pending. |
+| Compatibility preflight | UNKNOWN | Real `gh` native fields and lifecycle flags passed; a deficient disposable CLI was rejected by a fresh repository-skill session. Native installed-plugin setup response remains pending. |
 | Version change and rollback | PASS | Fixture-only `0.1.1` candidate and restored `0.1.0`; sentinel and user-file hashes unchanged. |
 | Pinned remote Git ref restoration | PASS for CLI; UNKNOWN for fresh session | Published SHAs switched and restored installed cache content; fresh discovery pending. |
 | Backplane-only uninstall | PASS | `plugin remove` left sentinel and shared marketplace configured in disposable state. |
 | Preservation and failure probes | UNKNOWN | CLI/fixture facts and fresh repository-skill hypothetical refusal/recovery passed; authenticated native setup probes remain pending. |
 | Three-skill fresh discovery | UNKNOWN | Native plugin auto-discovery in an authenticated isolated profile was not run; a junction-only probe was excluded from acceptance. |
-| Authorized lifecycle and five conformance checks | UNKNOWN | Five named checks passed with repository skills; isolated installed-plugin conformance and disposable native lifecycle mutations remain pending. |
+| Authorized lifecycle and five conformance checks | UNKNOWN | Five named checks passed with repository skills; disposable issue #13 passed blocked/resume mechanics, while review reversal, integrated closure, and isolated installed-plugin conformance remain pending. |
 
 ## Task 4: Interim conformance evidence
 
@@ -87,3 +87,8 @@ The install guide does not yet exist. These four failures are documentation gaps
 - The installation RED response incorrectly used Backplane `.agents/skills` as the package source. The reference now names canonical root `skills/`, and an exact-prompt rerun used the correct path. A six-case failure probe then found and corrected a conflated dirty-checkout adoption/update decision; its rerun passed A-F. Exact captures are in the Task 4 transcripts.
 - Read-only issue #3 status and selection returned `OPEN`, exactly `backplane:active`, parent #1, blocker #2 closed, blocking #6 open, and unchanged `updatedAt=2026-09-19T19:37:32Z`. No issue mutation occurred in that probe.
 - Native installed-plugin setup, three-skill fresh discovery, and the remaining authorized lifecycle transitions stay `UNKNOWN` until run. These are acceptance gates, so this interim evidence does not complete issue #3.
+### Further Task 4 probes
+
+- A disposable CLI fixture omitted the upstream plugin manifest version. Codex CLI 0.155.1 listed `version: null` while available, then reported installed `1.0.0` as a host fallback. A fresh repository-skill scenario refused to treat that fallback as upstream release evidence without an authentic version or resolved revision. This synthetic source does not stand for an actual official versionless upstream release.
+- A disposable `gh.cmd` on PATH returned 5/15 required issue fields and exposed label addition but not removal. A fresh read-only repository-skill session resolved that fixture, rejected compatibility, named recovery, and made no issue mutation. Actual issue #3 stayed unchanged.
+- Disposable issue #13 exercised read-only intake, backlog → designing → ready → active, active → blocked, and blocked → active using complete native intake before each mutation and preserving `documentation`. The blocked reason, active resume target, and release condition were recorded as comments. This fixture validates label mechanics; issue #3's real readiness and execution transitions remain the semantic evidence. Review reversal and verified closure remain open.

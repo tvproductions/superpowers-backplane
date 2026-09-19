@@ -32,8 +32,9 @@
   on this repository.
 - Keep the upstream checkout independently identifiable and updateable; do not
   copy upstream Superpowers files into this repository's tracked source.
-- Backplane installation must either adopt a compatible sibling Superpowers
-  checkout or obtain upstream Superpowers for the user.
+- Backplane installation must adopt a compatible, separately installed
+  Superpowers plugin or sibling checkout, or obtain upstream through the
+  active harness's documented channel.
 - Favor following new compatible upstream releases over indefinite pinning.
 - Use the stable upstream release channel by default. Use the upstream default
   branch only after an explicit edge-channel selection.

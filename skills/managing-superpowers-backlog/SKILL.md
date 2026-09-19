@@ -17,9 +17,9 @@ replace or reorder it.
 
 ## Establish the dependency
 
-Require authenticated `gh` access and an upstream Superpowers checkout. If
-Superpowers is absent or its ownership is unclear, read
-`references/installing-superpowers.md` before backlog work.
+Require authenticated `gh` access and an operational upstream Superpowers
+installation for the active harness. If upstream is absent or its provenance is
+unclear, read `references/installing-superpowers.md` before backlog work.
 
 ## Choose the operation
 

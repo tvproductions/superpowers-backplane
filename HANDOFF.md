@@ -15,8 +15,9 @@ The initial design is approved in principle:
 - GitHub Projects are optional visualization only and never authoritative;
   IssueOps is not used.
 - The project is language-neutral and must never assume pytest.
-- Backplane can adopt a sibling Superpowers checkout or obtain one for the
-  user while preserving upstream provenance and updateability.
+- Backplane can adopt a compatible native Superpowers plugin or sibling
+  checkout, or obtain upstream for the user while preserving provenance and
+  independent updateability.
 
 The first skill and its reference contracts have passed the bootstrap
 pressure scenarios plus a five-control/five-skill read-only status and
@@ -61,7 +62,9 @@ selection alone does not change a label.
 
 The written specification is
 `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md`.
-It awaits operator review. After that review, use `superpowers:writing-plans`
+Its native-package adoption correction has RED/GREEN evidence in
+`tests/scenarios/2026-09-19-native-superpowers-package-adoption.md`. It awaits
+operator review. After that review, use `superpowers:writing-plans`
 to bind issue #2's current revision and cover its design verification seams.
 Implementation of package surfaces and live host checks belongs to follow-up
 issues. V0.1 does not assume a standalone Backplane executable.

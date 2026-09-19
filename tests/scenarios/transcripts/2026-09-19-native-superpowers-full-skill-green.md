@@ -1,0 +1,5 @@
+# Full backlog skill native adoption GREEN response
+
+**A — adopt the native Superpowers plugin after the remaining checks.** The official upstream-documented marketplace, observable v6.4.1 version, and fresh-session skill discovery support native adoption; a physical Git checkout is not required. Record the package ID, catalog, channel, and version, and any tag or commit the host exposes. Confirm there is no conflicting installation and that Backplane’s two skills are also discoverable.
+
+Before reporting onboarding complete, verify the Claude Code host compatibility boundary, authenticated `gh` access, the required fields from a real issue intake, label editing and closure-reason support, and all five named Backplane conformance checks. If a check is incomplete, report **compatibility unknown and onboarding incomplete**, name the missing evidence, and hold backlog work. If a check fails, report the specific incompatibility. Do not clone another checkout or treat the manager’s deadline as a waived check.

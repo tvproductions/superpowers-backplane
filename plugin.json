@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "superpowers-backplane",
+  "version": "0.1.0",
+  "description": "Native GitHub backlog continuity for upstream Superpowers",
+  "repository": "https://github.com/tvproductions/superpowers-backplane"
+}

@@ -1,0 +1,97 @@
+# Codex Installation Surface: Issue #3
+
+- Issue: https://github.com/tvproductions/superpowers-backplane/issues/3
+- Approved design: `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md`
+- Approved plan: `docs/superpowers/plans/2026-09-19-codex-installation-surface.md`
+- Execution branch: `feat/codex-installation-surface`
+- Task 1 package commit: `8bfba888599568cc8f729ba6f0c030ace8e6377f`
+- Issue #3 ready to active transition: `2026-09-19T19:37:32Z`
+
+## Task 1: Root package and marketplace
+
+### RED expectations
+
+1. The repository must expose one root `plugin.json` with ID `superpowers-backplane`, version `0.1.0`, and the canonical `skills/` tree.
+2. `.agents/plugins/marketplace.json` must be tracked while the independent upstream checkout and discovery junction remain ignored.
+3. Codex must resolve exactly one `superpowers-backplane@superpowers-backplane` selector from this repository.
+
+### RED observations (2026-09-19)
+
+- Host: `codex-cli 0.155.1` on Windows PowerShell 7.6.6.
+- `git check-ignore -v .agents/plugins/marketplace.json` returned `.gitignore:1:.agents/`, so the marketplace path was hidden.
+- `plugin.json` and `.agents/plugins/marketplace.json` were absent.
+- `codex plugin list --available --json` filtered to the Backplane selector returned `matching=0`.
+- That catalog command exited 0 but warned that a remote plugin catalog request to `chatgpt.com` failed. The RED result establishes local absence only; the later GREEN check must inspect local resolution directly.
+- Current canonical authored skills: `managing-superpowers-backlog` and `managing-superpowers-handoffs`.
+
+### GREEN evidence
+
+- Portable `plugin.json` and repository marketplace JSON parsed; names, version `0.1.0`, `./` source, `AVAILABLE`/`ON_USE` policy, and two canonical authored skill folders matched the plan.
+- `.agents/superpowers` and `.agents/skills/superpowers` remained ignored. `git check-ignore -q .agents/plugins/marketplace.json` exited 1, and `git status --short --untracked-files=all` showed the marketplace file.
+- `codex plugin list --available --json` from the repo root still returned `matching=0`. The current CLI considered only four already configured marketplaces; it did not automatically register this repository marketplace. This invalidated the plan's implicit CLI discovery assertion, not the package metadata.
+- In disposable `CODEX_HOME=.superpowers/sdd/2026-09-19-codex-installation-surface/task1-codex-state`, `codex plugin marketplace list --json` initially listed no marketplaces. `codex plugin marketplace add <this repository root> --json` returned `marketplaceName=superpowers-backplane`, `alreadyAdded=false`, and the exact repository root. A following `codex plugin list --available --json` found exactly one `superpowers-backplane@superpowers-backplane` at version `0.1.0`.
+- An attempted `Start-Process` probe with redirected stdout exited 1 with `stdout is not a terminal`; the successful disposable probe set `CODEX_HOME` only inside its PowerShell process and invoked `codex` directly. Task 3 must use a terminal-compatible isolated invocation for fresh sessions.
+
+## Task 2: Codex install and setup guide
+
+### RED documentation expectations (2026-09-19)
+
+| Expectation | README observation | Result |
+|---|---|---|
+| Pinned Backplane installation command | README has no Codex package selector, Git ref, or install guide link. | FAIL |
+| Explicit setup request | README does not tell the adopter to request Backplane setup in a Codex session. | FAIL |
+| Upstream provenance check | README mentions only this repository's ignored development checkout, not an adopter's independently installed upstream package or sibling checkout. | FAIL |
+| Fresh three-skill discovery | README has no new-session check for upstream `using-superpowers` and both Backplane skills. | FAIL |
+
+The install guide does not yet exist. These four failures are documentation gaps before Task 2 edits.
+
+### GREEN documentation evidence
+
+- README links `docs/installing-codex.md`, which has an origin-checked Backplane checkout, a published SHA check through `gh api`, and pinned `codex plugin marketplace add ... --ref` plus the exact plugin selector.
+- The guide states that package installation does not run setup, gives the exact Codex setup request, and requires independent upstream provenance plus fresh discovery of all three skills.
+- The PowerShell install block parsed without errors. Running only its preflight on unpublished feature commit `8bfba888599568cc8f729ba6f0c030ace8e6377f` stopped before plugin mutation with `Backplane commit is not published at the expected origin` (GitHub HTTP 422).
+- Read-only `gh` checks passed: authenticated account, 15/15 native issue fields on #3, label add/remove flags, and closure-reason flag. The installed development upstream checkout was `obra/superpowers` at tag `v6.4.1`, commit `5bf4e78011075bcfc0dc295f0724994cd123ee71`, with all four required upstream skills; the latest stable release query also returned `v6.4.1`.
+- The current user Codex profile listed no installed Superpowers plugin. This development checkout does not prove native package adoption; Task 3 must run that mode in an isolated profile.
+
+## Task 3: Lifecycle evidence and open gates
+
+- The user approved pushing `feat/codex-installation-surface` for immutable Git ref tests. GitHub resolved package commit `8bfba888599568cc8f729ba6f0c030ace8e6377f` and guide commit `6c26f0354b0bf231172a13327e2dc898b8b772b5`; neither is a release.
+- The disposable archive and isolated Codex states are recorded in [host lifecycle](transcripts/2026-09-19-codex-host-lifecycle.md). CLI install, repeat install, fixture-only `0.1.1` update, `0.1.0` rollback, pinned Git ref switch and restore, and Backplane-only uninstall passed.
+- The exact lifecycle commands in `docs/installing-codex.md` were run in a fresh disposable `state-guide`: preflight, candidate SHA, restored SHA, and uninstall passed. Both published refs declare `0.1.0`; installed cache contents, marketplace Git HEAD, and config ref established the actual revision change.
+- A negative guide replay found that the first update preflight accepted a sole Backplane plugin from a different marketplace. The corrected guide requires the exact installed selector and uses reviewed-SHA placeholders. The same negative input now fails before mutation, and the positive guide blocks still pass with upstream and an unrelated plugin present.
+- Independent [failure probes](transcripts/2026-09-19-codex-failure-probes.md) established duplicate, dirty, lookalike, and collision fixture facts without issue mutation. All six installed-plugin hypothetical failure responses were later scored against the current cache; the dirty-authoritative case was also probed independently.
+- Device-code login was disabled for this account. Browser OAuth eventually completed in isolated `state-native`; no credential was copied from the normal user profile and no further login was started. A fresh session discovered and read all three installed skills from separate plugin caches. The first catalog read was blocked by execution policy; a second fresh session read the files successfully. The cache then needed one corrected installation reference copied from the current branch and refreshed with `codex plugin add`; the four current-cache behavioral runs and targeted dirty-sibling probe are captured in the installed-plugin transcripts.
+- The three setup modes reused one authenticated disposable Codex profile, resetting only the upstream plugin between modes and restoring the recorded scoped IDs and five preservation hashes. This deviates from the plan's separately seeded profile wording to avoid another login; the mode states and fresh sessions were distinct, and the transcript records the limit.
+- Issue #3 remained open at `backplane:active`, `updatedAt=2026-09-19T19:37:32Z`, after the disposable checks.
+
+## Codex acceptance matrix
+
+| Case | Status | Evidence and remaining check |
+|---|---|---|
+| Clean install | PASS for disposable local package | CLI installed `0.1.0`; fresh session discovered and read all three installed skills from separate caches. |
+| Compatible upstream native adoption | PASS for tested candidate | Authoritative `superpowers@superpowers-dev` v6.4.1 package and required skills, full `gh` preflight, fresh discovery, and five conformance checks passed. |
+| Compatible upstream sibling adoption | PASS | Fresh isolated sibling-consumer session verified exact upstream origin/commit, clean checkout, four required skills, both Backplane skills, complete gh intake and lifecycle flags; see sibling/absent setup transcript. |
+| Upstream absent, stable setup | PASS | Fresh absent session failed closed; official Codex catalog install of Superpowers 6.4.1 then passed fresh cache discovery of four upstream and two Backplane skills and gh preflight. |
+| Repeat install | PASS | Exactly one effective Backplane plugin after a second `plugin add` in a disposable state. |
+| Compatibility preflight | PASS for three tested modes | Native Git plugin, authoritative sibling checkout, and official stable plugin each passed fresh setup identity, required skills, complete gh intake, and lifecycle flags. Four behavioral conformance prompts ran against the identical current Backplane cache, not once per upstream mode. |
+| Version change and rollback | PASS for CLI | Fixture-only `0.1.1` candidate and restored `0.1.0`; sentinel and user-file hashes unchanged. |
+| Pinned remote Git ref restoration | PASS for CLI; UNKNOWN for fresh session | Published SHAs switched and restored installed cache content; integrated-package fresh discovery remains pending. |
+| Backplane-only uninstall | PASS for CLI | `plugin remove` left sentinel and shared marketplace configured in disposable state. |
+| Preservation and failure probes | PASS for six disposable failure cases and per-operation preservation | CLI/fixture facts and current-cache installed-skill A–F hypothetical responses passed. A bounded guide replay recorded unchanged sentinel, upstream, and user-file identities/hashes after candidate, rollback, and uninstall separately. The versionless upstream was synthetic, not an altered authoritative release. |
+| Three-skill fresh discovery | PASS for three tested modes | Native Git plugin, sibling checkout, and official Codex plugin each exposed upstream using-superpowers and both namespaced Backplane skills in a fresh session. |
+| Authorized lifecycle and five conformance checks | PASS pre-integration; UNKNOWN integrated closure | Five named checks passed for the current installed skill cache. Disposable issue #13 passed blocked/resume and review-reversal mechanics. Issue #3 review, integration, and completed closure remain pending. |
+## Task 4: Interim conformance evidence
+
+- Static `skill-structure` PASS: two canonical Backplane `SKILL.md` files, five direct references, exact names and frontmatter, four upstream skill hashes matching the independent checkout and installed cache. The corrected installation reference SHA-256 is `50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D`.
+- Fresh repository-skill sessions captured exact prompts and responses for `native-issue-intake` (6/6), `language-neutral-verification` (5/5), `lifecycle-transitions` (5/5), and `superpowers-installation` (6/6 after a RED/GREEN correction). These runs used the normal authenticated Codex profile and repository-discovered skills; they do not prove discovery from the isolated installed plugin.
+- The installation RED response incorrectly used Backplane `.agents/skills` as the package source. The reference now names canonical root `skills/`, and an exact-prompt rerun used the correct path. A six-case failure probe then found and corrected a conflated dirty-checkout adoption/update decision; its rerun passed A-F. Exact captures are in the Task 4 transcripts.
+- Read-only issue #3 status and selection returned `OPEN`, exactly `backplane:active`, parent #1, blocker #2 closed, blocking #6 open, and unchanged `updatedAt=2026-09-19T19:37:32Z`. No issue mutation occurred in that probe.
+- An early read-only whole-branch review of `307bcf4..96bdae2` found no Critical or Important implementation defect and no Minor item requiring correction. The reviewer declined to judge unrun matrix cases and marked the branch not ready to merge; see [branch review](transcripts/2026-09-19-codex-branch-review.md).
+- Final whole-branch review found one Important evidence gap: the guide replay lacked preservation hashes after each operation. The bounded replay in [host lifecycle](transcripts/2026-09-19-codex-host-lifecycle.md) captured five hashes and plugin IDs at candidate, rollback, and uninstall; the evidence-completeness check went RED before capture and GREEN afterward (3/3 checkpoints, five hashes each). The reviewer found no package or guide defect. One Minor control-character defect in the failure-probes transcript is deferred per the execution workflow.
+- Native installed-plugin discovery and current-cache behavioral conformance now pass for the tested native upstream mode. Sibling and absent-mode fresh setup are captured in [sibling and absent setup](transcripts/2026-09-19-codex-sibling-absent-setup.md). Integrated remote-ref discovery, issue #3 review/completion, and fixture closure remain open acceptance gates; issue #3 is not complete.
+
+### Further Task 4 probes
+
+- A disposable CLI fixture omitted the upstream plugin manifest version. Codex CLI 0.155.1 listed `version: null` while available, then reported installed `1.0.0` as a host fallback. A fresh repository-skill scenario refused to treat that fallback as upstream release evidence without an authentic version or resolved revision. This synthetic source does not stand for an actual official versionless upstream release.
+- A disposable `gh.cmd` on PATH returned 5/15 required issue fields and exposed label addition but not removal. A fresh read-only repository-skill session resolved that fixture, rejected compatibility, named recovery, and made no issue mutation. Actual issue #3 stayed unchanged.
+- Disposable issue #13 exercised read-only intake, backlog → designing → ready → active, active → blocked, and blocked → active using complete native intake before each mutation and preserving `documentation`. The blocked reason, active resume target, and release condition were recorded as comments. This fixture validates label mechanics; issue #3's real readiness and execution transitions remain the semantic evidence. Review reversal later passed after a fresh read-only fixture review requested a concrete evidence change; verified closure remains open.

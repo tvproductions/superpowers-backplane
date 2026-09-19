@@ -9,6 +9,13 @@ the harness's upstream-documented installation channel. Never copy upstream
 files into Backplane or require a second checkout solely because a native
 plugin does not expose one.
 
+Backplane's authored skills live at
+`<backplane-root>/skills/managing-superpowers-backlog/SKILL.md` and
+`<backplane-root>/skills/managing-superpowers-handoffs/SKILL.md`. A harness
+discovery directory such as `.agents/skills` contains optional links; it is
+not the Backplane package's skill root. Verify a link exists before using that
+directory as a discovery source.
+
 ## Native package mode
 
 Read the current upstream Superpowers installation instructions for the active
@@ -55,6 +62,12 @@ When a Superpowers checkout already exists:
    through the active harness's supported discovery mechanism.
 7. Verify from a fresh agent session that both `superpowers:using-superpowers`
    and `managing-superpowers-backlog` appear in skill discovery.
+
+An authoritative sibling checkout with local changes may be adopted in place
+after provenance, required skills, compatibility, and discovery checks pass.
+Report adoption separately from a requested update. Refuse the update while the
+checkout is dirty; leave its files unchanged and ask its owner to resolve the
+local changes before any separately authorized revision change.
 
 Do not rewrite or relocate a valid user-managed checkout merely to match an
 example layout.

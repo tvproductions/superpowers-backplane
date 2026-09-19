@@ -3,7 +3,7 @@
 ## Current state
 
 The standalone local repository is at
-`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on local `main`.
+`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on feature branch `feat/codex-installation-surface`.
 Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
@@ -109,3 +109,17 @@ checks pass. Claude Code #11, OpenCode #12, and self-hosting #5 remain open in
 pilot #6. The package implementations, live host checks, pilot, integration,
 and release remain future work. V0.1 does not assume a standalone Backplane
 executable.
+
+## Issue #3 Codex implementation checkpoint (2026-09-19)
+
+Issue #3 is open with `backplane:active`; last observed `updatedAt` is `2026-09-19T19:37:32Z`. Work is on `feat/codex-installation-surface`. The user approved pushing that branch to make immutable refs reachable for disposable Git tests. It is not merged or released.
+
+Task 1 package commit: `8bfba888599568cc8f729ba6f0c030ace8e6377f`. Task 2 guide commit: `6c26f0354b0bf231172a13327e2dc898b8b772b5`. Task 3 is in progress; read `.superpowers/sdd/2026-09-19-codex-installation-surface/progress.md` and `tests/scenarios/2026-09-19-codex-installation.md` before resuming.
+
+Disposable Codex CLI checks passed for local install, repeat install, fixture-only version change and rollback, pinned Git SHA switch and restoration, and Backplane-only uninstall while preserving upstream and unrelated plugin files. The initial update preflight accepted an alternate Backplane marketplace ID; this was reproduced RED and corrected GREEN in `docs/installing-codex.md`.
+
+The isolated `state-native` profile completed browser OAuth once; device-code authorization remained disabled. Do not start another login flow. Fresh Codex sessions from the disposable fixture root cataloged and directly read upstream `superpowers:using-superpowers` and both namespaced Backplane skills from separate installed plugin caches, without repository junctions. The first read-only sandbox file read was blocked; a fresh `--approve-for-me` session read all three files. The installed Backplane cache initially held an older installation reference. Its sole differing skill file was refreshed to current SHA-256 `50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D`; the earlier behavioral responses were excluded. Four fresh current-cache behavioral scenarios passed their named expectations, and an installed-skill probe separated dirty authoritative adoption from a refused update. Read `tests/scenarios/transcripts/2026-09-19-codex-installed-plugin-discovery.md` and `tests/scenarios/transcripts/2026-09-19-codex-installed-plugin-conformance.md` for exact prompts, responses, caveats, and session IDs.
+
+The Codex guide now uses the actual namespaced Backplane skill IDs observed in the native catalog. The prior guide update/rollback commands passed the disposable replay; a later claim that they lose a same-marketplace sentinel was retracted after the existing fixture evidence showed Codex restored that plugin on marketplace re-add. No guide lifecycle command was changed for that mistaken claim.
+
+Issue #3 remains OPEN at `backplane:active` and `updatedAt=2026-09-19T19:37:32Z` at the last full intake. Disposable lifecycle issue #13 remains open at `backplane:review` after tested review reversal. The tested native upstream mode now has fresh discovery, `gh` preflight, and all five conformance checks. Fresh authenticated disposable sessions now cover native Git upstream, an authoritative sibling checkout, absent-upstream fail-closed diagnosis, and official stable Codex marketplace installation. All six disposable failure cases have current-cache installed-skill hypothetical responses; none changed a real issue or an authoritative versionless release. The three setup modes reused one authenticated disposable profile with upstream removed/reinstalled between modes, and scoped plugin IDs plus five preserved hashes matched the snapshot afterward. Exact responses are in tests/scenarios/transcripts/2026-09-19-codex-sibling-absent-setup.md. The whole-branch reviewer found one Important preservation-evidence gap, now addressed by a per-operation replay with five unchanged hashes at candidate, rollback, and uninstall; one Minor transcript control character is deferred. Remote integrated-package discovery, issue #3 review/completion, and fixture closure remain open. An early read-only reviewer found no implementation defect through `96bdae2` but correctly assessed the branch as not ready to merge. A process-only Codex config override failed to hide the installed upstream plugin, so it cannot stand in for sibling or absent-mode fresh sessions; no saved profile state changed. Do not mark #3 complete or merge based on the current matrix. The feature branch includes the native evidence and guide correction checkpoint; inspect `git status`, recent commits, and the ledger before continuing.

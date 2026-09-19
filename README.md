@@ -11,6 +11,8 @@ are optional visualization only and never authoritative. IssueOps is not used.
 
 This repository is in bootstrap state. Start with `HANDOFF.md`.
 
+For Codex, follow the [installation and setup guide](docs/installing-codex.md).
+
 The local installation obtains the stable upstream Superpowers release under
 the ignored `.agents/superpowers` checkout and records its resolved revision in
 `SUPERPOWERS.md`.

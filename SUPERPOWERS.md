@@ -2,9 +2,9 @@
 
 - Upstream: `https://github.com/obra/superpowers.git`
 - Channel: stable
-- Release: `v6.3.0`
-- Published: `2026-08-12T16:58:30Z`
-- Resolved commit: `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`
+- Release: `v6.4.1`
+- Published: `2026-09-19T00:32:44Z`
+- Resolved commit: `5bf4e78011075bcfc0dc295f0724994cd123ee71`
 - Local checkout: `.agents/superpowers`
 - Discovery surface: `.agents/skills/superpowers`
 

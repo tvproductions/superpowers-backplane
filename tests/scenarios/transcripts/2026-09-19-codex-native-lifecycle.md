@@ -144,3 +144,22 @@ On disposable issue #13:
 
 This finding concerns the disposable lifecycle fixture for Codex issue #3. It does not approve or reject the product implementation. No files or GitHub data were modified.
 ````
+
+## Fixture resubmission result
+
+After the rework record was committed and pushed at
+`d83fef826778c6fd3367e09bb2fca42c81362cb7`, fresh
+`git diff --check` passed. Complete native intake found issue #13 open with
+`documentation` and exactly `backplane:active`, no native blocker, and
+`updatedAt=2026-09-19T22:23:42Z`. The resubmission comment was recorded at
+2026-09-19T22:25:49Z. After another complete intake,
+`gh issue edit 13 --repo tvproductions/superpowers-backplane --remove-label
+backplane:active --add-label backplane:review` returned `OPEN`,
+`documentation`, exactly `backplane:review`, and
+`updatedAt=2026-09-19T22:25:51Z`. Issue #3 remained `OPEN` at exactly
+`backplane:active` with unchanged `updatedAt=2026-09-19T19:37:32Z`.
+
+The observed fixture sequence is now `review → active → review`, with a
+recorded review change request between the first two states. This completes
+the review-reversal mechanics and unrelated-label preservation check. Fixture
+closure still waits for the evidence to be integrated and freshly verified.

@@ -3,7 +3,8 @@
 ## Current state
 
 The standalone local repository is at
-`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on `main`. Before
+`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on the local
+`issue-2-contract-completion` branch. Before
 Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
@@ -42,7 +43,8 @@ noreply address. Re-check `gh auth status` before real backlog operations.
 ## Re-entry sequence
 
 1. Read `AGENTS.md`.
-2. Read the bootstrap design and plan linked there.
+2. Read the bootstrap design and plan linked there, then the approved
+   v0.1 adoption spec and plan named below.
 3. Read `SUPERPOWERS.md` and confirm that the installed checkout matches it.
 4. Confirm that the Git top-level directory is exactly this repository root.
 5. Inspect `skills/managing-superpowers-backlog/`.
@@ -64,9 +66,25 @@ The written specification is
 `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md`.
 Its native-package adoption correction has RED/GREEN evidence in
 `tests/scenarios/2026-09-19-native-superpowers-package-adoption.md`.
-The user approved the written specification on 2026-09-19. A plan draft at
-`docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md`
-binds the current issue revision and awaits review and execution-method
-selection.
-Implementation of package surfaces and live host checks belongs to follow-up
-issues. V0.1 does not assume a standalone Backplane executable.
+The user approved the written specification and selected Native inline execution
+on 2026-09-19. The approved plan is
+`docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md`.
+It records issue #2's consumed semantic revision `2026-09-19T13:06:19Z`.
+The issue body now links both approved artifacts and was reconciled at
+`2026-09-19T14:07:17Z`; its only lifecycle label is `backplane:active`.
+Issue #2 remains open. This branch has not been pushed, submitted, or integrated.
+
+The design verification records are:
+
+- `tests/scenarios/2026-09-19-v0.1-contract-review.md` — 14/14 scored document checks, including native upstream package and checkout failures.
+- `tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md` — 6/6 scored ownership assignments for four host variants and two unsupported OpenCode floors.
+- `tests/scenarios/2026-09-19-v0.1-lifecycle-walkthrough.md` — 17/17 scored document walkthroughs plus issue #2 revision reconciliation.
+
+The native release hierarchy under [issue #1](https://github.com/tvproductions/superpowers-backplane/issues/1)
+now has installation leaves [Codex #3](https://github.com/tvproductions/superpowers-backplane/issues/3),
+[Claude Code #11](https://github.com/tvproductions/superpowers-backplane/issues/11), and
+[OpenCode V1/V2 #12](https://github.com/tvproductions/superpowers-backplane/issues/12).
+Each is blocked by #2 and blocks the one external pilot #6. Issue #5 owns
+self-hosted native lifecycle tests. The package implementations, live host
+checks, pilot, integration, and release remain future work in those leaves.
+V0.1 does not assume a standalone Backplane executable.

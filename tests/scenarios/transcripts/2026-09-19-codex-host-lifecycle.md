@@ -84,3 +84,114 @@ All three skills are discoverable:
 | `managing-superpowers-handoffs` | [SKILL.md](<C:/Users/Jeff/AppData/Local/Temp/backplane-codex-579301d7b6a249e69e38628a9806b287/session-project/.agents/skills/managing-superpowers-handoffs/SKILL.md>) |
 
 No files or GitHub issues were modified.
+
+## Per-operation preservation replay after final review
+
+The whole-branch reviewer found that the earlier written-guide replay compared unrelated-state hashes only before and after the full candidate, rollback, and uninstall sequence. A bounded replay in the existing disposable sp Codex profile captured five SHA-256 values and installed plugin IDs at each stage. No normal user profile, GitHub issue, or checkout was changed.
+
+Commands, in order, with the fixture CODEX_HOME set to sp:
+
+1. codex plugin add superpowers-backplane@superpowers-backplane --json (prior 8bfba888599568cc8f729ba6f0c030ace8e6377f)
+2. codex plugin marketplace remove superpowers-backplane --json; codex plugin marketplace add tvproductions/superpowers-backplane --ref 6c26f0354b0bf231172a13327e2dc898b8b772b5 --json; codex plugin add superpowers-backplane@superpowers-backplane --json
+3. codex plugin marketplace remove superpowers-backplane --json; codex plugin marketplace add tvproductions/superpowers-backplane --ref 8bfba888599568cc8f729ba6f0c030ace8e6377f --json; codex plugin add superpowers-backplane@superpowers-backplane --json
+4. codex plugin remove superpowers-backplane@superpowers-backplane --json
+
+Every command exited 0. After each of stages 2, 3, and 4, the replay asserted that the unrelated sentinel and upstream plugin remained installed once each, and that the sentinel source manifest, installed sentinel manifest, sentinel marketplace manifest, installed upstream skill, and user note retained their prior-installed hashes. Candidate and rollback marketplace Git HEAD values matched their full pinned SHAs. After uninstall, Backplane was absent and the prior marketplace remained. The final disposable profile had the same scoped installed IDs and all five hashes as before this replay. The JSON below is the exact per-stage capture.
+
+```json
+[
+  {
+    "stage": "before-install",
+    "backplaneHead": "8bfba888599568cc8f729ba6f0c030ace8e6377f",
+    "backplaneCount": 0,
+    "sentinelCount": 1,
+    "upstreamCount": 1,
+    "installedIds": [
+      "backplane-preservation-sentinel@preservation-probe",
+      "superpowers@superpowers-dev"
+    ],
+    "hashes": {
+      "sentinel_cache": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "sentinel_marketplace": "BF153534994BF97E7E2EB027E9DBD416929767A159FD3804B3D5314F90F3FBE0",
+      "sentinel_source": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "user_note": "C400A6B1F8616BD52FB9CD1153CF5C6E81517273A346D6C4D7D3F7322D7814EA",
+      "upstream": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+    }
+  },
+  {
+    "stage": "prior-installed",
+    "backplaneHead": "8bfba888599568cc8f729ba6f0c030ace8e6377f",
+    "backplaneCount": 1,
+    "sentinelCount": 1,
+    "upstreamCount": 1,
+    "installedIds": [
+      "backplane-preservation-sentinel@preservation-probe",
+      "superpowers-backplane@superpowers-backplane",
+      "superpowers@superpowers-dev"
+    ],
+    "hashes": {
+      "sentinel_cache": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "sentinel_marketplace": "BF153534994BF97E7E2EB027E9DBD416929767A159FD3804B3D5314F90F3FBE0",
+      "sentinel_source": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "user_note": "C400A6B1F8616BD52FB9CD1153CF5C6E81517273A346D6C4D7D3F7322D7814EA",
+      "upstream": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+    }
+  },
+  {
+    "stage": "after-candidate",
+    "backplaneHead": "6c26f0354b0bf231172a13327e2dc898b8b772b5",
+    "backplaneCount": 1,
+    "sentinelCount": 1,
+    "upstreamCount": 1,
+    "installedIds": [
+      "backplane-preservation-sentinel@preservation-probe",
+      "superpowers-backplane@superpowers-backplane",
+      "superpowers@superpowers-dev"
+    ],
+    "hashes": {
+      "sentinel_cache": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "sentinel_marketplace": "BF153534994BF97E7E2EB027E9DBD416929767A159FD3804B3D5314F90F3FBE0",
+      "sentinel_source": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "user_note": "C400A6B1F8616BD52FB9CD1153CF5C6E81517273A346D6C4D7D3F7322D7814EA",
+      "upstream": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+    }
+  },
+  {
+    "stage": "after-rollback",
+    "backplaneHead": "8bfba888599568cc8f729ba6f0c030ace8e6377f",
+    "backplaneCount": 1,
+    "sentinelCount": 1,
+    "upstreamCount": 1,
+    "installedIds": [
+      "backplane-preservation-sentinel@preservation-probe",
+      "superpowers-backplane@superpowers-backplane",
+      "superpowers@superpowers-dev"
+    ],
+    "hashes": {
+      "sentinel_cache": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "sentinel_marketplace": "BF153534994BF97E7E2EB027E9DBD416929767A159FD3804B3D5314F90F3FBE0",
+      "sentinel_source": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "user_note": "C400A6B1F8616BD52FB9CD1153CF5C6E81517273A346D6C4D7D3F7322D7814EA",
+      "upstream": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+    }
+  },
+  {
+    "stage": "after-uninstall",
+    "backplaneHead": "8bfba888599568cc8f729ba6f0c030ace8e6377f",
+    "backplaneCount": 0,
+    "sentinelCount": 1,
+    "upstreamCount": 1,
+    "installedIds": [
+      "backplane-preservation-sentinel@preservation-probe",
+      "superpowers@superpowers-dev"
+    ],
+    "hashes": {
+      "sentinel_cache": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "sentinel_marketplace": "BF153534994BF97E7E2EB027E9DBD416929767A159FD3804B3D5314F90F3FBE0",
+      "sentinel_source": "D8A5155E915669EB5578C30953447FF3D3E56DEEEFC1D7BCC3216FB7158272F9",
+      "user_note": "C400A6B1F8616BD52FB9CD1153CF5C6E81517273A346D6C4D7D3F7322D7814EA",
+      "upstream": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+    }
+  }
+]
+```

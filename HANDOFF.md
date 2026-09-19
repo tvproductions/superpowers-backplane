@@ -51,11 +51,17 @@ noreply address. Re-check `gh auth status` before real backlog operations.
    `https://github.com/tvproductions/superpowers-backplane.git` before any
    real backlog operation or push.
 
-## Next design decisions
+## Current issue #2 design
 
-- Final installation surfaces for Codex, Claude Code, and other Superpowers
-  harnesses.
-- Whether v1 should mutate labels or remain read-only until an explicit start
-  or transition request.
-- Whether deterministic helpers are needed after field experience; v1 does
-  not assume a standalone Backplane executable.
+The operator approved native plugin installation for Codex, Claude Code, and
+OpenCode V1 and V2; one canonical Backplane `skills/` tree; a separate upstream
+Superpowers installation; and evidence-gated lifecycle transitions within an
+authorized workflow. Status and recommendation requests are read-only, and
+selection alone does not change a label.
+
+The written specification is
+`docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md`.
+It awaits operator review. After that review, use `superpowers:writing-plans`
+to bind issue #2's current revision and cover its design verification seams.
+Implementation of package surfaces and live host checks belongs to follow-up
+issues. V0.1 does not assume a standalone Backplane executable.

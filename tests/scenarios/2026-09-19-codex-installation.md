@@ -60,7 +60,7 @@ The install guide does not yet exist. These four failures are documentation gaps
 - The exact lifecycle commands in `docs/installing-codex.md` were run in a fresh disposable `state-guide`: preflight, candidate SHA, restored SHA, and uninstall passed. Both published refs declare `0.1.0`; installed cache contents, marketplace Git HEAD, and config ref established the actual revision change.
 - A negative guide replay found that the first update preflight accepted a sole Backplane plugin from a different marketplace. The corrected guide requires the exact installed selector and uses reviewed-SHA placeholders. The same negative input now fails before mutation, and the positive guide blocks still pass with upstream and an unrelated plugin present.
 - Independent [failure probes](transcripts/2026-09-19-codex-failure-probes.md) established duplicate, dirty, lookalike, and collision fixture facts without issue mutation. Their setup-agent responses remain untested.
-- `codex login --device-auth` could not complete because the account disables device-code authorization. Regular browser OAuth was attempted but not completed and was canceled. No credential was copied from the normal profile. Fresh agent-session discovery and behavioral conformance remain `UNKNOWN`.
+- `codex login --device-auth` could not complete because the account disables device-code authorization. An initial regular browser OAuth attempt was canceled; a new regular OAuth attempt is waiting in isolated `state-native`. No credential was copied from the normal profile. Native fresh-session discovery and installed-plugin behavioral conformance remain `UNKNOWN`.
 - Issue #3 remained open at `backplane:active`, `updatedAt=2026-09-19T19:37:32Z`, after the disposable checks.
 
 ## Codex acceptance matrix
@@ -76,6 +76,14 @@ The install guide does not yet exist. These four failures are documentation gaps
 | Version change and rollback | PASS | Fixture-only `0.1.1` candidate and restored `0.1.0`; sentinel and user-file hashes unchanged. |
 | Pinned remote Git ref restoration | PASS for CLI; UNKNOWN for fresh session | Published SHAs switched and restored installed cache content; fresh discovery pending. |
 | Backplane-only uninstall | PASS | `plugin remove` left sentinel and shared marketplace configured in disposable state. |
-| Preservation and failure probes | UNKNOWN | CLI/fixture facts passed; agent refusal and recovery behavior pending. |
+| Preservation and failure probes | UNKNOWN | CLI/fixture facts and fresh repository-skill hypothetical refusal/recovery passed; authenticated native setup probes remain pending. |
 | Three-skill fresh discovery | UNKNOWN | Native plugin auto-discovery in an authenticated isolated profile was not run; a junction-only probe was excluded from acceptance. |
-| Authorized lifecycle and five conformance checks | UNKNOWN | Task 4 not yet executed. |
+| Authorized lifecycle and five conformance checks | UNKNOWN | Five named checks passed with repository skills; isolated installed-plugin conformance and disposable native lifecycle mutations remain pending. |
+
+## Task 4: Interim conformance evidence
+
+- Static `skill-structure` PASS: two canonical Backplane `SKILL.md` files, five direct references, exact names and frontmatter, four upstream skill hashes matching the independent checkout and installed cache. The corrected installation reference SHA-256 is `50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D`.
+- Fresh repository-skill sessions captured exact prompts and responses for `native-issue-intake` (6/6), `language-neutral-verification` (5/5), `lifecycle-transitions` (5/5), and `superpowers-installation` (6/6 after a RED/GREEN correction). These runs used the normal authenticated Codex profile and repository-discovered skills; they do not prove discovery from the isolated installed plugin.
+- The installation RED response incorrectly used Backplane `.agents/skills` as the package source. The reference now names canonical root `skills/`, and an exact-prompt rerun used the correct path. A six-case failure probe then found and corrected a conflated dirty-checkout adoption/update decision; its rerun passed A-F. Exact captures are in the Task 4 transcripts.
+- Read-only issue #3 status and selection returned `OPEN`, exactly `backplane:active`, parent #1, blocker #2 closed, blocking #6 open, and unchanged `updatedAt=2026-09-19T19:37:32Z`. No issue mutation occurred in that probe.
+- Native installed-plugin setup, three-skill fresh discovery, and the remaining authorized lifecycle transitions stay `UNKNOWN` until run. These are acceptance gates, so this interim evidence does not complete issue #3.

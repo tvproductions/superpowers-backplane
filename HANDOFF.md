@@ -92,10 +92,20 @@ The native release hierarchy under [issue #1](https://github.com/tvproductions/s
 now has installation leaves [Codex #3](https://github.com/tvproductions/superpowers-backplane/issues/3),
 [Claude Code #11](https://github.com/tvproductions/superpowers-backplane/issues/11), and
 [OpenCode V1/V2 #12](https://github.com/tvproductions/superpowers-backplane/issues/12).
-Their native dependency edges from completed #2 are now resolved. Each remains
-open in `backplane:backlog` and blocks the one external pilot #6. Issue #5
-also remains in `backplane:backlog` and owns self-hosted native lifecycle
-tests. The package implementations, live host checks, pilot, integration, and
-release remain future work in those leaves. Select the next leaf explicitly;
-each still needs its own current plan before execution.
-V0.1 does not assume a standalone Backplane executable.
+Their native dependency edges from completed #2 are now resolved. The user
+approved the Codex #3 plan on 2026-09-19 after reviewing its execution risks.
+`docs/superpowers/plans/2026-09-19-codex-installation-surface.md` is published
+on `main` at `057e80f67e8b6235548030a236415576163fb239` and linked from the
+issue. Issue #3 moved from `backplane:designing` to `backplane:ready` after
+the plan was published; its resulting issue revision is
+`2026-09-19T19:01:03Z`. The plan covers the root Codex package, installation
+guide, isolated lifecycle checks, and fresh conformance. Its plan commit is
+already complete; execution starts by creating a feature branch from the
+synced `main`, re-reading the issue, and moving #3 to `backplane:active` as
+Task 1 begins. Resolve the review's command-context, isolated-session, and
+review-transition gaps during execution before claiming their acceptance
+checks pass. Claude Code #11, OpenCode #12, and self-hosting #5 remain open in
+`backplane:backlog`. The three installation leaves still block the one external
+pilot #6. The package implementations, live host checks, pilot, integration,
+and release remain future work. V0.1 does not assume a standalone Backplane
+executable.

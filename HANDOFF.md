@@ -3,7 +3,7 @@
 ## Current state
 
 The standalone local repository is at
-`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on local `main`.
+`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on feature branch `feat/codex-installation-surface`.
 Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
@@ -109,3 +109,15 @@ checks pass. Claude Code #11, OpenCode #12, and self-hosting #5 remain open in
 pilot #6. The package implementations, live host checks, pilot, integration,
 and release remain future work. V0.1 does not assume a standalone Backplane
 executable.
+
+## Issue #3 Codex implementation checkpoint (2026-09-19)
+
+Issue #3 is open with `backplane:active`; last observed `updatedAt` is `2026-09-19T19:37:32Z`. Work is on `feat/codex-installation-surface`. The user approved pushing that branch to make immutable refs reachable for disposable Git tests. It is not merged or released.
+
+Task 1 package commit: `8bfba888599568cc8f729ba6f0c030ace8e6377f`. Task 2 guide commit: `6c26f0354b0bf231172a13327e2dc898b8b772b5`. Task 3 is in progress; read `.superpowers/sdd/2026-09-19-codex-installation-surface/progress.md` and `tests/scenarios/2026-09-19-codex-installation.md` before resuming.
+
+Disposable Codex CLI checks passed for local install, repeat install, fixture-only version change and rollback, pinned Git SHA switch and restoration, and Backplane-only uninstall while preserving upstream and unrelated plugin files. The initial update preflight accepted an alternate Backplane marketplace ID; this was reproduced RED and corrected GREEN in `docs/installing-codex.md`.
+
+Native plugin discovery in a fresh authenticated isolated Codex profile is UNKNOWN. Device-code authorization is disabled for this account. A browser login attempt was canceled. Do not copy normal-profile credentials or ask the operator through another login flow without new direction. A read-only Codex run against test-created junctions was excluded from issue #3 acceptance. Behavioral failure probes, the five fresh conformance checks, and lifecycle integration remain open. Keep #3 active until those gates pass.
+
+The verified Task 3 CLI guide and transcript checkpoint is committed locally on the feature branch and has not been pushed. Task 3 remains incomplete. Check `git status` and the ledger. The approved plan's Task 4 review and integration steps have not begun.

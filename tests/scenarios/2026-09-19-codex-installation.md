@@ -53,19 +53,29 @@ The install guide does not yet exist. These four failures are documentation gaps
 - Read-only `gh` checks passed: authenticated account, 15/15 native issue fields on #3, label add/remove flags, and closure-reason flag. The installed development upstream checkout was `obra/superpowers` at tag `v6.4.1`, commit `5bf4e78011075bcfc0dc295f0724994cd123ee71`, with all four required upstream skills; the latest stable release query also returned `v6.4.1`.
 - The current user Codex profile listed no installed Superpowers plugin. This development checkout does not prove native package adoption; Task 3 must run that mode in an isolated profile.
 
+## Task 3: Lifecycle evidence and open gates
+
+- The user approved pushing `feat/codex-installation-surface` for immutable Git ref tests. GitHub resolved package commit `8bfba888599568cc8f729ba6f0c030ace8e6377f` and guide commit `6c26f0354b0bf231172a13327e2dc898b8b772b5`; neither is a release.
+- The disposable archive and isolated Codex states are recorded in [host lifecycle](transcripts/2026-09-19-codex-host-lifecycle.md). CLI install, repeat install, fixture-only `0.1.1` update, `0.1.0` rollback, pinned Git ref switch and restore, and Backplane-only uninstall passed.
+- The exact lifecycle commands in `docs/installing-codex.md` were run in a fresh disposable `state-guide`: preflight, candidate SHA, restored SHA, and uninstall passed. Both published refs declare `0.1.0`; installed cache contents, marketplace Git HEAD, and config ref established the actual revision change.
+- A negative guide replay found that the first update preflight accepted a sole Backplane plugin from a different marketplace. The corrected guide requires the exact installed selector and uses reviewed-SHA placeholders. The same negative input now fails before mutation, and the positive guide blocks still pass with upstream and an unrelated plugin present.
+- Independent [failure probes](transcripts/2026-09-19-codex-failure-probes.md) established duplicate, dirty, lookalike, and collision fixture facts without issue mutation. Their setup-agent responses remain untested.
+- `codex login --device-auth` could not complete because the account disables device-code authorization. Regular browser OAuth was attempted but not completed and was canceled. No credential was copied from the normal profile. Fresh agent-session discovery and behavioral conformance remain `UNKNOWN`.
+- Issue #3 remained open at `backplane:active`, `updatedAt=2026-09-19T19:37:32Z`, after the disposable checks.
+
 ## Codex acceptance matrix
 
-| Case | Status | Evidence |
+| Case | Status | Evidence and remaining check |
 |---|---|---|
-| Clean install | PENDING | Task 3 |
-| Compatible upstream native adoption | PENDING | Task 3 |
-| Compatible upstream sibling adoption | PENDING | Task 3 |
-| Upstream absent, stable setup | PENDING | Task 3 |
-| Repeat install | PENDING | Task 3 |
-| Compatibility preflight | PENDING | Tasks 2–4 |
-| Version change and rollback | PENDING | Task 3 |
-| Pinned remote Git ref restoration | PENDING | Task 4 |
-| Backplane-only uninstall | PENDING | Task 3 |
-| Preservation and failure probes | PENDING | Task 3 |
-| Three-skill fresh discovery | PENDING | Tasks 3–4 |
-| Authorized lifecycle and five conformance checks | PENDING | Task 4 |
+| Clean install | UNKNOWN | CLI installed `0.1.0`; fresh session discovery pending. |
+| Compatible upstream native adoption | UNKNOWN | Authoritative v6.4.1 package and skill files verified; setup response pending. |
+| Compatible upstream sibling adoption | UNKNOWN | Exact upstream origin/commit and skill files verified; setup response pending. |
+| Upstream absent, stable setup | UNKNOWN | Stable v6.4.1 obtained in isolated Codex state; setup response pending. |
+| Repeat install | PASS | Exactly one effective Backplane plugin after a second `plugin add` in disposable state. |
+| Compatibility preflight | UNKNOWN | Real `gh` native fields and lifecycle flags passed; agent preflight response pending. |
+| Version change and rollback | PASS | Fixture-only `0.1.1` candidate and restored `0.1.0`; sentinel and user-file hashes unchanged. |
+| Pinned remote Git ref restoration | PASS for CLI; UNKNOWN for fresh session | Published SHAs switched and restored installed cache content; fresh discovery pending. |
+| Backplane-only uninstall | PASS | `plugin remove` left sentinel and shared marketplace configured in disposable state. |
+| Preservation and failure probes | UNKNOWN | CLI/fixture facts passed; agent refusal and recovery behavior pending. |
+| Three-skill fresh discovery | UNKNOWN | Native plugin auto-discovery in an authenticated isolated profile was not run; a junction-only probe was excluded from acceptance. |
+| Authorized lifecycle and five conformance checks | UNKNOWN | Task 4 not yet executed. |

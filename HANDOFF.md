@@ -120,4 +120,4 @@ Disposable Codex CLI checks passed for local install, repeat install, fixture-on
 
 Native plugin discovery in a fresh authenticated isolated Codex profile is UNKNOWN. Device-code authorization is disabled for this account. A browser login attempt was canceled. Do not copy normal-profile credentials or ask the operator through another login flow without new direction. A read-only Codex run against test-created junctions was excluded from issue #3 acceptance. Behavioral failure probes, the five fresh conformance checks, and lifecycle integration remain open. Keep #3 active until those gates pass.
 
-The verified Task 3 CLI guide and transcript checkpoint is committed locally on the feature branch and has not been pushed. Task 3 remains incomplete. Check `git status` and the ledger. The approved plan's Task 4 review and integration steps have not begun.
+The verified Task 3 CLI guide and transcript checkpoint is committed on the feature branch. Check `git status` for its remote sync state. Task 3 remains incomplete. Check `git status` and the ledger. The approved plan's Task 4 review and integration steps have not begun.

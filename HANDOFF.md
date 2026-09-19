@@ -63,8 +63,10 @@ selection alone does not change a label.
 The written specification is
 `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md`.
 Its native-package adoption correction has RED/GREEN evidence in
-`tests/scenarios/2026-09-19-native-superpowers-package-adoption.md`. It awaits
-operator review. After that review, use `superpowers:writing-plans`
-to bind issue #2's current revision and cover its design verification seams.
+`tests/scenarios/2026-09-19-native-superpowers-package-adoption.md`.
+The user approved the written specification on 2026-09-19. A plan draft at
+`docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md`
+binds the current issue revision and awaits review and execution-method
+selection.
 Implementation of package surfaces and live host checks belongs to follow-up
 issues. V0.1 does not assume a standalone Backplane executable.

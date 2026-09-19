@@ -53,7 +53,7 @@ noreply address. Re-check `gh auth status` before real backlog operations.
    `https://github.com/tvproductions/superpowers-backplane.git` before any
    real backlog operation or push.
 
-## Current issue #2 design
+## Issue #2 adoption contract
 
 The operator approved native plugin installation for Codex, Claude Code, and
 OpenCode V1 and V2; one canonical Backplane `skills/` tree; a separate upstream
@@ -70,10 +70,17 @@ on 2026-09-19. The approved plan is
 `docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md`.
 It records issue #2's consumed semantic revision `2026-09-19T13:06:19Z`.
 The issue body now links both approved artifacts and was reconciled at
-`2026-09-19T14:07:17Z`; its only lifecycle label is `backplane:active`.
-Issue #2 remains open. Its design evidence is committed on `main`.
-Verify remote alignment independently on re-entry. Issue closure requires
-fresh integrated verification and an authorized native issue update.
+`2026-09-19T14:07:17Z`. Issue #2 was closed with reason `completed` on
+2026-09-19 after independent review found no Critical or Important findings
+and fresh integrated verification passed on published `main` at
+`77625553fd0238770689f968721c674d5740e1c6`. Its final issue state has
+no lifecycle label. Recheck the live issue and remote state on re-entry.
+
+The review and closure comments on issue #2 record the verification commands,
+native graph checks, and scored design evidence. One Minor review finding
+remains for host-leaf tests: the audit's F3 checkout probe combines dirty
+state with lookalike provenance, so it does not isolate dirty authoritative
+adoption from an unsafe update.
 
 The design verification records are:
 
@@ -85,7 +92,10 @@ The native release hierarchy under [issue #1](https://github.com/tvproductions/s
 now has installation leaves [Codex #3](https://github.com/tvproductions/superpowers-backplane/issues/3),
 [Claude Code #11](https://github.com/tvproductions/superpowers-backplane/issues/11), and
 [OpenCode V1/V2 #12](https://github.com/tvproductions/superpowers-backplane/issues/12).
-Each is blocked by #2 and blocks the one external pilot #6. Issue #5 owns
-self-hosted native lifecycle tests. The package implementations, live host
-checks, pilot, integration, and release remain future work in those leaves.
+Their native dependency edges from completed #2 are now resolved. Each remains
+open in `backplane:backlog` and blocks the one external pilot #6. Issue #5
+also remains in `backplane:backlog` and owns self-hosted native lifecycle
+tests. The package implementations, live host checks, pilot, integration, and
+release remain future work in those leaves. Select the next leaf explicitly;
+each still needs its own current plan before execution.
 V0.1 does not assume a standalone Backplane executable.

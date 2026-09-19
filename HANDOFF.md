@@ -71,9 +71,9 @@ on 2026-09-19. The approved plan is
 It records issue #2's consumed semantic revision `2026-09-19T13:06:19Z`.
 The issue body now links both approved artifacts and was reconciled at
 `2026-09-19T14:07:17Z`; its only lifecycle label is `backplane:active`.
-Issue #2 remains open. Its design commits are integrated into local `main`
-but have not been pushed or submitted to GitHub. Issue closure awaits
-remote integration evidence and fresh verification.
+Issue #2 remains open. Its design evidence is committed on `main`.
+Verify remote alignment independently on re-entry. Issue closure requires
+fresh integrated verification and an authorized native issue update.
 
 The design verification records are:
 

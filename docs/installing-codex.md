@@ -59,7 +59,7 @@ Setup checks exactly one effective Backplane plugin and both canonical Backplane
 
 Setup also runs `gh auth status`, verifies the complete native issue intake fields on a real issue in the target repository, and checks that `gh issue edit --help` supports label add/remove and `gh issue close --help` supports closure reasons. A displayed CLI version alone does not prove compatibility.
 
-Start another fresh Codex session and confirm discovery of `superpowers:using-superpowers`, `managing-superpowers-backlog`, and `managing-superpowers-handoffs` from the two separate installations. The setup response should report the Backplane package ID and revision, upstream package source and version or checkout origin and commit, `gh` capability result, and the three discovered skill identities. If any source, version, capability, or fresh-session result cannot be proved, report `UNKNOWN` with the failed check and recovery action; do not report adoption complete or change any GitHub issue state.
+Start another fresh Codex session and confirm discovery of `superpowers:using-superpowers`, `superpowers-backplane:managing-superpowers-backlog`, and `superpowers-backplane:managing-superpowers-handoffs` from the two separate installations. The setup response should report the Backplane package ID and revision, upstream package source and version or checkout origin and commit, `gh` capability result, and the three discovered skill identities. If any source, version, capability, or fresh-session result cannot be proved, report `UNKNOWN` with the failed check and recovery action; do not report adoption complete or change any GitHub issue state.
 
 ## Change or restore a pinned Backplane revision
 
@@ -111,7 +111,7 @@ if (@($after.installed | Where-Object { $_.pluginId -like 'superpowers-backplane
 if (@(Compare-Object $beforeIds $afterIds).Count -ne 0) { throw 'A plugin from the marketplace was lost or added unexpectedly' }
 ```
 
-Start a **new Codex session** and verify discovery of `superpowers:using-superpowers`, `managing-superpowers-backlog`, and `managing-superpowers-handoffs`. Run the setup compatibility preflight again and compare the package files with the reviewed candidate. If any check fails, restore the prior revision with the recorded SHA:
+Start a **new Codex session** and verify discovery of `superpowers:using-superpowers`, `superpowers-backplane:managing-superpowers-backlog`, and `superpowers-backplane:managing-superpowers-handoffs`. Run the setup compatibility preflight again and compare the package files with the reviewed candidate. If any check fails, restore the prior revision with the recorded SHA:
 
 ```powershell
 $priorRevision = '<recorded-prior-40-character-commit-sha>'

@@ -76,7 +76,7 @@ The install guide does not yet exist. These four failures are documentation gaps
 | Version change and rollback | PASS for CLI | Fixture-only `0.1.1` candidate and restored `0.1.0`; sentinel and user-file hashes unchanged. |
 | Pinned remote Git ref restoration | PASS for CLI; UNKNOWN for fresh session | Published SHAs switched and restored installed cache content; integrated-package fresh discovery remains pending. |
 | Backplane-only uninstall | PASS for CLI | `plugin remove` left sentinel and shared marketplace configured in disposable state. |
-| Preservation and failure probes | UNKNOWN overall | CLI/fixture facts and repository-skill cases passed; installed-skill dirty-authoritative adoption/update probe passed. Other installed-plugin failure responses remain untested. |
+| Preservation and failure probes | PASS for six disposable failure cases | CLI/fixture facts and current-cache installed-skill A–F hypothetical responses passed; the versionless upstream was synthetic, not an altered authoritative release. |
 | Three-skill fresh discovery | PASS for native mode | Fresh isolated session cataloged and directly read upstream `using-superpowers` and both namespaced Backplane skills from installed caches, without repository junctions. |
 | Authorized lifecycle and five conformance checks | PASS pre-integration; UNKNOWN integrated closure | Five named checks passed for the current installed skill cache. Disposable issue #13 passed blocked/resume and review-reversal mechanics. Issue #3 review, integration, and completed closure remain pending. |
 ## Task 4: Interim conformance evidence
@@ -86,7 +86,7 @@ The install guide does not yet exist. These four failures are documentation gaps
 - The installation RED response incorrectly used Backplane `.agents/skills` as the package source. The reference now names canonical root `skills/`, and an exact-prompt rerun used the correct path. A six-case failure probe then found and corrected a conflated dirty-checkout adoption/update decision; its rerun passed A-F. Exact captures are in the Task 4 transcripts.
 - Read-only issue #3 status and selection returned `OPEN`, exactly `backplane:active`, parent #1, blocker #2 closed, blocking #6 open, and unchanged `updatedAt=2026-09-19T19:37:32Z`. No issue mutation occurred in that probe.
 - An early read-only whole-branch review of `307bcf4..96bdae2` found no Critical or Important implementation defect and no Minor item requiring correction. The reviewer declined to judge unrun matrix cases and marked the branch not ready to merge; see [branch review](transcripts/2026-09-19-codex-branch-review.md).
-- Native installed-plugin discovery and current-cache behavioral conformance now pass for the tested native upstream mode. Sibling and absent-mode fresh setup, remaining installed-plugin failure cases, integrated remote-ref discovery, issue #3 review/completion, and fixture closure remain open acceptance gates; issue #3 is not complete.
+- Native installed-plugin discovery and current-cache behavioral conformance now pass for the tested native upstream mode. Sibling and absent-mode fresh setup, integrated remote-ref discovery, issue #3 review/completion, and fixture closure remain open acceptance gates; issue #3 is not complete.
 
 ### Further Task 4 probes
 

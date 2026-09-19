@@ -1,15 +1,15 @@
 # Codex Failure Probe Evidence
 
-**Work item:** issue #3. **Status:** in progress; CLI and checkout facts below are observed. Fresh repository-skill hypothetical responses pass after the recorded correction. Authenticated native plugin discovery and current-cache conformance now pass for the tested native upstream mode; most installed-plugin negative responses remain UNKNOWN.
+**Work item:** issue #3. **Status:** in progress; CLI and checkout facts below are observed. Fresh repository-skill hypothetical responses pass after the recorded correction. Authenticated native plugin discovery and current-cache conformance now pass for the tested native upstream mode; the six-case installed-skill hypothetical response now passes A–F. Separately seeded sibling/absent setup remains unrun.
 
 | Failure input | Observed probe | Expected setup response | Status |
 |---|---|---|---|
-| Duplicate Backplane plugin | A disposable state installed `superpowers-backplane@superpowers-backplane` and `superpowers-backplane@backplane-duplicate`; `plugin list --json` reported two effective Backplane IDs. | Report conflict and require reconciliation before setup or issue mutation. | Host fact PASS; agent response UNKNOWN |
-| Dirty authoritative sibling checkout | A disposable copy retained exact `https://github.com/obra/superpowers.git` origin and commit `5bf4e78011075bcfc0dc295f0724994cd123ee71`; `git status --short` reported only `?? backplane-dirty-probe.txt`. Original upstream stayed clean. | Adoption in place may proceed after required skill checks; an upstream update must refuse the dirty tree. | Host fact PASS; installed-skill targeted response PASS in [current-cache conformance](2026-09-19-codex-installed-plugin-conformance.md) |
-| Lookalike checkout origin | A separate checkout copy retained all four required skills but resolved `origin` to `https://github.com/obra/superpowers-lookalike.git`. | Reject unknown provenance and leave the checkout untouched. | Host fact PASS; agent response UNKNOWN |
-| Path collision | The candidate destination `<fixture root>/project` already existed before any managed clone. | Stop before cloning or overwriting it. | Host fact PASS; agent response UNKNOWN |
-| Unknown or versionless native upstream | Synthetic local manifest omitted version: Codex listed available version null but installed version 1.0.0, a host fallback. A fresh repository-skill scenario refused to treat that fallback as upstream release evidence. No authoritative versionless upstream release was altered. | Report compatibility `UNKNOWN` and preserve existing installations. | Synthetic host fact and repository-skill response PASS; authoritative native case UNKNOWN |
-| Missing `gh` native fields or lifecycle flags | Disposable `gh.cmd` returned 5/15 fields and omitted `--remove-label`; a fresh read-only session resolved it from PATH and refused compatibility. Real issue #3 stayed unchanged. | Report compatibility `UNKNOWN` without issue mutation. | Host fact and repository-skill response PASS; native plugin response UNKNOWN |
+| Duplicate Backplane plugin | A disposable state installed `superpowers-backplane@superpowers-backplane` and `superpowers-backplane@backplane-duplicate`; `plugin list --json` reported two effective Backplane IDs. | Report conflict and require reconciliation before setup or issue mutation. | Host fact PASS; installed-skill hypothetical response PASS |
+| Dirty authoritative sibling checkout | A disposable copy retained exact `https://github.com/obra/superpowers.git` origin and commit `5bf4e78011075bcfc0dc295f0724994cd123ee71`; `git status --short` reported only `?? backplane-dirty-probe.txt`. Original upstream stayed clean. | Adoption in place may proceed after required skill checks; an upstream update must refuse the dirty tree. | Host fact PASS; installed-skill targeted and six-case responses PASS in [current-cache conformance](2026-09-19-codex-installed-plugin-conformance.md) and below |
+| Lookalike checkout origin | A separate checkout copy retained all four required skills but resolved `origin` to `https://github.com/obra/superpowers-lookalike.git`. | Reject unknown provenance and leave the checkout untouched. | Host fact PASS; installed-skill hypothetical response PASS |
+| Path collision | The candidate destination `<fixture root>/project` already existed before any managed clone. | Stop before cloning or overwriting it. | Host fact PASS; installed-skill hypothetical response PASS |
+| Unknown or versionless native upstream | Synthetic local manifest omitted version: Codex listed available version null but installed version 1.0.0, a host fallback. A fresh repository-skill scenario refused to treat that fallback as upstream release evidence. No authoritative versionless upstream release was altered. | Report compatibility `UNKNOWN` and preserve existing installations. | Synthetic host fact and installed-skill hypothetical response PASS; no real authoritative versionless release was altered |
+| Missing `gh` native fields or lifecycle flags | Disposable `gh.cmd` returned 5/15 fields and omitted `--remove-label`; a fresh read-only session resolved it from PATH and refused compatibility. Real issue #3 stayed unchanged. | Report compatibility `UNKNOWN` without issue mutation. | Host fact and installed-skill hypothetical response PASS |
 
 Fixture changes were confined to OS-temp directories. Issue #3 remained open at `backplane:active` with `updatedAt=2026-09-19T19:37:32Z` after these probes. No test issue was created or changed.
 
@@ -307,3 +307,89 @@ Until recovery succeeds:
 
 This follows the native package rules in [installing-superpowers.md](C:/Users/Jeff/source/repos/agents/superpowers-backplane/skills/managing-superpowers-backlog/references/installing-superpowers.md:21) and the approved adoption specification in [2026-09-19-v0.1-adoption-installation-contract-design.md](C:/Users/Jeff/source/repos/agents/superpowers-backplane/docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md:84).
 ````
+
+## Fresh installed-plugin six-case response — A–F PASS
+
+Date: 2026-09-19. Session ID: 01a0bbec-0d72-7b90-933a-da04e38c90eb. Fresh `codex exec --ephemeral --approve-for-me -m gpt-5.6-sol` from the disposable fixture root used the already authenticated `state-native` profile. The installed Backplane cache matched the current branch skill tree, including corrected installation-reference SHA-256 `50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D`. The process read installed backlog SKILL.md and its three references from the plugin cache. The original six-case prompt was changed only to permit reading installed skill files while forbidding real project/profile/issue inspection and mutation. This is a hypothetical behavior score against previously observed disposable host inputs, not a live setup mutation. Only Markdown hard-break trailing spaces from the CLI response were removed to satisfy the repository whitespace check; its words and decisions are unchanged. The unnormalized CLI response remains in the disposable fixture log. A–F each identify the failed check, compatibility result, recovery, preservation, and issue-mutation decision correctly.
+
+### Exact prompt
+
+`````text
+Use managing-superpowers-backlog and every required reference. This is a read-only hypothetical installation assessment; read the installed skill files, but do not inspect or mutate any actual project checkout, plugin configuration, or GitHub issue. Evaluate each independent case separately. In each case, state the failed check, whether setup may report compatibility, exact recovery, what remains unchanged, and whether any issue mutation is allowed.
+
+A. Two effective Backplane IDs are installed: superpowers-backplane@superpowers-backplane and superpowers-backplane@backplane-duplicate.
+B. A native Superpowers package comes from the official documented catalog, but the host exposes neither an installed version nor a resolved revision.
+C. A sibling checkout is the exact obra/superpowers origin with all required skills and a known commit, but git status --short shows ?? user-note.txt. Its owner asks to adopt it now and update it to the latest stable release in the same step.
+D. A sibling checkout has all required skills but origin https://github.com/obra/superpowers-lookalike.git.
+E. A managed-install destination already exists and contains unrelated files.
+F. gh issue view on a real issue lacks blockedBy, and gh issue edit --help lacks --remove-label.
+
+In every case an unrelated sentinel plugin, existing upstream files, and a user note have recorded hashes. Preserve those exact bytes. Do not assume any programming-language runtime.
+`````
+
+### Exact final response
+
+`````text
+This is a hypothetical, read-only assessment. No checkout, plugin configuration, issue, or recorded file was inspected or changed. Every recovery below must use host-native tooling and requires no programming-language runtime.
+
+### A. Duplicate effective Backplane IDs
+
+- **Failed check:** Native package identity is ambiguous because conflicting duplicate installations are explicitly rejected.
+- **Compatibility report:** **No.** Setup must fail closed; neither copy may be declared compatible while both effective IDs remain.
+- **Exact recovery:** Using the harness’s supported plugin manager, identify the authoritative installation and remove or disable the duplicate. Then start a fresh session, confirm a single Backplane identity, verify skill discovery, record source/version/revision, and rerun the complete compatibility preflight and five conformance checks.
+- **Unchanged now:** Both installations, the sentinel plugin, upstream files, and the user note remain byte-for-byte unchanged with their recorded hashes.
+- **Issue mutation:** **None.** The request is read-only, and compatibility has not been established.
+
+### B. Official native package without observable version or revision
+
+- **Failed check:** Neither an installed version nor a resolved tag/commit is observable.
+- **Compatibility report:** **No.** Official catalog provenance is insufficient; compatibility is **unknown**, which fails closed.
+- **Exact recovery:** Use the harness’s documented stable installation channel or manager to obtain an installation whose version or resolved revision can be recorded. Then verify the four required upstream skills in a fresh session and run the complete compatibility preflight and conformance checks. If the host cannot expose either identifier, the package remains unadoptable as compatible.
+- **Unchanged now:** The native package, sentinel plugin, upstream files, and user note retain their exact recorded bytes and hashes.
+- **Issue mutation:** **None.**
+
+### C. Authoritative sibling checkout with `?? user-note.txt`
+
+- **Failed check:** The checkout is dirty; `git status --short` is not empty. This blocks the requested **update**, not necessarily adoption.
+- **Compatibility report:** **Adoption may report compatibility** if provenance, required skills, discovery, GitHub CLI capabilities, and every conformance check pass. The update may not be reported successful or compatible.
+- **Exact recovery:**
+  1. Report adoption separately from updating.
+  2. Refuse the update and leave the checkout untouched.
+  3. Ask the owner to resolve the untracked note by a method they choose while preserving its exact bytes. Setup must not stash, move, delete, commit, or overwrite it.
+  4. Once status is clean, inspect the latest stable release and compatibility-impacting notes, report the candidate version, obtain explicit authorization for that revision, then fetch and check out the stable release or perform the permitted fast-forward.
+  5. Rerun preflight, all conformance checks, fresh-session discovery, and record the resulting commit.
+- **Unchanged now:** The current commit, every upstream file, `user-note.txt`, the sentinel plugin, and all recorded hashes remain unchanged.
+- **Issue mutation:** **None.** Even a successfully adopted installation does not override this assessment’s read-only scope.
+
+### D. Lookalike sibling origin
+
+- **Failed check:** Origin is not exactly `obra/superpowers`; `obra/superpowers-lookalike` fails the mandatory provenance check.
+- **Compatibility report:** **No**, regardless of matching filenames or apparent skill contents.
+- **Exact recovery:** Reject and leave the lookalike checkout untouched. Locate a separately installed authoritative package, or clone `obra/superpowers` into a verified unused destination using the documented checkout procedure. Then validate origin, required skills, commit, discovery, and the full compatibility suite.
+- **Unchanged now:** The lookalike checkout, existing upstream files elsewhere, sentinel plugin, user note, and all recorded hashes remain unchanged.
+- **Issue mutation:** **None.**
+
+### E. Nonempty managed-install destination
+
+- **Failed check:** Managed checkout mode requires an unused destination. Existing unrelated files also make this an unknown installation that must not be overwritten.
+- **Compatibility report:** **No.** There is no valid managed-install candidate at that destination.
+- **Exact recovery:** Select and verify a different unused destination, then clone the authoritative `obra/superpowers` repository there. Do not delete, relocate, merge with, or overwrite the existing directory. Run the complete validation afterward.
+- **Unchanged now:** Every file in the occupied destination, all upstream files, the sentinel plugin, the user note, and their recorded hashes remain unchanged.
+- **Issue mutation:** **None.**
+
+### F. Missing `blockedBy` and missing `--remove-label`
+
+- **Failed checks:**
+  - Required issue intake cannot return `blockedBy`.
+  - `gh issue edit` cannot demonstrate label removal support.
+  These are capability-surface failures regardless of the displayed `gh` version.
+- **Compatibility report:** **No.** Compatibility is unknown and fails closed.
+- **Exact recovery:** Install or upgrade GitHub CLI through an approved system channel to a version/capability surface that:
+  - returns every required intake field, including `blockedBy`;
+  - supports both label addition and removal;
+  - supports issue closure reasons.
+
+  Then authenticate it, rerun the exact required intake against a real issue, recheck both help surfaces, and rerun all named conformance checks.
+- **Unchanged now:** The real issue, all labels and relationships, sentinel plugin, upstream files, user note, and their hashes remain unchanged.
+- **Issue mutation:** **None.** In particular, no lifecycle transition is allowed because atomic removal/addition cannot be established—and the assessment itself is read-only.
+`````

@@ -30,3 +30,20 @@
 
 - `claude plugin validate --strict .` exited 1. Claude Code 2.1.241 reported two warnings: missing marketplace `description` and missing plugin `author`.
 - Both fields are supported optional metadata in the current official Claude docs. Strict validation is the plan's gate, so this candidate cannot pass unchanged.
+
+## Task 2 — pinned guide
+
+### Documentation RED
+
+- `README.md` links the Codex guide but has no Claude Code guide link.
+- `docs/installing-claude-code.md` does not exist.
+- No adopter-facing Claude instructions yet provide a reviewed 40-character source commit, origin/publication preflight, native marketplace and plugin commands, an existing target-repository issue for read-only native intake, a setup request, or three-skill fresh-session discovery.
+
+### Documentation GREEN
+
+- `README.md` links `docs/installing-claude-code.md`.
+- The guide requires a reviewed 40-character published commit, checks the exact clone origin and resolved SHA, inspects both Claude manifests and root skills, and validates the native package before installation.
+- It shows `claude plugin marketplace add $backplaneCheckout`, `claude plugin install superpowers-backplane@superpowers-backplane --scope user`, and `claude plugin list` for one canonical Backplane package.
+- It accepts an existing target-repository issue, shows the complete read-only native intake fields, and requests setup in a new Claude session.
+- It names all three fresh-session skill identities and defers pinned update, rollback, and Backplane-only uninstall to #19. It does not change issues during setup or require a consuming-project runtime or edits to `.agents/superpowers`.
+- Verification: 14 required guide strings were present; PowerShell parsed all three command blocks with zero syntax errors; the README link and forbidden-command scan passed. Full pinned-source replay remains Task 3.

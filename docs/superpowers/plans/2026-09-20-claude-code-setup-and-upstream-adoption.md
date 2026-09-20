@@ -1,0 +1,221 @@
+# Claude Code Setup and Upstream Adoption Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Verify issue #18's three Claude Code upstream setup modes and failure preservation, and make the existing installation guide accurately describe the verified behavior.
+
+**Architecture:** Keep the root Claude plugin and canonical Backplane skills from #17. Refine the guide's setup section without adding a second installer or changing the shared skill contract. Use isolated Claude profiles and disposable source fixtures to observe native package adoption, sibling checkout adoption, and absent-upstream installation. Record each host result and each failure probe with before/after preservation evidence.
+
+**Tech Stack:** Markdown, Claude Code native plugin CLI, PowerShell as a Windows verification host, Git, and GitHub CLI (`gh`). PowerShell is not an adopter-project runtime.
+
+**Spec:** `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md`, with scope allocation in `docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md`.
+
+**Issue:** https://github.com/tvproductions/superpowers-backplane/issues/18
+
+**Issue revision consumed:** `2026-09-20T16:12:58Z` (complete native intake after the `backplane:designing` transition; body and native graph retained their previous semantics).
+
+**Design authority:** The approved functional and rescope specifications plus the complete #18 issue body. This is a bounded continuation of the existing Claude package and guide; no new package architecture is proposed.
+
+## Global Constraints
+
+- #18 owns native-package, sibling-checkout, and absent-upstream setup; provenance, duplicate-install and `gh` preflight; fresh three-skill discovery; and failure preservation. #19 owns repeat install, update, rollback, uninstall, five-check conformance, and authorized issue-state scenarios. #11 owns final Claude acceptance.
+- Keep the two authored Backplane skills only under root `skills/`. Preserve `.claude-plugin/` package identity and version unless current host evidence proves a required correction. Upstream Superpowers remains a separate installation.
+- A native upstream package must have an upstream-documented authoritative source and an observable installed version or resolved revision. A sibling checkout must have exact `obra/superpowers` origin, observable commit, required skills, and operational discovery. Unknown or versionless source stays `UNKNOWN`.
+- A dirty authoritative sibling checkout may be adopted in place if compatible and discoverable; an update of that checkout must be refused. Do not update, replace, or remove any existing upstream installation as a side effect of setup.
+- Use the current upstream-documented stable Claude Code installation channel when upstream is absent. The upstream default branch requires an explicit edge selection. Do not advance this repository's `.agents/superpowers` checkout.
+- Live checks require an authenticated **disposable** Claude Code profile. Never copy credentials or repeatedly initiate login. If the disposable profile is signed out, record `UNKNOWN`, request authentication once, and pause only the dependent live checks.
+- Use `gh` for GitHub. Setup and all failed probes are read-only with respect to issue state. Use an existing issue only for complete native intake; never use a production issue as mutation test data.
+- For each mode record Claude Code version, pinned Backplane revision, upstream package/source and version or commit, `gh` auth/intake/label/closure-reason capability, three actual skill identities, and `PASS`/`FAIL`/`UNKNOWN` with evidence.
+- Before **every** Git mutation, `git rev-parse --show-toplevel` must equal `C:/Users/Jeff/source/repos/agents/superpowers-backplane` exactly. Use the root checkout for Git mutation, as required by `AGENTS.md`; isolate host installation in disposable profiles and fixtures. Confirm origin is `https://github.com/tvproductions/superpowers-backplane.git` before a GitHub operation or push.
+- Re-read #18's complete native fields before each lifecycle transition. Reconcile any change from the consumed revision; preserve unrelated labels and exactly one `backplane:*` label while open. Do not ready or activate #18 before this plan is approved and execution starts.
+- No release, new remote, upstream update, skill-text edit, OpenCode work, or full lifecycle claim belongs to this issue.
+
+## File Map
+
+| File | Responsibility |
+|---|---|
+| `docs/installing-claude-code.md` | Explain the three supported upstream modes, ordered setup preflight, and actionable failures. |
+| `tests/scenarios/2026-09-20-claude-code-setup.md` | Record RED baseline, fixture identities, three-mode results, failure matrix, preservation comparisons, and integrated result. |
+| `tests/scenarios/transcripts/2026-09-20-claude-code-setup.md` | Preserve exact setup prompts, relevant unedited host responses, and direct skill-invocation observations without credentials. |
+
+## Shared Host Check Recipe
+
+Run host checks from a neutral disposable project directory with a profile that is already authenticated. Set CLAUDE_CONFIG_DIR only in the child PowerShell process, and restore it afterward. For sibling mode add --plugin-dir followed by the resolved authoritative checkout to the setup invocation; omit it for native and absent modes. Capture output outside tracked source until it has been screened for secrets.
+
+```powershell
+$oldClaudeConfig = $env:CLAUDE_CONFIG_DIR
+try {
+  $env:CLAUDE_CONFIG_DIR = $isolatedProfile
+  $auth = claude auth status --json | ConvertFrom-Json
+  if (-not $auth.loggedIn) { throw 'Disposable Claude profile is not authenticated' }
+  $beforeIssue = gh issue view 18 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url
+  claude -p 'Set up Superpowers Backplane in this Claude Code session.' --permission-mode plan --output-format json --max-turns 20 --append-system-prompt 'Use existing issue tvproductions/superpowers-backplane#18 for read-only intake. Report source, revision, capabilities, and skill identities. Do not mutate GitHub issue state.'
+  foreach ($skill in @('superpowers:using-superpowers','superpowers-backplane:managing-superpowers-backlog','superpowers-backplane:managing-superpowers-handoffs')) {
+    claude -p "Invoke $skill for a harmless read-only discovery check. State whether the actual Skill tool loaded it and from which package." --permission-mode plan --tools Skill --output-format json --max-turns 3
+  }
+  $afterIssue = gh issue view 18 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url
+  if ($beforeIssue -ne $afterIssue) { throw 'Issue state changed during a read-only setup check' }
+} finally {
+  if ($null -eq $oldClaudeConfig) { Remove-Item Env:CLAUDE_CONFIG_DIR -ErrorAction SilentlyContinue }
+  else { $env:CLAUDE_CONFIG_DIR = $oldClaudeConfig }
+}
+```
+
+The direct skill calls and source roots must appear in host output or its session record. A model's final statement alone is insufficient. If the setup run reaches its turn limit, preserve that as UNKNOWN, inspect the actual tool record, and continue only the report in the same session without claiming an unobserved check. If Claude itself updates session metadata, exclude only those identified metadata files from preservation comparisons.
+## Review Focus
+
+1. **Native source with no observable version:** the setup report must stay `UNKNOWN`, even if a skill with the right name loads. Tasks 3–5 check package source, version or revision, and skill identity independently.
+2. **Dirty authoritative checkout:** adoption without update may pass; an attempted update must stop before mutation. Task 4 tests both paths separately.
+3. **Duplicate effective Backplane packages:** an extra marketplace or plugin namespace must produce a conflict and a specific repair action, with unrelated entries preserved. Task 4 inventories both scopes before and after.
+4. **Failed preflight changing state:** a missing `gh` capability or occupied checkout path must leave plugin configuration, user files, upstream source, and the existing issue unchanged. Task 4 compares hashes and native fields.
+5. **Stale host authentication or source:** #17's prior PASS is not #18 evidence. Task 1 checks the current disposable profile and exact source identities; Tasks 3 and 5 require new fresh-session observations.
+
+## Execution Entry After Plan Approval
+
+Integrate the approved plan so its path is reachable on `main`, then re-read #18. Link the integrated plan in its `Superpowers Artifacts` section and reconcile the resulting `updatedAt`. With the approved design, current plan, and resolved #17 blocker, move `backplane:designing` to `backplane:ready`. Move `backplane:ready` to `backplane:active` immediately before the first Task 1 execution action. Re-fetch after each transition and verify one expected Backplane label and preserved unrelated labels. Work on an issue branch in the root checkout after checking the exact Git top level; use disposable host fixtures for isolation. Do not turn a signed-out Claude host into a fabricated PASS.
+
+---
+
+### Task 1: Establish a current, isolated setup baseline
+
+**Files:**
+- Create: `tests/scenarios/2026-09-20-claude-code-setup.md`
+
+**Interfaces:**
+- Consumes: #17's integrated Claude package and guide, approved installation reference, and current upstream Claude installation documentation.
+- Produces: the pinned source and profile inventory that Tasks 2–5 compare against.
+
+- [ ] **Step 1: Recheck current host and authoritative documentation.** Read [Claude plugin structure](https://code.claude.com/docs/en/plugins), [marketplace sources and CLI](https://code.claude.com/docs/en/plugin-marketplaces), [plugin installation](https://code.claude.com/docs/en/discover-plugins), [configuration isolation](https://code.claude.com/docs/en/env-vars), and the installed upstream README's Claude Code installation section. Run `claude --version`, `claude plugin marketplace list --help`, `claude plugin list --help`, `claude plugin install --help`, and `claude auth status --json`. Record the observed version, supported flags, and authentication result. Planning observed Claude Code `2.1.241` and a signed-out default profile; neither is a future live-session result.
+- [ ] **Step 2: Record the RED gap.** Verify that the guide has the #17 clean-install path but no three-mode procedure or complete failure table, and that no #18 scenario/transcript exists yet. Record these observations and the #17 tested package/guide commit and integrated package bytes. Do not rerun #17's smoke as a substitute for #18.
+- [ ] **Step 3: Establish source and GitHub preflight.** Run the following read-only commands and record exact output identities rather than credentials:
+
+  ```powershell
+  git rev-parse --show-toplevel
+  git remote get-url origin
+  git rev-parse HEAD
+  git status --porcelain=v1 -uall
+  git -C .agents/superpowers remote get-url origin
+  git -C .agents/superpowers rev-parse HEAD
+  git -C .agents/superpowers status --porcelain=v1
+  gh auth status
+  gh issue view 18 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url
+  gh issue edit --help
+  gh issue close --help
+  ```
+
+  Require exact project and upstream origins, all 15 issue fields, label add/remove flags, and closure-reason support. The issue query is read-only. Record the Backplane commit chosen for host tests; require its exact full SHA and published availability before using it in an installation guide replay.
+- [ ] **Step 4: Check disposable-profile readiness without copying auth.** Read the #17 scenario's recorded disposable profile path; if it still exists, set `CLAUDE_CONFIG_DIR` for child commands only and run `claude auth status --json`, `claude plugin marketplace list --json`, and `claude plugin list --json`. Record only identity and login status, not tokens or settings contents. If it is absent or signed out, create a new unused profile under the system temporary directory and request one interactive authentication for that profile before Tasks 3–5; keep live scores `UNKNOWN` until then. Do not change the normal Claude profile.
+- [ ] **Step 5: Save and check the baseline.** Create the scenario with a table for each mode and failure case: input/source, expected result, actual result, preservation evidence, and `PASS`/`FAIL`/`UNKNOWN`. Run `git diff --check` and compare the file against this task's observed outputs. Verify the exact Git root, stage only the scenario, run `git diff --cached --check`, verify the root again, and commit `test: record Claude setup baseline`.
+
+### Task 2: Make the Claude setup guide cover each supported mode
+
+**Files:**
+- Modify: `docs/installing-claude-code.md`
+- Modify: `tests/scenarios/2026-09-20-claude-code-setup.md`
+
+**Interfaces:**
+- Consumes: Task 1's current host/docs baseline and existing pinned Backplane installation instructions.
+- Produces: commands and decision rules replayed by Tasks 3–5.
+
+- [ ] **Step 1: Capture guide RED.** Search the current guide for distinct native-package, sibling-checkout, and absent-upstream steps; for exact authoritative-source/version recording; and for recovery actions for unknown source, duplicates, dirty update, occupied path, unavailable `gh`, and incompatible required skills. Record the missing items in the scenario.
+- [ ] **Step 2: Add an ordered preflight section after the setup request.** Keep the existing pinned Backplane clone/install block. Add these rules in this order: (1) inspect `claude plugin marketplace list --json` and `claude plugin list --json`, requiring exactly one effective Backplane plugin and both canonical skills; (2) classify upstream as an already installed native package, a supplied sibling checkout exposed through Claude's supported `--plugin-dir` discovery, or absent; (3) verify upstream source, observable version/revision, and `using-superpowers`, `brainstorming`, `writing-plans`, and `writing-skills`; (4) run `gh auth status`, complete read-only issue intake, and edit/close help checks; (5) start a fresh session and invoke all three skills. State that setup changes no issue state.
+- [ ] **Step 3: Give each mode an exact operator path.** Native mode adopts an already installed, independently identified upstream plugin in place. Sibling mode records its resolved path, exact `obra/superpowers` Git origin, HEAD, clean/dirty status, and required skills, and exposes that checkout through `claude --plugin-dir $siblingCheckout` without relocating it. Absent mode checks the installed upstream README's current Claude instructions, registers its documented official marketplace if needed, and installs `superpowers@claude-plugins-official` into the disposable profile; it records the resulting installed version and source before reporting compatibility. None of these modes implicitly selects upstream's default branch or changes `.agents/superpowers`.
+- [ ] **Step 4: Add a failure/recovery table with explicit stop rules.** Unknown/lookalike source or versionless native package → `UNKNOWN`, identify an authoritative source and observable version/revision. Duplicate Backplane → stop, identify the conflicting ID/scope and remove only after a separately reviewed choice. Dirty authoritative sibling → adopt only without update; refuse an update until owner resolves changes. Occupied checkout path → stop and choose an unused path without deletion. Missing `gh` field/label/closure capability → stop and repair `gh`. Missing upstream skill or incompatible host/source → stop and install/select a compatible authoritative source. An unauthenticated Claude session → `UNKNOWN` and authenticate the disposable profile once. State preservation of user files, unrelated plugins, upstream, and issue state for every failure.
+- [ ] **Step 5: Check the guide against current sources.** Parse every PowerShell command block with the PowerShell parser. Verify the guide still pins a 40-character Backplane commit, requires an existing issue for read-only intake, points to the canonical skill tree, and keeps #19 lifecycle claims pending. Record the checks and `git diff --check`; verify the exact Git root, stage only the guide and scenario, check the staged diff, verify the root again, and commit `docs: describe Claude upstream setup modes`.
+
+### Task 3: Verify native-package and sibling-checkout adoption
+
+**Files:**
+- Modify: `tests/scenarios/2026-09-20-claude-code-setup.md`
+- Create: `tests/scenarios/transcripts/2026-09-20-claude-code-setup.md`
+
+**Interfaces:**
+- Consumes: Task 2's exact guide commands, Task 1's pinned Backplane source, and an authenticated disposable Claude profile.
+- Produces: two separately scored mode rows and an authenticated profile with Backplane installed but no upstream plugin for Tasks 4–5.
+
+- [ ] **Step 1: Recheck the live gate.** With `CLAUDE_CONFIG_DIR` set only for the chosen disposable profile, run `claude auth status --json` and both plugin inventory commands. If authentication is false, leave the dependent live rows `UNKNOWN` and stop those checks until that profile is authenticated; do not attempt another login or copy credentials. Confirm the profile is not the normal Claude profile. Record profile and plugin-config file hashes before mutation, excluding credential material from the transcript.
+- [ ] **Step 2: Native package adoption.** In the authenticated #17 disposable profile if still valid, inspect the enabled `superpowers@superpowers-dev` version and authoritative checkout-backed marketplace from #17; verify source, revision, required skills, and Backplane's separate plugin. Run the guide's exact setup request from a neutral disposable directory in a fresh Claude session, then invoke `superpowers:using-superpowers`, `superpowers-backplane:managing-superpowers-backlog`, and `superpowers-backplane:managing-superpowers-handoffs` directly in fresh read-only sessions. Record host tool calls and source roots, not only model assertions. Require no upstream or issue mutation.
+- [ ] **Step 3: Sibling checkout adoption.** Prepare a second disposable profile with the already reviewed pinned Backplane plugin and no installed upstream plugin. Authenticate that profile once if needed. Run a fresh Claude session with `--plugin-dir` pointing to the clean, authoritative `.agents/superpowers` checkout; request Backplane setup against existing issue #18. Verify the session resolves upstream separately from Backplane, observes exact origin/HEAD/required skills, checks `gh`, and directly invokes the three skills. Require that setup neither clones nor installs another upstream package and that `.agents/superpowers` HEAD/status remain unchanged.
+- [ ] **Step 4: Score and record these two modes.** For native and sibling cases require an authenticated session, exact Backplane revision, authoritative and observable upstream version/revision, all gh capabilities, three direct skill invocations, and unchanged issue state. Capture exact prompts and unedited relevant responses in the transcript, redacting credential-bearing or private data. Compare disposable inventories and upstream checkout before/after. Require that the second profile still has no installed upstream package after sibling adoption; Tasks 4 and 5 need that state. An unresolved required observation is UNKNOWN.
+- [ ] **Step 5: Commit the evidence.** Run git diff --check, inspect the evidence for credentials, verify the exact Git root, stage only scenario/transcript, check the staged diff, verify the root again, and commit test: verify Claude native and sibling setup.
+### Task 4: Verify failure stops and preservation
+
+**Files:**
+- Modify: `tests/scenarios/2026-09-20-claude-code-setup.md`
+- Modify: `tests/scenarios/transcripts/2026-09-20-claude-code-setup.md`
+
+**Interfaces:**
+- Consumes: Task 2's failure/recovery table and Task 3's authenticated second profile before official upstream installation.
+- Produces: one observed result and preservation comparison for each #18 failure class.
+
+- [ ] **Step 1: Build disposable-only inputs and snapshots.** Use the authenticated second disposable profile from Task 3 while it still has Backplane only and no installed upstream plugin. If that profile is signed out, leave live probes UNKNOWN until the same profile is authenticated; do not create a third profile or initiate repeated login. Under an unused system-temporary parent, clone obra/superpowers with gh repo clone and detach at the recorded stable commit; verify exact origin and clean status. Clone a second authoritative fixture and modify only its tracked README.md to create a dirty checkout. In a third fixture remove skills/writing-plans/SKILL.md to isolate missing-skill behavior. Prepare two separate provenance cases: a lookalike plugin with an observable version but false source, and a versionless inventory with an official source field but no installed version or resolved revision. If the current CLI cannot produce the latter, test it as an explicitly synthetic read-only decision probe; never present that as a live-host PASS. Create a second Backplane marketplace identity, an occupied checkout destination, and a gh.cmd shim that exits nonzero; put the shim first in only the child process PATH. Require each fixture to trigger its intended precondition. Before each probe record hashes of target user files and Claude plugin configuration, installed-plugin inventory, fixture HEAD/status, and complete read-only #18 native fields. Never edit .agents/superpowers or a normal Claude profile.
+  Begin the checkout, dirty-state, path-collision, and missing-gh fixtures with these exact commands from the verified repository root. Check every command's exit status and record the resulting path and source; a failed fixture setup is UNKNOWN evidence.
+
+```powershell
+$fixtureRoot = Join-Path $env:TEMP ('backplane-claude-18-' + [guid]::NewGuid().ToString('N'))
+if (Test-Path -LiteralPath $fixtureRoot) { throw 'Fixture path collision' }
+New-Item -ItemType Directory -Path $fixtureRoot | Out-Null
+$upstreamRevision = '5bf4e78011075bcfc0dc295f0724994cd123ee71'
+function Assert-BackplaneRoot {
+  $root = git rev-parse --show-toplevel
+  if ($LASTEXITCODE -ne 0 -or $root -cne 'C:/Users/Jeff/source/repos/agents/superpowers-backplane') { throw "Unexpected Git root: $root" }
+}
+foreach ($name in @('clean','dirty','missing-skill','lookalike')) {
+  $checkout = Join-Path $fixtureRoot $name
+  Assert-BackplaneRoot
+  gh repo clone obra/superpowers $checkout
+  if ($LASTEXITCODE -ne 0) { throw "Upstream fixture clone failed: $name" }
+  Assert-BackplaneRoot
+  git -C $checkout checkout --detach $upstreamRevision
+  if ($LASTEXITCODE -ne 0) { throw "Upstream fixture pin failed: $name" }
+}
+Add-Content -LiteralPath (Join-Path $fixtureRoot 'dirty/README.md') -Value 'Disposable dirty-checkout fixture'
+Remove-Item -LiteralPath (Join-Path $fixtureRoot 'missing-skill/skills/writing-plans/SKILL.md')
+Assert-BackplaneRoot
+git -C (Join-Path $fixtureRoot 'lookalike') remote set-url origin https://github.com/obrafake/superpowers.git
+$occupied = Join-Path $fixtureRoot 'occupied'
+New-Item -ItemType Directory -Path $occupied | Out-Null
+Set-Content -LiteralPath (Join-Path $occupied 'sentinel.txt') -Value 'Preserve this file'
+$shim = Join-Path $fixtureRoot 'shim'
+New-Item -ItemType Directory -Path $shim | Out-Null
+Set-Content -LiteralPath (Join-Path $shim 'gh.cmd') -Value @('@echo off','echo gh fixture unavailable 1>&2','exit /b 1')
+```
+
+  Do not run a real network or repository mutation through the temporary gh shim. Supply the occupied directory as the requested checkout destination; require its sentinel hash to remain unchanged. Build the duplicate Backplane marketplace from a separate disposable clone of the pinned test revision by changing only its marketplace name to backplane-conflict, then check both plugin IDs with claude plugin list --json. The missing-version case is a separately labeled synthetic inventory decision probe if the native CLI cannot produce that state.
+- [ ] **Step 2: Run the distinct negative cases.** In fresh read-only setup requests using the second profile and fixture inputs, test lookalike source, missing version/revision, conflicting Backplane installations, occupied checkout path, unavailable gh capability through the temporary shim, and missing required upstream skill as separate rows. For the duplicate case, install the second Backplane marketplace/plugin only in this disposable profile, observe both plugin IDs, run the refusal probe, then remove that test-only entry and verify the original entry remains before the next case. Require a FAIL or UNKNOWN for the intended reason, the failed check, and a specific repair action. A probe that never reaches its intended condition is UNKNOWN, not a PASS.
+- [ ] **Step 3: Separate dirty adoption from unsafe update.** Present the authoritative dirty sibling checkout for adoption without update and verify that compatible provenance, revision, skills, and discovery can still pass while the checkout remains dirty and unchanged. In a distinct request to update that same dirty checkout, require a refusal before any Git or plugin mutation and an owner-directed cleanup action. This distinction follows `skills/managing-superpowers-backlog/references/installing-superpowers.md` and avoids conflating dirty state with lookalike provenance.
+- [ ] **Step 4: Compare preservation after each case.** Re-run the exact before snapshot for plugin config, unrelated marketplace/plugin entries, fixture/user files, upstream checkout, and #18's native issue fields. Require unchanged content and native state for a stopped setup. If the host itself writes incidental session metadata, identify and exclude only those observed files, never a plugin or issue change. Record commands, exit statuses, the unedited failure result, and the precise before/after comparison. Do not repair a fixture by deleting an unverified path.
+- [ ] **Step 5: Restore the fixture, score, and commit.** Require the second profile again to contain only the pinned Backplane plugin and no upstream plugin before Task 5; otherwise stop and reconcile the fixture. Mark each case `PASS`, `FAIL`, or `UNKNOWN` against its expected stop and preservation result. Require every named #18 failure class to have its own row; a combined probe cannot substitute for an isolated class. Run `git diff --check`, inspect the exact transcript for credentials, verify the Git root, stage only scenario/transcript, check the staged diff, verify the root again, and commit `test: verify Claude setup failure preservation`.
+
+### Task 5: Verify absent-upstream installation through the stable channel
+
+**Files:**
+- Modify: tests/scenarios/2026-09-20-claude-code-setup.md
+- Modify: tests/scenarios/transcripts/2026-09-20-claude-code-setup.md
+
+**Interfaces:**
+- Consumes: Task 4's restored, authenticated second profile with only Backplane installed and Task 2's guide.
+- Produces: the third supported mode score and independently installed official upstream identity.
+
+- [ ] **Step 1: Prove absence.** Start without --plugin-dir. Run claude plugin marketplace list --json and claude plugin list --json in the second disposable profile, requiring exactly one effective Backplane plugin and no upstream plugin. Confirm claude auth status --json is still logged in. If source or login differs, record UNKNOWN and reconcile before installation.
+- [ ] **Step 2: Identify the documented stable channel.** Read the current upstream README's Claude installation section and official Claude marketplace documentation. Ask a read-only setup session to name the channel and exact native commands. Require the upstream-documented claude-plugins-official channel; do not infer a branch checkout. Record the official source before changing the disposable profile.
+- [ ] **Step 3: Replay setup in the disposable profile.** Register the official marketplace with claude plugin marketplace add anthropics/claude-plugins-official only if absent, then run claude plugin install superpowers@claude-plugins-official --scope user. Re-read both JSON inventories; require official source, separate Backplane identity, and an observable upstream version or revision. Never change .agents/superpowers or the normal profile.
+- [ ] **Step 4: Verify fresh discovery and score.** In a new Claude session run the guide's exact setup request against existing issue #18, then directly invoke superpowers:using-superpowers, superpowers-backplane:managing-superpowers-backlog, and superpowers-backplane:managing-superpowers-handoffs. Require gh auth/intake/label/closure capability and unchanged issue state. Record exact prompts, relevant unedited responses, host tool calls, source roots, inventories, and preservation comparison. If installed version/revision or any other required observation is unavailable, score UNKNOWN rather than PASS.
+- [ ] **Step 5: Commit the mode result.** Run git diff --check, inspect both evidence files for credentials, verify the exact Git root, stage only scenario/transcript, check the staged diff, verify the root again, and commit test: verify Claude absent-upstream setup.
+### Task 6: Review integrated #18 evidence and finish the issue
+
+**Files:**
+- Modify: `tests/scenarios/2026-09-20-claude-code-setup.md` only if integration evidence is needed.
+
+**Interfaces:**
+- Consumes: Tasks 1–5's reviewed guide and all mandatory PASS results.
+- Produces: an integrated, reviewable #18 result without claiming #19 or #11 completion.
+
+- [ ] **Step 1: Run the document and package gate.** Run `claude plugin validate --strict .`, PowerShell-parse every guide command block, `git diff --check`, and inspect the full issue-branch diff. Require no edits to canonical skills, Claude manifests, upstream checkout, or unrelated host files. Re-read #18 and reconcile any semantic revision change.
+- [ ] **Step 2: Check coverage and preservation.** Compare every #18 acceptance criterion and verification seam with a named scenario row and transcript evidence. Require three supported modes PASS and every failure class PASS, including separate dirty adoption and dirty-update refusal. An unresolved `FAIL` or `UNKNOWN` prevents submission/completion; record the exact missing observation rather than inferring success from #17.
+- [ ] **Step 3: Review and submit.** Use the repository review workflow on the complete change, resolve Critical and Important findings, then repeat affected checks. Recheck the Git root before each mutation and commit any evidence correction. Submit through the branch-finishing workflow; transition `backplane:active` to `backplane:review` only when the reviewed implementation and worktree verification support it.
+- [ ] **Step 4: Verify integration before closure.** After authorized integration, compare integrated guide and scenario bytes with the tested branch; rerun any seam whose relevant input changed. Run fresh `claude plugin validate --strict .`, document checks, native issue intake, and one installed-package three-skill discovery in the authenticated disposable profile. Confirm the final evidence is reachable from integrated `main`, then close #18 with reason `completed` only if all acceptance criteria pass. Preserve #19 and #11 as open successors and do not claim lifecycle conformance.
+
+## Handoff
+
+This plan is a review artifact until the operator approves its contents and chooses an execution method. The default Claude profile was signed out during planning; the previously authorized #17 disposable profile was observed signed in with separate Backplane and Superpowers plugins. Recheck it at execution. The second disposable profile needs one independent authentication for sibling, failure, and absent-upstream checks; no login is needed to review this plan. #18 remains `backplane:designing` until an approved, current plan and resolved blocker justify readiness.

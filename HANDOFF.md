@@ -132,8 +132,9 @@ defect; its Important preservation-evidence gap was fixed. One Minor control
 character in a failure-probe transcript remains deferred.
 
 This repository has one standalone worktree at its root; do not remove it as a
-feature worktree. The merged feature and verification branches are cleanup
-targets. Claude Code #11 and OpenCode #12 remain the installation leaves; the
+feature worktree. The merged feature and verification branches and ignored
+plan scratch directories were removed. Claude Code #11 and OpenCode #12 remain
+the installation leaves; the
 external pilot #6 still waits for them. No release was part of issue #3.
 
 For the remaining host leaves, make each reviewable slice smaller: package and guide;

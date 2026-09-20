@@ -49,6 +49,12 @@ existing matrix introduction assigned every check to one implementation
 leaf; the publication draft and plan now assign the checks collectively to
 bounded prerequisite leaves with #11/#12 final integrated acceptance.
 
+## Approval
+
+The user approved the revised sibling graph and planning-branch merge in
+conversation on 2026-09-19. The eight-issue creation and ownership update
+now proceed under the approved execution plan.
+
 ## Native graph and documentation verification
 
 Pending approved graph publication and issue mutation. Record actual issue

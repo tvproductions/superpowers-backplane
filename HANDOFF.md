@@ -148,12 +148,12 @@ profile. Issue #3 combined all of these and took too long.
 The user approved a 3-part Claude Code and 5-part OpenCode decomposition
 for planning. Plan review found that turning #11/#12 into non-executable
 parents would leave no valid leaf completion path and keep pilot #6 blocked.
-The revised draft therefore makes the eight new issues siblings under #1
-and keeps #11/#12 as narrow executable final acceptance leaves. The draft design is
+The approved revision therefore makes the eight new issues siblings under #1
+and keeps #11/#12 as narrow executable final acceptance leaves. The design is
 docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md;
-the draft execution plan is
+the execution plan is
 docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md.
-Both are on the local docs/right-size-installation-leaves branch for review.
+Both are on the local docs/right-size-installation-leaves branch for integration.
 Ten exact issue bodies and a current ownership draft are in ignored local
 .superpowers/sdd/2026-09-19-host-leaf-rescoping/. The baseline is recorded in
 tests/scenarios/2026-09-19-host-leaf-rescoping.md.
@@ -162,7 +162,7 @@ The approved v0.1 functional host contract remains unchanged.
 Live intake still showed #11 and #12 OPEN at backplane:backlog with zero
 children and no implementation plans. #6 still has both as native blockers.
 No GitHub issue, host installation, login, or upstream dependency was changed
-during planning. The revised sibling graph still needs written review before
-GitHub mutation. After that review, implement the graph change with gh, keep
-all ten executable host issues at backlog, and give each selected issue its
-own current plan before execution.
+during planning. The user approved the revised sibling graph and planning
+branch merge on 2026-09-19. After integration, implement the graph change
+with gh, keep all ten executable host issues at backlog, and give each
+selected issue its own current plan before execution.

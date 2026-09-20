@@ -1,6 +1,6 @@
 # Host Installation Leaf Rescoping Design
 
-- **Status:** Revised draft after plan review; written approval pending.
+- **Status:** Approved by the user on 2026-09-19 after review of the revised sibling graph.
 - **Scope:** Issues #11 and #12, eight new implementation leaves, and verification ownership.
 - **Functional authority:** docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md.
 - **Observed issue revisions:** #11 2026-09-19T14:11:46Z; #12 2026-09-19T14:11:57Z; pilot #6 2026-08-23T13:55:24Z.

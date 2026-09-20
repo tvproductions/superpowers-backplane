@@ -66,7 +66,7 @@ gh issue view 11 --repo tvproductions/superpowers-backplane --json number,title,
 - Consumes: approved planning branch and exact mutation set
 - Produces: reachable design and plan revisions before issue bodies cite them
 
-- [ ] **Step 1: Review the planning branch.** Require clean staged diff checks, no host package edits, and a review of the spec, plan, and ten issue body files. Do not start issue creation while an important review finding remains.
+- [x] **Step 1: Review the planning branch.** Require clean staged diff checks, no host package edits, and a review of the spec, plan, and ten issue body files. Do not start issue creation while an important review finding remains.
 - [ ] **Step 2: Integrate the approved design and plan.** Use the repository branch-finishing workflow and authorized PR merge. Recheck the exact Git root before each Git mutation. Record the integrated source SHA in the scenario file; issue bodies cite the durable integrated design path.
 - [ ] **Step 3: Re-read #1/#6/#11/#12.** Confirm their semantics and native relationships still match Task 1 before the first GitHub issue mutation. If they drifted, repair the local drafts and re-review the affected text.
 

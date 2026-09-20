@@ -79,7 +79,8 @@ The install guide does not yet exist. These four failures are documentation gaps
 | Backplane-only uninstall | PASS for canonical plugin | Native remove and installed-plugin list showed the exact Backplane ID absent while upstream remained; a fresh session saw no Backplane skills. That extra session misclassified a retained preservation-sentinel config/cache entry as the canonical plugin; see integrated remote transcript. |
 | Preservation and failure probes | PASS for six disposable failure cases and per-operation preservation | CLI/fixture facts and current-cache installed-skill A–F hypothetical responses passed. A bounded guide replay recorded unchanged sentinel, upstream, and user-file identities/hashes after candidate, rollback, and uninstall separately. The versionless upstream was synthetic, not an altered authoritative release. |
 | Three-skill fresh discovery | PASS for upstream modes and remote refs | Native Git plugin, sibling checkout, and official Codex plugin exposed the three skills in fresh sessions. After integration, first, merged, and rollback Git refs each passed separate fresh installed-cache discovery. |
-| Authorized lifecycle and five conformance checks | PASS for review and integration; completion pending | Five named checks passed against the current installed skill content. Disposable issue #13 passed blocked/resume and review reversal. Issue #3 reached review with exactly one lifecycle label, and PR #14 merged; verified completed closure remains pending. |
+| Authorized lifecycle and five conformance checks | PASS | Five named checks passed against the current installed skill content. Disposable issue #13 passed blocked/resume and review reversal. PRs #14 and #15 merged; issues #3 and #13 closed with reason completed after integrated verification. |
+
 ## Task 4: Interim conformance evidence
 
 - Static `skill-structure` PASS: two canonical Backplane `SKILL.md` files, five direct references, exact names and frontmatter, four upstream skill hashes matching the independent checkout and installed cache. The corrected installation reference SHA-256 is `50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D`.
@@ -103,4 +104,11 @@ The install guide does not yet exist. These four failures are documentation gaps
 - Native uninstall removed the exact superpowers-backplane@superpowers-backplane ID, and a fresh session found upstream using-superpowers but no Backplane skills. That extra session incorrectly treated the unrelated backplane-preservation-sentinel configuration/cache as the canonical installed plugin; its plugin-identity conclusion is excluded. The native installed-plugin list and exact remove result establish canonical removal.
 - The disposable profile was restored to the original local marketplace and three scoped plugin IDs with 9/9 pre-probe SHA-256 hashes equal. The normal user profile, credentials, and GitHub issues were untouched by the probe.
 - The integrated cache manifest, two canonical Backplane skills, and installation reference hash-match merged main. Complete gh intake returned all 15 issue fields; label add/remove and closure-reason flags are available. The full command, prompt, response, hash, and caveat record is in [integrated remote verification](transcripts/2026-09-19-codex-integrated-remote.md).
-- Issue #3 remains OPEN at backplane:review after PR submission. Its completed transition and disposable issue #13 closure remain to be verified after this evidence is integrated.
+- Before issue closure, #3 remained OPEN at backplane:review after PR submission. Both completed transitions were verified after PR #15 integrated; see the closure record below.
+
+## Verified closure
+
+- PR #14 merged the package and guide at 40b7df7ec8ff477972ae2b9a8f87bdea0a0fb119; PR #15 merged the evidence at e66ff822c0f29036e4dd104956c3961520c26e53. The evidence PR made no package or guide changes.
+- Integrated main at e66ff822c0f29036e4dd104956c3961520c26e53 passed all 12 acceptance-matrix entries, three fresh remote-ref discovery checks, package and metadata checks, transcript JSON parsing, and complete native issue intake. The disposable Codex profile retained its original three scoped plugin IDs and 9/9 hashes.
+- Issue #3 was observed CLOSED with reason COMPLETED and no lifecycle label at 2026-09-20T00:19:36Z. Disposable issue #13 was observed CLOSED with reason COMPLETED and only its unrelated documentation label at 2026-09-20T00:20:11Z.
+- No release was made.

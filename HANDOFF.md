@@ -96,52 +96,47 @@ Their native dependency edges from completed #2 are now resolved. The user
 approved the Codex #3 plan on 2026-09-19 after reviewing its execution risks.
 `docs/superpowers/plans/2026-09-19-codex-installation-surface.md` is published
 on `main` at `057e80f67e8b6235548030a236415576163fb239` and linked from the
-issue. Issue #3 moved from `backplane:designing` to `backplane:ready` after
-the plan was published; its resulting issue revision is
-`2026-09-19T19:01:03Z`. The plan covers the root Codex package, installation
-guide, isolated lifecycle checks, and fresh conformance. Its plan commit is
-already complete; execution starts by creating a feature branch from the
-synced `main`, re-reading the issue, and moving #3 to `backplane:active` as
-Task 1 begins. Resolve the review's command-context, isolated-session, and
-review-transition gaps during execution before claiming their acceptance
-checks pass. Claude Code #11, OpenCode #12, and self-hosting #5 remain open in
-`backplane:backlog`. The three installation leaves still block the one external
-pilot #6. The package implementations, live host checks, pilot, integration,
-and release remain future work. V0.1 does not assume a standalone Backplane
-executable.
+issue. At plan publication, issue #3 moved to backplane:ready at
+2026-09-19T19:01:03Z. The plan covers the root Codex package, installation
+guide, isolated lifecycle checks, and fresh conformance. Its execution and
+completion are recorded below. Claude Code #11 and OpenCode #12 remain the
+other installation leaves before the external pilot #6. V0.1 does not assume
+a standalone Backplane executable.
 
-## Issue #3 Codex integration checkpoint (2026-09-19)
+## Issue #3 Codex completion checkpoint (2026-09-19)
 
-PR #14 merged the reviewed Codex package and guide into main at
-40b7df7ec8ff477972ae2b9a8f87bdea0a0fb119. The first root-package
-commit 8bfba888599568cc8f729ba6f0c030ace8e6377f and merge commit are
-both reachable from the expected origin. A short-lived
-docs/codex-issue3-verification branch records the required post-merge test;
-integrate it before closing issue #3.
+PR #14 merged the reviewed Codex package and installation guide at
+40b7df7ec8ff477972ae2b9a8f87bdea0a0fb119. PR #15 merged the
+post-integration verification record at e66ff822c0f29036e4dd104956c3961520c26e53.
+The first root-package commit 8bfba888599568cc8f729ba6f0c030ace8e6377f
+and both merge commits are reachable from the expected origin. The evidence PR
+changed no package or guide files.
 
-The disposable authenticated Codex profile completed fresh installed-cache
+The disposable authenticated Codex profile passed fresh installed-cache
 discovery at first, integrated, and rollback Git refs. Marketplace HEAD matched
-the selected immutable SHA at each stage. The installation-reference hash
-changed and returned on rollback. Exact native Backplane removal succeeded;
-an extra fresh response incorrectly called the unrelated preservation sentinel
-the Backplane plugin. The canonical plugin ID and both Backplane skills were
-absent, while upstream remained. The profile was restored with three original
-plugin IDs and 9/9 saved hashes unchanged. Do not start another login or copy
-credentials.
-
-Issue #3 is OPEN at backplane:review, last observed
-2026-09-19T23:57:35Z. Disposable issue #13 is OPEN at backplane:review with
-its unrelated documentation label. The full pre-integration matrix, five named
-conformance checks, six failure cases, and per-operation preservation replay
-passed. The independent reviewer found no package/guide defect; its Important
-preservation-evidence gap was fixed. One Minor control-character issue in a
-failure-probe transcript remains deferred. See
+each immutable SHA; the installation-reference hash changed and returned on
+rollback. Native removal of the exact Backplane plugin succeeded while upstream
+remained. One extra session confused an unrelated preservation sentinel with the
+canonical plugin; its plugin-identity inference is excluded. The profile was
+restored with three original scoped plugin IDs and 9/9 saved hashes unchanged.
+No further login or credential copy is needed. See
 tests/scenarios/2026-09-19-codex-installation.md and its linked transcripts.
 
-Remaining work: merge the verification evidence branch, confirm final main
-still has the tested package files and complete native issue state, close #3
-and disposable #13 with reason completed only after those checks pass, then
-remove integrated feature/verification branches and clean the ignored plan
-workspace. This repository has one standalone worktree at its root; never
-remove the repository root as a feature worktree. Recheck the exact Git root
-before every Git mutation. No release is part of issue #3.
+Final integrated checks found the tested package and guide on main, 12/12
+acceptance-matrix entries passing, five named conformance checks passing, and
+complete native issue intake. Issue #3 is CLOSED/COMPLETED with no lifecycle
+label (observed 2026-09-20T00:19:36Z). Disposable issue #13 is also
+CLOSED/COMPLETED, retaining only its unrelated documentation label (observed
+2026-09-20T00:20:11Z). The independent reviewer found no package or guide
+defect; its Important preservation-evidence gap was fixed. One Minor control
+character in a failure-probe transcript remains deferred.
+
+This repository has one standalone worktree at its root; do not remove it as a
+feature worktree. The merged feature and verification branches are cleanup
+targets. Claude Code #11 and OpenCode #12 remain the installation leaves; the
+external pilot #6 still waits for them. No release was part of issue #3.
+
+For the remaining host leaves, make each reviewable slice smaller: package and guide;
+one host setup mode with its failures; then integrated lifecycle evidence and closure.
+Treat host authentication as an external prerequisite and reuse an authorized isolated
+profile. Issue #3 combined all of these and took too long.

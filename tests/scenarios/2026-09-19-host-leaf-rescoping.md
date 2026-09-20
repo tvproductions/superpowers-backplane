@@ -121,5 +121,15 @@ Implementation boundary; the no-publication sentence remains. All five
 modified Markdown files end with a newline. No live host test was rerun for
 this graph-only change. Independent read-only review found no Critical or
 Important findings after comparing the live issue graph, all ten bodies,
-the matrix, and the approved contract. Integration and a fresh integrated
-graph-to-matrix comparison remain pending.
+the matrix, and the approved contract. Graph-record PR #25 merged on
+2026-09-20 UTC at 96728cfd8cd0eabdd0f89cf5b7409625a8c573ea.
+
+Fresh post-merge verification read the matrix from origin/main and fetched
+#1, #3, #6, #11, #12, and #17-#24 through gh issue view. #1 still has 17
+direct children. All eight new issues remain open backlog leaves under #1
+with the exact approved blockedBy and blocking edges, and every integrated
+current owner URL resolves to its expected issue. #11/#12 retain their
+prerequisite edges; #6 retains exactly #3, #4, #5, #11, and #12 as blockers.
+#3 is CLOSED/COMPLETED. Both negative host-floor owners in the integrated
+matrix are #21 and #23. The integrated graph and matrix agree; no host issue
+was readied, closed, or tested by this redistribution.

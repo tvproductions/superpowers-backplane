@@ -176,3 +176,12 @@ authenticate, change upstream, or run live host tests. No new issue has been
 selected or readied. #17 and #20 have no new unresolved dependency, but the
 project has no priority policy. Each selected issue needs a current approved
 Superpowers plan before execution.
+
+Graph-record PR #25 merged the current ownership matrix and handoff on
+2026-09-20 UTC at 96728cfd8cd0eabdd0f89cf5b7409625a8c573ea. Fresh
+post-merge gh intake of #1, #3, #6, #11, #12, and #17-#24 matched the matrix
+read from origin/main: 17 direct children under #1, all eight new leaves
+open with one backlog label, both final leaves still blocking #6, and the
+original five #6 blockers intact. #3 remains CLOSED/COMPLETED. The
+redistribution is complete; Claude Code and OpenCode implementation and
+live host verification remain future work.

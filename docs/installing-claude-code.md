@@ -94,6 +94,54 @@ Start a new Claude Code session. Tell Claude the target repository and existing 
 
 > Set up Superpowers Backplane in this Claude Code session.
 
+### Setup preflight in the Claude session
+
+Use the target issue for read-only intake only. Setup must leave GitHub issue state unchanged. Follow this order before reporting compatibility:
+
+1. Run `claude plugin marketplace list --json` and `claude plugin list --json` in the active Claude profile. Resolve marketplace sources and enabled plugin IDs. Require exactly one effective `superpowers-backplane` plugin at the reviewed revision, with `managing-superpowers-backlog` and `managing-superpowers-handoffs` from its canonical `skills/` tree. If another user, project, local, or session plugin supplies Backplane, report the conflict before adding anything.
+2. Classify upstream Superpowers as an installed native plugin, a supplied sibling Git checkout loaded for this session with `--plugin-dir`, or absent. Do not treat a skill name alone as package provenance.
+3. For an installed native package, identify its authoritative marketplace or documented source, installed version or resolved commit, and effective plugin ID. For a sibling checkout, verify its exact `https://github.com/obra/superpowers.git` origin, HEAD, clean or dirty status, and Claude plugin identity. In either case, require `using-superpowers`, `brainstorming`, `writing-plans`, and `writing-skills` from that independent source. A source without observable version or revision stays `UNKNOWN` even when its skills load. Keep any existing upstream installation in place; a dirty authoritative checkout may be adopted without updating it.
+4. Run `gh auth status`, the complete read-only `gh issue view ... --json` command above, `gh issue edit --help`, and `gh issue close --help`. Require all 15 issue fields, label addition and removal, and a closure reason. A displayed CLI version alone is insufficient.
+5. Start a fresh Claude session with the same upstream mode and invoke `superpowers:using-superpowers`, `superpowers-backplane:managing-superpowers-backlog`, and `superpowers-backplane:managing-superpowers-handoffs` separately with harmless read-only requests. Record the actual Skill tool loads and package roots. An inventory entry or the model's final statement alone is insufficient.
+
+### Select the upstream source
+
+**Already installed native package.** Leave it installed. Inspect its enabled plugin ID, source marketplace, installed version or resolved revision, and required skills. An authoritative `obra/superpowers` package source or upstream-documented Claude channel is acceptable. Record Backplane and upstream identities separately, run the preflight above, then start fresh sessions for the three direct skill checks. Do not refresh, replace, or remove upstream during setup.
+
+**Compatible sibling checkout.** Resolve an independently managed checkout before launch. Require exact `https://github.com/obra/superpowers.git` origin, a recorded full HEAD, the upstream Claude plugin manifest, and all four required skill files. Record `git status --porcelain=v1`; a dirty checkout can be adopted in place, but an update request must stop until its owner resolves those changes. From the target project, pass the same resolved path to the setup session and each fresh discovery session:
+
+```powershell
+$upstreamCheckout = (Resolve-Path -LiteralPath (Read-Host 'Existing Superpowers checkout') -ErrorAction Stop).Path
+$upstreamOrigin = git -C $upstreamCheckout remote get-url origin
+if ($LASTEXITCODE -ne 0 -or $upstreamOrigin.Trim() -cne 'https://github.com/obra/superpowers.git') { throw 'Choose the authoritative obra/superpowers checkout' }
+$upstreamRevision = git -C $upstreamCheckout rev-parse HEAD
+if ($LASTEXITCODE -ne 0 -or $upstreamRevision.Trim() -cnotmatch '^[0-9a-f]{40}$') { throw 'Superpowers revision is unavailable' }
+$upstreamStatus = git -C $upstreamCheckout status --porcelain=v1
+if ($LASTEXITCODE -ne 0) { throw 'Superpowers checkout status is unavailable' }
+foreach ($skill in @('using-superpowers','brainstorming','writing-plans','writing-skills')) {
+  if (-not (Test-Path -LiteralPath (Join-Path $upstreamCheckout "skills/$skill/SKILL.md"))) { throw "Missing upstream skill: $skill" }
+}
+claude --plugin-dir $upstreamCheckout
+```
+
+In that session, send the setup request above with the target issue. Launch every fresh skill-check session with `claude --plugin-dir $upstreamCheckout` as well. Record the checkout path, full HEAD, status, and loaded skill roots. This flag does not relocate or update the checkout. If your selected upstream origin uses another transport, first establish its authoritative `obra/superpowers` identity; do not silently accept a lookalike URL.
+
+**Upstream absent.** Start the setup request in an authenticated disposable Claude profile with Backplane installed and no upstream plugin or sibling `--plugin-dir`. Keep normal host permissions so the session can request approval. The setup workflow reads [upstream's current Claude installation instructions](https://github.com/obra/superpowers#claude-code), identifies the current compatible stable release and official `claude-plugins-official` channel, and asks for the exact host commands before running them. If the official marketplace is not already available and current Claude documentation calls for registration, review and approve `claude plugin marketplace add anthropics/claude-plugins-official` first. Then approve `claude plugin install superpowers@claude-plugins-official --scope user` in that same setup session. Inspect the resulting marketplace source, installed plugin version or resolved revision, and four required upstream skills before fresh three-skill discovery. If the host cannot expose a version or revision, report `UNKNOWN`. Do not select upstream's default branch unless the operator explicitly chooses the edge channel; do not change this repository's `.agents/superpowers` checkout.
+
+### Stop and recovery rules
+
+A failed preflight must leave user files, unrelated marketplaces and plugins, the existing upstream source, and GitHub issue state intact. Report the failed check, observed identity, and the next safe repair action.
+
+| Check that failed | Result and recovery |
+|---|---|
+| Unknown or lookalike upstream source; native package without observable version or revision | `UNKNOWN`. Establish an authoritative upstream source and observable installed version or full revision before claiming compatibility. Skill names alone do not resolve it. |
+| More than one effective Backplane package | Stop. Name each conflicting plugin ID and scope; review which one to keep before removing only the selected duplicate. Preserve unrelated plugin entries. |
+| Dirty authoritative sibling checkout | Adoption without an update may proceed if provenance and skills pass. Refuse an update until the checkout owner resolves its changes. Never reset or overwrite it during setup. |
+| Occupied checkout destination | Stop before clone or file changes. Choose an unused path; preserve the occupant without deletion. |
+| Missing `gh` authentication, native issue field, label add/remove, or closure-reason capability | Stop. Authenticate or repair `gh`, then repeat the failed capability check and complete read-only intake. Do not change the issue to test a capability. |
+| Missing upstream skill, incompatible Claude host, or incompatible source | Stop. Select or install a compatible authoritative upstream release through the documented host channel, then repeat preflight. Preserve the old installation. |
+| Unauthenticated Claude session | `UNKNOWN`. Authenticate the disposable profile once, then restart the dependent fresh-session checks. Do not copy credentials from a normal profile. |
+
 The setup agent follows the [Backplane installation and compatibility reference](../skills/managing-superpowers-backlog/references/installing-superpowers.md). It must find exactly one effective Backplane plugin and both canonical skills, then adopt a separate operational upstream Superpowers plugin with an authoritative source and observable version or revision. If upstream is absent, use [upstream Superpowers' current Claude Code installation channel](https://github.com/obra/superpowers#claude-code) and its compatible stable release. Do not replace or update an existing upstream installation as a side effect.
 
 The response must identify the Backplane plugin and revision, independent upstream package and source/version or commit, authenticated `gh` with complete read-only intake of the target issue and label/closure capabilities, and the three skill identities. If any result cannot be established, report `UNKNOWN` with the failed check and a recovery action. Setup must not change GitHub issue state.

@@ -173,3 +173,48 @@ Tool result: Launching skill: superpowers-backplane:managing-superpowers-handoff
 Injected Base directory for this skill: C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane\skills\managing-superpowers-handoffs
 
 ```
+
+## Integrated main fresh-session replay
+
+Integrated main commit: c03c4e4b52272fddd336c040d339b1285d552d0c. Installed Backplane source remained the pinned d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a; upstream remained v6.4.1 at 5bf4e78011075bcfc0dc295f0724994cd123ee71. The session used the same disposable profile and empty neutral project.
+
+Fresh session: 5e4b06f7-06c1-48db-a9dd-c04691f27ba2. CLI: claude -p with --output-format json, --permission-mode plan, --tools Skill, and --max-turns 5.
+
+Exact prompt:
+```text
+In this fresh read-only session, invoke these three installed skills and report whether each loaded: superpowers:using-superpowers; superpowers-backplane:managing-superpowers-backlog; superpowers-backplane:managing-superpowers-handoffs. Use only the Skill tool and do not change files or issue state.
+```
+
+Unedited response:
+```text
+All three skills loaded successfully. No files were read or written, and no backlog/issue state was touched.
+
+| Skill | Loaded | Evidence |
+|---|---|---|
+| `superpowers:using-superpowers` | Yes | Full body returned ("The Rule", Skill Priority, Red Flags, Platform Adaptation, User Instructions). Base dir: `C:\Users\Jeff\source\repos\agents\superpowers-backplane\.agents\superpowers\skills\using-superpowers` |
+| `superpowers-backplane:managing-superpowers-backlog` | Yes | Full body returned ("Managing the Superpowers Backlog" — intake, product arc, evidence-based transitions). Base dir: `...\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane\skills\managing-superpowers-backlog` |
+| `superpowers-backplane:managing-superpowers-handoffs` | Yes | Full body returned ("Managing Superpowers Handoffs" — CREATE/RESUME contracts, red flags). Base dir: `...\superpowers-backplane\skills\managing-superpowers-handoffs` |
+
+Two observations from the load, not acted on:
+
+- The two skill families resolve to **different roots**: `using-superpowers` came from the repo checkout at `C:\Users\Jeff\source\repos\agents\superpowers-backplane\.agents\superpowers\`, while the backplane skills came from a temp session directory (`...\backplane-claude-17-source-...\superpowers-backplane\skills\`). Worth knowing if you expect a single install root.
+- `using-superpowers` was also injected verbatim by the SessionStart hook before my first turn, so it was in context twice; the explicit invocation confirms the Skill tool path resolves it independently.
+
+Neither backplane skill was *executed* — no CREATE, RESUME, issue intake, or lifecycle transition was performed, since you asked only for load verification. Both reference files they depend on (`references/handoff-contract.md`, `references/resume-assessment.md`, `references/github-issue-contract.md`) were not read; loading the skill body does not fetch them, so their presence on disk is unverified.
+```
+
+Direct host excerpts from the session JSONL:
+```text
+Skill tool call: superpowers:using-superpowers (id toolu_01AD4MyZQFV5M4xdDU8dhudB)
+Tool result: Launching skill: superpowers:using-superpowers
+Injected Base directory for this skill: C:\Users\Jeff\source\repos\agents\superpowers-backplane\.agents\superpowers\skills\using-superpowers
+
+Skill tool call: superpowers-backplane:managing-superpowers-backlog (id toolu_01FzS4ea1dgpv8xXZkabiTCQ)
+Tool result: Launching skill: superpowers-backplane:managing-superpowers-backlog
+Injected Base directory for this skill: C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane\skills\managing-superpowers-backlog
+
+Skill tool call: superpowers-backplane:managing-superpowers-handoffs (id toolu_01VqvNHnqG4D23kGqa1iWwTm)
+Tool result: Launching skill: superpowers-backplane:managing-superpowers-handoffs
+Injected Base directory for this skill: C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane\skills\managing-superpowers-handoffs
+
+```

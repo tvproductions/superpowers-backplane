@@ -108,7 +108,7 @@ Use the target issue for read-only intake only. Setup must leave GitHub issue st
 
 **Already installed native package.** Leave it installed. Inspect its enabled plugin ID, source marketplace, installed version or resolved revision, and required skills. An authoritative `obra/superpowers` package source or upstream-documented Claude channel is acceptable. Record Backplane and upstream identities separately, run the preflight above, then start fresh sessions for the three direct skill checks. Do not refresh, replace, or remove upstream during setup.
 
-**Compatible sibling checkout.** Resolve an independently managed checkout before launch. Require exact `https://github.com/obra/superpowers.git` origin, a recorded full HEAD, the upstream Claude plugin manifest, and all four required skill files. Record `git status --porcelain=v1`; a dirty checkout can be adopted in place, but an update request must stop until its owner resolves those changes. From the target project, pass the same resolved path to the setup session and each fresh discovery session:
+**Compatible sibling checkout.** Resolve an independently managed checkout before launch. Require an exact `obra/superpowers` HTTPS or SSH origin, a recorded full HEAD, the upstream Claude plugin manifest, and all four required skill files. Record `git status --porcelain=v1`; a dirty checkout can be adopted in place, but an update request must stop until its owner resolves those changes. From the target project, pass the same resolved path to the setup session and each fresh discovery session:
 
 ```powershell
 $upstreamCheckout = (Resolve-Path -LiteralPath (Read-Host 'Existing Superpowers checkout') -ErrorAction Stop).Path

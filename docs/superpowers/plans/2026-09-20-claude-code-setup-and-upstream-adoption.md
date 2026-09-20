@@ -79,6 +79,77 @@ function Invoke-BackplaneHostCheck {
 
 Call `Invoke-BackplaneHostCheck` once per mode with Task 1's recorded disposable profile path and `-Mode native` or `-Mode sibling -SiblingCheckout` set to the resolved `.agents/superpowers` checkout. The direct skill calls and source roots must appear in host output or its session record. A model's final statement alone is insufficient. If the setup run reaches its turn limit, preserve that as UNKNOWN, inspect the actual tool record, and continue only the report in the same session without claiming an unobserved check. If Claude itself updates session metadata, exclude only those identified metadata files from preservation comparisons.
 
+## Interactive Host Probe Recipe
+
+Use this runner for Task 4 failure probes and Task 5's absent-upstream setup. Supply the absolute second-profile path recorded in Task 3. It must resolve below the system temporary directory; an accidental normal-profile path fails before Claude starts. The runner creates and records a neutral disposable project directory, verifies authentication and plugin inventory in the selected profile, passes a sibling checkout to the session when supplied, limits a `gh` fixture to its named probe, and restores location and process environment on exit. Keep the interactive Claude session open through any Task 5 marketplace and plugin commands; type the exact task prompt after it starts. Preserve the tool and permission record, then compare state before fixture teardown.
+
+```powershell
+function Start-BackplaneInteractiveProbe {
+  [CmdletBinding()]
+  param(
+    [Parameter(Mandatory = $true)][string]$IsolatedProfile,
+    [string]$SiblingCheckout,
+    [ValidateSet('none','auth','intake','label','closure')][string]$GhProbe = 'none',
+    [string]$ShimDirectory
+  )
+  $profile = (Resolve-Path -LiteralPath $IsolatedProfile -ErrorAction Stop).Path
+  $temporaryParent = (Resolve-Path -LiteralPath $env:TEMP -ErrorAction Stop).Path.TrimEnd('\','/')
+  if (-not $profile.StartsWith(($temporaryParent + '\'), [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Claude profile must be a disposable directory below the system temporary directory'
+  }
+  $pluginArgs = @()
+  $resolvedSibling = $null
+  if ($SiblingCheckout) {
+    $resolvedSibling = (Resolve-Path -LiteralPath $SiblingCheckout -ErrorAction Stop).Path
+    $pluginArgs = @('--plugin-dir', $resolvedSibling)
+  }
+  if ($GhProbe -ne 'none' -and -not (Test-Path -LiteralPath (Join-Path $ShimDirectory 'gh.cmd') -PathType Leaf)) {
+    throw 'The requested gh probe needs the verified temporary gh.cmd fixture'
+  }
+  $previous = @{
+    CLAUDE_CONFIG_DIR = [Environment]::GetEnvironmentVariable('CLAUDE_CONFIG_DIR','Process')
+    PATH = [Environment]::GetEnvironmentVariable('PATH','Process')
+    BACKPLANE_GH_PROBE = [Environment]::GetEnvironmentVariable('BACKPLANE_GH_PROBE','Process')
+    BACKPLANE_REAL_GH = [Environment]::GetEnvironmentVariable('BACKPLANE_REAL_GH','Process')
+  }
+  $pushed = $false
+  try {
+    $env:CLAUDE_CONFIG_DIR = $profile
+    if ($GhProbe -ne 'none') {
+      $realGh = (Get-Command gh.exe -CommandType Application -ErrorAction Stop).Source
+      $env:BACKPLANE_REAL_GH = $realGh
+      $env:BACKPLANE_GH_PROBE = $GhProbe
+      $env:PATH = (Resolve-Path -LiteralPath $ShimDirectory -ErrorAction Stop).Path + [IO.Path]::PathSeparator + $previous.PATH
+      $selectedGh = (Get-Command gh -CommandType Application -ErrorAction Stop).Source
+      if ($selectedGh -ne (Join-Path (Resolve-Path -LiteralPath $ShimDirectory).Path 'gh.cmd')) {
+        throw 'Temporary gh fixture is not first on PATH'
+      }
+    }
+    $auth = claude auth status --json | ConvertFrom-Json
+    if ($LASTEXITCODE -ne 0 -or -not $auth.loggedIn) { throw 'Disposable Claude profile is not authenticated' }
+    $inventory = claude plugin list --json | ConvertFrom-Json
+    if ($LASTEXITCODE -ne 0) { throw 'Disposable plugin inventory failed' }
+    $sessionDirectory = Join-Path $env:TEMP ('backplane-claude-18-session-' + [guid]::NewGuid().ToString('N'))
+    New-Item -ItemType Directory -Path $sessionDirectory -ErrorAction Stop | Out-Null
+    Write-Output "Profile: $profile"
+    Write-Output "Session directory: $sessionDirectory"
+    Write-Output "Sibling checkout: $resolvedSibling"
+    Write-Output "gh probe: $GhProbe"
+    Push-Location -LiteralPath $sessionDirectory
+    $pushed = $true
+    claude @pluginArgs --permission-mode default
+    if ($LASTEXITCODE -ne 0) { throw 'Interactive Claude session failed; record UNKNOWN' }
+  } finally {
+    if ($pushed) { Pop-Location }
+    foreach ($name in $previous.Keys) {
+      [Environment]::SetEnvironmentVariable($name, $previous[$name], 'Process')
+    }
+  }
+}
+```
+
+For each invocation, first compare the profile path, selected `gh` executable when a shim is active, plugin inventory, and sibling path with the intended fixture. If any differs, stop and mark that probe `UNKNOWN`. The standard interactive prompt is: “Set up Superpowers Backplane in this Claude Code session. Use tvproductions/superpowers-backplane#18 only for read-only native issue intake. Do not change GitHub issue state.” Append the case-specific instruction from Task 4, or the absent-upstream instruction from Task 5. Record the exact combined prompt and permission decisions.
+
 ## Review Focus
 
 1. **Native source with no observable version:** the setup report must stay `UNKNOWN`, even if a skill with the right name loads. Tasks 3–5 check package source, version or revision, and skill identity independently.
@@ -165,10 +236,11 @@ Integrate the approved plan so its path is reachable on `main`, then re-read #18
 - Consumes: Task 2's failure/recovery table and Task 3's authenticated second profile before official upstream installation.
 - Produces: one observed result and preservation comparison for each #18 failure class.
 
-- [ ] **Step 1: Build disposable-only inputs and snapshots.** Use the authenticated second disposable profile from Task 3 while it still has Backplane only and no installed upstream plugin. If that profile is signed out, leave live probes UNKNOWN until the same profile is authenticated; do not create a third profile or initiate repeated login. Under an unused system-temporary parent, clone obra/superpowers with gh repo clone and detach at the recorded stable commit; verify exact origin and clean status. Clone a second authoritative fixture and modify only its tracked README.md to create a dirty checkout. In a third fixture remove skills/writing-plans/SKILL.md to isolate missing-skill behavior. Prepare two separate provenance cases: a lookalike plugin with an observable version but false source, and a versionless inventory with an official source field but no installed version or resolved revision. If the current CLI cannot produce the latter, test it as an explicitly synthetic read-only decision probe; never present that as a live-host PASS. Create a second Backplane marketplace identity, an occupied checkout destination, and a gh.cmd shim that exits nonzero; put the shim first in only the child process PATH. Require each fixture to trigger its intended precondition. For each probe, stage its intended fixture first, then record hashes of target user files and Claude plugin configuration, installed-plugin inventory, fixture HEAD/status, and complete read-only #18 native fields before requesting setup. Never edit .agents/superpowers or a normal Claude profile.
+- [ ] **Step 1: Build disposable-only inputs and snapshots.** Use the authenticated second disposable profile from Task 3 while it still has Backplane only and no installed upstream plugin. If that profile is signed out, leave live probes UNKNOWN until the same profile is authenticated; do not create a third profile or initiate repeated login. Under an unused system-temporary parent, clone obra/superpowers with gh repo clone and detach at the recorded stable commit; verify exact origin and clean status. Clone a second authoritative fixture and modify only its tracked README.md to create a dirty checkout. In a third fixture remove skills/writing-plans/SKILL.md to isolate missing-skill behavior. Prepare two separate provenance cases: a lookalike plugin with an observable version but false source, and a versionless inventory with an official source field but no installed version or resolved revision. If the current CLI cannot produce the latter, test it as an explicitly synthetic read-only decision probe; never present that as a live-host PASS. Create a second Backplane marketplace identity, an occupied checkout destination, and a read-only gh.cmd shim with selectable auth, intake, label-help, and closure-help failures; the interactive runner puts that shim first on PATH only for its named case. Require each fixture to trigger its intended precondition. For each probe, stage its intended fixture first, then record hashes of target user files and Claude plugin configuration, installed-plugin inventory, fixture HEAD/status, and complete read-only #18 native fields before requesting setup. Never edit .agents/superpowers or a normal Claude profile.
   Begin the checkout, dirty-state, path-collision, and missing-gh fixtures with these exact commands from the verified repository root. Check every command's exit status and record the resulting path and source; a failed fixture setup is UNKNOWN evidence.
 
 ```powershell
+$secondProfile = (Resolve-Path -LiteralPath (Read-Host 'Task 3 recorded second disposable Claude profile path') -ErrorAction Stop).Path
 $fixtureRoot = Join-Path $env:TEMP ('backplane-claude-18-' + [guid]::NewGuid().ToString('N'))
 if (Test-Path -LiteralPath $fixtureRoot) { throw 'Fixture path collision' }
 New-Item -ItemType Directory -Path $fixtureRoot | Out-Null
@@ -195,13 +267,69 @@ New-Item -ItemType Directory -Path $occupied | Out-Null
 Set-Content -LiteralPath (Join-Path $occupied 'sentinel.txt') -Value 'Preserve this file'
 $shim = Join-Path $fixtureRoot 'shim'
 New-Item -ItemType Directory -Path $shim | Out-Null
-Set-Content -LiteralPath (Join-Path $shim 'gh.cmd') -Value @('@echo off','echo gh fixture unavailable 1>&2','exit /b 1')
+$shimSource = @'
+@echo off
+if /I "%~1"=="--version" goto forward
+if /I "%~1"=="auth" if /I "%~2"=="status" goto auth
+if /I "%~1"=="issue" if /I "%~2"=="view" goto intake
+if /I "%~1"=="issue" if /I "%~2"=="edit" if /I "%~3"=="--help" goto label
+if /I "%~1"=="issue" if /I "%~2"=="close" if /I "%~3"=="--help" goto closure
+echo gh fixture blocks commands outside read-only preflight 1>&2
+exit /b 1
+:auth
+if /I "%BACKPLANE_GH_PROBE%"=="auth" goto unavailable
+goto forward
+:intake
+if /I "%BACKPLANE_GH_PROBE%"=="intake" (
+  echo unknown JSON field: closedByPullRequestsReferences 1>&2
+  exit /b 1
+)
+goto forward
+:label
+if /I "%BACKPLANE_GH_PROBE%"=="label" (
+  echo Usage: gh issue edit ISSUE
+  echo Flags: --title --body
+  exit /b 0
+)
+goto forward
+:closure
+if /I "%BACKPLANE_GH_PROBE%"=="closure" (
+  echo Usage: gh issue close ISSUE
+  echo Flags: --comment
+  exit /b 0
+)
+goto forward
+:unavailable
+echo gh fixture capability unavailable 1>&2
+exit /b 1
+:forward
+"%BACKPLANE_REAL_GH%" %*
+exit /b %ERRORLEVEL%
+'@
+Set-Content -LiteralPath (Join-Path $shim 'gh.cmd') -Value $shimSource -Encoding ascii
 ```
 
-  Do not run a real network or repository mutation through the temporary gh shim. Supply the occupied directory as the requested checkout destination; require its sentinel hash to remain unchanged. Build the duplicate Backplane marketplace from a separate disposable clone of the pinned test revision by changing only its marketplace name to backplane-conflict, then check both plugin IDs with claude plugin list --json. The missing-version case is a separately labeled synthetic inventory decision probe if the native CLI cannot produce that state.
-- [ ] **Step 2: Define the immediate preservation check.** For each case, immediately after its setup probe and before any fixture teardown, re-run the exact before snapshot for plugin config, unrelated marketplace/plugin entries, fixture/user files, upstream checkout, and #18's native issue fields. Require unchanged content and native state for a stopped setup. Compare the duplicate case against its snapshot with both plugins installed, before removing the test-only plugin. If the host itself writes incidental session metadata, identify and exclude only those observed files, never a plugin or issue change. Record commands, exit statuses, unedited failure result, and precise before/after comparison. Do not repair a fixture by deleting an unverified path.
-- [ ] **Step 3: Run the distinct negative cases.** In fresh interactive Claude sessions using normal permission mode, the second profile, and fixture inputs, test lookalike source, missing version/revision, conflicting Backplane installations, occupied checkout path, unavailable gh capability through the temporary shim, and missing required upstream skill as separate rows. Approve read-only preflight and fixture-scoped actions needed to reach the failing condition. If setup requests a write to user files, plugin configuration, existing upstream, or issue state before reporting the failed check, record the request as FAIL and deny it. Do not score preservation from a plan-mode run alone; an explicitly synthetic inventory decision probe remains read-only and cannot count as a live-host PASS. For the duplicate case, install the second Backplane marketplace/plugin in this disposable profile, observe both IDs, take the case's before snapshot with both installed, run the refusal probe, and perform Step 2's comparison before removing the test-only entry. After comparison, remove that entry and separately verify that the original entry remains. Require a FAIL or UNKNOWN for the intended reason, the failed check, and a specific repair action. A probe that never reaches its intended condition is UNKNOWN, not a PASS.
-- [ ] **Step 4: Separate dirty adoption from unsafe update.** Present the authoritative dirty sibling checkout through `--plugin-dir` in each fresh session for adoption without update and verify that compatible provenance, revision, skills, and discovery can still pass while the checkout remains dirty and unchanged. In a distinct normal-permission session with the same `--plugin-dir` checkout, request an update and require a refusal before any Git or plugin mutation and an owner-directed cleanup action; apply Step 2's immediate preservation comparison before fixture teardown. This distinction follows `skills/managing-superpowers-backlog/references/installing-superpowers.md` and avoids conflating dirty state with lookalike provenance.
+  The temporary gh shim forwards only read-only preflight commands to the real gh executable and blocks every mutation command. Verify each selected failure response before running Claude. Supply the occupied directory as the requested checkout destination; require its sentinel hash to remain unchanged. Build the duplicate Backplane marketplace from a separate disposable clone of the pinned test revision by changing only its marketplace name to backplane-conflict, then check both plugin IDs with claude plugin list --json. The missing-version case is a separately labeled synthetic inventory decision probe if the native CLI cannot produce that state.
+- [ ] **Step 2: Define the immediate preservation check.** For each case, immediately after its setup probe and before any fixture teardown, re-run the exact before snapshot for plugin config, unrelated marketplace/plugin entries, fixture/user files, upstream checkout, and #18's native issue fields. Require unchanged content and native state for a stopped setup and for adoption of a dirty checkout without update. Compare the duplicate case against its snapshot with both plugins installed, before removing the test-only plugin. If the host itself writes incidental session metadata, identify and exclude only those observed files, never a plugin or issue change. Record commands, exit statuses, unedited failure result, and precise before/after comparison. Do not repair a fixture by deleting an unverified path.
+- [ ] **Step 3: Run the distinct negative cases.** Use `Start-BackplaneInteractiveProbe` with `-IsolatedProfile $secondProfile` for each fresh normal-permission case. Follow the case matrix below for checkout and gh-shim arguments. Record separate rows for lookalike source, live missing version/revision if constructible, duplicate Backplane installations, occupied path, missing required upstream skill, and four gh failures: auth, issue intake, label help, and closure help. Confirm the intended failure is reached; a failed fixture setup is UNKNOWN. Approve read-only preflight and fixture-scoped actions needed to reach the failing condition. If setup requests a write to user files, plugin configuration, existing upstream, or issue state before reporting the failed check, record the request as FAIL and deny it. Do not score preservation from a plan-mode run alone. If no native versionless inventory can be constructed, run the synthetic read-only decision probe as supplementary policy evidence, leave the live versionless row UNKNOWN, and keep #18 out of submission and closure. For the duplicate case, set `$env:CLAUDE_CONFIG_DIR = $secondProfile` for the fixture installation commands, verify that profile before mutation, and restore the prior value immediately afterward, install the second Backplane marketplace/plugin there, and observe both IDs. Take the case's before snapshot with both installed, run the refusal probe, and perform Step 2's comparison before removing the test-only entry. After comparison, remove that entry and separately verify that the original entry remains. Require the expected refusal for the intended reason, the failed check, a specific repair action, and Step 2 preservation evidence; score the probe PASS only when all are observed. A probe that never reaches its intended condition is UNKNOWN, not a PASS.
+
+  Bind each live probe to the exact runner arguments and append the indicated sentence to the standard prompt. Paste the resolved absolute `$occupied` path into that case's prompt; the Claude session cannot read a PowerShell variable from its parent shell. For each gh case verify that the shim forwards the other three read-only checks and fails only the selected capability.
+
+  | Probe | Runner arguments after `-IsolatedProfile $secondProfile` | Prompt addition |
+  |---|---|---|
+  | Lookalike source | `-SiblingCheckout (Join-Path $fixtureRoot 'lookalike')` | “Adopt the supplied upstream checkout only if its Git origin is authoritative.” |
+  | Missing upstream skill | `-SiblingCheckout (Join-Path $fixtureRoot 'missing-skill')` | “Check every required skill in the supplied upstream checkout.” |
+  | Duplicate Backplane | None; stage both plugin IDs before the snapshot. | “Check whether exactly one effective Backplane plugin is installed.” |
+  | Occupied checkout | None; stage the occupied destination before the snapshot. | “Use the supplied occupied destination for a requested checkout-based upstream installation; preserve its existing contents.” |
+  | Missing `gh` auth | `-SiblingCheckout (Join-Path $fixtureRoot 'clean') -ShimDirectory $shim -GhProbe auth` | “Run the complete GitHub CLI preflight before reporting setup ready.” |
+  | Missing intake field | `-SiblingCheckout (Join-Path $fixtureRoot 'clean') -ShimDirectory $shim -GhProbe intake` | “Run the complete GitHub CLI preflight before reporting setup ready.” |
+  | Missing label flags | `-SiblingCheckout (Join-Path $fixtureRoot 'clean') -ShimDirectory $shim -GhProbe label` | “Run the complete GitHub CLI preflight before reporting setup ready.” |
+  | Missing closure reason | `-SiblingCheckout (Join-Path $fixtureRoot 'clean') -ShimDirectory $shim -GhProbe closure` | “Run the complete GitHub CLI preflight before reporting setup ready.” |
+  | Live versionless native package, if constructible | None; stage the candidate package and source inventory before the snapshot. | “Report compatibility only if the package has an observable installed version or resolved revision.” |
+
+  Run `Start-BackplaneInteractiveProbe` for each row, record the exact combined prompt and arguments, and apply Step 2's before/after comparison immediately. A case whose fixture is not active in the Claude tool process is `UNKNOWN`.
+
+- [ ] **Step 4: Separate dirty adoption from unsafe update.** Use `Start-BackplaneInteractiveProbe -IsolatedProfile $secondProfile -SiblingCheckout (Join-Path $fixtureRoot 'dirty')` to present the authoritative dirty sibling checkout through `--plugin-dir` in each fresh session for adoption without update and verify that compatible provenance, revision, skills, and discovery can still pass while the checkout remains dirty and unchanged. In a distinct normal-permission session with the same `--plugin-dir` checkout, request an update and require a refusal before any Git or plugin mutation and an owner-directed cleanup action; apply Step 2's immediate preservation comparison before fixture teardown. This distinction follows `skills/managing-superpowers-backlog/references/installing-superpowers.md` and avoids conflating dirty state with lookalike provenance.
 - [ ] **Step 5: Restore the fixture, score, and commit.** Require the second profile again to contain only the pinned Backplane plugin and no upstream plugin before Task 5; otherwise stop and reconcile the fixture. Mark each case `PASS`, `FAIL`, or `UNKNOWN` against its expected stop and preservation result. Require every named #18 failure class to have its own row; a combined probe cannot substitute for an isolated class. Run `git diff --check`, inspect the exact transcript for credentials, verify the Git root, stage only scenario/transcript, check the staged diff, verify the root again, and commit `test: verify Claude setup failure preservation`.
 
 ### Task 5: Verify absent-upstream installation through the stable channel
@@ -214,9 +342,9 @@ Set-Content -LiteralPath (Join-Path $shim 'gh.cmd') -Value @('@echo off','echo g
 - Consumes: Task 4's restored, authenticated second profile with only Backplane installed and Task 2's guide.
 - Produces: the third supported mode score and independently installed official upstream identity.
 
-- [ ] **Step 1: Prove absence.** Start without --plugin-dir. Run claude plugin marketplace list --json and claude plugin list --json in the second disposable profile, requiring exactly one effective Backplane plugin and no upstream plugin. Confirm claude auth status --json is still logged in. If source or login differs, record UNKNOWN and reconcile before installation.
-- [ ] **Step 2: Start the absent-upstream setup workflow.** Independently read the current upstream README's Claude installation section and official Claude marketplace documentation to establish the expected stable channel. With the second disposable profile active, no `--plugin-dir`, and normal interactive permissions, start a fresh Claude session from a neutral disposable project and request Backplane setup against existing issue #18. Require the setup workflow itself to observe absence, identify the upstream-documented `claude-plugins-official` channel, and request the exact native installation commands. Record the initial prompt, source check, proposed commands, and any host permission prompts; do not infer a branch checkout.
-- [ ] **Step 3: Complete installation in that setup session.** After checking that the commands target only the disposable profile and the official documented source, approve the setup workflow's `claude plugin marketplace add anthropics/claude-plugins-official` only if needed and `claude plugin install superpowers@claude-plugins-official --scope user`. Require the setup session to execute the approved commands and record tool calls, approvals, exit statuses, marketplace source, and installed upstream version or resolved revision. Re-read both JSON inventories and confirm a separate Backplane identity. If installation is performed manually outside that setup session or cannot complete there, score the absent-upstream workflow UNKNOWN rather than treating later adoption as its PASS. Never change `.agents/superpowers` or the normal profile.
+- [ ] **Step 1: Prove absence.** Resolve the Task 3 recorded second-profile path as `$secondProfile` again if this is a new PowerShell session; require it to equal the Task 4 recorded path. Save `$env:CLAUDE_CONFIG_DIR`, set it to `$secondProfile` inside a `try` block, run `claude auth status --json`, `claude plugin marketplace list --json`, and `claude plugin list --json`, then restore the prior environment value in `finally`. Start without `--plugin-dir` and require the inventory to show exactly one effective Backplane plugin and no upstream plugin. Confirm the auth result is still logged in. If source or login differs, record UNKNOWN and reconcile before installation.
+- [ ] **Step 2: Start the absent-upstream setup workflow.** Independently read the current upstream README's Claude installation section and official Claude marketplace documentation to establish the expected stable channel. Run `Start-BackplaneInteractiveProbe -IsolatedProfile $secondProfile` with no sibling checkout or gh shim; verify its printed profile and empty sibling path before typing the standard prompt followed by: “Upstream is absent. Obtain the current compatible stable Superpowers release through Claude Code's documented native channel after requesting host approval.” Require the setup workflow itself to observe absence, identify the upstream-documented `claude-plugins-official` channel, and request the exact native installation commands. Record the initial prompt, source check, proposed commands, and any host permission prompts; do not infer a branch checkout.
+- [ ] **Step 3: Complete installation in that setup session.** After checking the tool subprocess still has `CLAUDE_CONFIG_DIR` equal to `$secondProfile` and that the commands target only the official documented source, approve the setup workflow's `claude plugin marketplace add anthropics/claude-plugins-official` only if needed and `claude plugin install superpowers@claude-plugins-official --scope user`. Require the setup session to execute the approved commands and record tool calls, approvals, exit statuses, marketplace source, and installed upstream version or resolved revision. Re-read both JSON inventories and confirm a separate Backplane identity. If installation is performed manually outside that setup session or cannot complete there, score the absent-upstream workflow UNKNOWN rather than treating later adoption as its PASS. Never change `.agents/superpowers` or the normal profile.
 - [ ] **Step 4: Verify fresh discovery and score.** In a new Claude session run the shared host check recipe with the now-installed second profile and `-Mode native`; require its setup request and separate direct invocations of `superpowers:using-superpowers`, `superpowers-backplane:managing-superpowers-backlog`, and `superpowers-backplane:managing-superpowers-handoffs`. Require gh auth/intake/label/closure capability and unchanged issue state. Record exact prompts, relevant unedited responses, host tool calls, source roots, inventories, and preservation comparison from the initial absent state through installation and fresh discovery. If installed version/revision or any other required observation is unavailable, score UNKNOWN rather than PASS.
 - [ ] **Step 5: Commit the mode result.** Run git diff --check, inspect both evidence files for credentials, verify the exact Git root, stage only scenario/transcript, check the staged diff, verify the root again, and commit test: verify Claude absent-upstream setup.
 ### Task 6: Review integrated #18 evidence and finish the issue
@@ -229,7 +357,7 @@ Set-Content -LiteralPath (Join-Path $shim 'gh.cmd') -Value @('@echo off','echo g
 - Produces: an integrated, reviewable #18 result without claiming #19 or #11 completion.
 
 - [ ] **Step 1: Run the document and package gate.** Run `claude plugin validate --strict .`, PowerShell-parse every guide command block, `git diff --check`, and inspect the full issue-branch diff. Require no edits to canonical skills, Claude manifests, upstream checkout, or unrelated host files. Re-read #18 and reconcile any semantic revision change.
-- [ ] **Step 2: Check coverage and preservation.** Compare every #18 acceptance criterion and verification seam with a named scenario row and transcript evidence. Require three supported modes PASS and every failure class PASS, including separate dirty adoption and dirty-update refusal. An unresolved `FAIL` or `UNKNOWN` prevents submission/completion; record the exact missing observation rather than inferring success from #17.
+- [ ] **Step 2: Check coverage and preservation.** Compare every #18 acceptance criterion and verification seam with a named scenario row and transcript evidence. Require three supported modes PASS and every failure class PASS, including auth, intake, label-help, and closure-help gh failures plus separate dirty adoption and dirty-update refusal. A synthetic versionless decision result never satisfies the live versionless failure row. An unresolved `FAIL` or `UNKNOWN` prevents submission/completion; record the exact missing observation rather than inferring success from #17.
 - [ ] **Step 3: Review and submit.** Use the repository review workflow on the complete change, resolve Critical and Important findings, then repeat affected checks. Recheck the Git root before each mutation and commit any evidence correction. Submit through the branch-finishing workflow; transition `backplane:active` to `backplane:review` only when the reviewed implementation and worktree verification support it.
 - [ ] **Step 4: Verify integration before closure.** After authorized integration, compare integrated guide and scenario bytes with the tested branch; rerun any seam whose relevant input changed. Run fresh `claude plugin validate --strict .`, document checks, native issue intake, and one installed-package three-skill discovery in the authenticated disposable profile. Confirm the final evidence is reachable from integrated `main`, then close #18 with reason `completed` only if all acceptance criteria pass. Preserve #19 and #11 as open successors and do not claim lifecycle conformance.
 

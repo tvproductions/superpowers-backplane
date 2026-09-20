@@ -72,11 +72,13 @@ unchanged; rerun the affected seam after a relevant change.
   and keep their outgoing pilot blocker edges to #6. Do not add duplicate
   #6 edges from every new sibling.
 - Narrow #11 to final Claude Code integrated acceptance: C1-C3 closed as
-  completed, the current installed-package matrix fully scored, all required
-  evidence reachable from integrated source, and a current plan for #11.
-- Narrow #12 to final OpenCode acceptance: O1-O5 closed as completed, V1 and
-  V2 separately scored, both negative floors observed, evidence reachable
-  from integrated source, and a current plan for #12.
+  completed, every mandatory installed-package check PASS, required evidence
+  reachable from integrated source, and a current plan for #11. An unresolved
+  FAIL or UNKNOWN blocks acceptance.
+- Narrow #12 to final OpenCode acceptance: O1-O5 closed as completed, every
+  mandatory V1 and V2 check PASS, both below-floor cases producing the
+  expected unsupported result, evidence reachable from integrated source,
+  and a current plan for #12. An unresolved FAIL or UNKNOWN blocks acceptance.
 - #11/#12 stay at backplane:backlog during this redistribution. Each new leaf
   also remains backlog until its own design authority and current plan are
   approved. No issue is selected, marked ready, or closed in this rescope.
@@ -89,15 +91,17 @@ test whose relevant input changed after that test's child closed.
 ## Verification ownership and documentation
 
 The existing v0.1 specification remains functional authority. Revise only
-its implementation ownership paragraph after the native graph exists. In
-tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md, move the
-original #11/#12 assignment and GREEN observations under a clearly dated
-historical heading, then make one current owner table authoritative. Claude
-final acceptance remains #11, OpenCode V1 and V2 prerequisite evidence lives
-at O2/O3 and O4/O5, and final cross-variant acceptance remains #12. V1 and V2
-negative floor cases belong to O2 and O4. Correct the historical statement
-that #3 is open; #3 is closed/completed. Do not call an ownership assignment
-a passing live host run.
+its implementation ownership sentences after the native graph exists;
+preserve issue #2's completion contract and the no-publication rule. In
+tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md, revise the
+Required checks introduction for collective prerequisite ownership and final
+acceptance. Move the original #11/#12 assignment and GREEN observations under
+a dated historical heading, then make one current owner table authoritative.
+Claude final acceptance remains #11, OpenCode V1 and V2 prerequisite evidence
+lives at O2/O3 and O4/O5, and final cross-variant acceptance remains #12.
+V1 and V2 negative floor cases belong to O2 and O4. Correct the historical
+statement that #3 is open; #3 is closed/completed. An ownership assignment
+is not a passing live host run.
 
 ## Redistribution acceptance
 

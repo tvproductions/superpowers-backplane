@@ -35,6 +35,20 @@ The exact post-creation ownership text is drafted in ownership-draft.md in
 that same directory. Native parentage and dependencies will be applied as
 GitHub relationships; body text does not substitute for those fields.
 
+## Draft review correction
+
+Read-only branch review found three Important drafting gaps. First, the
+final-leaf drafts permitted a scored matrix containing FAIL or UNKNOWN. The
+revised #11/#12 bodies and rescope design require PASS for every mandatory
+supported-host check; FAIL/UNKNOWN blocks final acceptance. Both OpenCode
+below-floor cases must produce the expected unsupported result without
+mutation. Second, the ownership draft targeted the approved spec's final
+no-publication paragraph; it now targets only the preceding host-ownership
+paragraph and explicitly preserves the publication boundary. Third, the
+existing matrix introduction assigned every check to one implementation
+leaf; the publication draft and plan now assign the checks collectively to
+bounded prerequisite leaves with #11/#12 final integrated acceptance.
+
 ## Native graph and documentation verification
 
 Pending approved graph publication and issue mutation. Record actual issue

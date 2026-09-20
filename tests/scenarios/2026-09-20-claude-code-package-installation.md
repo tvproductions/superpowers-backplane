@@ -47,3 +47,26 @@
 - It accepts an existing target-repository issue, shows the complete read-only native intake fields, and requests setup in a new Claude session.
 - It names all three fresh-session skill identities and defers pinned update, rollback, and Backplane-only uninstall to #19. It does not change issues during setup or require a consuming-project runtime or edits to `.agents/superpowers`.
 - Verification: 14 required guide strings were present; PowerShell parsed all three command blocks with zero syntax errors; the README link and forbidden-command scan passed. Full pinned-source replay remains Task 3.
+
+## Task 3 — isolated published-source smoke (in progress)
+
+### Isolation and capability preflight
+
+- Disposable Claude configuration: `C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-241ec92c05e84296bc7a2df74be839d3`. It was unused when created. `CLAUDE_CONFIG_DIR` was set only around child Claude commands; no credentials were copied.
+- Initial `claude auth status --json` reported `loggedIn: false` (exit 1). The operator was asked to authenticate this disposable profile; live-session discovery remains `UNKNOWN` pending that prerequisite.
+- Initial isolated inventory: no marketplaces and no plugins. The normal Claude profile inventory was saved separately for a later preservation comparison.
+- Host: Claude Code `2.1.241`. `gh auth status` passed; the full #17 intake returned all 15 required native fields, and `gh issue edit --help` and `gh issue close --help` expose label add/remove and closure reason.
+
+### Independent upstream source
+
+- Repository checkout: `.agents/superpowers`; origin `https://github.com/obra/superpowers.git`; stable release `v6.4.1` at `5bf4e78011075bcfc0dc295f0724994cd123ee71`.
+- The upstream Claude manifest names `superpowers` version `6.4.1`; its own marketplace names `superpowers-dev` with one `superpowers` entry. The required upstream skill files exist. Native installation into the disposable profile is pending authentication.
+
+### Published Backplane source
+
+- Published feature commit: `d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a`; `gh api repos/tvproductions/superpowers-backplane/commits/<SHA> --jq .sha` returned that exact SHA.
+- Disposable clone: `C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane`. Replayed `gh repo clone tvproductions/superpowers-backplane` and `git -C <checkout> checkout --detach <SHA>`. Its origin is `https://github.com/tvproductions/superpowers-backplane.git`, HEAD equals the published SHA, and the checkout is clean.
+- Both Claude manifests and both root skills exist in that pinned clone. `claude plugin validate --strict <checkout>` passed.
+- Published `managing-superpowers-backlog` skill SHA256: `739A16FCDF2EE5ADAB0514F5A44DB0629DCCE558985FE5A31D71DD2606AC1E81`.
+- Published `managing-superpowers-handoffs` skill SHA256: `A6052755128BE9C7D268D71241DD389B9BF1C720834E47E61CBF9535F4CA92DE`.
+- Overall clean-install and discovery result: `UNKNOWN` until upstream and Backplane are installed and a fresh authenticated Claude session proves all three skills.

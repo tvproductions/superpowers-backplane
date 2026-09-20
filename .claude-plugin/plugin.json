@@ -1,0 +1,7 @@
+{
+  "name": "superpowers-backplane",
+  "description": "Native GitHub backlog continuity for upstream Superpowers",
+  "version": "0.1.0",
+  "author": {"name": "tvproductions"},
+  "repository": "https://github.com/tvproductions/superpowers-backplane"
+}

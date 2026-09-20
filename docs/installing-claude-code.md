@@ -113,7 +113,16 @@ Use the target issue for read-only intake only. Setup must leave GitHub issue st
 ```powershell
 $upstreamCheckout = (Resolve-Path -LiteralPath (Read-Host 'Existing Superpowers checkout') -ErrorAction Stop).Path
 $upstreamOrigin = git -C $upstreamCheckout remote get-url origin
-if ($LASTEXITCODE -ne 0 -or $upstreamOrigin.Trim() -cne 'https://github.com/obra/superpowers.git') { throw 'Choose the authoritative obra/superpowers checkout' }
+if ($LASTEXITCODE -ne 0 -or -not $upstreamOrigin) { throw 'Superpowers origin is unavailable' }
+$acceptedUpstreamOrigins = @(
+  'https://github.com/obra/superpowers',
+  'https://github.com/obra/superpowers.git',
+  'git@github.com:obra/superpowers',
+  'git@github.com:obra/superpowers.git',
+  'ssh://git@github.com/obra/superpowers',
+  'ssh://git@github.com/obra/superpowers.git'
+)
+if ($upstreamOrigin.Trim() -cnotin $acceptedUpstreamOrigins) { throw 'Choose the authoritative obra/superpowers checkout' }
 $upstreamRevision = git -C $upstreamCheckout rev-parse HEAD
 if ($LASTEXITCODE -ne 0 -or $upstreamRevision.Trim() -cnotmatch '^[0-9a-f]{40}$') { throw 'Superpowers revision is unavailable' }
 $upstreamStatus = git -C $upstreamCheckout status --porcelain=v1

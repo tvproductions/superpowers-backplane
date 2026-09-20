@@ -1,6 +1,6 @@
 # Claude Code #18 setup session transcript excerpts
 
-Only final host responses and exact prompts are copied below. The raw Claude JSONL remains in disposable profiles; credential-bearing settings and tool outputs are excluded. Each copied response is unedited. Both setup calls used `--permission-mode plan --output-format json --max-turns 20`, read-only issue #18 intake, and a neutral temporary project. Their result subtype was `error_max_turns` at turn 21, so each was resumed in the same session with tools disabled for a report of already observed checks.
+Exact prompts and unedited final host responses are copied below. The machine-evidence appendix also records selected redacted tool results and before/after hashes. Full raw Claude JSONL remains in disposable profiles; credential-bearing settings contents are excluded. Both setup calls used `--permission-mode plan --output-format json --max-turns 20`, read-only issue #18 intake, and a neutral temporary project. Their result subtype was `error_max_turns` at turn 21, so each was resumed in the same session with tools disabled for a report of already observed checks.
 
 ## native setup session
 
@@ -1508,3 +1508,290 @@ No CREATE or RESUME was performed, and neither was implied: nothing was written,
 ~~~~
 
 Independent raw JSONL inspection found exactly one Skill tool-use per direct session, for superpowers:using-superpowers, superpowers-backplane:managing-superpowers-backlog, and superpowers-backplane:managing-superpowers-handoffs respectively. The direct check compared complete native issue JSON before and after and printed ISSUE STATE UNCHANGED.
+
+## Task 4 machine snapshot and trigger evidence
+
+Each row below was copied from the immediate before/after JSON snapshots taken around the named Claude session. The scored lookalike session uses snapshot-lookalike_allowed, excluding the earlier interactive onboarding attempt that changed settings.json. SHA-256 digests are complete. The full native issue JSON was queried again in each snapshot and hashed; its body and credential fields are excluded here. Fixture paths are under the temporary fixture root identified in the scenario. The earlier unedited host response for each session supplies the detailed refusal or adoption narrative.
+
+### lookalike — 391a088e-0588-4503-b87f-6b1b9839b6e6
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obrafake/superpowers.git | https://github.com/obrafake/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain | (clean or not applicable) | (clean or not applicable) |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### missing_skill — e7082d57-10e8-4329-b425-e7c7a51e59a7
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain |  D skills/writing-plans/SKILL.md |  D skills/writing-plans/SKILL.md |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | ABSENT | ABSENT |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### gh_auth — a8eaf771-508b-4144-b868-a6cfd0a0547c
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain | (clean or not applicable) | (clean or not applicable) |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### gh_intake — 399e9532-644b-4f0d-9d79-0a60e56a1f64
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain | (clean or not applicable) | (clean or not applicable) |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### gh_label — 4b40e38d-ac0e-47a6-bb5d-8f9838281cf1
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain | (clean or not applicable) | (clean or not applicable) |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### gh_closure — 357c3e56-c206-4a97-ba68-fa4bb1928c74
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain | (clean or not applicable) | (clean or not applicable) |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### dirty_adoption — 8b07e3d3-ca47-4467-b43f-63c4887d8ac3
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain |  M README.md |  M README.md |
+| Fixture readmeHash | 9B056B70305DBA41B3738FB80458B321E72188E2C096C32222E103F64036850F | 9B056B70305DBA41B3738FB80458B321E72188E2C096C32222E103F64036850F |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### dirty_update — 6ad28892-cdae-4caa-98f7-2131fa150e4f
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin | https://github.com/obra/superpowers.git | https://github.com/obra/superpowers.git |
+| Fixture HEAD | 5bf4e78011075bcfc0dc295f0724994cd123ee71 | 5bf4e78011075bcfc0dc295f0724994cd123ee71 |
+| Fixture porcelain |  M README.md |  M README.md |
+| Fixture readmeHash | 9B056B70305DBA41B3738FB80458B321E72188E2C096C32222E103F64036850F | 9B056B70305DBA41B3738FB80458B321E72188E2C096C32222E103F64036850F |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### occupied — ac31f870-8a9b-4d8e-a540-65a5f3ce62de
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 | 2FA8C7956AAB2D60976C59FDE06FA8FD3C527471618E3888BC5D5AA2FBBCF7D6 |
+| plugins/known_marketplaces.json SHA-256 | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC | 699762F3DBCFE67DFD12676D3B0B96199D5DDE3C130C78E3AB50E10122929CCC |
+| settings.json SHA-256 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 | B5778B7CAF6194FEFA235FB252113E876D8A77626D354A1759A9253BF6615F30 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | superpowers-backplane | superpowers-backplane |
+| Fixture origin |  |  |
+| Fixture HEAD |  |  |
+| Fixture porcelain | (clean or not applicable) | (clean or not applicable) |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### duplicate — 51bc2750-544b-4d95-b0cf-4f244a3ad5f1
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 21EF3A6A441026FAAC53E7FA9B09D7360CF68C2CED3D4BC3A9043C8670983BAA | 21EF3A6A441026FAAC53E7FA9B09D7360CF68C2CED3D4BC3A9043C8670983BAA |
+| plugins/known_marketplaces.json SHA-256 | E28B8DE8E4DE279265C3A909DC16879BA80CFAB39075E65192CDB71E177CD3C9 | E28B8DE8E4DE279265C3A909DC16879BA80CFAB39075E65192CDB71E177CD3C9 |
+| settings.json SHA-256 | E836D6238E2B67AE5DD3E254AFFDCE5BF4E3CBA5C8DC5E5ECB632A5AF8681A76 | E836D6238E2B67AE5DD3E254AFFDCE5BF4E3CBA5C8DC5E5ECB632A5AF8681A76 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@backplane-conflict:0.1.0:user:True, superpowers-backplane@superpowers-backplane:0.1.0:user:True | superpowers-backplane@backplane-conflict:0.1.0:user:True, superpowers-backplane@superpowers-backplane:0.1.0:user:True |
+| Marketplace names | backplane-conflict, superpowers-backplane | backplane-conflict, superpowers-backplane |
+| Fixture origin | https://github.com/tvproductions/superpowers-backplane.git | https://github.com/tvproductions/superpowers-backplane.git |
+| Fixture HEAD | d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a | d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a |
+| Fixture porcelain |  M .claude-plugin/marketplace.json |  M .claude-plugin/marketplace.json |
+| Fixture readmeHash | AB3507457A279F5C9F0F8674A5735C7BB25895662C8D41721B040ED7AB1257D6 | AB3507457A279F5C9F0F8674A5735C7BB25895662C8D41721B040ED7AB1257D6 |
+| Fixture writingPlansHash | ABSENT | ABSENT |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### versionless_live — 1a4f8fba-fd2f-4e6b-815d-c23915039fec
+
+| Field | Before | After |
+|---|---|---|
+| plugins/installed_plugins.json SHA-256 | 7291E74A891172674230C5805772321814A6A54FD05AB55BE1612AF109B6C487 | 7291E74A891172674230C5805772321814A6A54FD05AB55BE1612AF109B6C487 |
+| plugins/known_marketplaces.json SHA-256 | B77C694453448F738423AFEF18004AC74370AEE8CFF6DCA3A774DC862E67CF13 | B77C694453448F738423AFEF18004AC74370AEE8CFF6DCA3A774DC862E67CF13 |
+| settings.json SHA-256 | 93D05165E2257798F5D36FE0DC610079E064061B29A180CD0BC59C475419EDD9 | 93D05165E2257798F5D36FE0DC610079E064061B29A180CD0BC59C475419EDD9 |
+| occupied/sentinel.txt SHA-256 | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E | 108AF2B4D4067706073F3D0E85459A6F907A4E35D6E74235BE7BC5D4F60CC12E |
+| Installed plugin IDs | superpowers-backplane@superpowers-backplane:0.1.0:user:True, superpowers@versionless-superpowers:unknown:user:True | superpowers-backplane@superpowers-backplane:0.1.0:user:True, superpowers@versionless-superpowers:unknown:user:True |
+| Marketplace names | superpowers-backplane, versionless-superpowers | superpowers-backplane, versionless-superpowers |
+| Fixture origin | NO_GIT | NO_GIT |
+| Fixture HEAD | NO_GIT | NO_GIT |
+| Fixture porcelain | NO_GIT | NO_GIT |
+| Fixture readmeHash | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 | 04FD40756D26D5F2132DDFBC5C3C35335B02BB456197308975F9D12EAA522382 |
+| Fixture writingPlansHash | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF | 0BC3D36590F7B2C323ED3EC18FF77E9F8ED57AF42F5680A02B11A2D20DE265CF |
+| Fixture pluginManifestHash | 7FDF71672869042BEF35070EC76A40E81E529604A3544AAC2D551E166B5759F2 | 7FDF71672869042BEF35070EC76A40E81E529604A3544AAC2D551E166B5759F2 |
+| Fixture marketplaceHash | 24DFB0D16001268ECCD9EDA0112E0AA6ED18EF14C545C82DC0C949FE8A13E9AD | 24DFB0D16001268ECCD9EDA0112E0AA6ED18EF14C545C82DC0C949FE8A13E9AD |
+| Native issue JSON SHA-256 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 | DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825 |
+| Issue state, label, revision | OPEN, backplane:active, 09/20/2026 17:29:58 | OPEN, backplane:active, 09/20/2026 17:29:58 |
+
+### Selected raw Claude tool calls and outcomes
+
+Commands and tool results below were extracted by matching tool_use IDs to tool_result IDs in each named session JSONL. The missing-skill command abbreviates the common fixture prefix and summarizes the long directory listing; its file absence is recorded by the full snapshot hash. They show the observed trigger in addition to the before/after snapshot. A Bash tool success on a piped command may mask a nested gh exit; the fixture capability check described after the table used direct commands to confirm those exits.
+
+lookalike (391a088e-0588-4503-b87f-6b1b9839b6e6):
+~~~~text
+Bash input: git -C "C:/Users/Jeff/AppData/Local/Temp/backplane-claude-18-5653d382bf8440e98caf9b365e6f5faa/lookalike" remote -v
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: origin	https://github.com/obrafake/superpowers.git (fetch) origin	https://github.com/obrafake/superpowers.git (push)
+~~~~
+
+missing_skill (e7082d57-10e8-4329-b425-e7c7a51e59a7):
+~~~~text
+Bash input: ls -l "<fixture>/missing-skill/skills/using-superpowers" "<fixture>/missing-skill/skills/brainstorming" "<fixture>/missing-skill/skills/writing-plans" "<fixture>/missing-skill/skills/writing-skills"
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: The four skill directories were listed; the writing-plans/SKILL.md file was absent. The immediate fixture snapshot records writingPlansHash=ABSENT and Git porcelain D skills/writing-plans/SKILL.md before and after.
+~~~~
+
+gh_auth (a8eaf771-508b-4144-b868-a6cfd0a0547c):
+~~~~text
+Bash input: gh auth status
+Tool is_error: True; exit: 1
+Tool output: Exit code 1 gh fixture capability unavailable
+~~~~
+
+gh_intake (399e9532-644b-4f0d-9d79-0a60e56a1f64):
+~~~~text
+Bash input: gh issue view 18 --repo tvproductions/superpowers-backplane --json number,title,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,updatedAt,url 2>&1 | head -c 2500
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: unknown JSON field: closedByPullRequestsReferences
+~~~~
+
+gh_label (4b40e38d-ac0e-47a6-bb5d-8f9838281cf1):
+~~~~text
+Bash input: gh issue edit --help 2>&1
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: Usage: gh issue edit ISSUE Flags: --title --body
+~~~~
+
+gh_closure (357c3e56-c206-4a97-ba68-fa4bb1928c74):
+~~~~text
+Bash input: gh issue close --help 2>&1
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: Usage: gh issue close ISSUE Flags: --comment
+~~~~
+
+dirty_adoption (8b07e3d3-ca47-4467-b43f-63c4887d8ac3):
+~~~~text
+Bash input: git -C "/c/Users/Jeff/AppData/Local/Temp/backplane-claude-18-5653d382bf8440e98caf9b365e6f5faa/dirty" status --porcelain
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output:  M README.md
+~~~~
+
+dirty_update (6ad28892-cdae-4caa-98f7-2131fa150e4f):
+~~~~text
+Bash input: D="C:/Users/Jeff/AppData/Local/Temp/backplane-claude-18-5653d382bf8440e98caf9b365e6f5faa/dirty"; echo "--- origin ---"; git -C "$D" remote get-url origin; echo "--- status ---"; git -C "$D" status --short; echo "--- HEAD ---"; git -C "$D" rev-parse HEAD; echo "--- branch ---"; git -C "$D" rev-parse --abbrev-ref HEAD
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: --- origin --- https://github.com/obra/superpowers.git --- status ---  M README.md --- HEAD --- 5bf4e78011075bcfc0dc295f0724994cd123ee71 --- branch --- HEAD
+~~~~
+
+occupied (ac31f870-8a9b-4d8e-a540-65a5f3ce62de):
+~~~~text
+Bash input: ls -la "C:/Users/Jeff/AppData/Local/Temp/backplane-claude-18-5653d382bf8440e98caf9b365e6f5faa/occupied" 2>&1 | head -50
+Tool is_error: False; exit: 0 (outer Bash tool)
+Tool output: total 5; ./; ../; sentinel.txt
+~~~~
+
+duplicate (51bc2750-544b-4d95-b0cf-4f244a3ad5f1):
+~~~~text
+Read input: C:\Users\Jeff\AppData\Local\Temp\backplane-claude-18-62f1d7dda2704635a266bdacedfd7c3f\settings.json
+Tool is_error: ; exit: n/a (Read tool)
+Tool output: 1	{ 2	  "enabledPlugins": { 3	    "superpowers-backplane@superpowers-backplane": true, 4	    "superpowers-backplane@backplane-conflict": true 5	  }, 6	  "extraKnownMarketplaces": { 7	    "superpowers-backplane": { 8	      "source": { 9	        "source": "directory", 10	        "path": "C:\\Users\\Jeff\\AppData\\Local\\Temp\\backplane-claude-17-source-c9121b72c27945cb92e74fbaec2…
+~~~~
+
+versionless_live (1a4f8fba-fd2f-4e6b-815d-c23915039fec):
+~~~~text
+Bash input: git -C "C:/Users/Jeff/AppData/Local/Temp/backplane-claude-18-5653d382bf8440e98caf9b365e6f5faa/versionless" rev-parse HEAD 2>&1
+Tool is_error: True; exit: 128
+Tool output: Exit code 128; fatal: not a git repository (or any of the parent directories): .git
+~~~~
+
+Direct gh fixture capability checks, rerun after the Claude probes with the same shim and each named selector: gh auth status exited 1 with gh fixture capability unavailable; the complete gh issue view 18 --json query exited 1 with unknown JSON field: closedByPullRequestsReferences; gh issue edit --help exited 0 but exposed neither add-label nor remove-label; gh issue close --help exited 0 but exposed no reason flag. The shim forwarded the other three read-only capabilities in each selector, and blocked mutation commands. Claude's piped Bash command in the intake session returned outer exit 0 while its output contained the inner gh field error; the direct shim exit above establishes the failed capability.
+
+The signed-out prerequisite case used a separate fresh empty disposable profile. claude auth status --json exited 1 and returned loggedIn false/authMethod none; claude plugin list --json returned zero entries. No Claude setup session or login was started there. The complete #18 issue JSON digest before and after remained DA6BB296FCEF34C1F2DD1A46A6CC9AA88D5F8C8596C262B4EC5457B5A1513825. This case is scored as the expected prerequisite stop, not as a supported-mode setup pass.

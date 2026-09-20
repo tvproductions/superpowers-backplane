@@ -3,7 +3,9 @@
 ## Current state
 
 The standalone local repository is at
-`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on feature branch `feat/codex-installation-surface`.
+C:\Users\Jeff\source\repos\agents\superpowers-backplane. Determine the
+current branch from git status. The local planning branch
+docs/right-size-installation-leaves contains draft rescoping artifacts.
 Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
@@ -134,10 +136,33 @@ character in a failure-probe transcript remains deferred.
 This repository has one standalone worktree at its root; do not remove it as a
 feature worktree. The merged feature and verification branches and ignored
 plan scratch directories were removed. Claude Code #11 and OpenCode #12 remain
-the installation leaves; the
-external pilot #6 still waits for them. No release was part of issue #3.
+the installation leaves; the external pilot #6 still waits for them. No release was part of issue #3.
 
 For the remaining host leaves, make each reviewable slice smaller: package and guide;
 one host setup mode with its failures; then integrated lifecycle evidence and closure.
 Treat host authentication as an external prerequisite and reuse an authorized isolated
 profile. Issue #3 combined all of these and took too long.
+
+## Remaining host leaf rescoping plan (2026-09-19)
+
+The user approved a 3-part Claude Code and 5-part OpenCode decomposition
+for planning. Plan review found that turning #11/#12 into non-executable
+parents would leave no valid leaf completion path and keep pilot #6 blocked.
+The approved revision therefore makes the eight new issues siblings under #1
+and keeps #11/#12 as narrow executable final acceptance leaves. The design is
+docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md;
+the execution plan is
+docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md.
+Both are on the local docs/right-size-installation-leaves branch for integration.
+Ten exact issue bodies and a current ownership draft are in ignored local
+.superpowers/sdd/2026-09-19-host-leaf-rescoping/. The baseline is recorded in
+tests/scenarios/2026-09-19-host-leaf-rescoping.md.
+The approved v0.1 functional host contract remains unchanged.
+
+Live intake still showed #11 and #12 OPEN at backplane:backlog with zero
+children and no implementation plans. #6 still has both as native blockers.
+No GitHub issue, host installation, login, or upstream dependency was changed
+during planning. The user approved the revised sibling graph and planning
+branch merge on 2026-09-19. After integration, implement the graph change
+with gh, keep all ten executable host issues at backlog, and give each
+selected issue its own current plan before execution.

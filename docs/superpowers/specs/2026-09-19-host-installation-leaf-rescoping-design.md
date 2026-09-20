@@ -1,116 +1,113 @@
 # Host Installation Leaf Rescoping Design
 
-- **Status:** Draft for written review; the eight-child split was approved in conversation on 2026-09-19.
-- **Scope:** GitHub issues #11 and #12 and their verification ownership.
+- **Status:** Revised draft after plan review; written approval pending.
+- **Scope:** Issues #11 and #12, eight new implementation leaves, and verification ownership.
 - **Functional authority:** docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md.
 - **Observed issue revisions:** #11 2026-09-19T14:11:46Z; #12 2026-09-19T14:11:57Z; pilot #6 2026-08-23T13:55:24Z.
 
-## Problem and intended outcome
+## Problem and decision
 
-Issue #3 combined packaging, documentation, multiple setup modes, failure probes,
-lifecycle operations, conformance, and integration. Issues #11 and #12 currently
-repeat that shape; #12 additionally combines OpenCode V1 and V2. Both have zero
-sub-issues and no implementation plan. Give each remaining host task one
-reviewable deliverable while preserving every v0.1 acceptance obligation. This
-rescope changes ownership and order, not the supported hosts or package design.
+Issue #3 bundled packaging, setup modes, failure handling, lifecycle operations,
+conformance, and integration. #11 repeats that scope for Claude Code and #12
+adds two OpenCode variants. The work needs smaller review and verification
+boundaries without weakening the approved v0.1 host contract.
 
-## Invariants
+Keep #11 and #12 as executable final acceptance leaves under release parent #1.
+Create eight sibling implementation leaves under #1. Native blockers put the
+smaller work before its host acceptance leaf. This preserves the existing
+backplane:ready-to-active and backplane:review-to-completed path for #11 and
+#12; making them non-executable parents would conflict with the current issue
+contract's leaf eligibility and completion transitions. Pilot #6 continues to
+be blocked by #11 and #12.
 
-- The canonical Backplane skills remain under the repository root skills/
-  directory. Claude Code metadata and one shared OpenCode adapter refer to
-  those skills; neither copies upstream Superpowers or Backplane skill text.
-- Upstream Superpowers is installed and updated independently. Default
-  acquisition follows the active host's documented stable channel.
-- Claude Code, OpenCode V1 1.18.29+, and OpenCode V2 2.0.4+ retain the complete
-  installation, provenance, preservation, fresh discovery, lifecycle, and five
-  named conformance obligations from the approved v0.1 contract.
-- The OpenCode variants share one adapter but own separate live verification.
-  V1 below 1.18.29 and V2 below 2.0.4 remain unsupported negative cases.
-- An absent authenticated host session is a prerequisite gap for the affected
-  live check. Do not retry login repeatedly, copy user credentials, or claim
-  a package check passed from repository-discovered skills.
-- No release, pilot execution, new harness, generic runtime, GitHub Project,
-  IssueOps system, or upstream update is part of this rescope.
+## Functional invariants
 
-## Target native hierarchy
+- The canonical Backplane skill text stays in root skills/. Host metadata and
+  the one shared OpenCode adapter point there. Do not copy Backplane or upstream
+  Superpowers skill text.
+- Upstream Superpowers remains a separate installation with its own update and
+  removal path. The active host's documented stable channel governs acquisition
+  when upstream is absent; the default branch is an explicit edge choice.
+- Claude Code, OpenCode V1 1.18.29+, and OpenCode V2 2.0.4+ retain fresh
+  three-skill discovery, provenance, gh preflight, preservation, clean and
+  repeat install, setup, update, rollback, Backplane-only uninstall, all five
+  named conformance checks, and authorized issue-state scenarios.
+- V1 below 1.18.29 and V2 below 2.0.4 remain unsupported negative cases.
+- Host authentication is a prerequisite for live checks. An absent session
+  blocks that check; do not retry sign-in repeatedly or borrow user credentials.
+- No host implementation, upstream update, external pilot, release, extra
+  harness, project runtime, GitHub Project, or IssueOps system is part of the
+  redistribution itself.
 
-Keep #11 and #12 as children of release parent #1. They become continuity
-parents for the following executable grandchildren. The titles below are
-stable creation keys; check for duplicates before creating any issue.
+## Native issue graph
 
-| Key | Parent | Proposed child title | Independently reviewable outcome |
-|---|---|---|---|
-| C1 | #11 | Package and document Claude Code plugin installation | Native manifest and marketplace point to canonical skills; pinned install guide and one disposable clean-install/fresh-discovery smoke run with compatible preinstalled upstream. Lifecycle claims remain pending. |
-| C2 | #11 | Verify Claude Code setup and upstream adoption | Native package, authoritative sibling, and absent-upstream setup paths; provenance, gh capability, fresh discovery, and fail-closed unknown, versionless, duplicate, dirty, and conflict preservation evidence. |
-| C3 | #11 | Verify Claude Code lifecycle and conformance | Repeat install, pinned update, rollback, Backplane-only uninstall, verified guide commands, per-operation preservation, five named checks, authorized issue-state scenarios, and integrated installed-package verification. |
-| O1 | #12 | Build and document the shared OpenCode V1/V2 adapter | One entry point and guide for V1 plugin and V2 plugins configuration; basic install/discovery smoke on both supported variants with compatible preinstalled upstream. |
-| O2 | #12 | Verify OpenCode V1 setup and compatibility failures | V1 1.18.29+ upstream modes, provenance and gh preflight, fresh discovery, unknown/versionless/duplicate/dirty/conflict preservation, and below-floor rejection. |
-| O3 | #12 | Verify OpenCode V1 lifecycle and conformance | V1 repeat install, pinned update, rollback, Backplane-only uninstall, per-operation preservation, five checks, and integrated installed-package verification. |
-| O4 | #12 | Verify OpenCode V2 setup and compatibility failures | V2 2.0.4+ upstream modes, provenance and gh preflight, fresh discovery, unknown/versionless/duplicate/dirty/conflict preservation, and below-floor rejection. |
-| O5 | #12 | Verify OpenCode V2 lifecycle and conformance | V2 repeat install, pinned update, rollback, Backplane-only uninstall, per-operation preservation, five checks, and integrated installed-package verification. |
+Every new issue below is a child of #1 and starts with exactly one
+backplane:backlog label. Titles are unique creation keys. Their issue bodies
+hold bounded scope and observable acceptance; native links own parentage and
+blocking relationships.
 
-Each child gets the standard executable issue headings: Objective, Bounded
-Scope with Allowed and Out of Scope, Acceptance Criteria, Verification Seams,
-and Superpowers Artifacts. The approved v0.1 functional specification and this
-rescoping design are design authorities. Its own Superpowers implementation
-plan is created only when that child is selected; until then it stays at
-backplane:backlog and its artifact section says Plan: not yet created. Each child must name the host revision, Backplane revision,
-upstream identity, gh capability result, installed skill identities, and
-PASS/FAIL/UNKNOWN outcome for its owned check.
+| Key | Exact new issue title | Reviewable output |
+|---|---|---|
+| C1 | Package and document Claude Code plugin installation | Native manifest and marketplace point to canonical skills; pinned install guide and one disposable clean-install/fresh-discovery smoke run with compatible preinstalled upstream. |
+| C2 | Verify Claude Code setup and upstream adoption | Native package, sibling checkout, and absent-upstream setup; provenance, gh capability, fresh discovery, and unknown/versionless/duplicate/dirty/conflict preservation. |
+| C3 | Verify Claude Code lifecycle and conformance | Repeat install, pinned update and rollback, Backplane-only uninstall, verified guide commands, per-operation preservation, five checks, and authorized issue-state scenarios from the installed package. |
+| O1 | Build and document the shared OpenCode V1/V2 adapter | One entry point and guide for V1 plugin and V2 plugins configuration; basic discovery smoke on both supported variants with compatible preinstalled upstream. |
+| O2 | Verify OpenCode V1 setup and compatibility failures | V1 1.18.29+ upstream modes, provenance and gh preflight, fresh discovery, failure preservation, and below-floor rejection. |
+| O3 | Verify OpenCode V1 lifecycle and conformance | V1 repeat install, pinned update/rollback/uninstall guide replay, per-operation preservation, five checks, and authorized issue-state scenarios. |
+| O4 | Verify OpenCode V2 setup and compatibility failures | V2 2.0.4+ upstream modes, provenance and gh preflight, fresh discovery, failure preservation, and below-floor rejection. |
+| O5 | Verify OpenCode V2 lifecycle and conformance | V2 repeat install, pinned update/rollback/uninstall guide replay, per-operation preservation, five checks, and authorized issue-state scenarios. |
 
-C1 owns package and guide scaffolding, not unverified update or rollback
-instructions. C2 may correct setup instructions against observed host behavior.
-C3 finalizes only lifecycle instructions it has actually replayed. O1 owns
-shared adapter architecture and initial guide. O2 and O4 own variant-specific
-setup and failure behavior; O3 and O5 own variant-specific lifecycle and
-conformance. Previous child evidence is reused when its tested inputs have not
-changed; a changed package or guide seam is rerun in the owning child.
+C1 and O1 provide package and guide scaffolding, with no unverified lifecycle
+claim. C2, O2, and O4 own setup and compatibility failures. C3, O3, and O5
+own lifecycle and conformance on the installed candidate. Reuse earlier
+evidence only while its package, guide, host, and upstream inputs remain
+unchanged; rerun the affected seam after a relevant change.
 
-## Native dependencies and continuity
+## Dependencies and final leaves
 
-- C1 blocks C2; C2 blocks C3.
-- O1 blocks O2 and O4; O2 blocks O3; O4 blocks O5. V1 and V2 may progress
-  independently after O1.
-- Keep the existing #2-to-#11/#12 historical blocker edges and the #11/#12-to-#6
-  pilot blocker edges. Do not replace them with prose or add duplicate pilot
-  edges from every grandchild.
-- #11 is complete only after C1-C3 close as completed and Claude's integrated
-  installation matrix passes. #12 is complete only after O1-O5 close as
-  completed and both OpenCode variant matrices pass. Parent completion needs
-  aggregate evidence; child completion alone does not close a parent.
-- Parents retain exactly one lifecycle label while open. They remain backlog
-  during redistribution; future design, execution, review, and completion
-  transitions require their normal evidence gates. The rescope plan does not
-  mark either parent or child ready.
+- C1 blocks C2, C2 blocks C3, and C3 blocks #11.
+- O1 blocks O2 and O4; O2 blocks O3; O4 blocks O5; O3 and O5 block #12.
+  V1 and V2 may progress independently after O1.
+- Keep #11 and #12 as children of #1, keep their historical blocker #2,
+  and keep their outgoing pilot blocker edges to #6. Do not add duplicate
+  #6 edges from every new sibling.
+- Narrow #11 to final Claude Code integrated acceptance: C1-C3 closed as
+  completed, the current installed-package matrix fully scored, all required
+  evidence reachable from integrated source, and a current plan for #11.
+- Narrow #12 to final OpenCode acceptance: O1-O5 closed as completed, V1 and
+  V2 separately scored, both negative floors observed, evidence reachable
+  from integrated source, and a current plan for #12.
+- #11/#12 stay at backplane:backlog during this redistribution. Each new leaf
+  also remains backlog until its own design authority and current plan are
+  approved. No issue is selected, marked ready, or closed in this rescope.
 
-The parent bodies should become concise continuity contracts: objective,
-child-owned scope, aggregate acceptance, verification of native sub-issues,
-and artifact links. They must not duplicate the children's implementation
-steps. Pilot #6 remains blocked by #11 and #12, along with its other existing
-blockers. Codex #3 remains completed and unchanged.
+The full Claude, V1, and V2 matrices are satisfied across their prerequisite
+leaves and final host acceptance leaves. A final leaf verifies integration and
+evidence consistency; it need not repeat an unchanged live test. It reruns any
+test whose relevant input changed after that test's child closed.
 
-## Verification ownership
+## Verification ownership and documentation
 
-Revise tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md after
-the native child URLs exist. Keep the original assignment observation as
-historical evidence and add the new owner mapping. Claude's final host score
-belongs to C3, OpenCode V1 to O3, and OpenCode V2 to O5. C1/C2/O1/O2/O4 own the
-prerequisite package and setup evidence. The V1 and V2 negative floor rows move
-to O2 and O4 respectively. The final V1 and V2 child leaves satisfy #1's distinct host-variant leaf gate.
-The matrix must never imply that an ownership assignment is a live host PASS.
+The existing v0.1 specification remains functional authority. Revise only
+its implementation ownership paragraph after the native graph exists. In
+tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md, move the
+original #11/#12 assignment and GREEN observations under a clearly dated
+historical heading, then make one current owner table authoritative. Claude
+final acceptance remains #11, OpenCode V1 and V2 prerequisite evidence lives
+at O2/O3 and O4/O5, and final cross-variant acceptance remains #12. V1 and V2
+negative floor cases belong to O2 and O4. Correct the historical statement
+that #3 is open; #3 is closed/completed. Do not call an ownership assignment
+a passing live host run.
 
 ## Redistribution acceptance
 
-1. Eight uniquely titled open children exist with the stated native parents,
-   exactly one backplane:backlog label each, complete bounded issue contracts,
-   and no premature implementation plan or readiness claim.
-2. Native blocking edges match the sequences above. The #1 parentage and all
-   existing #6 blockers remain unchanged.
-3. #11 and #12 bodies describe aggregate continuity rather than one executable
-   host leaf. Their labels and unrelated issue metadata survive.
-4. The functional v0.1 specification points to this design only for revised
-   issue ownership; its host and lifecycle requirements stay intact. The
-   verification matrix names the actual new issue URLs and correct owners.
-5. Fresh gh intake of #1, #6, #11, #12, and all eight children proves the graph,
-   label cardinality, body headings, and unchanged pilot gate. Repository
-   evidence records observed revisions and any deviation.
+1. Eight unique new issues exist under native parent #1 with complete issue
+   contracts, one backlog label each, and no premature plan/readiness claim.
+2. The native blocker graph matches the sequences above; #11 and #12 remain
+   executable leaves, still block #6, and retain unrelated labels and fields.
+3. The revised #11/#12 bodies specify narrow final acceptance rather than
+   repeating their prerequisite implementation work.
+4. The approved functional specification and current ownership matrix agree
+   with the live graph without losing any host or failure requirement.
+5. Fresh gh intake of #1, #6, #11, #12, and the eight new issues proves
+   parentage, blockers, labels, body headings, and the unchanged pilot gate.

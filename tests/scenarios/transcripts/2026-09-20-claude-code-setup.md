@@ -1104,3 +1104,407 @@ Bootstrap evidence exists only for the known-good baseline (`b36e0829c6d0140e93c
 
 After any repair: re-run the compatibility preflight and all five named conformance checks in a fresh session, then record the installed version or resolved revision.
 ~~~~~~~
+
+## Task 5 official absent-upstream setup and discovery
+
+Initial prompt:
+
+~~~~text
+Set up Superpowers Backplane in this Claude Code session. Use tvproductions/superpowers-backplane#18 only for read-only native issue intake. Do not change GitHub issue state. Upstream is absent. Obtain the current compatible stable Superpowers release through Claude Code's documented native channel after requesting host approval. First observe the installed plugin and marketplace inventories, verify the official installation source, and propose the exact marketplace and plugin commands. Wait for approval before running installation.
+~~~~
+
+The initial setup and both installation continuations used the same session ID. Initial tool configuration: normal permission mode, read-only Bash/Read/Skill/WebFetch allowlist, no sibling plugin directory, no gh shim. The first continuation used the exact prompt below; only the named official plugin commands were allowed as mutations in the isolated profile.
+
+~~~~text
+I reviewed and approve the official Anthropic channel in this disposable profile. First verify the profile plugin and marketplace inventories again. Then execute claude plugin install superpowers@claude-plugins-official --scope user in this same session. If the official marketplace must be registered, execute claude plugin marketplace add anthropics/claude-plugins-official first, then the install. Do not use the alternative obra marketplace or change any other files, plugins, or GitHub state. Report command output, installed version, and any failed check.
+~~~~
+
+The first install command exited 1 because the official marketplace was not registered. Independent catalog inspection established that the Anthropic catalog contained Superpowers, correcting the initial host inference. The exact marketplace add and plugin install commands were then approved in the same session. The raw JSONL records the failed install, a compound command denied before execution, and successful exact marketplace add and install calls. Nothing was installed outside the disposable profile.
+
+Corrected continuation prompt:
+
+~~~~text
+Correction from independent host inspection: the official Anthropic marketplace catalog does contain a superpowers entry. gh api repos/anthropics/claude-plugins-official/contents/.claude-plugin/marketplace.json shows its source https://github.com/obra/superpowers.git at SHA b36e0829c6d0140e93cfef2ca599b1b07d4a7797, whose plugin manifest version is 6.3.0. The isolated profile marketplace list --json shows only superpowers-backplane, so claude-plugins-official is not registered in this profile. I approve exactly claude plugin marketplace add anthropics/claude-plugins-official and then claude plugin install superpowers@claude-plugins-official --scope user in this same setup session. Please execute both now, report each exit status and resulting plugin inventory. Do not touch any other profile, repository, plugin, or GitHub issue.
+~~~~
+
+Independent native inventory after setup: Backplane 0.1.0 and Superpowers 6.3.0, each enabled at user scope and registered under separate marketplaces. The catalog source is obra/superpowers at b36e0829c6d0140e93cfef2ca599b1b07d4a7797. Cached plugin manifest and four required SKILL.md files matched Git objects at that commit. Before/after full issue JSON and occupied sentinel hashes matched.
+
+Fresh setup prompt:
+
+~~~~text
+Set up Superpowers Backplane in this Claude Code session. Use tvproductions/superpowers-backplane#18 only for read-only native issue intake. Do not change GitHub issue state. Verify the newly installed official Superpowers native plugin, its catalog source, installed version or resolved revision, four required upstream skills, exactly one Backplane plugin, GitHub CLI capabilities, and fresh skill discovery. Report evidence and any unknown checks.
+~~~~
+
+Fresh setup first run reached its turn limit; a tool-free continuation in the same session produced the verdict below. The first run alone was not scored.
+
+### Proposal — session d904387e-bd0d-456c-b8e0-3007c66a3b0d
+
+Unedited host response:
+
+~~~~text
+Read-only preflight complete. No mutations were made: issue #18 was read only, and nothing was installed.
+
+## Native issue intake — tvproductions/superpowers-backplane#18
+
+The required intake query returned all 14 fields (this itself satisfies preflight check 3):
+
+| Field | Value |
+|---|---|
+| Title | Verify Claude Code setup and upstream adoption |
+| State / reason | OPEN / *(none)* |
+| Lifecycle label | `backplane:active` — exactly one `backplane:*` label ✓ |
+| Parent | #1 Ship an adoptable Backplane v0.1.0 release |
+| Sub-issues | none (executable leaf) |
+| blockedBy | #17 — **CLOSED**, so no unresolved blocker |
+| blocking | #19 Verify Claude Code lifecycle and conformance (open) |
+| updatedAt | `2026-09-20T17:29:58Z` (record this as the consumed revision) |
+
+The body carries all six required headings. Its scope explicitly covers this run: *absent-upstream installation through the documented stable channel*, and *"Mutate GitHub issue state during a failed setup probe"* is out of scope.
+
+## Observed inventory
+
+**Backplane — present, single, clean.**
+
+- Package `superpowers-backplane` v0.1.0; `.claude-plugin/marketplace.json` lists exactly one plugin, source `./`, version matching the manifest ✓
+- Checkout `C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-…\superpowers-backplane`
+- Origin `https://github.com/tvproductions/superpowers-backplane.git` ✓, revision `d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a`, `git status --porcelain` empty ✓
+- Both canonical skills are discoverable in this session as `superpowers-backplane:managing-superpowers-backlog` and `…-handoffs`
+
+**Upstream Superpowers — absent, confirming the premise.** No `superpowers:*` skill appears in this session's skill inventory, and no sibling checkout exists: `.agents/` contains only `plugins/marketplace.json`, with no `.agents/superpowers`.
+
+**GitHub CLI — fully capable.** `gh` 2.101.0, authenticated as `ahuimanu` (scopes `gist, read:org, repo, workflow`); `gh issue edit --help` exposes `--add-label`/`--remove-label`; `gh issue close --help` exposes `{completed|not planned|duplicate}`.
+
+## Failed checks and repair actions
+
+Three read-only commands were declined by the permission prompt, so those fields are **UNKNOWN** rather than passing:
+
+| Failed check | Evidence | Safe repair |
+|---|---|---|
+| Host plugin inventory | `claude plugin list` → "This command requires approval" | Approve that read-only command; needed to prove exactly one effective Backplane install and no conflicting duplicate |
+| Marketplace inventory | `claude plugin marketplace list` → same | Approve; needed before adding any marketplace, per the setup guide |
+| Host version | `claude --version` → same | Approve; #18's verification seam requires recording the Claude Code version |
+| Upstream release via native channel | `gh release view --repo obra/superpowers …` → same | Approve, to confirm the tag below from the authenticated channel rather than the web page |
+
+The spec defines no numeric Claude Code version boundary (only OpenCode V1 ≥ 1.18.29 / V2 ≥ 2.0.4), so the host version is a record-keeping field, not a gate.
+
+## Verified official source
+
+Read from upstream's own repository, which is what `docs/installing-claude-code.md` designates as authoritative for an absent upstream:
+
+- `obra/superpowers` documents two Claude Code channels: the official Anthropic marketplace (`superpowers@claude-plugins-official`) and `obra/superpowers-marketplace` → `superpowers@superpowers-marketplace`.
+- `obra/superpowers-marketplace` is owned by **obra** and lists "Superpowers (Core)" sourced from `https://github.com/obra/superpowers` ✓ — no lookalike.
+- Current stable release: **`v6.4.1`**, published Sep 19. Compatibility-impacting note to accept before installing: `executing-plans` no longer checks in mid-plan — it runs the whole plan, then takes one review at the end. v6.4.0 was never shipped.
+
+## Proposed commands — awaiting your approval
+
+**Step 1 — finish observation (read-only, run these first):**
+
+```powershell
+claude --version
+claude plugin marketplace list
+claude plugin list
+```
+
+**Step 2 — install upstream, recommended path.** The official Anthropic catalog is upstream-documented and needs no marketplace registration, so it adds nothing to your marketplace inventory:
+
+```powershell
+claude plugin install superpowers@claude-plugins-official
+```
+
+**Alternative** if step 1 shows the official catalog is unavailable on this host:
+
+```powershell
+claude plugin marketplace add obra/superpowers-marketplace
+claude plugin install superpowers@superpowers-marketplace
+```
+
+Either installs the channel's current stable release (v6.4.1) — no edge channel or default branch, since you did not select one. Neither touches the Backplane plugin, unrelated plugins, or issue state.
+
+**Step 3 — verify in a fresh session:** confirm `superpowers:using-superpowers`, `brainstorming`, `writing-plans`, and `writing-skills` are discoverable alongside the two Backplane skills, and record the installed upstream version.
+
+Tell me which path to take and approve step 1, and I'll proceed. I have not run any installation command.
+~~~~
+
+### First install attempt — session d904387e-bd0d-456c-b8e0-3007c66a3b0d
+
+Unedited host response:
+
+~~~~text
+Stopping here — the approved channel cannot deliver the plugin, and the only alternative is one you ruled out.
+
+## Inventory verification (before install)
+
+The CLI inventory commands (`claude plugin list`, `claude plugin marketplace list`, `claude plugin marketplace update`) stayed blocked by the permission layer despite your approval, so I read the isolated profile's `settings.json` instead — same facts, read-only:
+
+```json
+"enabledPlugins":        { "superpowers-backplane@superpowers-backplane": true },
+"extraKnownMarketplaces": { "superpowers-backplane": { "source": { "source": "directory",
+    "path": "…backplane-claude-17-source-…\\superpowers-backplane" } } }
+```
+
+Exactly one enabled plugin, exactly one registered extra marketplace (the directory source is the checkout I verified clean at `d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a`), and no upstream Superpowers plugin. Upstream absence and no conflicting duplicate are both confirmed. Host is Claude Code **2.1.241**.
+
+## Install attempt — failed
+
+```
+$ claude plugin install superpowers@claude-plugins-official --scope user
+Installing plugin "superpowers@claude-plugins-official"...
+✘ Failed to install plugin "superpowers@claude-plugins-official": Plugin "superpowers"
+  not found in marketplace "claude-plugins-official". Your local copy may be out of date
+  — try `claude plugin marketplace update claude-plugins-official`.   [exit 1]
+```
+
+The marketplace name resolved, so `claude-plugins-official` is already registered — your conditional `marketplace add` precondition was never met, and I did not run it. The CLI's suggested `claude plugin marketplace update claude-plugins-official` was denied by the permission layer.
+
+**The stale-cache hypothesis is wrong.** I checked the live catalog at `anthropics/claude-plugins-official` (owner confirmed: Anthropic, not a lookalike):
+
+- `plugins/` — 39 entries, no `superpowers`
+- `external_plugins/` — 14 entries (asana … terraform), no `superpowers`, nothing by `obra`
+
+So `superpowers` genuinely is not in the official Anthropic catalog. A cache refresh would not change the outcome, which is why I did not pursue further ways around the blocked update.
+
+**Installed version: none.** Nothing was installed; `settings.json` is byte-identical to the pre-attempt read. No other files, plugins, or GitHub state were touched, and issue #18 remains `backplane:active` at `updatedAt 2026-09-20T17:29:58Z`, unmodified.
+
+## Failed checks
+
+| Check | Result | Repair |
+|---|---|---|
+| Upstream install via official channel | **FAIL** — plugin absent from catalog | Requires a channel decision from you (below) |
+| `claude plugin list` / `marketplace list` / `marketplace update` | **BLOCKED** by permission layer | Satisfied inventories via `settings.json`; the update has no viable target anyway |
+| `gh release view --repo obra/superpowers` | **BLOCKED** | Release `v6.4.1` confirmed via web only |
+| Upstream skills discoverable in fresh session | **UNKNOWN** — nothing installed | Blocked on the above |
+
+## Worth flagging
+
+`obra/superpowers`'s README documents `/plugin install superpowers@claude-plugins-official` as an official-marketplace path, but the official catalog does not list it. That upstream instruction appears stale or aspirational — relevant to `docs/installing-claude-code.md`, which forwards users to that README for the absent-upstream case. Issue #18's scope covers refining exactly this guide, so it's a real finding for the leaf rather than an incidental error. (I couldn't record it to memory — no Write tool is available in this session.)
+
+Your options: authorize `obra/superpowers-marketplace` after all (upstream-documented, owner `obra` verified, sources `github.com/obra/superpowers`, stable `v6.4.1` — carries the breaking `executing-plans` change), or leave upstream absent and report #18's absent-upstream mode as FAIL against the official channel. I've made no further attempts pending your call.
+~~~~
+
+### Corrected official install — session d904387e-bd0d-456c-b8e0-3007c66a3b0d
+
+Unedited host response:
+
+~~~~text
+Both commands succeeded.
+
+## Command results
+
+**1. `claude plugin marketplace add anthropics/claude-plugins-official` — exit 0**
+
+```
+Adding marketplace…SSH not configured, cloning via HTTPS: https://github.com/anthropics/claude-plugins-official.git
+Refreshing marketplace cache (timeout: 120s)…
+Cloning repository (timeout: 120s): https://github.com/anthropics/claude-plugins-official.git
+Clone complete, validating marketplace…
+Cleaning up old marketplace cache…
+✔ Successfully added marketplace: claude-plugins-official (declared in user settings)
+```
+
+Your profile inspection was right that it wasn't registered — the earlier failure came from an unregistered marketplace whose name the CLI nonetheless recognized, not a stale cache.
+
+**2. `claude plugin install superpowers@claude-plugins-official --scope user` — exit 0**
+
+```
+Installing plugin "superpowers@claude-plugins-official"...✔ Successfully installed plugin: superpowers@claude-plugins-official (scope: user)
+```
+
+## Resulting inventory
+
+`claude plugin list` remains blocked by the permission layer, so this is read from the profile's `settings.json`:
+
+```json
+"enabledPlugins": {
+  "superpowers-backplane@superpowers-backplane": true,
+  "superpowers@claude-plugins-official": true
+},
+"extraKnownMarketplaces": {
+  "superpowers-backplane":   { "source": { "source": "directory", "path": "…backplane-claude-17-source-…\\superpowers-backplane" } },
+  "claude-plugins-official": { "source": { "source": "github", "repo": "anthropics/claude-plugins-official" } }
+}
+```
+
+Two plugins, two marketplaces, separate identities. Backplane's entry is byte-identical to before — unchanged source, unchanged directory path.
+
+## Installed version and provenance
+
+The now-cached catalog confirms the entry at `.claude-plugin/marketplace.json:3787-3796`:
+
+```json
+{ "name": "superpowers",
+  "source": { "source": "url",
+              "url": "https://github.com/obra/superpowers.git",
+              "sha": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797" },
+  "homepage": "https://github.com/obra/superpowers.git" }
+```
+
+Authoritative `obra/superpowers` source ✓, catalog owner Anthropic ✓, pinned SHA matches your inspection ✓. **That SHA is exactly Backplane's documented known-good baseline** from the compatibility preflight ("known-good at bootstrap against Superpowers commit `b36e0829…` and `gh` 2.97.0") — so the official channel pins the precise revision Backplane was authored against, a stronger compatibility position than the v6.4.1 tag I'd flagged earlier and without its breaking `executing-plans` change.
+
+**Version 6.3.0** is from your manifest inspection; I could not verify it independently here — the installed plugin cache is outside this session's readable directories and `claude plugin list` is blocked. The SHA above *is* independently verified from the local cache.
+
+## Remaining failed/unverified checks
+
+| Check | Status |
+|---|---|
+| Fresh-session discovery of `superpowers:using-superpowers`, `brainstorming`, `writing-plans`, `writing-skills` | **UNVERIFIED** — plugin skills load at session start; this session began before the install. Needs a new Claude Code session. |
+| Installed version 6.3.0 observed locally | **UNVERIFIED** here (accepted from your inspection); SHA verified |
+| `claude plugin list` / `marketplace list` | **BLOCKED** by permission layer throughout; substituted `settings.json` |
+
+Per the installation reference, discovery evidence requires a fresh session — package installation alone doesn't count, so I'm not claiming that check passed.
+
+## Scope
+
+Nothing else was touched: no other profile, no repository files, no other plugin, and no GitHub state. Issue #18 is unchanged — still `backplane:active`, `updatedAt 2026-09-20T17:29:58Z`, read-only throughout.
+~~~~
+
+### Fresh setup continuation — session 1a1b112d-0dd6-41f4-bd26-549ac605707d
+
+Unedited host response:
+
+~~~~text
+## Read-only setup evidence — Superpowers Backplane, Claude Code session
+
+No GitHub state was mutated. No files were written. Issue #18 was read only.
+
+### PASS
+
+**1. Harness plugin identity** — `<config>/settings.json` `enabledPlugins`:
+- `superpowers@claude-plugins-official`: true
+- `superpowers-backplane@superpowers-backplane`: true
+
+`extraKnownMarketplaces`: `claude-plugins-official` → github `anthropics/claude-plugins-official`; `superpowers-backplane` → directory `…\backplane-claude-17-source-c9121b72…\superpowers-backplane`. Two distinct identities, neither copied into the other.
+
+**2. Catalog source is upstream-documented** — `marketplaces/claude-plugins-official/.claude-plugin/marketplace.json` lines 3787–3796:
+```json
+{ "name": "superpowers",
+  "source": { "source": "url",
+              "url": "https://github.com/obra/superpowers.git",
+              "sha": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797" } }
+```
+Official Anthropic catalog, owner `obra/superpowers`, no lookalike.
+
+**3. Installed version / resolved revision** — cache at `plugins/cache/claude-plugins-official/superpowers/6.3.0/`; `.claude-plugin/plugin.json` gives `version 6.3.0`, repository `https://github.com/obra/superpowers`, author Jesse Vincent. The catalog pins sha `b36e0829c6d0140e93cfef2ca599b1b07d4a7797` — identical to Backplane's known-good bootstrap commit. Version is observable, so compatibility is not UNKNOWN. Caveat: that sha is the catalog's declared pin; the cache is not a git checkout, so I could not independently confirm cache contents match it.
+
+**4. Four required upstream skills** — all present under the 6.3.0 cache with valid frontmatter:
+
+| Skill | `name:` | Path |
+|---|---|---|
+| using-superpowers | `using-superpowers` | `skills/using-superpowers/SKILL.md` |
+| brainstorming | `brainstorming` | `skills/brainstorming/SKILL.md` |
+| writing-plans | `writing-plans` | `skills/writing-plans/SKILL.md` |
+| writing-skills | `writing-skills` | `skills/writing-skills/SKILL.md` |
+
+**5. Exactly one Backplane plugin** — one `superpowers-backplane` entry in `enabledPlugins`, one backplane marketplace, and this session exposes exactly two `superpowers-backplane:*` skills (`managing-superpowers-backlog`, `managing-superpowers-handoffs`). No duplicate or conflicting install visible.
+
+**6. GitHub CLI capabilities**
+- `gh version 2.101.0 (2026-09-15)` — above the 2.97.0 authoring baseline
+- `gh auth status`: logged in to github.com as `ahuimanu` (keyring, active); scopes `gist, read:org, repo, workflow`
+- Required intake query returned **every** required field: `number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url`. (`issueType` is `null` — repo has no native types; `stateReason` is `""` on an open issue. Both fields present.)
+- `gh issue edit --help` exposes `--add-label` and `--remove-label`
+- `gh issue close --help` exposes `-r, --reason {completed|not planned|duplicate}`
+
+**7. Fresh skill discovery** — this session resolved `superpowers:using-superpowers` to the 6.3.0 cache path and `superpowers-backplane:managing-superpowers-backlog` to the source directory, confirming both are discoverable and independently rooted.
+
+**8. Issue #18 intake (read-only)** — `tvproductions/superpowers-backplane#18`, "Verify Claude Code setup and upstream adoption"
+- `state` OPEN, `stateReason` `""`
+- Labels: exactly one `backplane:*` → `backplane:active` (valid)
+- `parent` #1 "Ship an adoptable Backplane v0.1.0 release" (OPEN)
+- `subIssues` 0 → executable leaf
+- `blockedBy` #17 (CLOSED) → blocker resolved; `blocking` #19 (OPEN)
+- `closedByPullRequestsReferences` []
+- `updatedAt` `2026-09-20T17:29:58Z`
+- Body carries all six required contract headings
+
+### UNKNOWN / not performed
+
+- **Six `backplane:*` labels in the repo** — `gh label list` not run; existence and descriptions of the full label set unverified.
+- **The five named conformance checks** (`skill-structure`, `native-issue-intake`, `language-neutral-verification`, `lifecycle-transitions`, `superpowers-installation`) — not executed as scored fresh-session scenario runs against the mapped `tests/scenarios/*` files. The intake query was exercised ad hoc, which is not the same as a captured, scored run. Per the preflight, an unscored result fails closed.
+- **Backplane skill-structure detail** — both required references resolve (`installing-superpowers.md`, `github-issue-contract.md`), but I did not verify every linked reference in both skills, check for placeholders, or record skill hashes.
+- **Backplane revision** — no git commit recorded for the source directory.
+- **Claude Code host version** — not captured.
+- **On-disk duplicate/conflicting installs** — directory listing outside the two allowed working directories is blocked by the session sandbox (`ls`, `find`, `grep` all refused). Check 5 rests on `settings.json` plus session discovery, not a filesystem enumeration. An inert, disabled copy on disk cannot be ruled out.
+- **Cache-to-sha integrity** — no git metadata in the package cache to confirm 6.3.0 contents equal `b36e0829`.
+
+Net: provenance, version, required skills, single-Backplane, gh capability, and discovery all pass on observable evidence. The gated conformance suite and the repository label inventory remain unverified, so I would not yet call the installation conformance-complete.
+~~~~
+
+### Fresh direct Skill calls
+
+PROMPT: Invoke superpowers:using-superpowers for a harmless read-only discovery check. State whether the actual Skill tool loaded it and from which package.
+Session: 939988c3-5634-4757-ac6a-102bc03caec5
+
+~~~~text
+Yes — the actual `Skill` tool loaded it.
+
+**What happened:**
+- Call: `Skill(skill="superpowers:using-superpowers")` → returned `Launching skill: superpowers:using-superpowers`, followed by the skill body as a real tool result.
+- Base directory reported by the loader:
+  `C:\Users\Jeff\AppData\Local\Temp\backplane-claude-18-62f1d7dda2704635a266bdacedfd7c3f\plugins\cache\claude-plugins-official\superpowers\6.3.0\skills\using-superpowers`
+
+**Package/provenance:** marketplace `claude-plugins-official` → plugin `superpowers`, version **6.3.0**, skill directory `skills/using-superpowers`. Served from the local plugin cache under this session's temp backplane dir, not from a project-local `.claude/skills`.
+
+**One caveat worth stating plainly:** the same skill text was already in my context before I called anything — a `SessionStart` hook injected the full `using-superpowers` content at the top of this session. So the content itself is not proof the tool worked. What *is* attributable solely to the `Skill` call is the loader acknowledgement line and the resolved base directory + version, neither of which appeared in the hook injection. That path is the evidence the invocation actually resolved against the plugin cache.
+
+No files were read or written, and nothing outside the skill load was executed — read-only as requested.
+~~~~
+
+PROMPT: Invoke superpowers-backplane:managing-superpowers-backlog for a harmless read-only discovery check. State whether the actual Skill tool loaded it and from which package.
+Session: fa0f7867-b80c-46c7-b712-78958d0c7a31
+
+~~~~text
+Using superpowers-backplane:managing-superpowers-backlog for a load-only discovery check — no backlog reads, no `gh` calls, no mutations.
+
+## Result
+
+**Yes — the real `Skill` tool loaded it.** Not a simulation or a recollection:
+
+- The tool call `Skill(skill: "superpowers-backplane:managing-superpowers-backlog", args: "read-only discovery check…")` returned `Launching skill: superpowers-backplane:managing-superpowers-backlog`.
+- The skill body (`SKILL.md`) was then injected into the turn, along with the `ARGUMENTS:` line echoing what I passed.
+
+**Package:** `superpowers-backplane` (plugin-scoped name `superpowers-backplane:managing-superpowers-backlog`).
+
+**Resolved base directory:**
+```
+C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\
+  superpowers-backplane\skills\managing-superpowers-backlog
+```
+
+## Two things worth noting
+
+1. **The skill resolved out of a different sandbox than the CWD.** The skill came from `backplane-claude-**17**-source-c9121b72…`; my primary working directory is `backplane-claude-**18**-installed-direct-0303679f…`. So the backplane plugin is being served from a sibling *source* checkout, not from the installed-direct tree I'm running in. If you expected the `-18-installed-direct` copy to be the one under test, this run exercised the `-17-source` one.
+
+2. **Only `SKILL.md` was loaded.** The skill references three files I did not open (read-only check, and none were needed to confirm the load):
+   - `references/github-issue-contract.md`
+   - `references/superpowers-binding.md`
+   - `references/installing-superpowers.md`
+
+   Their existence on disk is therefore *unverified* — the load proves the skill directory and `SKILL.md` resolve, nothing more. Say the word and I'll stat/read those three to confirm the package is complete.
+
+No backlog operation was started: per the skill's own dispatch table, orienting is a non-mutating read, and here I did not even reach that — the check ended at load confirmation.
+~~~~
+
+PROMPT: Invoke superpowers-backplane:managing-superpowers-handoffs for a harmless read-only discovery check. State whether the actual Skill tool loaded it and from which package.
+Session: 8e87377f-2646-4bc6-920d-f882d52d0b76
+
+~~~~text
+The real Skill tool loaded it — this wasn't simulated from the session listing.
+
+**Evidence of an actual load:** the tool returned `Launching skill: superpowers-backplane:managing-superpowers-handoffs`, followed by the skill's full body (Purpose, CREATE 1–6, RESUME 1–6, Red flags table) and an explicit base directory. The `ARGUMENTS:` line also echoed back the string I passed, which only happens on a genuine invocation.
+
+**Package:** `superpowers-backplane` (skill id `superpowers-backplane:managing-superpowers-handoffs`).
+
+**Load path:**
+```
+C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\
+  superpowers-backplane\skills\managing-superpowers-handoffs
+```
+
+Two things worth flagging about the provenance rather than the content:
+
+- The skill body came from a `backplane-claude-**17**-source-...` temp tree, while this session's working directory and plans/memory dirs are under `backplane-claude-**18**-installed-direct-...`. So the skill is being served from a different temp root than the active session — expected if 17 is the shared source checkout, surprising if you meant 18 to be self-contained.
+- The load is not a prerequisite check. The skill's own text says its `references/handoff-contract.md` and `references/resume-assessment.md` are *not* upstream installation evidence, and that the Superpowers install must be validated against current upstream installation docs via the active discovery surface. I did none of that — you asked for discovery only.
+
+No CREATE or RESUME was performed, and neither was implied: nothing was written, no repository root was established, and GitHub/backlog state was untouched. Plan mode was also in effect, so the only file I could have written is the plan file, which I did not create since there's no implementation to plan.
+~~~~
+
+Independent raw JSONL inspection found exactly one Skill tool-use per direct session, for superpowers:using-superpowers, superpowers-backplane:managing-superpowers-backlog, and superpowers-backplane:managing-superpowers-handoffs respectively. The direct check compared complete native issue JSON before and after and printed ISSUE STATE UNCHANGED.

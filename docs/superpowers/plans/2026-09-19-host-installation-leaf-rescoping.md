@@ -127,7 +127,7 @@ $C1 = [int]($C1Url -replace '^.*/issues/', '')
 - [x] **Step 2: Audit contracts and matrix.** Assert standard headings and observable acceptance in all eight new bodies and both narrowed final bodies. Fetch every current owner URL. Require V1/V2 negative-floor ownership and no stale #3-open claim.
 - [x] **Step 3: Run the document gate.** Run git diff --check, inspect the complete diff, and verify no package, guide, skill, or upstream file changed. Record observed counts and commands; do not rerun live host tests for a graph-only change.
 - [x] **Step 4: Review and commit.** Run the repository review workflow, recheck exact Git root before git add and commit, stage only intended documentation, run git diff --cached --check, and commit without bypassing hooks.
-- [ ] **Step 5: Integrate after authorized review.** Finish the branch, then re-read the native graph and confirm the integrated matrix matches it. This rescope does not ready, select, close, or implement a host issue.
+- [x] **Step 5: Integrate after authorized review.** Finish the branch, then re-read the native graph and confirm the integrated matrix matches it. This rescope does not ready, select, close, or implement a host issue.
 
 ## Handoff
 

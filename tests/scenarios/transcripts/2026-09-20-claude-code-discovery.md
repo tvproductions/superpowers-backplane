@@ -151,3 +151,25 @@ Unedited response:
 ## Independent scoring note
 
 The three JSONL transcripts contain actual Skill tool_use calls for superpowers:using-superpowers, superpowers-backplane:managing-superpowers-backlog, and superpowers-backplane:managing-superpowers-handoffs respectively. Installed cache SKILL.md SHA-256 values match the pinned Backplane source and independent upstream source. The /help listing is UNKNOWN; direct invocation is PASS for each identity.
+
+## Direct host evidence excerpts
+
+These lines come from each disposable session's actual Skill tool call, its matching tool result, and the host-injected skill body. The full skill bodies are omitted.
+
+```text
+Session: b35fcfa7-bde8-4559-9aca-7669f13efcdd
+Skill tool call: superpowers:using-superpowers (id toolu_01MwMp1bGftRWcdjELZXunyQ)
+Tool result: Launching skill: superpowers:using-superpowers
+Injected Base directory for this skill: C:\Users\Jeff\source\repos\agents\superpowers-backplane\.agents\superpowers\skills\using-superpowers
+
+Session: f428b953-5256-49e4-aaf7-53d3d5d60e25
+Skill tool call: superpowers-backplane:managing-superpowers-backlog (id toolu_01Vw95ZP1dhm4j9jrqDv34cu)
+Tool result: Launching skill: superpowers-backplane:managing-superpowers-backlog
+Injected Base directory for this skill: C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane\skills\managing-superpowers-backlog
+
+Session: d41b04fa-9f88-4f98-950e-c067f7f782bd
+Skill tool call: superpowers-backplane:managing-superpowers-handoffs (id toolu_015p2eKA2mrtpMKd9TLGNZWQ)
+Tool result: Launching skill: superpowers-backplane:managing-superpowers-handoffs
+Injected Base directory for this skill: C:\Users\Jeff\AppData\Local\Temp\backplane-claude-17-source-c9121b72c27945cb92e74fbaec21284d\superpowers-backplane\skills\managing-superpowers-handoffs
+
+```

@@ -3,7 +3,9 @@
 ## Current state
 
 The standalone local repository is at
-`C:\Users\Jeff\source\repos\agents\superpowers-backplane` on feature branch `feat/codex-installation-surface`.
+C:\Users\Jeff\source\repos\agents\superpowers-backplane. Determine the
+current branch from git status. The local planning branch
+docs/right-size-installation-leaves contains draft rescoping artifacts.
 Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
@@ -134,10 +136,26 @@ character in a failure-probe transcript remains deferred.
 This repository has one standalone worktree at its root; do not remove it as a
 feature worktree. The merged feature and verification branches and ignored
 plan scratch directories were removed. Claude Code #11 and OpenCode #12 remain
-the installation leaves; the
-external pilot #6 still waits for them. No release was part of issue #3.
+the installation leaves; the external pilot #6 still waits for them. No release was part of issue #3.
 
 For the remaining host leaves, make each reviewable slice smaller: package and guide;
 one host setup mode with its failures; then integrated lifecycle evidence and closure.
 Treat host authentication as an external prerequisite and reuse an authorized isolated
 profile. Issue #3 combined all of these and took too long.
+
+## Remaining host leaf rescoping plan (2026-09-19)
+
+The user approved a 3-child Claude Code and 5-child OpenCode decomposition
+for planning. The draft design is
+docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md;
+the draft execution plan is
+docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md.
+Both are on the local docs/right-size-installation-leaves branch for review.
+The approved v0.1 functional host contract remains unchanged.
+
+Live intake still showed #11 and #12 OPEN at backplane:backlog with zero
+children and no implementation plans. #6 still has both as native blockers.
+No GitHub issue, host installation, login, or upstream dependency was changed
+during planning. After written review, implement the graph change with gh,
+keep the parents at backlog, and give each executable child its own plan
+only when selected.

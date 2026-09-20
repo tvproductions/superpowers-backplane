@@ -4,8 +4,8 @@
 
 The standalone local repository is at
 C:\Users\Jeff\source\repos\agents\superpowers-backplane. Determine the
-current branch from git status. The local planning branch
-docs/right-size-installation-leaves contains draft rescoping artifacts.
+current branch from git status. The approved host-leaf rescope design and plan
+are integrated on main at 150c7039013a77fbc87f6cca5f79363a2714bc6c.
 Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
 exactly to that Backplane root.
 
@@ -143,26 +143,36 @@ one host setup mode with its failures; then integrated lifecycle evidence and cl
 Treat host authentication as an external prerequisite and reuse an authorized isolated
 profile. Issue #3 combined all of these and took too long.
 
-## Remaining host leaf rescoping plan (2026-09-19)
+## Host installation leaf rescope (2026-09-19 local)
 
-The user approved a 3-part Claude Code and 5-part OpenCode decomposition
-for planning. Plan review found that turning #11/#12 into non-executable
-parents would leave no valid leaf completion path and keep pilot #6 blocked.
-The approved revision therefore makes the eight new issues siblings under #1
-and keeps #11/#12 as narrow executable final acceptance leaves. The design is
-docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md;
-the execution plan is
-docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md.
-Both are on the local docs/right-size-installation-leaves branch for integration.
-Ten exact issue bodies and a current ownership draft are in ignored local
-.superpowers/sdd/2026-09-19-host-leaf-rescoping/. The baseline is recorded in
-tests/scenarios/2026-09-19-host-leaf-rescoping.md.
-The approved v0.1 functional host contract remains unchanged.
+The user approved eight bounded host implementation issues and the revised
+native graph. Planning PR #16 merged to main on 2026-09-20 UTC at
+150c7039013a77fbc87f6cca5f79363a2714bc6c. The approved design and plan
+are docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md
+and docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md.
+The v0.1 functional host contract remains unchanged.
 
-Live intake still showed #11 and #12 OPEN at backplane:backlog with zero
-children and no implementation plans. #6 still has both as native blockers.
-No GitHub issue, host installation, login, or upstream dependency was changed
-during planning. The user approved the revised sibling graph and planning
-branch merge on 2026-09-19. After integration, implement the graph change
-with gh, keep all ten executable host issues at backlog, and give each
-selected issue its own current plan before execution.
+All eight new issues are open sibling children of release parent #1 with one
+backplane:backlog label and no implementation plan yet:
+
+- Claude Code: package/guide #17 -> setup/failures #18 -> lifecycle/conformance
+  #19 -> final integrated acceptance #11.
+- Shared OpenCode adapter #20 branches to V1 setup/failures #21 ->
+  lifecycle/conformance #22 and V2 setup/failures #23 ->
+  lifecycle/conformance #24. Both branches feed final acceptance #12.
+
+#11 and #12 remain executable sibling leaves under #1, not continuity
+parents. Their bodies now require passing integrated host evidence. Both
+retain historical closed blocker #2 and continue to block external pilot #6.
+#11 was last observed at 2026-09-20T01:31:32Z; #12 at
+2026-09-20T01:31:34Z. #6 still has exactly its original blockers
+#3, #4, #5, #11, and #12. The native graph, bodies, labels, and pilot gate
+were verified with full gh intake of #1, #6, #11, #12, and #17-#24.
+
+The four-host ownership matrix assigns actual issue URLs and keeps the old
+assignment as dated history. Claude, OpenCode V1, and OpenCode V2 live host
+verification remains pending; this graph rescope did not install a host,
+authenticate, change upstream, or run live host tests. No new issue has been
+selected or readied. #17 and #20 have no new unresolved dependency, but the
+project has no priority policy. Each selected issue needs a current approved
+Superpowers plan before execution.

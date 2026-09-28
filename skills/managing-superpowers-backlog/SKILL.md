@@ -21,6 +21,25 @@ Require authenticated `gh` access and an operational upstream Superpowers
 installation for the active harness. If upstream is absent or its provenance is
 unclear, read `references/installing-superpowers.md` before backlog work.
 
+## Choose the issue contract
+
+Inspect the adopting project's `.gz-skills/settings.json` without changing it.
+`gz-skills` owns profile setup and migration. A valid selected `heavy` profile
+uses [the heavy issue record contract](references/heavy-issue-record.md) only
+after the project's named human has approved its separate constitution and
+PRD and reviewed its architecture. Verify installed gz-skills, Superpowers,
+and Backplane on each declared harness before claiming the full ecosystem is
+ready. If selection, approval, or compatibility is unknown, name the missing
+evidence; never infer readiness from an installed skill. Other projects and
+unmigrated legacy issues use the existing GitHub issue contract. Do not
+silently assign a heavy kind or semantic ID to old records.
+
+SP-BP's heavy catalog, reconciliation, trace, V&V, view, and release decisions
+share one Python core and CLI/helpers. Host-specific adapters only discover and
+invoke it. Do not substitute an agent-written or host-local second validator.
+Until the installed Python invocation is proved, report machine-checked heavy
+results as `UNKNOWN` while still explaining the read-only contract findings.
+
 ## Choose the operation
 
 | Request | Action |
@@ -28,10 +47,17 @@ unclear, read `references/installing-superpowers.md` before backlog work.
 | Orient, status, or recommend next work | Read issues and relationships; do not mutate |
 | Pull or select an issue | Validate the complete issue contract and eligibility |
 | Design or plan tracked work | Apply `references/superpowers-binding.md` |
+| Trace requirements, score V&V, or assess evidence currency in heavy | Apply `references/heavy-trace-and-evidence.md` |
+| Check a heavy release candidate, gate, version, or publication readiness | Apply `references/heavy-release-gate.md` |
 | Start work | Re-read the issue, reconcile revision drift, then transition |
 | Submit or close | Require review, integration, and verification evidence |
 
 For every operation, read `references/github-issue-contract.md` completely.
+For a selected heavy profile also read `references/heavy-issue-record.md`.
+For a heavy trace, evidence, or release assessment also read
+`references/heavy-trace-and-evidence.md`.
+For a heavy release assessment also read `references/heavy-snapshot-and-views.md`
+and `references/heavy-release-gate.md`.
 
 ## Intake before interpretation
 
@@ -43,11 +69,17 @@ project control documents or skills.
 Never infer native relationships from prose when GitHub provides the relation.
 Never use GitHub Project fields as required state. Never invent a repository
 roadmap or backlog file as a second authority.
+In heavy projects, `ROADMAP.md` and `BACKLOG.md` are generated read-only views
+from a validated approved-document and issue snapshot. Record its input hash
+and recheck source revisions before publication. If an input changed or
+freshness cannot be proved, do not call either view current. The views do not
+govern issue or requirement wording.
 
 ## Preserve the product arc
 
 Use native parent/sub-issue relationships for decomposition and native blocking
-relationships for eligibility. Distinguish these facts:
+relationships for eligibility. In heavy projects also reconcile typed links
+against approved PRD requirements and the issue graph. Distinguish these facts:
 
 - **Captured:** an open issue exists.
 - **Covered:** approved design and plan artifacts exist.
@@ -60,9 +92,12 @@ priority recommendation.
 
 ## Transition only from evidence
 
-Use exactly one `backplane:*` lifecycle label on each open tracked issue. Re-read
-the issue immediately before mutation. If `updatedAt` differs from the revision
-recorded by the plan, reconcile the semantic change before starting.
+Use exactly one `backplane:*` execution label on each open legacy tracked issue
+and each open heavy executable outcome. Heavy requirement anchors, groupings,
+gates, boundaries, releases, and unpromoted incidental issues use their own
+state authority and no execution label. Re-read the issue immediately before
+mutation. If `updatedAt` differs from the revision recorded by the plan,
+reconcile the semantic change before starting.
 
 Deadlines, authority pressure, prepared worktrees, checked plan boxes, commits,
 and open PRs do not waive blockers or prove completion. Close an issue as
@@ -86,3 +121,7 @@ verification, and branch finishing.
 - Making Projects, IssueOps, or a local backlog document authoritative.
 - Copying Superpowers files into Backplane instead of preserving its upstream
   checkout.
+- Treating an issue number, target release version, or administrative family
+  path as a stable semantic ID in a heavy project.
+- Treating a requirement anchor issue as approval of PRD wording, or a typed
+  link as current verification evidence.

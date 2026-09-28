@@ -1,5 +1,17 @@
 # Handoff
 
+## Active 1.0 heavy SDD migration (2026-09-28, handoff)
+
+The operator requested git-sync for this branch. The append-only [session handoff](docs/superpowers/handoffs/20260928T010454Z-heavy-sdd-1-0-task-3-continuation.md) is the explicit RESUME target. It records the observed pre-sync branch and HEAD, fresh quality gate, next Task 3 gaps, and unknowns. Reconcile its observations against current Git, PRD, plan, and issue state on resume; this handoff grants no issue-migration or release authorization. The plan-scoped `.superpowers/sdd/` execution ledger is ignored scratch and is not transported by Git; the tracked plan checkpoint and session handoff carry the durable continuation state.
+
+**Execution checkpoint:** Follow `docs/superpowers/plans/2026-09-27-heavy-sdd-migration-and-implementation.md`, especially its execution checkpoint and Task 3 acceptance checks. Tasks 1–2 are complete; Tasks 3–6 have partial slices and open gates; Task 7 has a read-only proposed map but no live mutation; Tasks 8–10 have not started. Finish Task 3, then Tasks 4–6, before treating the proposed map as an executable migration. The user requested a visible spec/plan trail; record each closed gate in that plan rather than treating code or passing unit tests alone as completion.
+
+The original standalone checkout remains on `plan/issue-19-claude-lifecycle-draft`; its unrelated draft is untouched. The active 1.0 work is isolated in ignored `.worktrees/sdd-ecosystem` on `design/sdd-ecosystem-v1`, based on main `d0eeee829c491da02351e793544aa16ad96461bf`. The operator has requested a branch commit and push for handoff; inspect Git for the resulting identity. No live GitHub issue edit, tag, or release has been made for this work. Before Git mutation, the standalone root check in `AGENTS.md` still applies.
+
+The operator approved the 1.0 heavy SDD ADR, constitution, PRD, architecture, and migration plan, then required SP-BP's catalog, reconciliation, traceability, V&V, views, release logic, CLI/helpers, and tests to use Python with thin host adapters. The exploratory Go prototype was removed uncommitted; do not rebuild a parallel Go core. The operator also approved a bounded bundled helper for deterministic views, with exact installed Python invocation and runtime packaging still to be proved. See `docs/superpowers/specs/2026-09-27-heavy-sdd-backplane-adr.md`, `2026-09-27-python-core-adr.md`, the helper ADR, and `docs/superpowers/plans/2026-09-27-heavy-sdd-migration-and-implementation.md`.
+
+A read-only 21-issue before-snapshot and candidate migration map exist. The map now proposes a disposition and stable ID for every existing planned issue, twelve approved PRD requirement anchors, seven capability anchors, and six new implementation outcomes. It is not an approved exact mutation payload. A read-only recheck found the same 21 issue numbers and unchanged `updatedAt` values as the before-snapshot. The old live issue contract remains in force until the exact before/after issue map is reviewed and applied. The current Python core under `src/superpowers_backplane/` has focused `unittest` coverage for record parsing, stable graph IDs and many-to-many links, kind-specific execution labels, PRD table extraction, a bounded evidence parser/verification-claim assessor, forward/reverse link currency, snapshot hash/race behavior, `gh` intake, deterministic view bytes, candidate digests, and fact-level release assessment. An unrecorded incidental issue is accepted; a reviewed set of planned legacy issue numbers prevents silently treating those as incidental. The read-only `gh` adapter returned all 21 current issues with an independent count of 21; this is not a migrated heavy snapshot. The evidence and trace slices do not yet constitute a complete V&V engine; the release assessor consumes fact statuses and has no authenticated human-decision adapter. `uv build` succeeded and the wheel's read-only `backplane preflight` entry point ran through `uvx --offline` from the separate root checkout; see `tests/scenarios/transcripts/2026-09-27-python-uvx-local-preflight.md`. There is still no integrated generate/check CLI, clean-adopter runtime proof, cross-host proof, or current derived view. The Python project uses only Astral tooling: `uv sync --locked`, then `uv run --locked python -m unittest discover -s tests/unit -v`, `uv run --locked ruff check src tests/unit`, `uv run --locked ruff format --check src tests/unit`, and `uv run --locked ty check src tests/unit`. Do not call the heavy workflow or generated views ready from those results.
+
 ## Current state
 
 The standalone local repository is at
@@ -16,7 +28,7 @@ The initial design is approved in principle:
 - GitHub CLI (`gh`) is a hard dependency.
 - GitHub Projects are optional visualization only and never authoritative;
   IssueOps is not used.
-- The project is language-neutral and must never assume pytest.
+- Historical v0.1 guidance called the implementation language-neutral. The active 1.0 Python ADR supersedes that implementation choice; adopting projects remain free to use any language. Never assume or introduce pytest.
 - Backplane can adopt a compatible native Superpowers plugin or sibling
   checkout, or obtain upstream for the user while preserving provenance and
   independent updateability.

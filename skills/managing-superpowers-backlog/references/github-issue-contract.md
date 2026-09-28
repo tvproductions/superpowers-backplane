@@ -1,5 +1,12 @@
 # Native GitHub Issue Contract
 
+This is the operational contract for existing legacy issues and the native
+intake/execution-label layer for heavy executable outcomes. A project with an
+approved heavy profile also uses [the heavy issue record contract](heavy-issue-record.md)
+for requirement anchors, planned node kinds, semantic IDs, typed links, and
+kind-specific state. During migration, do not reinterpret an old issue as a
+heavy record without a reviewed before/after map.
+
 ## Required intake
 
 Fetch one tracked issue with:
@@ -58,9 +65,13 @@ Never parse Markdown task lists as a substitute for native relationships.
 
 ## Lifecycle labels
 
-An open tracked issue carries exactly one `backplane:*` lifecycle label while
-preserving all unrelated repository labels. Zero or multiple Backplane labels
-is invalid state; fail closed and repair it before any other transition.
+An open legacy tracked issue or open heavy executable outcome carries exactly
+one `backplane:*` execution label while preserving all unrelated repository
+labels. Zero or multiple Backplane labels on such an issue is invalid state;
+fail closed and repair it before any other transition. A migrated heavy
+non-executable kind carries no execution label and uses its kind-specific
+record state. A legacy issue retains its old label until migration is reviewed
+and applied.
 
 Before first use in a repository, inspect `gh label list` and ensure all six
 labels below exist with descriptions matching their meanings. Label creation is
@@ -103,10 +114,11 @@ never guess the former state.
 
 ## Eligibility and selection
 
-An issue is eligible only when all are true:
+An executable legacy leaf or heavy outcome is eligible only when all are true:
 
 1. It is open and is an executable leaf.
-2. Its body satisfies the contract.
+2. Its body satisfies this issue contract and, for a heavy outcome, the heavy
+   record contract.
 3. Its design authority is approved.
 4. Its Superpowers plan exists and consumes the current semantics.
 5. Every native blocker is resolved with acceptable evidence.
@@ -141,13 +153,17 @@ invalidate the plan. Classify the change:
 Do not mutate for a read-only request. For an authorized transition:
 
 1. Fetch current state and relationships.
-2. Verify the expected revision and exactly one `backplane:*` label.
-3. Apply the removal and addition in one `gh issue edit` invocation while
-   preserving unrelated labels.
+2. Verify the expected revision and exactly one `backplane:*` label for a legacy
+   leaf or heavy outcome. For another heavy kind, verify its allowed record
+   state and absence of an execution label after reviewed migration.
+3. For an execution-label transition, apply the removal and addition in one
+   `gh issue edit` invocation while preserving unrelated labels. For a heavy
+   non-executable record-state transition, edit the reviewed body through
+   `gh issue edit --body-file` and preserve its unrelated fields and labels.
 4. Record the evidence or blocker in a concise issue comment when it is not
    already represented by a native relation, PR, or committed artifact.
-5. Re-fetch and verify exactly one expected Backplane label and unchanged
-   unrelated labels.
+5. Re-fetch and verify the expected execution label or heavy record state and
+   unchanged unrelated labels.
 
 Close only after merged/integrated delivery passes fresh project-owned
 verification. PR creation moves work to review; it does not complete it.

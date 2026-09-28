@@ -3,3 +3,7 @@
 .agents/plugins/*
 !.agents/plugins/marketplace.json
 .worktrees/
+.venv/
+__pycache__/
+.ruff_cache/
+dist/

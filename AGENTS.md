@@ -17,8 +17,17 @@
 
 ## Runtime and Tool Boundary
 
-- Remain language-neutral. Do not assume Python, Node.js, or another project
-  runtime.
+- Implement Backplane's 1.0 catalog, issue reconciliation, traceability, V&V,
+  generated views, release logic, CLI/helpers, and tests in Python under
+  `docs/superpowers/specs/2026-09-27-python-core-adr.md`. Keep host-specific
+  adapters thin. Do not build or maintain a parallel Go core. Remain neutral
+  about an adopting project's language and test runner. The Python source alone
+  does not approve an adopter runtime requirement; prove and document the
+  installed invocation before claiming heavy readiness.
+- Use only Astral's `uv`/`uvx` for Python environment and package tooling,
+  `ruff` for lint/format, and `ty` for type checking. Run standard-library
+  `unittest` through `uv run`. Keep the declared Python and tool versions in
+  `.python-version`, `pyproject.toml`, and `uv.lock` coherent.
 - **NO pytest. EVER.** Do not add, suggest, or assume pytest.
 - Require GitHub CLI (`gh`) for GitHub operations. Assume Git because
   Superpowers itself requires Git workflows.

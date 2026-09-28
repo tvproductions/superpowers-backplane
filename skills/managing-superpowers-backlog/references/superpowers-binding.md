@@ -22,6 +22,14 @@ Use a human-approved issue body as design authority when the work is bounded,
 the issue contract is complete, and implementation does not introduce an
 architectural, cross-cutting, or breaking decision.
 
+In a heavy project, this choice applies only to an executable `outcome`. The
+approved project PRD remains authority for requirement ID, wording, users, and
+success criteria; the issue cannot amend it. The issue or SP feature spec may
+refine implementation scope only within the current approved PRD and ADRs.
+Before accepting the issue body as design authority, reconcile its claimed
+`satisfies` links and current revision against those documents. A feature
+conflict waits for a human-approved governing-document amendment.
+
 Require a reviewed local specification under `docs/superpowers/specs/` when
 the work changes architecture, spans multiple independently reviewable
 subsystems, introduces a breaking contract, or requires design reasoning that
@@ -32,12 +40,14 @@ issue. Do use brainstorming to resolve missing or newly changed design.
 
 ## Plan binding
 
-Each executable issue binds to one current Superpowers plan. The plan header or
+Each executable legacy issue or heavy `outcome` binds to one current
+Superpowers plan. The plan header or
 constraints must record:
 
 - Issue URL.
 - Issue `updatedAt` revision consumed.
-- Design authority: issue body or specification path.
+- Design authority: approved issue body or SP specification path, plus the
+  governing PRD and ADR revisions in heavy.
 - Acceptance criteria and verification seams as hard constraints.
 - Exact project-owned verification commands.
 

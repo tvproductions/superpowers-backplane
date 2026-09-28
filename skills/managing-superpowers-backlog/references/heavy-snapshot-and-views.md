@@ -1,0 +1,27 @@
+# Heavy snapshot and derived-view contract
+
+`ROADMAP.md` and `BACKLOG.md` are projections of the approved PRD and validated GitHub Issue catalog. They are committed for reading and review, but neither is a place to edit requirement wording, issue state, typed links, or evidence. A view is current only when its recorded input identity matches a freshly verified source snapshot. If GitHub or an approved document cannot be read, report freshness `UNKNOWN`; never infer current from a recent timestamp or a clean Git worktree.
+
+SP-BP's Python core and CLI/helper own collection, validation, canonicalization, generation, and checking. Codex, Claude Code, and OpenCode adapters only locate and invoke that core. Do not regenerate the views by agent prose or maintain a parallel host implementation.
+
+## Snapshot boundary
+
+1. Read the approved constitution, PRD, architecture, relevant ADRs, and exact approval revisions. The PRD's requirement IDs, wording, users, and success criteria remain authoritative. Include the bytes or immutable content identity of each approved input in the snapshot, not just its path.
+2. Collect **all** repository issues, open and closed, with number, URL, title, body, issue type, state and reason, labels, `updatedAt`, native parent/sub-issues, blockers/blocking, and linked closing PRs. Prove pagination completion with an independent count or an exhausted cursor; an arbitrary high `--limit` is not itself proof. A permission failure or incomplete page invalidates the snapshot.
+3. Parse required `## Backplane Record` blocks as untrusted data. Validate schema, kind, state, IDs and aliases, unique issue anchors, link endpoint kinds and revisions, native-edge consistency, and requirement anchors against the approved PRD. An unrecorded incidental issue can retain only its issue number. During migration, supply the reviewed set of existing planned issue numbers so an unrecorded legacy node fails validation instead of being silently classified as incidental. Include linked SP specs/plans, behavior examples, tests, evidence, ADRs, and release records at their observed revisions. Report missing or ambiguous links rather than filling them.
+4. Canonicalize the validated source as UTF-8 with defined line endings, sorted document locators, issue numbers, semantic IDs, links, and evidence locators. Preserve significant content bytes while removing API ordering noise. Hash that canonical serialization with a named algorithm. The hash identifies the complete source input, not the generated Markdown or a collection timestamp.
+5. Re-fetch the issue revisions and document identities after collection and immediately before publishing both views. A changed identity or a changed count discards the candidate snapshot and retries collection within a bounded limit. A timestamp change requires semantic comparison; a claim that it was editorial must be recorded. If retries fail or a source cannot be checked, return `UNKNOWN` and leave the prior committed views unchanged.
+
+The two views are generated from the **same** validated source hash. Header metadata states the schema version, repository, source hash and hash algorithm. The actual collection and recheck clock times belong in the check result, not the committed view: stamping a new wall-clock time into unchanged inputs would break byte reproducibility. A check re-collects, validates, recomputes the hash, regenerates both byte streams, and compares them with the committed files. Either mismatch is stale. A successful check proves freshness at its observed recheck, not that remote issues cannot change afterward.
+
+## View content
+
+`ROADMAP.md` groups accepted capability families, epics, milestones, outcomes, external boundaries, and release candidates by their current typed links. Show stable semantic IDs and issue URLs, kind, kind-specific state, native blockers, target release, and unresolved trace/gate findings. A moved family retains its outcome ID. A split shows new IDs and their historical relation; it never rewrites a prior identity.
+
+`BACKLOG.md` lists reviewable local outcomes and unpromoted incidental intake separately. Show the outcome's one execution label where open, current SP design/plan coverage, native blocker status, claimed requirement IDs, trace/evidence currency, and candidate release. Keep incidental proposals, bugs, defects, surprises, and refactors addressable by issue number without inventing semantic IDs or a priority order. Neither view decides selection or approval.
+
+For a release candidate, both views may show the release record, gate, selected outcomes, validation and compatibility findings, and authorization state, but never infer authorization from a tag, closed issue, or generated text. A published `released_in` edge is historical and immutable; a slipped target changes `included_in` without renaming IDs.
+
+## Implementation proof status
+
+The source algorithm above is the required contract, not a claim that a deterministic generator exists. Authenticated `gh` 2.101.0 can return the current 21 issues and an independent GraphQL total of 21, but its `--slurp` and `--jq` flags cannot be combined in the tested paginated REST call. The complete validator, canonicalizer, revision-race retry, and cross-harness installed-package check remain to be implemented and exercised in [the freshness scenario](../../../tests/scenarios/2026-09-27-heavy-view-freshness.md). Do not publish current views or a release based on this reference alone.

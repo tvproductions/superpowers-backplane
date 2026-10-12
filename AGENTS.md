@@ -76,3 +76,11 @@
   only upstream helper invocation, preserving task order, TDD, rulings,
   verification, fresh whole-change review, and branch finishing. Never invoke
   a helper that writes to `.superpowers/` or patch upstream to redirect it.
+- Issue #31 cross-machine recovery: at a machine or harness handoff, commit a
+  tracked execution summary and the evidence supporting its verified claims.
+  Keep disposable scratch under ignored `.sp-bp/work/`; do not rely on it as
+  the sole resume source. Record exact plan/spec/probe and issue revisions,
+  workspace identity, task dispositions, evidence/commit identities, unresolved
+  findings, and the first task requiring revalidation. Verify authorized
+  transport and arrival before claiming another host can resume. Missing
+  predecessor evidence remains unknown. Preserve the approved plan/spec bytes.

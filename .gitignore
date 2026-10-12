@@ -3,3 +3,5 @@
 .agents/plugins/*
 !.agents/plugins/marketplace.json
 .worktrees/
+
+.sp-bp/work/

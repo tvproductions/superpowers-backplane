@@ -12,14 +12,26 @@ The current tracked work is issue #31, OPEN with `backplane:active`. Its approve
 plan/spec hashes match this checkout, and PR #32 published those planning
 artifacts. The recorded Windows execution workspace and ignored progress ledger
 were not transported here; prior task progress remains unknown. The operator
-confirmed those records remain on the Windows machine. The Mac has no registered
-feature worktree or operational project Superpowers checkout/discovery.
+confirmed those records remain on the Windows machine. Mac setup was then
+restored at the recorded Superpowers 7.0.0 commit, with fresh CLI discovery
+and all five existing Backplane conformance checks passing. Evidence is in
+`tests/scenarios/2026-10-12-mac-superpowers-v7.0.0-setup.md`.
+
+The native issue-31 Mac workspace is
+`/Users/jeff/.codex/worktrees/d181/superpowers-backplane`, initially detached at
+`82fa208cd81b1ae33a6b24e869220f90c9558312`; its registration and shared Git
+directory were verified. Its portable execution summary is
+`docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md`.
+Task 1 is the first task requiring revalidation; no Windows task completion
+has been recovered. Keep scratch ignored and transport a committed execution
+summary with its supporting evidence at handoff boundaries.
 
 Read the diagnostic reconciliation and proposed portability correction at
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md`.
-It is not a recovered execution ledger or completed RESUME. Preserve the approved
-artifacts, establish Mac prerequisites and execution identity, and revalidate
-missing task evidence before implementation. No issue state was changed by
+It is not a recovered execution ledger or completed RESUME. The subsequent setup
+and portable execution summary above record the restored Mac prerequisites and
+isolation identity; revalidate missing task evidence before implementation.
+No issue state was changed by
 the recovery assessment. The historical product records below remain context.
 
 The initial design is approved in principle:
@@ -48,9 +60,9 @@ upstream Superpowers, `managing-superpowers-backlog`, and
 `managing-superpowers-handoffs` under `.agents/skills`. The local update and
 fresh Codex conformance evidence are recorded in
 `tests/scenarios/2026-10-11-superpowers-v7.0.0-compatibility.md`.
-That checkout and discovery are absent on this Mac. The separately cached
-Superpowers 7.0.0 plugin is disabled in current user configuration; its presence
-does not verify operational discovery or compatibility here.
+The Mac checkout/discovery were restored on 2026-10-12 as recorded above.
+The separately cached Superpowers 7.0.0 plugin remains disabled; verification
+uses the independent project development checkout and repository discovery.
 The repository is published publicly at
 `https://github.com/tvproductions/superpowers-backplane`, and `main` tracks
 `origin/main`. GitHub CLI authentication was verified for `ahuimanu` with

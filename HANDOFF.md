@@ -28,13 +28,13 @@ samples; the skill-enabled arm supplied it in 5/5 while both arms refused to
 invent priority or mutate state. The verbatim response records are under
 `tests/scenarios/transcripts/`.
 
-Stable upstream Superpowers `v6.4.1` is installed at
+Stable upstream Superpowers `v7.0.0` is installed at
 `.agents/superpowers` at commit
-`5bf4e78011075bcfc0dc295f0724994cd123ee71`. Discovery junctions expose
+`bb92a77741419a4ab5f06e711a283343f1ada0c3`. Discovery junctions expose
 upstream Superpowers, `managing-superpowers-backlog`, and
 `managing-superpowers-handoffs` under `.agents/skills`. The local update and
 fresh Codex conformance evidence are recorded in
-`tests/scenarios/2026-09-19-superpowers-v6.4.1-compatibility.md`.
+`tests/scenarios/2026-10-11-superpowers-v7.0.0-compatibility.md`.
 The repository is published publicly at
 `https://github.com/tvproductions/superpowers-backplane`, and `main` tracks
 `origin/main`. GitHub CLI authentication was verified for `ahuimanu` with

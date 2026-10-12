@@ -2,12 +2,25 @@
 
 ## Current state
 
-The standalone local repository is at
-C:\Users\Jeff\source\repos\agents\superpowers-backplane. Determine the
-current branch from git status. The approved host-leaf rescope design and plan
-are integrated on main at 150c7039013a77fbc87f6cca5f79363a2714bc6c.
-Before Git mutation, continue to require `git rev-parse --show-toplevel` to resolve
-exactly to that Backplane root.
+On 2026-10-12 the standalone local repository was verified at
+`/Users/jeff/Documents/Code/superpowers-backplane`, on `main` at
+`387f6e475624ba70c4c1f9bd3d71f85e55977a50`, with the expected origin and a
+clean worktree before recovery-document edits. Recheck live identity and status
+on entry; before Git mutation, require the exact root in current AGENTS.md.
+
+The current tracked work is issue #31, OPEN with `backplane:active`. Its approved
+plan/spec hashes match this checkout, and PR #32 published those planning
+artifacts. The recorded Windows execution workspace and ignored progress ledger
+were not transported here; prior task progress remains unknown. The operator
+confirmed those records remain on the Windows machine. The Mac has no registered
+feature worktree or operational project Superpowers checkout/discovery.
+
+Read the diagnostic reconciliation and proposed portability correction at
+`docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md`.
+It is not a recovered execution ledger or completed RESUME. Preserve the approved
+artifacts, establish Mac prerequisites and execution identity, and revalidate
+missing task evidence before implementation. No issue state was changed by
+the recovery assessment. The historical product records below remain context.
 
 The initial design is approved in principle:
 
@@ -28,13 +41,16 @@ samples; the skill-enabled arm supplied it in 5/5 while both arms refused to
 invent priority or mutate state. The verbatim response records are under
 `tests/scenarios/transcripts/`.
 
-Stable upstream Superpowers `v7.0.0` is installed at
-`.agents/superpowers` at commit
-`bb92a77741419a4ab5f06e711a283343f1ada0c3`. Discovery junctions expose
+The historical Windows verification recorded stable upstream Superpowers
+`v7.0.0` at `.agents/superpowers`, commit
+`bb92a77741419a4ab5f06e711a283343f1ada0c3`. Its discovery junctions exposed
 upstream Superpowers, `managing-superpowers-backlog`, and
 `managing-superpowers-handoffs` under `.agents/skills`. The local update and
 fresh Codex conformance evidence are recorded in
 `tests/scenarios/2026-10-11-superpowers-v7.0.0-compatibility.md`.
+That checkout and discovery are absent on this Mac. The separately cached
+Superpowers 7.0.0 plugin is disabled in current user configuration; its presence
+does not verify operational discovery or compatibility here.
 The repository is published publicly at
 `https://github.com/tvproductions/superpowers-backplane`, and `main` tracks
 `origin/main`. GitHub CLI authentication was verified for `ahuimanu` with

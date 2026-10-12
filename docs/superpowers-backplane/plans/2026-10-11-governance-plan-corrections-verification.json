@@ -1,0 +1,73 @@
+{
+  "observed_at_utc": "2026-10-12T01:08:14.5074707Z",
+  "checks": [
+    {
+      "name": "ledger resumes first unfinished task",
+      "result": "PASS"
+    },
+    {
+      "name": "ledger rejects different plan identity",
+      "result": "PASS"
+    },
+    {
+      "name": "changed input reopens prior verified task",
+      "result": "PASS"
+    },
+    {
+      "name": "valid candidate pair passes identity digest and claim comparison",
+      "result": "PASS"
+    },
+    {
+      "name": "candidate staging leaves prior live pair unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "interruption after first replacement is rejected as mismatched",
+      "result": "PASS"
+    },
+    {
+      "name": "owned interrupted bytes permit guarded recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "recovery restores both exact prior blobs",
+      "result": "PASS"
+    },
+    {
+      "name": "intervening user edit stops automatic recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "ownership check preserves intervening user edit",
+      "result": "PASS"
+    },
+    {
+      "name": "first-capture cleanup verifies transaction-owned bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "no-prior recovery removes only transaction-created output",
+      "result": "PASS"
+    },
+    {
+      "name": "unrelated sentinel unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "project superpowers files unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "shipped upstream files unchanged",
+      "result": "PASS"
+    }
+  ],
+  "fixture_path": "C:\\Users\\Jeff\\AppData\\Local\\Temp\\sp-bp-plan-verification-895fbddacdb940efb2f4e1b55289fc6d",
+  "scope": "native disposable file-operation fixtures; no Git mutations, worktree creation, issue changes, skill implementation, or live checkpoint publication",
+  "limitations": [
+    "not installed-skill conformance",
+    "not upstream-native ledger redirection",
+    "not Git index or commit publication verification",
+    "scoped execution exceptions still require explicit approval"
+  ]
+}

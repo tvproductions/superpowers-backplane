@@ -8,7 +8,7 @@ On 2026-10-12 the standalone local repository was verified at
 clean worktree before recovery-document edits. Recheck live identity and status
 on entry; before Git mutation, require the exact root in current AGENTS.md.
 
-The current tracked work is issue #31, OPEN with `backplane:active`. Its approved
+The current tracked work is issue #31, OPEN with backplane:review after PR #33 submission. Its approved
 plan/spec hashes match this checkout, and PR #32 published those planning
 artifacts. The recorded Windows execution workspace and ignored progress ledger
 were not transported here; prior task progress remains unknown. The operator
@@ -24,8 +24,9 @@ directory were verified. Its portable execution summary is
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md`.
 Tasks 1–4 are now independently verified on this Mac; final governance and
 existing conformance checks pass. Fresh whole-change review and one verified format-fix pass are complete.
-The first remaining gate is the operator's finishing decision; the PR handoff
-is prepared and the native worktree is preserved. No Windows task completion has been recovered. Keep scratch ignored and transport a committed execution
+PR #33 is published from feat/issue-31-governance-bridges against main.
+Issue #31 is OPEN with backplane:review. The next gate is PR review/integration
+and fresh target verification; the native worktree is preserved. No Windows task completion has been recovered. Keep scratch ignored and transport a committed execution
 summary with its supporting evidence at handoff boundaries.
 
 Read the diagnostic reconciliation and proposed portability correction at

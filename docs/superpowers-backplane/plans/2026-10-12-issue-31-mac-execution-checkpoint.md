@@ -61,7 +61,7 @@ behavior, not the new governance baseline or task completion.
 | 2: Product planning/intake bridge | verified at e4e63a40a6fe99c8e4a1cbd016b89e698b69c1e8 | Fresh cases1–4 pass27; final cases retained |
 | 3: PR closeout bridge | verified at 2518eb2df8b67af12c6ee2750aded9227932cf56 | Fresh cases5/2 pass16; final cases retained |
 | 4: Product checkpoint contract | verified at 423eb83, revalidated after review correction | Original18 plus5 native-edge outcomes pass23; all frozen behavioral cases and earlier12 file/Git outcomes remain scoped and retained |
-| 5: Review and finishing | local implementation, regression and fresh review verified; finishing decision pending | Latest common-bundle64 governance/freshness +23 existing statements, five conformance checks; two format findings fixed, one Minor deferred |
+| 5: Review and finishing | reviewed local delivery published as PR33; integration pending | User selected push-as-new-branch/PR; issue31 is open in review; fresh integrated verification and closeout are next gates |
 
 No prior Windows result is promoted to verified. Its execution ledger and
 implementation state remain unavailable. The earlier fixture receipt remains
@@ -97,8 +97,9 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 The evaluated Mac setup and implementation checks pass. Recheck the exact
 worktree identity, live issue/artifact revisions, final source hashes and captured
-evidence. The remaining gate is the operator's concrete finishing decision: push a new
-branch and create the prepared PR, or keep the native workspace as-is. Do not repeat verified tasks solely because the
+evidence. The finishing choice was completed as PR33. Reconcile current review/head and
+issue31 before continuing. Review/integration and fresh target verification are
+next; the native workspace remains detached and preserved. Do not repeat verified tasks solely because the
 prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
 the approved design, task order, immutable probes, review, and verification
@@ -169,3 +170,20 @@ Git). A clean local export of that commit reproduces all52 recorded response
 identities and the latest source bundle, review, ledger and prepared PR handoff,
 without ignored scratch. Later storage of this export receipt changes no tested
 skill/reference/fixture source. Remote transport/arrival remains unverified.
+
+## Published submission — supersedes pending-finishing observations
+
+The operator selected option1. [PR33](https://github.com/tvproductions/superpowers-backplane/pull/33)
+is OPEN against main from feat/issue-31-governance-bridges, initially at
+fddf528c1b3f635bbc54fd3d07d28414d6caf9ec. The remote ref and essential artifact
+blob identities were verified. [Publication receipt](2026-10-13-issue-31-pr-publication.md)
+records authority, remote arrival and proof limits. Issue31 is now OPEN with
+exactly backplane:review, revision2026-10-13T07:27:56Z; source/approval scope is
+unchanged. Its artifact section links actual published Mac records and preserves
+original Windows approval as historical context.
+
+Earlier statements that no PR existed or publication awaited approval are
+historical observations. Next is PR review/integration with fresh target
+verification before satisfaction and completed closure. Branch publication does
+not establish main integration, release or another host's arrival. Keep the
+registered native workspace for feedback.

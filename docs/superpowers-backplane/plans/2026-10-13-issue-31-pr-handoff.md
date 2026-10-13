@@ -50,3 +50,11 @@ integration, remote arrival, fresh integrated satisfaction or release. Retain
 issue migration, updater, required runtime, copied upstream helper or release
 is included. Earlier Mac prerequisite recovery is recorded in separate authorized
 setup commits; unavailable Windows progress is never inferred.
+
+## Actual submission
+
+The operator selected publication. [PR33](https://github.com/tvproductions/superpowers-backplane/pull/33)
+now carries this reviewed slice against main from feat/issue-31-governance-bridges.
+The description above is retained as its pre-submission review package.
+[Publication receipt](2026-10-13-issue-31-pr-publication.md) records remote arrival,
+issue31's review transition and remaining integrated-verification gates.

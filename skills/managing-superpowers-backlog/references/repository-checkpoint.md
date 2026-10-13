@@ -67,7 +67,12 @@ Use separate connection queries, retaining all pages and source identities.
 Labels/assignees and native closing PR references also need complete enumeration
 when the supplied CLI values do not establish it. Fetch each selected PR's actual
 state/review/target/merge/native closing references under the closeout contract.
-A reference and actual native closed state remain distinct.
+A PR's native `closingIssuesReferences` is a separately observed connection.
+Retain its complete pages and membership under that collection name and the PR
+identity; denied membership is `closing_issue_ids: null` with partial metadata,
+a field-specific limitation and unavailable graph recheck. Observed empty
+membership is [] with an empty terminal page. Do not infer reciprocal membership
+from issue-side references. A reference and actual native closed state remain distinct.
 
 For integrated mode, inspect native Project identities, relevant field definitions,
 issue-backed items and relevant values. These gh commands have bounded defaults:
@@ -82,7 +87,11 @@ Declare the relevant field/item scope; increasing a limit is not proof of full
 capture. Verify all pages/totals, or use `gh api graphql --paginate` with native
 ProjectV2 `fields`/`items` connections and `$endCursor`. Nested item field-value
 connections need their own terminal/totals checks and separate pagination when
-truncated. Preserve item/field/option IDs and mappings. Denied access leaves
+truncated. Preserve item/field/option IDs and mappings. For a relevant single-select
+value, capture native optionId as FieldValue.option_id and its observed name as
+text; resolve against that field's options and recheck both. Text/non-select
+projections include option_id=null. Never reconstruct selected identity from a
+matching display name; denied selection stays unavailable/partial. Denied access leaves
 integrated mode partial; no silently selected issues-only mode or invented values.
 Project drafts remain preliminary records, not approved executable issues.
 

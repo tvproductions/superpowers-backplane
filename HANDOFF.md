@@ -25,6 +25,9 @@ directory were verified. Its portable execution summary is
 Tasks 1–4 are now independently verified on this Mac; final governance and
 existing conformance checks pass. Fresh whole-change review and one verified format-fix pass are complete.
 PR #33 is published from feat/issue-31-governance-bridges against main.
+The operator-requested PR review follow-ups are corrected; current verification
+and its freshness proof limit are in
+`tests/scenarios/2026-10-13-pr33-review-followups.md`.
 Issue #31 is OPEN with backplane:review. The next gate is PR review/integration
 and fresh target verification; the native worktree is preserved. No Windows task completion has been recovered. Keep scratch ignored and transport a committed execution
 summary with its supporting evidence at handoff boundaries.

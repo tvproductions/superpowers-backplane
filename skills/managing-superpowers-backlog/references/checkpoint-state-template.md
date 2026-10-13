@@ -17,6 +17,7 @@ Mode / capture status / origin: <mode> / <status> / <origin>
 Repository / Project: <identities, or explicit issues-only absence/unavailability>
 Source commit: <source.commit; not the future storage commit>
 Scope and completeness: <selected/excluded/external graph, pages/totals, rechecks>
+Relevant Project projections: <item/field/selected-option identities, display values, availability>
 
 ## Product hierarchy and native work
 

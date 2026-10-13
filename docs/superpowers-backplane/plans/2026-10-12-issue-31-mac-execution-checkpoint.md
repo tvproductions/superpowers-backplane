@@ -187,3 +187,14 @@ historical observations. Next is PR review/integration with fresh target
 verification before satisfaction and completed closure. Branch publication does
 not establish main integration, release or another host's arrival. Keep the
 registered native workspace for feedback.
+
+## PR33 review follow-ups (2026-10-13)
+
+PR33 follow-ups: both operator-requested format corrections pass 38 native fixture outcomes and the new 6-assertion reference application. Fresh existing governance56 and conformance23 pass; freshness R1 remains UNKNOWN in two unchanged-source responses, retained explicitly. Scope and proof limits at tests/scenarios/2026-10-13-pr33-review-followups.md. Temporary interpreter helpers were unnecessary and removed; no environment/runtime dependency added. Source/root/upstream identities remain preserved. Existing PR33 branch is the authorized publication target; integration/closure/release remain pending.
+
+The tested source hashes and exact prompt/response/evidence identities are in
+`tests/scenarios/2026-10-13-pr33-review-followup-runs.json`. Read the containing
+Git commit and verify remote branch arrival before another-host resume. Historical
+full-suite results retain their original identities; current freshness R1 is
+UNKNOWN. Approved authority bytes and the native d181 detached identity remain
+unchanged. No actual product checkpoint pair, integration or closure is created.

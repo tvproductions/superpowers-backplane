@@ -218,6 +218,20 @@
           }
         ],
         "complete": true
+      },
+      {
+        "name": "closingIssuesReferences",
+        "owner_id": "example/governance-fixture!201",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "has_next_page": false,
+            "record_ids": []
+          }
+        ],
+        "complete": true
       }
     ],
     "complete": false

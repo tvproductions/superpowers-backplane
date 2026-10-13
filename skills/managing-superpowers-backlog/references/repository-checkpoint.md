@@ -199,3 +199,11 @@ captured graph/claims and availability limitations. Live eligibility and intende
 mutations are unverified. Reconcile current source revisions, graph and evidence
 when access returns; do not restore stale state into GitHub. Task fixtures prove
 only the actual file/Git behaviors exercised; paper/probe reasoning is separate.
+
+When normalizing native pages, preserve GraphQL endCursor separately from
+hasNextPage in Page.cursor_out and Page.has_next_page. Non-null terminal cursors
+are valid when hasNextPage=false; continuity applies only to an actual next page.
+A denied native collection remains null in its nullable source field, with a
+field-specific limitation and incomplete collection metadata (unknown total,
+no observed pages). Retain it only as partial diagnostic; never convert it into
+observed empty membership or accept it as complete.

@@ -190,3 +190,41 @@ Independent whole-change review and final finishing disposition are recorded in
 the portable execution checkpoint and review evidence. Local evidence does not
 prove remote integration/arrival, integrated issue satisfaction, other harnesses,
 bundle acceptance, live full-graph/Project capture, or release.
+
+### Independent review and one fix pass
+
+[Fresh review](2026-10-13-issue-31-whole-change-review.md) inspected the whole
+82fa208..1fd90df range. It found no Critical/Important and three Minor details.
+The executor regraded terminal-cursor and unavailable-collection ambiguity as
+Important by their adopter impact, then fixed both in one observed test pass.
+
+[Native-edge contract](2026-10-13-checkpoint-native-edge-contract.md) and its
+[fixed source fixtures](2026-10-13-checkpoint-native-edge-fixtures.json) were
+frozen before the correction, separate from the original behavioral contracts.
+[Baseline](2026-10-13-checkpoint-native-edge-baseline.json) rejected the valid
+nonempty terminal cursor and labels:null diagnostic. [Candidate evidence](2026-10-13-checkpoint-native-edge-candidate.json)
+now passes both plus the original18 outcomes and three negative guards:23/23.
+Page.has_next_page retains actual continuation separately from raw endCursor;
+nullable native collections require partial capture and explicit incomplete
+metadata/limitations, never invented empty membership or complete acceptance.
+The examples and exact typed table agree. This is an unpublished format
+correction; no existing production pair is migrated. The earlier K0/K1 invented
+pair is historical evidence bound to its recorded pre-review format bundle.
+
+The latest common-bundle arm is post-review-fix in both run manifests. All64
+original governance/freshness statements and all23 existing behavioral statements
+PASS after the correction; structural checks on both skills pass. Two initial
+sessions failed before response due to selected-model capacity, then identical
+profile/prompt/source retries completed and passed. They are unscored attempts,
+not invented behavioral failures/passes. The native-intake session recovered
+transient503 reconnects and completed with zero exit. Every scored final session
+has a complete retained response and observed zero exit. No second reviewer was
+used; observed verification closes the one fix pass.
+
+Deferred Minor: the disposable fixture validator does not enforce all Project
+pagination or unavailable-body constraints. Its acceptable label is scoped to
+implemented test constraints; it is not a production capture acceptance engine.
+Operational full-input/graph/evidence/availability guards still apply. Live
+multipage/Project/concurrent capture, production recovery, other-harness/bundle
+acceptance, Windows completion, remote arrival/integration, release and integrated
+issue satisfaction remain explicitly unverified.

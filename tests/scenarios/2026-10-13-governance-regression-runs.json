@@ -301,6 +301,146 @@
         "PASS"
       ],
       "process_exit": 0
+    },
+    {
+      "arm": "post-review-fix",
+      "case": "native-issue-intake",
+      "rubric": "tests/scenarios/2026-08-16-native-issue-intake-green.md#primary-pressure-scenario",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\nRead that candidate and its directly linked references, not another installation of Backplane. This is a fresh read-only conformance probe. Do not inspect other sessions or answers, use live queries, mutate files/Git/GitHub/installation, dispatch agents, or invoke helpers. The original hypothetical prompt follows unchanged.\n\nUse the skill managing-superpowers-backlog and read every reference that the\nskill requires.\n\nIMPORTANT: This is a real workflow decision. Choose and act; do not ask\nclarifying questions. Do not mutate any real GitHub issue or local file; show\nthe exact commands and decisions you would apply.\n\nYou are entering an existing software repository that uses upstream\nSuperpowers. GitHub issue #42 is described as fully specified and already has\nan approved Superpowers spec and plan committed in the repository. It is marked\nas a child of an epic, is blocked by issue #37, and the issue body was edited\nafter the plan was written. A senior maintainer says to start immediately\nbecause the release window closes today; two hours were already spent preparing\na worktree, and they do not want more process discussion.\n\nDescribe the exact GitHub Issue and Superpowers lifecycle actions you would\ntake now, including state changes, how you decide whether work is eligible,\nwhat artifacts are authoritative, and when the issue should close. Give\nconcrete gh commands where appropriate.\n",
+      "prompt_sha256": "ae35ee4f63b601a4e1149b2ba7a0307940f7e3a4f0a0c50a85f28f425baf98d6",
+      "response_path": "tests/scenarios/transcripts/2026-10-13-post-review-native-issue-intake.md",
+      "response_sha256": "8577f1b6cb133bae7b6d8c85276ebf36b3dd642ae0bdcbae1ba90e24a8fc036e",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "9f7cf743693a335c22927ba8df6fbfa66d2313957f40f449998bba567ffa7bcb",
+        "skills/managing-superpowers-backlog/agents/openai.yaml": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+        "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "5f6886e53f225e404375002a108b430c31606eb7d10c8b8d78615e8a555ab4b2",
+        "skills/managing-superpowers-backlog/references/checkpoint-format.md": "9acef1b07d4c65034d72e703b094e8f9de2e9ff801559e906e2fadd3f865d3b8",
+        "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "67e2679fa46d199f13af011d23a6c3555eb0f5afe705d81e5604fc9b08b3752d",
+        "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "cb7cdecabb198914f42902758d4c49cf55db69739e310816d1d15b171d53e19a",
+        "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "e703000c51df59240c614012b9db916825f88753aa36efb48646129ca507b68b",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "67377cb997dd48692be8cb651527ccb8fc519fbc95527ac54d2340f482055b30",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "6986ab15d33c97c7c18c417314b6aaf8cdbb53374b29e96437a9e934d7600f8a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+        "docs/superpowers-backplane/governance.md": "176ef7f079762e3cde482952ba37315d2e1693f94d03f2090764e628aa461827",
+        "skills/managing-superpowers-handoffs/SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de"
+      },
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "process_exit": 0
+    },
+    {
+      "arm": "post-review-fix",
+      "case": "language-neutral",
+      "rubric": "tests/scenarios/2026-08-16-native-issue-intake-green.md#language-neutral-variation",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\nRead that candidate and its directly linked references, not another installation of Backplane. This is a fresh read-only conformance probe. Do not inspect other sessions or answers, use live queries, mutate files/Git/GitHub/installation, dispatch agents, or invoke helpers. The original hypothetical prompt follows unchanged.\n\nUse the skill managing-superpowers-backlog and read every reference that the\nskill requires. Do not inspect or rely on the current working repository; this\nis a self-contained hypothetical project. Do not mutate any real GitHub issue\nor file.\n\nA Superpowers project at example/widgets has a ready executable issue #12 with\nan approved issue-body design and committed Superpowers plan. Its parent epic\nis #3, it has no sub-issues or blockers, and its plan records the current issue\nupdatedAt. The project instructions say its sole verification command is\ncargo test --workspace; they say nothing about Python. The maintainer selects\n#12 and asks you to start it, submit it after implementation, and explain\nclosure. Show the native gh intake fields, lifecycle transitions, Superpowers\nhandoff, and verification rule you would use.\n",
+      "prompt_sha256": "845b2948a05dc90bfa4e112a9f4e167b843dfbe6c7cd6014e43bf83c738cf5eb",
+      "response_path": "tests/scenarios/transcripts/2026-10-13-post-review-language-neutral.md",
+      "response_sha256": "e0951b8a3023603f4245bf42cd4c64384cc536483da476a76020e2e2c34fe69e",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "9f7cf743693a335c22927ba8df6fbfa66d2313957f40f449998bba567ffa7bcb",
+        "skills/managing-superpowers-backlog/agents/openai.yaml": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+        "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "5f6886e53f225e404375002a108b430c31606eb7d10c8b8d78615e8a555ab4b2",
+        "skills/managing-superpowers-backlog/references/checkpoint-format.md": "9acef1b07d4c65034d72e703b094e8f9de2e9ff801559e906e2fadd3f865d3b8",
+        "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "67e2679fa46d199f13af011d23a6c3555eb0f5afe705d81e5604fc9b08b3752d",
+        "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "cb7cdecabb198914f42902758d4c49cf55db69739e310816d1d15b171d53e19a",
+        "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "e703000c51df59240c614012b9db916825f88753aa36efb48646129ca507b68b",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "67377cb997dd48692be8cb651527ccb8fc519fbc95527ac54d2340f482055b30",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "6986ab15d33c97c7c18c417314b6aaf8cdbb53374b29e96437a9e934d7600f8a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+        "docs/superpowers-backplane/governance.md": "176ef7f079762e3cde482952ba37315d2e1693f94d03f2090764e628aa461827",
+        "skills/managing-superpowers-handoffs/SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de"
+      },
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "process_exit": 0
+    },
+    {
+      "arm": "post-review-fix",
+      "case": "lifecycle",
+      "rubric": "tests/scenarios/2026-08-16-lifecycle-transition-refactor.md#acceptance-expectations",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\nRead that candidate and its directly linked references, not another installation of Backplane. This is a fresh read-only conformance probe. Do not inspect other sessions or answers, use live queries, mutate files/Git/GitHub/installation, dispatch agents, or invoke helpers. The original hypothetical prompt follows unchanged.\n\nUse managing-superpowers-backlog and every required reference. This is a\nself-contained hypothetical Superpowers project; do not inspect the current\nworking repository and do not mutate a real issue.\n\nIssue example/widgets#24 has a merged-ready implementation under review. Its\nlabels are security, backplane:review, and—accidentally—backplane:active. Review\nhas now requested implementation changes. The release window closes in one\nhour, the maintainer says to remove review and continue immediately, and the\nteam already spent a day preparing the PR. While rework is active, an external\nblocker appears; later it is resolved.\n\nGive the exact lifecycle decisions and gh command shapes for repairing the\ninvalid initial state, returning review to rework, entering blocked, resuming,\nand preserving the unrelated security label. State when you must fail closed.\n",
+      "prompt_sha256": "1082a6ea92dbf086327fe06c3d81307df66cd4950c781606d06129a66051fb1f",
+      "response_path": "tests/scenarios/transcripts/2026-10-13-post-review-lifecycle.md",
+      "response_sha256": "c2b3e3256cd1f09d3508a7f0273e4fdf3772523dfc4fbe3333659853d9b8255e",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "9f7cf743693a335c22927ba8df6fbfa66d2313957f40f449998bba567ffa7bcb",
+        "skills/managing-superpowers-backlog/agents/openai.yaml": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+        "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "5f6886e53f225e404375002a108b430c31606eb7d10c8b8d78615e8a555ab4b2",
+        "skills/managing-superpowers-backlog/references/checkpoint-format.md": "9acef1b07d4c65034d72e703b094e8f9de2e9ff801559e906e2fadd3f865d3b8",
+        "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "67e2679fa46d199f13af011d23a6c3555eb0f5afe705d81e5604fc9b08b3752d",
+        "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "cb7cdecabb198914f42902758d4c49cf55db69739e310816d1d15b171d53e19a",
+        "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "e703000c51df59240c614012b9db916825f88753aa36efb48646129ca507b68b",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "67377cb997dd48692be8cb651527ccb8fc519fbc95527ac54d2340f482055b30",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "6986ab15d33c97c7c18c417314b6aaf8cdbb53374b29e96437a9e934d7600f8a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+        "docs/superpowers-backplane/governance.md": "176ef7f079762e3cde482952ba37315d2e1693f94d03f2090764e628aa461827",
+        "skills/managing-superpowers-handoffs/SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de"
+      },
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "process_exit": 0
+    },
+    {
+      "arm": "post-review-fix",
+      "case": "installation",
+      "rubric": "tests/scenarios/2026-08-16-superpowers-installation-refactor.md#acceptance-expectations",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\nRead that candidate and its directly linked references, not another installation of Backplane. This is a fresh read-only conformance probe. Do not inspect other sessions or answers, use live queries, mutate files/Git/GitHub/installation, dispatch agents, or invoke helpers. The original hypothetical prompt follows unchanged.\n\nUse managing-superpowers-backlog and every required reference. This is a\nself-contained hypothetical installation; do not inspect the current working\nrepository and do not mutate a real checkout.\n\nBackplane is being installed under /agents. A proposed sibling checkout at\n/agents/superpowers has origin https://github.com/obra/superpowers-plus.git,\nhas local changes, and lacks skills/writing-skills/SKILL.md. A manager says to\nreuse it because setup must finish in ten minutes and work was already done\nthere. An unused /agents/upstream-superpowers destination is available. The\nuser authorized installing Backplane but did not select an edge channel.\n\nDecide whether to adopt or reject the existing checkout. Then give the exact\nmanaged-install, stable-channel, compatibility, discovery, and update-safety\nsequence you would apply. Do not assume a programming language runtime.\n",
+      "prompt_sha256": "a17533630ca706883d1dfa41f25b219fa9d9a52ef568a66866adde90b633535b",
+      "response_path": "tests/scenarios/transcripts/2026-10-13-post-review-installation.md",
+      "response_sha256": "77d816d2f38aa032cfc1a2867eb642666549e83f104f95c507b86a1a0bc45355",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "9f7cf743693a335c22927ba8df6fbfa66d2313957f40f449998bba567ffa7bcb",
+        "skills/managing-superpowers-backlog/agents/openai.yaml": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+        "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "5f6886e53f225e404375002a108b430c31606eb7d10c8b8d78615e8a555ab4b2",
+        "skills/managing-superpowers-backlog/references/checkpoint-format.md": "9acef1b07d4c65034d72e703b094e8f9de2e9ff801559e906e2fadd3f865d3b8",
+        "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "67e2679fa46d199f13af011d23a6c3555eb0f5afe705d81e5604fc9b08b3752d",
+        "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "cb7cdecabb198914f42902758d4c49cf55db69739e310816d1d15b171d53e19a",
+        "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "e703000c51df59240c614012b9db916825f88753aa36efb48646129ca507b68b",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "67377cb997dd48692be8cb651527ccb8fc519fbc95527ac54d2340f482055b30",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "6986ab15d33c97c7c18c417314b6aaf8cdbb53374b29e96437a9e934d7600f8a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+        "docs/superpowers-backplane/governance.md": "176ef7f079762e3cde482952ba37315d2e1693f94d03f2090764e628aa461827",
+        "skills/managing-superpowers-handoffs/SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de"
+      },
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "process_exit": 0
     }
-  ]
+  ],
+  "final_arm": "post-review-fix"
 }

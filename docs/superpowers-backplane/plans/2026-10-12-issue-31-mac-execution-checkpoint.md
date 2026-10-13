@@ -1,6 +1,6 @@
 # Issue #31 Mac execution checkpoint
 
-Updated: 2026-10-13T06:24:29Z; final pre-review verification. This tracked execution summary is separate from
+Updated: 2026-10-13; reviewed local implementation and one verified fix pass. This tracked execution summary is separate from
 ignored scratch and from the product checkpoint format. It records actual Mac
 implementation evidence, not recovered Windows completion.
 The storage commit is the commit containing this file and its evidence; it is
@@ -60,8 +60,8 @@ behavior, not the new governance baseline or task completion.
 | 1: Negative controls and doctrine | verified at 30e25191d8a69c3fe371d6e603d1fc646d904c62 | Frozen baseline64 scored; doctrine and immutable input identities retained |
 | 2: Product planning/intake bridge | verified at e4e63a40a6fe99c8e4a1cbd016b89e698b69c1e8 | Fresh cases1–4 pass27; final cases retained |
 | 3: PR closeout bridge | verified at 2518eb2df8b67af12c6ee2750aded9227932cf56 | Fresh cases5/2 pass16; final cases retained |
-| 4: Product checkpoint contract | verified at 423eb83 | Fresh cases6/7 pass20, JSON18/18 and file/Git12/12 outcomes; full receipt and fixture commit identities tracked |
-| 5: Review and finishing | final pre-review verification passed; fresh whole-change review pending | Final common-bundle64 governance/freshness +23 existing statements, all five conformance checks; review and finishing are first unsupported gates |
+| 4: Product checkpoint contract | verified at 423eb83, revalidated after review correction | Original18 plus5 native-edge outcomes pass23; all frozen behavioral cases and earlier12 file/Git outcomes remain scoped and retained |
+| 5: Review and finishing | local implementation, regression and fresh review verified; finishing decision pending | Latest common-bundle64 governance/freshness +23 existing statements, five conformance checks; two format findings fixed, one Minor deferred |
 
 No prior Windows result is promoted to verified. Its execution ledger and
 implementation state remain unavailable. The earlier fixture receipt remains
@@ -97,8 +97,8 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 The evaluated Mac setup and implementation checks pass. Recheck the exact
 worktree identity, live issue/artifact revisions, final source hashes and captured
-evidence. The first unsupported gate is fresh whole-change review, followed by
-project-compatible finishing. Do not repeat verified tasks solely because the
+evidence. The remaining gate is the operator.s concrete finishing decision: push a new
+branch and create the prepared PR, or keep the native workspace as-is. Do not repeat verified tasks solely because the
 prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
 the approved design, task order, immutable probes, review, and verification
@@ -130,3 +130,36 @@ contracts remain binding. Use native bookkeeping under the recorded exception.
 - Root and upstream preservation checks pass; the root's previously recorded
   dirty setup files remain preserved. The upstream source remains clean and
   protected paths remain absent. Retain the native workspace for PR feedback.
+
+## Reviewed local delivery and next action
+
+The fresh reviewer evaluated 82fa208..1fd90dffd2de585520677c414d8e99b29b55dc41.
+[Review and disposition](../../../tests/scenarios/2026-10-13-issue-31-whole-change-review.md)
+records all findings and declined judgments. Two representation findings were
+regraded Important and fixed in one observed RED→GREEN pass. The separately
+frozen native-edge contract preserves its exact pre-change source observations;
+current format examples and candidate projections pass23 outcomes. Current
+post-review-fix arms in both behavioral manifests pass64 and23 statements.
+Earlier final-candidate records retain their historical source identities.
+
+Deferred Minor: the disposable validator is not a general production engine;
+complete Project paging and unavailable-body enforcement remain coverage gaps.
+Operational capture guards are still mandatory. No general runtime is shipped.
+The documented local evidence is sufficient for this skills-only slice, not a
+live capture, production recovery, bundle/other-harness or integrated satisfaction
+claim. The optional reviewer live query was blocked; local review completed.
+
+[Prepared PR handoff](2026-10-13-issue-31-pr-handoff.md) names the issue, approved
+authorities, D1–D8 contributions, current verification, scope limits and neutral
+Refs #31. The native workspace remains detached and preserved; root main and
+its12 protected dirty-file hashes and all238 upstream file hashes are unchanged.
+Ignore scratch; the tracked ledger/captures/review carry the needed resume record.
+A clean local Git export already validated portable evidence; remote transport
+and another host.s arrival have not occurred and must be verified separately.
+
+No PR has been submitted. Issue31 remains OPEN/backplane:active at unchanged
+2026-10-12T01:29:48Z in the final full native intake. The operator must select
+push-as-new-branch/PR or keep-as-is under finishing. Subsequent integration needs
+fresh target verification and separate authorized satisfaction/closure; no release
+is part of this work. Do not repeat verified implementation tasks on resume
+unless their actual authority/input/source identities changed.

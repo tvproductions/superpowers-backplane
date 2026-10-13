@@ -39,34 +39,39 @@ no duplicate IDs/links. Objects have exactly the listed fields.
 | Object | Exact fields and types |
 | --- | --- |
 | Capture | `id: ID`, `started_at: Time`, `finished_at: Time`, `mode: integrated\|issues-only`, `status: complete\|partial\|stale\|invalid`, `origin: live-capture\|supplied-records\|invented-fixture`, `rechecks: Recheck[]` |
-| Recheck | `kind: issue\|project\|graph\|authority\|evidence\|delivery`, `id: ID`, `initial_revision: Revision|null`, `final_revision: Revision|null`, `result: unchanged\|reconciled\|changed\|unavailable`, `approval_ids: ID[]`, `details: string` |
+| Recheck | `kind: issue\|project\|graph\|authority\|evidence\|delivery`, `id: ID`, `initial_revision: Revision\|null`, `final_revision: Revision\|null`, `result: unchanged\|reconciled\|changed\|unavailable`, `approval_ids: ID[]`, `details: string` |
 | Repository | `id: ID` (owner/name), `url: string`, `owner: string`, `name: string` |
 | Scope | `issue_ids: ID[]`, `excluded_ids: ID[]`, `external_records: External[]`, `collections: Collection[]`, `complete: boolean` |
-| External | `id: ID`, `url: string|null`, `owner: string|null`, `reason: string`, `availability: Availability` |
-| Collection | `name: string`, `owner_id: ID`, `expected_total: nonnegative integer|null`, `pages: Page[]`, `complete: boolean` |
-| Page | `cursor_in: string|null`, `cursor_out: string|null`, `record_ids: ID[]`; retain observed REST page/Link or GraphQL cursor identity |
-| Project | `id: ID`, `url: string|null`, `owner: string`, `number: positive integer`, `availability: Availability`, `field_definitions: Field[]`, `items: Item[]`, `limitations: string[]` |
+| External | `id: ID`, `url: string\|null`, `owner: string\|null`, `reason: string`, `availability: Availability` |
+| Collection | `name: string`, `owner_id: ID`, `expected_total: nonnegative integer\|null`, `pages: Page[]`, `complete: boolean` |
+| Page | `cursor_in: string\|null`, `cursor_out: string\|null`, `has_next_page: boolean`, `record_ids: ID[]`; preserve observed native cursors and continuation separately |
+| Project | `id: ID`, `url: string\|null`, `owner: string`, `number: positive integer`, `availability: Availability`, `field_definitions: Field[]\|null`, `items: Item[]\|null`, `limitations: string[]` |
 | Field | `id: ID`, `name: string`, `type: string`, `options: Option[]`; capture only declared relevant fields, explicitly delimiting scope |
 | Option | `id: ID`, `name: string` |
-| Item | `id: ID`, `content_id: ID|null`, `content_kind: issue\|pull-request\|draft`, `title: string|null`, `updated_at: Time|null`, `fields: FieldValue[]` |
-| FieldValue | `field_id: ID`, `text: string|null`, `availability: Availability`; Code/Kind/Satisfaction/Status are typed text projections, not arbitrary objects |
-| Label | `id: ID|null`, `name: string`, `description: string|null`, `color: string|null` |
-| IssueType | `id: ID|null`, `name: string`, `description: string|null`, `color: string|null` |
-| Milestone | `id: ID`, `number: positive integer`, `title: string`, `url: string`, `due_at: Time|null` |
+| Item | `id: ID`, `content_id: ID\|null`, `content_kind: issue\|pull-request\|draft`, `title: string\|null`, `updated_at: Time\|null`, `fields: FieldValue[]\|null` |
+| FieldValue | `field_id: ID`, `text: string\|null`, `availability: Availability`; Code/Kind/Satisfaction/Status are typed text projections, not arbitrary objects |
+| Label | `id: ID\|null`, `name: string`, `description: string\|null`, `color: string\|null` |
+| IssueType | `id: ID\|null`, `name: string`, `description: string\|null`, `color: string\|null` |
+| Milestone | `id: ID`, `number: positive integer`, `title: string`, `url: string`, `due_at: Time\|null` |
 | BackplaneRecord | `code: string`, `namespace: string`, `kind: capability\|outcome\|gate\|external-boundary`, `authority_ids: ID[]` |
-| Issue | `id: ID`, `number: positive integer`, `url: string`, `title: string`, `body: string|null`, `state: OPEN\|CLOSED|null`, `state_reason: string|null`, `issue_type: IssueType|null`, `labels: Label[]`, `assignees: string[]`, `milestone: Milestone|null`, `updated_at: Time|null`, `parent_id: ID|null`, `child_ids: ID[]`, `sub_issues_summary: Summary|null`, `blocked_by_ids: ID[]`, `blocking_ids: ID[]`, `closing_pr_ids: ID[]`, `backplane_record: BackplaneRecord|null`, `accepted_evaluation_ids: ID[]`, `limitations: string[]` |
+| Issue | `id: ID`, `number: positive integer`, `url: string`, `title: string`, `body: string\|null`, `state: OPEN\|CLOSED\|null`, `state_reason: string\|null`, `issue_type: IssueType\|null`, `labels: Label[]\|null`, `assignees: string[]\|null`, `milestone: Milestone\|null`, `updated_at: Time\|null`, `parent_id: ID\|null`, `child_ids: ID[]\|null`, `sub_issues_summary: Summary\|null`, `blocked_by_ids: ID[]\|null`, `blocking_ids: ID[]\|null`, `closing_pr_ids: ID[]\|null`, `backplane_record: BackplaneRecord\|null`, `accepted_evaluation_ids: ID[]`, `limitations: string[]` |
 | Summary | `total: nonnegative integer`, `completed: nonnegative integer`, `percent_completed: number 0..100`; native closure progress is not satisfaction |
-| PullRequest | `id: ID`, `number: positive integer`, `url: string`, `title: string|null`, `body: string|null`, `state: OPEN\|CLOSED\|MERGED|null`, `base_ref: string|null`, `head_ref: string|null`, `merged_at: Time|null`, `merge_commit: Commit|null`, `review_status: accepted\|changes-requested\|pending\|unknown`, `closing_issue_ids: ID[]`, `closure_intent: contribution\|closing\|unspecified`, `updated_at: Time|null`, `limitations: string[]` |
-| Authority | `id: ID`, `kind: issue-body\|specification\|plan\|approval\|project-instructions`, `locator: string`, `revision: Revision|null`, `content: string|null`, `availability: Availability`, `approver: string|null`, `approved_scope: string|null`, `approval_ids: ID[]`, `limitations: string[]` |
+| PullRequest | `id: ID`, `number: positive integer`, `url: string`, `title: string\|null`, `body: string\|null`, `state: OPEN\|CLOSED\|MERGED\|null`, `base_ref: string\|null`, `head_ref: string\|null`, `merged_at: Time\|null`, `merge_commit: Commit\|null`, `review_status: accepted\|changes-requested\|pending\|unknown`, `closing_issue_ids: ID[]`, `closure_intent: contribution\|closing\|unspecified`, `updated_at: Time\|null`, `limitations: string[]` |
+| Authority | `id: ID`, `kind: issue-body\|specification\|plan\|approval\|project-instructions`, `locator: string`, `revision: Revision\|null`, `content: string\|null`, `availability: Availability`, `approver: string\|null`, `approved_scope: string\|null`, `approval_ids: ID[]`, `limitations: string[]` |
 | Requirement | `id: ID`, `key: string`, `text: string`, `authority_id: ID`, `authority_revision: Revision` |
-| Criterion | `id: ID`, `issue_id: ID`, `key: string`, `text: string`, `authority_id: ID`, `authority_revision: Revision`, `delivery_commit: Commit|null`, `requirement_ids: ID[]` |
-| Disposition | `id: ID`, `parent_issue_id: ID`, `requirement_ids: ID[]`, `child_issue_ids: ID[]`, `evidence_ids: ID[]`, `disposition: covered\|deferred\|excluded\|unresolved`, `owner: string|null`, `approval_ids: ID[]`, `note: string` |
-| Coverage | `id: ID`, `issue_id: ID`, `criterion_id: ID`, `requirement_ids: ID[]`, `contribution_issue_ids: ID[]`, `pr_ids: ID[]`, `combined_result_owner: string|null`, `scope: string` |
-| Evaluation | `id: ID`, `criterion_id: ID`, `requirement_ids: ID[]`, `verified_commit: Commit|null`, `method: string`, `observed_result: string`, `result: SATISFIED\|UNSATISFIED\|UNKNOWN`, `observed_at: Time|null`, `evidence_ids: ID[]`, `review_approval_ids: ID[]`, `applicability: current\|historical\|unreconciled`, `remaining_contributions: string[]`, `limitations: string[]` |
-| Evidence | `id: ID`, `kind: verification\|review\|approval\|other`, `locator: string`, `revision: Revision|null`, `sha256: SHA256|null`, `availability: Availability`, `content: string|null`, `verified_commit: Commit|null`, `limitations: string[]` |
+| Criterion | `id: ID`, `issue_id: ID`, `key: string`, `text: string`, `authority_id: ID`, `authority_revision: Revision`, `delivery_commit: Commit\|null`, `requirement_ids: ID[]` |
+| Disposition | `id: ID`, `parent_issue_id: ID`, `requirement_ids: ID[]`, `child_issue_ids: ID[]`, `evidence_ids: ID[]`, `disposition: covered\|deferred\|excluded\|unresolved`, `owner: string\|null`, `approval_ids: ID[]`, `note: string` |
+| Coverage | `id: ID`, `issue_id: ID`, `criterion_id: ID`, `requirement_ids: ID[]`, `contribution_issue_ids: ID[]`, `pr_ids: ID[]`, `combined_result_owner: string\|null`, `scope: string` |
+| Evaluation | `id: ID`, `criterion_id: ID`, `requirement_ids: ID[]`, `verified_commit: Commit\|null`, `method: string`, `observed_result: string`, `result: SATISFIED\|UNSATISFIED\|UNKNOWN`, `observed_at: Time\|null`, `evidence_ids: ID[]`, `review_approval_ids: ID[]`, `applicability: current\|historical\|unreconciled`, `remaining_contributions: string[]`, `limitations: string[]` |
+| Evidence | `id: ID`, `kind: verification\|review\|approval\|other`, `locator: string`, `revision: Revision\|null`, `sha256: SHA256\|null`, `availability: Availability`, `content: string\|null`, `verified_commit: Commit\|null`, `limitations: string[]` |
 
-Fields not observable in the current source remain null with specific limitations;
-do not coerce a denied query into an empty array. A Project denied in integrated
+For unavailable nullable scalar or native collection fields, retain null with
+specific limitations. A nullable native collection is null when not observed,
+not an empty successful collection. Record its Scope collection as complete=false,
+expected_total=null and pages=[]; capture status is partial. Known empty native
+collections use [] with complete=true, total=0 and an observed empty terminal
+page. Unknown mandatory identities cannot be invented to manufacture a valid
+record; retain the failed raw diagnostic until a conforming record is available. A Project denied in integrated
 mode retains its known identity and unavailable material with partial status.
 Raw issue/PR bodies preserve observed claims, including discrepancies; evaluated
 results and applicability express their supported interpretation separately.
@@ -102,7 +107,7 @@ results and applicability express their supported interpretation separately.
    input is stale; unavailable input is partial. Timestamps alone do not prove
    stable relationships or semantic equivalence.
 6. A complete capture has complete declared scope and all required collection
-   pages. Cursor continuity, terminal pagination, totals where available, and
+   pages. Cursor continuity, explicit terminal pagination, totals where available, and
    declared membership are checked. Every required native graph, PR, relevant
    label/assignee and Project field/item collection is accounted for. Permission,
    network, schema, missing-page, or required evidence-availability gaps prevent
@@ -132,3 +137,24 @@ records changed source revision. They are diagnostics, not accepted replacements
 Use [capture/recovery](repository-checkpoint.md) and the
 [readable contract](checkpoint-state-template.md). Example validity cannot
 supply a real capture's approval, access, complete graph, or fresh evidence.
+
+## Native pagination mapping and unavailable collections
+
+For GraphQL, Page.cursor_in is the actual supplied after cursor (null initially),
+Page.cursor_out is the returned pageInfo.endCursor, and Page.has_next_page is
+pageInfo.hasNextPage. A nonempty final page commonly retains a non-null endCursor
+while has_next_page=false; preserve both. Do not treat every non-null endCursor
+as a missing page or discard it to imply termination. The next page exists only
+when has_next_page=true, and then its cursor_in must equal the prior cursor_out.
+The final observed page must have has_next_page=false for complete capture.
+For REST, retain the observed page/next-Link identity and set has_next_page from
+whether a next Link exists; a terminal next Link is null. Totals and membership
+must still match; a terminal boolean alone is not proof of full scope.
+
+Nullable native arrays permit denied-source diagnostics, including issue labels,
+assignees, child/dependency/closing references, relevant Project definitions/items,
+and nested item values. Null requires an explicit field-specific limitation,
+unavailable input observation, corresponding incomplete Scope collection and
+partial status. Do not infer reciprocal edges, zero totals, eligibility, or
+complete capture from null. Complete status requires all in-scope collections
+observed, with available arrays, full membership and terminal/totals evidence.

@@ -102,3 +102,7 @@ Task 5: verified local delivery — all original64 and existing23 behavioral exp
 Final: Ruling: preserve this plan's ignored workspace through finishing/PR feedback under the stronger project policy, rather than upstream executing-plans workspace deletion. All necessary ledger/review/support evidence is also tracked. Cost if wrong: retained ignored scratch space only; no loss of unique feedback/recovery records.
 
 Final: Ruling: the new frozen native-edge contract has one extra blank line at EOF, detected by staged git diff --check. Preserve its already-frozen byte identity rather than silently change the source contract after RED/GREEN. Default whitespace checks pass for every other staged path; only this exact contract uses process-local -blank-at-eof suppression, retaining all other checks. No repository Git configuration changes. Cost if wrong: one cosmetic blank line; frozen inputs and evidence remain reproducible.
+
+Final fix and reviewed handoff storage commit: 64df3524ceb2731f7c4125ddbba44f43e0b494e5. Tested source identities remain in post-review-fix manifests; finishing choice pending.
+
+Final local export: source64df352, all52 prompt/response identities plus final common source bundle/review/ledger/prepared PR handoff reproduced; ignored scratch absent. Root12 and upstream238 file byte checks PASS. This is local export proof, not authorized remote transport or another-host arrival.

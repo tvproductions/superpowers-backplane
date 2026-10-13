@@ -24,7 +24,7 @@ directory were verified. Its portable execution summary is
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md`.
 Tasks 1–4 are now independently verified on this Mac; final governance and
 existing conformance checks pass. Fresh whole-change review and one verified format-fix pass are complete.
-The first remaining gate is the operator.s finishing decision; the PR handoff
+The first remaining gate is the operator's finishing decision; the PR handoff
 is prepared and the native worktree is preserved. No Windows task completion has been recovered. Keep scratch ignored and transport a committed execution
 summary with its supporting evidence at handoff boundaries.
 

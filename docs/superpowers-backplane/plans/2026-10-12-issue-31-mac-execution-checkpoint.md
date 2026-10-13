@@ -97,7 +97,7 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 The evaluated Mac setup and implementation checks pass. Recheck the exact
 worktree identity, live issue/artifact revisions, final source hashes and captured
-evidence. The remaining gate is the operator.s concrete finishing decision: push a new
+evidence. The remaining gate is the operator's concrete finishing decision: push a new
 branch and create the prepared PR, or keep the native workspace as-is. Do not repeat verified tasks solely because the
 prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
@@ -155,7 +155,7 @@ Refs #31. The native workspace remains detached and preserved; root main and
 its12 protected dirty-file hashes and all238 upstream file hashes are unchanged.
 Ignore scratch; the tracked ledger/captures/review carry the needed resume record.
 A clean local Git export already validated portable evidence; remote transport
-and another host.s arrival have not occurred and must be verified separately.
+and another host's arrival have not occurred and must be verified separately.
 
 No PR has been submitted. Issue31 remains OPEN/backplane:active at unchanged
 2026-10-12T01:29:48Z in the final full native intake. The operator must select
@@ -163,3 +163,9 @@ push-as-new-branch/PR or keep-as-is under finishing. Subsequent integration need
 fresh target verification and separate authorized satisfaction/closure; no release
 is part of this work. Do not repeat verified implementation tasks on resume
 unless their actual authority/input/source identities changed.
+
+Final reviewed implementation/fix commit: 64df352 (resolve the full object through
+Git). A clean local export of that commit reproduces all52 recorded response
+identities and the latest source bundle, review, ledger and prepared PR handoff,
+without ignored scratch. Later storage of this export receipt changes no tested
+skill/reference/fixture source. Remote transport/arrival remains unverified.

@@ -231,8 +231,12 @@ stable target as verified compatible, untested, or incompatible with the evidenc
 and reason. An older pass does not establish currentness; an installed version
 alone does not establish compatibility. Local/uncommitted evidence is not a
 published cue, and one host/override does not establish all harnesses/workflows.
-Publish immutable scoped evidence with the advertised Backplane revision and
-verify its availability before consumption. Neither cue nor bundle preference
+Publish immutable scoped evidence with the advertised Backplane revision. Before
+consuming it as a published cue, verify authorized transport to the advertised
+target and arrival there: the exact commit/artifact identities must be reachable
+and their supporting evidence inspectable by the consumer. A local accepted
+commit, proposed publication, or URL alone does not demonstrate that arrival.
+Neither cue nor bundle preference
 authorizes automatic installation changes.
 
 ## Boundaries and worked example

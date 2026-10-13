@@ -22,15 +22,17 @@ The native issue-31 Mac workspace is
 `82fa208cd81b1ae33a6b24e869220f90c9558312`; its registration and shared Git
 directory were verified. Its portable execution summary is
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md`.
-Task 1 is the first task requiring revalidation; no Windows task completion
-has been recovered. Keep scratch ignored and transport a committed execution
+Tasks 1–4 are now independently verified on this Mac; final governance and
+existing conformance checks pass. Fresh whole-change review is the first
+remaining gate. No Windows task completion has been recovered. Keep scratch ignored and transport a committed execution
 summary with its supporting evidence at handoff boundaries.
 
 Read the diagnostic reconciliation and proposed portability correction at
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md`.
 It is not a recovered execution ledger or completed RESUME. The subsequent setup
 and portable execution summary above record the restored Mac prerequisites and
-isolation identity; revalidate missing task evidence before implementation.
+isolation identity. Current Mac implementation results and exact evidence are
+recorded in the tracked execution checkpoint; use that record for resume.
 No issue state was changed by
 the recovery assessment. The historical product records below remain context.
 

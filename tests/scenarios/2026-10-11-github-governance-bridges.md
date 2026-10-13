@@ -84,7 +84,7 @@ Specific missing/failed evidence:
 
 ## Candidate and regression results
 
-Pending. No installed-skill GREEN result is claimed by doctrine delivery.
+Final candidate behavioral and existing conformance results are below.
 Native JSON/file/Git exercises and whole-change review are recorded separately
 from the simulated decisions above. Existing five-check conformance remains
 required against the final candidate hashes. Missing mandatory captures or
@@ -139,3 +139,54 @@ tests/scenarios/fixtures/issue-31-checkpoint/ data, not actual product state.
 The readable fixture renderer covers its one-issue account; it is not a general
 renderer or proof of live full-graph/Project capture. No remote publication,
 new-host arrival, production recovery, or GitHub replay was performed.
+
+### Final candidate verification (2026-10-13)
+
+All original seven cases pass 56/56 statements, and the separate freshness
+contract passes 8/8. All variants retain their unchanged fixture/rubric inputs.
+Candidate1 passed the original 56 but left freshness R7 UNKNOWN: the response
+required availability without explicit transport/arrival. It is retained with
+its exact source hashes. Investigation found the explicit arrival rule scoped
+to execution handoff, while freshness required only publication/availability.
+One canonical freshness paragraph now binds consumer-visible transport, exact
+reachable identities, and inspectable evidence to cue consumption. Fresh full
+sessions at the corrected common bundle resolve R7; no prompt/rubric was edited.
+Case1 experienced a transient CLI 503 reconnect, then completed with a full
+response and zero exit. All final probe exits are zero; those exits alone were
+not treated as rubric success.
+
+[Existing conformance manifest](2026-10-13-governance-regression-runs.json)
+records five named checks: parsed frontmatter/exact names/Use when descriptions,
+all direct links and placeholder inspection on both skills, then four fresh
+behavioral sessions scoring all 23 original acceptance expectations. They all
+PASS. Candidate1 and final responses are retained; the final four were run after
+the corrected seven-case suite. Available Ruby/Psych, Perl and native JSON tools
+were authoring verification capabilities, not project runtime dependencies.
+The handoff skill and installation reference remain byte-identical to their
+implementation-entry identities.
+
+The final doctrine hash is
+176ef7f079762e3cde482952ba37315d2e1693f94d03f2090764e628aa461827;
+all routed reference/example/skill hashes are recorded per final run. Source
+hashes were checked after sessions; no skill/reference changes occurred during
+probes. Captured executed-command events contain only permitted reads; no live
+queries, mutations, helper invocations or agent dispatch occurred in probes.
+
+[Native query validation](2026-10-13-governance-native-query-validation.json)
+separately confirms current gh GraphQL subIssues/blockedBy/blocking/native closing
+PR connections and terminal zero-member pages for real #31. Complete native
+intake observes #31 still OPEN/Feature, only backplane:active, no relationships
+or closing PRs, unchanged updatedAt 2026-10-12T01:29:48Z. This is CLI capability
+validation, not a full repository/Project capture or authorized tracker write.
+
+Root and upstream preservation manifests still pass; both .superpowers paths
+remain absent, upstream is clean at the recorded revision, scratch is ignored,
+and the actual product checkpoint paths remain trackable. Unrelated issue #19,
+root dependency/handoff records and the unrelated worktree were not transported
+into implementation commits or modified. The earlier Mac prerequisites are in
+separate, explicitly authorized setup commits.
+
+Independent whole-change review and final finishing disposition are recorded in
+the portable execution checkpoint and review evidence. Local evidence does not
+prove remote integration/arrival, integrated issue satisfaction, other harnesses,
+bundle acceptance, live full-graph/Project capture, or release.

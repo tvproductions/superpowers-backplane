@@ -1,8 +1,8 @@
 # Issue #31 Mac execution checkpoint
 
-Observed: 2026-10-12T23:44:14Z. This tracked execution summary is separate from
-ignored scratch and from the unimplemented product checkpoint format. It
-records setup and the first unsupported task, not recovered Windows completion.
+Updated: 2026-10-13T06:24:29Z; final pre-review verification. This tracked execution summary is separate from
+ignored scratch and from the product checkpoint format. It records actual Mac
+implementation evidence, not recovered Windows completion.
 The storage commit is the commit containing this file and its evidence; it is
 not embedded in its own contents. Local commit acceptance and remote transport
 remain distinct.
@@ -21,7 +21,7 @@ remain distinct.
   `fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81`.
 - The original approved files remain unchanged. The prior recovery assessment
   records their published Git identities and the known Windows continuity gap.
-- Current operator direction: Mac setup and recovery in this conversation.
+- Current operator direction: "do 31" — execute the approved implementation on this Mac through verification and fresh review.
   The October 11 native-inline execution and protected-namespace exceptions
   remain in AGENTS.md; this record does not authorize publication or release.
 
@@ -57,17 +57,17 @@ behavior, not the new governance baseline or task completion.
 
 | Task | Current disposition | Required next evidence |
 | --- | --- | --- |
-| 1: Negative controls and doctrine | needs-revalidation; no supported governance baseline or doctrine completion | Frozen seven-case baseline, full rubric scoring, separately versioned freshness baseline if added, and reviewed doctrine |
-| 2: Product planning/intake bridge | unverified/not reached on Mac | Task 1 outputs and task-specific fresh evidence |
-| 3: PR closeout bridge | unverified/not reached on Mac | Prior outputs and PR/changed-evidence probes |
-| 4: Product checkpoint contract | unverified/not reached on Mac | Validated example pair and preservation/recovery cases |
-| 5: Review and finishing | unverified/not reached on Mac | All task evidence, fresh regression and whole-change review |
+| 1: Negative controls and doctrine | verified at 30e25191d8a69c3fe371d6e603d1fc646d904c62 | Frozen baseline64 scored; doctrine and immutable input identities retained |
+| 2: Product planning/intake bridge | verified at e4e63a40a6fe99c8e4a1cbd016b89e698b69c1e8 | Fresh cases1–4 pass27; final cases retained |
+| 3: PR closeout bridge | verified at 2518eb2df8b67af12c6ee2750aded9227932cf56 | Fresh cases5/2 pass16; final cases retained |
+| 4: Product checkpoint contract | verified at 423eb83 | Fresh cases6/7 pass20, JSON18/18 and file/Git12/12 outcomes; full receipt and fixture commit identities tracked |
+| 5: Review and finishing | final pre-review verification passed; fresh whole-change review pending | Final common-bundle64 governance/freshness +23 existing statements, all five conformance checks; review and finishing are first unsupported gates |
 
 No prior Windows result is promoted to verified. Its execution ledger and
 implementation state remain unavailable. The earlier fixture receipt remains
 fixture evidence only; it does not prove a live checkpoint commit or Task 1.
-There are no currently verified implementation tasks or known implementation
-commits from the prior workspace.
+The preceding table records only independently substantiated Mac work; no
+Windows task or implementation commit is promoted to verified.
 
 ## Portable execution procedure
 
@@ -95,10 +95,38 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 ## Start here
 
-The setup prerequisite passes for the evaluated Mac tuple. Recheck this
-worktree's identity and current issue/artifact revisions, load writing-skills
-and its required TDD background, then begin Task 1's frozen baseline. Capture
-and score every original case before changing skill behavior. The old plan's
+The evaluated Mac setup and implementation checks pass. Recheck the exact
+worktree identity, live issue/artifact revisions, final source hashes and captured
+evidence. The first unsupported gate is fresh whole-change review, followed by
+project-compatible finishing. Do not repeat verified tasks solely because the
+prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
 the approved design, task order, immutable probes, review, and verification
 contracts remain binding. Use native bookkeeping under the recorded exception.
+
+## Current Mac verification and review inputs
+
+- Implementation starts at 33068051537dccfaeb6a6dbb82f5b293e9489203 after
+  independently authorized setup commits. No prerequisite result is presented
+  as governance implementation evidence.
+- [Governance evidence](../../../tests/scenarios/2026-10-11-github-governance-bridges.md)
+  links every captured result. The run manifest preserves immutable original
+  prompts/rubrics, baseline findings, task candidates, candidate1 freshness R7
+  UNKNOWN, and the final corrected common-bundle64 PASS. The final doctrine
+  SHA-256 is 176ef7f079762e3cde482952ba37315d2e1693f94d03f2090764e628aa461827.
+- [Existing conformance evidence](../../../tests/scenarios/2026-10-13-governance-regression-runs.json)
+  retains exact mapped prompts and all23 scored expectations, plus both parsed
+  frontmatters and direct-link checks. All five named conformance checks pass.
+- [Execution ledger](../../../tests/scenarios/2026-10-13-issue-31-execution-ledger.md)
+  carries native task order, inputs, rulings, verification and unresolved review
+  gates. Supporting captures are tracked; scratch is not the sole resume source.
+- Invented pair K0 b32f6473161ff199234a4011bad4ac6b5c13e1dc and K1
+  32d9284af6c3188981c2883b91a9bc8400331f16 prove the exercised file/index/tree
+  boundary only. No actual .sp-bp product pair, full live graph/Project capture,
+  remote integration, another-host arrival or release is established.
+- Issue31 is still OPEN/Feature/backplane:active with unchanged native revision
+  2026-10-12T01:29:48Z. No PR is submitted; no lifecycle, body or relationship
+  mutation occurred. Review/publish/integration/verification/closure stay distinct.
+- Root and upstream preservation checks pass; the root's previously recorded
+  dirty setup files remain preserved. The upstream source remains clean and
+  protected paths remain absent. Retain the native workspace for PR feedback.

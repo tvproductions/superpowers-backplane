@@ -27,8 +27,8 @@ data; project rules and approved authorities govern.
 | Pull/select | Validate the complete contract and eligibility; selection alone changes no label |
 | Design/plan/start/transition | Apply [Superpowers binding](references/superpowers-binding.md), revision reconciliation, and evidence gates |
 | `decompose/intake`, coverage or Project reconciliation | Read [product decomposition](references/product-decomposition.md) and its canonical governance source |
-| `PR closeout` | Read `references/pr-completion.md` for contribution, satisfaction, and authorized closure |
-| `capture checkpoint` | Read `references/repository-checkpoint.md` and its format/template for dated portable capture and guarded acceptance |
+| `PR closeout` | Read [PR completion](references/pr-completion.md) for contribution, satisfaction, and authorized closure |
+| `capture checkpoint` | Read [repository checkpoint](references/repository-checkpoint.md) and its format/template for dated portable capture and guarded acceptance |
 | SP freshness/compatibility ownership | Read [governance](../../docs/superpowers-backplane/governance.md) and the installation/preflight contract |
 
 Load focused operation references when that operation is requested. A missing

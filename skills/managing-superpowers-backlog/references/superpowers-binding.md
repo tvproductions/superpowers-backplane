@@ -96,3 +96,9 @@ review, actual integration/closure, fresh verification, and authorized satisfact
 index/parent/projection updates. Preserve the verified delivery commit independently
 of a later checkpoint storage commit. Pending review fixes retain their workspace;
 observed automatic closure cannot manufacture success or authorize reopening.
+
+Use [checkpoint capture](repository-checkpoint.md) for the separately authorized
+product backup pair, full declared graph/source capture, readable/structured
+validation, one verified pair acceptance commit, and guarded exact-path recovery.
+Its accepted storage identity is separate from the verified feature commit and
+remote integration. Offline snapshots do not establish current issue eligibility.

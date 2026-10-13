@@ -109,3 +109,33 @@ review workspace and explicitly separates verified S1/B from later storage K,
 resolving baseline Case5/R8 FAIL and R9 UNKNOWN. Coverage-revision behavior
 remains passing. Required native PR CLI fields were also verified through a
 read-only observation of existing PR #32, outside the invented probes.
+
+### Task 4 candidate and native exercises
+
+Fresh cases 6/7 pass 20/20 original rubric statements. They distinguish verified
+source from storage, local acceptance from integration, exact pair/index recovery
+under authority, first unsupported-task resume, and all failure variants. Captured
+events show completed turns; process exit was not recovered across the context
+boundary, so no invented exit code is used.
+
+[Concrete JSON validation](2026-10-13-checkpoint-validation.json) records 18/18
+expected outcomes with native JSON/JavaScript capabilities: complete and partial/
+stale diagnostic records, missing pages, changed revisions, unavailable evidence,
+wrong delivery/review, dangling references, and contradictory Project projection.
+The disposable test validator initially keyed rechecks by id alone; corrected
+(kind,id) uniqueness admits distinct issue/delivery observations of one identity.
+No mandatory JSON language or production validator/helper is shipped.
+
+[Actual file/Git exercise](2026-10-13-checkpoint-file-git-exercise.md),
+[output](2026-10-13-checkpoint-file-git-results.txt), and
+[external receipt](2026-10-13-checkpoint-fixture-receipt.json) record 12/12 checks:
+ID/digest/semantic rejection, interrupted JSON-only installation, exact prior
+pair/index recovery preserving an unrelated staged sentinel, blocked acceptance
+with unrelated staged state, user-edit stop, no-prior filesystem/owned-index
+absence, and an actual pair-only K1 parent/blob/tree acceptance and receipt
+finalization. K0 is b32f6473161ff199234a4011bad4ac6b5c13e1dc; K1 is
+32d9284af6c3188981c2883b91a9bc8400331f16. These pair commits contain invented
+tests/scenarios/fixtures/issue-31-checkpoint/ data, not actual product state.
+The readable fixture renderer covers its one-issue account; it is not a general
+renderer or proof of live full-graph/Project capture. No remote publication,
+new-host arrival, production recovery, or GitHub replay was performed.

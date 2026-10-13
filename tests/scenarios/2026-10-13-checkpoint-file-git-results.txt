@@ -1,0 +1,20 @@
+PASS valid exact-byte and readable candidate
+PASS wrong capture ID rejected
+PASS wrong digest rejected
+PASS correct-digest false readable SATISFIED rejected
+[detached HEAD b32f647] test: record invented prior checkpoint pair for issue 31
+ 2 files changed, 444 insertions(+)
+ create mode 100644 tests/scenarios/fixtures/issue-31-checkpoint/github-state.json
+ create mode 100644 tests/scenarios/fixtures/issue-31-checkpoint/state.md
+K0 b32f6473161ff199234a4011bad4ac6b5c13e1dc
+PASS interrupted JSON-only install rejected; K0 tree retained
+PASS exact K0 worktree/index restoration preserves unrelated staged sentinel
+PASS unrelated staged sentinel blocks pair-only commit
+PASS intervening user edit stops automatic recovery and is preserved
+PASS no-prior transaction removes only proven file; preserves directory and sentinel (filesystem scope)
+PASS no-prior owned Git entry and transaction file restored to absence
+[detached HEAD 32d9284] test: accept invented candidate pair after guarded recovery
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+PASS actual K1 pair-only tree/index/parent verification; external receipt finalized without rollback
+PASS sentinel preserved across complete native Git exercise
+K1 32d9284af6c3188981c2883b91a9bc8400331f16

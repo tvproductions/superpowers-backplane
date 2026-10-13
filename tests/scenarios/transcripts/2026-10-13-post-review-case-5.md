@@ -1,0 +1,27 @@
+**Only E supports satisfaction and completed issue closeout within this simulation. D is actually closed but has failed acceptance.** A–F are independent states; evidence from one does not carry into another.
+
+This assessment uses the dated fixture, governed by the designated skill’s [PR closeout contract](/Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/references/pr-completion.md) and [governance rules](/Users/jeff/.codex/worktrees/d181/superpowers-backplane/docs/superpowers-backplane/governance.md). It establishes no live-system facts.
+
+| State | Contribution, review, integration, and verification | Satisfaction and observed issue state | Next permissible disposition |
+|---|---|---|---|
+| **A** | #201 establishes approved design S1 only. Runtime delivery and acceptance evidence are absent; its merge state is unspecified. | O1/O2 **UNKNOWN**. #101 remains **OPEN**. Design approval does not complete delivery. | Identify the current approved issue-bound plan, delivery contributions, and verification seams. Execution and integration remain proposed. |
+| **B** | Merged #202 contributes O1. #203 remains necessary for O2 and has unresolved review findings. No fresh combined acceptance result is supplied. | O1/O2 **UNKNOWN** as satisfaction claims. O1’s contribution is established; O2 remains outstanding. #101 is **OPEN**. | Propose resolving #203’s findings, obtaining accepted review, integrating under authority, and verifying the combined delivery. Preserve the workspace needed for review fixes. |
+| **C** | #203 has accepted review and passing branch checks but is unmerged. These establish review and branch verification, not integrated acceptance. | Integrated O1/O2 satisfaction is **UNKNOWN**. #101 is **OPEN**. No O1 result is inherited from B. | Integration followed by fresh target verification is the proposed next gate. Merge is not authorized here. |
+| **D** | Complete delivery merged and auto-closed #101. Fresh integrated verification fails O2. Accepted review and an O1 passing result are not supplied. | O2 **UNSATISFIED**; O1 **UNKNOWN**. The outcome is **UNSATISFIED**, while #101 is actually **CLOSED**. Its closure reason is not supplied. | Report the discrepancy and propose correction, review, integration, revalidation, and authorized tracker recovery. Do not reopen or repair labels. |
+| **E** | Complete integrated delivery at **B** passes O1/O2. Accepted review and evidence match **S1/B**. | O1/O2 and the outcome are **SATISFIED within the fixture**. #101 is still supplied as **OPEN**; closeout authorization is not an observed closure. | The expressly authorized simulated disposition is **CLOSED / completed**, subject to closeout state and lifecycle reconciliation. No live write is permitted. |
+| **F** | The PR targets a nondefault integration branch and says `Closes #101`. Review, merge, verification, and native closure are not supplied. | O1/O2 **UNKNOWN**. #101 remains **OPEN** under the supplied defaults. | Request supplied native state/references and target-policy evidence. Closing text alone establishes intent, not observed closure or satisfaction. |
+
+A neutral contribution reference such as `Refs #101` identifies bounded work without claiming completion. `Closes #101` expresses closure intent. Neither establishes accepted review, integration, passing verification, or satisfaction. A merged O1 contribution also does not create a native dependency edge to #203; the supplied relationship arrays remain authoritative.
+
+The fixture supports these assessments, but does not provide literal O1/O2 wording, full issue bodies and labels, current plan bindings, concrete approval/evidence locators, complete PR records, or resolved commit identities and verification methods. Consequently, I cannot validate execution eligibility, construct exact label edits, or produce a fully auditable closeout record. The common `updatedAt` value does not establish semantic alignment with a plan. These gaps do not erase E’s stipulated passing result or D’s stipulated failure.
+
+**Issue, parent, checkpoint, and release completion remain separate:**
+
+- E supports only #101’s authorized simulated closeout. Parent completion requires accounting for every applicable parent obligation and accepted disposition; no such parent record is supplied. Parent or Project edits are not authorized.
+- No repository checkpoint is shown as captured or accepted. A separately authorized capture would validate `.sp-bp/state.md` and `.sp-bp/github-state.json` together and accept both in one verified commit **K**. K stores the evaluation of **S1/B**; it does not replace B as the verified delivery identity. Remote arrival is another separately observed fact.
+- A complete checkpoint may faithfully record UNKNOWN or UNSATISFIED results. Checkpoint completeness is not successful delivery.
+- Satisfaction, issue closure, and checkpoint acceptance confer no release or publication authority.
+
+The currently authorized operations are read-only assessment and E’s simulated closeout disposition. All corrective implementation, merges, reopening, body/projection edits, checkpoint writes or commits, publication, and workspace cleanup remain proposed work.
+
+I performed only local file reads; no GitHub queries, mutations, helpers, or agent dispatch occurred.

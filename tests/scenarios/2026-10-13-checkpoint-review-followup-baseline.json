@@ -1,0 +1,25 @@
+{
+  "version": "checkpoint-review-followups/v1",
+  "arm": "baseline",
+  "source_head": "945108ab610fe2bb927d33be31d92d036f953b6d",
+  "tests": [
+    {
+      "name": "denied PR closing issue collection",
+      "expected": "DIAGNOSTIC",
+      "valid": false,
+      "acceptable": false,
+      "errors": [
+        "$.pull_requests[0].closing_issue_ids array"
+      ]
+    },
+    {
+      "name": "selected single-select option identity",
+      "expected": "ACCEPTABLE",
+      "valid": false,
+      "acceptable": false,
+      "errors": [
+        "$.project.items[0].fields[0] exact fields"
+      ]
+    }
+  ]
+}

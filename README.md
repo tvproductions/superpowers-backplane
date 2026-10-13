@@ -6,8 +6,13 @@ hierarchy, dependencies, lifecycle, and delivery evidence, then binds those
 work items to Superpowers specifications and plans.
 
 The project is language-neutral. Its required command-line dependency is
-GitHub CLI (`gh`); Git is assumed by the Superpowers workflow. GitHub Projects
-are optional visualization only and never authoritative. IssueOps is not used.
+GitHub CLI (`gh`); Git is assumed by the Superpowers workflow. Native GitHub Projects are the normal proposed governance interface, with
+explicit Issues-only compatibility; native issues and Backplane labels remain
+authoritative. IssueOps is not used.
+
+Read the [governance doctrine](docs/superpowers-backplane/governance.md) for
+product decomposition, coverage and satisfaction, PR closeout, and portable
+repository checkpoints.
 
 This repository is in bootstrap state. Start with `HANDOFF.md`.
 

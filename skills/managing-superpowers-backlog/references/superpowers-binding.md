@@ -73,3 +73,32 @@ Prefer native and committed evidence:
 
 Comments explain state that these surfaces do not already express. They are not
 a substitute for missing verification.
+
+## Product and delivery bridges
+
+[Governance](../../../docs/superpowers-backplane/governance.md) defines source
+ownership and [product decomposition](product-decomposition.md) connects approved
+planning results to proposed/existing native work before per-issue planning.
+Do not repeat approved bounded issue design or replace an approved cross-cutting
+specification. New Backplane documents use `docs/superpowers-backplane/` under
+current project rules; historical `docs/superpowers/` authority links stay valid.
+
+The product checkpoint is a dated capture of issue-owned dispositions, coverage,
+and accepted evidence, distinct from an execution scratch ledger or session
+handoff. A PR contributes criteria at exact design/plan/delivery revisions;
+review acceptance, integration, fresh verification, satisfaction, native closure,
+parent completion, and release remain separate gates. A later checkpoint-only
+commit stores evidence for the verified delivery identity rather than replacing
+it. Focused closeout/capture references define their operation contracts.
+
+Use [PR closeout](pr-completion.md) to evaluate partial contributions, accepted
+review, actual integration/closure, fresh verification, and authorized satisfaction
+index/parent/projection updates. Preserve the verified delivery commit independently
+of a later checkpoint storage commit. Pending review fixes retain their workspace;
+observed automatic closure cannot manufacture success or authorize reopening.
+
+Use [checkpoint capture](repository-checkpoint.md) for the separately authorized
+product backup pair, full declared graph/source capture, readable/structured
+validation, one verified pair acceptance commit, and guarded exact-path recovery.
+Its accepted storage identity is separate from the verified feature commit and
+remote integration. Offline snapshots do not establish current issue eligibility.

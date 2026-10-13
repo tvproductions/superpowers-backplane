@@ -1,0 +1,1105 @@
+{
+  "version": "checkpoint-native-edges/v1",
+  "arm": "post-review-fix",
+  "contract_sha256": "ea6da82a45eca2050d5f5d641f59bae40b77af6a0387a9290f9f216af48e5f47",
+  "fixture_sha256": "4c49b26e7aeb6632889f1fb04a2d70bfb7692a740db0fe9d736c47df1d16b0a0",
+  "scope": "Invented native fixture observations and exact JSON/type/semantic tests only. The first18 outcomes are regenerated against corrected examples, retaining historical pre-fix results separately. Candidate projection adds observed native hasNextPage and preserves endCursor. No live capture or general production validator is supplied.",
+  "limitations": [
+    "This disposable validator enforces only implemented fixture/type/semantic constraints. It does not establish live object existence, all Project pagination or availability of an issue body; acceptable is confined to exercised fixture constraints. Operational full-capture/review/approval guards remain mandatory."
+  ],
+  "tests": [
+    {
+      "name": "complete invented account",
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "name": "explicit partial missing-page/unavailable evidence",
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "name": "explicit stale changed-source",
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "name": "wrong integer type",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "$.issues[0].number type pos"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "unknown top field",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "$ exact fields"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "duplicate criterion ID",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "$.criteria duplicates"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "unresolved requirement link",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "example/governance-fixture#101:AC1 unresolved missing",
+        "current evaluation input"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "omitted terminal page",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "pagination subIssues"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "missing graph collection",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "missing collection blockedBy"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "changed required source",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "source changed"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "missing recheck",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "missing recheck example/governance-fixture#101"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "unavailable required evidence",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "verification evidence",
+        "required material unavailable"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "unapproved authority revision",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "authority revision"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "wrong verified delivery",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "current evaluation input",
+        "verification evidence"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "no review approval",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "review approval"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "unmet contribution",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "current evaluation input"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "integrated mode denied Project",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "Project unavailable"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "contradictory Project projection",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "Project projection contradiction"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "nonempty-terminal-cursor",
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "name": "denied-labels",
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "errors": [],
+      "result": "PASS"
+    },
+    {
+      "name": "missing observed next page",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "pagination labels",
+        "collection membership labels"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "broken cursor continuity",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "cursor continuity"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "complete denied collection",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "errors": [
+        "unavailable native collection diagnostic guard labels",
+        "pagination labels",
+        "collection membership labels",
+        "source unavailable"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "candidate_projections": [
+    {
+      "format": "sp-bp-checkpoint/v1",
+      "capture": {
+        "id": "fixture-C1",
+        "started_at": "2026-10-01T12:10:00Z",
+        "finished_at": "2026-10-01T12:11:00Z",
+        "mode": "issues-only",
+        "status": "complete",
+        "origin": "invented-fixture",
+        "rechecks": [
+          {
+            "kind": "issue",
+            "id": "example/governance-fixture#101",
+            "initial_revision": "2026-10-01T12:00:00Z",
+            "final_revision": "2026-10-01T12:00:00Z",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Fixture full body/native relationships unchanged."
+          },
+          {
+            "kind": "graph",
+            "id": "selected-native-graph",
+            "initial_revision": "fixture-graph-1",
+            "final_revision": "fixture-graph-1",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "All selected connections enumerated and compared."
+          },
+          {
+            "kind": "authority",
+            "id": "S1",
+            "initial_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "final_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture authority unchanged."
+          },
+          {
+            "kind": "authority",
+            "id": "A1",
+            "initial_revision": "2026-10-01T12:00:00Z",
+            "final_revision": "2026-10-01T12:00:00Z",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture authority unchanged."
+          },
+          {
+            "kind": "authority",
+            "id": "A2",
+            "initial_revision": "2026-10-01T12:00:00Z",
+            "final_revision": "2026-10-01T12:00:00Z",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture authority unchanged."
+          },
+          {
+            "kind": "evidence",
+            "id": "E1",
+            "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture evidence unchanged."
+          },
+          {
+            "kind": "evidence",
+            "id": "RV1",
+            "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture evidence unchanged."
+          },
+          {
+            "kind": "delivery",
+            "id": "example/governance-fixture#101",
+            "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Fixture current delivery B; source A identifies the capture context rather than the verified delivery."
+          }
+        ]
+      },
+      "repository": {
+        "id": "example/governance-fixture",
+        "url": "https://github.com/example/governance-fixture",
+        "owner": "example",
+        "name": "governance-fixture"
+      },
+      "project": null,
+      "source": {
+        "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "scope": {
+        "issue_ids": [
+          "example/governance-fixture#101"
+        ],
+        "excluded_ids": [],
+        "external_records": [],
+        "collections": [
+          {
+            "name": "issues",
+            "owner_id": "example/governance-fixture",
+            "expected_total": 1,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [
+                  "example/governance-fixture#101"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "subIssues",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "blockedBy",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "blocking",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "closingPRReferences",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "labels",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 2,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": "cursor-L1",
+                "record_ids": [
+                  "L1"
+                ],
+                "has_next_page": true
+              },
+              {
+                "cursor_in": "cursor-L1",
+                "cursor_out": "cursor-L2",
+                "record_ids": [
+                  "L2"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "assignees",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 1,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [
+                  "fixture-owner"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "pullRequests",
+            "owner_id": "example/governance-fixture",
+            "expected_total": 1,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [
+                  "example/governance-fixture!201"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          }
+        ],
+        "complete": true
+      },
+      "issues": [
+        {
+          "id": "example/governance-fixture#101",
+          "number": 101,
+          "url": "https://github.com/example/governance-fixture/issues/101",
+          "title": "Preserve an existing valid installation",
+          "body": "## Objective\nPreserve an existing valid installation.\n## Acceptance Criteria\nAC1: Preserve the existing valid installation.\n## Backplane Record\nCode: CAP1.1; Kind: outcome; authority S1.\n## Coverage and Satisfaction\nAC1 maps to R1/S1; accepted evaluation EV1 at delivery B is SATISFIED.\n",
+          "state": "OPEN",
+          "state_reason": "",
+          "issue_type": {
+            "id": "TYPE_FEATURE",
+            "name": "Feature",
+            "description": "Fixture native issue type",
+            "color": "GREEN"
+          },
+          "labels": [
+            {
+              "id": "L1",
+              "name": "backplane:review",
+              "description": "Awaiting closeout",
+              "color": "5319e7"
+            },
+            {
+              "id": "L2",
+              "name": "fixture-extra",
+              "description": null,
+              "color": null
+            }
+          ],
+          "assignees": [
+            "fixture-owner"
+          ],
+          "milestone": null,
+          "updated_at": "2026-10-01T12:00:00Z",
+          "parent_id": null,
+          "child_ids": [],
+          "sub_issues_summary": {
+            "total": 0,
+            "completed": 0,
+            "percent_completed": 0
+          },
+          "blocked_by_ids": [],
+          "blocking_ids": [],
+          "closing_pr_ids": [],
+          "backplane_record": {
+            "code": "CAP1.1",
+            "namespace": "CAP1",
+            "kind": "outcome",
+            "authority_ids": [
+              "S1"
+            ]
+          },
+          "accepted_evaluation_ids": [
+            "EV1"
+          ],
+          "limitations": []
+        }
+      ],
+      "pull_requests": [
+        {
+          "id": "example/governance-fixture!201",
+          "number": 201,
+          "url": "https://github.com/example/governance-fixture/pull/201",
+          "title": "Preservation contribution",
+          "body": "Refs #101; contributes AC1 at S1.",
+          "state": "MERGED",
+          "base_ref": "main",
+          "head_ref": "fixture-preservation",
+          "merged_at": "2026-10-01T11:00:00Z",
+          "merge_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "review_status": "accepted",
+          "closing_issue_ids": [],
+          "closure_intent": "contribution",
+          "updated_at": "2026-10-01T12:00:00Z",
+          "limitations": []
+        }
+      ],
+      "authorities": [
+        {
+          "id": "S1",
+          "kind": "specification",
+          "locator": "fixture:spec/S1",
+          "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "content": "R1: Preserve an existing valid installation. AC1 implements R1.",
+          "availability": "available",
+          "approver": null,
+          "approved_scope": null,
+          "approval_ids": [
+            "A1"
+          ],
+          "limitations": []
+        },
+        {
+          "id": "A1",
+          "kind": "approval",
+          "locator": "fixture:approval/A1",
+          "revision": "2026-10-01T12:00:00Z",
+          "content": "Fixture approver approved R1 and AC1 at S1.",
+          "availability": "available",
+          "approver": "fixture-approver",
+          "approved_scope": "R1/AC1 at S1",
+          "approval_ids": [],
+          "limitations": []
+        },
+        {
+          "id": "A2",
+          "kind": "approval",
+          "locator": "fixture:review/A2",
+          "revision": "2026-10-01T12:00:00Z",
+          "content": "Fixture reviewer accepted AC1 at S1 and delivery B.",
+          "availability": "available",
+          "approver": "fixture-reviewer",
+          "approved_scope": "AC1 at S1/B",
+          "approval_ids": [],
+          "limitations": []
+        }
+      ],
+      "requirements": [
+        {
+          "id": "R1@S1",
+          "key": "R1",
+          "text": "Preserve an existing valid installation.",
+          "authority_id": "S1",
+          "authority_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "example/governance-fixture#101:AC1",
+          "issue_id": "example/governance-fixture#101",
+          "key": "AC1",
+          "text": "Preserve the existing valid installation.",
+          "authority_id": "S1",
+          "authority_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "delivery_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "requirement_ids": [
+            "R1@S1"
+          ]
+        }
+      ],
+      "dispositions": [],
+      "coverage": [
+        {
+          "id": "COV1",
+          "issue_id": "example/governance-fixture#101",
+          "criterion_id": "example/governance-fixture#101:AC1",
+          "requirement_ids": [
+            "R1@S1"
+          ],
+          "contribution_issue_ids": [
+            "example/governance-fixture#101"
+          ],
+          "pr_ids": [
+            "example/governance-fixture!201"
+          ],
+          "combined_result_owner": "fixture-owner",
+          "scope": "The sole fixture criterion is covered by preservation contribution PR201."
+        }
+      ],
+      "evaluations": [
+        {
+          "id": "EV1",
+          "criterion_id": "example/governance-fixture#101:AC1",
+          "requirement_ids": [
+            "R1@S1"
+          ],
+          "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "method": "Fixture preservation verification",
+          "observed_result": "PASS supplied by the invented fixture.",
+          "result": "SATISFIED",
+          "observed_at": "2026-10-01T12:00:00Z",
+          "evidence_ids": [
+            "E1",
+            "RV1"
+          ],
+          "review_approval_ids": [
+            "A2"
+          ],
+          "applicability": "current",
+          "remaining_contributions": [],
+          "limitations": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E1",
+          "kind": "verification",
+          "locator": "fixture:verification/E1",
+          "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "sha256": null,
+          "availability": "available",
+          "content": "Invented fixture result: AC1 passed preservation verification against S1 and B.",
+          "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "limitations": []
+        },
+        {
+          "id": "RV1",
+          "kind": "review",
+          "locator": "fixture:review/RV1",
+          "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "sha256": null,
+          "availability": "available",
+          "content": "Invented fixture review accepted AC1 at S1/B.",
+          "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "limitations": []
+        }
+      ],
+      "limitations": []
+    },
+    {
+      "format": "sp-bp-checkpoint/v1",
+      "capture": {
+        "id": "fixture-labels-denied",
+        "started_at": "2026-10-01T12:10:00Z",
+        "finished_at": "2026-10-01T12:11:00Z",
+        "mode": "issues-only",
+        "status": "partial",
+        "origin": "invented-fixture",
+        "rechecks": [
+          {
+            "kind": "issue",
+            "id": "example/governance-fixture#101",
+            "initial_revision": "2026-10-01T12:00:00Z",
+            "final_revision": null,
+            "result": "unavailable",
+            "approval_ids": [],
+            "details": "Labels source unavailable; other provided records remain dated fixture facts."
+          },
+          {
+            "kind": "graph",
+            "id": "selected-native-graph",
+            "initial_revision": "fixture-graph-1",
+            "final_revision": "fixture-graph-1",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "All selected connections enumerated and compared."
+          },
+          {
+            "kind": "authority",
+            "id": "S1",
+            "initial_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "final_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture authority unchanged."
+          },
+          {
+            "kind": "authority",
+            "id": "A1",
+            "initial_revision": "2026-10-01T12:00:00Z",
+            "final_revision": "2026-10-01T12:00:00Z",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture authority unchanged."
+          },
+          {
+            "kind": "authority",
+            "id": "A2",
+            "initial_revision": "2026-10-01T12:00:00Z",
+            "final_revision": "2026-10-01T12:00:00Z",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture authority unchanged."
+          },
+          {
+            "kind": "evidence",
+            "id": "E1",
+            "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture evidence unchanged."
+          },
+          {
+            "kind": "evidence",
+            "id": "RV1",
+            "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Embedded fixture evidence unchanged."
+          },
+          {
+            "kind": "delivery",
+            "id": "example/governance-fixture#101",
+            "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "result": "unchanged",
+            "approval_ids": [],
+            "details": "Fixture current delivery B; source A identifies the capture context rather than the verified delivery."
+          }
+        ]
+      },
+      "repository": {
+        "id": "example/governance-fixture",
+        "url": "https://github.com/example/governance-fixture",
+        "owner": "example",
+        "name": "governance-fixture"
+      },
+      "project": null,
+      "source": {
+        "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "scope": {
+        "issue_ids": [
+          "example/governance-fixture#101"
+        ],
+        "excluded_ids": [],
+        "external_records": [],
+        "collections": [
+          {
+            "name": "issues",
+            "owner_id": "example/governance-fixture",
+            "expected_total": 1,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [
+                  "example/governance-fixture#101"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "subIssues",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "blockedBy",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "blocking",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "closingPRReferences",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 0,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "labels",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": null,
+            "pages": [],
+            "complete": false
+          },
+          {
+            "name": "assignees",
+            "owner_id": "example/governance-fixture#101",
+            "expected_total": 1,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [
+                  "fixture-owner"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          },
+          {
+            "name": "pullRequests",
+            "owner_id": "example/governance-fixture",
+            "expected_total": 1,
+            "pages": [
+              {
+                "cursor_in": null,
+                "cursor_out": null,
+                "record_ids": [
+                  "example/governance-fixture!201"
+                ],
+                "has_next_page": false
+              }
+            ],
+            "complete": true
+          }
+        ],
+        "complete": false
+      },
+      "issues": [
+        {
+          "id": "example/governance-fixture#101",
+          "number": 101,
+          "url": "https://github.com/example/governance-fixture/issues/101",
+          "title": "Preserve an existing valid installation",
+          "body": "## Objective\nPreserve an existing valid installation.\n## Acceptance Criteria\nAC1: Preserve the existing valid installation.\n## Backplane Record\nCode: CAP1.1; Kind: outcome; authority S1.\n## Coverage and Satisfaction\nAC1 maps to R1/S1; accepted evaluation EV1 at delivery B is SATISFIED.\n",
+          "state": "OPEN",
+          "state_reason": "",
+          "issue_type": {
+            "id": "TYPE_FEATURE",
+            "name": "Feature",
+            "description": "Fixture native issue type",
+            "color": "GREEN"
+          },
+          "labels": null,
+          "assignees": [
+            "fixture-owner"
+          ],
+          "milestone": null,
+          "updated_at": "2026-10-01T12:00:00Z",
+          "parent_id": null,
+          "child_ids": [],
+          "sub_issues_summary": {
+            "total": 0,
+            "completed": 0,
+            "percent_completed": 0
+          },
+          "blocked_by_ids": [],
+          "blocking_ids": [],
+          "closing_pr_ids": [],
+          "backplane_record": {
+            "code": "CAP1.1",
+            "namespace": "CAP1",
+            "kind": "outcome",
+            "authority_ids": [
+              "S1"
+            ]
+          },
+          "accepted_evaluation_ids": [
+            "EV1"
+          ],
+          "limitations": [
+            "Native labels collection denied; values and count unobserved."
+          ]
+        }
+      ],
+      "pull_requests": [
+        {
+          "id": "example/governance-fixture!201",
+          "number": 201,
+          "url": "https://github.com/example/governance-fixture/pull/201",
+          "title": "Preservation contribution",
+          "body": "Refs #101; contributes AC1 at S1.",
+          "state": "MERGED",
+          "base_ref": "main",
+          "head_ref": "fixture-preservation",
+          "merged_at": "2026-10-01T11:00:00Z",
+          "merge_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "review_status": "accepted",
+          "closing_issue_ids": [],
+          "closure_intent": "contribution",
+          "updated_at": "2026-10-01T12:00:00Z",
+          "limitations": []
+        }
+      ],
+      "authorities": [
+        {
+          "id": "S1",
+          "kind": "specification",
+          "locator": "fixture:spec/S1",
+          "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "content": "R1: Preserve an existing valid installation. AC1 implements R1.",
+          "availability": "available",
+          "approver": null,
+          "approved_scope": null,
+          "approval_ids": [
+            "A1"
+          ],
+          "limitations": []
+        },
+        {
+          "id": "A1",
+          "kind": "approval",
+          "locator": "fixture:approval/A1",
+          "revision": "2026-10-01T12:00:00Z",
+          "content": "Fixture approver approved R1 and AC1 at S1.",
+          "availability": "available",
+          "approver": "fixture-approver",
+          "approved_scope": "R1/AC1 at S1",
+          "approval_ids": [],
+          "limitations": []
+        },
+        {
+          "id": "A2",
+          "kind": "approval",
+          "locator": "fixture:review/A2",
+          "revision": "2026-10-01T12:00:00Z",
+          "content": "Fixture reviewer accepted AC1 at S1 and delivery B.",
+          "availability": "available",
+          "approver": "fixture-reviewer",
+          "approved_scope": "AC1 at S1/B",
+          "approval_ids": [],
+          "limitations": []
+        }
+      ],
+      "requirements": [
+        {
+          "id": "R1@S1",
+          "key": "R1",
+          "text": "Preserve an existing valid installation.",
+          "authority_id": "S1",
+          "authority_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "example/governance-fixture#101:AC1",
+          "issue_id": "example/governance-fixture#101",
+          "key": "AC1",
+          "text": "Preserve the existing valid installation.",
+          "authority_id": "S1",
+          "authority_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "delivery_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "requirement_ids": [
+            "R1@S1"
+          ]
+        }
+      ],
+      "dispositions": [],
+      "coverage": [
+        {
+          "id": "COV1",
+          "issue_id": "example/governance-fixture#101",
+          "criterion_id": "example/governance-fixture#101:AC1",
+          "requirement_ids": [
+            "R1@S1"
+          ],
+          "contribution_issue_ids": [
+            "example/governance-fixture#101"
+          ],
+          "pr_ids": [
+            "example/governance-fixture!201"
+          ],
+          "combined_result_owner": "fixture-owner",
+          "scope": "The sole fixture criterion is covered by preservation contribution PR201."
+        }
+      ],
+      "evaluations": [
+        {
+          "id": "EV1",
+          "criterion_id": "example/governance-fixture#101:AC1",
+          "requirement_ids": [
+            "R1@S1"
+          ],
+          "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "method": "Fixture preservation verification",
+          "observed_result": "PASS supplied by the invented fixture.",
+          "result": "SATISFIED",
+          "observed_at": "2026-10-01T12:00:00Z",
+          "evidence_ids": [
+            "E1",
+            "RV1"
+          ],
+          "review_approval_ids": [
+            "A2"
+          ],
+          "applicability": "current",
+          "remaining_contributions": [],
+          "limitations": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E1",
+          "kind": "verification",
+          "locator": "fixture:verification/E1",
+          "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "sha256": null,
+          "availability": "available",
+          "content": "Invented fixture result: AC1 passed preservation verification against S1 and B.",
+          "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "limitations": []
+        },
+        {
+          "id": "RV1",
+          "kind": "review",
+          "locator": "fixture:review/RV1",
+          "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "sha256": null,
+          "availability": "available",
+          "content": "Invented fixture review accepted AC1 at S1/B.",
+          "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "limitations": []
+        }
+      ],
+      "limitations": [
+        "Required labels collection unavailable; diagnostic only."
+      ]
+    }
+  ],
+  "validator_schema": {
+    "Top": "format:format capture:Capture repository:Repository project:Project? source:Source scope:Scope issues:[Issue] pull_requests:[PR] authorities:[Authority] requirements:[Requirement] criteria:[Criterion] dispositions:[Disposition] coverage:[Coverage] evaluations:[Evaluation] evidence:[Evidence] limitations:[str]",
+    "Capture": "id:id started_at:time finished_at:time mode:integrated|issues-only status:complete|partial|stale|invalid origin:live-capture|supplied-records|invented-fixture rechecks:[Recheck]",
+    "Recheck": "kind:issue|project|graph|authority|evidence|delivery id:id initial_revision:id? final_revision:id? result:unchanged|reconciled|changed|unavailable approval_ids:[id] details:str",
+    "Repository": "id:id url:str owner:str name:str",
+    "Source": "commit:commit",
+    "Scope": "issue_ids:[id] excluded_ids:[id] external_records:[External] collections:[Collection] complete:bool",
+    "External": "id:id url:str? owner:str? reason:str availability:availability",
+    "Collection": "name:str owner_id:id expected_total:uint? pages:[Page] complete:bool",
+    "Page": "cursor_in:str? cursor_out:str? has_next_page:bool record_ids:[id]",
+    "Project": "id:id url:str? owner:str number:pos availability:availability field_definitions:[Field]? items:[Item]? limitations:[str]",
+    "Field": "id:id name:str type:str options:[Option]",
+    "Option": "id:id name:str",
+    "Item": "id:id content_id:id? content_kind:issue|pull-request|draft title:str? updated_at:time? fields:[FieldValue]?",
+    "FieldValue": "field_id:id text:str? availability:availability",
+    "Label": "id:id? name:str description:str? color:str?",
+    "IssueType": "id:id? name:str description:str? color:str?",
+    "Milestone": "id:id number:pos title:str url:str due_at:time?",
+    "Record": "code:str namespace:str kind:capability|outcome|gate|external-boundary authority_ids:[id]",
+    "Issue": "id:id number:pos url:str title:str body:str? state:OPEN|CLOSED? state_reason:str? issue_type:IssueType? labels:[Label]? assignees:[str]? milestone:Milestone? updated_at:time? parent_id:id? child_ids:[id]? sub_issues_summary:Summary? blocked_by_ids:[id]? blocking_ids:[id]? closing_pr_ids:[id]? backplane_record:Record? accepted_evaluation_ids:[id] limitations:[str]",
+    "Summary": "total:uint completed:uint percent_completed:percent",
+    "PR": "id:id number:pos url:str title:str? body:str? state:OPEN|CLOSED|MERGED? base_ref:str? head_ref:str? merged_at:time? merge_commit:commit? review_status:accepted|changes-requested|pending|unknown closing_issue_ids:[id] closure_intent:contribution|closing|unspecified updated_at:time? limitations:[str]",
+    "Authority": "id:id kind:issue-body|specification|plan|approval|project-instructions locator:str revision:id? content:str? availability:availability approver:str? approved_scope:str? approval_ids:[id] limitations:[str]",
+    "Requirement": "id:id key:str text:str authority_id:id authority_revision:id",
+    "Criterion": "id:id issue_id:id key:str text:str authority_id:id authority_revision:id delivery_commit:commit? requirement_ids:[id]",
+    "Disposition": "id:id parent_issue_id:id requirement_ids:[id] child_issue_ids:[id] evidence_ids:[id] disposition:covered|deferred|excluded|unresolved owner:str? approval_ids:[id] note:str",
+    "Coverage": "id:id issue_id:id criterion_id:id requirement_ids:[id] contribution_issue_ids:[id] pr_ids:[id] combined_result_owner:str? scope:str",
+    "Evaluation": "id:id criterion_id:id requirement_ids:[id] verified_commit:commit? method:str observed_result:str result:SATISFIED|UNSATISFIED|UNKNOWN observed_at:time? evidence_ids:[id] review_approval_ids:[id] applicability:current|historical|unreconciled remaining_contributions:[str] limitations:[str]",
+    "Evidence": "id:id kind:verification|review|approval|other locator:str revision:id? sha256:sha? availability:availability content:str? verified_commit:commit? limitations:[str]"
+  },
+  "validator_source": "function validate(d) {\nconst errors=[]; const fail=s=>errors.push(s); \nfunction shape(v,t,p) {\nif(t.endsWith(\"?\")){if(v===null)return;t=t.slice(0,-1);}\nif(t.startsWith(\"[\")){if(!Array.isArray(v)){fail(p+\" array\");return;}v.forEach((x,i)=>shape(x,t.slice(1,-1),p+\"[\"+i+\"]\"));const vals=v.map(x=>typeof x===\"object\"?(t===\"[Recheck]\"?x.kind+\":\"+x.id:x?.id): x).filter(x=>x!=null);if(new Set(vals).size!==vals.length)fail(p+\" duplicates\");return;}\nif(schema[t]){if(!v||typeof v!==\"object\"||Array.isArray(v)){fail(p+\" object\");return;}const fields=Object.fromEntries(schema[t].split(\" \").map(x=>{const at=x.indexOf(\":\");return [x.slice(0,at),x.slice(at+1)];}));if(Object.keys(v).sort().join()!=Object.keys(fields).sort().join())fail(p+\" exact fields\");for(const[k,st]of Object.entries(fields))shape(v[k],st,p+\".\"+k);return;}\nconst ok=t===\"str\"?typeof v===\"string\":t===\"id\"?typeof v===\"string\"&&v.length>0:t===\"bool\"?typeof v===\"boolean\":t===\"uint\"?Number.isInteger(v)&&v>=0:t===\"pos\"?Number.isInteger(v)&&v>0:t===\"percent\"?typeof v===\"number\"&&v>=0&&v<=100:t===\"commit\"?typeof v===\"string\"&&/^[a-f0-9]{40}([a-f0-9]{24})?$/.test(v):t===\"sha\"?typeof v===\"string\"&&/^[a-f0-9]{64}$/.test(v):t===\"time\"?typeof v===\"string\"&&/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(?:\\.\\d+)?Z$/.test(v)&&!Number.isNaN(Date.parse(v)):t===\"availability\"?[\"available\",\"unavailable\",\"redacted\"].includes(v):t===\"format\"?v===\"sp-bp-checkpoint/v1\":t.split(\"|\").includes(v);if(!ok)fail(p+\" type \"+t);\n}\nshape(d,\"Top\",\"$\");if(errors.length)return{valid:false,acceptable:false,errors};\nconst groups=[\"issues\",\"pull_requests\",\"authorities\",\"requirements\",\"criteria\",\"dispositions\",\"coverage\",\"evaluations\",\"evidence\"],maps={};for(const g of groups)maps[g]=new Map(d[g].map(x=>[x.id,x]));\nconst nativeIds=new Set([...maps.issues.keys(),...d.scope.excluded_ids,...d.scope.external_records.map(x=>x.id)]), prIds=new Set([...maps.pull_requests.keys(),...d.scope.excluded_ids,...d.scope.external_records.map(x=>x.id)]);\nconst ref=(ids,map,where)=>{for(const id of ids)if(!map.has(id))fail(where+\" unresolved \"+id);};const equal=(a,b)=>[...a].sort().join()==[...b].sort().join();\nif(!equal(d.scope.issue_ids,d.issues.map(x=>x.id)))fail(\"scope node membership\");\nif(Date.parse(d.capture.finished_at)<Date.parse(d.capture.started_at))fail(\"capture time ordering\");\nconst codes=d.issues.filter(x=>x.backplane_record).map(x=>x.backplane_record.namespace+\":\"+x.backplane_record.code);if(new Set(codes).size!==codes.length)fail(\"duplicate code\");\nfor(const a of d.authorities)ref(a.approval_ids,maps.authorities,a.id);\nfor(const i of d.issues){ref([i.parent_id,...(i.child_ids??[]),...(i.blocked_by_ids??[]),...(i.blocking_ids??[])].filter(Boolean),nativeIds,i.id);ref(i.closing_pr_ids??[],prIds,i.id);ref(i.accepted_evaluation_ids,maps.evaluations,i.id);if(i.backplane_record)ref(i.backplane_record.authority_ids,maps.authorities,i.id);for(const c of i.child_ids??[])if(maps.issues.has(c)&&maps.issues.get(c).parent_id!==i.id)fail(\"hierarchy reciprocity\");if(i.parent_id&&maps.issues.has(i.parent_id)&&maps.issues.get(i.parent_id).child_ids!==null&&!maps.issues.get(i.parent_id).child_ids.includes(i.id))fail(\"parent reciprocity\");for(const b of i.blocked_by_ids??[])if(maps.issues.has(b)&&maps.issues.get(b).blocking_ids!==null&&!maps.issues.get(b).blocking_ids.includes(i.id))fail(\"dependency reciprocity\");if(i.sub_issues_summary&&i.sub_issues_summary.total!==(i.child_ids?.length??0)&&d.capture.status===\"complete\")fail(\"sub issue total\");for(const evId of i.accepted_evaluation_ids){const ev=maps.evaluations.get(evId);if(ev&&maps.criteria.get(ev.criterion_id)?.issue_id!==i.id)fail(\"accepted pointer owner\");}}\nfor(const p of d.pull_requests)ref(p.closing_issue_ids,nativeIds,p.id);\nfor(const r of [...d.requirements,...d.criteria]){ref([r.authority_id],maps.authorities,r.id);const a=maps.authorities.get(r.authority_id);if(a&&a.revision!==r.authority_revision&&!d.capture.rechecks.some(x=>x.id===a.id&&x.result===\"reconciled\"&&x.approval_ids.length))fail(\"authority revision\");if(r.issue_id)ref([r.issue_id],maps.issues,r.id);if(r.requirement_ids)ref(r.requirement_ids,maps.requirements,r.id);}\nfor(const c of d.coverage){ref([c.issue_id,...c.contribution_issue_ids],nativeIds,c.id);ref([c.criterion_id],maps.criteria,c.id);ref(c.requirement_ids,maps.requirements,c.id);ref(c.pr_ids,prIds,c.id);if(maps.criteria.get(c.criterion_id)?.issue_id!==c.issue_id)fail(\"coverage owner\");if(c.contribution_issue_ids.length>1&&!c.combined_result_owner)fail(\"combined owner\");}\nfor(const x of d.dispositions){ref([x.parent_issue_id,...x.child_issue_ids],nativeIds,x.id);ref(x.requirement_ids,maps.requirements,x.id);ref(x.evidence_ids,maps.evidence,x.id);ref(x.approval_ids,maps.authorities,x.id);if([\"deferred\",\"excluded\"].includes(x.disposition)&&!x.approval_ids.some(id=>maps.authorities.get(id)?.availability===\"available\"))fail(\"disposition approval\");}\nfor(const e of d.evaluations){ref([e.criterion_id],maps.criteria,e.id);ref(e.requirement_ids,maps.requirements,e.id);ref(e.evidence_ids,maps.evidence,e.id);ref(e.review_approval_ids,maps.authorities,e.id);const c=maps.criteria.get(e.criterion_id);if(e.result===\"SATISFIED\"&&e.applicability===\"current\"){if(!c||!equal(e.requirement_ids,c.requirement_ids)||!e.verified_commit||e.verified_commit!==c.delivery_commit||e.remaining_contributions.length||e.limitations.length)fail(\"current evaluation input\");if(!e.evidence_ids.some(id=>{const ev=maps.evidence.get(id);return ev?.kind===\"verification\"&&ev.availability===\"available\"&&ev.verified_commit===e.verified_commit&&(ev.content||ev.revision);} ))fail(\"verification evidence\");if(!e.review_approval_ids.some(id=>maps.authorities.get(id)?.availability===\"available\"))fail(\"review approval\");}}\nfor(const i of d.issues)for(const [field,name]of [[\"labels\",\"labels\"],[\"assignees\",\"assignees\"],[\"child_ids\",\"subIssues\"],[\"blocked_by_ids\",\"blockedBy\"],[\"blocking_ids\",\"blocking\"],[\"closing_pr_ids\",\"closingPRReferences\"]])if(i[field]===null){const co=d.scope.collections.find(x=>x.name===name&&x.owner_id===i.id);if(d.capture.status!==\"partial\"||d.scope.complete||!i.limitations.length||!co||co.complete||co.expected_total!==null||co.pages.length)fail(\"unavailable native collection diagnostic guard \"+field);}\nif(d.capture.status===\"complete\"){if(!d.scope.complete)fail(\"complete scope\");for(const co of d.scope.collections){const members=co.pages.flatMap(p=>p.record_ids);if(!co.complete||!co.pages.length||co.pages[0].cursor_in!==null||co.pages.at(-1).has_next_page!==false||new Set(members).size!==members.length||(co.expected_total!==null&&co.expected_total!==members.length))fail(\"pagination \"+co.name);for(let n=1;n<co.pages.length;n++)if(co.pages[n-1].has_next_page!==true||!co.pages[n].cursor_in||co.pages[n].cursor_in!==co.pages[n-1].cursor_out)fail(\"cursor continuity\");}\nfor(const i of d.issues)for(const name of [\"subIssues\",\"blockedBy\",\"blocking\",\"closingPRReferences\",\"labels\",\"assignees\"]){const col=d.scope.collections.find(x=>x.name===name&&x.owner_id===i.id);if(!col)fail(\"missing collection \"+name);else{const ids=name===\"subIssues\"?i.child_ids:name===\"blockedBy\"?i.blocked_by_ids:name===\"blocking\"?i.blocking_ids:name===\"closingPRReferences\"?i.closing_pr_ids:name===\"labels\"?i.labels?.map(x=>x.id??x.name):i.assignees;if(ids===null||ids===undefined||!equal(ids,col.pages.flatMap(x=>x.record_ids)))fail(\"collection membership \"+name);}}\nfor(const g of [\"issues\",\"pull_requests\"]){const name=g===\"issues\"?\"issues\":\"pullRequests\";if(!d.scope.collections.some(x=>x.name===name&&equal(d[g].map(x=>x.id),x.pages.flatMap(p=>p.record_ids))))fail(\"missing collection \"+name);}\nfor(const [g,kind]of [[\"issues\",\"issue\"],[\"authorities\",\"authority\"],[\"evidence\",\"evidence\"]])for(const x of d[g])if(!d.capture.rechecks.some(r=>r.kind===kind&&r.id===x.id))fail(\"missing recheck \"+x.id);\nif(!d.capture.rechecks.some(x=>x.kind===\"graph\"))fail(\"graph recheck\");for(const r of d.capture.rechecks){if([\"changed\",\"unavailable\"].includes(r.result))fail(\"source \"+r.result);if(r.result===\"unchanged\"&&(r.initial_revision===null||r.initial_revision!==r.final_revision))fail(\"unchanged revision\");if(r.result===\"reconciled\"&&!r.approval_ids.some(id=>maps.authorities.get(id)?.availability===\"available\"))fail(\"reconciliation approval\");}\nfor(const x of [...d.authorities,...d.evidence])if(x.availability!==\"available\")fail(\"required material unavailable\");\nif(d.capture.mode===\"integrated\"){if(!d.project||d.project.availability!==\"available\")fail(\"Project unavailable\");else{if(d.project.field_definitions===null||d.project.items===null)fail(\"Project collection unavailable\");if(!d.capture.rechecks.some(x=>x.kind===\"project\"&&x.id===d.project.id))fail(\"Project recheck\");for(const item of d.project.items??[]){const i=maps.issues.get(item.content_id);for(const fv of item.fields??[]){const f=(d.project.field_definitions??[]).find(x=>x.id===fv.field_id);if(!f)fail(\"Project field ref\");if(f?.name===\"Satisfaction\"&&i){const accepted=i.accepted_evaluation_ids.map(x=>maps.evaluations.get(x));const expected=accepted.length&&accepted.every(x=>x?.result===\"SATISFIED\"&&x.applicability===\"current\")?\"SATISFIED\":\"UNKNOWN\";if(fv.text!==expected)fail(\"Project projection contradiction\");}}}}}else if(d.project!==null)fail(\"issues-only Project identity\");\n}\nreturn {valid:errors.length===0,acceptable:errors.length===0&&d.capture.status===\"complete\",errors};\n}"
+}

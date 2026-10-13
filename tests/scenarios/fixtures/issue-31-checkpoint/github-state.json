@@ -1,0 +1,419 @@
+{
+  "format": "sp-bp-checkpoint/v1",
+  "capture": {
+    "id": "fixture-C1",
+    "started_at": "2026-10-01T12:10:00Z",
+    "finished_at": "2026-10-01T12:11:00Z",
+    "mode": "issues-only",
+    "status": "complete",
+    "origin": "invented-fixture",
+    "rechecks": [
+      {
+        "kind": "issue",
+        "id": "example/governance-fixture#101",
+        "initial_revision": "2026-10-01T12:00:00Z",
+        "final_revision": "2026-10-01T12:00:00Z",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Fixture full body/native relationships unchanged."
+      },
+      {
+        "kind": "graph",
+        "id": "selected-native-graph",
+        "initial_revision": "fixture-graph-1",
+        "final_revision": "fixture-graph-1",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "All selected connections enumerated and compared."
+      },
+      {
+        "kind": "authority",
+        "id": "S1",
+        "initial_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "final_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture authority unchanged."
+      },
+      {
+        "kind": "authority",
+        "id": "A1",
+        "initial_revision": "2026-10-01T12:00:00Z",
+        "final_revision": "2026-10-01T12:00:00Z",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture authority unchanged."
+      },
+      {
+        "kind": "authority",
+        "id": "A2",
+        "initial_revision": "2026-10-01T12:00:00Z",
+        "final_revision": "2026-10-01T12:00:00Z",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture authority unchanged."
+      },
+      {
+        "kind": "evidence",
+        "id": "E1",
+        "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture evidence unchanged."
+      },
+      {
+        "kind": "evidence",
+        "id": "RV1",
+        "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture evidence unchanged."
+      },
+      {
+        "kind": "delivery",
+        "id": "example/governance-fixture#101",
+        "initial_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "final_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Fixture current delivery B; source A identifies the capture context rather than the verified delivery."
+      }
+    ]
+  },
+  "repository": {
+    "id": "example/governance-fixture",
+    "url": "https://github.com/example/governance-fixture",
+    "owner": "example",
+    "name": "governance-fixture"
+  },
+  "project": null,
+  "source": {
+    "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "scope": {
+    "issue_ids": [
+      "example/governance-fixture#101"
+    ],
+    "excluded_ids": [],
+    "external_records": [],
+    "collections": [
+      {
+        "name": "issues",
+        "owner_id": "example/governance-fixture",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "example/governance-fixture#101"
+            ]
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "subIssues",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": []
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "blockedBy",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": []
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "blocking",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": []
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "closingPRReferences",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": []
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "labels",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "L1"
+            ]
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "assignees",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "fixture-owner"
+            ]
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "pullRequests",
+        "owner_id": "example/governance-fixture",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "example/governance-fixture!201"
+            ]
+          }
+        ],
+        "complete": true
+      }
+    ],
+    "complete": true
+  },
+  "issues": [
+    {
+      "id": "example/governance-fixture#101",
+      "number": 101,
+      "url": "https://github.com/example/governance-fixture/issues/101",
+      "title": "Preserve an existing valid installation",
+      "body": "## Objective\nPreserve an existing valid installation.\n## Acceptance Criteria\nAC1: Preserve the existing valid installation.\n## Backplane Record\nCode: CAP1.1; Kind: outcome; authority S1.\n## Coverage and Satisfaction\nAC1 maps to R1/S1; accepted evaluation EV1 at delivery B is SATISFIED.\n",
+      "state": "OPEN",
+      "state_reason": "",
+      "issue_type": {
+        "id": "TYPE_FEATURE",
+        "name": "Feature",
+        "description": "Fixture native issue type",
+        "color": "GREEN"
+      },
+      "labels": [
+        {
+          "id": "L1",
+          "name": "backplane:review",
+          "description": "Awaiting closeout",
+          "color": "5319e7"
+        }
+      ],
+      "assignees": [
+        "fixture-owner"
+      ],
+      "milestone": null,
+      "updated_at": "2026-10-01T12:00:00Z",
+      "parent_id": null,
+      "child_ids": [],
+      "sub_issues_summary": {
+        "total": 0,
+        "completed": 0,
+        "percent_completed": 0
+      },
+      "blocked_by_ids": [],
+      "blocking_ids": [],
+      "closing_pr_ids": [],
+      "backplane_record": {
+        "code": "CAP1.1",
+        "namespace": "CAP1",
+        "kind": "outcome",
+        "authority_ids": [
+          "S1"
+        ]
+      },
+      "accepted_evaluation_ids": [
+        "EV1"
+      ],
+      "limitations": []
+    }
+  ],
+  "pull_requests": [
+    {
+      "id": "example/governance-fixture!201",
+      "number": 201,
+      "url": "https://github.com/example/governance-fixture/pull/201",
+      "title": "Preservation contribution",
+      "body": "Refs #101; contributes AC1 at S1.",
+      "state": "MERGED",
+      "base_ref": "main",
+      "head_ref": "fixture-preservation",
+      "merged_at": "2026-10-01T11:00:00Z",
+      "merge_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "review_status": "accepted",
+      "closing_issue_ids": [],
+      "closure_intent": "contribution",
+      "updated_at": "2026-10-01T12:00:00Z",
+      "limitations": []
+    }
+  ],
+  "authorities": [
+    {
+      "id": "S1",
+      "kind": "specification",
+      "locator": "fixture:spec/S1",
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content": "R1: Preserve an existing valid installation. AC1 implements R1.",
+      "availability": "available",
+      "approver": null,
+      "approved_scope": null,
+      "approval_ids": [
+        "A1"
+      ],
+      "limitations": []
+    },
+    {
+      "id": "A1",
+      "kind": "approval",
+      "locator": "fixture:approval/A1",
+      "revision": "2026-10-01T12:00:00Z",
+      "content": "Fixture approver approved R1 and AC1 at S1.",
+      "availability": "available",
+      "approver": "fixture-approver",
+      "approved_scope": "R1/AC1 at S1",
+      "approval_ids": [],
+      "limitations": []
+    },
+    {
+      "id": "A2",
+      "kind": "approval",
+      "locator": "fixture:review/A2",
+      "revision": "2026-10-01T12:00:00Z",
+      "content": "Fixture reviewer accepted AC1 at S1 and delivery B.",
+      "availability": "available",
+      "approver": "fixture-reviewer",
+      "approved_scope": "AC1 at S1/B",
+      "approval_ids": [],
+      "limitations": []
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1@S1",
+      "key": "R1",
+      "text": "Preserve an existing valid installation.",
+      "authority_id": "S1",
+      "authority_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "example/governance-fixture#101:AC1",
+      "issue_id": "example/governance-fixture#101",
+      "key": "AC1",
+      "text": "Preserve the existing valid installation.",
+      "authority_id": "S1",
+      "authority_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "delivery_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "requirement_ids": [
+        "R1@S1"
+      ]
+    }
+  ],
+  "dispositions": [],
+  "coverage": [
+    {
+      "id": "COV1",
+      "issue_id": "example/governance-fixture#101",
+      "criterion_id": "example/governance-fixture#101:AC1",
+      "requirement_ids": [
+        "R1@S1"
+      ],
+      "contribution_issue_ids": [
+        "example/governance-fixture#101"
+      ],
+      "pr_ids": [
+        "example/governance-fixture!201"
+      ],
+      "combined_result_owner": "fixture-owner",
+      "scope": "The sole fixture criterion is covered by preservation contribution PR201."
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "EV1",
+      "criterion_id": "example/governance-fixture#101:AC1",
+      "requirement_ids": [
+        "R1@S1"
+      ],
+      "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "method": "Fixture preservation verification",
+      "observed_result": "PASS supplied by the invented fixture.",
+      "result": "SATISFIED",
+      "observed_at": "2026-10-01T12:00:00Z",
+      "evidence_ids": [
+        "E1",
+        "RV1"
+      ],
+      "review_approval_ids": [
+        "A2"
+      ],
+      "applicability": "current",
+      "remaining_contributions": [],
+      "limitations": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "kind": "verification",
+      "locator": "fixture:verification/E1",
+      "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "sha256": null,
+      "availability": "available",
+      "content": "Invented fixture result: AC1 passed preservation verification against S1 and B.",
+      "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "limitations": []
+    },
+    {
+      "id": "RV1",
+      "kind": "review",
+      "locator": "fixture:review/RV1",
+      "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "sha256": null,
+      "availability": "available",
+      "content": "Invented fixture review accepted AC1 at S1/B.",
+      "verified_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "limitations": []
+    }
+  ],
+  "limitations": []
+}

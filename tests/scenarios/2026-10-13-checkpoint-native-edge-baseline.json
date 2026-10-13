@@ -1,0 +1,26 @@
+{
+  "version": "checkpoint-native-edges/v1",
+  "arm": "pre-review-fix",
+  "review_head": "1fd90dffd2de585520677c414d8e99b29b55dc41",
+  "scope": "Native JSON/type/semantic fixture validation, not live capture. Original checkpoint format and disposable validator are unchanged.",
+  "results": [
+    {
+      "id": "nonempty-terminal-cursor",
+      "expected": "ACCEPTABLE",
+      "observed": "REJECT",
+      "errors": [
+        "pagination labels"
+      ],
+      "result": "RED"
+    },
+    {
+      "id": "denied-labels",
+      "expected": "DIAGNOSTIC",
+      "observed": "REJECT",
+      "errors": [
+        "$.issues[0].labels array"
+      ],
+      "result": "RED"
+    }
+  ]
+}

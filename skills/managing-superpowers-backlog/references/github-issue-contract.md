@@ -151,3 +151,31 @@ Do not mutate for a read-only request. For an authorized transition:
 
 Close only after merged/integrated delivery passes fresh project-owned
 verification. PR creation moves work to review; it does not complete it.
+
+## Governance participation and projections
+
+For declared product governance participation, use the canonical
+[governance](../../../docs/superpowers-backplane/governance.md) and
+[product operation](product-decomposition.md). `Backplane Record` owns code/kind
+and authority references; `Obligation Dispositions` owns parent accounting;
+`Coverage and Satisfaction` owns current mappings and immutable evaluation
+pointers. Preserve native relationships and the existing executable body/gates.
+These sections do not silently migrate legacy issues.
+
+Project Code/Kind/Satisfaction and optional Status are derived presentations;
+they do not override native lifecycle or accepted evidence. Missing custom types
+need no new organization types. Declared integrated capture with denied Project
+access is incomplete, not an implicit switch to explicitly selected issues-only.
+Read-only proposals authorize no body, relationship, label, PR, or Project write.
+
+A changed criterion or delivery input requires affected evaluation reconciliation;
+keep historical evidence at its original identity. Unsupported satisfaction is
+UNKNOWN; a known unmet check is UNSATISFIED. Deferred/excluded scope is separate.
+Use the PR closeout operation before justified completion, and the checkpoint
+operation for its separately authorized portable record. Observed automatic
+closure does not prove satisfaction or authorize unrequested reopening.
+
+[PR closeout](pr-completion.md) consumes the full native issue and actual PR
+state. Neutral contribution references remain distinct from closing intent and
+observed native closure. Report a prematurely closed issue's actual state and
+failed/unknown obligations; only the authorized recovery operation may change it.

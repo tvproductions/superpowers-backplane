@@ -73,3 +73,20 @@ Prefer native and committed evidence:
 
 Comments explain state that these surfaces do not already express. They are not
 a substitute for missing verification.
+
+## Product and delivery bridges
+
+[Governance](../../../docs/superpowers-backplane/governance.md) defines source
+ownership and [product decomposition](product-decomposition.md) connects approved
+planning results to proposed/existing native work before per-issue planning.
+Do not repeat approved bounded issue design or replace an approved cross-cutting
+specification. New Backplane documents use `docs/superpowers-backplane/` under
+current project rules; historical `docs/superpowers/` authority links stay valid.
+
+The product checkpoint is a dated capture of issue-owned dispositions, coverage,
+and accepted evidence, distinct from an execution scratch ledger or session
+handoff. A PR contributes criteria at exact design/plan/delivery revisions;
+review acceptance, integration, fresh verification, satisfaction, native closure,
+parent completion, and release remain separate gates. A later checkpoint-only
+commit stores evidence for the verified delivery identity rather than replacing
+it. Focused closeout/capture references define their operation contracts.

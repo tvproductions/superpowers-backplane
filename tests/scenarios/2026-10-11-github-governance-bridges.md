@@ -89,3 +89,13 @@ Native JSON/file/Git exercises and whole-change review are recorded separately
 from the simulated decisions above. Existing five-check conformance remains
 required against the final candidate hashes. Missing mandatory captures or
 unscored expectations prevent a completion claim.
+
+### Task 2 candidate
+
+Fresh cases 1–4 pass all 27 original rubric statements with every declared
+variant. Case 2 now explicitly separates the mutable issue-owned mapping/index
+from accepted immutable evaluation evidence, resolving baseline R5's UNKNOWN.
+Existing passing decomposition/design/Project behavior remains passing. Capture
+paths and exact phase bundle/prompt/response hashes are in the run manifest.
+The forward PR/checkpoint routes are explicitly unavailable until Tasks 3/4;
+these results establish only the Task 2 assessed operations, not those routes.

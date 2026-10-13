@@ -176,6 +176,113 @@
         "UNKNOWN",
         "PASS"
       ]
+    },
+    {
+      "arm": "task2-candidate",
+      "case": "case-1",
+      "contract": "governance-probes/v1",
+      "contract_sha256": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\n\nThis is a read-only behavioral probe using invented data. Read the designated backlog SKILL.md and its directly linked references; follow the active project rules. Do not inspect other sessions or use their answers. Do not use live GitHub queries or mutate any issue, Project, PR, Git state, installation, or repository artifact. Treat the supplied records as a dated fixture, not live state. Do not write to .superpowers/ or shipped Superpowers files, including through helpers. Return your assessment, evidence gaps, and the next permissible actions, distinguishing proposed work from authorized operations. If unavailable inputs prevent a conclusion, identify them rather than inventing results. Do not dispatch other agents.\n\nAll repositories, issues, PRs, and evidence below are invented. Their tracker namespace is `example/governance-fixture`; an issue URL is `https://github.com/example/governance-fixture/issues/<number>` and a PR URL uses `/pull/<number>`. Each named synthetic issue has number, title, body, state OPEN unless stated, stateReason empty unless stated, issueType Feature for outcomes/Task for gates unless unavailable, labels as stated, nullable parent, subIssues and their summary, blockedBy/blocking, empty closing-PR references unless stated, updatedAt `2026-10-01T12:00:00Z`, and URL. Unspecified native relationship arrays are empty. Supplied approval/evidence records are fixture inputs, not independent verification of a live system.\n\nPrepare a decomposition assessment, not intake publication. Parent #100, code CAP1, has approved obligations O1 authoritative-source adoption, O2 discovery verification, and O3 preservation of an existing valid installation at design revision S1. Native child #101 covers O1 and is existing work. Consider these variants independently:\nA: Only #101 is proposed; O2 and O3 have no disposition.\nB: Proposed child #102 covers O2; proposed #103 adds a paid licensing server that is outside approved parent scope; O3 remains unmapped.\nC: #102 and #104 both claim full ownership of O2 without contribution boundaries or a combined-result owner; O3 has eligible accepted evidence E3 against S1.\nD: #102 covers discovery enumeration and #104 covers fresh-host invocation for O2; their boundaries and combined-result owner are explicit; O3 has accepted E3 against S1.\nE: O2 is explicitly deferred by the named project approver at S1 with recorded rationale; O3 has accepted E3; only #101 needs active delivery.\nFor each variant, account for every parent obligation, classify existing/new/unresolved work, and say which claims or GitHub operations are permissible. No issue-creation, lifecycle, or selection operation is authorized.\n",
+      "prompt_sha256": "2a19c02b3217e366f1ed88d224a0d07f53d596ab18faea3d8affbc9bebd1fe85",
+      "response_path": "tests/scenarios/transcripts/2026-10-11-governance-task2-case-1.md",
+      "response_sha256": "353036394eb2c87e8d63e6804183d4c8572f3ae3306fc92f2d372211f9b10608",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "8e74e5a1767f6df871b409a4888876d5d442931940b53668f16df270ef3d9c3a",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "fff1bb8d0b32260294a10a7c3d33cf304d5b39bd24460bfee5a3264912e92d29",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "03b29f2cfd1b6030221686bee179ee97a781aae7b3df6af1654d05d4a517b165"
+      },
+      "doctrine_sha256": "5ade1951634114aaf802b3ce9c41efcfcff47789f6bd0267085e2ebef74d8cd8",
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "arm": "task2-candidate",
+      "case": "case-2",
+      "contract": "governance-probes/v1",
+      "contract_sha256": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\n\nThis is a read-only behavioral probe using invented data. Read the designated backlog SKILL.md and its directly linked references; follow the active project rules. Do not inspect other sessions or use their answers. Do not use live GitHub queries or mutate any issue, Project, PR, Git state, installation, or repository artifact. Treat the supplied records as a dated fixture, not live state. Do not write to .superpowers/ or shipped Superpowers files, including through helpers. Return your assessment, evidence gaps, and the next permissible actions, distinguishing proposed work from authorized operations. If unavailable inputs prevent a conclusion, identify them rather than inventing results. Do not dispatch other agents.\n\nAll repositories, issues, PRs, and evidence below are invented. Their tracker namespace is `example/governance-fixture`; an issue URL is `https://github.com/example/governance-fixture/issues/<number>` and a PR URL uses `/pull/<number>`. Each named synthetic issue has number, title, body, state OPEN unless stated, stateReason empty unless stated, issueType Feature for outcomes/Task for gates unless unavailable, labels as stated, nullable parent, subIssues and their summary, blockedBy/blocking, empty closing-PR references unless stated, updatedAt `2026-10-01T12:00:00Z`, and URL. Unspecified native relationship arrays are empty. Supplied approval/evidence records are fixture inputs, not independent verification of a live system.\n\nOutcome #101 has criteria AC1 and AC2. Its current Coverage and Satisfaction section maps AC1 to requirement R1 at approved revision S2 and AC2 to R1/S2 plus R2/S1. Contribution PR #201 addresses part of R1; PR #202 addresses the remainder and R2. Accepted evaluation E1 passed AC1 against R1/S1 at integration commit A; evaluation E2 passed AC2 against R1/S2 and R2/S1 at commit B. Current implementation is commit C, whose behavior-changing delta affects AC1 and AC2. The issue currently claims both criteria SATISFIED. Evaluate current claims and explain where mappings, accepted results, and derived Project/checkpoint displays belong. Then consider an independent editorial-only revision S2e where the approver has recorded semantic equivalence to S2 and implementation is still B.\n",
+      "prompt_sha256": "4ff0fe3a9e386e314b11b4130f3134090bf7186f3c2328e280128cc4d7f645de",
+      "response_path": "tests/scenarios/transcripts/2026-10-11-governance-task2-case-2.md",
+      "response_sha256": "7c2dab53e31b6c6500d914d9ac1c7a98e60a3698eea166ee75b8d072cf620454",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "8e74e5a1767f6df871b409a4888876d5d442931940b53668f16df270ef3d9c3a",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "fff1bb8d0b32260294a10a7c3d33cf304d5b39bd24460bfee5a3264912e92d29",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "03b29f2cfd1b6030221686bee179ee97a781aae7b3df6af1654d05d4a517b165"
+      },
+      "doctrine_sha256": "5ade1951634114aaf802b3ce9c41efcfcff47789f6bd0267085e2ebef74d8cd8",
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "arm": "task2-candidate",
+      "case": "case-3",
+      "contract": "governance-probes/v1",
+      "contract_sha256": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\n\nThis is a read-only behavioral probe using invented data. Read the designated backlog SKILL.md and its directly linked references; follow the active project rules. Do not inspect other sessions or use their answers. Do not use live GitHub queries or mutate any issue, Project, PR, Git state, installation, or repository artifact. Treat the supplied records as a dated fixture, not live state. Do not write to .superpowers/ or shipped Superpowers files, including through helpers. Return your assessment, evidence gaps, and the next permissible actions, distinguishing proposed work from authorized operations. If unavailable inputs prevent a conclusion, identify them rather than inventing results. Do not dispatch other agents.\n\nAll repositories, issues, PRs, and evidence below are invented. Their tracker namespace is `example/governance-fixture`; an issue URL is `https://github.com/example/governance-fixture/issues/<number>` and a PR URL uses `/pull/<number>`. Each named synthetic issue has number, title, body, state OPEN unless stated, stateReason empty unless stated, issueType Feature for outcomes/Task for gates unless unavailable, labels as stated, nullable parent, subIssues and their summary, blockedBy/blocking, empty closing-PR references unless stated, updatedAt `2026-10-01T12:00:00Z`, and URL. Unspecified native relationship arrays are empty. Supplied approval/evidence records are fixture inputs, not independent verification of a live system.\n\nCompare two planning targets. #101 is a bounded documentation correction with a complete human-approved issue body, explicit acceptance criteria, and no cross-cutting decision. #102 changes a shared product coverage contract and has an approved cross-cutting specification S1. Neither has an implementation plan and both carry backplane:designing. For each, identify valid design authority and the next planning/eligibility steps. Then explain how a broader product planning result with approved decomposition becomes proposed/existing issue work before per-issue implementation planning. Do not repeat already approved design discussion or mark either issue ready merely because design is approved. No mutations are authorized.\n",
+      "prompt_sha256": "dcbeceb484b1b16c58f630548f6c4051d5de85ae634177ec9ce1b396bab8c0e7",
+      "response_path": "tests/scenarios/transcripts/2026-10-11-governance-task2-case-3.md",
+      "response_sha256": "d7df91fde5702e5e78e8039d7f71fe3f8850afa7d2d6dbe1911ff75113ee49c3",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "8e74e5a1767f6df871b409a4888876d5d442931940b53668f16df270ef3d9c3a",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "fff1bb8d0b32260294a10a7c3d33cf304d5b39bd24460bfee5a3264912e92d29",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "03b29f2cfd1b6030221686bee179ee97a781aae7b3df6af1654d05d4a517b165"
+      },
+      "doctrine_sha256": "5ade1951634114aaf802b3ce9c41efcfcff47789f6bd0267085e2ebef74d8cd8",
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "arm": "task2-candidate",
+      "case": "case-4",
+      "contract": "governance-probes/v1",
+      "contract_sha256": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\n\nThis is a read-only behavioral probe using invented data. Read the designated backlog SKILL.md and its directly linked references; follow the active project rules. Do not inspect other sessions or use their answers. Do not use live GitHub queries or mutate any issue, Project, PR, Git state, installation, or repository artifact. Treat the supplied records as a dated fixture, not live state. Do not write to .superpowers/ or shipped Superpowers files, including through helpers. Return your assessment, evidence gaps, and the next permissible actions, distinguishing proposed work from authorized operations. If unavailable inputs prevent a conclusion, identify them rather than inventing results. Do not dispatch other agents.\n\nAll repositories, issues, PRs, and evidence below are invented. Their tracker namespace is `example/governance-fixture`; an issue URL is `https://github.com/example/governance-fixture/issues/<number>` and a PR URL uses `/pull/<number>`. Each named synthetic issue has number, title, body, state OPEN unless stated, stateReason empty unless stated, issueType Feature for outcomes/Task for gates unless unavailable, labels as stated, nullable parent, subIssues and their summary, blockedBy/blocking, empty closing-PR references unless stated, updatedAt `2026-10-01T12:00:00Z`, and URL. Unspecified native relationship arrays are empty. Supplied approval/evidence records are fixture inputs, not independent verification of a live system.\n\nThe declared mode is integrated Projects. Project P has an issue-backed item for #101 with mirrored Code CAP1.9 and Status Done; #101's canonical Backplane Record code is CAP1.1, its label is backplane:review, and integrated verification is UNKNOWN. #100 shows all native sub-issues closed, but #104 closed as not planned and obligation O2 has no approved alternative/disposition. Assess inconsistencies and satisfaction without changing anything. Repeat with Project capture denied by permissions: keep the declared integrated mode. Finally consider a separately declared Issues-only mode and an organization with no custom issue types.\n",
+      "prompt_sha256": "fd97c2ee5a1b0de01c793060acd9f143fdbb85ffd08472d9e684499d0fd57ffa",
+      "response_path": "tests/scenarios/transcripts/2026-10-11-governance-task2-case-4.md",
+      "response_sha256": "446f0fca4bae99ec427cc0ef77d76312f47046f1578de7d2dcf29450453feaa3",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "8e74e5a1767f6df871b409a4888876d5d442931940b53668f16df270ef3d9c3a",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "fff1bb8d0b32260294a10a7c3d33cf304d5b39bd24460bfee5a3264912e92d29",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "03b29f2cfd1b6030221686bee179ee97a781aae7b3df6af1654d05d4a517b165"
+      },
+      "doctrine_sha256": "5ade1951634114aaf802b3ce9c41efcfcff47789f6bd0267085e2ebef74d8cd8",
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
     }
   ]
 }

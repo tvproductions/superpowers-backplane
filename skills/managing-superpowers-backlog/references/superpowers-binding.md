@@ -90,3 +90,9 @@ review acceptance, integration, fresh verification, satisfaction, native closure
 parent completion, and release remain separate gates. A later checkpoint-only
 commit stores evidence for the verified delivery identity rather than replacing
 it. Focused closeout/capture references define their operation contracts.
+
+Use [PR closeout](pr-completion.md) to evaluate partial contributions, accepted
+review, actual integration/closure, fresh verification, and authorized satisfaction
+index/parent/projection updates. Preserve the verified delivery commit independently
+of a later checkpoint storage commit. Pending review fixes retain their workspace;
+observed automatic closure cannot manufacture success or authorize reopening.

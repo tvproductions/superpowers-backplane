@@ -174,3 +174,8 @@ UNKNOWN; a known unmet check is UNSATISFIED. Deferred/excluded scope is separate
 Use the PR closeout operation before justified completion, and the checkpoint
 operation for its separately authorized portable record. Observed automatic
 closure does not prove satisfaction or authorize unrequested reopening.
+
+[PR closeout](pr-completion.md) consumes the full native issue and actual PR
+state. Neutral contribution references remain distinct from closing intent and
+observed native closure. Report a prematurely closed issue's actual state and
+failed/unknown obligations; only the authorized recovery operation may change it.

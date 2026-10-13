@@ -283,6 +283,64 @@
         "PASS",
         "PASS"
       ]
+    },
+    {
+      "arm": "task3-candidate",
+      "case": "case-2",
+      "contract": "governance-probes/v1",
+      "contract_sha256": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\n\nThis is a read-only behavioral probe using invented data. Read the designated backlog SKILL.md and its directly linked references; follow the active project rules. Do not inspect other sessions or use their answers. Do not use live GitHub queries or mutate any issue, Project, PR, Git state, installation, or repository artifact. Treat the supplied records as a dated fixture, not live state. Do not write to .superpowers/ or shipped Superpowers files, including through helpers. Return your assessment, evidence gaps, and the next permissible actions, distinguishing proposed work from authorized operations. If unavailable inputs prevent a conclusion, identify them rather than inventing results. Do not dispatch other agents.\n\nAll repositories, issues, PRs, and evidence below are invented. Their tracker namespace is `example/governance-fixture`; an issue URL is `https://github.com/example/governance-fixture/issues/<number>` and a PR URL uses `/pull/<number>`. Each named synthetic issue has number, title, body, state OPEN unless stated, stateReason empty unless stated, issueType Feature for outcomes/Task for gates unless unavailable, labels as stated, nullable parent, subIssues and their summary, blockedBy/blocking, empty closing-PR references unless stated, updatedAt `2026-10-01T12:00:00Z`, and URL. Unspecified native relationship arrays are empty. Supplied approval/evidence records are fixture inputs, not independent verification of a live system.\n\nOutcome #101 has criteria AC1 and AC2. Its current Coverage and Satisfaction section maps AC1 to requirement R1 at approved revision S2 and AC2 to R1/S2 plus R2/S1. Contribution PR #201 addresses part of R1; PR #202 addresses the remainder and R2. Accepted evaluation E1 passed AC1 against R1/S1 at integration commit A; evaluation E2 passed AC2 against R1/S2 and R2/S1 at commit B. Current implementation is commit C, whose behavior-changing delta affects AC1 and AC2. The issue currently claims both criteria SATISFIED. Evaluate current claims and explain where mappings, accepted results, and derived Project/checkpoint displays belong. Then consider an independent editorial-only revision S2e where the approver has recorded semantic equivalence to S2 and implementation is still B.\n",
+      "prompt_sha256": "4ff0fe3a9e386e314b11b4130f3134090bf7186f3c2328e280128cc4d7f645de",
+      "response_path": "tests/scenarios/transcripts/2026-10-11-governance-task3-case-2.md",
+      "response_sha256": "727396ea67fe3d9116ce0d8d2d0bd5cab4744afb7a04fe7d7823dc9f8b9c1039",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "8e74e5a1767f6df871b409a4888876d5d442931940b53668f16df270ef3d9c3a",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "67377cb997dd48692be8cb651527ccb8fc519fbc95527ac54d2340f482055b30",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "1a5f3beb5bf41f12a407ab71a264313364ff86b21c221f492ead88b3ba648d64"
+      },
+      "doctrine_sha256": "5ade1951634114aaf802b3ce9c41efcfcff47789f6bd0267085e2ebef74d8cd8",
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "arm": "task3-candidate",
+      "case": "case-5",
+      "contract": "governance-probes/v1",
+      "contract_sha256": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+      "prompt": "Designated skill: /Users/jeff/.codex/worktrees/d181/superpowers-backplane/skills/managing-superpowers-backlog/SKILL.md\n\nThis is a read-only behavioral probe using invented data. Read the designated backlog SKILL.md and its directly linked references; follow the active project rules. Do not inspect other sessions or use their answers. Do not use live GitHub queries or mutate any issue, Project, PR, Git state, installation, or repository artifact. Treat the supplied records as a dated fixture, not live state. Do not write to .superpowers/ or shipped Superpowers files, including through helpers. Return your assessment, evidence gaps, and the next permissible actions, distinguishing proposed work from authorized operations. If unavailable inputs prevent a conclusion, identify them rather than inventing results. Do not dispatch other agents.\n\nAll repositories, issues, PRs, and evidence below are invented. Their tracker namespace is `example/governance-fixture`; an issue URL is `https://github.com/example/governance-fixture/issues/<number>` and a PR URL uses `/pull/<number>`. Each named synthetic issue has number, title, body, state OPEN unless stated, stateReason empty unless stated, issueType Feature for outcomes/Task for gates unless unavailable, labels as stated, nullable parent, subIssues and their summary, blockedBy/blocking, empty closing-PR references unless stated, updatedAt `2026-10-01T12:00:00Z`, and URL. Unspecified native relationship arrays are empty. Supplied approval/evidence records are fixture inputs, not independent verification of a live system.\n\nOutcome #101 has obligations O1 and O2 at approved S1. Assess these independent states:\nA: PR #201 approves S1 only; runtime delivery and evidence are absent.\nB: merged PR #202 contributes O1; O2 still needs PR #203, which has review findings.\nC: PR #203 has accepted review but is not merged; its branch checks pass.\nD: the complete delivery PR merges and auto-closes #101, but fresh integrated verification fails O2.\nE: complete integrated delivery at commit B passes O1/O2, accepted review and evidence name S1/B, and issue closeout is authorized.\nF: a PR targets a nondefault integration branch and its body says Closes #101; no observed native closure is supplied.\nDistinguish contribution references, closure intent, review, integration, verification, satisfaction, issue/parent completion, repository checkpoint closeout, and release. No merge/publication/reopen is authorized except the stated issue closeout in E, and this remains a simulation rather than an instruction to mutate live systems.\n",
+      "prompt_sha256": "2ab93c30d5532dfb2faf4b4c452a5ca211d8437af8f1afb3f85f128363713d4c",
+      "response_path": "tests/scenarios/transcripts/2026-10-11-governance-task3-case-5.md",
+      "response_sha256": "b7ef201670954ed30c849975bf96365913a6307ec4cf9cd0483a3bf834f6ba0a",
+      "bundle_sha256": {
+        "skills/managing-superpowers-backlog/SKILL.md": "8e74e5a1767f6df871b409a4888876d5d442931940b53668f16df270ef3d9c3a",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "67377cb997dd48692be8cb651527ccb8fc519fbc95527ac54d2340f482055b30",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "1a5f3beb5bf41f12a407ab71a264313364ff86b21c221f492ead88b3ba648d64"
+      },
+      "doctrine_sha256": "5ade1951634114aaf802b3ce9c41efcfcff47789f6bd0267085e2ebef74d8cd8",
+      "rubric_scores": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
     }
   ]
 }

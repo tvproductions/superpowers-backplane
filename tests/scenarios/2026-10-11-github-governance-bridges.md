@@ -99,3 +99,13 @@ Existing passing decomposition/design/Project behavior remains passing. Capture
 paths and exact phase bundle/prompt/response hashes are in the run manifest.
 The forward PR/checkpoint routes are explicitly unavailable until Tasks 3/4;
 these results establish only the Task 2 assessed operations, not those routes.
+
+### Task 3 candidate
+
+Fresh cases 5 and 2 pass all 16 original rubric statements. All PR A–F states
+remain distinct, including actual auto-closure with failed verification and a
+nondefault target with no observed closure. The response preserves the pending
+review workspace and explicitly separates verified S1/B from later storage K,
+resolving baseline Case5/R8 FAIL and R9 UNKNOWN. Coverage-revision behavior
+remains passing. Required native PR CLI fields were also verified through a
+read-only observation of existing PR #32, outside the invented probes.

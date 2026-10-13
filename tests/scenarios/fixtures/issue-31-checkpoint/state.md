@@ -1,7 +1,7 @@
 # Invented checkpoint test fixture
 
-Capture: fixture-C0
-JSON SHA256: 6d4c9cab7ff51e41c189c1a45bf994bd1e37de638c03951c5465c6b59ddf2944
+Capture: fixture-C1
+JSON SHA256: cfbd32b14e8dff0453fa9a26a34267abbece704b0d13f222d32df39e12fe826d
 Mode: issues-only
 Status: complete
 Source: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

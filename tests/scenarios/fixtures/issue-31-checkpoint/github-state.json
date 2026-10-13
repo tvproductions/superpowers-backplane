@@ -1,7 +1,7 @@
 {
   "format": "sp-bp-checkpoint/v1",
   "capture": {
-    "id": "fixture-C0",
+    "id": "fixture-C1",
     "started_at": "2026-10-01T12:10:00Z",
     "finished_at": "2026-10-01T12:11:00Z",
     "mode": "issues-only",

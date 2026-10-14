@@ -10,8 +10,13 @@ fixing the confirmed PR33 findings, then selected local merge into `main`.
 Local `main` fast-forwarded to `9c0e4c80dfcb38a04f49d3a5b496ea2c1ffd1862`,
 containing reviewed source corrections at
 `24a073438ffcb6832219ae4f4083eb5b17604573`. The later local integration
-receipt commit updates only continuity documents and evidence. Remote `main`
-remains at `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`; no push occurred.
+receipt commit `210bfcb22304f2a7a1b327fec5003b6809db4452` updates only
+continuity documents and evidence. At local-merge completion remote `main`
+remained at `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`; no push had occurred.
+The operator then requested handoff and git sync. The append-only
+[October14 session handoff](docs/superpowers-backplane/handoffs/20261014T080251Z-issue-31-remote-satisfaction.md)
+records the pre-sync identity and exact RESUME target. Verify arrival of its
+containing commit on expected remote `main` before treating transport as complete.
 Recheck live identity and status on entry; before Git mutation, require the
 exact root in current AGENTS.md.
 
@@ -52,8 +57,10 @@ records the accepted local target, identical merge tree, all 15 source hashes,
 30 prompt/response hash checks, and a fresh 38/38 native replay. Existing
 behavioral evidence remains applicable through the recorded reconciliation;
 the merge is not claimed as 98 newly executed behavioral assertions.
-The next gate is authorized publication/arrival and satisfaction assessment of
-the accepted remote target before closure. Issue #31 remains open in review.
+The current sync request authorizes publication of the local source/evidence and
+handoff save point. After verifying remote arrival, the next gate is satisfaction
+assessment of the accepted remote target before closure. Issue #31 remains open
+in review; the sync request does not authorize its closure.
 No Windows task completion has been recovered. Keep scratch ignored and
 transport a committed execution summary with its supporting evidence at
 handoff boundaries.

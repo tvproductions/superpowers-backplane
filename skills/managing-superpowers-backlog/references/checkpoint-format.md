@@ -15,7 +15,10 @@ never numeric identity substitutes; native numbers remain positive integers.
 64 lowercase hex characters. `Time` is an ISO-8601 UTC string. `Availability`
 is `available`, `unavailable`, or `redacted`; missing/redacted required material
 prevents complete reconstructability. Arrays contain their named type, with
-no duplicate IDs/links. Objects have exactly the listed fields.
+no duplicate record identities/links. A Recheck's identity is `(kind, id)`:
+different kinds may observe the same tracker ID, but an identical pair cannot
+repeat. Other object collections with an `id` field use it as their record identity. Objects
+have exactly the listed fields.
 
 | Top-level field | Type and required contents |
 | --- | --- |
@@ -78,7 +81,8 @@ results and applicability express their supported interpretation separately.
 
 ## Referential, semantic, and complete-status constraints
 
-1. IDs are unique in each object collection. Every reference resolves to the
+1. IDs are unique in each object collection, except `Recheck[]`, whose
+   `(kind, id)` pairs are unique. Every reference resolves to the
    appropriate typed collection, or for native graph/PR endpoints an explicitly
    declared excluded/external tracker identity. Scope issue IDs exactly identify
    captured issue records. Never silently omit a scoped node. Code+namespace

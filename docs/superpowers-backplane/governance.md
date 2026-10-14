@@ -224,6 +224,16 @@ changes need their applicable explicit authorization. The bundle consumes that
 cue and owns complete-stack integration. Adopters verify their actual tuple and
 project overrides. An older bundle pin is not Backplane's support policy.
 
+Return these fields for a freshness assessment:
+
+- **Ownership and channel policy:** Backplane owns direct SP alignment and
+  follows stable by default; identify any explicitly selected edge exception.
+  Name the bundle's complete-stack owner and the adopter's tuple/override role.
+- **Evaluation:** exact SP/Backplane revisions, tested host/capabilities and
+  overrides, supported results, and unavailable or untested scope.
+- **Publication and next action:** local versus published evidence, verified
+  transport/arrival or its absence, and proposed versus authorized operations.
+
 A cue identifies latest stable observed at a checked time, exact evaluated SP
 and Backplane revisions, relevant artifact hashes and project overrides,
 harness/capability scope, results, and unresolved limitations. Classify the latest

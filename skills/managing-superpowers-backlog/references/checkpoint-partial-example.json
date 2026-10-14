@@ -21,10 +21,10 @@
         "kind": "graph",
         "id": "selected-native-graph",
         "initial_revision": "fixture-graph-1",
-        "final_revision": "fixture-graph-1",
-        "result": "unchanged",
+        "final_revision": null,
+        "result": "unavailable",
         "approval_ids": [],
-        "details": "All selected connections enumerated and compared."
+        "details": "Required issue page 2 was not captured; full selected-graph stability could not be checked."
       },
       {
         "kind": "authority",
@@ -60,7 +60,7 @@
         "final_revision": null,
         "result": "unavailable",
         "approval_ids": [],
-        "details": "Embedded fixture evidence unchanged."
+        "details": "Required evidence E1 is unavailable; its final revision could not be checked."
       },
       {
         "kind": "evidence",

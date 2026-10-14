@@ -86,7 +86,15 @@ own approval and remain distinct from success.
    pointers under the authorized body-edit scope. Keep accepted evaluation
    evidence immutable and preserve prior identities. Do not make the issue's
    mutable verdict the only accepted result.
-4. Close completed only under the existing lifecycle and explicit applicable
+4. Immediately before closure, re-fetch the full native issue contract and
+   relationships after any body/evaluation-pointer edits. Reconcile the current
+   `updatedAt`, exactly one lifecycle label, scope, criteria, blockers, and
+   evidence applicability against the evaluated inputs. Record an editorial
+   pointer edit as semantic reconciliation; do not infer equivalence from the
+   timestamp alone. If another edit changes an acceptance or delivery input,
+   stop the closing write and refresh the affected approved inputs, review,
+   and verification before rechecking closure eligibility.
+   Close completed only under the existing lifecycle and explicit applicable
    authority once all obligations pass. Preserve unrelated labels; remove
    lifecycle labels as required by project closed-state policy, without a done
    label. Re-fetch actual state/reason, labels and native closing relationships.

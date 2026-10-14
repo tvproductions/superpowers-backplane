@@ -15,7 +15,7 @@
         "final_revision": "2026-10-01T12:10:30Z",
         "result": "changed",
         "approval_ids": [],
-        "details": "Fixture full body/native relationships unchanged."
+        "details": "Issue revision changed during capture; its body and native relationships require reconciliation."
       },
       {
         "kind": "graph",

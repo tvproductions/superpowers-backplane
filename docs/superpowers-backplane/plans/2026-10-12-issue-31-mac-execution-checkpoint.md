@@ -1,6 +1,6 @@
 # Issue #31 Mac execution checkpoint
 
-Updated: 2026-10-13; integration and workspace state reconciled after handoff review.
+Updated: 2026-10-14; integrated verification and bounded review corrections recorded.
 This tracked execution summary is separate from
 ignored scratch and from the product checkpoint format. It records actual Mac
 implementation evidence, not recovered Windows completion.
@@ -8,7 +8,40 @@ The storage commit is the commit containing this file and its evidence; it is
 not embedded in its own contents. Local commit acceptance and remote transport
 remain distinct.
 
-## Current reconciliation (2026-10-13)
+## Current verification follow-up (2026-10-14)
+
+Integrated main was clean at `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`, matching
+the live remote target. PR33 remains merged; issue31 remains OPEN/Feature with
+exactly `backplane:review`, revision `2026-10-13T07:27:56Z`, and no native graph
+or closing-PR relationships. The former d181 workspace remains absent.
+
+The operator requested integrated verification and R1 reconciliation, then
+selected fixing four confirmed PR33 findings. Reviewed source corrections are
+locally committed at `24a073438ffcb6832219ae4f4083eb5b17604573` on
+`fix/issue-31-integrated-review` in the authorized standalone root. No other
+worktree was created or authorized. This record's storage commit is distinct
+from that corrected source identity; correction integration remains pending.
+
+[Integrated verification](../../../tests/scenarios/2026-10-14-issue-31-integrated-verification.md)
+and its manifest retain 30 complete captures and all source/input/result hashes.
+Latest freshness passes 8/8 (R1 explicit), focused correction application 5/5,
+and native fixture replay 38/38. The fresh full candidate supplies 56 governance,
+23 existing behavioral and six representation passes. Non-freshness evidence
+retains applicability under the documented, independently reviewed semantic
+reconciliation; it is not relabeled as fresh final-byte execution. Earlier R1
+UNKNOWN results and an excluded original-source response remain visible.
+
+Fresh final source review found no Critical, Important or Minor findings. Exact
+authority bytes and all 238 upstream hashes remain unchanged; upstream is clean
+and reserved namespaces are absent. General-validator, live full-graph/Project,
+production recovery, other-harness/bundle and Windows evidence limits remain.
+
+First outstanding gate: choose correction-branch integration, then verify the
+actual accepted target and assess satisfaction before completed closure. No
+issue mutation, correction publication/arrival, integration or release is
+established by these local source/evidence records.
+
+## Historical reconciliation (2026-10-13)
 
 This section supersedes the historical publication, integration-pending, and
 worktree-preservation observations below. Historical results retain their
@@ -99,7 +132,7 @@ behavior, not the new governance baseline or task completion.
 | 2: Product planning/intake bridge | verified at e4e63a40a6fe99c8e4a1cbd016b89e698b69c1e8 | Fresh cases1–4 pass27; final cases retained |
 | 3: PR closeout bridge | verified at 2518eb2df8b67af12c6ee2750aded9227932cf56 | Fresh cases5/2 pass16; final cases retained |
 | 4: Product checkpoint contract | verified at 423eb83, revalidated after review correction | Original18 plus5 native-edge outcomes pass23; all frozen behavioral cases and earlier12 file/Git outcomes remain scoped and retained |
-| 5: Review and finishing | PR33 merged at 1cbe393; former native workspace absent/unregistered | Issue31 remains open in review; fresh integrated verification, freshness proof-limit reconciliation, satisfaction assessment, and closeout are next gates |
+| 5: Review and finishing | PR33 merged; integrated verification and R1 correction follow-up reviewed at 24a0734 | Issue31 remains open in review; correction integration, accepted-target verification, satisfaction assessment and closeout remain |
 
 No prior Windows result is promoted to verified. Its execution ledger and
 implementation state remain unavailable. The earlier fixture receipt remains
@@ -133,12 +166,14 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 ## Start here
 
-Resume from the standalone root on integrated `main`; the former native
-workspace is absent and unregistered. Recheck root/HEAD, live issue/artifact
-revisions, final source hashes, and captured evidence. PR33 is merged; fresh
-target verification, freshness R1 proof-limit reconciliation, and a satisfaction
-assessment are next before completed closure. Recorded setup and implementation
-results are historical evidence, not fresh integrated satisfaction. Do not repeat
+Resume from the standalone root and verify `fix/issue-31-integrated-review`
+against the current follow-up record before choosing integration. The former
+native workspace is absent and unregistered. Recheck root/HEAD, live issue and
+authority revisions, exact source hashes, and captured evidence. PR33 is merged;
+the correction branch awaits finishing. R1 is supported by the latest scoped
+8/8 application, with earlier UNKNOWN samples retained. Accepted-target
+verification and satisfaction assessment remain before completed closure.
+Recorded passes do not establish unobserved correction integration. Do not repeat
 verified tasks solely because the prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
 the approved design, task order, immutable probes, review, and verification

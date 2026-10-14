@@ -2,10 +2,13 @@
 
 ## Current state
 
-On 2026-10-13 the standalone local repository was rechecked at
+On 2026-10-14 integrated verification began in the standalone local repository at
 `/Users/jeff/Documents/Code/superpowers-backplane`, on `main` at
-`76fcfc497cc00227a083e6d72c17941d9e5a05e9`, matching live remote `main`,
-with the expected origin and a clean worktree before these handoff corrections.
+`a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`, matching live remote `main`,
+with the expected origin and a clean worktree. The operator subsequently selected
+fixing the confirmed PR33 findings. The current local branch is
+`fix/issue-31-integrated-review`, with reviewed source corrections at
+`24a073438ffcb6832219ae4f4083eb5b17604573`; its integration is pending.
 Recheck live identity and status on entry; before Git mutation, require the
 exact root in current AGENTS.md.
 
@@ -33,10 +36,16 @@ PR #33 merged from `feat/issue-31-governance-bridges` into `main` at
 The operator-requested PR review follow-ups have recorded verification;
 their results and freshness proof limit are in
 `tests/scenarios/2026-10-13-pr33-review-followups.md`.
-The latest freshness evidence retains assertion R1 as `UNKNOWN`; earlier
-full-suite results remain historical at their recorded source identities.
-The next gate is fresh verification on integrated `main`, reconciliation of
-that proof limit, and a satisfaction assessment before any completed closure.
+The [October14 verification report](tests/scenarios/2026-10-14-issue-31-integrated-verification.md)
+records all 30 captured responses, the confirmed source corrections, and their
+fresh review. Latest freshness application passes 8/8 including R1; the focused
+application passes 5/5 and native fixture replay passes 38/38. The fresh full
+candidate supplies 56 governance, 23 existing behavioral and six representation
+passes; the report explains retention of these non-freshness results across the
+final bounded clarifications. Earlier R1 UNKNOWN results remain unchanged at
+their original identities; retained passes are not claimed as new final-byte runs.
+The next gate is the correction branch's finishing/integration decision, fresh
+verification of the accepted target, and satisfaction assessment before closure.
 Merge and evidence-hash agreement do not establish fresh integrated satisfaction.
 No Windows task completion has been recovered. Keep scratch ignored and
 transport a committed execution summary with its supporting evidence at

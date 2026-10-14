@@ -15,8 +15,12 @@ continuity documents and evidence. At local-merge completion remote `main`
 remained at `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`; no push had occurred.
 The operator then requested handoff and git sync. The append-only
 [October14 session handoff](docs/superpowers-backplane/handoffs/20261014T080251Z-issue-31-remote-satisfaction.md)
-records the pre-sync identity and exact RESUME target. Verify arrival of its
-containing commit on expected remote `main` before treating transport as complete.
+records the pre-sync identity. Its containing commit
+`bac4dc7024aeb5b736b4d9d3df80c2502ad430f1` and correction/evidence ancestors
+were confirmed on expected remote `main` by fresh fetch and `git ls-remote`.
+The subsequent [assessment and prompt-preference handoff](docs/superpowers-backplane/handoffs/20261014T084025Z-issue-31-assessment-and-prompt-preference.md)
+records this arrival observation and the exact RESUME target; verify arrival
+of its later containing commit on entry.
 Recheck live identity and status on entry; before Git mutation, require the
 exact root in current AGENTS.md.
 
@@ -57,10 +61,11 @@ records the accepted local target, identical merge tree, all 15 source hashes,
 30 prompt/response hash checks, and a fresh 38/38 native replay. Existing
 behavioral evidence remains applicable through the recorded reconciliation;
 the merge is not claimed as 98 newly executed behavioral assertions.
-The current sync request authorizes publication of the local source/evidence and
-handoff save point. After verifying remote arrival, the next gate is satisfaction
-assessment of the accepted remote target before closure. Issue #31 remains open
-in review; the sync request does not authorize its closure.
+Source/evidence publication is verified at `bac4dc7`. The current sync request
+publishes the subsequent documentation save point. The next gate is read-only
+satisfaction assessment of the accepted remote target before closure. Issue #31
+remains open in review; the sync request does not authorize its closure.
+The operator prefers a concise, ready-to-send suggested next prompt when useful.
 No Windows task completion has been recovered. Keep scratch ignored and
 transport a committed execution summary with its supporting evidence at
 handoff boundaries.

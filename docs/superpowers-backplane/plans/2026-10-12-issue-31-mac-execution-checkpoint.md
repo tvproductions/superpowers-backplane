@@ -1,13 +1,51 @@
 # Issue #31 Mac execution checkpoint
 
-Updated: 2026-10-13; reviewed local implementation and one verified fix pass. This tracked execution summary is separate from
+Updated: 2026-10-13; integration and workspace state reconciled after handoff review.
+This tracked execution summary is separate from
 ignored scratch and from the product checkpoint format. It records actual Mac
 implementation evidence, not recovered Windows completion.
 The storage commit is the commit containing this file and its evidence; it is
 not embedded in its own contents. Local commit acceptance and remote transport
 remain distinct.
 
-## Authority and inputs
+## Current reconciliation (2026-10-13)
+
+This section supersedes the historical publication, integration-pending, and
+worktree-preservation observations below. Historical results retain their
+original source identities and are not fresh integrated verification.
+
+- VERIFIED — PR #33 is MERGED at `1cbe39323da7480e9d41657b757088a774972eac`,
+  merged at `2026-10-13T08:45:37Z`, from head
+  `9b760f02fe8774b1c75f23b0194b14c5425d0353`.
+  Evidence: `gh pr view 33 --repo tvproductions/superpowers-backplane --json state,mergedAt,mergeCommit,headRefOid,url`.
+- VERIFIED — Local and remote `main` match at
+  `76fcfc497cc00227a083e6d72c17941d9e5a05e9`; the standalone root was clean
+  before these documentation corrections. Evidence: `git rev-parse --show-toplevel`,
+  `git rev-parse HEAD`, `git status --short --branch`, and
+  `gh api repos/tvproductions/superpowers-backplane/git/ref/heads/main --jq '.object.sha'`.
+- VERIFIED — Issue #31 remains OPEN/Feature with exactly `backplane:review`,
+  revision `2026-10-13T07:27:56Z`, and no native parent, children, blockers,
+  blocking issues, or closing PR references. Evidence: fresh full native intake
+  through `gh issue view 31` using the issue contract's required fields.
+- VERIFIED — The former native `d181` workspace path is absent and is no
+  longer registered; only the standalone root is listed. Evidence:
+  `git worktree list --porcelain` and the path-existence check for
+  `/Users/jeff/.codex/worktrees/d181/superpowers-backplane`.
+  The cause and timing of its removal are unknown.
+- VERIFIED — Approved spec, plan, and frozen probe SHA-256 values still match
+  those recorded below. Evidence: `shasum -a 256` on the three authority files.
+- VERIFIED — The handoff review reproduced all 15 follow-up response hashes
+  and all 15 latest source-bundle hashes in
+  `tests/scenarios/2026-10-13-pr33-review-followup-runs.json`.
+  Evidence: manifest entries extracted with `jq` and compared with
+  `shasum -a 256` on their referenced files. This establishes evidence integrity,
+  not fresh behavioral results.
+- UNVERIFIED — Fresh integrated satisfaction of issue #31 is not established.
+  Required probe: run the issue's required verification on the exact integrated
+  target, reconcile the retained freshness R1 `UNKNOWN`, and assess acceptance
+  before completed closure. No issue or PR mutation is part of this correction.
+
+## Historical execution authority and inputs
 
 - Work item: https://github.com/tvproductions/superpowers-backplane/issues/31
 - Observed issue revision: `2026-10-12T01:29:48Z`; OPEN/Feature,
@@ -25,7 +63,7 @@ remain distinct.
   The October 11 native-inline execution and protected-namespace exceptions
   remain in AGENTS.md; this record does not authorize publication or release.
 
-## Actual Mac isolation identity
+## Historical Mac isolation identity
 
 - Source repository: `/Users/jeff/Documents/Code/superpowers-backplane`.
 - Native creation operation: `e4300ecb-c9ae-4e9b-ae44-3f7828c1e4fa`.
@@ -61,7 +99,7 @@ behavior, not the new governance baseline or task completion.
 | 2: Product planning/intake bridge | verified at e4e63a40a6fe99c8e4a1cbd016b89e698b69c1e8 | Fresh cases1–4 pass27; final cases retained |
 | 3: PR closeout bridge | verified at 2518eb2df8b67af12c6ee2750aded9227932cf56 | Fresh cases5/2 pass16; final cases retained |
 | 4: Product checkpoint contract | verified at 423eb83, revalidated after review correction | Original18 plus5 native-edge outcomes pass23; all frozen behavioral cases and earlier12 file/Git outcomes remain scoped and retained |
-| 5: Review and finishing | reviewed local delivery published as PR33; integration pending | User selected push-as-new-branch/PR; issue31 is open in review; fresh integrated verification and closeout are next gates |
+| 5: Review and finishing | PR33 merged at 1cbe393; former native workspace absent/unregistered | Issue31 remains open in review; fresh integrated verification, freshness proof-limit reconciliation, satisfaction assessment, and closeout are next gates |
 
 No prior Windows result is promoted to verified. Its execution ledger and
 implementation state remain unavailable. The earlier fixture receipt remains
@@ -95,17 +133,18 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 ## Start here
 
-The evaluated Mac setup and implementation checks pass. Recheck the exact
-worktree identity, live issue/artifact revisions, final source hashes and captured
-evidence. The finishing choice was completed as PR33. Reconcile current review/head and
-issue31 before continuing. Review/integration and fresh target verification are
-next; the native workspace remains detached and preserved. Do not repeat verified tasks solely because the
-prior Windows ledger was unavailable. The old plan's
+Resume from the standalone root on integrated `main`; the former native
+workspace is absent and unregistered. Recheck root/HEAD, live issue/artifact
+revisions, final source hashes, and captured evidence. PR33 is merged; fresh
+target verification, freshness R1 proof-limit reconciliation, and a satisfaction
+assessment are next before completed closure. Recorded setup and implementation
+results are historical evidence, not fresh integrated satisfaction. Do not repeat
+verified tasks solely because the prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
 the approved design, task order, immutable probes, review, and verification
 contracts remain binding. Use native bookkeeping under the recorded exception.
 
-## Current Mac verification and review inputs
+## Historical Mac verification and review inputs
 
 - Implementation starts at 33068051537dccfaeb6a6dbb82f5b293e9489203 after
   independently authorized setup commits. No prerequisite result is presented
@@ -132,7 +171,7 @@ contracts remain binding. Use native bookkeeping under the recorded exception.
   dirty setup files remain preserved. The upstream source remains clean and
   protected paths remain absent. Retain the native workspace for PR feedback.
 
-## Reviewed local delivery and next action
+## Historical reviewed local delivery and finishing observations
 
 The fresh reviewer evaluated 82fa208..1fd90dffd2de585520677c414d8e99b29b55dc41.
 [Review and disposition](../../../tests/scenarios/2026-10-13-issue-31-whole-change-review.md)
@@ -171,7 +210,7 @@ identities and the latest source bundle, review, ledger and prepared PR handoff,
 without ignored scratch. Later storage of this export receipt changes no tested
 skill/reference/fixture source. Remote transport/arrival remains unverified.
 
-## Published submission — supersedes pending-finishing observations
+## Historical published submission — superseded by current reconciliation
 
 The operator selected option1. [PR33](https://github.com/tvproductions/superpowers-backplane/pull/33)
 is OPEN against main from feat/issue-31-governance-bridges, initially at
@@ -188,7 +227,7 @@ verification before satisfaction and completed closure. Branch publication does
 not establish main integration, release or another host's arrival. Keep the
 registered native workspace for feedback.
 
-## PR33 review follow-ups (2026-10-13)
+## Historical PR33 review follow-ups (2026-10-13)
 
 PR33 follow-ups: both operator-requested format corrections pass 38 native fixture outcomes and the new 6-assertion reference application. Fresh existing governance56 and conformance23 pass; freshness R1 remains UNKNOWN in two unchanged-source responses, retained explicitly. Scope and proof limits at tests/scenarios/2026-10-13-pr33-review-followups.md. Temporary interpreter helpers were unnecessary and removed; no environment/runtime dependency added. Source/root/upstream identities remain preserved. Existing PR33 branch is the authorized publication target; integration/closure/release remain pending.
 

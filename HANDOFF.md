@@ -2,13 +2,15 @@
 
 ## Current state
 
-On 2026-10-12 the standalone local repository was verified at
+On 2026-10-13 the standalone local repository was rechecked at
 `/Users/jeff/Documents/Code/superpowers-backplane`, on `main` at
-`387f6e475624ba70c4c1f9bd3d71f85e55977a50`, with the expected origin and a
-clean worktree before recovery-document edits. Recheck live identity and status
-on entry; before Git mutation, require the exact root in current AGENTS.md.
+`76fcfc497cc00227a083e6d72c17941d9e5a05e9`, matching live remote `main`,
+with the expected origin and a clean worktree before these handoff corrections.
+Recheck live identity and status on entry; before Git mutation, require the
+exact root in current AGENTS.md.
 
-The current tracked work is issue #31, OPEN with backplane:review after PR #33 submission. Its approved
+The current tracked work is issue #31, OPEN with `backplane:review`, observed
+revision `2026-10-13T07:27:56Z`, after PR #33 integration. Its approved
 plan/spec hashes match this checkout, and PR #32 published those planning
 artifacts. The recorded Windows execution workspace and ignored progress ledger
 were not transported here; prior task progress remains unknown. The operator
@@ -17,20 +19,28 @@ restored at the recorded Superpowers 7.0.0 commit, with fresh CLI discovery
 and all five existing Backplane conformance checks passing. Evidence is in
 `tests/scenarios/2026-10-12-mac-superpowers-v7.0.0-setup.md`.
 
-The native issue-31 Mac workspace is
+The historical native issue-31 Mac workspace was
 `/Users/jeff/.codex/worktrees/d181/superpowers-backplane`, initially detached at
 `82fa208cd81b1ae33a6b24e869220f90c9558312`; its registration and shared Git
-directory were verified. Its portable execution summary is
+directory were verified during execution. On 2026-10-13 its path is absent and
+`git worktree list --porcelain` lists only the standalone root; do not use it
+as a current resume workspace. Its portable execution summary is
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md`.
-Tasks 1–4 are now independently verified on this Mac; final governance and
-existing conformance checks pass. Fresh whole-change review and one verified format-fix pass are complete.
-PR #33 is published from feat/issue-31-governance-bridges against main.
-The operator-requested PR review follow-ups are corrected; current verification
-and its freshness proof limit are in
+Tasks 1–4 have recorded independent Mac verification; the tracked evidence
+preserves whole-change review and the subsequent format corrections.
+PR #33 merged from `feat/issue-31-governance-bridges` into `main` at
+`1cbe39323da7480e9d41657b757088a774972eac` on `2026-10-13T08:45:37Z`.
+The operator-requested PR review follow-ups have recorded verification;
+their results and freshness proof limit are in
 `tests/scenarios/2026-10-13-pr33-review-followups.md`.
-Issue #31 is OPEN with backplane:review. The next gate is PR review/integration
-and fresh target verification; the native worktree is preserved. No Windows task completion has been recovered. Keep scratch ignored and transport a committed execution
-summary with its supporting evidence at handoff boundaries.
+The latest freshness evidence retains assertion R1 as `UNKNOWN`; earlier
+full-suite results remain historical at their recorded source identities.
+The next gate is fresh verification on integrated `main`, reconciliation of
+that proof limit, and a satisfaction assessment before any completed closure.
+Merge and evidence-hash agreement do not establish fresh integrated satisfaction.
+No Windows task completion has been recovered. Keep scratch ignored and
+transport a committed execution summary with its supporting evidence at
+handoff boundaries.
 
 Read the diagnostic reconciliation and proposed portability correction at
 `docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md`.

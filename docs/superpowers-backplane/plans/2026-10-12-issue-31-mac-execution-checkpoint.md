@@ -1,6 +1,6 @@
 # Issue #31 Mac execution checkpoint
 
-Updated: 2026-10-14; integrated verification and bounded review corrections recorded.
+Updated: 2026-10-14; corrections locally integrated and merged-target checks recorded.
 This tracked execution summary is separate from
 ignored scratch and from the product checkpoint format. It records actual Mac
 implementation evidence, not recovered Windows completion.
@@ -19,8 +19,10 @@ The operator requested integrated verification and R1 reconciliation, then
 selected fixing four confirmed PR33 findings. Reviewed source corrections are
 locally committed at `24a073438ffcb6832219ae4f4083eb5b17604573` on
 `fix/issue-31-integrated-review` in the authorized standalone root. No other
-worktree was created or authorized. This record's storage commit is distinct
-from that corrected source identity; correction integration remains pending.
+worktree was created or authorized. The operator then selected local merge;
+`main` fast-forwarded to `9c0e4c80dfcb38a04f49d3a5b496ea2c1ffd1862`.
+This record's later storage commit is distinct from that accepted target and
+changes continuity/evidence only. Remote `main` remains at `a1eb10b`; no push.
 
 [Integrated verification](../../../tests/scenarios/2026-10-14-issue-31-integrated-verification.md)
 and its manifest retain 30 complete captures and all source/input/result hashes.
@@ -36,10 +38,13 @@ authority bytes and all 238 upstream hashes remain unchanged; upstream is clean
 and reserved namespaces are absent. General-validator, live full-graph/Project,
 production recovery, other-harness/bundle and Windows evidence limits remain.
 
-First outstanding gate: choose correction-branch integration, then verify the
-actual accepted target and assess satisfaction before completed closure. No
-issue mutation, correction publication/arrival, integration or release is
-established by these local source/evidence records.
+[Local integration evidence](../../../tests/scenarios/2026-10-14-issue-31-local-integration.md)
+records an identical accepted merge tree, matching 15 source and 30 captured
+prompt/response hashes, and fresh native replay 38/38. Existing behavioral
+results retain their reconciled applicability and original execution identities.
+First outstanding gate: authorized publication/arrival, then satisfaction
+assessment at the accepted remote target before completed closure. No issue
+mutation, remote correction integration, another-host arrival or release occurred.
 
 ## Historical reconciliation (2026-10-13)
 
@@ -132,7 +137,7 @@ behavior, not the new governance baseline or task completion.
 | 2: Product planning/intake bridge | verified at e4e63a40a6fe99c8e4a1cbd016b89e698b69c1e8 | Fresh cases1–4 pass27; final cases retained |
 | 3: PR closeout bridge | verified at 2518eb2df8b67af12c6ee2750aded9227932cf56 | Fresh cases5/2 pass16; final cases retained |
 | 4: Product checkpoint contract | verified at 423eb83, revalidated after review correction | Original18 plus5 native-edge outcomes pass23; all frozen behavioral cases and earlier12 file/Git outcomes remain scoped and retained |
-| 5: Review and finishing | PR33 merged; integrated verification and R1 correction follow-up reviewed at 24a0734 | Issue31 remains open in review; correction integration, accepted-target verification, satisfaction assessment and closeout remain |
+| 5: Review and finishing | PR33 merged; R1 and review corrections locally merged at 9c0e4c8, merged-target checks passed | Issue31 remains open in review; authorized remote publication/arrival, target satisfaction assessment and closeout remain |
 
 No prior Windows result is promoted to verified. Its execution ledger and
 implementation state remain unavailable. The earlier fixture receipt remains
@@ -166,14 +171,15 @@ Never copy scratch into upstream or write to `.superpowers/`.
 
 ## Start here
 
-Resume from the standalone root and verify `fix/issue-31-integrated-review`
-against the current follow-up record before choosing integration. The former
-native workspace is absent and unregistered. Recheck root/HEAD, live issue and
-authority revisions, exact source hashes, and captured evidence. PR33 is merged;
-the correction branch awaits finishing. R1 is supported by the latest scoped
-8/8 application, with earlier UNKNOWN samples retained. Accepted-target
-verification and satisfaction assessment remain before completed closure.
-Recorded passes do not establish unobserved correction integration. Do not repeat
+Resume from the standalone root on local `main` and reconcile the local
+integration receipt before any publication or closeout. The former native
+workspace is absent and unregistered. Recheck root/HEAD, live issue and authority
+revisions, exact source hashes, captured evidence, and local/remote divergence.
+PR33 and the local corrections are integrated; remote correction integration
+remains unperformed. R1 is supported by the latest scoped 8/8 application, with
+earlier UNKNOWN samples retained. Remote target satisfaction assessment remains
+before completed closure. Recorded local passes do not establish another-host
+arrival or remote integration. Do not repeat
 verified tasks solely because the prior Windows ledger was unavailable. The old plan's
 historical Windows preservation and unpublished-artifact statements are drifted;
 the approved design, task order, immutable probes, review, and verification

@@ -6,9 +6,12 @@ On 2026-10-14 integrated verification began in the standalone local repository a
 `/Users/jeff/Documents/Code/superpowers-backplane`, on `main` at
 `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`, matching live remote `main`,
 with the expected origin and a clean worktree. The operator subsequently selected
-fixing the confirmed PR33 findings. The current local branch is
-`fix/issue-31-integrated-review`, with reviewed source corrections at
-`24a073438ffcb6832219ae4f4083eb5b17604573`; its integration is pending.
+fixing the confirmed PR33 findings, then selected local merge into `main`.
+Local `main` fast-forwarded to `9c0e4c80dfcb38a04f49d3a5b496ea2c1ffd1862`,
+containing reviewed source corrections at
+`24a073438ffcb6832219ae4f4083eb5b17604573`. The later local integration
+receipt commit updates only continuity documents and evidence. Remote `main`
+remains at `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`; no push occurred.
 Recheck live identity and status on entry; before Git mutation, require the
 exact root in current AGENTS.md.
 
@@ -44,9 +47,13 @@ candidate supplies 56 governance, 23 existing behavioral and six representation
 passes; the report explains retention of these non-freshness results across the
 final bounded clarifications. Earlier R1 UNKNOWN results remain unchanged at
 their original identities; retained passes are not claimed as new final-byte runs.
-The next gate is the correction branch's finishing/integration decision, fresh
-verification of the accepted target, and satisfaction assessment before closure.
-Merge and evidence-hash agreement do not establish fresh integrated satisfaction.
+The [local integration receipt](tests/scenarios/2026-10-14-issue-31-local-integration.md)
+records the accepted local target, identical merge tree, all 15 source hashes,
+30 prompt/response hash checks, and a fresh 38/38 native replay. Existing
+behavioral evidence remains applicable through the recorded reconciliation;
+the merge is not claimed as 98 newly executed behavioral assertions.
+The next gate is authorized publication/arrival and satisfaction assessment of
+the accepted remote target before closure. Issue #31 remains open in review.
 No Windows task completion has been recovered. Keep scratch ignored and
 transport a committed execution summary with its supporting evidence at
 handoff boundaries.

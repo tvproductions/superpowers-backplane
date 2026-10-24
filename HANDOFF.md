@@ -2,6 +2,14 @@
 
 ## Current state
 
+End-of-day 2026-10-24 continuity is in the append-only
+[adoption-readiness handoff](docs/superpowers-backplane/handoffs/20261024T225444Z-adoption-readiness-after-issue-31.md).
+Invoke RESUME against that exact path on return. It preserves completed #31,
+the published 7.0.1 maintenance, the starter-guidance ownership review and the
+operator's instruction to re-read/re-evaluate that guidance when it updates.
+No next adoption issue is selected. Its later containing commit must be checked
+for remote arrival on re-entry; the records below retain their historical times.
+
 On 2026-10-24 the interrupted OpenCode/Codex maintenance was resumed in
 `/Users/jbabb/Documents/Devel/superpowers-backplane`, on `main` at
 `c6f0b4a518e3742053618a613d8d858f0e37e9cd`. The operator's recovered request

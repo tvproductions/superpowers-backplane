@@ -52,9 +52,19 @@
 
 ## Workflow
 
-- Follow upstream Superpowers in order: brainstorming, isolated worktree when
-  applicable, writing-plans, execution, TDD appropriate to the artifact,
-  review, verification, and branch finishing.
+- Minimize skill overhead. Invoke only skills whose procedures are needed for
+  the current request; do not chain through generally related skills.
+- Treat Git sync as bidirectional: fetch and reconcile remote changes, include
+  explicitly authorized local artifacts, and verify remote arrival. Do not call
+  a sync complete while requested local artifacts remain untracked or unpushed.
+- Routine Git synchronization and small documentation/evidence publication need
+  only guarded Git/file operations and verification. Do not invoke the full
+  brainstorming, planning, worktree, execution, TDD, review, or branch-finishing
+  sequence unless the request actually involves that work.
+- For substantive design or implementation work, follow upstream Superpowers in
+  order: brainstorming, isolated worktree when applicable, writing-plans,
+  execution, TDD appropriate to the artifact, review, verification, and branch
+  finishing.
 - Use `superpowers:writing-skills` before creating or changing a skill.
 - Store new Backplane designs under `docs/superpowers-backplane/specs/` and plans
   under `docs/superpowers-backplane/plans/`. Existing `docs/superpowers/`

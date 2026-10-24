@@ -1,0 +1,421 @@
+{
+  "version": "issue-31-integrated-native-replay/v1",
+  "validator_receipt": "tests/scenarios/2026-10-13-checkpoint-review-followup-candidate.json",
+  "normalization": "Append observed empty PR closing metadata to prior complete fixtures; Project TEXT mutation gains option_id:null. Current examples already include this metadata; new fixtures are unchanged.",
+  "scope": "Disposable fixture validator, not a production acceptance engine. All 23 prior outcomes replayed against corrected current fields/known PR closing metadata; the historical contradictory text-Project mutator gains option_id:null. Project full-pagination/unavailable-body enforcement remains outside its proven constraints.",
+  "tests": [
+    {
+      "name": "complete invented account",
+      "input": "current-example:0",
+      "mutation": null,
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "explicit partial missing-page/unavailable evidence",
+      "input": "current-example:1",
+      "mutation": null,
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "explicit stale changed-source",
+      "input": "current-example:2",
+      "mutation": null,
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "wrong integer type",
+      "input": "current-example:0",
+      "mutation": "d=>d.issues[0].number=\"101\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "$.issues[0].number type pos"
+      ]
+    },
+    {
+      "name": "unknown top field",
+      "input": "current-example:0",
+      "mutation": "d=>d.storage_commit=\"x\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "$ exact fields"
+      ]
+    },
+    {
+      "name": "duplicate criterion ID",
+      "input": "current-example:0",
+      "mutation": "d=>d.criteria.push({...d.criteria[0]})",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "$.criteria duplicates"
+      ]
+    },
+    {
+      "name": "unresolved requirement link",
+      "input": "current-example:0",
+      "mutation": "d=>d.criteria[0].requirement_ids=[\"missing\"]",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "example/governance-fixture#101:AC1 unresolved missing",
+        "current evaluation input"
+      ]
+    },
+    {
+      "name": "omitted terminal page",
+      "input": "current-example:0",
+      "mutation": "d=>{d.scope.collections[1].pages[0].cursor_out=\"page2\";d.scope.collections[1].expected_total=1;}",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "pagination subIssues"
+      ]
+    },
+    {
+      "name": "missing graph collection",
+      "input": "current-example:0",
+      "mutation": "d=>d.scope.collections.splice(2,1)",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "missing collection blockedBy"
+      ]
+    },
+    {
+      "name": "changed required source",
+      "input": "current-example:0",
+      "mutation": "d=>d.capture.rechecks[0].result=\"changed\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "source changed"
+      ]
+    },
+    {
+      "name": "missing recheck",
+      "input": "current-example:0",
+      "mutation": "d=>d.capture.rechecks.splice(0,1)",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "missing recheck example/governance-fixture#101"
+      ]
+    },
+    {
+      "name": "unavailable required evidence",
+      "input": "current-example:0",
+      "mutation": "d=>d.evidence[0].availability=\"unavailable\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "verification evidence",
+        "required material unavailable"
+      ]
+    },
+    {
+      "name": "unapproved authority revision",
+      "input": "current-example:0",
+      "mutation": "d=>d.requirements[0].authority_revision=\"wrong\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "authority revision"
+      ]
+    },
+    {
+      "name": "wrong verified delivery",
+      "input": "current-example:0",
+      "mutation": "d=>d.evaluations[0].verified_commit=\"c\".repeat(40)",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "current evaluation input",
+        "verification evidence"
+      ]
+    },
+    {
+      "name": "no review approval",
+      "input": "current-example:0",
+      "mutation": "d=>d.evaluations[0].review_approval_ids=[]",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "review approval"
+      ]
+    },
+    {
+      "name": "unmet contribution",
+      "input": "current-example:0",
+      "mutation": "d=>d.evaluations[0].remaining_contributions=[\"O2\"]",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "current evaluation input"
+      ]
+    },
+    {
+      "name": "integrated mode denied Project",
+      "input": "current-example:0",
+      "mutation": "d=>d.capture.mode=\"integrated\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "Project unavailable"
+      ]
+    },
+    {
+      "name": "contradictory Project projection",
+      "input": "current-example:0",
+      "mutation": "d=>{d.capture.mode=\"integrated\";d.project={id:\"P1\",url:null,owner:\"example\",number:1,availability:\"available\",field_definitions:[{id:\"F1\",name:\"Satisfaction\",type:\"TEXT\",options:[]}],items:[{id:\"I1\",content_id:d.issues[0].id,content_kind:\"issue\",title:null,updated_at:null,fields:[{field_id:\"F1\",text:\"UNKNOWN\",availability:\"available\"}]}],limitations:[]};d.capture.rechecks.push({kind:\"project\",id:\"P1\",initial_revision:\"p1\",final_revision:\"p1\",result:\"unchanged\",approval_ids:[],details:\"fixture\"});}",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "Project projection contradiction"
+      ]
+    },
+    {
+      "name": "nonempty-terminal-cursor",
+      "input": "historical-native-edge:0",
+      "mutation": null,
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "denied-labels",
+      "input": "historical-native-edge:1",
+      "mutation": null,
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "missing observed next page",
+      "input": "historical-native-edge:0",
+      "mutation": "d=>d.scope.collections.find(x=>x.name===\"labels\").pages.pop()",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "pagination labels",
+        "collection membership labels"
+      ]
+    },
+    {
+      "name": "broken cursor continuity",
+      "input": "historical-native-edge:0",
+      "mutation": "d=>d.scope.collections.find(x=>x.name===\"labels\").pages[1].cursor_in=\"wrong\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "cursor continuity"
+      ]
+    },
+    {
+      "name": "complete denied collection",
+      "input": "historical-native-edge:1",
+      "mutation": "d=>{d.capture.status=\"complete\";d.scope.complete=true;}",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "unavailable native collection diagnostic guard labels",
+        "pagination labels",
+        "collection membership labels",
+        "source unavailable"
+      ]
+    },
+    {
+      "name": "denied PR closing issue collection",
+      "input": "new-fixture:0",
+      "mutation": null,
+      "expected": "DIAGNOSTIC",
+      "observed": "DIAGNOSTIC",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "selected single-select option identity",
+      "input": "new-fixture:1",
+      "mutation": null,
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "complete denied PR collection",
+      "input": "new-fixture:0",
+      "mutation": "d=>{d.capture.status=\"complete\";d.scope.complete=true;}",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "unavailable PR closing collection diagnostic guard",
+        "pagination closingIssuesReferences",
+        "PR closing collection membership",
+        "source unavailable"
+      ]
+    },
+    {
+      "name": "denied PR without limitation",
+      "input": "new-fixture:0",
+      "mutation": "d=>d.pull_requests[0].limitations=[]",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "unavailable PR closing collection diagnostic guard"
+      ]
+    },
+    {
+      "name": "denied PR without collection",
+      "input": "new-fixture:0",
+      "mutation": "d=>d.scope.collections=d.scope.collections.filter(x=>x.name!==\"closingIssuesReferences\")",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "unavailable PR closing collection diagnostic guard"
+      ]
+    },
+    {
+      "name": "denied PR without unavailable observation",
+      "input": "new-fixture:0",
+      "mutation": "d=>d.capture.rechecks=d.capture.rechecks.filter(x=>x.id!==d.pull_requests[0].id+\":closingIssuesReferences\")",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "unavailable PR closing collection diagnostic guard"
+      ]
+    },
+    {
+      "name": "missing PR closing terminal page",
+      "input": "new-fixture:1",
+      "mutation": "d=>d.scope.collections.find(x=>x.name===\"closingIssuesReferences\").pages=[]",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "pagination closingIssuesReferences"
+      ]
+    },
+    {
+      "name": "unknown selected option",
+      "input": "new-fixture:1",
+      "mutation": "d=>d.project.items[0].fields[0].option_id=\"NOT_OBSERVED\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "selected Project option identity"
+      ]
+    },
+    {
+      "name": "missing selected option slot",
+      "input": "new-fixture:1",
+      "mutation": "d=>delete d.project.items[0].fields[0].option_id",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "$.project.items[0].fields[0] exact fields",
+        "$.project.items[0].fields[0].option_id type id"
+      ]
+    },
+    {
+      "name": "selected option/display mismatch",
+      "input": "new-fixture:1",
+      "mutation": "d=>d.project.items[0].fields[0].text=\"Done\"",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "selected Project option identity"
+      ]
+    },
+    {
+      "name": "selected option without available name",
+      "input": "new-fixture:1",
+      "mutation": "d=>d.project.items[0].fields[0].text=null",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "selected Project option identity"
+      ]
+    },
+    {
+      "name": "observed unset single-select",
+      "input": "new-fixture:1",
+      "mutation": "d=>{d.project.items[0].fields[0].option_id=null;d.project.items[0].fields[0].text=null;}",
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "text field has explicit null option",
+      "input": "new-fixture:1",
+      "mutation": "d=>{d.project.field_definitions[0].type=\"TEXT\";d.project.field_definitions[0].options=[];d.project.items[0].fields[0].option_id=null;}",
+      "expected": "ACCEPTABLE",
+      "observed": "ACCEPTABLE",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "name": "text field cannot retain select option",
+      "input": "new-fixture:1",
+      "mutation": "d=>{d.project.field_definitions[0].type=\"TEXT\";d.project.field_definitions[0].options=[];}",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "option identity on non-select field"
+      ]
+    },
+    {
+      "name": "unavailable selection cannot be complete",
+      "input": "new-fixture:1",
+      "mutation": "d=>{d.project.items[0].fields[0].availability=\"unavailable\";d.project.items[0].fields[0].text=null;d.project.items[0].fields[0].option_id=null;}",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "result": "PASS",
+      "errors": [
+        "unavailable Project value"
+      ]
+    }
+  ],
+  "pass": 38,
+  "fail": 0
+}

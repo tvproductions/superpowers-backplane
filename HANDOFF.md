@@ -12,16 +12,24 @@ The clean independent checkout is now at
 checks and fresh local Codex discovery pass. OpenCode V2 reports the pinned
 repository package active at the same commit. See
 `tests/scenarios/2026-10-24-superpowers-v7.0.1-compatibility.md` for the exact
-evidence, recovery provenance, and limits. The maintenance files are local and
-uncommitted at this checkpoint; no publication is asserted. Issue #31 remains
-OPEN with `backplane:review` at `2026-10-13T07:27:56Z`; its separate read-only
-satisfaction assessment is now saved locally in
+evidence, recovery provenance, and limits. The operator approved commit and
+publication of this maintenance and the issue-31 evaluation/closeout.
+Commit `17bd123ccb523e62c95b6008b363095800dbf087` is verified on remote main;
+GitHub serves the assessment with its expected blob identity. The satisfaction
+assessment is published in
 `tests/scenarios/2026-10-24-issue-31-satisfaction.md` and its JSON receipt:
 D1–D8 are assessed SATISFIED at remote main `c6f0b4a`, with fresh 38/38 native
 replay, 15 matching source hashes, three matching evidence hashes and 30 matching
 prompt/response pairs. Historical behavioral results retain their original
-identities and limitations. Evaluation acceptance, publication and completed
-closure remain separate pending operations; no issue was changed. The October14 records below are
+identities and limitations. After adding the issue's evidence pointers and
+re-fetching/reconciling the complete native issue, #31 was closed COMPLETED,
+with no lifecycle labels, observed `updatedAt=2026-10-24T14:24:11Z`.
+`tests/scenarios/2026-10-24-issue-31-closeout.json` records publication and actual
+closed-state evidence; its later storage commit is distinct from the evaluated
+delivery and first publication commit. No release, Project mutation or product
+checkpoint acceptance occurred. The remaining adoption/release work is under
+#1: host acceptance, licensing/operations, self-hosting, external pilot, and
+release review. The October14 records below are
 historical context, including their then-current host paths and upstream version.
 
 On 2026-10-14 integrated verification began in the standalone local repository at

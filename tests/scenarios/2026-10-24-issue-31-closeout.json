@@ -1,0 +1,94 @@
+{
+  "version": "sp-bp-issue31-closeout-receipt/v1",
+  "checked_at": "2026-10-24T14:25:06Z",
+  "authorization": "Operator accepted the proposed commit/publication/issue-closeout action in this session",
+  "verified_delivery": "c6f0b4a518e3742053618a613d8d858f0e37e9cd",
+  "published_evidence_commit": "17bd123ccb523e62c95b6008b363095800dbf087",
+  "publication": {
+    "remote": "https://github.com/tvproductions/superpowers-backplane.git",
+    "branch": "main",
+    "ls_remote_matches": true,
+    "assessment_blob": "caf203ecc80738524c7e0cbbbb278957170fbc64",
+    "github_contents_blob_matches": true
+  },
+  "preclose": {
+    "updatedAt": "2026-10-24T14:23:51Z",
+    "state": "OPEN",
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+        "name": "backplane:review",
+        "description": "Implementation is submitted and awaiting final review/integration",
+        "color": "5319E7"
+      }
+    ],
+    "body_matches_prepared_file": true,
+    "noneditorial_issue_inputs_match_assessment": true,
+    "blockers": {
+      "nodes": [],
+      "totalCount": 0
+    }
+  },
+  "observed_issue": {
+    "blockedBy": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "blocking": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "closedByPullRequestsReferences": [],
+    "issueType": {
+      "id": "IT_kwDOBVqRyc4A7LW9",
+      "name": "Feature",
+      "description": "A request, idea, or new functionality",
+      "color": "BLUE"
+    },
+    "labels": [],
+    "number": 31,
+    "parent": null,
+    "state": "CLOSED",
+    "stateReason": "COMPLETED",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Implement GitHub-aligned product governance and Superpowers bridges",
+    "updatedAt": "2026-10-24T14:24:11Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/31"
+  },
+  "closed_issue_body_sha256": "7d66c4ec401f5fbce14d3fe6174fb383999aa5b3d9b614fb58d6827515ff0f43",
+  "operations": [
+    "Publish immutable maintenance and satisfaction evidence",
+    "Append Coverage and Satisfaction pointers to issue body",
+    "Re-fetch complete native issue and reconcile editorial revision immediately before closure",
+    "Close with reason completed",
+    "Remove backplane:review",
+    "Re-fetch and verify actual state, reason, labels and native relationships"
+  ],
+  "verification": {
+    "source_hashes": 15,
+    "evidence_hashes": 3,
+    "prompt_response_pairs": 30,
+    "native_fixture_pass": 38,
+    "native_fixture_fail": 0,
+    "no_delivery_source_change_in_publication": true
+  },
+  "boundaries": {
+    "release_created": false,
+    "project_mutated": false,
+    "parent_mutated": false,
+    "product_checkpoint_accepted": false
+  },
+  "limitations": [
+    "Earlier dated assessment retains its pre-publication/pre-close observations",
+    "No new 98-assertion behavioral run",
+    "Broader v0.1 adoption/release gates remain open"
+  ]
+}

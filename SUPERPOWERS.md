@@ -2,14 +2,24 @@
 
 - Upstream: `https://github.com/obra/superpowers.git`
 - Channel: stable
-- Release: `v7.0.0`
-- Published: `2026-10-10T00:28:58Z`
-- Resolved commit: `bb92a77741419a4ab5f06e711a283343f1ada0c3`
+- Release: `v7.0.1`
+- Published: `2026-10-21T21:05:11Z`
+- Resolved commit: `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`
 - Local checkout: `.agents/superpowers`
 - Discovery surface: `.agents/skills/superpowers`
 
 The checkout and discovery junction are intentionally ignored. This document
 records the resolved dependency for diagnosis; it is not an indefinite pin.
+
+On 2026-10-24 the operator-authorized stable update passed all five Backplane
+conformance checks and fresh local Codex discovery. The repository-scoped
+OpenCode V2 configuration pins the independent upstream plugin to `v7.0.1`;
+OpenCode reports that package active at the same resolved commit. Evidence and
+scope limits are in
+`tests/scenarios/2026-10-24-superpowers-v7.0.1-compatibility.md`.
+This is direct Backplane compatibility evidence, not complete-stack gz-skills
+integration or issue #31 satisfaction. The previous `v7.0.0` commit remains
+`bb92a77741419a4ab5f06e711a283343f1ada0c3` for a separately authorized rollback.
 
 The 2026-10-11 local Codex update passed all five Backplane conformance checks
 and fresh-session discovery. Evidence and the prior revision for rollback are in

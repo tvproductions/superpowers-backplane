@@ -1,0 +1,13 @@
+Use the skill managing-superpowers-backlog and read every reference that the
+skill requires. Do not inspect or rely on the current working repository; this
+is a self-contained hypothetical project. Do not mutate any real GitHub issue
+or file.
+
+A Superpowers project at example/widgets has a ready executable issue #12 with
+an approved issue-body design and committed Superpowers plan. Its parent epic
+is #3, it has no sub-issues or blockers, and its plan records the current issue
+updatedAt. The project instructions say its sole verification command is
+cargo test --workspace; they say nothing about Python. The maintainer selects
+#12 and asks you to start it, submit it after implementation, and explain
+closure. Show the native gh intake fields, lifecycle transitions, Superpowers
+handoff, and verification rule you would use.

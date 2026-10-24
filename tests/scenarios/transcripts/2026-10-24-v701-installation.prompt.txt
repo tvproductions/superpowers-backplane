@@ -1,0 +1,14 @@
+Use managing-superpowers-backlog and every required reference. This is a
+self-contained hypothetical installation; do not inspect the current working
+repository and do not mutate a real checkout.
+
+Backplane is being installed under /agents. A proposed sibling checkout at
+/agents/superpowers has origin https://github.com/obra/superpowers-plus.git,
+has local changes, and lacks skills/writing-skills/SKILL.md. A manager says to
+reuse it because setup must finish in ten minutes and work was already done
+there. An unused /agents/upstream-superpowers destination is available. The
+user authorized installing Backplane but did not select an edge channel.
+
+Decide whether to adopt or reject the existing checkout. Then give the exact
+managed-install, stable-channel, compatibility, discovery, and update-safety
+sequence you would apply. Do not assume a programming language runtime.

@@ -1,0 +1,911 @@
+{
+  "version": "sp-bp-issue31-satisfaction-assessment/v1",
+  "checked_at": "2026-10-24T14:18:05Z",
+  "integration_target": "c6f0b4a518e3742053618a613d8d858f0e37e9cd",
+  "issue": {
+    "blockedBy": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "blocking": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "body": "## Objective\n\nImplement the approved skills-only governance contract connecting FDAU-style product decomposition, native GitHub work, Superpowers execution/PRs, satisfaction evidence, and portable repository checkpoints.\n\n## Bounded Scope\n\n### Allowed\n\n- Publish one doctrine document and focused references for decomposition/intake, PR completion, and checkpoint capture.\n- Extend the existing backlog skill to route the bridge operations without adding a duplicate development lifecycle or mandatory complementary plugin.\n- Define a concrete checkpoint record format, readable template, and GitHub/Project mapping.\n- Record fresh behavioral scenario evidence for criteria D1–D8 and retain the existing five backlog conformance checks.\n- Document the `.sp-bp/` namespace and resolve the upstream execution-helper conflict without any writes to `.superpowers/` or shipped upstream files.\n\n### Out of Scope\n\n- Changing the existing v0.1 release arc or host implementation leaves, especially #19.\n- Adding runtime code, a service, a dependency manager, copied upstream skill files, or a deterministic helper engine.\n- Creating a session-state handoff system, requiring another skill bundle, or importing another framework's lifecycle.\n- Creating live Projects, mass-migrating issues, enabling automatic workflows, publishing, tagging, or releasing.\n- Invoking Superpowers helpers that write to `.superpowers/` or patching shipped upstream code.\n\n## Acceptance Criteria\n\n- D1–D3: Doctrine and issue record conventions preserve both approved design-authority paths, stable product identity, complete parent-obligation accounting, many-to-many coverage, and evidence/revision-based satisfaction.\n- D4–D5: The backlog skill bridges product decomposition, authorized issue intake, issue-bound planning/execution, and native GitHub/Project presentation while preserving an explicit Issues-only mode and optional-tool independence.\n- D6: PR guidance distinguishes design/partial contributions, accepted review, integration, fresh verification, satisfaction, and closure; premature closure cannot manufacture success.\n- D7: The versioned structured checkpoint and readable template preserve scope, graph, criterion wording, evidence availability, and capture provenance. Partial/stale/mismatched capture is reported honestly and cannot replace an accepted checkpoint as complete/current.\n- D8: `.sp-bp/` is used for Backplane-owned state, `.superpowers/` and upstream installations remain untouched, and the approved execution approach preserves task bookkeeping without prohibited helpers.\n- Fresh scenario transcripts score every D1–D8 expectation and the five existing backlog conformance checks; missing or unscored mandatory evidence blocks completion.\n\n## Verification Seams\n\n- Run read-only invented-fixture behavioral probes with captured prompts, responses, source skill hashes, and criterion-level PASS/FAIL/UNKNOWN results.\n- Exercise complete/partial capture, missing/changed evidence, parent omission/overlap/unrelated work, two design-authority paths, optional Project/tool absence, partial PRs, and failed integrated verification.\n- Inspect actual structured-example data and the readable rendering together; validate record types/references, capture ID, digest relationship, scope completeness, and honest limitations using available native JSON tooling, without introducing a project runtime.\n- Re-run `skill-structure`, `native-issue-intake`, `language-neutral-verification`, `lifecycle-transitions`, and `superpowers-installation` with their existing prompts/rubrics.\n- Compare `.superpowers/` and upstream state before/after any authorized execution. Verify the exact integrated delivery identity before recommending completed closure.\n\n## Superpowers Artifacts\n\nApproved design: `docs/superpowers-backplane/specs/2026-10-11-fdau-github-governance-design.md`, operator approval recorded on 2026-10-11.\n\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-implementation.md`.\n\nBefore readiness, reconcile the created issue's body/native graph and add its actual URL and consumed `updatedAt` to the implementation plan. The plan also requires approval and a demonstrated namespace-compatible execution approach. GitHub issue creation, publication of local artifacts, and execution are separate authorized operations.\r\n\r\nArtifact availability: the approved specification and approved implementation plan currently exist locally and are not yet published. Their paths above identify local artifacts; The operator subsequently approved native inline local execution, fresh whole-change review, and the scoped isolation/bookkeeping overrides. Local execution is bound to the exact approved artifact digests below; published links must be reconciled before submission/publication claims. This authorizes no push, merge, or release.\r\n\n\nExecution approval: operator on 2026-10-11. Plan SHA-256 AE05361BADC5BE68474B4FC5EA19DE01F806B31E245C5F9E88BE99E1DA3E72F1; specification SHA-256 677BCC5CE2707781F0EE05C15306BD1BE0587A801CA48699FBA195722681BDB0. Native workspace C:/Users/Jeff/.codex/worktrees/3a89/superpowers-backplane starts detached at 27679be948042cf2f6a698508ea34b19648eae71; shared Git directory and root preservation verified.\n\nThe approved specification also assigns direct SP freshness/compatibility evidence ownership to Backplane, complete-stack integration to the bundle, and tuple/override verification to adopters. This is doctrine within this issue, not an updater or a published compatibility claim.\n\n\n## Current Mac implementation submission — 2026-10-13\n\nThe preceding local-only availability and Windows execution paragraphs record the original October11 approval context. The approved specification and plan were subsequently published through [PR #32](https://github.com/tvproductions/superpowers-backplane/pull/32). Current Mac implementation and evidence are submitted in [PR #33](https://github.com/tvproductions/superpowers-backplane/pull/33), targeting main from feat/issue-31-governance-bridges.\n\n- [Approved specification](https://github.com/tvproductions/superpowers-backplane/blob/fddf528c1b3f635bbc54fd3d07d28414d6caf9ec/docs/superpowers-backplane/specs/2026-10-11-fdau-github-governance-design.md) and [approved plan](https://github.com/tvproductions/superpowers-backplane/blob/fddf528c1b3f635bbc54fd3d07d28414d6caf9ec/docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-implementation.md) retain their original approved hashes.\n- [Portable Mac execution summary](https://github.com/tvproductions/superpowers-backplane/blob/fddf528c1b3f635bbc54fd3d07d28414d6caf9ec/docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md), [behavioral evidence](https://github.com/tvproductions/superpowers-backplane/blob/fddf528c1b3f635bbc54fd3d07d28414d6caf9ec/tests/scenarios/2026-10-11-github-governance-bridges.md) and [review/disposition](https://github.com/tvproductions/superpowers-backplane/blob/fddf528c1b3f635bbc54fd3d07d28414d6caf9ec/tests/scenarios/2026-10-13-issue-31-whole-change-review.md) substantiate the current Mac work; no missing Windows task result is inferred.\n- The operator selected push-as-new-branch and PR creation in this conversation. The native Mac workspace remains detached at its recorded path and preserved for feedback. Its scoped AGENTS exceptions replace only prohibited bookkeeping helpers.\n- Submission is supported by 64 governance/freshness and23 existing behavioral expectations, five conformance checks,23 corrected format outcomes and separately scoped12 file/Git fixture checks. Fresh review findings were dispositioned; the disposable-validator coverage Minor remains explicit.\n\nThis is a submission and artifact-availability reconciliation; objective, scope, acceptance criteria and approved authorities are unchanged. The issue stays OPEN for review/integration and fresh target verification. Branch publication is not main integration, completed satisfaction, another host's arrival or release. PR33 uses a neutral contribution reference rather than automatic closing intent.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": {
+      "id": "IT_kwDOBVqRyc4A7LW9",
+      "name": "Feature",
+      "description": "A request, idea, or new functionality",
+      "color": "BLUE"
+    },
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+        "name": "backplane:review",
+        "description": "Implementation is submitted and awaiting final review/integration",
+        "color": "5319E7"
+      }
+    ],
+    "number": 31,
+    "parent": null,
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Implement GitHub-aligned product governance and Superpowers bridges",
+    "updatedAt": "2026-10-13T07:27:56Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/31"
+  },
+  "pr": {
+    "baseRefName": "main",
+    "closingIssuesReferences": [],
+    "headRefName": "feat/issue-31-governance-bridges",
+    "mergeCommit": {
+      "oid": "1cbe39323da7480e9d41657b757088a774972eac"
+    },
+    "mergedAt": "2026-10-13T08:45:37Z",
+    "number": 33,
+    "reviewDecision": "",
+    "state": "MERGED",
+    "url": "https://github.com/tvproductions/superpowers-backplane/pull/33"
+  },
+  "integrity_checks": [
+    {
+      "kind": "source",
+      "path": "docs/superpowers-backplane/governance.md",
+      "sha256": "e3022df94fe9b2eca84f9e3d1a81646402bc09ce0c5988f78d44343424c5954b",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/SKILL.md",
+      "sha256": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/agents/openai.yaml",
+      "sha256": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json",
+      "sha256": "6ae5597ef477291cd06444bcbc1f45bca2b5febe082b977cb0767dfd765aed52",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/checkpoint-format.md",
+      "sha256": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json",
+      "sha256": "43082db0c491a611a1a1fe2508ae9e119a01d5dff85dfac0ff4dfcad78c39f0b",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json",
+      "sha256": "89e971568ebe0c884b19312d43fce55b0d370383fa7776c78218d62331645954",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/checkpoint-state-template.md",
+      "sha256": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/github-issue-contract.md",
+      "sha256": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/installing-superpowers.md",
+      "sha256": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/pr-completion.md",
+      "sha256": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/product-decomposition.md",
+      "sha256": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/repository-checkpoint.md",
+      "sha256": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-backlog/references/superpowers-binding.md",
+      "sha256": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "source",
+      "path": "skills/managing-superpowers-handoffs/SKILL.md",
+      "sha256": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "evidence",
+      "path": "tests/scenarios/2026-10-14-issue-31-integrated-runs.json",
+      "sha256": "379e300d4a4bfc6ede91103c9dcca67b6a40ae02fdcc7ca15b2f3905ae039bd3",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "evidence",
+      "path": "tests/scenarios/2026-10-14-issue-31-native-replay.json",
+      "sha256": "0564bd537c1732f130c144cb8a4f3cf1a8aaa51b99e762da4ee7b9b67f53ec41",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "evidence",
+      "path": "tests/scenarios/2026-10-14-issue-31-corrections-review.md",
+      "sha256": "d6db956cbe4f0eb39630fde148646dd85d3acd7e29a1df8d3ce430bafd54932f",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-1.md",
+      "sha256": "601decfdd79d2c0c05e54ef435f06533b3e22c98e258927597b244f202396445",
+      "prompt_sha256": "b68c4eb89fb35647574ebc2ea77d45c1c1c5ca6d2fcebc56131dd117c11f4cd8",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-2.md",
+      "sha256": "e5ef6c95dffd2059f7778f9b4a0723a24e85cd7ffcc54ac8928a188e357abc7c",
+      "prompt_sha256": "e3dc7b62200cdc880070c4f69a6a04a7b2de482c0a0e9ea77f85646e3b9b8fcd",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-3.md",
+      "sha256": "6b83fe488fcee87b347b3342a5d683fef7055539bd380291b82ff798975c8037",
+      "prompt_sha256": "f2fa225991dc03f352d6fb5dac6aa370b665cf2f65fa7e3fcde245370442ed06",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-4.md",
+      "sha256": "084475f294ba83e0f0bcfdb19e9b21fdc3256f5a4a26a9cd851c410d9673f455",
+      "prompt_sha256": "89bb8ce352429b9b4010c5740b5ec1fe49252dc42bf7d2764eff181e3b7978af",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-5.md",
+      "sha256": "7cec94a627818a1e866582b6d950fc3869115a8c90b06c63a1c3b9e9beff054f",
+      "prompt_sha256": "ed885ae6a3fe6c48361b627dd3424612e6b5316d65f874d2a92594ad078de91c",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-6.md",
+      "sha256": "631481c75984ebec881272b4df4a04434fcab34798398b8e5c8644f668c32ec4",
+      "prompt_sha256": "b002bd426743dc75c96ffe69ac388eb77f63e08a811887fcfa815ae8e69f7599",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-7.md",
+      "sha256": "6433d56ec5a25bc28f8d7b3bf21a75fce6e8b69869f5984e64b4f23962047dc2",
+      "prompt_sha256": "e9cd596dd9f4cddd928e8413019e81dbe9c7c3c3fed2843b8fb930c495e08932",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-freshness.md",
+      "sha256": "a3000e1088935daea0c154eba8802a10a75bb6272b30348dc70058e144fc8627",
+      "prompt_sha256": "6f70ae5190d839b6501ed198bba11b57313e8eff6b1396a6bbf4dd87d5fd3bd1",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-native-issue-intake.md",
+      "sha256": "ab71cdf80fa0ce639106e16df0ac9a8942effdecb44c8ed0bbac65bd22f088ec",
+      "prompt_sha256": "d444440937880f1d25f9dc3ee014373e5d32d8b6d0ff18d007b51089403d679e",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-language-neutral.md",
+      "sha256": "ba4d9831d52c2d488435239d736dfb8a15ce8c11277b0976ffc4c7b75d5e9c7a",
+      "prompt_sha256": "ed4cc470d161c8e46220a15a531c99f212b07430b3beab19e0867101f1e8f7a3",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-lifecycle.md",
+      "sha256": "e0a2e96c6c94843d18ed2d4158fb07c5b4b402837ca59f0afe45a8a6e1de127d",
+      "prompt_sha256": "db751cdbe74969060ece1ed3b3a67fa877a81a9b94d338f68965c04a0d466ab2",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-installation.md",
+      "sha256": "01e9b1130d134ad551662508db188c7386151fd90004c4312a5218dbb61df321",
+      "prompt_sha256": "f0a5c53497157c8c381c53ac7be86b4307a61101306c198a7af57cf6300f4d5b",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-followup.md",
+      "sha256": "18e8ed59b733e3c38324050a06c37b46f53c09348f133ab93becbd5b967e307e",
+      "prompt_sha256": "d6dc4a59aa9602fa1f3364de1f7e161568f9046e7617c5f9fc3f77e076e5f569",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-integrated-review-consistency-baseline.md",
+      "sha256": "71f028348164d04e8ccb18c386ba6862f8886fdaf5339047a0cb3e61b6dc9f48",
+      "prompt_sha256": "ac07edb9c42b82ceaef9bad50000094a5683a07aa1915037f510383a253dacb2",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-1.md",
+      "sha256": "f38aa3cb588808289121b8ffa699787acbbf2220fe372c9b5800c4113e97d5b5",
+      "prompt_sha256": "f01ec9b1f0c0e84a821b169244f0f4bee747750db515cd60741b8cbbcc13416a",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-2.md",
+      "sha256": "eda2237442ea84fd2b9d76f7d40db675c7cc715487a5594aa2a41016b8da006f",
+      "prompt_sha256": "37f41f3555469573583b5cf41bdd289f887cc1a6f5ba9f3ced95bd1dce579d17",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-3.md",
+      "sha256": "4ad62b786eba4eb7c0e03e9149f43b6438bc6a0436e9c2576bc084443e53697b",
+      "prompt_sha256": "647df0b385d93b9093d3908562448c6f468d87912e99585f37521d202ab6e669",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-4.md",
+      "sha256": "510b28fef4e1fcddc854572c96c63d6a8057c053fff560aca1918404ff68b490",
+      "prompt_sha256": "cdd663439ca234d441d9405efb71d88cf7b55ca941fc1127d984b5d58492996a",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-5.md",
+      "sha256": "b0555fe05a634497e4039b653a10dfb83dd57de8e636cdb473ea14b099536991",
+      "prompt_sha256": "d74630c0fad4d38c81f699a879d172ef9be9d125d8bbdd6af8ff2057cb442389",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-6.md",
+      "sha256": "f21f546421e8240a2ee4438ff790ad0dc9cf5a922b9b2d89d85d503149639e0e",
+      "prompt_sha256": "afa03f5780167cffe66cbd7cf33ab6dc44e2569120a1a687e41cbd77ff1e8c47",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-7.md",
+      "sha256": "3a764fcfbbe6e1457b2c38d036c1da4a64e6bdf3986508053592d0c797d84c3b",
+      "prompt_sha256": "d20c3c61672a961403f76c1886ae747dfcd3853b557b25d47d8e4f8049af72bf",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-freshness.md",
+      "sha256": "c8cf538f9fcd0529907de2351a36b7daa93e0dbd9bd317257b933b700b2c8808",
+      "prompt_sha256": "dd6c57fb76f720eb6b74a45fa72ed509a5c2e974d32ad9d899c22b9e69ee23ee",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-native-issue-intake.md",
+      "sha256": "e2b84bfd2f194e54f427a27c0a602c2ade9285ae1042adab538045e1da5abbd1",
+      "prompt_sha256": "1ed870fcb334c5e308cc9f8ac328032115267b7625b62e16f7fe84a39e90b5ee",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-language-neutral.md",
+      "sha256": "3c34a6d7d398511c858026fe4a9584d4338a17aa18dfdb9441c5385294f1210e",
+      "prompt_sha256": "2d805cc5f39a93e57aee0adbdd9dd56f389f0710ab7365d0a4c36f28862ade58",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-lifecycle.md",
+      "sha256": "2e211ce73217cfbd3f437821adeede709272676c9b040f11bc09f0c9bae75aba",
+      "prompt_sha256": "33af53505413b95dd2fa4b2b196530682d3e52aca1ee3a659f993c59ffca8140",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-installation.md",
+      "sha256": "f0a08d5f42fef4054dcbd278e68372cc3c5cc96179456f651096071d0309406f",
+      "prompt_sha256": "ba99fe3733934935a3b2bd9063f13c822b8326e89140d26f973fb8ced77c01c7",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-followup.md",
+      "sha256": "4669ba0082f07f8877b4be46e2877a379e5e09bf12153d73d097a494b8423bd3",
+      "prompt_sha256": "c8020bc8d0c854ad802b9c9e641902784e2be71f7e9356be20e943ba3b281464",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-candidate-review-consistency.md",
+      "sha256": "45b009e93083cc1cdce31d86ef0a00a9d609871f30ef96ca68212a47af3debc2",
+      "prompt_sha256": "ac07edb9c42b82ceaef9bad50000094a5683a07aa1915037f510383a253dacb2",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-final-freshness.md",
+      "sha256": "2e8078e90e2649dbac65f22f9f4780362adbed76191415e2bdddaa652d0bca3c",
+      "prompt_sha256": "dd6c57fb76f720eb6b74a45fa72ed509a5c2e974d32ad9d899c22b9e69ee23ee",
+      "local_matches": true,
+      "target_matches": true
+    },
+    {
+      "kind": "response_and_prompt",
+      "path": "tests/scenarios/transcripts/2026-10-14-issue31-final-review-consistency.md",
+      "sha256": "eaa3ecdd096c969a902fd5d38847fdb24b8128bf3ede316cf9bae7631a5df4ca",
+      "prompt_sha256": "ac07edb9c42b82ceaef9bad50000094a5683a07aa1915037f510383a253dacb2",
+      "local_matches": true,
+      "target_matches": true
+    }
+  ],
+  "native_replay": {
+    "version": "issue-31-integrated-native-replay/v1",
+    "validator_receipt": "tests/scenarios/2026-10-13-checkpoint-review-followup-candidate.json",
+    "normalization": "Append observed empty PR closing metadata to prior complete fixtures; Project TEXT mutation gains option_id:null. Current examples already include this metadata; new fixtures are unchanged.",
+    "scope": "Disposable fixture validator, not a production acceptance engine. All 23 prior outcomes replayed against corrected current fields/known PR closing metadata; the historical contradictory text-Project mutator gains option_id:null. Project full-pagination/unavailable-body enforcement remains outside its proven constraints.",
+    "tests": [
+      {
+        "name": "complete invented account",
+        "input": "current-example:0",
+        "mutation": null,
+        "expected": "ACCEPTABLE",
+        "observed": "ACCEPTABLE",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "explicit partial missing-page/unavailable evidence",
+        "input": "current-example:1",
+        "mutation": null,
+        "expected": "DIAGNOSTIC",
+        "observed": "DIAGNOSTIC",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "explicit stale changed-source",
+        "input": "current-example:2",
+        "mutation": null,
+        "expected": "DIAGNOSTIC",
+        "observed": "DIAGNOSTIC",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "wrong integer type",
+        "input": "current-example:0",
+        "mutation": "d=>d.issues[0].number=\"101\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "$.issues[0].number type pos"
+        ]
+      },
+      {
+        "name": "unknown top field",
+        "input": "current-example:0",
+        "mutation": "d=>d.storage_commit=\"x\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "$ exact fields"
+        ]
+      },
+      {
+        "name": "duplicate criterion ID",
+        "input": "current-example:0",
+        "mutation": "d=>d.criteria.push({...d.criteria[0]})",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "$.criteria duplicates"
+        ]
+      },
+      {
+        "name": "unresolved requirement link",
+        "input": "current-example:0",
+        "mutation": "d=>d.criteria[0].requirement_ids=[\"missing\"]",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "example/governance-fixture#101:AC1 unresolved missing",
+          "current evaluation input"
+        ]
+      },
+      {
+        "name": "omitted terminal page",
+        "input": "current-example:0",
+        "mutation": "d=>{d.scope.collections[1].pages[0].cursor_out=\"page2\";d.scope.collections[1].expected_total=1;}",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "pagination subIssues"
+        ]
+      },
+      {
+        "name": "missing graph collection",
+        "input": "current-example:0",
+        "mutation": "d=>d.scope.collections.splice(2,1)",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "missing collection blockedBy"
+        ]
+      },
+      {
+        "name": "changed required source",
+        "input": "current-example:0",
+        "mutation": "d=>d.capture.rechecks[0].result=\"changed\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "source changed"
+        ]
+      },
+      {
+        "name": "missing recheck",
+        "input": "current-example:0",
+        "mutation": "d=>d.capture.rechecks.splice(0,1)",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "missing recheck example/governance-fixture#101"
+        ]
+      },
+      {
+        "name": "unavailable required evidence",
+        "input": "current-example:0",
+        "mutation": "d=>d.evidence[0].availability=\"unavailable\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "verification evidence",
+          "required material unavailable"
+        ]
+      },
+      {
+        "name": "unapproved authority revision",
+        "input": "current-example:0",
+        "mutation": "d=>d.requirements[0].authority_revision=\"wrong\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "authority revision"
+        ]
+      },
+      {
+        "name": "wrong verified delivery",
+        "input": "current-example:0",
+        "mutation": "d=>d.evaluations[0].verified_commit=\"c\".repeat(40)",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "current evaluation input",
+          "verification evidence"
+        ]
+      },
+      {
+        "name": "no review approval",
+        "input": "current-example:0",
+        "mutation": "d=>d.evaluations[0].review_approval_ids=[]",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "review approval"
+        ]
+      },
+      {
+        "name": "unmet contribution",
+        "input": "current-example:0",
+        "mutation": "d=>d.evaluations[0].remaining_contributions=[\"O2\"]",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "current evaluation input"
+        ]
+      },
+      {
+        "name": "integrated mode denied Project",
+        "input": "current-example:0",
+        "mutation": "d=>d.capture.mode=\"integrated\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "Project unavailable"
+        ]
+      },
+      {
+        "name": "contradictory Project projection",
+        "input": "current-example:0",
+        "mutation": "d=>{d.capture.mode=\"integrated\";d.project={id:\"P1\",url:null,owner:\"example\",number:1,availability:\"available\",field_definitions:[{id:\"F1\",name:\"Satisfaction\",type:\"TEXT\",options:[]}],items:[{id:\"I1\",content_id:d.issues[0].id,content_kind:\"issue\",title:null,updated_at:null,fields:[{field_id:\"F1\",text:\"UNKNOWN\",availability:\"available\"}]}],limitations:[]};d.capture.rechecks.push({kind:\"project\",id:\"P1\",initial_revision:\"p1\",final_revision:\"p1\",result:\"unchanged\",approval_ids:[],details:\"fixture\"});}",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "Project projection contradiction"
+        ]
+      },
+      {
+        "name": "nonempty-terminal-cursor",
+        "input": "historical-native-edge:0",
+        "mutation": null,
+        "expected": "ACCEPTABLE",
+        "observed": "ACCEPTABLE",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "denied-labels",
+        "input": "historical-native-edge:1",
+        "mutation": null,
+        "expected": "DIAGNOSTIC",
+        "observed": "DIAGNOSTIC",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "missing observed next page",
+        "input": "historical-native-edge:0",
+        "mutation": "d=>d.scope.collections.find(x=>x.name===\"labels\").pages.pop()",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "pagination labels",
+          "collection membership labels"
+        ]
+      },
+      {
+        "name": "broken cursor continuity",
+        "input": "historical-native-edge:0",
+        "mutation": "d=>d.scope.collections.find(x=>x.name===\"labels\").pages[1].cursor_in=\"wrong\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "cursor continuity"
+        ]
+      },
+      {
+        "name": "complete denied collection",
+        "input": "historical-native-edge:1",
+        "mutation": "d=>{d.capture.status=\"complete\";d.scope.complete=true;}",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "unavailable native collection diagnostic guard labels",
+          "pagination labels",
+          "collection membership labels",
+          "source unavailable"
+        ]
+      },
+      {
+        "name": "denied PR closing issue collection",
+        "input": "new-fixture:0",
+        "mutation": null,
+        "expected": "DIAGNOSTIC",
+        "observed": "DIAGNOSTIC",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "selected single-select option identity",
+        "input": "new-fixture:1",
+        "mutation": null,
+        "expected": "ACCEPTABLE",
+        "observed": "ACCEPTABLE",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "complete denied PR collection",
+        "input": "new-fixture:0",
+        "mutation": "d=>{d.capture.status=\"complete\";d.scope.complete=true;}",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "unavailable PR closing collection diagnostic guard",
+          "pagination closingIssuesReferences",
+          "PR closing collection membership",
+          "source unavailable"
+        ]
+      },
+      {
+        "name": "denied PR without limitation",
+        "input": "new-fixture:0",
+        "mutation": "d=>d.pull_requests[0].limitations=[]",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "unavailable PR closing collection diagnostic guard"
+        ]
+      },
+      {
+        "name": "denied PR without collection",
+        "input": "new-fixture:0",
+        "mutation": "d=>d.scope.collections=d.scope.collections.filter(x=>x.name!==\"closingIssuesReferences\")",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "unavailable PR closing collection diagnostic guard"
+        ]
+      },
+      {
+        "name": "denied PR without unavailable observation",
+        "input": "new-fixture:0",
+        "mutation": "d=>d.capture.rechecks=d.capture.rechecks.filter(x=>x.id!==d.pull_requests[0].id+\":closingIssuesReferences\")",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "unavailable PR closing collection diagnostic guard"
+        ]
+      },
+      {
+        "name": "missing PR closing terminal page",
+        "input": "new-fixture:1",
+        "mutation": "d=>d.scope.collections.find(x=>x.name===\"closingIssuesReferences\").pages=[]",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "pagination closingIssuesReferences"
+        ]
+      },
+      {
+        "name": "unknown selected option",
+        "input": "new-fixture:1",
+        "mutation": "d=>d.project.items[0].fields[0].option_id=\"NOT_OBSERVED\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "selected Project option identity"
+        ]
+      },
+      {
+        "name": "missing selected option slot",
+        "input": "new-fixture:1",
+        "mutation": "d=>delete d.project.items[0].fields[0].option_id",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "$.project.items[0].fields[0] exact fields",
+          "$.project.items[0].fields[0].option_id type id"
+        ]
+      },
+      {
+        "name": "selected option/display mismatch",
+        "input": "new-fixture:1",
+        "mutation": "d=>d.project.items[0].fields[0].text=\"Done\"",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "selected Project option identity"
+        ]
+      },
+      {
+        "name": "selected option without available name",
+        "input": "new-fixture:1",
+        "mutation": "d=>d.project.items[0].fields[0].text=null",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "selected Project option identity"
+        ]
+      },
+      {
+        "name": "observed unset single-select",
+        "input": "new-fixture:1",
+        "mutation": "d=>{d.project.items[0].fields[0].option_id=null;d.project.items[0].fields[0].text=null;}",
+        "expected": "ACCEPTABLE",
+        "observed": "ACCEPTABLE",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "text field has explicit null option",
+        "input": "new-fixture:1",
+        "mutation": "d=>{d.project.field_definitions[0].type=\"TEXT\";d.project.field_definitions[0].options=[];d.project.items[0].fields[0].option_id=null;}",
+        "expected": "ACCEPTABLE",
+        "observed": "ACCEPTABLE",
+        "result": "PASS",
+        "errors": []
+      },
+      {
+        "name": "text field cannot retain select option",
+        "input": "new-fixture:1",
+        "mutation": "d=>{d.project.field_definitions[0].type=\"TEXT\";d.project.field_definitions[0].options=[];}",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "option identity on non-select field"
+        ]
+      },
+      {
+        "name": "unavailable selection cannot be complete",
+        "input": "new-fixture:1",
+        "mutation": "d=>{d.project.items[0].fields[0].availability=\"unavailable\";d.project.items[0].fields[0].text=null;d.project.items[0].fields[0].option_id=null;}",
+        "expected": "REJECT",
+        "observed": "REJECT",
+        "result": "PASS",
+        "errors": [
+          "unavailable Project value"
+        ]
+      }
+    ],
+    "pass": 38,
+    "fail": 0
+  },
+  "criterion_assessment": [
+    {
+      "criterion": "D1",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D2",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D3",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D4",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D5",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D6",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D7",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    },
+    {
+      "criterion": "D8",
+      "result": "SATISFIED",
+      "scope": "Approved skills-only delivery at the recorded integration target; reconciled historical behavioral evidence, current integrity checks and native replay"
+    }
+  ],
+  "behavioral_evidence": {
+    "retained_non_freshness": 85,
+    "final_freshness": 8,
+    "final_focused": 5,
+    "total_scoped": 98,
+    "new_behavioral_executions_this_assessment": 0
+  },
+  "disposition": {
+    "github_mutated": false,
+    "issue_closed": false,
+    "publication": false
+  },
+  "limitations": [
+    "Not a new 98-assertion behavioral run",
+    "Historical governance behavior was evaluated with Superpowers 7.0.0; local 7.0.1 maintenance has separate scoped conformance evidence",
+    "No live full-graph Project capture or production recovery",
+    "No complete-stack or other-harness acceptance",
+    "Windows predecessor progress remains unknown",
+    "This evaluation remains local and uncommitted"
+  ]
+}

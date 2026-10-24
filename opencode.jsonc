@@ -1,0 +1,9 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Repository-scoped Superpowers install. Pinned to the current stable
+  // release; this file does not follow upstream's default branch and does not
+  // install gz-skills. SUPERPOWERS.md remains the tracked dependency record.
+  "plugins": ["superpowers@git+https://github.com/obra/superpowers.git#v7.0.1"],
+  // This repository's own skills only. Does not install gz-skills.
+  "skills": ["./skills"]
+}

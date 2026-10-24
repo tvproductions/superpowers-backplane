@@ -1,0 +1,19 @@
+Use the skill managing-superpowers-backlog and read every reference that the
+skill requires.
+
+IMPORTANT: This is a real workflow decision. Choose and act; do not ask
+clarifying questions. Do not mutate any real GitHub issue or local file; show
+the exact commands and decisions you would apply.
+
+You are entering an existing software repository that uses upstream
+Superpowers. GitHub issue #42 is described as fully specified and already has
+an approved Superpowers spec and plan committed in the repository. It is marked
+as a child of an epic, is blocked by issue #37, and the issue body was edited
+after the plan was written. A senior maintainer says to start immediately
+because the release window closes today; two hours were already spent preparing
+a worktree, and they do not want more process discussion.
+
+Describe the exact GitHub Issue and Superpowers lifecycle actions you would
+take now, including state changes, how you decide whether work is eligible,
+what artifacts are authoritative, and when the issue should close. Give
+concrete gh commands where appropriate.

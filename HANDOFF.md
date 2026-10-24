@@ -2,6 +2,28 @@
 
 ## Current state
 
+On 2026-10-24 the interrupted OpenCode/Codex maintenance was resumed in
+`/Users/jbabb/Documents/Devel/superpowers-backplane`, on `main` at
+`c6f0b4a518e3742053618a613d8d858f0e37e9cd`. The operator's recovered request
+authorized the Superpowers `v7.0.1` update, repository-only OpenCode setup,
+and README clarification of the separate gz-skills/Superpowers/Backplane roles.
+The clean independent checkout is now at
+`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; all five existing conformance
+checks and fresh local Codex discovery pass. OpenCode V2 reports the pinned
+repository package active at the same commit. See
+`tests/scenarios/2026-10-24-superpowers-v7.0.1-compatibility.md` for the exact
+evidence, recovery provenance, and limits. The maintenance files are local and
+uncommitted at this checkpoint; no publication is asserted. Issue #31 remains
+OPEN with `backplane:review` at `2026-10-13T07:27:56Z`; its separate read-only
+satisfaction assessment is now saved locally in
+`tests/scenarios/2026-10-24-issue-31-satisfaction.md` and its JSON receipt:
+D1–D8 are assessed SATISFIED at remote main `c6f0b4a`, with fresh 38/38 native
+replay, 15 matching source hashes, three matching evidence hashes and 30 matching
+prompt/response pairs. Historical behavioral results retain their original
+identities and limitations. Evaluation acceptance, publication and completed
+closure remain separate pending operations; no issue was changed. The October14 records below are
+historical context, including their then-current host paths and upstream version.
+
 On 2026-10-14 integrated verification began in the standalone local repository at
 `/Users/jeff/Documents/Code/superpowers-backplane`, on `main` at
 `a1eb10bbc174cfe7b0a80aed9411ef06fab3fcee`, matching live remote `main`,

@@ -49,3 +49,11 @@ Microsoft PowerShell v7.6.8 arm64 portable archive was downloaded from `PowerShe
 RED guide observation: the guide's final section says pinned update, rollback and uninstall instructions are pending #19. This was observed before any guide edit; existing install/setup blocks are parsed only, not executed again.
 
 Portable `pwsh -NoLogo -NoProfile` reports version `7.6.8`. All four existing guide PowerShell blocks were extracted verbatim and passed `[System.Management.Automation.Language.Parser]::ParseFile` with zero parse errors. No block was executed. This resolves the local parser prerequisite; the future lifecycle blocks still need actual replay.
+
+## Prepared fixture and publication boundary
+
+Local fixture F is `5e01704` on `test/issue-19-update-fixture`, directly based on B. Its exact delta is retained in `tests/scenarios/fixtures/issue-19-update.patch`: product versions `0.1.0` to `0.1.1` in the root manifest, Claude manifest and Claude marketplace, plus one README content marker. Canonical skills/references, guides, upstream and schema versions are unchanged. Strict plugin validation passes; pre-existing LICENSE/icon/README plugin-directory advisories remain separate from the strict verdict and are outside this fixture's scope. Fixture bytes are not on the recovery branch. No tag or release exists for the fixture and no push has occurred.
+
+The local B-pinned GitHub-source catalog is prepared under ignored scratch. Schema validation does not prove a hosted install/update. Task 1 remains incomplete pending authenticated fresh discovery and plan-link publication; Tasks 2–5 have not run under this recovery. Preparing F while external prerequisites are pending is independent preparation, not a task-order completion or a scored lifecycle pass.
+
+Proposed external changes for operator review: push `recovery/issue-19-native` to a same-named new remote branch, push `test/issue-19-update-fixture` to a same-named new remote branch, and replace only #19's `Plan: not yet created.` sentence with an immutable link to the approved recovery plan plus approval/method/consumed-revision provenance. Keep #19 designing; do not merge, close, tag, release or touch the other worktree. Retain the fixture branch until separately authorized cleanup.

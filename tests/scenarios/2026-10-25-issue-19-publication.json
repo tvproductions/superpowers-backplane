@@ -1,0 +1,31 @@
+{
+  "operation": "issue-19-approved-plan-publication",
+  "recovery_commit": "6903e064302e5ad30843ebcd5aa5561f67a2f287",
+  "fixture_commit": "5e01704fcdda13eefeeac52d8892da26e7164ffd",
+  "plan_blob": "9f8d251b13067da3ed9ae3d893fbc7a7bad5a850",
+  "remote_branches_verified": true,
+  "exact_issue_body_verified": true,
+  "preserved_fields": [
+    "blockedBy",
+    "blocking",
+    "closedByPullRequestsReferences",
+    "issueType",
+    "labels",
+    "number",
+    "parent",
+    "state",
+    "stateReason",
+    "subIssues",
+    "subIssuesSummary",
+    "title",
+    "url"
+  ],
+  "before_updatedAt": "2026-09-27T14:09:57Z",
+  "after_updatedAt": "2026-10-25T15:23:39Z",
+  "state": "OPEN",
+  "labels": [
+    "backplane:designing"
+  ],
+  "issue_url": "https://github.com/tvproductions/superpowers-backplane/issues/19",
+  "live_host_results": "NOT RUN: disposable profile unauthenticated"
+}

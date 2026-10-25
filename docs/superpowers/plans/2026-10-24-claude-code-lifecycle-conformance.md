@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Work item is issue #19, observed revision `2026-09-27T14:09:57Z`; re-read complete native state before each issue mutation.
-- Use the published Backplane source at `b0d702f919f3afdbede1710ec3ca109164523ff9` as the candidate unless the operator selects a newer reviewed revision.
+- Use the published Backplane source at `b0d702f8821d6d29184118410ec6ff2d8fb63438` as the candidate unless the operator selects a newer reviewed revision.
 - Use upstream Superpowers v7.0.1 at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` from `.agents/superpowers`; do not update or relocate upstream as a side effect.
 - Use a disposable Claude profile via `CLAUDE_CONFIG_DIR`; do not copy credentials and do not mutate the normal Claude profile.
 - Preserve unrelated marketplaces/plugins, user files, upstream state, repository history, and GitHub issue state across every operation.
@@ -63,9 +63,9 @@ Expected: an empty, disposable Claude profile exists; the normal Claude profile 
 
 In an unused temporary parent:
 - `gh repo clone tvproductions/superpowers-backplane <backplane-checkout>`
-- `git -C <backplane-checkout> checkout --detach b0d702f919f3afdbede1710ec3ca109164523ff9`
+- `git -C <backplane-checkout> checkout --detach b0d702f8821d6d29184118410ec6ff2d8fb63438`
 - Verify exact `tvproductions/superpowers-backplane` origin, HEAD, and clean status.
-- `gh api repos/tvproductions/superpowers-backplane/commits/b0d702f919f3afdbede1710ec3ca109164523ff9 --jq .sha`
+- `gh api repos/tvproductions/superpowers-backplane/commits/b0d702f8821d6d29184118410ec6ff2d8fb63438 --jq .sha`
 - `claude plugin validate --strict <backplane-checkout>`
 - Record SHA-256 values for `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `docs/installing-claude-code.md`, and both canonical `SKILL.md` files.
 
@@ -147,7 +147,7 @@ Expected: the update test starts at the recorded prior revision with no unrelate
 
 - [ ] **Step 4: Execute the pinned update**
 
-Use the new guide commands to move the same Backplane marketplace/plugin to `b0d702f919f3afdbede1710ec3ca109164523ff9`. Record source, plugin inventory, and installed package bytes/hashes.
+Use the new guide commands to move the same Backplane marketplace/plugin to `b0d702f8821d6d29184118410ec6ff2d8fb63438`. Record source, plugin inventory, and installed package bytes/hashes.
 
 Expected: the effective source/revision changes to the candidate; no unrelated marketplace/plugin changes.
 

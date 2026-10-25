@@ -2,6 +2,20 @@
 
 ## Current state
 
+On 2026-10-25 PR #36 integrated issue #19's reviewed Claude lifecycle/conformance
+work at `7d7ecac36f8dc74ce1a0895ab934468332f92f53`. Local main matches that
+delivery, whose tree exactly equals approved candidate `ade4e43`. Current tooling
+uses the ignored root `.venv` with uv-managed Python 3.14.9 and a tracked pin.
+AGENTS records starter consistency without circular formal adoption. Fresh
+integrated validation, exact remote/source blobs, current-delivery installed
+Claude discovery and preservation pass. See
+`tests/scenarios/2026-10-25-issue-19-satisfaction.md` and the integrated-verification
+receipt/transcript for exact scope and retained evidence. The operator approved
+publication, merge, integrated verification and closure. Native #19 closure is
+pending publication of this evaluation and a final full intake. #11 and release
+acceptance remain separate; no next issue has been selected. The earlier session
+handoffs below remain historical continuity, not current unfinished #31 work.
+
 End-of-day 2026-10-24 continuity is in the append-only
 [adoption-readiness handoff](docs/superpowers-backplane/handoffs/20261024T225444Z-adoption-readiness-after-issue-31.md).
 Invoke RESUME against that exact path on return. It preserves completed #31,

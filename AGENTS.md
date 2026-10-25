@@ -39,6 +39,20 @@
   pull requests, and closure relationships. Do not require GitHub Projects or
   introduce IssueOps.
 
+## Companion Starter Guidance
+
+- Use [gz-skills-first-starter](https://github.com/tvproductions/gz-skills-first-starter)
+  as an engineering consistency reference. Re-read relevant guidance when it
+  changes and reconcile applicable practices with this project's authorities.
+- Do not directly adopt the starter or bootstrap its bundle into Backplane:
+  the starter directs adopters to this project, so doing so would create a
+  circular adoption relationship. Do not claim formal starter conformance.
+- Apply useful practices through explicit Backplane-owned decisions, preserving
+  independent component ownership. Keep consuming-project workflows language-neutral;
+  this repository's Python/Astral tooling policy does not become an adopter requirement.
+- Record material differences and their rationale; do not silently import the
+  starter's runtime, packaging, release, or acceptance requirements.
+
 ## Superpowers Dependency
 
 - Use `.agents/superpowers` as the upstream Superpowers checkout when working

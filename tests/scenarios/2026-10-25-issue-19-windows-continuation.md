@@ -284,3 +284,14 @@ See `2026-10-25-issue-19-pre-review.md`, `2026-10-25-issue-19-final-guide.json`,
 observations, native snapshots, failed attempts, corrections and remaining gates.
 Whole-#19 review and final integration/closeout remain pending; #19 and #11 remain
 open. Fixture approval authorizes no #19 merge or release.
+
+The fresh whole-change reviewer evaluated `b0d702f..c1ba73e` and found one
+Important evidence gap: no unrelated same-marketplace entry had been tested.
+The single fix pass observed the missing-case negative control fail, then added
+an owned no-behavior sentinel in the same disposable marketplace, performed
+Backplane-only uninstall, and proved immediate exact catalog/registration/installed
+sentinel preservation plus protected-state equality. B and fresh three-skill
+discovery passed; the sentinel was removed natively and exact original catalog
+bytes restored. No product code changed. The review report/dispositions and
+shared-catalog receipt preserve this correction; the two historical whitespace
+minors remain explicitly deferred. Final #19 integration/closeout remains pending.

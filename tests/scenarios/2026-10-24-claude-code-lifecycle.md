@@ -1,9 +1,10 @@
-# Claude Code lifecycle preflight baseline for #19
+# Claude Code lifecycle evidence for #19
 
 ## Scope
 
-This file is the Task 1 baseline evidence shell for issue #19
-(`Verify Claude Code lifecycle and conformance`), observed 2026-10-24 in the
+This file is the issue #19 (`Verify Claude Code lifecycle and conformance`)
+lifecycle evidence file, begun as the Task 1 baseline shell and extended by
+the Task 2 repeat-install record below. Task 1 was observed 2026-10-24 in the
 verified worktree
 `/Users/jeff/.local/share/opencode/worktree/1fb07c/issue-19-claude-lifecycle`
 on `feat/issue-19-claude-lifecycle`, repository origin exactly
@@ -14,7 +15,7 @@ candidate-identity diagnosis below) and the resumed round after the
 candidate-revision ruling, at `2aa4ef0090011d68352e61e0004254d67a770987`
 (corrected plan) on top of the blocked evidence commit `0e3a048`. Issue #19
 is OPEN with exactly one lifecycle label, `backplane:designing`, at revision
-`2026-09-27T14:09:57Z`; no GitHub issue state was changed by this task.
+`2026-09-27T14:09:57Z`; no GitHub issue state was changed by Task 1.
 Upstream Superpowers is the clean `v7.0.1` checkout at `.agents/superpowers`
 (resolved at `/Users/jeff/Documents/Code/superpowers-backplane/.agents/superpowers`,
 the ignored independent checkout; the feature worktree does not materialize
@@ -24,11 +25,14 @@ ignored upstream), commit
 `/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-9f1f8fbf7049931c`,
 used only through `CLAUDE_CONFIG_DIR` for child commands.
 
-**No lifecycle result is claimed yet.** No install, repeat install, pinned
-update, rollback, Backplane-only uninstall, fresh-session discovery, or
-conformance behavior has been run or scored in this scenario. Every such
-check remains `UNKNOWN` until a later task records fresh host evidence. This
-file records only identities, preflight probes, and preservation.
+**Lifecycle results recorded so far.** After Task 1, none were: no install,
+repeat install, pinned update, rollback, Backplane-only uninstall,
+fresh-session discovery, or conformance behavior had been run or scored, and
+the file held only identities, preflight probes, and preservation. Task 2
+(below) now records the clean install and the repeat-install replay with
+preservation evidence for the disposable profile. Pinned update, rollback,
+Backplane-only uninstall, fresh-session discovery, and conformance behavior
+remain `UNKNOWN` until their tasks record fresh host evidence.
 
 ## Candidate revision provenance
 
@@ -172,25 +176,172 @@ selected candidate revision, and passes strict plugin validation. The
 clone is retained in place, still detached at the candidate, as the
 marketplace source input for Tasks 2–4.
 
+## Repeat install and preservation (Task 2)
+
+Observed 2026-10-24 local time (host ISO timestamps below print as
+2026-10-25T00:44Z UTC, the same instants), at feature-worktree HEAD
+`51c2e9c` on `feat/issue-19-claude-lifecycle`, using exactly the Task 1
+artifacts recorded above: the disposable profile as `CLAUDE_CONFIG_DIR` for
+every `claude` child command, and the pinned clone
+`/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-source-7b44fc2e7a0108a6/superpowers-backplane`
+as `<backplane-checkout>`. The profile stayed unauthenticated the whole
+round (`claude auth status --json` → `loggedIn: false`, `authMethod: none`,
+exit 1, re-verified after the last command): the local-directory clean
+install required no login and raised no confirmation prompt, so no
+noninteractive flag was used. The CLI's documented `-y/--yes` confirmation
+covers only marketplace-declared commands, which this plugin does not
+declare.
+
+Fresh pre-install verification matched the Task 1 baseline exactly:
+`claude plugin marketplace list --json` → `[]`, `claude plugin list --json`
+→ `[]`, the profile containing only `.claude.json` (SHA-256
+`0f3293ca1e106d183b48a408fe60fc8d18bf630eab004fb4ea565e09a0bd6204`,
+unchanged again after the last command) and its `backups/` copy, the pinned
+clone clean at `b0d702f8821d6d29184118410ec6ff2d8fb63438` with the exact
+`tvproductions/superpowers-backplane` origin, the normal-profile hashes
+equal to the baseline table above, the #19 intake digest equal to the
+baseline `7e15799de773555bfe2ac572dee5c1878c8d5f8fb014e1564e6a264e72c08dbe`,
+and `.superpowers/` absent at the main root, inside the upstream checkout,
+and in the feature worktree.
+
+### Clean install (Task 2 brief step 1)
+
+1. `claude plugin marketplace add <backplane-checkout>` →
+   `✔ Successfully added marketplace: superpowers-backplane (declared in
+   user settings)`, exit 0.
+2. `claude plugin install superpowers-backplane@superpowers-backplane
+   --scope user` → `✔ Successfully installed plugin:
+   superpowers-backplane@superpowers-backplane (scope: user)`, exit 0.
+3. `claude plugin list --json` → exactly one plugin, exit 0:
+
+| Field | Observed |
+|---|---|
+| `id` | `superpowers-backplane@superpowers-backplane` |
+| `version` | `0.1.0` |
+| `scope` | `user` |
+| `enabled` | `true` |
+| `projectEnabled` | `false` |
+| `installPath` | `<disposable-profile>/plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0` |
+| `readFromFolder` | `<backplane-checkout>` |
+| `folderVersion` | `0.1.0` |
+| `installedAt` = `lastUpdated` | `2026-10-25T00:44:35.337Z` |
+
+4. `claude plugin marketplace list --json` → exactly one marketplace, exit
+   0: `name` `superpowers-backplane`, `source` `directory`, `path` and
+   `installLocation` both `<backplane-checkout>`.
+
+Exactly one effective Backplane plugin and marketplace exist and no
+unrelated entry was created. The profile's `plugins/installed_plugins.json`
+holds the single key `superpowers-backplane@superpowers-backplane` (scope
+`user`, version `0.1.0`, `gitCommitSha`
+`b0d702f8821d6d29184118410ec6ff2d8fb63438`); `plugins/known_marketplaces.json`
+holds the single key `superpowers-backplane` (directory source at
+`<backplane-checkout>`); `settings.json` holds exactly one
+`extraKnownMarketplaces` entry and one `enabledPlugins` entry
+(`superpowers-backplane@superpowers-backplane: true`). The installed cache
+copy is the candidate: its `.claude-plugin/plugin.json`,
+`.claude-plugin/marketplace.json`, and both canonical `SKILL.md` SHA-256
+values equal the pinned file hashes in the Task 1 table above, and the
+cache directory's top-level entries match the clone's.
+
+### Replay (Task 2 brief step 2)
+
+The same two commands ran again, verbatim:
+
+- `claude plugin marketplace add <backplane-checkout>` →
+  `✔ Marketplace 'superpowers-backplane' already on disk — declared in user
+  settings`, exit 0.
+- `claude plugin install superpowers-backplane@superpowers-backplane
+  --scope user` → `✔ Plugin "superpowers-backplane@superpowers-backplane"
+  is already installed (scope: user) — it loads in place from
+  <backplane-checkout>, so edits there take effect at the next session
+  start or /reload-plugins`, exit 0.
+
+Both replays were idempotent: no confirmation prompt appeared, and the
+post-replay state remains one effective installation with no duplicate
+plugin ID or marketplace. `claude plugin list --json` and
+`claude plugin marketplace list --json` after the replay are byte-identical
+to the post-first-install outputs (SHA-256
+`7226fbb038d4f602a5fb0058991cbcec84ccb75441e3aeccf75c7b1eaded45dd` and
+`b1b769b8c4bd4da15b67034f98c057d8d6c2ad53c7d19ae9f566f18a83511aae`
+respectively: single entries, same `installedAt`). Config-file hashes
+across the replay:
+
+| File | After first install | After replay | Verdict |
+|---|---|---|---|
+| `installed_plugins.json` | `8dbbf7b791f5d94aa70255c3b110436dd43a3dfaa02f6d7bbd640ebb312b52a0` | same | unchanged |
+| `known_marketplaces.json` | `fbe5f779be03eafa610514422d37b72ed34ab953c20636f8084459ccfa6ba401` | same | unchanged |
+| `settings.json` | `431334b3ae4d7af6eb3f1b14367705e22291b0173a13863005af15a446d05a2f` | `890a2ccf20880233b4cbf75cc983794ffbf812c5cf2528aa15663be2b911b6f6` | host-forced re-serialization |
+
+The `settings.json` difference is exactly the anticipated volatile case:
+the host re-serialized the identical two top-level objects with their order
+swapped (`extraKnownMarketplaces` first after the install,
+`enabledPlugins` first after the replay). The semantic content is unchanged
+— the same single marketplace entry and the same single enabled-plugin
+entry, compared field-by-field — so the replay added, removed, or altered
+no config value.
+
+### Preservation verification (Task 2 brief step 3)
+
+Fresh after the replay, compared with the pre-install snapshot:
+
+- Installed plugin identity: before the task, none; after, exactly one —
+  `superpowers-backplane@superpowers-backplane` `0.1.0`, scope `user`,
+  `enabled` true, `gitCommitSha` `b0d702f8821d6d29184118410ec6ff2d8fb63438`.
+  This is the only install-state change.
+- Marketplace identity: before, none; after, exactly one —
+  `superpowers-backplane`, directory source at the pinned clone path.
+- Normal Claude profile: `settings.json`
+  `b6cfd9420f69fec8e5a56591820136da8e2e5dccd80939dfc37b85ef48c41581`,
+  `plugins/installed_plugins.json`
+  `3238f139f77c8a7dd90d3d1018862c9f4c3b99808e7d26c7ce0fee6f1557f507`,
+  `plugins/known_marketplaces.json`
+  `9cbdcf550a4ed248f5ee04cf02b5f371aaa278e30dce1de926c6e65a6c911b3e` —
+  identical before and after the whole task and equal to the Task 1
+  baseline values; the normal profile was not mutated.
+- Upstream checkout: HEAD `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`,
+  origin `https://github.com/obra/superpowers.git`, porcelain empty,
+  `v7.0.1` — unchanged; upstream was not updated or relocated.
+- Complete #19 native intake re-run from the worktree, exit 0: JSON
+  SHA-256 `7e15799de773555bfe2ac572dee5c1878c8d5f8fb014e1564e6a264e72c08dbe`,
+  byte-identical to the baseline digest; #19 remains OPEN with
+  `stateReason` empty, `issueType` null, labels exactly
+  `[backplane:designing]`, and `updatedAt` `2026-09-27T14:09:57Z`.
+- Pinned clone: HEAD unchanged at the candidate, porcelain empty; the
+  in-place marketplace source was read, not mutated.
+- `.superpowers/` remains absent at the main repository root, inside the
+  upstream checkout, and in the feature worktree; no write occurred there.
+- No credential was copied, read, or recorded; the disposable profile
+  remained unauthenticated throughout.
+
+Only the expected install state changed (the disposable profile's single
+Backplane plugin, marketplace, settings entries, and cache copy).
+Upstream, the normal Claude profile, the pinned clone, repository history,
+and GitHub issue state are unchanged.
+
 ## Preservation
 
-- GitHub: only read-only operations (`gh auth status`, `gh issue view`,
-  `gh repo clone`, `gh api` GETs); no issue, label, PR, release, or
-  repository mutation occurred. Issue #19 remains OPEN/`backplane:designing`
-  at `2026-09-27T14:09:57Z`.
+- GitHub: only read-only operations across both tasks (`gh auth status`,
+  `gh issue view`, `gh repo clone`, `gh api` GETs); no issue, label, PR,
+  release, or repository mutation occurred. Issue #19 remains
+  OPEN/`backplane:designing` at `2026-09-27T14:09:57Z`. The Task 2 install
+  operated through Claude Code's local-directory marketplace; this task's
+  only `gh` calls were the read-only `gh auth status` and `gh issue view`.
 - Upstream: only read commands ran against `.agents/superpowers`; its HEAD,
   origin, and clean status are unchanged, and it was not updated or
   relocated.
 - No write occurred under `.superpowers/` (verified absent at the main
   repository root, inside the upstream checkout, and in the feature
-  worktree), and no shipped upstream file was modified. No helper that
-  writes there was invoked.
-- Normal Claude profile unchanged (hash table above); the disposable
-  profile is isolated, still empty, and unauthenticated.
+  worktree, before and after every round), and no shipped upstream file was
+  modified. No helper that writes there was invoked.
+- Normal Claude profile unchanged (hash table above, identical across Tasks
+  1–2); the disposable profile is isolated and unauthenticated — it was
+  empty through Task 1 and now holds exactly the one Backplane installation
+  recorded in the Task 2 section above.
 - No credential value was copied or recorded at any point.
-- The feature worktree changes only the two evidence files named by the
-  task brief; `git status --porcelain=v1` was clean before each round's
-  edits.
+- The feature worktree changes only the evidence files named by the task
+  briefs (the Task 2 changeset is exactly the two files its brief names);
+  `git status --porcelain=v1` was clean before each round's edits.
 
 ## Disposition
 
@@ -200,5 +351,18 @@ identities, the corrected candidate
 and the pinned source verification recorded above. Baseline inputs
 produced for Tasks 2–6: the disposable profile path, the pinned clone path
 (detached at the candidate), and the five pinned-file SHA-256 values.
-Consistent with the plan, no lifecycle result is claimed yet, and no
-issue-state change, publication, release, or upstream mutation occurred.
+Consistent with the plan at that point, no lifecycle result was claimed
+yet, and no issue-state change, publication, release, or upstream
+mutation occurred in Task 1.
+
+Task 2 is complete: the guide's clean install path and its replay each
+produced and preserved exactly one effective Backplane plugin and
+marketplace — `superpowers-backplane@superpowers-backplane` `0.1.0`, user
+scope, enabled, at candidate `b0d702f8821d6d29184118410ec6ff2d8fb63438` —
+with the replay idempotent (no duplicate plugin ID or marketplace, no
+confirmation prompt), only the expected install state changed, and
+upstream, normal-profile, clone, repository, and issue state unchanged.
+The disposable profile now holds the installed candidate; per the plan,
+Task 3 uses a fresh disposable profile or removes this candidate through
+the host's supported uninstall command first. No issue-state change,
+publication, release, or upstream mutation occurred in Task 2.

@@ -258,3 +258,29 @@ The exact reviewed #34 contribution remains on its preserved local branch at
 must revalidate their live states against the now-current 7.0.1 input. No
 Backplane manifest version or release was changed by this maintenance; the
 test-only 0.1.1 source stays outside the release contribution.
+
+## Resumed fixture integration and final review preparation
+
+The operator explicitly approved the presented #34 PR, merge after fresh checks,
+integrated-byte verification and closure. PR #35 merged the exact reviewed fixture
+head into main at `29efac8c41c8978650fe492b6111293ecb28302d`. Exact guide/plan
+blobs and all four unchanged parsed legacy blocks passed on that target. Fresh
+Claude sessions observed actual resume, review submission and verified completion.
+#34 is CLOSED/COMPLETED, only `documentation`, revision `2026-10-25T17:57:19Z`.
+The earlier local-only/pending statements above are historical, now superseded.
+The unused Git Data API publication proposal was never executed; normal authorized
+sync published the original fixture history.
+
+The verified contribution is incorporated into recovery at `737af3f`. Final guide
+verification compiled all nine unchanged Python blocks, parsed the four unchanged
+legacy blocks, passed strict package validation, Ruff, ty and five regressions.
+Fresh actual three-skill discovery and two preservation snapshots passed; package
+and canonical skill inputs still equal B. The full 7.0.1 executable-block replay
+is explicitly retained by exact input comparison. Two historical transcript-only
+whitespace exceptions are disclosed rather than represented as a full clean check.
+
+See `2026-10-25-issue-19-pre-review.md`, `2026-10-25-issue-19-final-guide.json`,
+`2026-10-25-issue-19-fixture-closeout.json` and their transcripts for exact scope,
+observations, native snapshots, failed attempts, corrections and remaining gates.
+Whole-#19 review and final integration/closeout remain pending; #19 and #11 remain
+open. Fixture approval authorizes no #19 merge or release.

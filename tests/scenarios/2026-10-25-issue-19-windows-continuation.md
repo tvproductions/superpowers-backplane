@@ -295,3 +295,14 @@ discovery passed; the sentinel was removed natively and exact original catalog
 bytes restored. No product code changed. The review report/dispositions and
 shared-catalog receipt preserve this correction; the two historical whitespace
 minors remain explicitly deferred. Final #19 integration/closeout remains pending.
+
+The operator then required starter-consistent Python 3.14 for this repository's
+environment. The new ignored root `.venv` and tracked `.python-version` select
+uv-managed CPython 3.14.9. AGENTS records the family and commands. Five regression
+tests, Ruff, ty and strict native validation passed on that environment. A separate
+full nine-block lifecycle replay with ten snapshots and five fresh discovery
+sessions passed on 3.14.9, restoring exact B and protected state. See the Python
+3.14 tooling record and separate replay receipt/transcript. Earlier 3.13 evidence
+remains historical; this creates no consumer runtime requirement or starter
+adoption. Existing tool versions were retained; latest-tool freshness remains
+outside this interpreter-only maintenance.

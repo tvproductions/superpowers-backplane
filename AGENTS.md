@@ -29,6 +29,11 @@
   strictly and thoroughly for all Python needs: `uv` for Python versions,
   environments, dependencies, tool installation, and execution; Ruff for
   linting and formatting; and `ty` for type checking.
+- Use uv-managed Python 3.14 for this repository's tooling and `.venv`.
+  `.python-version` records the verified patch; keep it and the environment
+  aligned. Preserve historical verification records at their original runtimes.
+  Create the environment with `uv venv --managed-python .venv` and execute
+  Python through `uv run --no-project python` from this repository root.
 - Keep orchestration portable across Windows, macOS, and Linux: use Python
   paths, explicit text encodings, and shell-free subprocess argument lists.
   Limit shell-specific code to adapters for an explicitly tested shell surface.

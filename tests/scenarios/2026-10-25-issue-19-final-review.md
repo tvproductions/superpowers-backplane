@@ -85,3 +85,11 @@ adoption because its adopter guidance points back to Backplane. AGENTS now recor
 that relationship, applicable-guidance review and explicit discrepancy handling.
 This bounded instruction clarification was made after the review target; it changes
 no package, canonical skill, guide executable block or tested lifecycle input.
+
+The operator subsequently required Python 3.14 for this repository's environment.
+The new uv-managed `.venv` and pin are 3.14.9. Five regression tests, Ruff, ty,
+strict validation and a separate full nine-block lifecycle replay (ten preservation
+snapshots, five fresh discovery sessions, restored B) passed on that interpreter.
+This post-review input change has fresh affected-seam evidence; it is not a second
+whole-change review or formal starter adoption. See the separate Python 3.14
+tooling record and exact replay receipt/transcript.

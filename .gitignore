@@ -5,3 +5,4 @@
 .worktrees/
 
 .sp-bp/work/
+.venv/

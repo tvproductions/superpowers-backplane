@@ -1,0 +1,2466 @@
+{
+  "static": {
+    "result": "PASS",
+    "head": "737af3f01bba8c5dd0e200cba1f8fa66655151fc",
+    "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+    "python_blocks": 9,
+    "python_unchanged_from": "0bbd5821cb751afc8dfdfac8c6812007d6fb63a2",
+    "powershell_blocks": 4,
+    "powershell_parse_errors": 0,
+    "fixture_paragraph": "exact reviewed bytes once",
+    "retained_replay": "tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.json; unchanged executable blocks and installed B/package inputs"
+  },
+  "discovery": {
+    "row": "final-guide",
+    "session": "45cb8ac5-d818-43d1-916d-0fc7e8ae17bc",
+    "skills": [
+      "superpowers:using-superpowers",
+      "superpowers-backplane:managing-superpowers-backlog",
+      "superpowers-backplane:managing-superpowers-handoffs"
+    ],
+    "result": "I loaded all three skills, one at a time and in the order you gave. None was missing.\n\n| # | Skill | Loaded package root (base directory the harness reported) |\n|---|---|---|\n| 1 | `superpowers:using-superpowers` | `U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers` |\n| 2 | `superpowers-backplane:managing-superpowers-backlog` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog` |\n| 3 | `superpowers-backplane:managing-superpowers-handoffs` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-handoffs` |\n\n- **Where they come from:** `using-superpowers` loaded from the upstream checkout at `.agents\\superpowers`. The two Backplane skills loaded from the isolated profile's plugin cache, `superpowers-backplane` version `0.1.0`.\n- **What I did:** I only loaded the skills. I didn't read any references the skills point to, set anything up, create or resume a handoff, take in or change any issue, or run any GitHub, Git or file command. I created no files.",
+    "absent": false
+  },
+  "before": {
+    "row": "final-guide-before-discovery",
+    "plugins": [
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "installedAt": "2026-10-25T17:33:51.096Z",
+        "lastUpdated": "2026-10-25T17:33:51.096Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "superpowers@superpowers-dev",
+        "version": "7.0.1",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "folderVersion": "7.0.1",
+        "installedAt": "2026-10-25T16:16:00.363Z",
+        "lastUpdated": "2026-10-25T17:26:50.846Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\synced\\5be94afe-931f-4e50-9eb7-2c854097b334_977856c7-71a7-4075-bc14-9b42ecb2650e\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\catalog",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\catalog"
+      },
+      {
+        "name": "superpowers-dev",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers"
+      }
+    ],
+    "backplaneFiles": [
+      {
+        "path": ".claude-plugin/marketplace.json",
+        "blob": "b049265ec49dd63c33a6e765e318a4ed11e7fa81",
+        "sha256": "E9903B166D7FE302A51280A75D613D019A8945D8BEE23A77819BB2E2AE839DA1"
+      },
+      {
+        "path": ".claude-plugin/plugin.json",
+        "blob": "4cb0cea23dc3ec006c35d8323132a35117a15e87",
+        "sha256": "32BBD2859083522CF3FC040B45864A1DE6FC1FCD370C5BF30C21F87086486565"
+      },
+      {
+        "path": "README.md",
+        "blob": "18ac59ddb1b742181a13c90a177812250849682e",
+        "sha256": "210AAABEC156FAED028E91FBBA8D97972BD295A4DF4F0DDF1A8FA13E06344EAE"
+      },
+      {
+        "path": "plugin.json",
+        "blob": "07f60531ddd80c8c8522a38fd68b6f93a7cc261c",
+        "sha256": "BCD8B9203F102392D3DF62193F74D7040D6386537439560F96BF9E5AB381003E"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/SKILL.md",
+        "blob": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+        "sha256": "168D5DFFA43E89FAE7249859F5758F3A46E53F03EA72E9BF1686983D49808F16"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/agents/openai.yaml",
+        "blob": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45",
+        "sha256": "925CFDC40503F81F360A824F885B613A9528DEBADBBE1563EFFBC743BD2B329A"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json",
+        "blob": "8dc749345cc79561deb1b63384e8db11c547bada",
+        "sha256": "6AE5597EF477291CD06444BCBC1F45BCA2B5FEBE082B977CB0767DFD765AED52"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-format.md",
+        "blob": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad",
+        "sha256": "BF1D58572A2EDAA70F3B4E3487719C209B239BC93DA5A98319E0737C4069D53C"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json",
+        "blob": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6",
+        "sha256": "43082DB0C491A611A1A1FE2508AE9E119A01D5DFF85DFAC0FF4DFCAD78C39F0B"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json",
+        "blob": "ffc5909d66f519fa1704482171ed90ac7d09b8b3",
+        "sha256": "89E971568EBE0C884B19312D43FCE55B0D370383FA7776C78218D62331645954"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-state-template.md",
+        "blob": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9",
+        "sha256": "EC4459357EC644AA8434BD04582D351BE63614438FC0AF898DC477286F32EE8C"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/github-issue-contract.md",
+        "blob": "f0c3d2e375397d57d80a937f860a286f4d64231f",
+        "sha256": "15B1C2F68BA881BA4B6BBA297DF03AC6F9CAD3CA93FEC748548503FCA35F69A5"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/installing-superpowers.md",
+        "blob": "f80951f3a0d3aaca5e7040731e669c374ec0ad96",
+        "sha256": "50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/pr-completion.md",
+        "blob": "6a58ee6b1acaab7b4d320cc6093b9f58477333ad",
+        "sha256": "28B75E0EC4E7D69E9AF21812B1E3A079346D078124596F2547E3A2CD5E411F9C"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/product-decomposition.md",
+        "blob": "4d917436e16bca9d39abf5e040680673afa68e16",
+        "sha256": "5A8C5B0A99F4C0D27F316E4E7111E15C508350CF01EE9241453F21F1FD843A6A"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/repository-checkpoint.md",
+        "blob": "351811b336fb47f648e0ef1c0dacb01118e0bc0d",
+        "sha256": "AF763C0BDB5CAAF2EF4355D8E5837CF193FE86753F97083FF36898ECAEA6A00D"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/superpowers-binding.md",
+        "blob": "a196461e4119aeee25abefbb7bfb8ef1ca8661bd",
+        "sha256": "641C3F3BF07A77BB6A8B175EB487F8ED6361B54B19D366C17072620A8058E231"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/SKILL.md",
+        "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+        "sha256": "A6052755128BE9C7D268D71241DD389B9BF1C720834E47E61CBF9535F4CA92DE"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/agents/openai.yaml",
+        "blob": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6",
+        "sha256": "A2FF1772C418BB1C52EB917E5747BCBE40E86B636CEE1BD66F6E5A27BF62D07E"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/references/handoff-contract.md",
+        "blob": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902",
+        "sha256": "D706780BCE579E3806D5534E99C1508BE3900930A6B450C7E6C5C7D3CEE2DD98"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/references/resume-assessment.md",
+        "blob": "3ac6ecac93a5997a97811ab0fc5945009a874e59",
+        "sha256": "0B8D963B830D79B831FCBB0CD7020F18606AB44872896D448763FC4368B633ED"
+      }
+    ],
+    "preservation": {
+      "normalProfile": [
+        {
+          "path": "settings.json",
+          "sha256": "3351CB95B05E564612260F2A919076A7AC95FAD172F52E92A10825A5ED16C0C9"
+        },
+        {
+          "path": "plugins/installed_plugins.json",
+          "sha256": "4DB82BE992AC09DB3DB0908D0ABE29E477D99281893725A21BEC35B0CA32D01C"
+        },
+        {
+          "path": "plugins/known_marketplaces.json",
+          "sha256": "A1E541251C7EE63BF159F7C8E60992D90FD0DDE31EF3C2A584DB5581F55FD2CD"
+        }
+      ],
+      "upstreamRegistry": [
+        {
+          "scope": "user",
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1",
+          "version": "7.0.1",
+          "installedAt": "2026-10-25T16:16:00.363Z",
+          "lastUpdated": "2026-10-25T17:26:50.846Z",
+          "gitCommitSha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+        }
+      ],
+      "upstreamMarketplace": [
+        {
+          "name": "superpowers-dev",
+          "source": "directory",
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+          "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers"
+        }
+      ],
+      "upstreamFiles": [
+        {
+          "path": ".agents/plugins/marketplace.json",
+          "sha256": "2B94116C190896480E5054222A744E375976F8AE5BDB66FF0AB6B348DFAD4182"
+        },
+        {
+          "path": ".antigravity-plugin/plugin.json",
+          "sha256": "59D3191313F359668F608C2A3951FAEB7717EE60F9C5FC740002F8A534F2DA75"
+        },
+        {
+          "path": ".claude-plugin/marketplace.json",
+          "sha256": "AA23337D43302FFFA00927F3700205E92B6C09B79DFE4A13BF66B7B15122604A"
+        },
+        {
+          "path": ".claude-plugin/plugin.json",
+          "sha256": "FA3B15088F102C31B7CF1ABD4D329FD50D76A99222083638AAB810D81930B162"
+        },
+        {
+          "path": ".codex-plugin/plugin.json",
+          "sha256": "FEF198CDBCAA5544E4244FF74CB83A2A797D18C9CFB9AF26A18418206BB806C3"
+        },
+        {
+          "path": ".cursor-plugin/plugin.json",
+          "sha256": "4F0755B6150BF762C1D8FB2F63BD323BEA020E6CD11F9F1D7C68B69FF690CF99"
+        },
+        {
+          "path": ".devin-plugin/plugin.json",
+          "sha256": "EE1269C4D4325006FA590FA8CCB20EA302CD11992363C3BC9BC4AC62A2D4792A"
+        },
+        {
+          "path": ".gitattributes",
+          "sha256": "4702B23E09AFAD9638C184C8900B31AF635673BA439C265ECC3D341EFB54EAF8"
+        },
+        {
+          "path": ".github/FUNDING.yml",
+          "sha256": "2F9CDDA7B1F3EA4BE28BBCC3444C2C6512D7739589E6C5E72FD4F95950D3E7D4"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+          "sha256": "C766D3023F9A12280019055997AD2424887778D9B701B4118EA86A7FBF1F7FDB"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/config.yml",
+          "sha256": "E955D428A9AC46ED35F407B6532D74D1DADE217D89D9A4C7F6B05B72872A004A"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+          "sha256": "A7AAC80C9DF2E46FCE9A3C89A6E9E73E8D81E6DE311DBD634ED9D5DFACB0BDC8"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/platform_support.md",
+          "sha256": "19F6D78322BF53B62AC8D7BAF117492DE3BBFAE80851657C24C102980EA2AA26"
+        },
+        {
+          "path": ".github/PULL_REQUEST_TEMPLATE.md",
+          "sha256": "D837F95474FAFB23298BB6E295409ECC522D4C4DB6A2E1EFF955BBFB7A4A40D9"
+        },
+        {
+          "path": ".gitignore",
+          "sha256": "30B79670D7359590A4F1798E99112D9298D8EED889042ABA2EE9A1722DC06EBB"
+        },
+        {
+          "path": ".hermes-plugin/__init__.py",
+          "sha256": "BCD2EDB43FDA557CA88B44DF80781CF760ADC21888B49D2CF9E3A6ADD7733B29"
+        },
+        {
+          "path": ".hermes-plugin/plugin.yaml",
+          "sha256": "956C7257FA4549A00D6501C2B81EA43805EB1F26B3A2CFD60920751CE3C63FE2"
+        },
+        {
+          "path": ".kimi-plugin/plugin.json",
+          "sha256": "40AF10480F1C943386C8BB1A1DA4C5349262D162818BB2E561FC2C4C62730F92"
+        },
+        {
+          "path": ".muse-plugin/marketplace.json",
+          "sha256": "8107646E9DEDC1AEA1AAD369DA66A1BA30E1F5FAA53AB840E928A7E8AC4A7701"
+        },
+        {
+          "path": ".muse-plugin/plugin.json",
+          "sha256": "901B5B2FCD5AA32F904F5659F1F8199CB8D4DB9635E465649A775FA658AC6C1C"
+        },
+        {
+          "path": ".opencode/INSTALL.md",
+          "sha256": "0594F252048CF87E98D56FAA876B7F1C3D4AE1119CF8FC77BBF5A5B63729296F"
+        },
+        {
+          "path": ".opencode/plugins/superpowers.js",
+          "sha256": "C979FE5A9FD6FDDC9BC9730B34B25989F9D53939EED7D594C4564F6E47495F26"
+        },
+        {
+          "path": ".pi/extensions/superpowers.ts",
+          "sha256": "39C27000C047F8A1399A76E032E4CD239D7BDB0BE168A121F46A2AC719DEAAE0"
+        },
+        {
+          "path": ".pre-commit-config.yaml",
+          "sha256": "73070DFDDBCB1E94980A2E7172532E5D6403E44AA3F30EF5DE30306B77684F32"
+        },
+        {
+          "path": ".version-bump.json",
+          "sha256": "CB4A788A2C54B06B798731AA40D929611BD6290E9C09463DAD97F4F84ADC6761"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "3D7C31B2ED1592D0816E436A90549C8AF5829627BCB663FE1C886A30F427CABE"
+        },
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "sha256": "5604DB48BB38684DF7B0816CC2A8B2659A9C7EFCFB2FA17936E6B16B1EC79316"
+        },
+        {
+          "path": "GEMINI.md",
+          "sha256": "0823DA8B7277F8B623746D57C0BEE75FDA02E4C832FE57843E644D0FE633ABBC"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "A37E0E9697144819E1D965176AC4AE5BC3FA02D11E7812036BBCADF6DAFE2400"
+        },
+        {
+          "path": "README.md",
+          "sha256": "79F29F50C735862D2E304EA547B4C9AA67D9DB6909FF6FB7B5EA922D7BCBC3E7"
+        },
+        {
+          "path": "RELEASE-NOTES.md",
+          "sha256": "7340C58689FD50B55010767BC2714D944AABCAF4CCDEEB8E6BE4452516DB669B"
+        },
+        {
+          "path": "assets/antigravity-logo.png",
+          "sha256": "D9EB1F1893E686DE4AFC7A8305D1E7A125FDF9DF3741A28B2AA0999005E60A3A"
+        },
+        {
+          "path": "assets/app-icon.png",
+          "sha256": "B7477EB39B5109617FE37E51DD65D8BDD8DFF6C40FDA49ADFBC21EEC445777EE"
+        },
+        {
+          "path": "assets/superpowers-small.svg",
+          "sha256": "54A632D9EE6197CCBC10D43D42217E23D08375BEA63BA8EB4B6AF757C1535038"
+        },
+        {
+          "path": "docs/README.kimi.md",
+          "sha256": "915B112731BBCB635885ED1C5F24A36B43248BC18689FA253BB4F89C937C6585"
+        },
+        {
+          "path": "docs/README.opencode.md",
+          "sha256": "17AE31AE43F88EF40FD4B5DCB03BD9AD761FED46F4A7E1697FB824433C105433"
+        },
+        {
+          "path": "docs/plans/2025-11-22-opencode-support-design.md",
+          "sha256": "4688CB2E4BAFA7E6124DD811BE57C8873BFB4B8CCCB95DDBD7032557A9CFD10B"
+        },
+        {
+          "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+          "sha256": "2CC68CC29EE1174E13A65739B004F2346911A0D89A20744930F9F5B81963B4F3"
+        },
+        {
+          "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+          "sha256": "CCE0B2E951209AC7D555FCBACFC858D8069B4036019D44DD95BB4334AFAF2E65"
+        },
+        {
+          "path": "docs/plans/2026-01-17-visual-brainstorming.md",
+          "sha256": "2FF9C06D8C7CF650BECB588D74507C5681C55844C61E21160A290CBE26D41CA4"
+        },
+        {
+          "path": "docs/porting-to-a-new-harness.md",
+          "sha256": "F30E91289A3F4A11CE529B67ECC081E03BE1D1D906628D645618E8129E83F519"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-01-22-document-review-system-design.md",
+          "sha256": "19DD839168B9E4A072985E8941AA3AE7CF9101357111620755D50DBEB1BEA04B"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-02-19-visual-brainstorming-refactor-design.md",
+          "sha256": "F27D0F9C33CC4F34101FD676D48E73D6259E6CD4E1B3ADC477EA81F4C7557AF7"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-03-11-zero-dep-brainstorm-server-design.md",
+          "sha256": "8F29BAC7D4DF2B51062C005FE4D591140F1DA3AB2030B28537DF6F964637B9E9"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-03-23-codex-app-compatibility-design.md",
+          "sha256": "F351216F0B8ABB5F08A9209D71EC3C218C79B1BA9D6A1C68AEC990EF00E31A53"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-04-06-worktree-rototill-design.md",
+          "sha256": "757CE61BBCD16DCB8F61FA69778CA7A3B1D26F7A11A0FCEA3D302FD99A52EBAE"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-05-platform-neutral-config-refs-design.md",
+          "sha256": "7A3C5E5FB77A3F8A500E9406283653CFEE5EDF1B98E58D5F267C5F21905EEE19"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-05-platform-neutral-prose-design.md",
+          "sha256": "D55FA30A3B1422F8364A81F49C755ADA9CC792B2CC10193B1DBD43C551918C19"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-05-platform-neutral-readme-design.md",
+          "sha256": "63EB346415386C6850832F4B7414D03570A033EAF37DE0B60D2EC4834169896E"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-06-lift-drill-into-evals-design.md",
+          "sha256": "FAC3785F6F779BD899A6E93BCD60A934B4946CE4F7E8B6129D7910979650A6A1"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-09-sdd-task-scoped-review-dispatch-design.md",
+          "sha256": "08B6B77BE0D3B95E1D19A3DC320B93BBA52917CA9BEB0084FD74ECD75C015B59"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-10-positive-instruction-redesign-design.md",
+          "sha256": "3A87B9E873728A3A4331437EB90F9FC5F4C9D7D0B88A931CCE2BC3BDA041B68B"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-10-strict-cost-sdd-design.md",
+          "sha256": "E8865D184479FFD4F2FE2C3072BF6A2B70179BBB4565CD6CEFCBCB127C9F9B28"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-10-visual-companion-auth-hardening-design.md",
+          "sha256": "8D97D0384C61C0400FB67429A4384AD989BDC11953CCE160069C368AC1F7E362"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-11-visual-companion-final-hardening-fixup-design.md",
+          "sha256": "78C4FBC2B609B1FE3CA0D7ABA0F4D800511BAF069355D25B37DA5CF957DC0E7C"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-06-sdd-plan-scoped-workspace-eval-results.md",
+          "sha256": "C4D2F3F086648EE6B949FD0ED999DD7B0A3A8D45BA290B2024389C66B2ED95B7"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-06-sdd-plan-scoped-workspace.md",
+          "sha256": "301328CB8DEC833DC35E05E90B4C10A6E67EBD915B33A3A5D34F83927094815D"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-15-sdd-fix-loop-redesign-design.md",
+          "sha256": "9ED33FE2821FD9D61E198C03E0377A9151294737A6EA34074637C1EEF98C1A06"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-30-codex-efficiency-fixes-design.md",
+          "sha256": "6A6F81DCEA03EBB8FFA710536FC92FAAB285C7BC894430C3348EB0BFA3FEA926"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-08-05-hermes-version-bump-wiring-design.md",
+          "sha256": "F649E3AFBD3A14DF4C1AC5BD1942FFB4846129836F20B5F2AA3263FD3C19ED69"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-08-27-diagnosing-superpowers-design.md",
+          "sha256": "396A4951CDA08633501DEB638A77961A638560441B7FDE53FB43FC1A6497D0BF"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-10-05-brainstorming-rebuild-design.md",
+          "sha256": "A15A0CEB2DF039469EA15B8F66D001782E1B2C1D0690C0891070AC11389870A3"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-10-06-antigravity-marketplace-design.md",
+          "sha256": "DB4B3E15709B9CE2B0C40A59C590A5F63AE551B28F6A1104DF3306D1D542AB1D"
+        },
+        {
+          "path": "docs/testing.md",
+          "sha256": "2959880663BE4ABECBCF11331E64E435CFADFFAE2C9E2FB24EB5509224F51F30"
+        },
+        {
+          "path": "docs/windows/polyglot-hooks.md",
+          "sha256": "2DDF6E3DBA3DE202FE5BCA3D6EA26F308A0A27BE8E785D10842F26CFED2F644B"
+        },
+        {
+          "path": "gemini-extension.json",
+          "sha256": "8B7E69416536746B5948F49979FB34448C85FA10AABBDC9C6F4C2F4DED5FA985"
+        },
+        {
+          "path": "hooks/hooks-cursor.json",
+          "sha256": "53D8CEB3FF5D8BB1C4F283F238CC868B8C1AF22E40A3AC30F6D6E4173EFFEFBD"
+        },
+        {
+          "path": "hooks/hooks.json",
+          "sha256": "47FD72CC8BEDF31C72702B35B4ED7BAB670294D658C4CE518330337525A3798B"
+        },
+        {
+          "path": "hooks/run-hook.cmd",
+          "sha256": "D1FCECFE19DF2D083994803F73417710F745BD96C0938F594F87096005B1E403"
+        },
+        {
+          "path": "hooks/session-start",
+          "sha256": "5C15E62A90ED13AD8E4B3561148C54C26C6EE28B41EC3A55A241F68B400D886D"
+        },
+        {
+          "path": "index.js",
+          "sha256": "F0132FD5339BEFEB99BA903B1619FD9530969E5B4A1EA8CECF0B0A7F0213A099"
+        },
+        {
+          "path": "package.json",
+          "sha256": "B4CA961CE1AEAD5D08E40507B2FCA8C04C61DEA054866BAC92259308D24527E3"
+        },
+        {
+          "path": "scripts/bump-version.sh",
+          "sha256": "76DC971D2BB5D8B322EEB89B1D181F983B37F169A92BDF9883517FC746F657E8"
+        },
+        {
+          "path": "scripts/lint-shell.sh",
+          "sha256": "AA34CC2DAD4B130231BCF21FDD18F3F91E8FD7AB80D88A82A13E1395F32756F8"
+        },
+        {
+          "path": "scripts/package-codex-plugin.sh",
+          "sha256": "2541617B86519273428D12D18A5F7EC852AC39CFDEC74622C01CE71A504BB80D"
+        },
+        {
+          "path": "scripts/render-antigravity-logo.sh",
+          "sha256": "48A8D329A7E048F5DBA229BDB688F71BEA7C9FEAA1F139176D693CED4ECCB9DA"
+        },
+        {
+          "path": "scripts/sync-to-codex-plugin.sh",
+          "sha256": "90B2117068F55FA095960D1F2C60C389A1B3131958BD132617AABDEA49B52EC5"
+        },
+        {
+          "path": "skills/brainstorming/SKILL.md",
+          "sha256": "61A7EF918652108C76A3FD01E02DD92D39996C6B46D4CB2819CBD03F6C45E46A"
+        },
+        {
+          "path": "skills/brainstorming/builder-check-prompt.md",
+          "sha256": "36D51A4723D6F0A3CE5811A0EA3B3A8424F07533947E1355F5D8CB8CCE40C55E"
+        },
+        {
+          "path": "skills/brainstorming/scripts/frame-template.html",
+          "sha256": "6A8A4E58BD6A44B904E2E3C57DE774481D909204597E1498DE53F1B2FECC4C4E"
+        },
+        {
+          "path": "skills/brainstorming/scripts/helper.js",
+          "sha256": "43C6D69954A46EC34A2A262BCC62A9A7E83E839C739F199CB72646D397C686E3"
+        },
+        {
+          "path": "skills/brainstorming/scripts/server.cjs",
+          "sha256": "763ABF96510E0B892A1141397B31AA82EF900CF87ED34DDE94BC8782BAF4A7CA"
+        },
+        {
+          "path": "skills/brainstorming/scripts/start-server.sh",
+          "sha256": "A4E5AE84275BCAACD2F84345AFEABE59CF7B00BA080E123DA7CC1FB226F12847"
+        },
+        {
+          "path": "skills/brainstorming/scripts/stop-server.sh",
+          "sha256": "0B5CCBBD57F62D3ED88993F7940B5EE0E5C0FC9B21C550C623DA4F6292E47DAF"
+        },
+        {
+          "path": "skills/brainstorming/visual-companion.md",
+          "sha256": "6FFCB038B53254BD31DEBAA15E12DCD4FF24BD63D690E0B644AC6396701CF2E2"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/SKILL.md",
+          "sha256": "3143DE8695C5A2D63E8B1675F33837578076F464DEB127C2EBDD0B46FCEEF886"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/analyst-common.md",
+          "sha256": "88801C36070BE2A54A8A9A29632B01AB21DB053E2E76EE49B5252A9B74CA4090"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/cost-and-time.md",
+          "sha256": "FE97A66D4DB3B436816EF82694BDA413B522B3A862DD41978DA01E358FFFECC4"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/plan-adherence.md",
+          "sha256": "1DCBAB82033598A2E9C9EE42E950D4B1822D2C871C02CEF9E102CDD5CBBDA113"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/quality-evidence.md",
+          "sha256": "749D11CF678F379ED77A29274CAD456634E0284AA523639A1A214A9F2B986EB1"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/repeated-work.md",
+          "sha256": "895027F2DFA4B1B8BCDB7AC9AEC8D45A80BFF212FAD6EC6CAD5AB38FA68322F5"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/request-conflicts.md",
+          "sha256": "E800E38D8B7752C212C76C5C3ED75CD78B749684263EA0C313586F26AF6F4B5C"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/scrub-audit.md",
+          "sha256": "5CC48F05A7F81F5F7E05E0C7CEAFC0FB8774BCAF75FE88DCB5C7E408026C70AD"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/scrub.md",
+          "sha256": "854CB3320CC5377B493CEA2F72519D67983464882DB68A0F408A7D0A0F040B8C"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/similar-session.md",
+          "sha256": "B190F713B463DF2BB5EC3914647E204074D1BD50643A53159DB6D13CACE916C1"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/skill-timeline.md",
+          "sha256": "45D604D583B57A77B9033ECED8EB875EF342AF70FCD66CF7D15C6DC89964890F"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/stumbles.md",
+          "sha256": "1F2D1F048AFF7B8B400006301F1CE8C232ECC7E9D5F705AF27A849B2C03EA2E7"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/context-safety.md",
+          "sha256": "E6BE2BD3495F454D4BEDEE9484D728D245D1FA656E11FC4CEEC5693C16E4730A"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/github-issues.md",
+          "sha256": "D26EF9197B4A6AE5159AE6D11ABD162BCC624D95FC7CCF508E07B68F916A1B19"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/redaction-policy.md",
+          "sha256": "96B16F47074838FE2D7E609577D6F8B0AD460F8378B281A3F96EE23CB5A08BDE"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/session-discovery.md",
+          "sha256": "6D1DCED083E5D978448A78DF298CF515531B0EB39B2854A4A2AFBFFEB69A7435"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/bundle-README.md",
+          "sha256": "2E6DDC6B106028D5EBD00A50AD93A77111D675C219EE1273CD0857869E8D51EC"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/case.md",
+          "sha256": "597892462BE83BC478536EC91F7C285F6DD25D119C560734A3A180FE8471301D"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/issue.md",
+          "sha256": "AFD21779E5DE5BC5ADFE2F5A50A04E44AB8D50D9AD0F829243DE248D6F023EED"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/report.md",
+          "sha256": "38295D0FD785E8608F330815C59EBD7047942002EC7085AECBED54681F56B0C1"
+        },
+        {
+          "path": "skills/dispatching-parallel-agents/SKILL.md",
+          "sha256": "1968923066F3B707EB01D1992CDF4C42284C3855F70253B9CD5000FF45FCA13C"
+        },
+        {
+          "path": "skills/executing-plans/SKILL.md",
+          "sha256": "E4649E59880EF2643D1DA128E3D607E87E3F969410D72095A5BF65811B6036DC"
+        },
+        {
+          "path": "skills/executing-plans/scripts/task-done",
+          "sha256": "D0D4F2397C85A4426443EA955E699EF12568B41B408EC6122D4EC2433EE3A5F6"
+        },
+        {
+          "path": "skills/executing-plans/scripts/task-start",
+          "sha256": "F833693C8FCE3700FC9F841562D80F8015CD40F652C168A3405AC3E46947A1FE"
+        },
+        {
+          "path": "skills/finishing-a-development-branch/SKILL.md",
+          "sha256": "8DB5A922B242DD4E1BF824CB91C13B3E8D8E8A86D6CEAF7F0774EB9CCE909D65"
+        },
+        {
+          "path": "skills/receiving-code-review/SKILL.md",
+          "sha256": "091DF1629510AF1B92FC4ABD6F96732EBEDB4CB2C0F3457E8F2740B0504A2438"
+        },
+        {
+          "path": "skills/requesting-code-review/SKILL.md",
+          "sha256": "2180E14A448E9410BEC88E6646A2D1F0CE7FDD58DE27388C1E052E929679D2BC"
+        },
+        {
+          "path": "skills/requesting-code-review/code-reviewer.md",
+          "sha256": "82E370BE6B3447523816286195571E4216BA56BA1AD6AD0E87862294C4C78DCB"
+        },
+        {
+          "path": "skills/subagent-driven-development/SKILL.md",
+          "sha256": "BA41F697136CBA88A7962D60C8E2F97488BA04A8688B1D0FBEB27F6953808E75"
+        },
+        {
+          "path": "skills/subagent-driven-development/implementer-prompt.md",
+          "sha256": "81DD9D5A3FB0B09B96B5829F03B9796842F3199EF7591D1BA1C2DB2A515F64D0"
+        },
+        {
+          "path": "skills/subagent-driven-development/re-review-prompt.md",
+          "sha256": "0828A5E9CBB12BA49F14621DD8C3953C48C0FC383E75BB5494F055ED0D6D824F"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/batching.md",
+          "sha256": "B54DC7E23DBFB90DB89BCB2FB3AF591AABF6A271A165FBC0DA4C6F9439980EAC"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/cannot-verify.md",
+          "sha256": "E698713A15E0EABF1A2AB26FFE1BB04BF70C9D6D2E2060D44A0F9A1BDD4408BF"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/final-review.md",
+          "sha256": "2FD999D86E5DD0B9B32AAF93F2A41663EF30B3E3CB78FB2FD5CB450EB59EB9DE"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/fix-loop.md",
+          "sha256": "EAFFF1F801AF2CED86E8761F3EEEF04B701860D986BA5D0A8B20D506A75104BB"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/handling-reports.md",
+          "sha256": "8F759CDD4936220C38AAB05B6D6C48C6DF8AC8F146B0F37A6D2FACBF87133C67"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/preflight.md",
+          "sha256": "3EA21C5FC1AF1A190AC8A9D19CEB0849B47BF2FFE27B87DFFCC21B6A0539776C"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/resuming.md",
+          "sha256": "FF6E38BDE2276FAA2A7E93513086CADED0EA10EDBF2EC7F349A7E3B0D7C668C4"
+        },
+        {
+          "path": "skills/subagent-driven-development/scripts/review-package",
+          "sha256": "F9275175B2276B1D5FDB1BAE0BEDAADD2A950659B7C6F311EA37FF85E1861B1F"
+        },
+        {
+          "path": "skills/subagent-driven-development/scripts/sdd-workspace",
+          "sha256": "4FD9770E7A49B6BDE488C0E92BAC1B3BD01FCBDAF8F06B6C4EFBE3A1ABD99F86"
+        },
+        {
+          "path": "skills/subagent-driven-development/scripts/task-brief",
+          "sha256": "CC563538E09ABF719B34DDF4B2FA7A65CF3B301729039DBFA923CB060F729146"
+        },
+        {
+          "path": "skills/subagent-driven-development/task-reviewer-prompt.md",
+          "sha256": "BFED55C8F19D0FF6ED57B0FE09127C92890E9311C6C73917129598826BF9EBE8"
+        },
+        {
+          "path": "skills/systematic-debugging/CREATION-LOG.md",
+          "sha256": "C24733A5B1821BD6BED1FC950261F0B9F4E90097E0BBB96459D8179713730789"
+        },
+        {
+          "path": "skills/systematic-debugging/SKILL.md",
+          "sha256": "51C6435D98C83C42C96BA7C35725A0B2C376CD487FB1A4E6BD0DDBE7E33EF202"
+        },
+        {
+          "path": "skills/systematic-debugging/condition-based-waiting-example.ts",
+          "sha256": "40AE5EBE497FDF310200E43FE986552546D0A22837C0D39E855DB1CFD33EB88E"
+        },
+        {
+          "path": "skills/systematic-debugging/condition-based-waiting.md",
+          "sha256": "E89FEC8400D6CD50F43407CEC9FAB50976BA4D55D0EC2EB51C0BD68036B54C26"
+        },
+        {
+          "path": "skills/systematic-debugging/defense-in-depth.md",
+          "sha256": "1E175FB86FC357E58C6AEBF5441E481E1B7868B4380C0456B63A17EEFBD18BA7"
+        },
+        {
+          "path": "skills/systematic-debugging/find-polluter.sh",
+          "sha256": "DD7B8F13C4CC2A24B33FF87B18DA9248F3E1C80A085C3316224F69FF0FA5C43C"
+        },
+        {
+          "path": "skills/systematic-debugging/root-cause-tracing.md",
+          "sha256": "75B933B6A8C40BDB2031B10F21654395B56EC6AB6BC7B018C18D3FE57AEB7FB8"
+        },
+        {
+          "path": "skills/systematic-debugging/test-academic.md",
+          "sha256": "FE2BA480D78AC0D686DC025F41C2A32A43D642BF533F91B0C6053A04D35D6486"
+        },
+        {
+          "path": "skills/systematic-debugging/test-pressure-1.md",
+          "sha256": "0B6A915DB0054577819834C79BE9EB614E97BDDBA10D73768E1FBE91CFED048A"
+        },
+        {
+          "path": "skills/systematic-debugging/test-pressure-2.md",
+          "sha256": "B2030AEFFBA07050E8AD573DDF87486457C4A016A786BB326235BEBD856F2016"
+        },
+        {
+          "path": "skills/systematic-debugging/test-pressure-3.md",
+          "sha256": "96B50A52E2C7989C9CF20FB752C47C1E9A3A70DC362F8F7989F8F5B64DAC7708"
+        },
+        {
+          "path": "skills/test-driven-development/SKILL.md",
+          "sha256": "64B03FCE4AEE5A97A93160CEA8111F3BA13A17B7C001DB4BD5836D67FD10705D"
+        },
+        {
+          "path": "skills/test-driven-development/writing-good-tests.md",
+          "sha256": "51471C853306FF92CA8BB41DCAEA05F31C0E46B03651F8F3C99754B7172F4AE1"
+        },
+        {
+          "path": "skills/using-git-worktrees/SKILL.md",
+          "sha256": "8CFB86F121269E8F7F12361E6795C4F6738828340E28964C9229D365666C9EDD"
+        },
+        {
+          "path": "skills/using-superpowers/SKILL.md",
+          "sha256": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+        },
+        {
+          "path": "skills/using-superpowers/references/antigravity-tools.md",
+          "sha256": "4880F6DE3DA4E32F9659EBE7A72B9E0EBFFF04E028C2ED96173F86D0387A04C0"
+        },
+        {
+          "path": "skills/using-superpowers/references/claude-code-tools.md",
+          "sha256": "21479A3FEE27448CAB8748A3B5687E53BB257883BDA9C070426F9A1AB5CEBF1B"
+        },
+        {
+          "path": "skills/using-superpowers/references/codex-tools.md",
+          "sha256": "1A38AD9B188C393052F58D95657A1C35EA6AAFC8B5A27F198F3922912F70BBE7"
+        },
+        {
+          "path": "skills/using-superpowers/references/gemini-tools.md",
+          "sha256": "62B9157BCB0EE3C6784E3D0DA0798DDFA5872F9E0C34BEA48F3079DABEA71965"
+        },
+        {
+          "path": "skills/using-superpowers/references/hermes-tools.md",
+          "sha256": "E2185C976A3C87503910E05E2AEA58CC89BC8E569BB624B93DF9958AC47A9190"
+        },
+        {
+          "path": "skills/using-superpowers/references/muse-tools.md",
+          "sha256": "5A1DA5C575FE18456CA71CD47EBFD8A38C745F8D82A67FE64D5B83080000EEB3"
+        },
+        {
+          "path": "skills/using-superpowers/references/pi-tools.md",
+          "sha256": "703DBC83D23ECAB9C6F388460C38ABC482E9DEE2FE6772A8C7A255152AD3A4D5"
+        },
+        {
+          "path": "skills/verification-before-completion/SKILL.md",
+          "sha256": "2BEFE7FC55BCADAA3D97DD9E8EFEB633D2561C0EBE74C5A8B17C4D9E7E4520B3"
+        },
+        {
+          "path": "skills/writing-plans/SKILL.md",
+          "sha256": "A6C67C1900064347C2A329990DD3C555657C51C3EC53B259A08AA01A2C26139A"
+        },
+        {
+          "path": "skills/writing-skills/SKILL.md",
+          "sha256": "8CB3AC68C6D8C4BB46886B998B09AF7989643CAB8BD0E46EE86DD62E64546BBE"
+        },
+        {
+          "path": "skills/writing-skills/references/CLAUDE_MD_TESTING.md",
+          "sha256": "0B379A3415E185D3C434B3AD283D8AA132F3022C2A4F210F168865B5986BCEF0"
+        },
+        {
+          "path": "skills/writing-skills/references/anthropic-best-practices.md",
+          "sha256": "217629B356C09C9BD11017C9788E8FC654CA1B32C92D4A51CD490E16DD65E59A"
+        },
+        {
+          "path": "skills/writing-skills/references/bulletproofing.md",
+          "sha256": "9397023E6BC85B556A57F3097371363BF03E28E755C57F403F470BCDA90E0A23"
+        },
+        {
+          "path": "skills/writing-skills/references/discovery.md",
+          "sha256": "C6BBC74AF3BE90F693F7CBC986AF6FA94E8DF75F65109B52E96032587F5B92AF"
+        },
+        {
+          "path": "skills/writing-skills/references/flowcharts.md",
+          "sha256": "8B1F542391F274F0D33F3457AC099A3D317D6877EAA3B8D3B1EBEF151B55FDA7"
+        },
+        {
+          "path": "skills/writing-skills/references/graphviz-conventions.dot",
+          "sha256": "E2890A593C91370E384B42F2F67B1A6232C9E69DDDEA7891A0C1C46D7B20B694"
+        },
+        {
+          "path": "skills/writing-skills/references/persuasion-principles.md",
+          "sha256": "A51BC9BF75189EA73A27B3FB504A2FDFDB966FB1F7F1CDF03203230A216CCC03"
+        },
+        {
+          "path": "skills/writing-skills/references/testing-skills-with-subagents.md",
+          "sha256": "ED8A6862C085900135962390530D9DC7637AD6D650B4324CE3B051287A5C3F22"
+        },
+        {
+          "path": "skills/writing-skills/render-graphs.js",
+          "sha256": "C7F412CC629461C4D10287E668731874C0497707023E3E3F74A5355EB2CEE196"
+        },
+        {
+          "path": "tests/antigravity/run-tests.sh",
+          "sha256": "76355B01132D4F27CC5545C15926EB0C3614D38DB2B5D6988A2D818918D9EAF1"
+        },
+        {
+          "path": "tests/antigravity/test-antigravity-tools.sh",
+          "sha256": "C38A501650F5BA63337514044083636998824749ADB4C564431253F3CC66254C"
+        },
+        {
+          "path": "tests/antigravity/test-logo.sh",
+          "sha256": "D7D133DF78B917BF00B24C93BE19F7B21E185DBCB6D475542993EB3D5C0F3CC3"
+        },
+        {
+          "path": "tests/antigravity/test-plugin-manifest.sh",
+          "sha256": "627D97C59D806A6D495E54DFF5DD57447EBA21D8A3293251B472898F28268C12"
+        },
+        {
+          "path": "tests/brainstorm-server/auth.test.js",
+          "sha256": "8EFA43628B582973DCC543C0768E91066CF9834292E2E724657C6801B63DF062"
+        },
+        {
+          "path": "tests/brainstorm-server/branding.test.js",
+          "sha256": "B116F645B46130A3A58867493863A1398CF5426375D695203C858C95EB5E8D02"
+        },
+        {
+          "path": "tests/brainstorm-server/browser-launcher.test.js",
+          "sha256": "FFB9CCECF27968B9359049FF96B50725669B1F86863F88B583B9AA0C3AA37C94"
+        },
+        {
+          "path": "tests/brainstorm-server/helper.test.js",
+          "sha256": "9917FC944E8C5594430BA2600035FF5FD8212119B9CAE2D62C75F5725DE94061"
+        },
+        {
+          "path": "tests/brainstorm-server/lifecycle.test.js",
+          "sha256": "686E19A12C6BA9B3003F4DEDF840161B05F5C42DFB87C49A6B9C8ABC596F1156"
+        },
+        {
+          "path": "tests/brainstorm-server/package-lock.json",
+          "sha256": "80F45A9D8857E27D9363D47789284A26D13FB47388FA8596EF0DB7207E6D7C10"
+        },
+        {
+          "path": "tests/brainstorm-server/package.json",
+          "sha256": "D785483894BFEDBCCF9731FD7ED52F959973F62DC9C42A8A7407FC7779D220C8"
+        },
+        {
+          "path": "tests/brainstorm-server/server.test.js",
+          "sha256": "A8F2EFFBA4647767E0E66B0C681AE63E89355CB6BB5E20A4F86D48149C3957E6"
+        },
+        {
+          "path": "tests/brainstorm-server/start-server.test.sh",
+          "sha256": "FB0C928E206FBD6A0FE77E750198D71AE0C331E361B13E9A8B8742CDB22302B5"
+        },
+        {
+          "path": "tests/brainstorm-server/stop-server.test.sh",
+          "sha256": "35E150E95F0E97D50470F2C0A30BC7C9C8C5CB7721C53DCFF887B430067490DB"
+        },
+        {
+          "path": "tests/brainstorm-server/windows-lifecycle.test.sh",
+          "sha256": "7DC8E09EDFE0A4CC34550FDB0E5AE5117758991D490756971BE51C88E4F5908D"
+        },
+        {
+          "path": "tests/brainstorm-server/ws-protocol.test.js",
+          "sha256": "ABD0A10EAFFE4E30A9918C79C7692775DB36C8A3E132E04D52EC06D6CDDAA132"
+        },
+        {
+          "path": "tests/claude-code/README.md",
+          "sha256": "DF8CC7A1709B5FD881F41F6E7AFC180F1B686C14B97624C27E4957A174C09911"
+        },
+        {
+          "path": "tests/claude-code/analyze-token-usage.py",
+          "sha256": "B3B124B975086E66540DCA1328D7B6B75416450B0C93FC246F0D7D148FC2394C"
+        },
+        {
+          "path": "tests/claude-code/run-skill-tests.sh",
+          "sha256": "A7BFFA447F489BE5A9507114027DDCDB94409EBA3156DF88C9338307710502A4"
+        },
+        {
+          "path": "tests/claude-code/test-executing-plans-scripts.sh",
+          "sha256": "4BB8AC69CD96ADD9D524C5D9D04726853F4E82810AEFCB87FD8965D9A55CBC76"
+        },
+        {
+          "path": "tests/claude-code/test-helpers.sh",
+          "sha256": "B06A890C9D371195D8F256B1227607DD32AD28831658BE1033756CC8DBCD86A7"
+        },
+        {
+          "path": "tests/claude-code/test-sdd-workspace.sh",
+          "sha256": "DD258732AEBAE183B0019D480422DF661468B7F3664025D3960E0BC5FCB6385D"
+        },
+        {
+          "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+          "sha256": "0794D17E3CC5D8A64C07A6C181538E1142819B86382D171F677510CFE6A3F722"
+        },
+        {
+          "path": "tests/claude-code/test-subagent-driven-development.sh",
+          "sha256": "37E9A1FBB20F9F6CA2E7EB62F16B4B04C90DA2874EC48EC3D2CC5C73ED99155D"
+        },
+        {
+          "path": "tests/claude-code/test-worktree-native-preference.sh",
+          "sha256": "1C0A94FB097AD33186BB7EA2B0321B11D8BA92ED8C6EF61464A2246EEC33ACF6"
+        },
+        {
+          "path": "tests/claude-code/test-worktree-path-policy.sh",
+          "sha256": "3498F973A9CF288F2959B7A02FC3ACEA09EE11650B46D689AEF81B394F8AB85C"
+        },
+        {
+          "path": "tests/codex-plugin-sync/test-sync-to-codex-plugin.sh",
+          "sha256": "DF2DD25436DD61F79912BBD36B76E5921C6CBDEF3F12941D4A102D35BABBEC13"
+        },
+        {
+          "path": "tests/codex/test-marketplace-manifest.sh",
+          "sha256": "9C5AFB24318BD959606F5063F444042E08E6FC2C6FF8C4988760476021E4EC90"
+        },
+        {
+          "path": "tests/codex/test-package-codex-plugin.sh",
+          "sha256": "BBF76D50EAC33B60D73318946BC1418A6E6C6D52CDD918F39C7B18B8EAA0B0F4"
+        },
+        {
+          "path": "tests/devin/test-devin-plugin.sh",
+          "sha256": "E156BE13B2E902449EF8BD1836B9DC60A7FC5F2F670896F4FAF621D9A1F3A6E4"
+        },
+        {
+          "path": "tests/diagnosing-superpowers/test-skill-structure.sh",
+          "sha256": "35BAF007E9A744621C6D374200CFAC3B597A5B969BBF824178975257F239854B"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/action-oriented.txt",
+          "sha256": "4EE13DB41CE891B5B328F8AD5284E516253F87DC65307DF0E60A2713A47442D1"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/after-planning-flow.txt",
+          "sha256": "7DA11DD7918B083C43087CD21E241D3B397D5488BA1E06BEBED74488C4827D22"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/claude-suggested-it.txt",
+          "sha256": "CB46492D9F905EBF6098AA6D0884F046A1B863B39036E5EC9A3244991B758D6F"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/i-know-what-sdd-means.txt",
+          "sha256": "64F33D0B328471C800541E268996A91E360D625BFE151B476B65BB64F0F1CD8D"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/mid-conversation-execute-plan.txt",
+          "sha256": "601301C1DA6E138427C5C1B18ACF34B3931BDD08397C3AEC7BC94BEC30D5C606"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/please-use-brainstorming.txt",
+          "sha256": "DE9508FFAD9E29EE8DDDA26ED9403B4A650E1081DF39800EDB6B56A6A3A859DD"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/skip-formalities.txt",
+          "sha256": "B4C1FC115FC67D9919A29DB6D8CEAA57A41933BDE343168BD0858A62CFE11C51"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/subagent-driven-development-please.txt",
+          "sha256": "C2499520CB588008437148FACC965800E4A302BAA1CC4D726F5B02BFCFC5F3E1"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/use-systematic-debugging.txt",
+          "sha256": "4AA7A8DA6F68BB22D2B1FB66AEB26C1BED6FDF86D33D2D6F7A9752334856A990"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-all.sh",
+          "sha256": "B657EF562B6CE3D02B3422EB5AB8571BE5545525249088034AB36C27343B95CC"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+          "sha256": "1004578E3EF68D6FDA8646C9257D27DD4CA30C4C1BDC986A50FBCB929EA0934D"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+          "sha256": "27B92722271FD25DFCAD9B04E8C45B81E2A51A51005C3BCF13DD9D5A70567D01"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+          "sha256": "DC22F0B1ED0D367811ECF046C942430D15E87F4B8B2B4CC8260D60E00BEE6ECB"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-test.sh",
+          "sha256": "841F1D014F231C84F441CC6B91F388CC3E9E788012E6D36F5E78406C1F4C9B49"
+        },
+        {
+          "path": "tests/hermes/__init__.py",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "path": "tests/hermes/conftest.py",
+          "sha256": "6CF5E434B124D912E1B53B4E6C1287F72C9AF8D60AA01E8B49722C98E8A41DC8"
+        },
+        {
+          "path": "tests/hermes/test_bootstrap.py",
+          "sha256": "A4AAEB394779F3D22106866BFE67723301A5CF317DFAD7A1386994EDDD7A3031"
+        },
+        {
+          "path": "tests/hermes/test_plugin.py",
+          "sha256": "95C48697239D0FE31D60168419FD145C2EFAD0F210024B307910AB856BE46790"
+        },
+        {
+          "path": "tests/hooks/test-run-hook-cmd-windows.sh",
+          "sha256": "1630CA0ACCDE617B06CAC968D821F5420EC124672A2D7B79EB2BC81C39B94154"
+        },
+        {
+          "path": "tests/hooks/test-session-start.sh",
+          "sha256": "036C13AC48192E459C6AD327614161670F8B142FCF70E4E670D05C43775A54AD"
+        },
+        {
+          "path": "tests/kimi/run-tests.sh",
+          "sha256": "FB53A9CE91AE119146764EF2D55C63A5D20B86198E2EE08759FBAE8194177FF0"
+        },
+        {
+          "path": "tests/kimi/test-plugin-manifest.sh",
+          "sha256": "D7CA4DB2E67C8611D3D1FE1FBF28FE41A33B187155563F1A553212DF04250AAA"
+        },
+        {
+          "path": "tests/opencode/run-tests.sh",
+          "sha256": "B2F2067CFEFA61AEC22DA47686DCC7B60E4DE16BCA439D1F3E4631D71AD78054"
+        },
+        {
+          "path": "tests/opencode/setup.sh",
+          "sha256": "0E8600FA5E56D7613F41D19732601397D2C18087A71DA2801CC53443756A6348"
+        },
+        {
+          "path": "tests/opencode/test-bootstrap-caching.mjs",
+          "sha256": "7966D45D3BFA281679C917C03704824AE9752F2E624173B598BAAEA961BEBAFA"
+        },
+        {
+          "path": "tests/opencode/test-bootstrap-caching.sh",
+          "sha256": "B13D826FDAE77FEAF922F4009F544D0AD51CE722258DEE997B252F76AF70330A"
+        },
+        {
+          "path": "tests/opencode/test-plugin-loading.sh",
+          "sha256": "41389F92E160766CFB27BFD15849E3EF546427444F88D241506915044209BED0"
+        },
+        {
+          "path": "tests/opencode/test-priority.sh",
+          "sha256": "123A82B72F22A5A0D1BE2C6CFB898BF4D8D772EE4C7BA2F4540562A1B62A0902"
+        },
+        {
+          "path": "tests/opencode/test-session-bootstrap.mjs",
+          "sha256": "843F69300EE5F93F5EC9A8CEDF7467427CC254F91A6D21E4B4DDC15F849C3AA1"
+        },
+        {
+          "path": "tests/opencode/test-session-bootstrap.sh",
+          "sha256": "8DD9605232AC6030F052AB0102FCEA6109DFE6A44E74A2BBE15FD6EB450FE7DB"
+        },
+        {
+          "path": "tests/opencode/test-skill-registration.mjs",
+          "sha256": "779BA75046C2860096E232B5EFA298C2073B459234E7279D87510E10FDEACD79"
+        },
+        {
+          "path": "tests/opencode/test-skill-registration.sh",
+          "sha256": "0D01EC62A39B3D996CA8C3160A93E7D5F0BC3591941A8EE6D48F65DD61EDDD28"
+        },
+        {
+          "path": "tests/opencode/test-tools.sh",
+          "sha256": "AE8BFAE51FD2D25B9659177EC257C0551BC521D7F9E7C60C34110497B501E182"
+        },
+        {
+          "path": "tests/pi/test-pi-extension.mjs",
+          "sha256": "0F84E8FE4190575E907A109E3B2540A21832DDAC4F1BDB76F1074489F4F605C6"
+        },
+        {
+          "path": "tests/shell-lint/test-lint-shell.sh",
+          "sha256": "E777907226ED8614FE1CBC06AFD538E223E4081C368757B26A5F77DFB4355B40"
+        },
+        {
+          "path": "tests/skill-size/test-skill-size.sh",
+          "sha256": "82AA688A6F17CB04006954F2C7E6894578EF13009C273FD40777F90C87D8B99A"
+        },
+        {
+          "path": "tests/systematic-debugging/test-find-polluter.sh",
+          "sha256": "7C5AE1ADB7C6E292B73ECCBA6BA442501C442AEFE8C883A94C9FDD809D592CEA"
+        },
+        {
+          "path": "tests/version-bump/test-bump-version.sh",
+          "sha256": "9979D56389D953449CD1BDB93017E1F9ABBAB5F5522E80E9B91DCD6A00BAF820"
+        },
+        {
+          "path": "tests/writing-skills/test-render-graphs.sh",
+          "sha256": "E758C2E751FCFA73CEAEAC7114251D48CD7ECE167AC535DD765C3F9D95A6A9A9"
+        }
+      ],
+      "upstreamHead": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "upstreamStatus": [],
+      "sentinel": "29C25B5FD9AB8527B8AB2007DA2021DC2A2EA87F510C2192CEB95C364A6EF185",
+      "refs": [
+        "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1",
+        "29efac8c41c8978650fe492b6111293ecb28302d refs/heads/main",
+        "476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup",
+        "96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft",
+        "737af3f01bba8c5dd0e200cba1f8fa66655151fc refs/heads/recovery/issue-19-windows",
+        "22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle",
+        "29efac8c41c8978650fe492b6111293ecb28302d refs/remotes/origin/HEAD",
+        "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1",
+        "399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph",
+        "88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification",
+        "9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan",
+        "a74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves",
+        "39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package",
+        "9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges",
+        "29efac8c41c8978650fe492b6111293ecb28302d refs/remotes/origin/main",
+        "476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup",
+        "96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft",
+        "742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native",
+        "0bbd5821cb751afc8dfdfac8c6812007d6fb63a2 refs/remotes/origin/recovery/issue-19-windows",
+        "b59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence",
+        "22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle",
+        "5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture"
+      ],
+      "issue": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+              "number": 18,
+              "state": "CLOSED",
+              "title": "Verify Claude Code setup and upstream adoption",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+            }
+          ],
+          "totalCount": 1
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+              "number": 11,
+              "state": "OPEN",
+              "title": "Deliver and verify the Claude Code plugin installation surface",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\n\n## Bounded Scope\n\n### Allowed\n\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\n\n### Out of Scope\n\n- Change the approved host contract or silently update/remove upstream.\n- Run mutation scenarios on production issues without authorization.\n- Claim rollback when the previous version cannot be restored and verified.\n\n## Acceptance Criteria\n\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\n\n## Verification Seams\n\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 19,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify Claude Code lifecycle and conformance",
+        "updatedAt": "2026-10-25T16:21:35Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+      }
+    }
+  },
+  "after": {
+    "row": "final-guide-after-discovery",
+    "plugins": [
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "installedAt": "2026-10-25T17:33:51.096Z",
+        "lastUpdated": "2026-10-25T17:33:51.096Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "superpowers@superpowers-dev",
+        "version": "7.0.1",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "folderVersion": "7.0.1",
+        "installedAt": "2026-10-25T16:16:00.363Z",
+        "lastUpdated": "2026-10-25T17:26:50.846Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\synced\\5be94afe-931f-4e50-9eb7-2c854097b334_977856c7-71a7-4075-bc14-9b42ecb2650e\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\catalog",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\catalog"
+      },
+      {
+        "name": "superpowers-dev",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers"
+      }
+    ],
+    "backplaneFiles": [
+      {
+        "path": ".claude-plugin/marketplace.json",
+        "blob": "b049265ec49dd63c33a6e765e318a4ed11e7fa81",
+        "sha256": "E9903B166D7FE302A51280A75D613D019A8945D8BEE23A77819BB2E2AE839DA1"
+      },
+      {
+        "path": ".claude-plugin/plugin.json",
+        "blob": "4cb0cea23dc3ec006c35d8323132a35117a15e87",
+        "sha256": "32BBD2859083522CF3FC040B45864A1DE6FC1FCD370C5BF30C21F87086486565"
+      },
+      {
+        "path": "README.md",
+        "blob": "18ac59ddb1b742181a13c90a177812250849682e",
+        "sha256": "210AAABEC156FAED028E91FBBA8D97972BD295A4DF4F0DDF1A8FA13E06344EAE"
+      },
+      {
+        "path": "plugin.json",
+        "blob": "07f60531ddd80c8c8522a38fd68b6f93a7cc261c",
+        "sha256": "BCD8B9203F102392D3DF62193F74D7040D6386537439560F96BF9E5AB381003E"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/SKILL.md",
+        "blob": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+        "sha256": "168D5DFFA43E89FAE7249859F5758F3A46E53F03EA72E9BF1686983D49808F16"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/agents/openai.yaml",
+        "blob": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45",
+        "sha256": "925CFDC40503F81F360A824F885B613A9528DEBADBBE1563EFFBC743BD2B329A"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json",
+        "blob": "8dc749345cc79561deb1b63384e8db11c547bada",
+        "sha256": "6AE5597EF477291CD06444BCBC1F45BCA2B5FEBE082B977CB0767DFD765AED52"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-format.md",
+        "blob": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad",
+        "sha256": "BF1D58572A2EDAA70F3B4E3487719C209B239BC93DA5A98319E0737C4069D53C"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json",
+        "blob": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6",
+        "sha256": "43082DB0C491A611A1A1FE2508AE9E119A01D5DFF85DFAC0FF4DFCAD78C39F0B"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json",
+        "blob": "ffc5909d66f519fa1704482171ed90ac7d09b8b3",
+        "sha256": "89E971568EBE0C884B19312D43FCE55B0D370383FA7776C78218D62331645954"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/checkpoint-state-template.md",
+        "blob": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9",
+        "sha256": "EC4459357EC644AA8434BD04582D351BE63614438FC0AF898DC477286F32EE8C"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/github-issue-contract.md",
+        "blob": "f0c3d2e375397d57d80a937f860a286f4d64231f",
+        "sha256": "15B1C2F68BA881BA4B6BBA297DF03AC6F9CAD3CA93FEC748548503FCA35F69A5"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/installing-superpowers.md",
+        "blob": "f80951f3a0d3aaca5e7040731e669c374ec0ad96",
+        "sha256": "50D82CCACBF71D368E983984157ABE91D1FAFD977F1F4D654C0FD58B5393329D"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/pr-completion.md",
+        "blob": "6a58ee6b1acaab7b4d320cc6093b9f58477333ad",
+        "sha256": "28B75E0EC4E7D69E9AF21812B1E3A079346D078124596F2547E3A2CD5E411F9C"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/product-decomposition.md",
+        "blob": "4d917436e16bca9d39abf5e040680673afa68e16",
+        "sha256": "5A8C5B0A99F4C0D27F316E4E7111E15C508350CF01EE9241453F21F1FD843A6A"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/repository-checkpoint.md",
+        "blob": "351811b336fb47f648e0ef1c0dacb01118e0bc0d",
+        "sha256": "AF763C0BDB5CAAF2EF4355D8E5837CF193FE86753F97083FF36898ECAEA6A00D"
+      },
+      {
+        "path": "skills/managing-superpowers-backlog/references/superpowers-binding.md",
+        "blob": "a196461e4119aeee25abefbb7bfb8ef1ca8661bd",
+        "sha256": "641C3F3BF07A77BB6A8B175EB487F8ED6361B54B19D366C17072620A8058E231"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/SKILL.md",
+        "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+        "sha256": "A6052755128BE9C7D268D71241DD389B9BF1C720834E47E61CBF9535F4CA92DE"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/agents/openai.yaml",
+        "blob": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6",
+        "sha256": "A2FF1772C418BB1C52EB917E5747BCBE40E86B636CEE1BD66F6E5A27BF62D07E"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/references/handoff-contract.md",
+        "blob": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902",
+        "sha256": "D706780BCE579E3806D5534E99C1508BE3900930A6B450C7E6C5C7D3CEE2DD98"
+      },
+      {
+        "path": "skills/managing-superpowers-handoffs/references/resume-assessment.md",
+        "blob": "3ac6ecac93a5997a97811ab0fc5945009a874e59",
+        "sha256": "0B8D963B830D79B831FCBB0CD7020F18606AB44872896D448763FC4368B633ED"
+      }
+    ],
+    "preservation": {
+      "normalProfile": [
+        {
+          "path": "settings.json",
+          "sha256": "3351CB95B05E564612260F2A919076A7AC95FAD172F52E92A10825A5ED16C0C9"
+        },
+        {
+          "path": "plugins/installed_plugins.json",
+          "sha256": "4DB82BE992AC09DB3DB0908D0ABE29E477D99281893725A21BEC35B0CA32D01C"
+        },
+        {
+          "path": "plugins/known_marketplaces.json",
+          "sha256": "A1E541251C7EE63BF159F7C8E60992D90FD0DDE31EF3C2A584DB5581F55FD2CD"
+        }
+      ],
+      "upstreamRegistry": [
+        {
+          "scope": "user",
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1",
+          "version": "7.0.1",
+          "installedAt": "2026-10-25T16:16:00.363Z",
+          "lastUpdated": "2026-10-25T17:26:50.846Z",
+          "gitCommitSha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+        }
+      ],
+      "upstreamMarketplace": [
+        {
+          "name": "superpowers-dev",
+          "source": "directory",
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+          "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers"
+        }
+      ],
+      "upstreamFiles": [
+        {
+          "path": ".agents/plugins/marketplace.json",
+          "sha256": "2B94116C190896480E5054222A744E375976F8AE5BDB66FF0AB6B348DFAD4182"
+        },
+        {
+          "path": ".antigravity-plugin/plugin.json",
+          "sha256": "59D3191313F359668F608C2A3951FAEB7717EE60F9C5FC740002F8A534F2DA75"
+        },
+        {
+          "path": ".claude-plugin/marketplace.json",
+          "sha256": "AA23337D43302FFFA00927F3700205E92B6C09B79DFE4A13BF66B7B15122604A"
+        },
+        {
+          "path": ".claude-plugin/plugin.json",
+          "sha256": "FA3B15088F102C31B7CF1ABD4D329FD50D76A99222083638AAB810D81930B162"
+        },
+        {
+          "path": ".codex-plugin/plugin.json",
+          "sha256": "FEF198CDBCAA5544E4244FF74CB83A2A797D18C9CFB9AF26A18418206BB806C3"
+        },
+        {
+          "path": ".cursor-plugin/plugin.json",
+          "sha256": "4F0755B6150BF762C1D8FB2F63BD323BEA020E6CD11F9F1D7C68B69FF690CF99"
+        },
+        {
+          "path": ".devin-plugin/plugin.json",
+          "sha256": "EE1269C4D4325006FA590FA8CCB20EA302CD11992363C3BC9BC4AC62A2D4792A"
+        },
+        {
+          "path": ".gitattributes",
+          "sha256": "4702B23E09AFAD9638C184C8900B31AF635673BA439C265ECC3D341EFB54EAF8"
+        },
+        {
+          "path": ".github/FUNDING.yml",
+          "sha256": "2F9CDDA7B1F3EA4BE28BBCC3444C2C6512D7739589E6C5E72FD4F95950D3E7D4"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+          "sha256": "C766D3023F9A12280019055997AD2424887778D9B701B4118EA86A7FBF1F7FDB"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/config.yml",
+          "sha256": "E955D428A9AC46ED35F407B6532D74D1DADE217D89D9A4C7F6B05B72872A004A"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+          "sha256": "A7AAC80C9DF2E46FCE9A3C89A6E9E73E8D81E6DE311DBD634ED9D5DFACB0BDC8"
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/platform_support.md",
+          "sha256": "19F6D78322BF53B62AC8D7BAF117492DE3BBFAE80851657C24C102980EA2AA26"
+        },
+        {
+          "path": ".github/PULL_REQUEST_TEMPLATE.md",
+          "sha256": "D837F95474FAFB23298BB6E295409ECC522D4C4DB6A2E1EFF955BBFB7A4A40D9"
+        },
+        {
+          "path": ".gitignore",
+          "sha256": "30B79670D7359590A4F1798E99112D9298D8EED889042ABA2EE9A1722DC06EBB"
+        },
+        {
+          "path": ".hermes-plugin/__init__.py",
+          "sha256": "BCD2EDB43FDA557CA88B44DF80781CF760ADC21888B49D2CF9E3A6ADD7733B29"
+        },
+        {
+          "path": ".hermes-plugin/plugin.yaml",
+          "sha256": "956C7257FA4549A00D6501C2B81EA43805EB1F26B3A2CFD60920751CE3C63FE2"
+        },
+        {
+          "path": ".kimi-plugin/plugin.json",
+          "sha256": "40AF10480F1C943386C8BB1A1DA4C5349262D162818BB2E561FC2C4C62730F92"
+        },
+        {
+          "path": ".muse-plugin/marketplace.json",
+          "sha256": "8107646E9DEDC1AEA1AAD369DA66A1BA30E1F5FAA53AB840E928A7E8AC4A7701"
+        },
+        {
+          "path": ".muse-plugin/plugin.json",
+          "sha256": "901B5B2FCD5AA32F904F5659F1F8199CB8D4DB9635E465649A775FA658AC6C1C"
+        },
+        {
+          "path": ".opencode/INSTALL.md",
+          "sha256": "0594F252048CF87E98D56FAA876B7F1C3D4AE1119CF8FC77BBF5A5B63729296F"
+        },
+        {
+          "path": ".opencode/plugins/superpowers.js",
+          "sha256": "C979FE5A9FD6FDDC9BC9730B34B25989F9D53939EED7D594C4564F6E47495F26"
+        },
+        {
+          "path": ".pi/extensions/superpowers.ts",
+          "sha256": "39C27000C047F8A1399A76E032E4CD239D7BDB0BE168A121F46A2AC719DEAAE0"
+        },
+        {
+          "path": ".pre-commit-config.yaml",
+          "sha256": "73070DFDDBCB1E94980A2E7172532E5D6403E44AA3F30EF5DE30306B77684F32"
+        },
+        {
+          "path": ".version-bump.json",
+          "sha256": "CB4A788A2C54B06B798731AA40D929611BD6290E9C09463DAD97F4F84ADC6761"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "3D7C31B2ED1592D0816E436A90549C8AF5829627BCB663FE1C886A30F427CABE"
+        },
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "sha256": "5604DB48BB38684DF7B0816CC2A8B2659A9C7EFCFB2FA17936E6B16B1EC79316"
+        },
+        {
+          "path": "GEMINI.md",
+          "sha256": "0823DA8B7277F8B623746D57C0BEE75FDA02E4C832FE57843E644D0FE633ABBC"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "A37E0E9697144819E1D965176AC4AE5BC3FA02D11E7812036BBCADF6DAFE2400"
+        },
+        {
+          "path": "README.md",
+          "sha256": "79F29F50C735862D2E304EA547B4C9AA67D9DB6909FF6FB7B5EA922D7BCBC3E7"
+        },
+        {
+          "path": "RELEASE-NOTES.md",
+          "sha256": "7340C58689FD50B55010767BC2714D944AABCAF4CCDEEB8E6BE4452516DB669B"
+        },
+        {
+          "path": "assets/antigravity-logo.png",
+          "sha256": "D9EB1F1893E686DE4AFC7A8305D1E7A125FDF9DF3741A28B2AA0999005E60A3A"
+        },
+        {
+          "path": "assets/app-icon.png",
+          "sha256": "B7477EB39B5109617FE37E51DD65D8BDD8DFF6C40FDA49ADFBC21EEC445777EE"
+        },
+        {
+          "path": "assets/superpowers-small.svg",
+          "sha256": "54A632D9EE6197CCBC10D43D42217E23D08375BEA63BA8EB4B6AF757C1535038"
+        },
+        {
+          "path": "docs/README.kimi.md",
+          "sha256": "915B112731BBCB635885ED1C5F24A36B43248BC18689FA253BB4F89C937C6585"
+        },
+        {
+          "path": "docs/README.opencode.md",
+          "sha256": "17AE31AE43F88EF40FD4B5DCB03BD9AD761FED46F4A7E1697FB824433C105433"
+        },
+        {
+          "path": "docs/plans/2025-11-22-opencode-support-design.md",
+          "sha256": "4688CB2E4BAFA7E6124DD811BE57C8873BFB4B8CCCB95DDBD7032557A9CFD10B"
+        },
+        {
+          "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+          "sha256": "2CC68CC29EE1174E13A65739B004F2346911A0D89A20744930F9F5B81963B4F3"
+        },
+        {
+          "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+          "sha256": "CCE0B2E951209AC7D555FCBACFC858D8069B4036019D44DD95BB4334AFAF2E65"
+        },
+        {
+          "path": "docs/plans/2026-01-17-visual-brainstorming.md",
+          "sha256": "2FF9C06D8C7CF650BECB588D74507C5681C55844C61E21160A290CBE26D41CA4"
+        },
+        {
+          "path": "docs/porting-to-a-new-harness.md",
+          "sha256": "F30E91289A3F4A11CE529B67ECC081E03BE1D1D906628D645618E8129E83F519"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-01-22-document-review-system-design.md",
+          "sha256": "19DD839168B9E4A072985E8941AA3AE7CF9101357111620755D50DBEB1BEA04B"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-02-19-visual-brainstorming-refactor-design.md",
+          "sha256": "F27D0F9C33CC4F34101FD676D48E73D6259E6CD4E1B3ADC477EA81F4C7557AF7"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-03-11-zero-dep-brainstorm-server-design.md",
+          "sha256": "8F29BAC7D4DF2B51062C005FE4D591140F1DA3AB2030B28537DF6F964637B9E9"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-03-23-codex-app-compatibility-design.md",
+          "sha256": "F351216F0B8ABB5F08A9209D71EC3C218C79B1BA9D6A1C68AEC990EF00E31A53"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-04-06-worktree-rototill-design.md",
+          "sha256": "757CE61BBCD16DCB8F61FA69778CA7A3B1D26F7A11A0FCEA3D302FD99A52EBAE"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-05-platform-neutral-config-refs-design.md",
+          "sha256": "7A3C5E5FB77A3F8A500E9406283653CFEE5EDF1B98E58D5F267C5F21905EEE19"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-05-platform-neutral-prose-design.md",
+          "sha256": "D55FA30A3B1422F8364A81F49C755ADA9CC792B2CC10193B1DBD43C551918C19"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-05-platform-neutral-readme-design.md",
+          "sha256": "63EB346415386C6850832F4B7414D03570A033EAF37DE0B60D2EC4834169896E"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-05-06-lift-drill-into-evals-design.md",
+          "sha256": "FAC3785F6F779BD899A6E93BCD60A934B4946CE4F7E8B6129D7910979650A6A1"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-09-sdd-task-scoped-review-dispatch-design.md",
+          "sha256": "08B6B77BE0D3B95E1D19A3DC320B93BBA52917CA9BEB0084FD74ECD75C015B59"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-10-positive-instruction-redesign-design.md",
+          "sha256": "3A87B9E873728A3A4331437EB90F9FC5F4C9D7D0B88A931CCE2BC3BDA041B68B"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-10-strict-cost-sdd-design.md",
+          "sha256": "E8865D184479FFD4F2FE2C3072BF6A2B70179BBB4565CD6CEFCBCB127C9F9B28"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-10-visual-companion-auth-hardening-design.md",
+          "sha256": "8D97D0384C61C0400FB67429A4384AD989BDC11953CCE160069C368AC1F7E362"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-06-11-visual-companion-final-hardening-fixup-design.md",
+          "sha256": "78C4FBC2B609B1FE3CA0D7ABA0F4D800511BAF069355D25B37DA5CF957DC0E7C"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-06-sdd-plan-scoped-workspace-eval-results.md",
+          "sha256": "C4D2F3F086648EE6B949FD0ED999DD7B0A3A8D45BA290B2024389C66B2ED95B7"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-06-sdd-plan-scoped-workspace.md",
+          "sha256": "301328CB8DEC833DC35E05E90B4C10A6E67EBD915B33A3A5D34F83927094815D"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-15-sdd-fix-loop-redesign-design.md",
+          "sha256": "9ED33FE2821FD9D61E198C03E0377A9151294737A6EA34074637C1EEF98C1A06"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-07-30-codex-efficiency-fixes-design.md",
+          "sha256": "6A6F81DCEA03EBB8FFA710536FC92FAAB285C7BC894430C3348EB0BFA3FEA926"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-08-05-hermes-version-bump-wiring-design.md",
+          "sha256": "F649E3AFBD3A14DF4C1AC5BD1942FFB4846129836F20B5F2AA3263FD3C19ED69"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-08-27-diagnosing-superpowers-design.md",
+          "sha256": "396A4951CDA08633501DEB638A77961A638560441B7FDE53FB43FC1A6497D0BF"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-10-05-brainstorming-rebuild-design.md",
+          "sha256": "A15A0CEB2DF039469EA15B8F66D001782E1B2C1D0690C0891070AC11389870A3"
+        },
+        {
+          "path": "docs/superpowers/specs/2026-10-06-antigravity-marketplace-design.md",
+          "sha256": "DB4B3E15709B9CE2B0C40A59C590A5F63AE551B28F6A1104DF3306D1D542AB1D"
+        },
+        {
+          "path": "docs/testing.md",
+          "sha256": "2959880663BE4ABECBCF11331E64E435CFADFFAE2C9E2FB24EB5509224F51F30"
+        },
+        {
+          "path": "docs/windows/polyglot-hooks.md",
+          "sha256": "2DDF6E3DBA3DE202FE5BCA3D6EA26F308A0A27BE8E785D10842F26CFED2F644B"
+        },
+        {
+          "path": "gemini-extension.json",
+          "sha256": "8B7E69416536746B5948F49979FB34448C85FA10AABBDC9C6F4C2F4DED5FA985"
+        },
+        {
+          "path": "hooks/hooks-cursor.json",
+          "sha256": "53D8CEB3FF5D8BB1C4F283F238CC868B8C1AF22E40A3AC30F6D6E4173EFFEFBD"
+        },
+        {
+          "path": "hooks/hooks.json",
+          "sha256": "47FD72CC8BEDF31C72702B35B4ED7BAB670294D658C4CE518330337525A3798B"
+        },
+        {
+          "path": "hooks/run-hook.cmd",
+          "sha256": "D1FCECFE19DF2D083994803F73417710F745BD96C0938F594F87096005B1E403"
+        },
+        {
+          "path": "hooks/session-start",
+          "sha256": "5C15E62A90ED13AD8E4B3561148C54C26C6EE28B41EC3A55A241F68B400D886D"
+        },
+        {
+          "path": "index.js",
+          "sha256": "F0132FD5339BEFEB99BA903B1619FD9530969E5B4A1EA8CECF0B0A7F0213A099"
+        },
+        {
+          "path": "package.json",
+          "sha256": "B4CA961CE1AEAD5D08E40507B2FCA8C04C61DEA054866BAC92259308D24527E3"
+        },
+        {
+          "path": "scripts/bump-version.sh",
+          "sha256": "76DC971D2BB5D8B322EEB89B1D181F983B37F169A92BDF9883517FC746F657E8"
+        },
+        {
+          "path": "scripts/lint-shell.sh",
+          "sha256": "AA34CC2DAD4B130231BCF21FDD18F3F91E8FD7AB80D88A82A13E1395F32756F8"
+        },
+        {
+          "path": "scripts/package-codex-plugin.sh",
+          "sha256": "2541617B86519273428D12D18A5F7EC852AC39CFDEC74622C01CE71A504BB80D"
+        },
+        {
+          "path": "scripts/render-antigravity-logo.sh",
+          "sha256": "48A8D329A7E048F5DBA229BDB688F71BEA7C9FEAA1F139176D693CED4ECCB9DA"
+        },
+        {
+          "path": "scripts/sync-to-codex-plugin.sh",
+          "sha256": "90B2117068F55FA095960D1F2C60C389A1B3131958BD132617AABDEA49B52EC5"
+        },
+        {
+          "path": "skills/brainstorming/SKILL.md",
+          "sha256": "61A7EF918652108C76A3FD01E02DD92D39996C6B46D4CB2819CBD03F6C45E46A"
+        },
+        {
+          "path": "skills/brainstorming/builder-check-prompt.md",
+          "sha256": "36D51A4723D6F0A3CE5811A0EA3B3A8424F07533947E1355F5D8CB8CCE40C55E"
+        },
+        {
+          "path": "skills/brainstorming/scripts/frame-template.html",
+          "sha256": "6A8A4E58BD6A44B904E2E3C57DE774481D909204597E1498DE53F1B2FECC4C4E"
+        },
+        {
+          "path": "skills/brainstorming/scripts/helper.js",
+          "sha256": "43C6D69954A46EC34A2A262BCC62A9A7E83E839C739F199CB72646D397C686E3"
+        },
+        {
+          "path": "skills/brainstorming/scripts/server.cjs",
+          "sha256": "763ABF96510E0B892A1141397B31AA82EF900CF87ED34DDE94BC8782BAF4A7CA"
+        },
+        {
+          "path": "skills/brainstorming/scripts/start-server.sh",
+          "sha256": "A4E5AE84275BCAACD2F84345AFEABE59CF7B00BA080E123DA7CC1FB226F12847"
+        },
+        {
+          "path": "skills/brainstorming/scripts/stop-server.sh",
+          "sha256": "0B5CCBBD57F62D3ED88993F7940B5EE0E5C0FC9B21C550C623DA4F6292E47DAF"
+        },
+        {
+          "path": "skills/brainstorming/visual-companion.md",
+          "sha256": "6FFCB038B53254BD31DEBAA15E12DCD4FF24BD63D690E0B644AC6396701CF2E2"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/SKILL.md",
+          "sha256": "3143DE8695C5A2D63E8B1675F33837578076F464DEB127C2EBDD0B46FCEEF886"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/analyst-common.md",
+          "sha256": "88801C36070BE2A54A8A9A29632B01AB21DB053E2E76EE49B5252A9B74CA4090"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/cost-and-time.md",
+          "sha256": "FE97A66D4DB3B436816EF82694BDA413B522B3A862DD41978DA01E358FFFECC4"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/plan-adherence.md",
+          "sha256": "1DCBAB82033598A2E9C9EE42E950D4B1822D2C871C02CEF9E102CDD5CBBDA113"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/quality-evidence.md",
+          "sha256": "749D11CF678F379ED77A29274CAD456634E0284AA523639A1A214A9F2B986EB1"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/repeated-work.md",
+          "sha256": "895027F2DFA4B1B8BCDB7AC9AEC8D45A80BFF212FAD6EC6CAD5AB38FA68322F5"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/request-conflicts.md",
+          "sha256": "E800E38D8B7752C212C76C5C3ED75CD78B749684263EA0C313586F26AF6F4B5C"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/scrub-audit.md",
+          "sha256": "5CC48F05A7F81F5F7E05E0C7CEAFC0FB8774BCAF75FE88DCB5C7E408026C70AD"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/scrub.md",
+          "sha256": "854CB3320CC5377B493CEA2F72519D67983464882DB68A0F408A7D0A0F040B8C"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/similar-session.md",
+          "sha256": "B190F713B463DF2BB5EC3914647E204074D1BD50643A53159DB6D13CACE916C1"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/skill-timeline.md",
+          "sha256": "45D604D583B57A77B9033ECED8EB875EF342AF70FCD66CF7D15C6DC89964890F"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/prompts/stumbles.md",
+          "sha256": "1F2D1F048AFF7B8B400006301F1CE8C232ECC7E9D5F705AF27A849B2C03EA2E7"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/context-safety.md",
+          "sha256": "E6BE2BD3495F454D4BEDEE9484D728D245D1FA656E11FC4CEEC5693C16E4730A"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/github-issues.md",
+          "sha256": "D26EF9197B4A6AE5159AE6D11ABD162BCC624D95FC7CCF508E07B68F916A1B19"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/redaction-policy.md",
+          "sha256": "96B16F47074838FE2D7E609577D6F8B0AD460F8378B281A3F96EE23CB5A08BDE"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/references/session-discovery.md",
+          "sha256": "6D1DCED083E5D978448A78DF298CF515531B0EB39B2854A4A2AFBFFEB69A7435"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/bundle-README.md",
+          "sha256": "2E6DDC6B106028D5EBD00A50AD93A77111D675C219EE1273CD0857869E8D51EC"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/case.md",
+          "sha256": "597892462BE83BC478536EC91F7C285F6DD25D119C560734A3A180FE8471301D"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/issue.md",
+          "sha256": "AFD21779E5DE5BC5ADFE2F5A50A04E44AB8D50D9AD0F829243DE248D6F023EED"
+        },
+        {
+          "path": "skills/diagnosing-superpowers/templates/report.md",
+          "sha256": "38295D0FD785E8608F330815C59EBD7047942002EC7085AECBED54681F56B0C1"
+        },
+        {
+          "path": "skills/dispatching-parallel-agents/SKILL.md",
+          "sha256": "1968923066F3B707EB01D1992CDF4C42284C3855F70253B9CD5000FF45FCA13C"
+        },
+        {
+          "path": "skills/executing-plans/SKILL.md",
+          "sha256": "E4649E59880EF2643D1DA128E3D607E87E3F969410D72095A5BF65811B6036DC"
+        },
+        {
+          "path": "skills/executing-plans/scripts/task-done",
+          "sha256": "D0D4F2397C85A4426443EA955E699EF12568B41B408EC6122D4EC2433EE3A5F6"
+        },
+        {
+          "path": "skills/executing-plans/scripts/task-start",
+          "sha256": "F833693C8FCE3700FC9F841562D80F8015CD40F652C168A3405AC3E46947A1FE"
+        },
+        {
+          "path": "skills/finishing-a-development-branch/SKILL.md",
+          "sha256": "8DB5A922B242DD4E1BF824CB91C13B3E8D8E8A86D6CEAF7F0774EB9CCE909D65"
+        },
+        {
+          "path": "skills/receiving-code-review/SKILL.md",
+          "sha256": "091DF1629510AF1B92FC4ABD6F96732EBEDB4CB2C0F3457E8F2740B0504A2438"
+        },
+        {
+          "path": "skills/requesting-code-review/SKILL.md",
+          "sha256": "2180E14A448E9410BEC88E6646A2D1F0CE7FDD58DE27388C1E052E929679D2BC"
+        },
+        {
+          "path": "skills/requesting-code-review/code-reviewer.md",
+          "sha256": "82E370BE6B3447523816286195571E4216BA56BA1AD6AD0E87862294C4C78DCB"
+        },
+        {
+          "path": "skills/subagent-driven-development/SKILL.md",
+          "sha256": "BA41F697136CBA88A7962D60C8E2F97488BA04A8688B1D0FBEB27F6953808E75"
+        },
+        {
+          "path": "skills/subagent-driven-development/implementer-prompt.md",
+          "sha256": "81DD9D5A3FB0B09B96B5829F03B9796842F3199EF7591D1BA1C2DB2A515F64D0"
+        },
+        {
+          "path": "skills/subagent-driven-development/re-review-prompt.md",
+          "sha256": "0828A5E9CBB12BA49F14621DD8C3953C48C0FC383E75BB5494F055ED0D6D824F"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/batching.md",
+          "sha256": "B54DC7E23DBFB90DB89BCB2FB3AF591AABF6A271A165FBC0DA4C6F9439980EAC"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/cannot-verify.md",
+          "sha256": "E698713A15E0EABF1A2AB26FFE1BB04BF70C9D6D2E2060D44A0F9A1BDD4408BF"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/final-review.md",
+          "sha256": "2FD999D86E5DD0B9B32AAF93F2A41663EF30B3E3CB78FB2FD5CB450EB59EB9DE"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/fix-loop.md",
+          "sha256": "EAFFF1F801AF2CED86E8761F3EEEF04B701860D986BA5D0A8B20D506A75104BB"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/handling-reports.md",
+          "sha256": "8F759CDD4936220C38AAB05B6D6C48C6DF8AC8F146B0F37A6D2FACBF87133C67"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/preflight.md",
+          "sha256": "3EA21C5FC1AF1A190AC8A9D19CEB0849B47BF2FFE27B87DFFCC21B6A0539776C"
+        },
+        {
+          "path": "skills/subagent-driven-development/references/resuming.md",
+          "sha256": "FF6E38BDE2276FAA2A7E93513086CADED0EA10EDBF2EC7F349A7E3B0D7C668C4"
+        },
+        {
+          "path": "skills/subagent-driven-development/scripts/review-package",
+          "sha256": "F9275175B2276B1D5FDB1BAE0BEDAADD2A950659B7C6F311EA37FF85E1861B1F"
+        },
+        {
+          "path": "skills/subagent-driven-development/scripts/sdd-workspace",
+          "sha256": "4FD9770E7A49B6BDE488C0E92BAC1B3BD01FCBDAF8F06B6C4EFBE3A1ABD99F86"
+        },
+        {
+          "path": "skills/subagent-driven-development/scripts/task-brief",
+          "sha256": "CC563538E09ABF719B34DDF4B2FA7A65CF3B301729039DBFA923CB060F729146"
+        },
+        {
+          "path": "skills/subagent-driven-development/task-reviewer-prompt.md",
+          "sha256": "BFED55C8F19D0FF6ED57B0FE09127C92890E9311C6C73917129598826BF9EBE8"
+        },
+        {
+          "path": "skills/systematic-debugging/CREATION-LOG.md",
+          "sha256": "C24733A5B1821BD6BED1FC950261F0B9F4E90097E0BBB96459D8179713730789"
+        },
+        {
+          "path": "skills/systematic-debugging/SKILL.md",
+          "sha256": "51C6435D98C83C42C96BA7C35725A0B2C376CD487FB1A4E6BD0DDBE7E33EF202"
+        },
+        {
+          "path": "skills/systematic-debugging/condition-based-waiting-example.ts",
+          "sha256": "40AE5EBE497FDF310200E43FE986552546D0A22837C0D39E855DB1CFD33EB88E"
+        },
+        {
+          "path": "skills/systematic-debugging/condition-based-waiting.md",
+          "sha256": "E89FEC8400D6CD50F43407CEC9FAB50976BA4D55D0EC2EB51C0BD68036B54C26"
+        },
+        {
+          "path": "skills/systematic-debugging/defense-in-depth.md",
+          "sha256": "1E175FB86FC357E58C6AEBF5441E481E1B7868B4380C0456B63A17EEFBD18BA7"
+        },
+        {
+          "path": "skills/systematic-debugging/find-polluter.sh",
+          "sha256": "DD7B8F13C4CC2A24B33FF87B18DA9248F3E1C80A085C3316224F69FF0FA5C43C"
+        },
+        {
+          "path": "skills/systematic-debugging/root-cause-tracing.md",
+          "sha256": "75B933B6A8C40BDB2031B10F21654395B56EC6AB6BC7B018C18D3FE57AEB7FB8"
+        },
+        {
+          "path": "skills/systematic-debugging/test-academic.md",
+          "sha256": "FE2BA480D78AC0D686DC025F41C2A32A43D642BF533F91B0C6053A04D35D6486"
+        },
+        {
+          "path": "skills/systematic-debugging/test-pressure-1.md",
+          "sha256": "0B6A915DB0054577819834C79BE9EB614E97BDDBA10D73768E1FBE91CFED048A"
+        },
+        {
+          "path": "skills/systematic-debugging/test-pressure-2.md",
+          "sha256": "B2030AEFFBA07050E8AD573DDF87486457C4A016A786BB326235BEBD856F2016"
+        },
+        {
+          "path": "skills/systematic-debugging/test-pressure-3.md",
+          "sha256": "96B50A52E2C7989C9CF20FB752C47C1E9A3A70DC362F8F7989F8F5B64DAC7708"
+        },
+        {
+          "path": "skills/test-driven-development/SKILL.md",
+          "sha256": "64B03FCE4AEE5A97A93160CEA8111F3BA13A17B7C001DB4BD5836D67FD10705D"
+        },
+        {
+          "path": "skills/test-driven-development/writing-good-tests.md",
+          "sha256": "51471C853306FF92CA8BB41DCAEA05F31C0E46B03651F8F3C99754B7172F4AE1"
+        },
+        {
+          "path": "skills/using-git-worktrees/SKILL.md",
+          "sha256": "8CFB86F121269E8F7F12361E6795C4F6738828340E28964C9229D365666C9EDD"
+        },
+        {
+          "path": "skills/using-superpowers/SKILL.md",
+          "sha256": "82C5C8866AD7F5DD4440CE66BD7806BA48A2F13771BEAE5CF112E53F08FE36BA"
+        },
+        {
+          "path": "skills/using-superpowers/references/antigravity-tools.md",
+          "sha256": "4880F6DE3DA4E32F9659EBE7A72B9E0EBFFF04E028C2ED96173F86D0387A04C0"
+        },
+        {
+          "path": "skills/using-superpowers/references/claude-code-tools.md",
+          "sha256": "21479A3FEE27448CAB8748A3B5687E53BB257883BDA9C070426F9A1AB5CEBF1B"
+        },
+        {
+          "path": "skills/using-superpowers/references/codex-tools.md",
+          "sha256": "1A38AD9B188C393052F58D95657A1C35EA6AAFC8B5A27F198F3922912F70BBE7"
+        },
+        {
+          "path": "skills/using-superpowers/references/gemini-tools.md",
+          "sha256": "62B9157BCB0EE3C6784E3D0DA0798DDFA5872F9E0C34BEA48F3079DABEA71965"
+        },
+        {
+          "path": "skills/using-superpowers/references/hermes-tools.md",
+          "sha256": "E2185C976A3C87503910E05E2AEA58CC89BC8E569BB624B93DF9958AC47A9190"
+        },
+        {
+          "path": "skills/using-superpowers/references/muse-tools.md",
+          "sha256": "5A1DA5C575FE18456CA71CD47EBFD8A38C745F8D82A67FE64D5B83080000EEB3"
+        },
+        {
+          "path": "skills/using-superpowers/references/pi-tools.md",
+          "sha256": "703DBC83D23ECAB9C6F388460C38ABC482E9DEE2FE6772A8C7A255152AD3A4D5"
+        },
+        {
+          "path": "skills/verification-before-completion/SKILL.md",
+          "sha256": "2BEFE7FC55BCADAA3D97DD9E8EFEB633D2561C0EBE74C5A8B17C4D9E7E4520B3"
+        },
+        {
+          "path": "skills/writing-plans/SKILL.md",
+          "sha256": "A6C67C1900064347C2A329990DD3C555657C51C3EC53B259A08AA01A2C26139A"
+        },
+        {
+          "path": "skills/writing-skills/SKILL.md",
+          "sha256": "8CB3AC68C6D8C4BB46886B998B09AF7989643CAB8BD0E46EE86DD62E64546BBE"
+        },
+        {
+          "path": "skills/writing-skills/references/CLAUDE_MD_TESTING.md",
+          "sha256": "0B379A3415E185D3C434B3AD283D8AA132F3022C2A4F210F168865B5986BCEF0"
+        },
+        {
+          "path": "skills/writing-skills/references/anthropic-best-practices.md",
+          "sha256": "217629B356C09C9BD11017C9788E8FC654CA1B32C92D4A51CD490E16DD65E59A"
+        },
+        {
+          "path": "skills/writing-skills/references/bulletproofing.md",
+          "sha256": "9397023E6BC85B556A57F3097371363BF03E28E755C57F403F470BCDA90E0A23"
+        },
+        {
+          "path": "skills/writing-skills/references/discovery.md",
+          "sha256": "C6BBC74AF3BE90F693F7CBC986AF6FA94E8DF75F65109B52E96032587F5B92AF"
+        },
+        {
+          "path": "skills/writing-skills/references/flowcharts.md",
+          "sha256": "8B1F542391F274F0D33F3457AC099A3D317D6877EAA3B8D3B1EBEF151B55FDA7"
+        },
+        {
+          "path": "skills/writing-skills/references/graphviz-conventions.dot",
+          "sha256": "E2890A593C91370E384B42F2F67B1A6232C9E69DDDEA7891A0C1C46D7B20B694"
+        },
+        {
+          "path": "skills/writing-skills/references/persuasion-principles.md",
+          "sha256": "A51BC9BF75189EA73A27B3FB504A2FDFDB966FB1F7F1CDF03203230A216CCC03"
+        },
+        {
+          "path": "skills/writing-skills/references/testing-skills-with-subagents.md",
+          "sha256": "ED8A6862C085900135962390530D9DC7637AD6D650B4324CE3B051287A5C3F22"
+        },
+        {
+          "path": "skills/writing-skills/render-graphs.js",
+          "sha256": "C7F412CC629461C4D10287E668731874C0497707023E3E3F74A5355EB2CEE196"
+        },
+        {
+          "path": "tests/antigravity/run-tests.sh",
+          "sha256": "76355B01132D4F27CC5545C15926EB0C3614D38DB2B5D6988A2D818918D9EAF1"
+        },
+        {
+          "path": "tests/antigravity/test-antigravity-tools.sh",
+          "sha256": "C38A501650F5BA63337514044083636998824749ADB4C564431253F3CC66254C"
+        },
+        {
+          "path": "tests/antigravity/test-logo.sh",
+          "sha256": "D7D133DF78B917BF00B24C93BE19F7B21E185DBCB6D475542993EB3D5C0F3CC3"
+        },
+        {
+          "path": "tests/antigravity/test-plugin-manifest.sh",
+          "sha256": "627D97C59D806A6D495E54DFF5DD57447EBA21D8A3293251B472898F28268C12"
+        },
+        {
+          "path": "tests/brainstorm-server/auth.test.js",
+          "sha256": "8EFA43628B582973DCC543C0768E91066CF9834292E2E724657C6801B63DF062"
+        },
+        {
+          "path": "tests/brainstorm-server/branding.test.js",
+          "sha256": "B116F645B46130A3A58867493863A1398CF5426375D695203C858C95EB5E8D02"
+        },
+        {
+          "path": "tests/brainstorm-server/browser-launcher.test.js",
+          "sha256": "FFB9CCECF27968B9359049FF96B50725669B1F86863F88B583B9AA0C3AA37C94"
+        },
+        {
+          "path": "tests/brainstorm-server/helper.test.js",
+          "sha256": "9917FC944E8C5594430BA2600035FF5FD8212119B9CAE2D62C75F5725DE94061"
+        },
+        {
+          "path": "tests/brainstorm-server/lifecycle.test.js",
+          "sha256": "686E19A12C6BA9B3003F4DEDF840161B05F5C42DFB87C49A6B9C8ABC596F1156"
+        },
+        {
+          "path": "tests/brainstorm-server/package-lock.json",
+          "sha256": "80F45A9D8857E27D9363D47789284A26D13FB47388FA8596EF0DB7207E6D7C10"
+        },
+        {
+          "path": "tests/brainstorm-server/package.json",
+          "sha256": "D785483894BFEDBCCF9731FD7ED52F959973F62DC9C42A8A7407FC7779D220C8"
+        },
+        {
+          "path": "tests/brainstorm-server/server.test.js",
+          "sha256": "A8F2EFFBA4647767E0E66B0C681AE63E89355CB6BB5E20A4F86D48149C3957E6"
+        },
+        {
+          "path": "tests/brainstorm-server/start-server.test.sh",
+          "sha256": "FB0C928E206FBD6A0FE77E750198D71AE0C331E361B13E9A8B8742CDB22302B5"
+        },
+        {
+          "path": "tests/brainstorm-server/stop-server.test.sh",
+          "sha256": "35E150E95F0E97D50470F2C0A30BC7C9C8C5CB7721C53DCFF887B430067490DB"
+        },
+        {
+          "path": "tests/brainstorm-server/windows-lifecycle.test.sh",
+          "sha256": "7DC8E09EDFE0A4CC34550FDB0E5AE5117758991D490756971BE51C88E4F5908D"
+        },
+        {
+          "path": "tests/brainstorm-server/ws-protocol.test.js",
+          "sha256": "ABD0A10EAFFE4E30A9918C79C7692775DB36C8A3E132E04D52EC06D6CDDAA132"
+        },
+        {
+          "path": "tests/claude-code/README.md",
+          "sha256": "DF8CC7A1709B5FD881F41F6E7AFC180F1B686C14B97624C27E4957A174C09911"
+        },
+        {
+          "path": "tests/claude-code/analyze-token-usage.py",
+          "sha256": "B3B124B975086E66540DCA1328D7B6B75416450B0C93FC246F0D7D148FC2394C"
+        },
+        {
+          "path": "tests/claude-code/run-skill-tests.sh",
+          "sha256": "A7BFFA447F489BE5A9507114027DDCDB94409EBA3156DF88C9338307710502A4"
+        },
+        {
+          "path": "tests/claude-code/test-executing-plans-scripts.sh",
+          "sha256": "4BB8AC69CD96ADD9D524C5D9D04726853F4E82810AEFCB87FD8965D9A55CBC76"
+        },
+        {
+          "path": "tests/claude-code/test-helpers.sh",
+          "sha256": "B06A890C9D371195D8F256B1227607DD32AD28831658BE1033756CC8DBCD86A7"
+        },
+        {
+          "path": "tests/claude-code/test-sdd-workspace.sh",
+          "sha256": "DD258732AEBAE183B0019D480422DF661468B7F3664025D3960E0BC5FCB6385D"
+        },
+        {
+          "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+          "sha256": "0794D17E3CC5D8A64C07A6C181538E1142819B86382D171F677510CFE6A3F722"
+        },
+        {
+          "path": "tests/claude-code/test-subagent-driven-development.sh",
+          "sha256": "37E9A1FBB20F9F6CA2E7EB62F16B4B04C90DA2874EC48EC3D2CC5C73ED99155D"
+        },
+        {
+          "path": "tests/claude-code/test-worktree-native-preference.sh",
+          "sha256": "1C0A94FB097AD33186BB7EA2B0321B11D8BA92ED8C6EF61464A2246EEC33ACF6"
+        },
+        {
+          "path": "tests/claude-code/test-worktree-path-policy.sh",
+          "sha256": "3498F973A9CF288F2959B7A02FC3ACEA09EE11650B46D689AEF81B394F8AB85C"
+        },
+        {
+          "path": "tests/codex-plugin-sync/test-sync-to-codex-plugin.sh",
+          "sha256": "DF2DD25436DD61F79912BBD36B76E5921C6CBDEF3F12941D4A102D35BABBEC13"
+        },
+        {
+          "path": "tests/codex/test-marketplace-manifest.sh",
+          "sha256": "9C5AFB24318BD959606F5063F444042E08E6FC2C6FF8C4988760476021E4EC90"
+        },
+        {
+          "path": "tests/codex/test-package-codex-plugin.sh",
+          "sha256": "BBF76D50EAC33B60D73318946BC1418A6E6C6D52CDD918F39C7B18B8EAA0B0F4"
+        },
+        {
+          "path": "tests/devin/test-devin-plugin.sh",
+          "sha256": "E156BE13B2E902449EF8BD1836B9DC60A7FC5F2F670896F4FAF621D9A1F3A6E4"
+        },
+        {
+          "path": "tests/diagnosing-superpowers/test-skill-structure.sh",
+          "sha256": "35BAF007E9A744621C6D374200CFAC3B597A5B969BBF824178975257F239854B"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/action-oriented.txt",
+          "sha256": "4EE13DB41CE891B5B328F8AD5284E516253F87DC65307DF0E60A2713A47442D1"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/after-planning-flow.txt",
+          "sha256": "7DA11DD7918B083C43087CD21E241D3B397D5488BA1E06BEBED74488C4827D22"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/claude-suggested-it.txt",
+          "sha256": "CB46492D9F905EBF6098AA6D0884F046A1B863B39036E5EC9A3244991B758D6F"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/i-know-what-sdd-means.txt",
+          "sha256": "64F33D0B328471C800541E268996A91E360D625BFE151B476B65BB64F0F1CD8D"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/mid-conversation-execute-plan.txt",
+          "sha256": "601301C1DA6E138427C5C1B18ACF34B3931BDD08397C3AEC7BC94BEC30D5C606"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/please-use-brainstorming.txt",
+          "sha256": "DE9508FFAD9E29EE8DDDA26ED9403B4A650E1081DF39800EDB6B56A6A3A859DD"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/skip-formalities.txt",
+          "sha256": "B4C1FC115FC67D9919A29DB6D8CEAA57A41933BDE343168BD0858A62CFE11C51"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/subagent-driven-development-please.txt",
+          "sha256": "C2499520CB588008437148FACC965800E4A302BAA1CC4D726F5B02BFCFC5F3E1"
+        },
+        {
+          "path": "tests/explicit-skill-requests/prompts/use-systematic-debugging.txt",
+          "sha256": "4AA7A8DA6F68BB22D2B1FB66AEB26C1BED6FDF86D33D2D6F7A9752334856A990"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-all.sh",
+          "sha256": "B657EF562B6CE3D02B3422EB5AB8571BE5545525249088034AB36C27343B95CC"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+          "sha256": "1004578E3EF68D6FDA8646C9257D27DD4CA30C4C1BDC986A50FBCB929EA0934D"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+          "sha256": "27B92722271FD25DFCAD9B04E8C45B81E2A51A51005C3BCF13DD9D5A70567D01"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+          "sha256": "DC22F0B1ED0D367811ECF046C942430D15E87F4B8B2B4CC8260D60E00BEE6ECB"
+        },
+        {
+          "path": "tests/explicit-skill-requests/run-test.sh",
+          "sha256": "841F1D014F231C84F441CC6B91F388CC3E9E788012E6D36F5E78406C1F4C9B49"
+        },
+        {
+          "path": "tests/hermes/__init__.py",
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "path": "tests/hermes/conftest.py",
+          "sha256": "6CF5E434B124D912E1B53B4E6C1287F72C9AF8D60AA01E8B49722C98E8A41DC8"
+        },
+        {
+          "path": "tests/hermes/test_bootstrap.py",
+          "sha256": "A4AAEB394779F3D22106866BFE67723301A5CF317DFAD7A1386994EDDD7A3031"
+        },
+        {
+          "path": "tests/hermes/test_plugin.py",
+          "sha256": "95C48697239D0FE31D60168419FD145C2EFAD0F210024B307910AB856BE46790"
+        },
+        {
+          "path": "tests/hooks/test-run-hook-cmd-windows.sh",
+          "sha256": "1630CA0ACCDE617B06CAC968D821F5420EC124672A2D7B79EB2BC81C39B94154"
+        },
+        {
+          "path": "tests/hooks/test-session-start.sh",
+          "sha256": "036C13AC48192E459C6AD327614161670F8B142FCF70E4E670D05C43775A54AD"
+        },
+        {
+          "path": "tests/kimi/run-tests.sh",
+          "sha256": "FB53A9CE91AE119146764EF2D55C63A5D20B86198E2EE08759FBAE8194177FF0"
+        },
+        {
+          "path": "tests/kimi/test-plugin-manifest.sh",
+          "sha256": "D7CA4DB2E67C8611D3D1FE1FBF28FE41A33B187155563F1A553212DF04250AAA"
+        },
+        {
+          "path": "tests/opencode/run-tests.sh",
+          "sha256": "B2F2067CFEFA61AEC22DA47686DCC7B60E4DE16BCA439D1F3E4631D71AD78054"
+        },
+        {
+          "path": "tests/opencode/setup.sh",
+          "sha256": "0E8600FA5E56D7613F41D19732601397D2C18087A71DA2801CC53443756A6348"
+        },
+        {
+          "path": "tests/opencode/test-bootstrap-caching.mjs",
+          "sha256": "7966D45D3BFA281679C917C03704824AE9752F2E624173B598BAAEA961BEBAFA"
+        },
+        {
+          "path": "tests/opencode/test-bootstrap-caching.sh",
+          "sha256": "B13D826FDAE77FEAF922F4009F544D0AD51CE722258DEE997B252F76AF70330A"
+        },
+        {
+          "path": "tests/opencode/test-plugin-loading.sh",
+          "sha256": "41389F92E160766CFB27BFD15849E3EF546427444F88D241506915044209BED0"
+        },
+        {
+          "path": "tests/opencode/test-priority.sh",
+          "sha256": "123A82B72F22A5A0D1BE2C6CFB898BF4D8D772EE4C7BA2F4540562A1B62A0902"
+        },
+        {
+          "path": "tests/opencode/test-session-bootstrap.mjs",
+          "sha256": "843F69300EE5F93F5EC9A8CEDF7467427CC254F91A6D21E4B4DDC15F849C3AA1"
+        },
+        {
+          "path": "tests/opencode/test-session-bootstrap.sh",
+          "sha256": "8DD9605232AC6030F052AB0102FCEA6109DFE6A44E74A2BBE15FD6EB450FE7DB"
+        },
+        {
+          "path": "tests/opencode/test-skill-registration.mjs",
+          "sha256": "779BA75046C2860096E232B5EFA298C2073B459234E7279D87510E10FDEACD79"
+        },
+        {
+          "path": "tests/opencode/test-skill-registration.sh",
+          "sha256": "0D01EC62A39B3D996CA8C3160A93E7D5F0BC3591941A8EE6D48F65DD61EDDD28"
+        },
+        {
+          "path": "tests/opencode/test-tools.sh",
+          "sha256": "AE8BFAE51FD2D25B9659177EC257C0551BC521D7F9E7C60C34110497B501E182"
+        },
+        {
+          "path": "tests/pi/test-pi-extension.mjs",
+          "sha256": "0F84E8FE4190575E907A109E3B2540A21832DDAC4F1BDB76F1074489F4F605C6"
+        },
+        {
+          "path": "tests/shell-lint/test-lint-shell.sh",
+          "sha256": "E777907226ED8614FE1CBC06AFD538E223E4081C368757B26A5F77DFB4355B40"
+        },
+        {
+          "path": "tests/skill-size/test-skill-size.sh",
+          "sha256": "82AA688A6F17CB04006954F2C7E6894578EF13009C273FD40777F90C87D8B99A"
+        },
+        {
+          "path": "tests/systematic-debugging/test-find-polluter.sh",
+          "sha256": "7C5AE1ADB7C6E292B73ECCBA6BA442501C442AEFE8C883A94C9FDD809D592CEA"
+        },
+        {
+          "path": "tests/version-bump/test-bump-version.sh",
+          "sha256": "9979D56389D953449CD1BDB93017E1F9ABBAB5F5522E80E9B91DCD6A00BAF820"
+        },
+        {
+          "path": "tests/writing-skills/test-render-graphs.sh",
+          "sha256": "E758C2E751FCFA73CEAEAC7114251D48CD7ECE167AC535DD765C3F9D95A6A9A9"
+        }
+      ],
+      "upstreamHead": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "upstreamStatus": [],
+      "sentinel": "29C25B5FD9AB8527B8AB2007DA2021DC2A2EA87F510C2192CEB95C364A6EF185",
+      "refs": [
+        "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1",
+        "29efac8c41c8978650fe492b6111293ecb28302d refs/heads/main",
+        "476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup",
+        "96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft",
+        "737af3f01bba8c5dd0e200cba1f8fa66655151fc refs/heads/recovery/issue-19-windows",
+        "22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle",
+        "29efac8c41c8978650fe492b6111293ecb28302d refs/remotes/origin/HEAD",
+        "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1",
+        "399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph",
+        "88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification",
+        "9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan",
+        "a74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves",
+        "39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package",
+        "9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges",
+        "29efac8c41c8978650fe492b6111293ecb28302d refs/remotes/origin/main",
+        "476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup",
+        "96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft",
+        "742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native",
+        "0bbd5821cb751afc8dfdfac8c6812007d6fb63a2 refs/remotes/origin/recovery/issue-19-windows",
+        "b59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence",
+        "22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle",
+        "5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture"
+      ],
+      "issue": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+              "number": 18,
+              "state": "CLOSED",
+              "title": "Verify Claude Code setup and upstream adoption",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+            }
+          ],
+          "totalCount": 1
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+              "number": 11,
+              "state": "OPEN",
+              "title": "Deliver and verify the Claude Code plugin installation surface",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\n\n## Bounded Scope\n\n### Allowed\n\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\n\n### Out of Scope\n\n- Change the approved host contract or silently update/remove upstream.\n- Run mutation scenarios on production issues without authorization.\n- Claim rollback when the previous version cannot be restored and verified.\n\n## Acceptance Criteria\n\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\n\n## Verification Seams\n\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 19,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify Claude Code lifecycle and conformance",
+        "updatedAt": "2026-10-25T16:21:35Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+      }
+    }
+  },
+  "authorized_ref_delta": {
+    "changed": {
+      "refs/remotes/origin/main": {
+        "before": "b0d702f8821d6d29184118410ec6ff2d8fb63438",
+        "after": "29efac8c41c8978650fe492b6111293ecb28302d"
+      },
+      "refs/remotes/origin/recovery/issue-19-windows": {
+        "before": null,
+        "after": "0bbd5821cb751afc8dfdfac8c6812007d6fb63a2"
+      },
+      "refs/remotes/origin/test/issue-19-doc-lifecycle": {
+        "before": null,
+        "after": "22c5b8d917a09f275c23d99bd9c9645d6c1d2e35"
+      },
+      "refs/remotes/origin/HEAD": {
+        "before": "b0d702f8821d6d29184118410ec6ff2d8fb63438",
+        "after": "29efac8c41c8978650fe492b6111293ecb28302d"
+      },
+      "refs/heads/recovery/issue-19-windows": {
+        "before": "28df1e8b44f4f970234ad674a38556c90bfe1abf",
+        "after": "737af3f01bba8c5dd0e200cba1f8fa66655151fc"
+      },
+      "refs/heads/main": {
+        "before": "d0eeee829c491da02351e793544aa16ad96461bf",
+        "after": "29efac8c41c8978650fe492b6111293ecb28302d"
+      }
+    },
+    "authority": "operator handoff/sync plus explicit fixture PR merge approval and approved recovery incorporation; origin HEAD aliases main"
+  },
+  "strict_package_validation": "Validating marketplace manifest: U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\marketplace.json\n\nℹ Advice (does not change the verdict):\n\n  ❯ U:\\repos\\agents\\superpowers-backplane\\README.md: This README has no line that installs \"superpowers-backplane\" from a marketplace. Add the install line, which works in one step on Claude Code 2.1.275 or later.\n      /plugin install superpowers-backplane --marketplace tvproductions/superpowers-backplane\n\n✔ Validation passed\n",
+  "ruff": "PASS",
+  "ty": "PASS",
+  "regression_tests": "5/5 PASS",
+  "package_skills_manifests_unchanged_from": "b0d702f8821d6d29184118410ec6ff2d8fb63438",
+  "whitespace_exceptions": [
+    "Historical raw SSH stderr trailing space at tests/scenarios/transcripts/2026-10-25-issue-19-python-lifecycle.md:147",
+    "Extra blank EOF line in tests/scenarios/transcripts/2026-10-25-issue-19-python-harness-source.md:1282"
+  ],
+  "retained_conformance": "23/23 original expectations plus skill structure from 2026-10-25-windows-superpowers-v7.0.1.json; identical installed B and upstream 7.0.1, no canonical skill changes",
+  "retained_lifecycle": "Nine byte-identical executable Python blocks fully replayed in v7.0.1 evidence; added paragraph contains no executable changes. No claim of a new full lifecycle replay."
+}

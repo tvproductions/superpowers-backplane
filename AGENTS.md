@@ -23,14 +23,40 @@
 
 ## Runtime and Tool Boundary
 
-- Remain language-neutral. Do not assume Python, Node.js, or another project
-  runtime.
+- Keep consuming-project workflows language-neutral; their own instructions
+  govern their runtime and verification tools.
+- Use Python for Backplane-owned cross-platform tooling. Use Astral products
+  strictly and thoroughly for all Python needs: `uv` for Python versions,
+  environments, dependencies, tool installation, and execution; Ruff for
+  linting and formatting; and `ty` for type checking.
+- Use uv-managed Python 3.14 for this repository's tooling and `.venv`.
+  `.python-version` records the verified patch; keep it and the environment
+  aligned. Preserve historical verification records at their original runtimes.
+  Create the environment with `uv venv --managed-python .venv` and execute
+  Python through `uv run --no-project python` from this repository root.
+- Keep orchestration portable across Windows, macOS, and Linux: use Python
+  paths, explicit text encodings, and shell-free subprocess argument lists.
+  Limit shell-specific code to adapters for an explicitly tested shell surface.
 - **NO pytest. EVER.** Do not add, suggest, or assume pytest.
 - Require GitHub CLI (`gh`) for GitHub operations. Assume Git because
   Superpowers itself requires Git workflows.
 - Use native GitHub issue hierarchy, dependencies, issue types, labels, linked
   pull requests, and closure relationships. Do not require GitHub Projects or
   introduce IssueOps.
+
+## Companion Starter Guidance
+
+- Use [gz-skills-first-starter](https://github.com/tvproductions/gz-skills-first-starter)
+  as an engineering consistency reference. Re-read relevant guidance when it
+  changes and reconcile applicable practices with this project's authorities.
+- Do not directly adopt the starter or bootstrap its bundle into Backplane:
+  the starter directs adopters to this project, so doing so would create a
+  circular adoption relationship. Do not claim formal starter conformance.
+- Apply useful practices through explicit Backplane-owned decisions, preserving
+  independent component ownership. Keep consuming-project workflows language-neutral;
+  this repository's Python/Astral tooling policy does not become an adopter requirement.
+- Record material differences and their rationale; do not silently import the
+  starter's runtime, packaging, release, or acceptance requirements.
 
 ## Superpowers Dependency
 

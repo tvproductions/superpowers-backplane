@@ -1,0 +1,215 @@
+Prompt record for tests/scenarios/2026-10-24-claude-code-lifecycle.md
+(issue #19, Task 2, 2026-10-24).
+
+No Claude Code session prompt ran in this task. The prompts below are the
+Claude Code CLI plugin commands run against the Task 1 disposable profile.
+Every command ran with CLAUDE_CONFIG_DIR set to the disposable profile
+/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-9f1f8fbf7049931c
+(unauthenticated throughout), and <backplane-checkout> resolves to the
+pinned clone
+/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-source-7b44fc2e7a0108a6/superpowers-backplane
+detached at b0d702f8821d6d29184118410ec6ff2d8fb63438. Outputs are recorded
+verbatim, including exit codes. No command asked for confirmation, so no
+noninteractive flag was used (the CLI's documented -y/--yes applies only to
+marketplace-declared commands, which this plugin does not declare).
+
+The exact task brief that produced these observations follows, verbatim:
+
+### Task 2: Repeat install and preservation
+
+**Files:**
+- Modify: `tests/scenarios/2026-10-24-claude-code-lifecycle.md`
+- Create: `tests/scenarios/transcripts/2026-10-24-claude-code-repeat-install.prompt.txt`
+
+**Interfaces:**
+- Consumes: Task 1 profile, source identities, and baseline snapshots
+- Produces: the installed Backplane candidate identity and repeat-install evidence
+
+- [ ] **Step 1: Install the candidate**
+
+Run the guide's clean install path in the disposable profile:
+- `claude plugin marketplace add <backplane-checkout>`
+- `claude plugin install superpowers-backplane@superpowers-backplane --scope user`
+- `claude plugin list --json`
+
+Expected: exactly one effective Backplane plugin and marketplace; no unrelated entry is created.
+
+- [ ] **Step 2: Replay the same install**
+
+Run the same marketplace-add and plugin-install commands again. If the CLI asks for confirmation, use its documented noninteractive flags, but do not bypass an interactive safety prompt outside a disposable profile.
+
+Expected: the second install remains one effective Backplane installation; no duplicate plugin ID or marketplace appears.
+
+- [ ] **Step 3: Verify preservation**
+
+Compare before/after:
+- installed plugin IDs, versions, scopes, and enabled states
+- marketplace IDs and source paths
+- `installed_plugins.json`, `known_marketplaces.json`, and `settings.json` hashes, excluding volatile non-config data where the host forces it
+- upstream checkout HEAD/status
+- complete #19 native intake
+
+Expected: only the expected install state changed; upstream and issue state remain unchanged.
+
+## Pre-install fresh verification
+
+$ claude --version
+2.1.310 (Claude Code)
+exit:0
+
+$ claude plugin marketplace list --json
+[]
+exit:0
+
+$ claude plugin list --json
+[]
+exit:0
+
+$ claude auth status --json
+{
+  "loggedIn": false,
+  "authMethod": "none",
+  "apiProvider": "firstParty",
+  "analyticsDisabled": false,
+  "projectsDirectory": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-9f1f8fbf7049931c/projects",
+  "configDirectory": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-9f1f8fbf7049931c"
+}
+exit:1
+
+$ shasum -a 256 <profile>/.claude.json
+0f3293ca1e106d183b48a408fe60fc8d18bf630eab004fb4ea565e09a0bd6204
+(re-verified identical after the last command of the round)
+
+## Brief step 1: clean install
+
+$ claude plugin marketplace add <backplane-checkout>
+Adding marketplace…✔ Successfully added marketplace: superpowers-backplane (declared in user settings)
+exit:0
+
+$ claude plugin install superpowers-backplane@superpowers-backplane --scope user
+Installing plugin "superpowers-backplane@superpowers-backplane"...✔ Successfully installed plugin: superpowers-backplane@superpowers-backplane (scope: user)
+exit:0
+
+$ claude plugin list --json
+[
+  {
+    "id": "superpowers-backplane@superpowers-backplane",
+    "version": "0.1.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-9f1f8fbf7049931c/plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0",
+    "readFromFolder": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-source-7b44fc2e7a0108a6/superpowers-backplane",
+    "folderVersion": "0.1.0",
+    "installedAt": "2026-10-25T00:44:35.337Z",
+    "lastUpdated": "2026-10-25T00:44:35.337Z",
+    "projectEnabled": false
+  }
+]
+exit:0
+
+$ claude plugin marketplace list --json
+[
+  {
+    "name": "superpowers-backplane",
+    "source": "directory",
+    "path": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-source-7b44fc2e7a0108a6/superpowers-backplane",
+    "installLocation": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-source-7b44fc2e7a0108a6/superpowers-backplane"
+  }
+]
+exit:0
+
+$ shasum -a 256 <profile>/plugins/installed_plugins.json <profile>/plugins/known_marketplaces.json <profile>/settings.json
+8dbbf7b791f5d94aa70255c3b110436dd43a3dfaa02f6d7bbd640ebb312b52a0  installed_plugins.json
+fbe5f779be03eafa610514422d37b72ed34ab953c20636f8084459ccfa6ba401  known_marketplaces.json
+431334b3ae4d7af6eb3f1b14367705e22291b0173a13863005af15a446d05a2f  settings.json
+
+<profile>/plugins/installed_plugins.json content:
+{
+  "version": 2,
+  "plugins": {
+    "superpowers-backplane@superpowers-backplane": [
+      {
+        "scope": "user",
+        "installPath": "/private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-9f1f8fbf7049931c/plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-10-25T00:44:35.337Z",
+        "lastUpdated": "2026-10-25T00:44:35.337Z",
+        "gitCommitSha": "b0d702f8821d6d29184118410ec6ff2d8fb63438"
+      }
+    ]
+  }
+}
+
+## Brief step 2: replay of the same install
+
+$ claude plugin marketplace add <backplane-checkout>
+Adding marketplace…✔ Marketplace 'superpowers-backplane' already on disk — declared in user settings
+exit:0
+
+$ claude plugin install superpowers-backplane@superpowers-backplane --scope user
+Installing plugin "superpowers-backplane@superpowers-backplane"...✔ Plugin "superpowers-backplane@superpowers-backplane" is already installed (scope: user) — it loads in place from /private/var/folders/7y/cvcpqqnj2_52yy4wl780kmqc0000gn/T/opencode/backplane-claude-19-source-7b44fc2e7a0108a6/superpowers-backplane, so edits there take effect at the next session start or /reload-plugins
+exit:0
+
+$ claude plugin list --json
+(byte-identical to the brief step 1 output, same digests:
+7226fbb038d4f602a5fb0058991cbcec84ccb75441e3aeccf75c7b1eaded45dd)
+exit:0
+
+$ claude plugin marketplace list --json
+(byte-identical to the brief step 1 output, same digest:
+b1b769b8c4bd4da15b67034f98c057d8d6c2ad53c7d19ae9f566f18a83511aae)
+exit:0
+
+$ shasum -a 256 <profile>/plugins/installed_plugins.json <profile>/plugins/known_marketplaces.json <profile>/settings.json
+8dbbf7b791f5d94aa70255c3b110436dd43a3dfaa02f6d7bbd640ebb312b52a0  installed_plugins.json  (unchanged)
+fbe5f779be03eafa610514422d37b72ed34ab953c20636f8084459ccfa6ba401  known_marketplaces.json  (unchanged)
+890a2ccf20880233b4cbf75cc983794ffbf812c5cf2528aa15663be2b911b6f6  settings.json  (bytes differ from step 1)
+
+The settings.json difference is top-level key order only: after the first
+install the host serialized "extraKnownMarketplaces" before
+"enabledPlugins"; after the replay it serialized "enabledPlugins" first.
+Compared field-by-field the two objects are identical — the same single
+superpowers-backplane marketplace entry and the same single
+superpowers-backplane@superpowers-backplane enabled-plugin entry.
+
+## Brief step 3: preservation probes
+
+$ shasum -a 256 ~/.claude/settings.json ~/.claude/plugins/installed_plugins.json ~/.claude/plugins/known_marketplaces.json
+b6cfd9420f69fec8e5a56591820136da8e2e5dccd80939dfc37b85ef48c41581  settings.json
+3238f139f77c8a7dd90d3d1018862c9f4c3b99808e7d26c7ce0fee6f1557f507  installed_plugins.json
+9cbdcf550a4ed248f5ee04cf02b5f371aaa278e30dce1de926c6e65a6c911b3e  known_marketplaces.json
+(identical before the first install and after the replay, and equal to the
+Task 1 baseline values)
+
+$ git -C /Users/jeff/Documents/Code/superpowers-backplane/.agents/superpowers rev-parse HEAD
+2ce8aa15d05bd57213e6f746f953aafb7ded7a8b
+$ git -C ... remote get-url origin
+https://github.com/obra/superpowers.git
+$ git -C ... status --porcelain=v1
+(empty, exit 0)
+$ git -C ... describe --tags --exact-match
+v7.0.1
+
+$ gh issue view 19 --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url
+(ran from the feature worktree; exit 0; complete JSON saved; SHA-256 of the
+returned JSON 7e15799de773555bfe2ac572dee5c1878c8d5f8fb014e1564e6a264e72c08dbe,
+byte-identical to the Task 1 baseline intake digest; state OPEN, labels
+[backplane:designing], updatedAt 2026-09-27T14:09:57Z)
+
+$ git -C <backplane-checkout> rev-parse HEAD
+b0d702f8821d6d29184118410ec6ff2d8fb63438
+$ git -C <backplane-checkout> status --porcelain=v1
+(empty, exit 0)
+
+$ shasum -a 256 <profile-cache>/.claude-plugin/plugin.json <backplane-checkout>/.claude-plugin/plugin.json <profile-cache>/.claude-plugin/marketplace.json <backplane-checkout>/.claude-plugin/marketplace.json <profile-cache>/skills/managing-superpowers-backlog/SKILL.md <backplane-checkout>/skills/managing-superpowers-backlog/SKILL.md <profile-cache>/skills/managing-superpowers-handoffs/SKILL.md <backplane-checkout>/skills/managing-superpowers-handoffs/SKILL.md
+32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565  plugin.json (cache = clone)
+e9903b166d7fe302a51280a75d613d019a8945d8bee23a77819bb2e2ae839da1  marketplace.json (cache = clone)
+168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16  backlog SKILL.md (cache = clone)
+a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de  handoffs SKILL.md (cache = clone)
+
+$ claude auth status --json (after the last install command)
+(loggedIn false, authMethod none, exit 1 — unchanged; no authentication was
+performed or required)
+
+.superpowers/ absent at the main repository root, inside the upstream
+checkout, and in the feature worktree before and after the round.

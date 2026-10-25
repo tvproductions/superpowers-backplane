@@ -1,0 +1,49 @@
+diff --git a/.claude-plugin/marketplace.json b/.claude-plugin/marketplace.json
+index b049265..d3dd9d5 100644
+--- a/.claude-plugin/marketplace.json
++++ b/.claude-plugin/marketplace.json
+@@ -4,7 +4,7 @@
+   "owner": {"name": "tvproductions"},
+   "plugins": [{
+     "name": "superpowers-backplane",
+-    "version": "0.1.0",
++    "version": "0.1.1",
+     "source": "./",
+     "description": "Native GitHub backlog continuity for upstream Superpowers"
+   }]
+diff --git a/.claude-plugin/plugin.json b/.claude-plugin/plugin.json
+index 4cb0cea..f009aa7 100644
+--- a/.claude-plugin/plugin.json
++++ b/.claude-plugin/plugin.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "superpowers-backplane",
+   "description": "Native GitHub backlog continuity for upstream Superpowers",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "author": {"name": "tvproductions"},
+   "repository": "https://github.com/tvproductions/superpowers-backplane"
+ }
+diff --git a/README.md b/README.md
+index 18ac59d..5c2246c 100644
+--- a/README.md
++++ b/README.md
+@@ -30,3 +30,5 @@ revision in `SUPERPOWERS.md`.
+ For repository-scoped OpenCode V2 use, `opencode.jsonc` pins the native
+ Superpowers plugin to `v7.0.1` and exposes this repository's own `./skills`.
+ Restart OpenCode in this repository after changing that configuration.
++
++Issue-19 update fixture: candidate content identity.
+diff --git a/plugin.json b/plugin.json
+index 07f6053..abb49ff 100644
+--- a/plugin.json
++++ b/plugin.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+   "name": "superpowers-backplane",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "description": "Native GitHub backlog continuity for upstream Superpowers",
+   "repository": "https://github.com/tvproductions/superpowers-backplane"
+ }

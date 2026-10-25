@@ -1,0 +1,56 @@
+Baseline prompt record for tests/scenarios/2026-10-24-claude-code-lifecycle.md
+(issue #19, Task 1, 2026-10-24).
+
+No Claude Code session prompt has run in this scenario yet. There is no
+response transcript, and no lifecycle result is claimed by this file. Later
+tasks add their own prompt files beside their responses.
+
+The exact regenerated task brief (after the dispatcher's candidate-revision
+ruling; the superseded mangled-SHA brief remains recorded at commit
+0e3a048) that produced the recorded baseline observations follows, verbatim:
+
+### Task 1: Disposable profile and source preflight
+
+**Files:**
+- Create: `tests/scenarios/2026-10-24-claude-code-lifecycle.md`
+- Create: `tests/scenarios/transcripts/2026-10-24-claude-code-lifecycle.prompt.txt`
+
+**Interfaces:**
+- Consumes: approved #19 authorities and current host/upstream state
+- Produces: the isolated profile, source identities, and baseline snapshots used by Tasks 2–6
+
+- [ ] **Step 1: Record the host and source identities**
+
+Run and record:
+- `claude --version`
+- `git -C .agents/superpowers rev-parse HEAD`
+- `git -C .agents/superpowers remote get-url origin`
+- `git -C .agents/superpowers status --porcelain=v1`
+- `gh auth status`
+- `gh issue view 19 --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url`
+
+Expected: Claude Code is operational, upstream is clean at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` with the authoritative `obra/superpowers` origin, `gh` is authenticated, and #19 is OPEN/`backplane:designing` at the recorded revision.
+
+- [ ] **Step 2: Create the disposable Claude profile**
+
+Create an unused directory under the approved temporary workspace and use it only as `CLAUDE_CONFIG_DIR` for child commands. Do not copy credentials. Capture its initial marketplace/plugin inventory.
+
+Expected: an empty, disposable Claude profile exists; the normal Claude profile is unchanged.
+
+- [ ] **Step 3: Publish and verify the pinned Backplane clone**
+
+In an unused temporary parent:
+- `gh repo clone tvproductions/superpowers-backplane <backplane-checkout>`
+- `git -C <backplane-checkout> checkout --detach b0d702f8821d6d29184118410ec6ff2d8fb63438`
+- Verify exact `tvproductions/superpowers-backplane` origin, HEAD, and clean status.
+- `gh api repos/tvproductions/superpowers-backplane/commits/b0d702f8821d6d29184118410ec6ff2d8fb63438 --jq .sha`
+- `claude plugin validate --strict <backplane-checkout>`
+- Record SHA-256 values for `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `docs/installing-claude-code.md`, and both canonical `SKILL.md` files.
+
+Expected: the pinned source is published, clean, valid, and at the selected candidate revision.
+
+- [ ] **Step 4: Record the baseline evidence shell**
+
+Create `tests/scenarios/2026-10-24-claude-code-lifecycle.md` with a scope section identifying #19, the candidate and upstream revisions, the disposable profile, and the rule that no lifecycle result is claimed yet.
+
+Expected: the evidence file exists with no success claim.

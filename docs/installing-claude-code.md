@@ -75,6 +75,10 @@ if ($LASTEXITCODE -ne 0) { throw 'Could not inspect installed plugins' }
 
 A marketplace added from a local directory loads its relative-path plugin in place. Keep this checkout at the recorded revision until a separately verified update; changing its files changes the effective plugin. Installing Backplane alone does not run setup.
 
+### Installation source and update verification
+
+A local-directory marketplace loads relative-path plugin files in place; editing that checkout does not demonstrate a hosted package update. For hosted update and rollback, record the selected full immutable source commit and require the installed commit, version and file hashes to match that source; any mismatch fails verification. Then restart Claude Code and directly invoke upstream `superpowers:using-superpowers` and both Backplane skills from their separate packages. A successful update exit alone is insufficient.
+
 ## Check the target issue and request setup
 
 Provide an existing issue number in the target repository. This command checks read-only access and the complete native issue fields Backplane needs. Replace the prompts with the real repository and issue; do not use a production issue as mutation test data.

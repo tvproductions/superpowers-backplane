@@ -12,8 +12,16 @@ Claude discovery and preservation pass. See
 `tests/scenarios/2026-10-25-issue-19-satisfaction.md` and the integrated-verification
 receipt/transcript for exact scope and retained evidence. The operator approved
 publication, merge, integrated verification and closure. Native #19 closure is
-pending publication of this evaluation and a final full intake. #11 and release
-acceptance remain separate; no next issue has been selected. The earlier session
+verified CLOSED/COMPLETED at `2026-10-25T18:19:39Z`, with no lifecycle labels,
+after the evaluation was published at `cde87943bdac5e92cab2eb21c2685251f7aab5d1`
+and the complete native issue re-read immediately before closure. Actual closure
+and unchanged graph are in `tests/scenarios/2026-10-25-issue-19-closeout.json`.
+The disposable profile is installed at exact tested delivery `7d7ecac`, distinct
+from later evidence storage. Parent #1 remains open with 6/17 children complete.
+#11 is open/backlog with its native blockers resolved but no plan; it is a planning
+candidate, not ready or selected. Release acceptance remains separate. Branches
+and reusable disposable profile/scratch are retained; no cleanup or release occurred.
+The earlier session
 handoffs below remain historical continuity, not current unfinished #31 work.
 
 End-of-day 2026-10-24 continuity is in the append-only

@@ -315,3 +315,23 @@ fields unchanged. `2026-10-25-issue-19-review-submission.json` preserves the ful
 before/after and concrete prepared PR description. The latest recovery commits
 remain local; final #19 publication/PR/merge and post-integration closeout require
 the pending operator decision. #11 remains open and no release is authorized.
+
+The operator approved that final package. PR #36 merged exact candidate `ade4e43`
+into main at tested delivery `7d7ecac36f8dc74ce1a0895ab934468332f92f53`.
+All 308 tracked blobs matched gh-served source and the complete merged tree
+matched the approved candidate. Fresh strict validation, nine-block hash/compile,
+four-block legacy parsing, five regressions, Ruff and ty passed on Python 3.14.9.
+The exact integrated delivery was explicitly installed by native pinned
+uninstall/reinstall; 21 source blob checks, actual fresh three-skill discovery
+and four immediate preservation snapshots passed. Unchanged conformance/replay
+inputs retain their explicitly scoped prior evidence rather than new-run claims.
+
+The integrated evaluation was published at evidence storage commit `cde8794`,
+distinct from the tested delivery. #19 was then re-read with all native fields,
+its editorial evaluation pointer reconciled, re-read immediately before closure,
+and closed COMPLETED with no lifecycle labels at `2026-10-25T18:19:39Z`.
+The actual closeout receipt preserves all snapshots and immutable evaluation URL.
+Parent #1 remains open (6/17 children complete); #11 remains open/backlog with
+resolved blockers and no plan. No next issue selected, no checkpoint/Project
+operation, tag/release, branch deletion, worktree removal or credential copying.
+Current disposable installation is D, not B; historical B/F evidence is unchanged.

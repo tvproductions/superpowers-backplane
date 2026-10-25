@@ -11,6 +11,15 @@
 The checkout and discovery junction are intentionally ignored. This document
 records the resolved dependency for diagnosis; it is not an indefinite pin.
 
+On 2026-10-25 the operator explicitly authorized aligning the Windows checkout
+with this recorded 7.0.1 revision. The independent checkout and disposable Claude
+upstream registration now match it. All five named checks and the affected
+Backplane lifecycle/discovery seams passed in fresh Windows Claude sessions;
+the existing 7.0.0 evidence retains its original scope. See
+`tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.md` for exact inputs,
+results and the unperformed fresh Codex probe's approval limitation. No Backplane
+release or complete-stack acceptance is implied by this maintenance.
+
 On 2026-10-24 the operator-authorized stable update passed all five Backplane
 conformance checks and fresh local Codex discovery. The repository-scoped
 OpenCode V2 configuration pins the independent upstream plugin to `v7.0.1`;

@@ -235,3 +235,26 @@ The executor returned to `recovery/issue-19-windows` after preserving the clean
 fixture branch. Native Python bookkeeping replaces the retired scratch
 PowerShell helpers; they are historical inputs, not the current execution route.
 No other checkout, upstream source, reserved namespace, tag or release is changed.
+
+## Subsequently authorized upstream maintenance
+
+The operator next explicitly requested updating to Superpowers 7.0.1. This
+supersedes the earlier preserve-7.0.0 ruling for future execution, not the
+historical evidence identities. The independent Windows checkout and disposable
+Claude upstream registration now match clean v7.0.1 at
+`2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`.
+
+Separate fresh 7.0.1 captures pass all five named checks (23/23 original
+behavioral expectations), replay all nine Python lifecycle blocks, verify ten
+immediate snapshots and five actual fresh discovery sessions, and restore B.
+See `tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.md` and its receipt
+and transcript. The earlier 7.0.0 records remain unchanged. Fresh Codex model
+verification was rejected before execution by automatic approval review; it is
+unverified, while the discovery junction itself resolves to the new commit.
+
+The exact reviewed #34 contribution remains on its preserved local branch at
+`22c5b8d`, awaiting the separately presented publication/integration approval.
+#19 and #34 native states are unchanged by maintenance. Resume/final closure
+must revalidate their live states against the now-current 7.0.1 input. No
+Backplane manifest version or release was changed by this maintenance; the
+test-only 0.1.1 source stays outside the release contribution.

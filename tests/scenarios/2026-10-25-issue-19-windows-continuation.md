@@ -147,7 +147,7 @@ Durable evidence:
   Python helpers. The four portability regression checks passed under Python
   3.13.14 after observed assertion-level failures. No macOS/Linux run is inferred.
 
-## Remaining gates
+## Previous checkpoint gates (before the operator's continuation approval)
 
 Installed-skill structure checks pass for both B skills and all nine
 directly linked references. The four behavioral conformance sessions and useful
@@ -157,3 +157,78 @@ transmission was additional to the approved skill-text payload. No rejected
 session was run. Fixture issue creation, publication, integration, final review
 and closure remain unperformed. #19 is OPEN/active, not complete; #11 remains
 separate. No push, merge, tag or release has been made by this continuation.
+
+## Approved continuation: conformance and live fixture
+
+The operator subsequently answered `yes` to running the four published Claude
+conformance prompts and creating/exercising the exact prepared documentation
+fixture. That resolved the earlier payload-approval blocker. The four fresh
+installed-B sessions scored **23/23 original behavioral expectations PASS**;
+together with the installed skill-structure inspection, all five named checks
+pass in this recorded Windows scope. Full prompts, unedited responses, actual
+tool calls, approved-source read digests and native preservation are retained in
+`2026-10-25-issue-19-conformance.json` and its companion transcript.
+
+The exact approved fixture body created
+[issue #34](https://github.com/tvproductions/superpowers-backplane/issues/34) at
+revision `2026-10-25T16:50:27Z`, with documentation/backlog labels and no native
+parent or dependency edges. Its mechanically bound Task 4 plan is committed on
+the same-root `test/issue-19-doc-lifecycle` branch at `33d4300`, directly based
+on verified published B. The issue's artifact paragraph explicitly records local
+availability and the separate publication/integration gate; no unavailable
+GitHub link is presented as published evidence.
+
+Eight fresh Claude sessions executed actual gh operations restricted to #34:
+
+| Operation | Observed outcome |
+|---|---|
+| Status and selection | Full native before/after JSON identical; no invented priority |
+| Backlog → designing | Design preparation recorded; unrelated documentation label preserved |
+| Designing → ready | Actual local plan read; old/current timestamp semantics reconciled explicitly |
+| Ready → active | Exact paragraph work began; native entry gates rechecked |
+| Active → review → active | Real independent draft-review finding recorded with its actual earlier timing; requested-change return observed |
+| Active → blocked | Real publication-authorization dependency recorded before the atomic label change; `Resume target: backplane:active` and explicit release condition retained |
+
+The independent fixture reviewer identified one Important defect in the original
+approved paragraph: recording hashes alone does not prove that installed content
+matches the selected source. The correction now explicitly requires the installed
+commit/version/hashes to match that source and makes every mismatch fail
+verification. The same review seat confirms the finding resolved and no remaining
+fixture findings. This focused confirmation is not the final whole-#19 review.
+
+Local fixture delivery: `22c5b8d917a09f275c23d99bd9c9645d6c1d2e35`, tree
+`13a0093f73eadbdb9abbb2db409f2b2100f5ab5e`. Its complete diff from B changes
+only one guide paragraph and the issue-bound fixture plan. The four pre-existing
+PowerShell examples remain byte-identical and parse with zero errors; they were
+not re-executed. Corrected exact-paragraph, bounded-scope and whitespace checks
+pass. The reviewer did not certify integration or final #19 acceptance.
+
+`2026-10-25-issue-19-live-fixture.json` and its transcript retain complete native
+states, actual tool calls, unedited responses, real review/correction, local
+source checks and the final protected installed-B snapshot. That final snapshot
+confirms all 21 installed source blobs, independent upstream files/identity,
+unrelated plugins, normal-profile configuration, sentinel and full #19 state
+unchanged. Only explicitly authorized local branch/commit ref changes are
+accounted separately; no remote ref was changed.
+
+## Current remaining gates
+
+- #34 is OPEN with exactly documentation and `backplane:blocked`, revision
+  `2026-10-25T17:07:58Z`. Publication/integration authorization is the concrete
+  release condition. Resume and verified-completion rows remain pending.
+- Exact two-file publication payload and PR body are prepared locally. Proposed
+  transport is gh Git Data API, then gh PR operations. A server-created commit
+  may differ from the local review history; require identical tree/blobs and
+  preserve both identities before proceeding. No publication has occurred.
+- After authorized fixture integration: freshly verify target bytes/parser,
+  close #34 with the unrelated documentation label retained, then incorporate
+  the verified fixture contribution into the recovery branch and replay affected
+  final-guide seams.
+- Whole-#19 review, final publication/integration, integrated verification and
+  #19 closeout remain separate gates. #19 remains OPEN/active at its unchanged
+  native revision `2026-10-25T16:21:35Z`; #11 remains separate.
+
+The executor returned to `recovery/issue-19-windows` after preserving the clean
+fixture branch. Native Python bookkeeping replaces the retired scratch
+PowerShell helpers; they are historical inputs, not the current execution route.
+No other checkout, upstream source, reserved namespace, tag or release is changed.

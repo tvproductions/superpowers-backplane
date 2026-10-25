@@ -306,3 +306,12 @@ sessions passed on 3.14.9, restoring exact B and protected state. See the Python
 remains historical; this creates no consumer runtime requirement or starter
 adoption. Existing tool versions were retained; latest-tool freshness remains
 outside this interpreter-only maintenance.
+
+Final local candidate `c4af615958ff5d40e070a1969caeefdbfaf38e64` was submitted
+to native #19 review after complete re-intake exactly matched the last protected
+snapshot. The atomic active-to-review transition and evidence comment were
+verified at `updatedAt=2026-10-25T18:13:27Z`, with body, graph and all other native
+fields unchanged. `2026-10-25-issue-19-review-submission.json` preserves the full
+before/after and concrete prepared PR description. The latest recovery commits
+remain local; final #19 publication/PR/merge and post-integration closeout require
+the pending operator decision. #11 remains open and no release is authorized.

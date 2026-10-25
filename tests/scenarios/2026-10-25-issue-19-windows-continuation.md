@@ -168,6 +168,9 @@ together with the installed skill-structure inspection, all five named checks
 pass in this recorded Windows scope. Full prompts, unedited responses, actual
 tool calls, approved-source read digests and native preservation are retained in
 `2026-10-25-issue-19-conformance.json` and its companion transcript.
+The final structure probe resolves all ten relative Markdown links across both
+installed skills, including the canonical governance document in addition to the
+nine links into reference folders; each target digest is retained in the receipt.
 
 The exact approved fixture body created
 [issue #34](https://github.com/tvproductions/superpowers-backplane/issues/34) at

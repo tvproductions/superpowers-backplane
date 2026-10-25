@@ -3,7 +3,59 @@
   "upstream": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
   "observed_platform": "Windows",
   "legacy_expectations_pass": 23,
-  "skill_structure": "PASS: two installed skills, nine direct references, metadata/source/placeholder checks",
+  "skill_structure": "PASS: two installed skills, every relative link including canonical governance, metadata/source/placeholder checks",
+  "relative_links_checked": [
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "references/installing-superpowers.md",
+      "sha256": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d"
+    },
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "references/github-issue-contract.md",
+      "sha256": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5"
+    },
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "references/superpowers-binding.md",
+      "sha256": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231"
+    },
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "references/product-decomposition.md",
+      "sha256": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a"
+    },
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "references/pr-completion.md",
+      "sha256": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c"
+    },
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "references/repository-checkpoint.md",
+      "sha256": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d"
+    },
+    {
+      "skill": "managing-superpowers-backlog",
+      "target": "../../docs/superpowers-backplane/governance.md",
+      "sha256": "e3022df94fe9b2eca84f9e3d1a81646402bc09ce0c5988f78d44343424c5954b"
+    },
+    {
+      "skill": "managing-superpowers-handoffs",
+      "target": "references/handoff-contract.md",
+      "sha256": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98"
+    },
+    {
+      "skill": "managing-superpowers-handoffs",
+      "target": "references/handoff-contract.md",
+      "sha256": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98"
+    },
+    {
+      "skill": "managing-superpowers-handoffs",
+      "target": "references/resume-assessment.md",
+      "sha256": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed"
+    }
+  ],
   "behavioral_checks": [
     {
       "check": "native-issue-intake",

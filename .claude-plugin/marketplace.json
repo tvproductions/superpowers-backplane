@@ -4,7 +4,7 @@
   "owner": {"name": "tvproductions"},
   "plugins": [{
     "name": "superpowers-backplane",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "source": "./",
     "description": "Native GitHub backlog continuity for upstream Superpowers"
   }]

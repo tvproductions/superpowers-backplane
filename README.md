@@ -30,3 +30,5 @@ revision in `SUPERPOWERS.md`.
 For repository-scoped OpenCode V2 use, `opencode.jsonc` pins the native
 Superpowers plugin to `v7.0.1` and exposes this repository's own `./skills`.
 Restart OpenCode in this repository after changing that configuration.
+
+Issue-19 update fixture: candidate content identity.

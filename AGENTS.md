@@ -23,8 +23,15 @@
 
 ## Runtime and Tool Boundary
 
-- Remain language-neutral. Do not assume Python, Node.js, or another project
-  runtime.
+- Keep consuming-project workflows language-neutral; their own instructions
+  govern their runtime and verification tools.
+- Use Python for Backplane-owned cross-platform tooling. Use Astral products
+  strictly and thoroughly for all Python needs: `uv` for Python versions,
+  environments, dependencies, tool installation, and execution; Ruff for
+  linting and formatting; and `ty` for type checking.
+- Keep orchestration portable across Windows, macOS, and Linux: use Python
+  paths, explicit text encodings, and shell-free subprocess argument lists.
+  Limit shell-specific code to adapters for an explicitly tested shell surface.
 - **NO pytest. EVER.** Do not add, suggest, or assume pytest.
 - Require GitHub CLI (`gh`) for GitHub operations. Assume Git because
   Superpowers itself requires Git workflows.

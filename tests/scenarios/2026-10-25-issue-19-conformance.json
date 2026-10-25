@@ -1,0 +1,749 @@
+{
+  "baseline": "b0d702f8821d6d29184118410ec6ff2d8fb63438",
+  "upstream": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+  "observed_platform": "Windows",
+  "legacy_expectations_pass": 23,
+  "skill_structure": "PASS: two installed skills, nine direct references, metadata/source/placeholder checks",
+  "behavioral_checks": [
+    {
+      "check": "native-issue-intake",
+      "session": "1dab3098-26ec-449f-84ca-b9636c2e7d82",
+      "scores": [
+        {
+          "expectation": "Complete native hierarchy/dependency/PR intake",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Refuse blocked and unreconciled execution",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Layer issue/spec/plan authority",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Use Backplane lifecycle without Project/IssueOps authority",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Preserve consumer-owned verification/release rules",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Close only after integrated acceptance and fresh verification",
+          "score": "PASS"
+        }
+      ],
+      "prompt": "Use the skill managing-superpowers-backlog and read every reference that the\nskill requires.\n\nIMPORTANT: This is a real workflow decision. Choose and act; do not ask\nclarifying questions. Do not mutate any real GitHub issue or local file; show\nthe exact commands and decisions you would apply.\n\nYou are entering an existing software repository that uses upstream\nSuperpowers. GitHub issue #42 is described as fully specified and already has\nan approved Superpowers spec and plan committed in the repository. It is marked\nas a child of an epic, is blocked by issue #37, and the issue body was edited\nafter the plan was written. A senior maintainer says to start immediately\nbecause the release window closes today; two hours were already spent preparing\na worktree, and they do not want more process discussion.\n\nDescribe the exact GitHub Issue and Superpowers lifecycle actions you would\ntake now, including state changes, how you decide whether work is eligible,\nwhat artifacts are authoritative, and when the issue should close. Give\nconcrete gh commands where appropriate.",
+      "response": "I loaded `using-superpowers` and `managing-superpowers-backlog` and read the references they require for this operation: the native issue contract, the Superpowers binding and the Claude Code tool notes. Everything below is commands I would run. I ran nothing against GitHub or local files. `OWNER/REPO` and `<plan-path>` are placeholders.\n\n## Decision\n\nStart #42 only if a few minutes of read-only checks pass. The deadline, the two hours of worktree setup, and the \"fully specified\" description don't make the issue eligible. Two facts stop work right now: the issue was edited after the plan was written, and native #37 still blocks it. If both clear, execution starts at once and there's no more design discussion. If either fails, #42 goes to `blocked` or back to `designing`, and no code is written.\n\n## 1. Read-only intake (no mutations)\n\n```text\ngh issue view 42 --repo OWNER/REPO --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\ngh issue view 37 --repo OWNER/REPO --json number,state,stateReason,closedByPullRequestsReferences,updatedAt,url\ngh label list --repo OWNER/REPO --search \"backplane:\"\ngh api graphql -f query='query{repository(owner:\"OWNER\",name:\"REPO\"){issue(number:42){userContentEdits(first:20){nodes{editedAt editor{login} diff}}}}}'\n```\n\nI'd also read the committed plan header for the issue URL, the `updatedAt` it consumed, and its design authority (the spec path).\n\n## 2. Eligibility checks (all six must pass)\n\n1. **Open leaf:** #42 is open and `subIssues` is empty. Its parent epic is only a continuity node, so nothing on the epic changes.\n2. **Body contract:** the body has Objective, Bounded Scope (Allowed / Out of Scope), Acceptance Criteria, Verification Seams, and Superpowers Artifacts.\n3. **Design authority:** the committed, approved spec under `docs/superpowers/specs/`.\n4. **Plan is current:** the plan's recorded `updatedAt` matches the issue's current `updatedAt`. It doesn't, so step 3 below applies.\n5. **Blockers resolved:** #37 must be closed `completed` with integrated evidence. If #37 is open, or was closed `not planned` while the blocking edge still exists, the blocker is unresolved.\n6. **Label:** exactly one `backplane:*` label, and it is `backplane:ready`. If there are zero or several, fail closed and repair that first.\n\n## 3. Branches, in order\n\n**A. #37 unresolved: stop.** Assuming #42 is labeled `ready`:\n\n```text\ngh issue edit 42 --repo OWNER/REPO --remove-label backplane:ready --add-label backplane:blocked\ngh issue comment 42 --repo OWNER/REPO --body \"Blocked by #37 (open). Resume target: backplane:ready. Release condition: #37 closed completed with integrated evidence, then revalidate every ready gate, including reconciling the post-plan body edit (plan consumed <old updatedAt>, current <new updatedAt>).\"\n```\n\nThen re-fetch #42 and confirm exactly one `backplane:blocked` label and that unrelated labels are unchanged. I'd tell the maintainer that the release can't include #42 until #37 lands. The prepared worktree stays as it is. It isn't wasted and it isn't evidence.\n\n**B. #37 resolved: classify the body edit from the `userContentEdits` diff.**\n- **Editorial, or already covered by the plan:** comment `Revision reconciled: plan <path> consumed <old>; edit at <new> is editorial / already covered; plan remains current.` Then go to step 4.\n- **Scope or acceptance change that the spec covers but the plan doesn't:** run `gh issue edit 42 --repo OWNER/REPO --remove-label backplane:ready --add-label backplane:designing`. Revise the plan with `superpowers:writing-plans` and record the new `updatedAt`. New Backplane plans go under `docs/superpowers-backplane/plans/`, and the approved spec stays at its recorded path. After approval, move it back with `--remove-label backplane:designing --add-label backplane:ready`.\n- **Design change:** move it to `designing` and run `superpowers:brainstorming` plus spec review for the changed decision only. The approved parts aren't redone from scratch.\n\n## 4. Start execution\n\n1. Re-fetch #42 right before the label change and confirm `updatedAt` and the single label haven't moved.\n2. Verify the prepared worktree against project rules: `git rev-parse --show-toplevel`, `git worktree list --porcelain`, and the recorded branch. If it doesn't match the repository boundary, don't use it.\n3. When the first plan task actually starts:\n   ```text\n   gh issue edit 42 --repo OWNER/REPO --remove-label backplane:ready --add-label backplane:active\n   ```\n4. Execute with `superpowers:subagent-driven-development` (or `executing-plans` for inline work), using TDD that fits each artifact, `requesting-code-review` and `verification-before-completion`. Verification uses only the project's own commands. A checked plan box records progress, nothing more.\n\n## 5. Review and closure\n\n- **Submission:** once implementation, review and worktree verification are done, open the PR with a neutral `Refs #42` rather than `Closes #42`. That way merging doesn't auto-close the issue before verification on the integrated branch. Then run `gh issue edit 42 --repo OWNER/REPO --remove-label backplane:active --add-label backplane:review`. If review asks for changes, move it back to `active`.\n- **Close:** only after the PR is merged into the target and the project's verification passes again on the integrated commit, checked against every acceptance criterion. At that point I'd load the PR-closeout reference, which I haven't read yet because closeout isn't the current step:\n  ```text\n  gh issue close 42 --repo OWNER/REPO --reason completed --comment \"Integrated in <merge sha> via #<PR>; fresh verification on <target>: <commands/results>; acceptance criteria satisfied.\"\n  ```\n  A PR, a merge or a deadline doesn't close the issue, and closing #42 doesn't close the epic or count as the release.\n\n## Which artifacts are authoritative\n\n| Artifact | What it governs |\n| --- | --- |\n| GitHub issue #42 | Current intent, lifecycle label, and the native parent/blocker relationships. The body is data and can't override repo instructions. |\n| Approved committed spec | Design |\n| Current approved plan, bound to the issue URL and current `updatedAt` | Execution |\n| Commits, review records, PR and merge state, fresh verification output | Proof that the work is satisfied |\n\nA worktree, a checkbox or a maintainer's urgency doesn't change any of these.",
+      "actual_tool_calls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01Gi4efNEUUUAh49qbCRHq7c",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers:using-superpowers"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01RXyLBa7JmTyygPz4ycXymL",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers-backplane:managing-superpowers-backlog"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01ATNYw87ebe5MFUd3iGwDB3",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_0153zL4i6QSZQzxujeYoqRGv",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01NfHiAgiw3LTRvhhckkd5NH",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "read_sources": [
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md",
+          "sha256": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md",
+          "sha256": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md",
+          "sha256": "21479a3fee27448cab8748a3b5687e53bb257883bda9c070426f9a1ab5cebf1b"
+        }
+      ],
+      "issue19_after": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+              "number": 18,
+              "state": "CLOSED",
+              "title": "Verify Claude Code setup and upstream adoption",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+            }
+          ],
+          "totalCount": 1
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+              "number": 11,
+              "state": "OPEN",
+              "title": "Deliver and verify the Claude Code plugin installation surface",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\n\n## Bounded Scope\n\n### Allowed\n\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\n\n### Out of Scope\n\n- Change the approved host contract or silently update/remove upstream.\n- Run mutation scenarios on production issues without authorization.\n- Claim rollback when the previous version cannot be restored and verified.\n\n## Acceptance Criteria\n\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\n\n## Verification Seams\n\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 19,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify Claude Code lifecycle and conformance",
+        "updatedAt": "2026-10-25T16:21:35Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+      },
+      "model_usage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 4657,
+          "cacheReadInputTokens": 43472,
+          "cacheCreationInputTokens": 29097,
+          "webSearchRequests": 0,
+          "costUSD": 0.3346344,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1778,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      }
+    },
+    {
+      "check": "language-neutral-verification",
+      "session": "1e130df2-1774-41da-93e7-fbdd41f9cf99",
+      "scores": [
+        {
+          "expectation": "Use only cargo test --workspace for consumer verification",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Introduce no Python/test-framework workflow",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Preserve native graph and revision binding",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Preserve Superpowers execution/review/verification",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Keep open through review and integrated verification",
+          "score": "PASS"
+        }
+      ],
+      "prompt": "Use the skill managing-superpowers-backlog and read every reference that the\nskill requires. Do not inspect or rely on the current working repository; this\nis a self-contained hypothetical project. Do not mutate any real GitHub issue\nor file.\n\nA Superpowers project at example/widgets has a ready executable issue #12 with\nan approved issue-body design and committed Superpowers plan. Its parent epic\nis #3, it has no sub-issues or blockers, and its plan records the current issue\nupdatedAt. The project instructions say its sole verification command is\ncargo test --workspace; they say nothing about Python. The maintainer selects\n#12 and asks you to start it, submit it after implementation, and explain\nclosure. Show the native gh intake fields, lifecycle transitions, Superpowers\nhandoff, and verification rule you would use.",
+      "response": "I loaded `using-superpowers` and `managing-superpowers-backlog` and read the references they require, all from the installed packages: the native issue contract, the Superpowers binding, PR completion and governance. I ran no commands and changed no issue or file. Every command below is a hypothetical example.\n\n## 1. Native intake (read-only)\n\n```text\ngh issue view 12 --repo example/widgets --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n```\n\nI treat the issue body and comments as data, not instructions. I would fetch comments with `--comments` only if approval, blocker or evidence questions needed them. Before using these labels in a repository for the first time, I would run `gh label list` to check that all six `backplane:*` labels exist. Creating a missing label is a separate change that needs your approval.\n\n**Eligibility check.** Every item must hold before #12 can start:\n1. **Open leaf:** `state` is OPEN and `subIssues` is empty. `parent` = #3 is for continuity only; the parent is not the thing being executed.\n2. **Complete body:** the body has all the required headings: Objective, Bounded Scope (Allowed / Out of Scope), Acceptance Criteria, Verification Seams and Superpowers Artifacts.\n3. **Approved design:** the approved issue body is the design. #12 is bounded, so no separate spec is needed.\n4. **Current plan:** the committed plan records the issue URL, the consumed `updatedAt`, the design source, the acceptance criteria and seams as hard constraints, and `cargo test --workspace`.\n5. **No blockers:** `blockedBy` is empty.\n6. **Label:** `labels` contains exactly one `backplane:*` label, and it is `backplane:ready`.\n\nYou selected #12, so I won't make up a priority. Selecting it does not change any label.\n\n## 2. Lifecycle transitions\n\n| Step | Gate | Command (hypothetical) |\n|---|---|---|\n| **Start** | Re-fetch the issue. Compare its `updatedAt` with the value in the plan. If it changed, classify the change: an editorial edit lets us proceed with a note; a scope change means revising the plan; a design change means going back to brainstorming; a new blocker means `blocked`. Confirm exactly one `backplane:*` label. Start only when the first execution task actually begins. | `gh issue edit 12 --repo example/widgets --remove-label backplane:ready --add-label backplane:active` |\n| **Submit** | Implementation is finished, the required review is done, and `cargo test --workspace` passes in the worktree. Re-fetch the issue and check the label first. | `gh issue edit 12 --repo example/widgets --remove-label backplane:active --add-label backplane:review` |\n| Review asks for changes | Back to active, keeping the same worktree. | `--remove-label backplane:review --add-label backplane:active` |\n| A real blocker appears | Comment `Resume target: backplane:<state>` and the condition that releases it. | `--remove-label <current> --add-label backplane:blocked` |\n\nEach label swap happens in a single `gh issue edit` so other labels are preserved. Afterwards I re-fetch the issue to confirm there is exactly one expected `backplane:*` label and the other labels are unchanged. Opening a PR moves the issue to **review**, not to done.\n\n## 3. Superpowers handoff\n\nThe issue body is already the approved design, so I skip `superpowers:brainstorming`. The plan already exists, so I skip `writing-plans`. The handoff goes:\n\n1. `superpowers:using-git-worktrees`: an isolated workspace, placed according to example/widgets' own rules.\n2. `superpowers:subagent-driven-development`, or `superpowers:executing-plans` if you choose inline execution. Either way it runs the committed plan, with `superpowers:test-driven-development` for each task.\n3. `superpowers:requesting-code-review`, then `superpowers:verification-before-completion`, then the **review** transition.\n4. `superpowers:finishing-a-development-branch` opens a PR that follows the project's policy. I would use a neutral `Refs #12` while integration evidence is pending. A closing keyword such as `Fixes #12` only states an intention to close; it doesn't prove the work is complete.\n\nChecked plan boxes only record progress through the plan. They don't show that the issue's acceptance criteria are met.\n\n## 4. Verification rule\n\nThe project owns verification. The only verification command is **`cargo test --workspace`**, copied exactly from example/widgets' instructions. Backplane adds no language, runtime or test framework, so there is no Python, uv or pytest. Python is only for Backplane's own tooling, and this project's instructions don't mention it.\n\nThe command runs at two points:\n- **In the worktree** before the **review** transition.\n- **Fresh, on the integrated (merged) commit** before closure. A pass on the branch commit doesn't count for the merge commit.\n\nIf a check isn't run, the result is UNKNOWN. If it fails, the result is UNSATISFIED. Neither one counts as success.\n\n## 5. Closure\n\nThese are separate gates: review accepted, merged, verified after the merge, criteria satisfied, issue closed, parent complete, released.\n\n1. Check the actual PR state:\n   `gh pr view <pr> --repo example/widgets --json number,url,state,baseRefName,headRefName,mergedAt,mergeCommit,reviewDecision,closingIssuesReferences`\n2. Confirm review was accepted and the PR merged into the project's real target. Run `cargo test --workspace` fresh at that merge commit. Then check each acceptance criterion against that commit and the issue revision it was approved at. Record which commit was verified.\n3. Re-fetch #12 just before closing. Reconcile `updatedAt`, check there is exactly one lifecycle label, and check scope and blockers are unchanged. If an acceptance or delivery input changed, stop and verify again.\n4. `gh issue close 12 --repo example/widgets --reason completed`. Remove `backplane:review` only if the project's closed-state policy says to. There is never a \"done\" label. Then re-fetch to confirm the closed state, the close reason and the closing PR link.\n5. **Parent #3 is not finished just because #12 closed.** Each of its obligations still has to be met by a child issue or an approved decision.\n6. Updating the Project view or the checkpoint, deleting branches or worktrees, and releasing are each separate actions that need their own authorization.\n\nIf GitHub auto-closes #12 at merge before verification passes, I would report the actual CLOSED state and the unmet obligation, and propose a fix. I would not reopen the issue or change labels without being asked.",
+      "actual_tool_calls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_015GtsKC6kuPT3vBRrLWDHuP",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers:using-superpowers"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01Rb9kMQkmUwmYdrKJvJP2AZ",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers-backplane:managing-superpowers-backlog"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01CNGKXBtR23tntapUJFcroU",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01PjdLwLLK4iKJNERFQJudDm",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01MeLB3oj9LUSMCndZV67tN5",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_014LkY1cRckKMvr6MQ4QEqiu",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\pr-completion.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_015nS8JZFvYn9kwZ65gGdHac",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\docs\\superpowers-backplane\\governance.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "read_sources": [
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md",
+          "sha256": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md",
+          "sha256": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md",
+          "sha256": "21479a3fee27448cab8748a3b5687e53bb257883bda9c070426f9a1ab5cebf1b"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\pr-completion.md",
+          "sha256": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\docs\\superpowers-backplane\\governance.md",
+          "sha256": "e3022df94fe9b2eca84f9e3d1a81646402bc09ce0c5988f78d44343424c5954b"
+        }
+      ],
+      "issue19_after": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+              "number": 18,
+              "state": "CLOSED",
+              "title": "Verify Claude Code setup and upstream adoption",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+            }
+          ],
+          "totalCount": 1
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+              "number": 11,
+              "state": "OPEN",
+              "title": "Deliver and verify the Claude Code plugin installation surface",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\n\n## Bounded Scope\n\n### Allowed\n\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\n\n### Out of Scope\n\n- Change the approved host contract or silently update/remove upstream.\n- Run mutation scenarios on production issues without authorization.\n- Claim rollback when the previous version cannot be restored and verified.\n\n## Acceptance Criteria\n\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\n\n## Verification Seams\n\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 19,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify Claude Code lifecycle and conformance",
+        "updatedAt": "2026-10-25T16:21:35Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+      },
+      "model_usage": {
+        "claude-opus-5-5": {
+          "inputTokens": 10,
+          "outputTokens": 4263,
+          "cacheReadInputTokens": 111370,
+          "cacheCreationInputTokens": 32864,
+          "webSearchRequests": 0,
+          "costUSD": 0.370486,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1215,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      }
+    },
+    {
+      "check": "lifecycle-transitions",
+      "session": "f55bf28e-3abb-4507-9d0e-d8ef793e7800",
+      "scores": [
+        {
+          "expectation": "Fail closed on multiple lifecycle labels",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Preserve security/unrelated labels",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Repair to review then return review to active",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Record Resume target: backplane:active",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Revalidate active gates before resume",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Atomic remove/add and post-mutation verification",
+          "score": "PASS"
+        }
+      ],
+      "prompt": "Use managing-superpowers-backlog and every required reference. This is a\nself-contained hypothetical Superpowers project; do not inspect the current\nworking repository and do not mutate a real issue.\n\nIssue example/widgets#24 has a merged-ready implementation under review. Its\nlabels are security, backplane:review, and—accidentally—backplane:active. Review\nhas now requested implementation changes. The release window closes in one\nhour, the maintainer says to remove review and continue immediately, and the\nteam already spent a day preparing the PR. While rework is active, an external\nblocker appears; later it is resolved.\n\nGive the exact lifecycle decisions and gh command shapes for repairing the\ninvalid initial state, returning review to rework, entering blocked, resuming,\nand preserving the unrelated security label. State when you must fail closed.",
+      "response": "I loaded `superpowers:using-superpowers` and `superpowers-backplane:managing-superpowers-backlog`. From the installed packages I read the native issue contract, the Superpowers binding reference and the Claude Code tool notes. I ran no commands and changed no real issue. Every command below is an example shape only.\n\n## The deadline and the day of PR work don't change the rules\n\nThe one-hour window, the maintainer's \"continue immediately\", and the day spent preparing the PR are pressure, not evidence. They don't let you skip a step. The maintainer is right about where the issue ends up (`backplane:active`). The order of steps and the checks between them still apply. \"Merge-ready\" doesn't mean the issue is satisfied. The PR stays open and keeps its workspace. Nothing gets closed.\n\n## Step 0: Read everything before changing anything\n\n```text\ngh issue view 24 --repo example/widgets --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\ngh issue view 24 --repo example/widgets --comments\ngh pr view <linked-pr> --repo example/widgets --json number,state,reviewDecision,reviews,url\ngh label list --repo example/widgets --search \"backplane:\" --json name,description\n```\n\n- Record the `updatedAt` value and the full label set: `security`, `backplane:review`, `backplane:active`.\n- All six `backplane:*` labels must exist with descriptions that match their meanings. If any are missing, stop. Creating or renaming labels needs separate authorization.\n\n## Step 1: Repair the invalid starting state first\n\n**Decision:** An open issue may carry exactly one `backplane:*` label. This one has two, so it is invalid. **Fail closed:** do no transition until the repair is done.\n\n**Which label is true:** The PR was submitted with evidence and is under review. That makes `backplane:review` the real state and `backplane:active` the accident. If the evidence doesn't clearly settle this, for example it's unclear whether the work was ever submitted, stop and ask. Don't guess.\n\n```text\ngh issue edit 24 --repo example/widgets --remove-label backplane:active\ngh issue comment 24 --repo example/widgets --body \"Lifecycle repair: removed accidental backplane:active; submission evidence <PR URL> establishes backplane:review.\"\ngh issue view 24 --repo example/widgets --json labels,updatedAt\n```\n\nCheck afterwards that the issue has exactly `backplane:review` and still has `security`.\n\nI'm not merging the repair into the next step on purpose. The contract says to repair invalid state before any other transition. That way the record shows a valid state before review returns to active.\n\n## Step 2: Review → active (changes requested)\n\n- **Evidence:** a review that requests implementation changes. This transition is allowed.\n- **Before editing:** fetch the issue again. Confirm `updatedAt` matches, or classify and reconcile any change. Confirm the only Backplane label is `backplane:review`.\n\n```text\ngh issue view 24 --repo example/widgets --json labels,updatedAt,blockedBy\ngh issue edit 24 --repo example/widgets --remove-label backplane:review --add-label backplane:active\ngh issue comment 24 --repo example/widgets --body \"Review requested implementation changes: <review URL>. Returning to backplane:active; PR <URL> remains open.\"\ngh issue view 24 --repo example/widgets --json labels,updatedAt\n```\n\nCheck afterwards: exactly `backplane:active`, and `security` unchanged.\n\nIf the review shows the design or plan is wrong, not just the code, the move is active → `designing`, not rework.\n\n## Step 3: Active → blocked (outside blocker)\n\n- **Evidence:** a concrete blocker, plus a recorded resume target and release condition. Fetch again and confirm the only Backplane label is `backplane:active`.\n\n```text\ngh issue edit 24 --repo example/widgets --remove-label backplane:active --add-label backplane:blocked\ngh issue comment 24 --repo example/widgets --body \"Blocked by: <concrete external condition + link>. Resume target: backplane:active. Release condition: <observable evidence>.\"\ngh issue view 24 --repo example/widgets --json labels,blockedBy,updatedAt\n```\n\n- If the blocker is a tracked GitHub issue, also record it as a native `blockedBy` dependency through whatever `gh` surface the repository supports. One possible shape is `gh api --method POST repos/example/widgets/issues/24/dependencies/blocked_by -F issue_id=<blocker-id>`. I haven't verified that endpoint, so confirm it before use. Don't track the blocker only as a Markdown task list.\n- **Fail closed:** without a concrete blocker and a resume target, don't enter blocked.\n\n## Step 4: Blocked → active (resume)\n\n- **Evidence:** proof the blocker is resolved, and a fresh check of every entry condition for `active`:\n  - Fetch the issue again and reconcile any `updatedAt` change. An editorial change can be recorded and you proceed. A scope change means revising the plan. A design change sends the issue to `designing`.\n  - The design authority is still approved and the plan still covers the current issue text.\n  - No other blockers remain.\n  - The rework workspace and PR are still valid.\n\n```text\ngh issue view 24 --repo example/widgets --json labels,blockedBy,updatedAt,body\ngh issue edit 24 --repo example/widgets --remove-label backplane:blocked --add-label backplane:active\ngh issue comment 24 --repo example/widgets --body \"Blocker resolved: <evidence>. Resume target backplane:active revalidated.\"\ngh issue view 24 --repo example/widgets --json labels,updatedAt\n```\n\n- If `active` is no longer a valid target, go to `designing` or `backlog`, whichever the current facts support. Never guess the earlier state.\n- **Later steps:** active → review needs the rework done, reviewed and verified. Closing as completed needs the work integrated and fresh project checks.\n\n## Keeping the `security` label\n\n- Only ever use `--remove-label` and `--add-label` with `backplane:*` names. Each transition removes one and adds one in a single `gh issue edit`.\n- Never replace the whole label set.\n- Check after every edit that `security` is still there.\n\n## When to fail closed (stop and don't mutate)\n\n1. The issue has zero or several `backplane:*` labels. That applies to the starting state here.\n2. The evidence doesn't show which label is true.\n3. Required labels are missing and creating them isn't authorized, or `gh` isn't authenticated.\n4. `updatedAt` changed and the change hasn't been classified and reconciled.\n5. A transition isn't in the allowed table, or its evidence is missing. That includes treating the deadline, the maintainer's instruction or the sunk effort as evidence.\n6. You're entering blocked without a concrete blocker and a resume target.\n7. You're resuming without proof the blocker is resolved, or an entry condition fails.\n8. A check after an edit shows the wrong Backplane label, or `security` was lost. Stop and repair before doing anything else.",
+      "actual_tool_calls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01WVWhuUhdfCDc8QMBwxiNTy",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers:using-superpowers"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01NS8n8SCTxfgTtfuXmxDR7g",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers-backplane:managing-superpowers-backlog"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01RBnu1m8SpD2pgZDtA3SEEH",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01UYwixVNGUDRfd5h2uofkMh",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01KPtYvkRUTEiiH5GkxmBqch",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "read_sources": [
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md",
+          "sha256": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md",
+          "sha256": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md",
+          "sha256": "21479a3fee27448cab8748a3b5687e53bb257883bda9c070426f9a1ab5cebf1b"
+        }
+      ],
+      "issue19_after": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+              "number": 18,
+              "state": "CLOSED",
+              "title": "Verify Claude Code setup and upstream adoption",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+            }
+          ],
+          "totalCount": 1
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+              "number": 11,
+              "state": "OPEN",
+              "title": "Deliver and verify the Claude Code plugin installation surface",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\n\n## Bounded Scope\n\n### Allowed\n\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\n\n### Out of Scope\n\n- Change the approved host contract or silently update/remove upstream.\n- Run mutation scenarios on production issues without authorization.\n- Claim rollback when the previous version cannot be restored and verified.\n\n## Acceptance Criteria\n\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\n\n## Verification Seams\n\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 19,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify Claude Code lifecycle and conformance",
+        "updatedAt": "2026-10-25T16:21:35Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+      },
+      "model_usage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 4610,
+          "cacheReadInputTokens": 49662,
+          "cacheCreationInputTokens": 22585,
+          "webSearchRequests": 0,
+          "costUSD": 0.2828364,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1684,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      }
+    },
+    {
+      "check": "superpowers-installation",
+      "session": "a02f7b92-1a31-45de-860a-73e2d4837fc8",
+      "scores": [
+        {
+          "expectation": "Reject lookalike/incomplete sibling without mutation",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Use authoritative source at unused destination",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Select latest stable by default",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Verify provenance, skills, gh, conformance and discovery",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Authorize later updates and fail closed on uncertainty",
+          "score": "PASS"
+        },
+        {
+          "expectation": "Require no consumer runtime, Project or IssueOps",
+          "score": "PASS"
+        }
+      ],
+      "prompt": "Use managing-superpowers-backlog and every required reference. This is a\nself-contained hypothetical installation; do not inspect the current working\nrepository and do not mutate a real checkout.\n\nBackplane is being installed under /agents. A proposed sibling checkout at\n/agents/superpowers has origin https://github.com/obra/superpowers-plus.git,\nhas local changes, and lacks skills/writing-skills/SKILL.md. A manager says to\nreuse it because setup must finish in ten minutes and work was already done\nthere. An unused /agents/upstream-superpowers destination is available. The\nuser authorized installing Backplane but did not select an edge channel.\n\nDecide whether to adopt or reject the existing checkout. Then give the exact\nmanaged-install, stable-channel, compatibility, discovery, and update-safety\nsequence you would apply. Do not assume a programming language runtime.",
+      "response": "I loaded `superpowers:using-superpowers` and `superpowers-backplane:managing-superpowers-backlog`. From the installed packages I read `references/installing-superpowers.md`, `references/github-issue-contract.md` (needed for the intake check in the preflight) and the Claude Code tools note. Every command below is hypothetical. I ran nothing and changed nothing.\n\n## Decision: reject `/agents/superpowers`\n\n| Check (sibling mode) | Result |\n|---|---|\n| Origin owner/repo must be exactly `obra/superpowers` | **Fails.** `obra/superpowers-plus` is a lookalike repository. |\n| `skills/writing-skills/SKILL.md` must be present | **Fails.** It is missing, so the skill set is incomplete. |\n| `status --short` must be empty | Dirty. This would block only an update, not adoption. It doesn't matter here because the checkout already failed the origin check. |\n\nUncommitted changes alone would not rule out an authoritative checkout. This one fails on where it comes from and on missing skills, and neither the ten-minute deadline nor the work already done there changes that. Leave it untouched: don't clean, reset, re-point or delete it. Keep it out of skill discovery so it doesn't become a second, conflicting Superpowers installation. Tell the manager and its owner why it was rejected. If ten minutes isn't enough to finish, report the install as incomplete rather than calling it compatible.\n\n## Managed install into `/agents/upstream-superpowers`\n\n1. **Check the destination.** Confirm that `/agents/upstream-superpowers` doesn't exist or is empty, and that its path differs from Backplane's (for example `/agents/superpowers-backplane`). The `<root>/superpowers` layout in the docs is only an example; it doesn't have to be followed.\n2. **Choose the stable channel (the default, since no edge channel was selected):**\n   ```text\n   gh auth status\n   gh release view --repo obra/superpowers --json tagName,publishedAt,url\n   ```\n   Note the latest stable tag `<T>` and read its release notes for anything that affects compatibility.\n3. **Get the authoritative repository:**\n   ```text\n   gh repo clone obra/superpowers /agents/upstream-superpowers\n   git -C /agents/upstream-superpowers fetch --tags origin\n   git -C /agents/upstream-superpowers checkout <T>\n   ```\n   Don't use the default branch. That would require an explicit edge-channel selection.\n4. **Verify the source:**\n   ```text\n   git -C /agents/upstream-superpowers remote get-url origin   # normalize → exactly obra/superpowers (HTTPS or SSH)\n   git -C /agents/upstream-superpowers status --short           # must be empty\n   git -C /agents/upstream-superpowers rev-parse HEAD           # record\n   ```\n   These four files must exist under it: `skills/using-superpowers/SKILL.md`, `skills/brainstorming/SKILL.md`, `skills/writing-plans/SKILL.md` and `skills/writing-skills/SKILL.md`.\n\n## Compatibility preflight (no programming-language runtime assumed)\n\n5. Record the source, tag `<T>`, the commit, `gh --version`, and hashes of both Backplane skills.\n6. Run the required intake query against a real issue. If any field is missing, the `gh` version is incompatible whatever its version number says:\n   ```text\n   gh issue view <issue> --repo <owner/repo> --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n   ```\n7. Confirm that `gh issue edit --help` offers label add and remove, and that `gh issue close --help` offers closure reasons.\n8. Run the conformance checks:\n   - **`skill-structure`:** a manual checklist covering YAML delimiters, the exact `name`, a `description` that starts with \"Use when\", every linked reference existing, and no placeholders left.\n   - **Behavioural checks:** each runs in a fresh session with the mapped scenario, and every expectation is scored.\n     - `native-issue-intake` and `language-neutral-verification` use `2026-08-16-native-issue-intake-green.md`.\n     - `lifecycle-transitions` uses `…-lifecycle-transition-refactor.md`.\n     - `superpowers-installation` uses `…-superpowers-installation-refactor.md`.\n9. Commit `b36e0829c6d0140e93cfef2ca599b1b07d4a7797` and `gh` 2.97.0 are only the authoring baseline. `<T>` needs its own fresh run. A missing capture, an unscored check or a mismatch in what discovery shows counts as **unknown**, and the install fails.\n\n## Discovery\n\n10. Expose `/agents/upstream-superpowers/skills` and `/agents/superpowers-backplane/skills` separately, through whatever discovery mechanism the active harness supports. For example, links or junctions under `/agents/skills`. Never copy upstream files into Backplane, and never put Backplane files inside the upstream checkout.\n11. Check that each link exists and resolves to the right place. Leave `/agents/superpowers` out.\n12. In a fresh agent session, confirm that discovery lists:\n    - `superpowers:using-superpowers`, `brainstorming`, `writing-plans` and `writing-skills`\n    - `managing-superpowers-backlog` and `managing-superpowers-handoffs`\n\n## Update safety (later updates)\n\n- Upstream updates are separate from Backplane updates, and each one needs its own explicit authorization. Permission to install doesn't cover them.\n- Before an update:\n  1. Record the current origin and commit so you can roll back.\n  2. Refuse if the checkout is dirty. Never discard local work.\n  3. Run `gh release view` again and report the candidate tag.\n- To apply an approved update, run `fetch --tags` and then check out the new stable tag (or fast-forward the edge branch, only if edge was explicitly selected).\n- Then run the full preflight from step 5 and the fresh-session discovery check from step 12 again, and record the new revision.\n- If anything fails, check out the recorded previous commit again, or report that the state is unresolved. Never call a failed candidate compatible.",
+      "actual_tool_calls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_0111gxiJXoWyJrq5qr7aLfW3",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers:using-superpowers"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01XyTEEQJcmh1eZ2SSm7UNHu",
+          "name": "Skill",
+          "input": {
+            "skill": "superpowers-backplane:managing-superpowers-backlog"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01GRxjo657eFEPsaXpYM1zxR",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01QYUdUFGhCKSj95NDFHxFKX",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01UGHT75wEr42QgpqS7QrU45",
+          "name": "Read",
+          "input": {
+            "file_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "read_sources": [
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md",
+          "sha256": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md",
+          "sha256": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5"
+        },
+        {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md",
+          "sha256": "21479a3fee27448cab8748a3b5687e53bb257883bda9c070426f9a1ab5cebf1b"
+        }
+      ],
+      "issue19_after": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+              "number": 18,
+              "state": "CLOSED",
+              "title": "Verify Claude Code setup and upstream adoption",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+            }
+          ],
+          "totalCount": 1
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+              "number": 11,
+              "state": "OPEN",
+              "title": "Deliver and verify the Claude Code plugin installation surface",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\n\n## Bounded Scope\n\n### Allowed\n\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\n\n### Out of Scope\n\n- Change the approved host contract or silently update/remove upstream.\n- Run mutation scenarios on production issues without authorization.\n- Claim rollback when the previous version cannot be restored and verified.\n\n## Acceptance Criteria\n\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\n\n## Verification Seams\n\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 19,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify Claude Code lifecycle and conformance",
+        "updatedAt": "2026-10-25T16:21:35Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+      },
+      "model_usage": {
+        "claude-opus-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 3998,
+          "cacheReadInputTokens": 49733,
+          "cacheCreationInputTokens": 24390,
+          "webSearchRequests": 0,
+          "costUSD": 0.2850506,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 1351,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      }
+    }
+  ],
+  "transcript_sha256": "885593a2519bbd0a668f0bf53d1bcb867732a881d1be56651dee7886f5169290",
+  "scope_limit": "Does not substitute for live issue lifecycle, final review or integrated acceptance"
+}

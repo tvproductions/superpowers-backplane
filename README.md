@@ -14,6 +14,16 @@ Read the [governance doctrine](docs/superpowers-backplane/governance.md) for
 product decomposition, coverage and satisfaction, PR closeout, and portable
 repository checkpoints.
 
+Backplane owns [lite/heavy mode definitions](docs/superpowers-backplane/modes.md):
+requirements tracking, classification/lifecycle labels, backlog and release
+monitoring, and handoffs belong here. The mode document separates intended
+scope from verified capability. The starter refers to these workflows.
+
+For this project's own releases, [the release-policy binding](docs/release-policy.md)
+adopts gz-skills-first-starter as the authoritative shared policy source,
+including SemVer, new major-release PRDs and source consistency checks.
+This is policy alignment without circular template adoption.
+
 This repository is in bootstrap state. Start with `HANDOFF.md`.
 
 For Codex, follow the [installation and setup guide](docs/installing-codex.md).

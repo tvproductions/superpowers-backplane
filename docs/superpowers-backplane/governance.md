@@ -6,6 +6,12 @@ current intent and lifecycle, the approved design for behavior, the plan for
 execution, and accepted evidence for satisfaction. A Project or repository
 checkpoint presents those sources; it does not replace them.
 
+[Lite and heavy modes](modes.md) define the scope of Backplane participation.
+Requirements tracking, labels, backlog/release monitoring and handoffs belong
+to Backplane; the template refers here rather than defining another lifecycle.
+The [repository release-policy binding](../release-policy.md) governs Backplane's
+own releases. Consumer policy still governs consumer releases and product records.
+
 ## Ownership and authority
 
 | Concern | Owner/source | Consequence |

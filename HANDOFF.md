@@ -1,5 +1,23 @@
 # Handoff
 
+## Policy alignment — October 26, 2026
+
+The operator designated gz-skills-first-starter as the authoritative shared
+policy alignment source and Backplane as the owner of lite/heavy modes,
+requirements tracking, labels, backlog/release monitoring and handoffs.
+Read [the release binding](docs/release-policy.md) and
+[mode authority](docs/superpowers-backplane/modes.md) before continuation.
+The binding records the source-check procedure and reconciles the policy inputs
+to starter commit `35ac0578dab0c7b603a9545d9b6b630ee006e551`, verified on remote
+main. The operator subsequently authorized Git synchronization of all three
+repositories. This commit carries the reviewed documentation; final remote
+identity and configured CI must be checked after push. No new product release,
+monitoring implementation or completed host acceptance follows from this sync.
+Documentation links and whitespace pass. No branch CI is configured; the listed
+Copilot workflow is a pull-request review service, not a branch validation gate.
+Preserve the issue-19 completion and issue-1 backlog state below; no issue
+mutation or next implementation work is selected by this policy update.
+
 ## Current state
 
 On 2026-10-25 PR #36 integrated issue #19's reviewed Claude lifecycle/conformance

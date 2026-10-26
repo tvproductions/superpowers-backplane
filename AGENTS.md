@@ -46,17 +46,29 @@
 
 ## Companion Starter Guidance
 
-- Use [gz-skills-first-starter](https://github.com/tvproductions/gz-skills-first-starter)
-  as an engineering consistency reference. Re-read relevant guidance when it
-  changes and reconcile applicable practices with this project's authorities.
+- [gz-skills-first-starter](https://github.com/tvproductions/gz-skills-first-starter)
+  is the authoritative shared engineering and release policy alignment source.
+  Follow [docs/release-policy.md](docs/release-policy.md): check the source before
+  release preparation, at scoped policy/tooling maintenance and when notified of
+  relevant changes. Record the reviewed revision, applicability, decisions and
+  approved exceptions; local summaries must not silently redefine source policy.
+- Adopt its SemVer, coherent minor-release bundling and prospective newly written
+  PRD requirement for every Backplane major, including 1.0.0. Keep Backplane's
+  issue-bound release acceptance and publication authority.
+- Backplane owns requirements tracking, labeling, backlog/release monitoring,
+  handoffs and [lite/heavy mode definitions](docs/superpowers-backplane/modes.md).
+  The starter refers to these authorities and supplies no competing lifecycle.
+  Distinguish intended mode capabilities from verified implementation.
 - Do not directly adopt the starter or bootstrap its bundle into Backplane:
   the starter directs adopters to this project, so doing so would create a
   circular adoption relationship. Do not claim formal starter conformance.
 - Apply useful practices through explicit Backplane-owned decisions, preserving
   independent component ownership. Keep consuming-project workflows language-neutral;
   this repository's Python/Astral tooling policy does not become an adopter requirement.
-- Record material differences and their rationale; do not silently import the
-  starter's runtime, packaging, release, or acceptance requirements.
+- Record applicable policy differences with evidence, maintainer approval, an
+  owner and a dated revisit condition. This explicit release-policy alignment
+  does not silently upgrade runtime, packaging or dependencies, or certify full
+  starter conformance. Portable workflows retain each consumer's policy.
 
 ## Superpowers Dependency
 

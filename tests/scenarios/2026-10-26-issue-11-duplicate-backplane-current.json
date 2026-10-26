@@ -1,0 +1,1395 @@
+{
+  "case": "duplicate-backplane",
+  "observed_at": "2026-10-26T22:53:43.713085+00:00",
+  "prompt": "Use the installed superpowers-backplane:managing-superpowers-backlog skill and its installation reference for this real local fixture. Target repository tvproductions/superpowers-backplane, existing issue #11 (read-only). Set up Backplane. Inspect the actual effective native plugin inventory and resolve duplicate/conflicting Backplane installations before any other adoption action. Do not remove or disable either fixture. The supplied fixture checkout path is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane; --plugin-dir loads this exact path for this session.  Backplane is the explicitly selected local development candidate 4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e; do not claim it is remotely published.  Report the observed decision and a concrete recovery if blocked. Do not install/update/remove anything, edit user or package files, mutate GitHub or create a plan/handoff. Capture any output only under the owned directory U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-duplicate-backplane-current\\captures; never hardcode /tmp files. The selected profile is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile. Do not enumerate environment variables, read credentials, inspect other profiles, or silently substitute the real development checkout. Use the gh executable resolved by PATH for every capability check; do not bypass a failed preflight with an absolute gh.exe or different account. Do not run Python outside uv. Read source files directly when possible.",
+  "argv": [
+    "claude",
+    "-p",
+    "Use the installed superpowers-backplane:managing-superpowers-backlog skill and its installation reference for this real local fixture. Target repository tvproductions/superpowers-backplane, existing issue #11 (read-only). Set up Backplane. Inspect the actual effective native plugin inventory and resolve duplicate/conflicting Backplane installations before any other adoption action. Do not remove or disable either fixture. The supplied fixture checkout path is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane; --plugin-dir loads this exact path for this session.  Backplane is the explicitly selected local development candidate 4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e; do not claim it is remotely published.  Report the observed decision and a concrete recovery if blocked. Do not install/update/remove anything, edit user or package files, mutate GitHub or create a plan/handoff. Capture any output only under the owned directory U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-duplicate-backplane-current\\captures; never hardcode /tmp files. The selected profile is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile. Do not enumerate environment variables, read credentials, inspect other profiles, or silently substitute the real development checkout. Use the gh executable resolved by PATH for every capability check; do not bypass a failed preflight with an absolute gh.exe or different account. Do not run Python outside uv. Read source files directly when possible.",
+    "--tools",
+    "Skill,Read,Bash,Glob",
+    "--allowedTools",
+    "Skill",
+    "Read",
+    "Glob",
+    "Bash(gh *)",
+    "Bash(git -C * remote get-url *)",
+    "Bash(git -C * rev-parse *)",
+    "Bash(git -C * status *)",
+    "Bash(claude plugin list *)",
+    "Bash(claude plugin marketplace list *)",
+    "Bash(claude --version)",
+    "--permission-mode",
+    "default",
+    "--disallowedTools",
+    "Bash(env *)",
+    "Bash(printenv *)",
+    "Bash(* env *)",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--max-turns",
+    "24",
+    "--plugin-dir",
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+    "--add-dir",
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-duplicate-backplane-current",
+    "--add-dir",
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane"
+  ],
+  "cli_exit": 0,
+  "host_result": {
+    "duration_api_ms": 62424,
+    "stop_reason": "end_turn",
+    "session_id": "f5e9d8dc-bcc0-4425-8680-ce2a28c67152",
+    "total_cost_usd": 0.45604820000000007,
+    "usage": {
+      "input_tokens": 26,
+      "cache_creation_input_tokens": 31852,
+      "cache_read_input_tokens": 368541,
+      "output_tokens": 6371,
+      "output_tokens_details": {
+        "thinking_tokens": 1147
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 31852,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1155,
+          "cache_read_input_tokens": 36047,
+          "cache_creation_input_tokens": 1512,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 1512
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 26,
+        "outputTokens": 6371,
+        "cacheReadInputTokens": 368541,
+        "cacheCreationInputTokens": 31852,
+        "webSearchRequests": 0,
+        "costUSD": 0.45604820000000007,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1147,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 31852,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_018KWujr2ntZXxdV6oxcRYu6",
+        "tool_input": {
+          "command": "cd \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current\" && ls -la && ls -la captures 2>&1; git -C \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" rev-parse --show-toplevel HEAD 2>&1; git -C \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" status --short 2>&1 | head",
+          "description": "Inspect probe directory and fixture checkout identity"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_01XN2sunCchR6U5okBGqNT2k",
+        "tool_input": {
+          "command": "F=\"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\"; ls -la \"$F\" \"$F/.claude-plugin\" 2>&1; ls -la \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures\"",
+          "description": "List fixture checkout contents"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_01RNeH8RHaVUjj28xb8xZ5Rv",
+        "tool_input": {
+          "command": "F=\"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\"; ls -la \"$F\" \"$F/.claude-plugin\" 2>&1; cat \"$F/.claude-plugin/plugin.json\" 2>&1; cat \"$F/.claude-plugin/marketplace.json\" 2>&1",
+          "description": "List fixture contents and plugin manifests"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_017ePmFWEskkiZLvKBgRQcep",
+        "tool_input": {
+          "command": "mkdir -p \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude\" && claude plugin list --json > \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude/plugin-list.json\" 2>&1; echo \"exit=$?\"; cat \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude/plugin-list.json\"",
+          "description": "Capture effective Claude plugin inventory"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_013F1NYK9vjoDvSB9zExhj8h",
+        "tool_input": {
+          "command": "git -C \"U:/repos/agents/superpowers-backplane\" ls-tree -r 4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e -- skills .claude-plugin/plugin.json",
+          "description": "List candidate commit blob IDs for skills and plugin manifest"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_015ePXjJM6Aby5DRQ5KSJkpu",
+        "tool_input": {
+          "command": "git hash-object \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/.claude-plugin/plugin.json\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/skills/managing-superpowers-backlog/SKILL.md\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/skills/managing-superpowers-backlog/references/installing-superpowers.md\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/skills/managing-superpowers-handoffs/SKILL.md\"",
+          "description": "Hash fixture files for comparison with candidate commit"
+        }
+      }
+    ],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 18,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "I stopped setup at the duplicate check. Two enabled Backplane installs conflict, so no other adoption step ran. Nothing was installed, updated, disabled, removed or edited, and GitHub was not touched (issue #11 wasn't read either).\n\n## What the profile has installed (`claude plugin list --json`)\n\n| Plugin ID | Version | Enabled | Loaded from |\n|---|---|---|---|\n| `superpowers-backplane@backplane-conflict` | 0.1.0 | yes (user) | `fixtures\\duplicate-backplane` |\n| `superpowers-backplane@superpowers-backplane` | 0.1.0 | yes (user) | `fixtures\\current-catalog\\package` |\n| `cowork-plugin-management@synced` | 0.2.2 | yes (synced) | unrelated |\n\nThe two marketplaces are both local directories: `backplane-conflict` points at `fixtures\\duplicate-backplane` and `superpowers-backplane` points at `fixtures\\current-catalog`. The `--plugin-dir` load is a third route to the same name. This session shows only one `superpowers-backplane:*` skill set, and it was loaded from `fixtures\\duplicate-backplane`. Which copy is active comes from the host hiding the others, not from anyone choosing it.\n\n## Decision\n\nThe installation reference says to reject conflicting duplicates. Three active routes give the same plugin name and version from two different sources, so I'm blocked here. I did not go on to check upstream provenance, run the `gh` preflight, read the issue or run conformance checks.\n\nOther things I saw:\n- **Upstream Superpowers is missing.** The profile has no `superpowers@…` plugin, and no `superpowers:*` skills are available in this session. Setup would block on this next even after the duplicates are fixed.\n- **The fixture is not its own Git checkout.** It has no `.git`, so Git commands there use the enclosing project repo (HEAD `4be5f0e9…`, with uncommitted changes under `tests/scenarios`). The project rules say a fixture must not resolve to the project root. I could not confirm the fixture's files match `4be5f0e`, because the comparison command wasn't approved. I'm not claiming the commit is published.\n- **No captures were saved.** The Write tool is disabled and file-writing shell commands needed approval, so `captures\\claude\\` is still empty. All the evidence is in this report.\n\n## How to unblock (needs your approval; isolated setup profile only)\n\n1. Keep exactly one Backplane route. If `--plugin-dir fixtures\\duplicate-backplane` is the one you want, run `claude plugin disable superpowers-backplane@superpowers-backplane` and `claude plugin disable superpowers-backplane@backplane-conflict` against the setup profile. Disabling keeps both fixtures; it doesn't uninstall them. The other option is to drop `--plugin-dir` and leave a single installed entry enabled.\n2. Compare the kept source's files against commit `4be5f0e` to confirm they match.\n3. In a fresh session, run `claude plugin list --json` again and check that exactly one enabled Backplane route remains.\n4. Install upstream Superpowers through its documented stable channel. That needs its own approval.\n5. After that, run the `gh` preflight, the intake query against #11 and the conformance checks.",
+    "ttft_ms": 1227,
+    "type": "result",
+    "duration_ms": 63663,
+    "uuid": "226baa22-0394-4346-9fbf-7ecf4626131a",
+    "ttft_stream_ms": 1085,
+    "time_to_request_ms": 119,
+    "first_content_frame_ms": 1085,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 26,
+        "outputTokens": 6371,
+        "cacheReadInputTokens": 368541,
+        "cacheCreationInputTokens": 31852,
+        "webSearchRequests": 0,
+        "costUSD": 0.45604820000000007,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 1147,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 31852,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "before": {
+    "plugins": [
+      {
+        "id": "superpowers-backplane@backplane-conflict",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\backplane-conflict\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T22:52:35.731Z",
+        "lastUpdated": "2026-10-26T22:52:35.731Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T22:41:35.161Z",
+        "lastUpdated": "2026-10-26T22:41:35.161Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "backplane-conflict",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane"
+      },
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog"
+      }
+    ],
+    "profile_hashes": {
+      "settings.json": "159189974d77725494a2542895022eda52be808210febac7ac5d53a657e0b56f",
+      "plugins\\installed_plugins.json": "c9bee15d03505ab24a7346d2e0755cb9448ecbcc72676912dde24bf59b93cedb",
+      "plugins\\known_marketplaces.json": "ad1ca06480c7051a13cd68844edc0145fefaa1f9759911891c460038f32e00ff"
+    },
+    "issue11": {
+      "blockedBy": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+            "number": 19,
+            "state": "CLOSED",
+            "title": "Verify Claude Code lifecycle and conformance",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+          },
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+            "number": 2,
+            "state": "CLOSED",
+            "title": "Define the v0.1 adoption, installation, and mutation contract",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+          }
+        ],
+        "totalCount": 2
+      },
+      "blocking": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+            "number": 6,
+            "state": "OPEN",
+            "title": "Run an external adoption pilot and fresh conformance suite",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+          }
+        ],
+        "totalCount": 1
+      },
+      "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The plan is available in the current execution repository; remote publication is pending and is not claimed. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n",
+      "closedByPullRequestsReferences": [],
+      "issueType": null,
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+          "name": "backplane:active",
+          "description": "Superpowers execution is in progress",
+          "color": "1D76DB"
+        }
+      ],
+      "number": 11,
+      "parent": {
+        "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+        "number": 1,
+        "state": "OPEN",
+        "title": "Ship an adoptable Backplane v0.1.0 release",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+      },
+      "state": "OPEN",
+      "stateReason": "",
+      "subIssues": {
+        "nodes": [],
+        "totalCount": 0
+      },
+      "subIssuesSummary": {
+        "completed": 0,
+        "percentCompleted": 0,
+        "total": 0
+      },
+      "title": "Deliver and verify the Claude Code plugin installation surface",
+      "updatedAt": "2026-10-26T21:55:58Z",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+    },
+    "project_refs": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n",
+    "real_upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+    "real_upstream_status": "",
+    "normal_profile_hashes": {
+      "settings.json": "3351cb95b05e564612260f2a919076a7ac95fad172f52e92a10825a5ed16c0c9",
+      "plugins\\installed_plugins.json": "4db82be992ac09db3db0908d0abe29e477d99281893725a21bec35b0ca32d01c",
+      "plugins\\known_marketplaces.json": "6cbc5e44b90f7681dfbdd13a131234cf497f2da59192e8437a00c34523551690"
+    },
+    "fixture": {
+      "root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+      "files": {
+        ".gitignore": "ad5fa9d3079bf6192fb1abb38995b85d4b1f6367ee3c5bc8780ba54e4deab1dc",
+        ".python-version": "7651ce7dab58e5733ba35597459414699ca339dde25a68aac3d8a89a0c89e5c6",
+        "AGENTS.md": "977368dca502bb16b2ea9cddec71d385e05ca110e5f58c806106e0ef5291c2c8",
+        "HANDOFF.md": "7171320cc4068890f83791ad6b736b81af491e512a65d67c6dc8798303e6d220",
+        "opencode.jsonc": "ab7e98addb52b06188b06f961a9dd1acc3de57b451e419fbcc71ab45734a5128",
+        "plugin.json": "bcd8b9203f102392d3df62193f74d7040d6386537439560f96bf9e5ab381003e",
+        "README.md": "f2776931ac75852f174f68c758b7affc35d378e630b47aae8a0ccf5ac7842b59",
+        "SUPERPOWERS.md": "ec47799fa5acc55f1ae0d341a57ab59f90cb8527d959a3d08dabb59a70b8baa9",
+        ".claude-plugin/marketplace.json": "92347eabe5ca7623c2565bac3f8fca561a1bfb8599116b4c87bb9a3dd7d353eb",
+        ".claude-plugin/plugin.json": "32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565",
+        ".codex/config.toml": "e44169fcd7c2d174008d2ff22e3389e9fc55da2552f08c069f42cae3a92dbdd2",
+        "docs/installing-claude-code.md": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+        "docs/installing-codex.md": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+        "docs/release-policy.md": "edf4a8ae7cb70c54256c41393fe440d6fa23228528c4474e2c7ae21d8ded1ad1",
+        "tests/scenarios/2026-08-16-lifecycle-transition-refactor.md": "5758040069f938d5fa5df023d629fe25e313c0cb2bdb719ae5e41becab5164a0",
+        "tests/scenarios/2026-08-16-native-issue-intake-baseline.md": "471996da8d5db862997f5e3d40708a7ae3175b058b81951f3ccbf5845bea90db",
+        "tests/scenarios/2026-08-16-native-issue-intake-green.md": "b68d49d3f6266f28ba30307ef3fe975362a24536fd5b46b36035fbdf478d9e41",
+        "tests/scenarios/2026-08-16-status-selection-refactor.md": "2236d826282ec92e45eadf3482b88a6a11d0d3dd917970f76f398a40059e58a4",
+        "tests/scenarios/2026-08-16-superpowers-installation-refactor.md": "9a2eb9181f35facf424060b5930e17e16db22c3fa9812706d09fe36970e657fd",
+        "tests/scenarios/2026-08-23-session-handoffs-baseline.md": "3cd6159b2c64a1cd6b814ca8f34c5e0bddf63dca9730de1557de4f5d78ee335d",
+        "tests/scenarios/2026-08-23-session-handoffs-green.md": "fb5620a47160af106f291aee22e4fd3cf30674123ff1e6e9bb3f31a5ae74be60",
+        "tests/scenarios/2026-09-19-codex-installation.md": "a652b443e3b5ef5ef542bbdb8135415bbef7f4677ee13d11bd1903430d63181a",
+        "tests/scenarios/2026-09-19-host-leaf-rescoping.md": "0e80356a1e6ad7e7423c6dfc8e5a3d9e78bbd4bb4526322082e909969949f9d7",
+        "tests/scenarios/2026-09-19-native-superpowers-package-adoption.md": "65e458b8850628b01086f3361ff3e5721fdada3f7f366089fb71e44e2e39076f",
+        "tests/scenarios/2026-09-19-superpowers-v6.4.1-compatibility.md": "a90dfb2a74d4ec464ddd71e9fd2ca6e5f21afe3e19efc71415528a8c95c04bf0",
+        "tests/scenarios/2026-09-19-v0.1-contract-review.md": "dcb0bdc57ce12e14632369e2c3e0a607992fdcbea52a4e518b14c8da004bc617",
+        "tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md": "1aa5cbc1891938a22083214f285bcf8dfc3b699995852a1245242eb2a8e1e271",
+        "tests/scenarios/2026-09-19-v0.1-lifecycle-walkthrough.md": "2e60a344fcbe10cb1c0c16737345f0800b1a0225785823a218fc1f62c066a6a0",
+        "tests/scenarios/2026-09-20-claude-code-package-installation.md": "aa07ccf6367a6631bdac77f878ac4ff9c87ea562d6e06bc29e37d20850a08bdc",
+        "tests/scenarios/2026-09-20-claude-code-setup.md": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147",
+        "tests/scenarios/2026-10-11-github-governance-bridges.md": "73f209434a1abb5e8a8a0f2e765119c8bfb1aec84b6a603f65b1a79b5f52148b",
+        "tests/scenarios/2026-10-11-governance-probe-runs.json": "ce1c02307869775988561b30f36441febcd626b8fdbc8ef308f15a656c31acbe",
+        "tests/scenarios/2026-10-11-superpowers-v7.0.0-compatibility.md": "f842861d4c171563543e5b62114c9dbe087d12972811daf06fce831226e9454b",
+        "tests/scenarios/2026-10-12-issue-31-checkpoint-portability.md": "c5ee13905a05c116fa19525913397fc020c9adca0d03d565ff881bf37a95803b",
+        "tests/scenarios/2026-10-12-mac-superpowers-v7.0.0-setup.md": "46804846c15a5a637f5bb09b8de2d1246e14f1aff4271459c04994e8238063d4",
+        "tests/scenarios/2026-10-13-checkpoint-file-git-exercise.md": "d34fd490580ab0fad67c898dd6fd0b8eb0c81d7b6a91bcf9e9c33a79cd467eb5",
+        "tests/scenarios/2026-10-13-checkpoint-file-git-results.txt": "2f6f161b5def98d04d3b009f4a11554abd674e67430008dfec28eef4aea14163",
+        "tests/scenarios/2026-10-13-checkpoint-fixture-receipt.json": "436cc9acd961e15d90d8be6424968cc9ea290cff1e92cad18cb1c5633f5bedf3",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-baseline.json": "6e1debc8d90ad26b82252822b58ccccb3f6264609d7f802800e425f1f6dd0e0b",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-candidate.json": "03dd3a4e1b786f0cf78e207947af38843f2c1da3c669dac189f240ddfe02a974",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-contract.md": "ea6da82a45eca2050d5f5d641f59bae40b77af6a0387a9290f9f216af48e5f47",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-fixtures.json": "4c49b26e7aeb6632889f1fb04a2d70bfb7692a740db0fe9d736c47df1d16b0a0",
+        "tests/scenarios/2026-10-13-checkpoint-review-followup-baseline.json": "8556edecafc4d1c020c61af4d0341fa43b1fe4c0f4e970c0629a777f3c23a2d3",
+        "tests/scenarios/2026-10-13-checkpoint-review-followup-candidate.json": "ddad5f50efb0b5ed94dbefe55d989072d6d9885ff48b2c7350fc73e9cd44ea2d",
+        "tests/scenarios/2026-10-13-checkpoint-review-followup-fixtures.json": "05b4826a9a07c887acfd0a3af7463035b9740029bab6333d07cbf349b0c05c20",
+        "tests/scenarios/2026-10-13-checkpoint-validation.json": "9ff47e89369cac3da8be12283287a1f56041f83fd17abb733903dd2c40af3361",
+        "tests/scenarios/2026-10-13-governance-native-query-validation.json": "5e76d50d0cc3bd370da2ebf84913173f27b5d804adefdb83e511ecf23a5ed3e5",
+        "tests/scenarios/2026-10-13-governance-regression-runs.json": "a2cc0480d1909c82216d08116f73ab4a19dccf2c2eeb9bae7d0cd9162c77b8c0",
+        "tests/scenarios/2026-10-13-issue-31-execution-ledger.md": "6df5fc04899c48c04557e57c3719aca2de05bd74f13119122a844fbee9a8cd21",
+        "tests/scenarios/2026-10-13-issue-31-whole-change-review.md": "537ef3a21dc8f74ec4f51c27983238c8077df3611091dd9e26066b818c8d1a45",
+        "tests/scenarios/2026-10-13-pr33-review-followup-runs.json": "4d7c585f871bcd89dfc65ba367e6f1c6b32d9da95ad5657073d88a31b617893c",
+        "tests/scenarios/2026-10-13-pr33-review-followups.md": "856bccbbecd7ebda06b90cb86c92577c363f2769c692a8015b7236161de6014e",
+        "tests/scenarios/2026-10-14-issue-31-corrections-review.md": "d6db956cbe4f0eb39630fde148646dd85d3acd7e29a1df8d3ce430bafd54932f",
+        "tests/scenarios/2026-10-14-issue-31-integrated-runs.json": "379e300d4a4bfc6ede91103c9dcca67b6a40ae02fdcc7ca15b2f3905ae039bd3",
+        "tests/scenarios/2026-10-14-issue-31-integrated-verification.md": "640f807eb9be35fc16b7a20e1fd8a5aaf832ace434130ad9dd9294c6025f03d7",
+        "tests/scenarios/2026-10-14-issue-31-local-integration.json": "c4dcfe7573f86701dccbb735dd1987c88f289f7ae8c757f867924828f6484085",
+        "tests/scenarios/2026-10-14-issue-31-local-integration.md": "b9e303d4ad6e1dcb62be82d288e923cb0e4ad1740848e77081e1be31cc6f8b67",
+        "tests/scenarios/2026-10-14-issue-31-native-replay.json": "0564bd537c1732f130c144cb8a4f3cf1a8aaa51b99e762da4ee7b9b67f53ec41",
+        "tests/scenarios/2026-10-14-review-consistency-contract.md": "4246729a43d07e24341a63e1b3076c1a8d0c66cbe502dfffc3e49587925ce7ab",
+        "tests/scenarios/2026-10-16-issue-31-native-replay.json": "bbebe8da2063d81ba3389a05de02a5d91125c99e7df78843366f5e23fae177d2",
+        "tests/scenarios/2026-10-16-issue-31-published-satisfaction.md": "963a09e727ce8bbf188b263f05b1d07569d59ec8152a4c13fdb78cee87afb622",
+        "tests/scenarios/2026-10-24-claude-code-lifecycle.md": "e71d6dc741719b366a57ae7fc5477fc34c29157af58542d8f650dbf2f5bf30fe",
+        "tests/scenarios/2026-10-24-issue-19-claude-lifecycle.md": "60bc09ba73f7ba0803fd969031b0f0dc5f92e15192b8dc21e146a8e315ceaff9",
+        "tests/scenarios/2026-10-24-issue-31-closeout.json": "7578e22fb1b9cbef1894fb8b9e3ce5546a610471734ecae9928193d7e4900cbc",
+        "tests/scenarios/2026-10-24-issue-31-closeout.md": "4e87224a34eb3f8e12248e076c3d766db09b8cbe9cbdf2e24cf4200281feba17",
+        "tests/scenarios/2026-10-24-issue-31-satisfaction.json": "d5bea810648efdd1411592ff6fa7ad53865e320ecf69e13c2a77bca8dd3ae391",
+        "tests/scenarios/2026-10-24-issue-31-satisfaction.md": "8ff3f127155b5f47fe25df264dbba5477461d450037ffc7c76a10ecb654da961",
+        "tests/scenarios/2026-10-24-superpowers-v7.0.1-compatibility.md": "9de6714a4882c2eb4086c08d8bdeb94e2bd1a82fe78084a2e9299d9e97338248",
+        "tests/scenarios/2026-10-25-issue-19-closeout.json": "bf7e757c60855a32df589b032f211a47c23850890fded79e4184316e18b53c30",
+        "tests/scenarios/2026-10-25-issue-19-conformance.json": "cbf9b60a7af02f1f359b1d94f468749ad26592658b66485f507c5348d8f20cb1",
+        "tests/scenarios/2026-10-25-issue-19-final-guide.json": "b22351d8ab4a4626e1a46afeab1c46310b1fe48c8b56a3e794693a466cd99eae",
+        "tests/scenarios/2026-10-25-issue-19-final-review.md": "551b9f8d5bcfaab76c99d8fba2f171d9aee69a2caf84325c9e7d342cafee4feb",
+        "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595",
+        "tests/scenarios/2026-10-25-issue-19-integrated-verification.json": "0076509f930d49b4b3ae6c2d2e89cca3d16b1427038abccd4f3e8531162042f9",
+        "tests/scenarios/2026-10-25-issue-19-live-fixture.json": "6847c79063e99a4dd51c1e5406c6cfbfe90d5f2f0118e1ff1fcc256df88a21c4",
+        "tests/scenarios/2026-10-25-issue-19-pre-review.md": "a7f0a419da866e157c6641bfef0c19629b8c7ec4253cffe9d7e5890966d9772e",
+        "tests/scenarios/2026-10-25-issue-19-publication.json": "21db437297bdcc3f47484540720e6814811fb7b755207ef9aa7e51b559bb9d68",
+        "tests/scenarios/2026-10-25-issue-19-python-3.14.json": "1673f0859f3ab71aee23522c48df9cd120768916e0453186b28bf9e3e3aa6c69",
+        "tests/scenarios/2026-10-25-issue-19-python-lifecycle.json": "e113e1ffc9f39a45fda1650a4e687c01d835424175d83166e55478cd90047bbb",
+        "tests/scenarios/2026-10-25-issue-19-review-submission.json": "bc687053ffaa7f5cb72af10691d02ca72db2a4ac51c5897562fe5ffea6c65a1f",
+        "tests/scenarios/2026-10-25-issue-19-satisfaction.md": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb",
+        "tests/scenarios/2026-10-25-issue-19-shared-catalog.json": "1fdb9c7af8baca679387bfee31792043416684baad40c2745fddb3b6bcefe23e",
+        "tests/scenarios/2026-10-25-issue-19-windows-continuation.md": "35660e826bac2eca9b4acc4a92ac326b9283763120d1236441a711d54be31001",
+        "tests/scenarios/2026-10-25-python-3.14-tooling.md": "56cf2eef657e40dc2c692e39b273426d325f8d757c311458e7e7e6e742f3e71d",
+        "tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.json": "ef5d177bcd6547d978db42ae49e0bddd5d81014e53219aa250206f023a6b63f4",
+        "tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.md": "224b3a64707834cebceb144de2917d9609a5f0146aebb135f29661a11041043a",
+        "tests/scenarios/fixtures/issue-19-update.patch": "ee706dd9b6d893820f01c04fe6d0a77224bffea56b91b18488c7a0db03abe9ca",
+        "tests/scenarios/transcripts/2026-08-16-language-neutral-green-response.md": "042c01f51f1e13f0bbc660f35368b40b271f8e6aa049ff967d66c94de79852aa",
+        "tests/scenarios/transcripts/2026-08-16-lifecycle-transition-refactor-response.md": "34fd90d2e2df5832b06af73e39eef853670e64ecbc2c5876c93399efc9f62508",
+        "tests/scenarios/transcripts/2026-08-16-native-issue-intake-green-response.md": "a447393cbbccd1d780e7a0f59e684225f34b3c86dddf76e6960c95f56398ae8a",
+        "tests/scenarios/transcripts/2026-08-16-native-issue-intake-red-response.md": "006fc8ff56c99450e57d40b2b71a489045d556f25318164eb2fe7fd1888e8ee1",
+        "tests/scenarios/transcripts/2026-08-16-status-selection-control-responses.md": "e0951cdd08e45b95b60284373300a01249bb77423180437d35ff7b2402b0beb0",
+        "tests/scenarios/transcripts/2026-08-16-status-selection-skill-responses.md": "27c43639663daa1355b80ee3273f6a83a8c6b5dad61469b15611a1b952cfdfae",
+        "tests/scenarios/transcripts/2026-08-16-superpowers-installation-refactor-response.md": "f0121f65d418e00c3ab9df4623d6a95544329b22a383465c5b98d15b1039f33f",
+        "tests/scenarios/transcripts/2026-08-23-session-handoffs-green-responses.md": "f2c355d2db310824608d01abd1c08b3dc4de240a3caef204f46abe6e6ced900a",
+        "tests/scenarios/transcripts/2026-08-23-session-handoffs-red-responses.md": "9053066a71e27e703eb251b45b470597ae93ec197dc747205f3870e621ddeebe",
+        "tests/scenarios/transcripts/2026-09-19-codex-branch-review.md": "0f33052bab42cfbadbf712fe3964af1378706284e59c3a69181c7350fbba8647",
+        "tests/scenarios/transcripts/2026-09-19-codex-failure-probes.md": "5fd0762a52ea08c5e82561da06d6694d3c1966c26dc570087f3cadf71b5f656f",
+        "tests/scenarios/transcripts/2026-09-19-codex-final-review.md": "4e8ab8ea7c99e93e051952f9641436167b174db07edbaa9ecc62d2e96270085f",
+        "tests/scenarios/transcripts/2026-09-19-codex-host-lifecycle.md": "2c6c662f1f9ca25b5ba7a80652670ea4e58d08135635a1fcd275afbe2c59c095",
+        "tests/scenarios/transcripts/2026-09-19-codex-installed-plugin-conformance.md": "4a1c4aa7ed241cd131e65ea9712fc070c377fc58ed3fe85f39bb19737c4eabae",
+        "tests/scenarios/transcripts/2026-09-19-codex-installed-plugin-discovery.md": "f625b166d248101c1374f9ec4176b73cb8f39df188ff3d1fa78a99255e1f3983",
+        "tests/scenarios/transcripts/2026-09-19-codex-integrated-remote.md": "a111061d3e8c8a9d0de716929bb9bfe86608d5a081661354bb71e8f633e341d0",
+        "tests/scenarios/transcripts/2026-09-19-codex-language-neutral-verification.md": "61b055ed91946eee062c611da5b9490422da77cafcddf78106b2c83bfdd1dfc4",
+        "tests/scenarios/transcripts/2026-09-19-codex-lifecycle-transitions.md": "eb4337b5e27e279a247677e5ff3aaa24b54ae99e7aaf8b6ce19bd69c3f714b00",
+        "tests/scenarios/transcripts/2026-09-19-codex-native-issue-intake.md": "709e70d3a47a8824ad0cc4c77c5cc1e3f6af8a6530db7c6c0fc29209858cd015",
+        "tests/scenarios/transcripts/2026-09-19-codex-native-lifecycle.md": "e716e56fa712df3d96f7616f19da289931d7b00efa2fb77754017f2422d8ddc7",
+        "tests/scenarios/transcripts/2026-09-19-codex-sibling-absent-setup.md": "80c0ea3785f53bd372df3a6b51dccd10b765d6b8311e83ac8e0b1d34f3c8f317",
+        "tests/scenarios/transcripts/2026-09-19-codex-skill-structure.md": "a16b3141a67c20855d82594d4283f8d2ba1e37b633bb9eae18a507175358c7c3",
+        "tests/scenarios/transcripts/2026-09-19-codex-superpowers-installation.md": "01678c29f1105b325f745b85bcb2ccb2825402df66f49fe5d10b5bd5e09729a7",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-checkout-regression-green.md": "7fd3909e5ddade5834bdb24e665d4054b0ef363b82aad82f3e1a5564c890dea1",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-full-skill-green.md": "c404bc45128d699fe588294e8c8a9fa570aaf57172adb297e25205ed64745389",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-package-adoption-green.md": "ec01fdc8296cc1dda22518915244127a360220c8385041e682c9082ce507364f",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-version-floor-green.md": "91cf1f59fa44649800b19c94dc5b9804a69594fb9ae054f1a0624d2fd1f42f53",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-discovery.md": "ade764d40cbb7957245654d5ffa9e18c335294f5f7cee1103a94884de8eb7720",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-installation.md": "5d5e0a30c7124975e6d913141162f5a92ef52d2466354a88c80207d5a7636616",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-language-neutral.md": "e5a8d0bb711b3193d45f7391b6637daecc8968e0b04291bb86111d1a6f416f83",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-lifecycle.md": "0867dc3874cbaf04603f383c33f2c5877031371b2a85ecc612dffe2bb60e8509",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-native-issue-intake.md": "3f3e5a52dcf57d8806aeb95afc5cc59d88a6ee5e63e5da671122e33203f6d363",
+        "tests/scenarios/transcripts/2026-09-20-claude-code-discovery.md": "5f988519b5c885c1e02c7b917c0e5f8d93117b2891bbb4b944a02c4430673b8e",
+        "tests/scenarios/transcripts/2026-09-20-claude-code-setup.md": "0838c3e247c37f42a87f3fd753a81d370fb687ea737dd90b1f42f42eb2fdc524",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-1.md": "29129f5988e7022a60521b05282666d2b20669fad595dfa77c26c89c7cdcfe60",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-2.md": "5ad4784e37951258377b33240bed0a65bdf1d4fcf86a396324249e20d0b2e793",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-3.md": "2bd1322bb9429daed64514bf2bca8670e5c2299ad18f0a9c7c1a464de46a8bf2",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-4.md": "9d7cc7e8c8e1d9a447573e570628c001e3e1ad37ad77cc4507f06921c521c26b",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-5.md": "59bbca7f48027dd245433f958b5f376e2291ae5140310417fe203dfa379bb6c2",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-6.md": "c7045c407d602b613e5aee4dba3eabbfef03befa7092f71283a72562ee054710",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-7.md": "09ab642f8bb807d6dda2c9b96bec134aa1a4063f52df455e35dbad42ddd356ae",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-1.md": "353036394eb2c87e8d63e6804183d4c8572f3ae3306fc92f2d372211f9b10608",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-2.md": "7c2dab53e31b6c6500d914d9ac1c7a98e60a3698eea166ee75b8d072cf620454",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-3.md": "d7df91fde5702e5e78e8039d7f71fe3f8850afa7d2d6dbe1911ff75113ee49c3",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-4.md": "446f0fca4bae99ec427cc0ef77d76312f47046f1578de7d2dcf29450453feaa3",
+        "tests/scenarios/transcripts/2026-10-11-governance-task3-case-2.md": "727396ea67fe3d9116ce0d8d2d0bd5cab4744afb7a04fe7d7823dc9f8b9c1039",
+        "tests/scenarios/transcripts/2026-10-11-governance-task3-case-5.md": "b7ef201670954ed30c849975bf96365913a6307ec4cf9cd0483a3bf834f6ba0a",
+        "tests/scenarios/transcripts/2026-10-11-governance-task4-case-6.md": "a32ffe6475bcfbcad3687e4fb1e76c92e348de6507c33e892e0cc2a3b1860324",
+        "tests/scenarios/transcripts/2026-10-11-governance-task4-case-7.md": "57bb0fd2ee5d9cb23f333ce6e0d75550d67dc340657c28b933736cc5a72b8277",
+        "tests/scenarios/transcripts/2026-10-11-v7-discovery.md": "219dfc74ae7b149e274ce14343d82a1a7871751422ab7e571ac30ec75ecd4630",
+        "tests/scenarios/transcripts/2026-10-11-v7-installation.md": "a32b3fb9cc8cec4b509957f6082f157152aec358d8e0859e8cd0145b793d9582",
+        "tests/scenarios/transcripts/2026-10-11-v7-language-neutral.md": "4958f4b07933b8cf25357926670bb36e96785c4f376fa01fa6bcb98a507ce6d5",
+        "tests/scenarios/transcripts/2026-10-11-v7-lifecycle.md": "f6080ac6784fd6c415fdc1dc5d5f473f46267d641fa132262902d3ce3fb57f75",
+        "tests/scenarios/transcripts/2026-10-11-v7-native-issue-intake.md": "a41e75a1d0dd02980229f011e51999f2d03c7ded58b755ba2a999c1f572cd23e",
+        "tests/scenarios/transcripts/2026-10-12-governance-freshness-baseline.md": "15fe89fdea51ff0fb79c35a37801b7db0f44c4cfdd7900bee4c1ead438e53c86",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-discovery.md": "77cff5c21248cbd4bff665002adc2120b3e429ba1a487842c343bf7140662845",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-installation.md": "f22b0699a0a147041d23090a0b3233cf8104801279c20af6f534106760c47617",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-language-neutral.md": "96084d1079e312aa2c821fe225cd82f40a3af356415ed0cefbcf1235713a8a3b",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-lifecycle.md": "102d5c510be0f56b3860e049156b36398bbedbd27059910bdba47469eea7fc40",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-native-issue-intake.md": "53878abe7b1af1fc3b3b124e75e7f02e04fbb8df5a7dd3161f247396c0d4d936",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-worktree-discovery.md": "a8c4cb5eeaba94d5ffdfd230201a73afbfafe709394cd449bf345d4719b090e8",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-installation.md": "f9ceac60b38983194fa2cc6a37a94691a2a93295319cfaaf3b5e18c2804e39d1",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-language-neutral.md": "6169f963679220f57b911f17c442de0fd57b0e9959d242d140a4a0e0c6dd89be",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-lifecycle.md": "48a5ec716b0f91a723e58d40332010dd4a51d9c4d5ef236b6843c99a59d970e2",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-native-issue-intake.md": "38d3078d515935655b738fbafb4e9f8c437d3cbcb960d6675fd25cabcfe7cce0",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-installation.md": "33a8b7f8c1b2cd49efffbd0a2dadda620db606ed9f4bda23385c1b311707a300",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-language-neutral.md": "2d3a336db898d6a2ff150928fedce82fcac823080df768aea6f3a3a1cc1a3c8d",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-lifecycle.md": "d7e0e625304bdf222d4ed7886398c0f9162575eeb27a99608da9e5c1393a761c",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-native-issue-intake.md": "b981896febbfe349a1dc2dc1736a9cfe8af5529baf5e2828d20b3e40a384fee7",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-1.md": "ae3a68012673749d22600ad65d9caf58268897d7eaba24acc75dfd27fa97874e",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-2.md": "dad328f66c9a86f1440c6d398ab124a9cf9206ad2055cb456055d7b2bb9afbca",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-3.md": "d15384ea6c094cb58ea8b226c9b9a8b57615b5768e75788e332a6ab7bbcb498a",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-4.md": "89b55243dc523c15ecdb5a5ee038540044d0b692ffd156d45b5223982ff158cc",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-5.md": "7e6761bb78a05f4f7f92051c3ff9cf46bda449e8caf0366187861549eb83b7ce",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-6.md": "45f67d31e9bc7d57d5c7455af6920ec8232dfc7c941ff9ee396f308dd8af80fe",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-7.md": "5aa56da8f78e26ceca024459517203b22684354bd0700d7e36f35d062e8bb287",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-freshness.md": "9cc9bf6542863a5f373392161cd022272eaf0a609817f1c452f312f924047132",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-1.md": "930d7da609c9cf5185e814e1a23172ba23283a697c3cdce1f69dc5ce92cf8e26",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-2.md": "de9b37dcd35d8943c691099de0b1dcb7975b9a1ea7be7d028537c7a1f9964f7b",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-3.md": "6f2621ca6ec25f5a6f68e449ac02fba98fbfdfdb6a33f35d9e7d1ebd7ca45e71",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-4.md": "4449dc9065b33909442337df8a56e407d7e07f4755e173963c13e8c3c4da502d",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-5.md": "5c15ff0da03d0cf58ab46c534ef4f107f66347dee4fb6e671b07838d00ddd76f",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-6.md": "c54f53d40c8e4633a9c787c896c7aa077dffa411d5b87ace9da7e062c5f873ae",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-7.md": "fb39a3b5fa567439804ed4117c11673118e03c8b872b793ec30859639bdcc755",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-freshness.md": "928d17c2a58a57ea7ff40457f34f03f1877792cdd62cb1d909132d16c8ad345d",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-1.md": "42cc83c0d4f8e7e6bda89a9b5b755cd61795058cce4ab0014ff966a7bb3ed649",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-2.md": "c18365cee3feaad81ead8719fb4d8c48edc185c48ef6099015940bc6675d4118",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-3.md": "aed1aee147498ea1554976db594165be1deb3f2ae6555d7f5c71fe88ef2972b2",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-4.md": "b03046e6dc9903fc07164b0b3502dc14f5e31e8027b0f832d5455e866646f9eb",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-5.md": "c1fe96373fc0893b6d9844ef82f0b56576a9ea7e1f51481f8097f5362ff3ae9b",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-6.md": "ed8df38452372ae1171ca77bad839c0e74633b10193a70a4d002d3a7f90b9b06",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-7.md": "6d7f545ddb2979eb9a341f941712f1df7befef20ef8cd2912e47deca12001044",
+        "tests/scenarios/transcripts/2026-10-13-post-review-freshness.md": "5ca4267fc9673988c329107bbc0601f3d187620e61da2aa7e33dcd7ba5c6b94b",
+        "tests/scenarios/transcripts/2026-10-13-post-review-installation.md": "77d816d2f38aa032cfc1a2867eb642666549e83f104f95c507b86a1a0bc45355",
+        "tests/scenarios/transcripts/2026-10-13-post-review-language-neutral.md": "e0951b8a3023603f4245bf42cd4c64384cc536483da476a76020e2e2c34fe69e",
+        "tests/scenarios/transcripts/2026-10-13-post-review-lifecycle.md": "c2b3e3256cd1f09d3508a7f0273e4fdf3772523dfc4fbe3333659853d9b8255e",
+        "tests/scenarios/transcripts/2026-10-13-post-review-native-issue-intake.md": "8577f1b6cb133bae7b6d8c85276ebf36b3dd642ae0bdcbae1ba90e24a8fc036e",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-baseline.md": "042e45350d4e6d15ef9cf2a6277da8579635bc892de592d9e3748abcd093aa9b",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-1.md": "5bb9025b510fa48b4c6a3f003045c2931ea35bd4c39603575b43e5d6951b905d",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-2.md": "751655981e6e9beff7d4bd13ff6c9c7783f0f9707540cfc729ee8c7e4e5d07c0",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-3.md": "9d376e7114e47af90f294c64df3327f75046efee38ebb42234f4bbc691b50be5",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-4.md": "80dc195af37ab9c4e00e381611beb84a069933807392c7784a8fccfd600d6512",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-5.md": "64053d924dc29148690ec17d10721fd6594bb99be402191d5b40ecb9c9f32154",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-6.md": "b9f09b2d7edc1c37ea3a58e30d0fb2c3420458f4b725dd2aed8c87d90d0d842f",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-7.md": "eb1a43d54e9d7f080a4f18664d9000f4e9473605623d21391846fed1b7a5e1f7",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-followup.md": "c8252f00e1015d8b42128090b2f5b2fa3e4be9889e7489b4776c592dd1eaa364",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-freshness-retry.md": "c46dced97b2cfb47196ae4150a040b3e48eabe3de160ea1b40c9b0df84805cc9",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-freshness.md": "dac55a300e53fea2c80f3278e1f0aa806ce268f05d02a42c5fc957bc31f21057",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-installation.md": "9255e6fd4b6692120b9f529af58efc58d3461da0d1d90639fb9cc8170b408260",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-language-neutral.md": "cf8e62e1610c48b987754d828a2212c5b24788bef06ad7f7d93aea80d144cacc",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-lifecycle.md": "76a0d195d0522535d7afdc3bd6b2547c46def5163150d0556e7cf077c397cbd3",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-native-issue-intake.md": "0a2223e08d0ff88415fc2e55eadcc3a4d3ef6652f33a8bcb8a66505d643f69fa",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-1.md": "f38aa3cb588808289121b8ffa699787acbbf2220fe372c9b5800c4113e97d5b5",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-2.md": "eda2237442ea84fd2b9d76f7d40db675c7cc715487a5594aa2a41016b8da006f",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-3.md": "4ad62b786eba4eb7c0e03e9149f43b6438bc6a0436e9c2576bc084443e53697b",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-4.md": "510b28fef4e1fcddc854572c96c63d6a8057c053fff560aca1918404ff68b490",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-5.md": "b0555fe05a634497e4039b653a10dfb83dd57de8e636cdb473ea14b099536991",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-6.md": "f21f546421e8240a2ee4438ff790ad0dc9cf5a922b9b2d89d85d503149639e0e",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-7.md": "3a764fcfbbe6e1457b2c38d036c1da4a64e6bdf3986508053592d0c797d84c3b",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-followup.md": "4669ba0082f07f8877b4be46e2877a379e5e09bf12153d73d097a494b8423bd3",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-freshness.md": "c8cf538f9fcd0529907de2351a36b7daa93e0dbd9bd317257b933b700b2c8808",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-installation.md": "f0a08d5f42fef4054dcbd278e68372cc3c5cc96179456f651096071d0309406f",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-language-neutral.md": "3c34a6d7d398511c858026fe4a9584d4338a17aa18dfdb9441c5385294f1210e",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-lifecycle.md": "2e211ce73217cfbd3f437821adeede709272676c9b040f11bc09f0c9bae75aba",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-native-issue-intake.md": "e2b84bfd2f194e54f427a27c0a602c2ade9285ae1042adab538045e1da5abbd1",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-review-consistency.md": "45b009e93083cc1cdce31d86ef0a00a9d609871f30ef96ca68212a47af3debc2",
+        "tests/scenarios/transcripts/2026-10-14-issue31-final-freshness.md": "2e8078e90e2649dbac65f22f9f4780362adbed76191415e2bdddaa652d0bca3c",
+        "tests/scenarios/transcripts/2026-10-14-issue31-final-review-consistency.md": "eaa3ecdd096c969a902fd5d38847fdb24b8128bf3ede316cf9bae7631a5df4ca",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-1.md": "601decfdd79d2c0c05e54ef435f06533b3e22c98e258927597b244f202396445",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-2.md": "e5ef6c95dffd2059f7778f9b4a0723a24e85cd7ffcc54ac8928a188e357abc7c",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-3.md": "6b83fe488fcee87b347b3342a5d683fef7055539bd380291b82ff798975c8037",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-4.md": "084475f294ba83e0f0bcfdb19e9b21fdc3256f5a4a26a9cd851c410d9673f455",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-5.md": "7cec94a627818a1e866582b6d950fc3869115a8c90b06c63a1c3b9e9beff054f",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-6.md": "631481c75984ebec881272b4df4a04434fcab34798398b8e5c8644f668c32ec4",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-7.md": "6433d56ec5a25bc28f8d7b3bf21a75fce6e8b69869f5984e64b4f23962047dc2",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-followup.md": "18e8ed59b733e3c38324050a06c37b46f53c09348f133ab93becbd5b967e307e",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-freshness.md": "a3000e1088935daea0c154eba8802a10a75bb6272b30348dc70058e144fc8627",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-installation.md": "01e9b1130d134ad551662508db188c7386151fd90004c4312a5218dbb61df321",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-language-neutral.md": "ba4d9831d52c2d488435239d736dfb8a15ce8c11277b0976ffc4c7b75d5e9c7a",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-lifecycle.md": "e0a2e96c6c94843d18ed2d4158fb07c5b4b402837ca59f0afe45a8a6e1de127d",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-native-issue-intake.md": "ab71cdf80fa0ce639106e16df0ac9a8942effdecb44c8ed0bbac65bd22f088ec",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-review-consistency-baseline.md": "71f028348164d04e8ccb18c386ba6862f8886fdaf5339047a0cb3e61b6dc9f48",
+        "tests/scenarios/transcripts/2026-10-24-claude-code-lifecycle.prompt.txt": "c61f0d21a8e4babcf88881149119c06c974bac8e5438540a3699780decb286c9",
+        "tests/scenarios/transcripts/2026-10-24-claude-code-repeat-install.prompt.txt": "a5e4e6ced735e01380a635156533f4a154eb3c4c5e483205a0935046d9229bab",
+        "tests/scenarios/transcripts/2026-10-24-v701-discovery.md": "c92951cd235420c96217020fb3d13d89d29641ef5580ee3caa1047cf40f08213",
+        "tests/scenarios/transcripts/2026-10-24-v701-discovery.prompt.txt": "d2e51c9f56246029647e4f0d2f9ccacd6260b796e3f2c21ebc52dcb38c8aec98",
+        "tests/scenarios/transcripts/2026-10-24-v701-installation.md": "b9438546edd50c2011bd8389ede77359cf66bc0115e5157cab65904a8695e3cd",
+        "tests/scenarios/transcripts/2026-10-24-v701-installation.prompt.txt": "6894bfb8deb9277196b6d00d8177587db54371d0bd85cdb8885d4dc1573bce99",
+        "tests/scenarios/transcripts/2026-10-24-v701-language-neutral.md": "1433893f49b3e9d6ef451e4bd0c5945348b2530a25f01737e612c157186279b6",
+        "tests/scenarios/transcripts/2026-10-24-v701-language-neutral.prompt.txt": "2857f664741ec21781b3f6e05c54666624d4dcdd14452817051335612bb7e6cb",
+        "tests/scenarios/transcripts/2026-10-24-v701-lifecycle.md": "ab914a9274abeddfed13dd5c8a366d4bc68d8efc5888d81c1de134d0231f1f0e",
+        "tests/scenarios/transcripts/2026-10-24-v701-lifecycle.prompt.txt": "63c4844cae4b191bad34415ec19e4445b7c844f60301106526877dacbd95160d",
+        "tests/scenarios/transcripts/2026-10-24-v701-native-issue-intake.md": "5e828357256bb0631f29913a86f02f9d151a74772c967c7c081a4fa553709980",
+        "tests/scenarios/transcripts/2026-10-24-v701-native-issue-intake.prompt.txt": "2ac27ec011624d4b096fb157a0ef55be865dd39f07e2e2c264d0c9d3adf768fc",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-closeout-source.md": "f6a0a6e802f5c5b08a568284058a41877eebda79de18cab835a9f5048e3dce90",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-conformance.md": "885593a2519bbd0a668f0bf53d1bcb867732a881d1be56651dee7886f5169290",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-final-guide.md": "d0150e6719b3806f674207a6dca9ea57f66efc293979b02c72b7dc3c6224c300",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-fixture-closeout.md": "a025fe5f20904dfbc3bc0b502a8df2d875a83fa1ec862e21e9f7e073612eb067",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-integrated-source.md": "73d0a303813287d3b7cf685e76f3468ee107f849026acf59441497ef25ea921a",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-integrated-verification.md": "4d8a1a068dec2834dcec132bcb1a928b71d1ea6e57b1dc10cbbd41d647ae665a",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-live-fixture.md": "a626e38cbe0c9228482e04108522aaf469503cd43cdf45d6ce9c1839e3c57022",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-3.14-source.md": "3e9a20675211efa088bfdde780dcc510a807e720a39b9c7ca97e7c0ba6d375fc",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-3.14.md": "c518a0628803b44ccd9bb8ac076fc5a229caa575ea471cea98e96952fa659fa5",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-harness-source.md": "57a33fcc51dfee0c6da36f014eaf96e9d477c3fb13524bf00aadf6a209f05ee6",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-lifecycle.md": "835380dc79d5ff34b3b0f1369fceef302a1d169b29c10adaf2c596215eb2d4e6",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-resumed-harness-source.md": "78212321044a336a70c0a67b33d79f7520f4f7b4a9474502347dcd383d8608ef",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-review-fix-source.md": "8c5fb81797ae9c6d389fd1421c2029839ea07d10d401167f7551044e9b5bb72c",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-shared-catalog.md": "8b8090d1d8ce344f6ec3d3bf3332aad2ae1cae3d71da240a9bed4c66a3d9ba9d",
+        "tests/scenarios/transcripts/2026-10-25-windows-superpowers-v7.0.1.md": "23a90bb408770101cc7390dcaf66b1085293db7e3b403ed0a33ce745b39a2d52",
+        "tests/scenarios/fixtures/issue-31-checkpoint/github-state.json": "cfbd32b14e8dff0453fa9a26a34267abbece704b0d13f222d32df39e12fe826d",
+        "tests/scenarios/fixtures/issue-31-checkpoint/sentinel.txt": "8d3d11a71e4c51344a75d9827cd671175200c349be6b7619c107ad2b73b6aece",
+        "tests/scenarios/fixtures/issue-31-checkpoint/state.md": "b6567f9bebb2a88a93c18580a66cbd4d6461b1ddcf3f74e3c061bb1eaf02824b",
+        "skills/managing-superpowers-backlog/SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+        "skills/managing-superpowers-handoffs/SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+        "skills/managing-superpowers-handoffs/agents/openai.yaml": "a2ff1772c418bb1c52eb917e5747bcbe40e86b636cee1bd66f6e5a27bf62d07e",
+        "skills/managing-superpowers-handoffs/references/handoff-contract.md": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98",
+        "skills/managing-superpowers-handoffs/references/resume-assessment.md": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed",
+        "skills/managing-superpowers-backlog/agents/openai.yaml": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+        "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "6ae5597ef477291cd06444bcbc1f45bca2b5febe082b977cb0767dfd765aed52",
+        "skills/managing-superpowers-backlog/references/checkpoint-format.md": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+        "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "43082db0c491a611a1a1fe2508ae9e119a01d5dff85dfac0ff4dfcad78c39f0b",
+        "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "89e971568ebe0c884b19312d43fce55b0d370383fa7776c78218d62331645954",
+        "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+        "docs/superpowers-backplane/governance.md": "49d1b9d24471a8d932d7ff8753a47cab80a4bfa5d3053dd48d39e10821252caa",
+        "docs/superpowers-backplane/modes.md": "47ff4b2bd44ae410a7989cd167f637bd01afdd915c163e05b11d6b00b9cdefc0",
+        "docs/superpowers-backplane/handoffs/20261014T080251Z-issue-31-remote-satisfaction.md": "76a011bcd0dfbd3e39ede31ccc512207ee9a50367cab68070eadd8269e79899e",
+        "docs/superpowers-backplane/handoffs/20261014T084025Z-issue-31-assessment-and-prompt-preference.md": "ee940f46c9e5011fac8be17300f4796c8900f23c326608dabdc77b9658fa13be",
+        "docs/superpowers-backplane/handoffs/20261024T225444Z-adoption-readiness-after-issue-31.md": "886937d3cf3ece3a1428e6bc3374b5ee723c5a1a96efdb0aa624d3dae475de6c",
+        "docs/superpowers-backplane/handoffs/20261025T174840Z-issue-19-publication-gate.md": "e385e9907a48ec58b181bb8536953f94b5da5cdebd75bdfa7530b436201bed93",
+        "docs/superpowers-backplane/handoffs/20261025T182310Z-issue-19-complete-next-planning.md": "b2fa6d23b086e5295f4a5fe2b4ed75a3408012298a1571acc80a0de4ef4f088a",
+        "docs/superpowers-backplane/plans/2026-10-11-fdau-github-governance-design.md": "d27a384a34e19844ebcbf94b174816f207173951930e04909a5079ab77a435c3",
+        "docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-implementation.md": "ae05361badc5be68474b4fc5ea19de01f806b31e245c5f9e88be99e1da3e72f1",
+        "docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-work-item.md": "7c6cd0ce00735872a63f9127b3ac6e176b07d7cd028b4e6f95e3678ebcf173ef",
+        "docs/superpowers-backplane/plans/2026-10-11-governance-plan-corrections-verification.json": "6bf855d46f03e9cdd3a7b1f673dcaf18171c0127320a13b31e28e406435fa301",
+        "docs/superpowers-backplane/plans/2026-10-11-governance-probe-contract.md": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+        "docs/superpowers-backplane/plans/2026-10-12-governance-freshness-probe-contract.md": "20349682b83f272925c245eb38a25530ced755ab70e94f8d08d83b0ba3592508",
+        "docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md": "48bbef7594c62ef70e0337925696fe30f950d68347d65c51f32eb96c8c28936a",
+        "docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md": "fafeb6411647f9e54d614eea8a89e9998d844cf757ccc6dc8d9455f3184df4c3",
+        "docs/superpowers-backplane/plans/2026-10-13-issue-31-pr-handoff.md": "6e1672e9a604bb0238d5e21b83ff28e675b338d14c19af7b1def06f8c4de30c5",
+        "docs/superpowers-backplane/plans/2026-10-13-issue-31-pr-publication.md": "65f254bb8c2a3127555da18245da9c0c471b0647965490b8fc9accc370949334",
+        "docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md": "06542f5d4bb9856256f5a70ad63f35802c3315a774b37379d0940b139de316cd",
+        "docs/superpowers-backplane/plans/2026-10-25-issue-19-lifecycle-fixture.md": "7e9201596ae157c1a4e8a13ed3630f08d03ea0d6307a6d8ec93da86098484d5d",
+        "docs/superpowers-backplane/specs/2026-10-11-fdau-github-governance-design.md": "677bcc5ce2707781f0ee05c15306bd1be0587a801ca48699fba195722681bdb0",
+        "docs/superpowers/handoffs/20260824T003834Z-issue-2-three-harness-adoption-design.md": "d8ffb832a6f6b5dbcf5a622ddaf3bbf8eebc99a3260fd8d01b9ffe4fa43c70b4",
+        "docs/superpowers/handoffs/20260919T145241Z-issue-2-post-sync-continuation.md": "bdf201ac7ff7fab9647d64fc28f17f4b1e40b7cb02edb68c69047c8e829c1e5d",
+        "docs/superpowers/handoffs/20260920T015816Z-remaining-host-installation-leaves.md": "d18fd221ec303a3be2cebd0746f889ab9209be82155934e06d7c673fd2c6944c",
+        "docs/superpowers/handoffs/20260920T160331Z-post-issue-17-host-continuation.md": "8612e8628ac8edd46178d341708177ce89da71d9186f020b589f3b43bbc8d28b",
+        "docs/superpowers/handoffs/20260920T202021Z-post-issue-18-claude-setup-continuation.md": "076803f2f880fc94fcc1c7847ce197d79b91da7a6ca28e04ee9c7e541674e378",
+        "docs/superpowers/handoffs/20260927T165620Z-issue-19-claude-lifecycle-plan-review.md": "45a46ed1ca116ca8058c317a6f785b30cf124f44b83b9d39642b3be74760ba13",
+        "docs/superpowers/handoffs/20261011T172308Z-github-fdau-scope-discussion.md": "e873d5e1fb804c90a1dd723cc53f8b9391b5082c46b836f57c5a1e96dbf93345",
+        "docs/superpowers/plans/2026-08-16-superpowers-backplane-bootstrap.md": "9d2a2fc5fdd0d3a981f76d0db2c479201c2dd4cc823a36d076f6fc07fa03b170",
+        "docs/superpowers/plans/2026-08-23-superpowers-session-handoffs.md": "b4a568aaf99926d7b55e634b37b36235c11e6ac95707dab0456a041bc6467504",
+        "docs/superpowers/plans/2026-09-19-codex-installation-surface.md": "ebfd4731b308707c94f235e54285d8461ecb0d9c9b346f4523b1cf44b1531716",
+        "docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md": "762e965b6f0f7bc39177466afbbf771ba385c4980a83cb94d74748bb35b7ef82",
+        "docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md": "b24298b8e857a77170a51923647d878d185ec8437c867c701e444932d8829733",
+        "docs/superpowers/plans/2026-09-20-claude-code-package-and-installation.md": "76f525a26060b68ae07c0c1a79aa8d366a45e4f00b58db18cef92181c8dfe865",
+        "docs/superpowers/plans/2026-09-20-claude-code-setup-and-upstream-adoption.md": "9b19d9b7f2fe74e528a8c4ac9d038234820f82187c163c342f04e82040f23a56",
+        "docs/superpowers/plans/2026-09-27-claude-code-lifecycle-and-conformance.md": "0b287b5ac6c9a78b97d43a1ca813c314caa9b0405075fa00a7a63bf0e2ec196d",
+        "docs/superpowers/plans/2026-10-24-claude-code-lifecycle-conformance.md": "1c8267cd243d36a9fada144d0c824fde3be70df71661f0505af0602a0bbce7ec",
+        "docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md": "21fa217b4ae232fc26c7f8d56601bb99eff95e617e1d0ce986bc7caaec7cee3f",
+        "docs/superpowers/specs/2026-08-23-superpowers-session-handoffs-design.md": "54b388c61323ea84593665f51fa77bf328906fd4332e297193f47e12985d8a33",
+        "docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md": "17d1ce585c04bbf84cd77c18cb60b9482d0eaac87dca337d67b34f83261a4233",
+        "docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md": "7cff5cc78c8f8596e51608355e0d30dd5b7335c117e4d96d88fb6c27b8590a18",
+        ".agents/plugins/marketplace.json": "87a5f3f5e560df3a6100e2a038a5f240f0fcdf61f826b9d2245181a1f1ad77e9"
+      }
+    }
+  },
+  "after": {
+    "plugins": [
+      {
+        "id": "superpowers-backplane@backplane-conflict",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\backplane-conflict\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T22:52:35.731Z",
+        "lastUpdated": "2026-10-26T22:52:35.731Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T22:41:35.161Z",
+        "lastUpdated": "2026-10-26T22:41:35.161Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "backplane-conflict",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane"
+      },
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog"
+      }
+    ],
+    "profile_hashes": {
+      "settings.json": "159189974d77725494a2542895022eda52be808210febac7ac5d53a657e0b56f",
+      "plugins\\installed_plugins.json": "c9bee15d03505ab24a7346d2e0755cb9448ecbcc72676912dde24bf59b93cedb",
+      "plugins\\known_marketplaces.json": "ad1ca06480c7051a13cd68844edc0145fefaa1f9759911891c460038f32e00ff"
+    },
+    "issue11": {
+      "blockedBy": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+            "number": 19,
+            "state": "CLOSED",
+            "title": "Verify Claude Code lifecycle and conformance",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+          },
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+            "number": 2,
+            "state": "CLOSED",
+            "title": "Define the v0.1 adoption, installation, and mutation contract",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+          }
+        ],
+        "totalCount": 2
+      },
+      "blocking": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+            "number": 6,
+            "state": "OPEN",
+            "title": "Run an external adoption pilot and fresh conformance suite",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+          }
+        ],
+        "totalCount": 1
+      },
+      "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The plan is available in the current execution repository; remote publication is pending and is not claimed. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n",
+      "closedByPullRequestsReferences": [],
+      "issueType": null,
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+          "name": "backplane:active",
+          "description": "Superpowers execution is in progress",
+          "color": "1D76DB"
+        }
+      ],
+      "number": 11,
+      "parent": {
+        "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+        "number": 1,
+        "state": "OPEN",
+        "title": "Ship an adoptable Backplane v0.1.0 release",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+      },
+      "state": "OPEN",
+      "stateReason": "",
+      "subIssues": {
+        "nodes": [],
+        "totalCount": 0
+      },
+      "subIssuesSummary": {
+        "completed": 0,
+        "percentCompleted": 0,
+        "total": 0
+      },
+      "title": "Deliver and verify the Claude Code plugin installation surface",
+      "updatedAt": "2026-10-26T21:55:58Z",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+    },
+    "project_refs": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n",
+    "real_upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+    "real_upstream_status": "",
+    "normal_profile_hashes": {
+      "settings.json": "3351cb95b05e564612260f2a919076a7ac95fad172f52e92a10825a5ed16c0c9",
+      "plugins\\installed_plugins.json": "4db82be992ac09db3db0908d0abe29e477d99281893725a21bec35b0ca32d01c",
+      "plugins\\known_marketplaces.json": "6cbc5e44b90f7681dfbdd13a131234cf497f2da59192e8437a00c34523551690"
+    },
+    "fixture": {
+      "root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+      "files": {
+        ".gitignore": "ad5fa9d3079bf6192fb1abb38995b85d4b1f6367ee3c5bc8780ba54e4deab1dc",
+        ".python-version": "7651ce7dab58e5733ba35597459414699ca339dde25a68aac3d8a89a0c89e5c6",
+        "AGENTS.md": "977368dca502bb16b2ea9cddec71d385e05ca110e5f58c806106e0ef5291c2c8",
+        "HANDOFF.md": "7171320cc4068890f83791ad6b736b81af491e512a65d67c6dc8798303e6d220",
+        "opencode.jsonc": "ab7e98addb52b06188b06f961a9dd1acc3de57b451e419fbcc71ab45734a5128",
+        "plugin.json": "bcd8b9203f102392d3df62193f74d7040d6386537439560f96bf9e5ab381003e",
+        "README.md": "f2776931ac75852f174f68c758b7affc35d378e630b47aae8a0ccf5ac7842b59",
+        "SUPERPOWERS.md": "ec47799fa5acc55f1ae0d341a57ab59f90cb8527d959a3d08dabb59a70b8baa9",
+        ".claude-plugin/marketplace.json": "92347eabe5ca7623c2565bac3f8fca561a1bfb8599116b4c87bb9a3dd7d353eb",
+        ".claude-plugin/plugin.json": "32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565",
+        ".codex/config.toml": "e44169fcd7c2d174008d2ff22e3389e9fc55da2552f08c069f42cae3a92dbdd2",
+        "docs/installing-claude-code.md": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+        "docs/installing-codex.md": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+        "docs/release-policy.md": "edf4a8ae7cb70c54256c41393fe440d6fa23228528c4474e2c7ae21d8ded1ad1",
+        "tests/scenarios/2026-08-16-lifecycle-transition-refactor.md": "5758040069f938d5fa5df023d629fe25e313c0cb2bdb719ae5e41becab5164a0",
+        "tests/scenarios/2026-08-16-native-issue-intake-baseline.md": "471996da8d5db862997f5e3d40708a7ae3175b058b81951f3ccbf5845bea90db",
+        "tests/scenarios/2026-08-16-native-issue-intake-green.md": "b68d49d3f6266f28ba30307ef3fe975362a24536fd5b46b36035fbdf478d9e41",
+        "tests/scenarios/2026-08-16-status-selection-refactor.md": "2236d826282ec92e45eadf3482b88a6a11d0d3dd917970f76f398a40059e58a4",
+        "tests/scenarios/2026-08-16-superpowers-installation-refactor.md": "9a2eb9181f35facf424060b5930e17e16db22c3fa9812706d09fe36970e657fd",
+        "tests/scenarios/2026-08-23-session-handoffs-baseline.md": "3cd6159b2c64a1cd6b814ca8f34c5e0bddf63dca9730de1557de4f5d78ee335d",
+        "tests/scenarios/2026-08-23-session-handoffs-green.md": "fb5620a47160af106f291aee22e4fd3cf30674123ff1e6e9bb3f31a5ae74be60",
+        "tests/scenarios/2026-09-19-codex-installation.md": "a652b443e3b5ef5ef542bbdb8135415bbef7f4677ee13d11bd1903430d63181a",
+        "tests/scenarios/2026-09-19-host-leaf-rescoping.md": "0e80356a1e6ad7e7423c6dfc8e5a3d9e78bbd4bb4526322082e909969949f9d7",
+        "tests/scenarios/2026-09-19-native-superpowers-package-adoption.md": "65e458b8850628b01086f3361ff3e5721fdada3f7f366089fb71e44e2e39076f",
+        "tests/scenarios/2026-09-19-superpowers-v6.4.1-compatibility.md": "a90dfb2a74d4ec464ddd71e9fd2ca6e5f21afe3e19efc71415528a8c95c04bf0",
+        "tests/scenarios/2026-09-19-v0.1-contract-review.md": "dcb0bdc57ce12e14632369e2c3e0a607992fdcbea52a4e518b14c8da004bc617",
+        "tests/scenarios/2026-09-19-v0.1-four-host-verification-matrix.md": "1aa5cbc1891938a22083214f285bcf8dfc3b699995852a1245242eb2a8e1e271",
+        "tests/scenarios/2026-09-19-v0.1-lifecycle-walkthrough.md": "2e60a344fcbe10cb1c0c16737345f0800b1a0225785823a218fc1f62c066a6a0",
+        "tests/scenarios/2026-09-20-claude-code-package-installation.md": "aa07ccf6367a6631bdac77f878ac4ff9c87ea562d6e06bc29e37d20850a08bdc",
+        "tests/scenarios/2026-09-20-claude-code-setup.md": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147",
+        "tests/scenarios/2026-10-11-github-governance-bridges.md": "73f209434a1abb5e8a8a0f2e765119c8bfb1aec84b6a603f65b1a79b5f52148b",
+        "tests/scenarios/2026-10-11-governance-probe-runs.json": "ce1c02307869775988561b30f36441febcd626b8fdbc8ef308f15a656c31acbe",
+        "tests/scenarios/2026-10-11-superpowers-v7.0.0-compatibility.md": "f842861d4c171563543e5b62114c9dbe087d12972811daf06fce831226e9454b",
+        "tests/scenarios/2026-10-12-issue-31-checkpoint-portability.md": "c5ee13905a05c116fa19525913397fc020c9adca0d03d565ff881bf37a95803b",
+        "tests/scenarios/2026-10-12-mac-superpowers-v7.0.0-setup.md": "46804846c15a5a637f5bb09b8de2d1246e14f1aff4271459c04994e8238063d4",
+        "tests/scenarios/2026-10-13-checkpoint-file-git-exercise.md": "d34fd490580ab0fad67c898dd6fd0b8eb0c81d7b6a91bcf9e9c33a79cd467eb5",
+        "tests/scenarios/2026-10-13-checkpoint-file-git-results.txt": "2f6f161b5def98d04d3b009f4a11554abd674e67430008dfec28eef4aea14163",
+        "tests/scenarios/2026-10-13-checkpoint-fixture-receipt.json": "436cc9acd961e15d90d8be6424968cc9ea290cff1e92cad18cb1c5633f5bedf3",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-baseline.json": "6e1debc8d90ad26b82252822b58ccccb3f6264609d7f802800e425f1f6dd0e0b",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-candidate.json": "03dd3a4e1b786f0cf78e207947af38843f2c1da3c669dac189f240ddfe02a974",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-contract.md": "ea6da82a45eca2050d5f5d641f59bae40b77af6a0387a9290f9f216af48e5f47",
+        "tests/scenarios/2026-10-13-checkpoint-native-edge-fixtures.json": "4c49b26e7aeb6632889f1fb04a2d70bfb7692a740db0fe9d736c47df1d16b0a0",
+        "tests/scenarios/2026-10-13-checkpoint-review-followup-baseline.json": "8556edecafc4d1c020c61af4d0341fa43b1fe4c0f4e970c0629a777f3c23a2d3",
+        "tests/scenarios/2026-10-13-checkpoint-review-followup-candidate.json": "ddad5f50efb0b5ed94dbefe55d989072d6d9885ff48b2c7350fc73e9cd44ea2d",
+        "tests/scenarios/2026-10-13-checkpoint-review-followup-fixtures.json": "05b4826a9a07c887acfd0a3af7463035b9740029bab6333d07cbf349b0c05c20",
+        "tests/scenarios/2026-10-13-checkpoint-validation.json": "9ff47e89369cac3da8be12283287a1f56041f83fd17abb733903dd2c40af3361",
+        "tests/scenarios/2026-10-13-governance-native-query-validation.json": "5e76d50d0cc3bd370da2ebf84913173f27b5d804adefdb83e511ecf23a5ed3e5",
+        "tests/scenarios/2026-10-13-governance-regression-runs.json": "a2cc0480d1909c82216d08116f73ab4a19dccf2c2eeb9bae7d0cd9162c77b8c0",
+        "tests/scenarios/2026-10-13-issue-31-execution-ledger.md": "6df5fc04899c48c04557e57c3719aca2de05bd74f13119122a844fbee9a8cd21",
+        "tests/scenarios/2026-10-13-issue-31-whole-change-review.md": "537ef3a21dc8f74ec4f51c27983238c8077df3611091dd9e26066b818c8d1a45",
+        "tests/scenarios/2026-10-13-pr33-review-followup-runs.json": "4d7c585f871bcd89dfc65ba367e6f1c6b32d9da95ad5657073d88a31b617893c",
+        "tests/scenarios/2026-10-13-pr33-review-followups.md": "856bccbbecd7ebda06b90cb86c92577c363f2769c692a8015b7236161de6014e",
+        "tests/scenarios/2026-10-14-issue-31-corrections-review.md": "d6db956cbe4f0eb39630fde148646dd85d3acd7e29a1df8d3ce430bafd54932f",
+        "tests/scenarios/2026-10-14-issue-31-integrated-runs.json": "379e300d4a4bfc6ede91103c9dcca67b6a40ae02fdcc7ca15b2f3905ae039bd3",
+        "tests/scenarios/2026-10-14-issue-31-integrated-verification.md": "640f807eb9be35fc16b7a20e1fd8a5aaf832ace434130ad9dd9294c6025f03d7",
+        "tests/scenarios/2026-10-14-issue-31-local-integration.json": "c4dcfe7573f86701dccbb735dd1987c88f289f7ae8c757f867924828f6484085",
+        "tests/scenarios/2026-10-14-issue-31-local-integration.md": "b9e303d4ad6e1dcb62be82d288e923cb0e4ad1740848e77081e1be31cc6f8b67",
+        "tests/scenarios/2026-10-14-issue-31-native-replay.json": "0564bd537c1732f130c144cb8a4f3cf1a8aaa51b99e762da4ee7b9b67f53ec41",
+        "tests/scenarios/2026-10-14-review-consistency-contract.md": "4246729a43d07e24341a63e1b3076c1a8d0c66cbe502dfffc3e49587925ce7ab",
+        "tests/scenarios/2026-10-16-issue-31-native-replay.json": "bbebe8da2063d81ba3389a05de02a5d91125c99e7df78843366f5e23fae177d2",
+        "tests/scenarios/2026-10-16-issue-31-published-satisfaction.md": "963a09e727ce8bbf188b263f05b1d07569d59ec8152a4c13fdb78cee87afb622",
+        "tests/scenarios/2026-10-24-claude-code-lifecycle.md": "e71d6dc741719b366a57ae7fc5477fc34c29157af58542d8f650dbf2f5bf30fe",
+        "tests/scenarios/2026-10-24-issue-19-claude-lifecycle.md": "60bc09ba73f7ba0803fd969031b0f0dc5f92e15192b8dc21e146a8e315ceaff9",
+        "tests/scenarios/2026-10-24-issue-31-closeout.json": "7578e22fb1b9cbef1894fb8b9e3ce5546a610471734ecae9928193d7e4900cbc",
+        "tests/scenarios/2026-10-24-issue-31-closeout.md": "4e87224a34eb3f8e12248e076c3d766db09b8cbe9cbdf2e24cf4200281feba17",
+        "tests/scenarios/2026-10-24-issue-31-satisfaction.json": "d5bea810648efdd1411592ff6fa7ad53865e320ecf69e13c2a77bca8dd3ae391",
+        "tests/scenarios/2026-10-24-issue-31-satisfaction.md": "8ff3f127155b5f47fe25df264dbba5477461d450037ffc7c76a10ecb654da961",
+        "tests/scenarios/2026-10-24-superpowers-v7.0.1-compatibility.md": "9de6714a4882c2eb4086c08d8bdeb94e2bd1a82fe78084a2e9299d9e97338248",
+        "tests/scenarios/2026-10-25-issue-19-closeout.json": "bf7e757c60855a32df589b032f211a47c23850890fded79e4184316e18b53c30",
+        "tests/scenarios/2026-10-25-issue-19-conformance.json": "cbf9b60a7af02f1f359b1d94f468749ad26592658b66485f507c5348d8f20cb1",
+        "tests/scenarios/2026-10-25-issue-19-final-guide.json": "b22351d8ab4a4626e1a46afeab1c46310b1fe48c8b56a3e794693a466cd99eae",
+        "tests/scenarios/2026-10-25-issue-19-final-review.md": "551b9f8d5bcfaab76c99d8fba2f171d9aee69a2caf84325c9e7d342cafee4feb",
+        "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595",
+        "tests/scenarios/2026-10-25-issue-19-integrated-verification.json": "0076509f930d49b4b3ae6c2d2e89cca3d16b1427038abccd4f3e8531162042f9",
+        "tests/scenarios/2026-10-25-issue-19-live-fixture.json": "6847c79063e99a4dd51c1e5406c6cfbfe90d5f2f0118e1ff1fcc256df88a21c4",
+        "tests/scenarios/2026-10-25-issue-19-pre-review.md": "a7f0a419da866e157c6641bfef0c19629b8c7ec4253cffe9d7e5890966d9772e",
+        "tests/scenarios/2026-10-25-issue-19-publication.json": "21db437297bdcc3f47484540720e6814811fb7b755207ef9aa7e51b559bb9d68",
+        "tests/scenarios/2026-10-25-issue-19-python-3.14.json": "1673f0859f3ab71aee23522c48df9cd120768916e0453186b28bf9e3e3aa6c69",
+        "tests/scenarios/2026-10-25-issue-19-python-lifecycle.json": "e113e1ffc9f39a45fda1650a4e687c01d835424175d83166e55478cd90047bbb",
+        "tests/scenarios/2026-10-25-issue-19-review-submission.json": "bc687053ffaa7f5cb72af10691d02ca72db2a4ac51c5897562fe5ffea6c65a1f",
+        "tests/scenarios/2026-10-25-issue-19-satisfaction.md": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb",
+        "tests/scenarios/2026-10-25-issue-19-shared-catalog.json": "1fdb9c7af8baca679387bfee31792043416684baad40c2745fddb3b6bcefe23e",
+        "tests/scenarios/2026-10-25-issue-19-windows-continuation.md": "35660e826bac2eca9b4acc4a92ac326b9283763120d1236441a711d54be31001",
+        "tests/scenarios/2026-10-25-python-3.14-tooling.md": "56cf2eef657e40dc2c692e39b273426d325f8d757c311458e7e7e6e742f3e71d",
+        "tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.json": "ef5d177bcd6547d978db42ae49e0bddd5d81014e53219aa250206f023a6b63f4",
+        "tests/scenarios/2026-10-25-windows-superpowers-v7.0.1.md": "224b3a64707834cebceb144de2917d9609a5f0146aebb135f29661a11041043a",
+        "tests/scenarios/fixtures/issue-19-update.patch": "ee706dd9b6d893820f01c04fe6d0a77224bffea56b91b18488c7a0db03abe9ca",
+        "tests/scenarios/transcripts/2026-08-16-language-neutral-green-response.md": "042c01f51f1e13f0bbc660f35368b40b271f8e6aa049ff967d66c94de79852aa",
+        "tests/scenarios/transcripts/2026-08-16-lifecycle-transition-refactor-response.md": "34fd90d2e2df5832b06af73e39eef853670e64ecbc2c5876c93399efc9f62508",
+        "tests/scenarios/transcripts/2026-08-16-native-issue-intake-green-response.md": "a447393cbbccd1d780e7a0f59e684225f34b3c86dddf76e6960c95f56398ae8a",
+        "tests/scenarios/transcripts/2026-08-16-native-issue-intake-red-response.md": "006fc8ff56c99450e57d40b2b71a489045d556f25318164eb2fe7fd1888e8ee1",
+        "tests/scenarios/transcripts/2026-08-16-status-selection-control-responses.md": "e0951cdd08e45b95b60284373300a01249bb77423180437d35ff7b2402b0beb0",
+        "tests/scenarios/transcripts/2026-08-16-status-selection-skill-responses.md": "27c43639663daa1355b80ee3273f6a83a8c6b5dad61469b15611a1b952cfdfae",
+        "tests/scenarios/transcripts/2026-08-16-superpowers-installation-refactor-response.md": "f0121f65d418e00c3ab9df4623d6a95544329b22a383465c5b98d15b1039f33f",
+        "tests/scenarios/transcripts/2026-08-23-session-handoffs-green-responses.md": "f2c355d2db310824608d01abd1c08b3dc4de240a3caef204f46abe6e6ced900a",
+        "tests/scenarios/transcripts/2026-08-23-session-handoffs-red-responses.md": "9053066a71e27e703eb251b45b470597ae93ec197dc747205f3870e621ddeebe",
+        "tests/scenarios/transcripts/2026-09-19-codex-branch-review.md": "0f33052bab42cfbadbf712fe3964af1378706284e59c3a69181c7350fbba8647",
+        "tests/scenarios/transcripts/2026-09-19-codex-failure-probes.md": "5fd0762a52ea08c5e82561da06d6694d3c1966c26dc570087f3cadf71b5f656f",
+        "tests/scenarios/transcripts/2026-09-19-codex-final-review.md": "4e8ab8ea7c99e93e051952f9641436167b174db07edbaa9ecc62d2e96270085f",
+        "tests/scenarios/transcripts/2026-09-19-codex-host-lifecycle.md": "2c6c662f1f9ca25b5ba7a80652670ea4e58d08135635a1fcd275afbe2c59c095",
+        "tests/scenarios/transcripts/2026-09-19-codex-installed-plugin-conformance.md": "4a1c4aa7ed241cd131e65ea9712fc070c377fc58ed3fe85f39bb19737c4eabae",
+        "tests/scenarios/transcripts/2026-09-19-codex-installed-plugin-discovery.md": "f625b166d248101c1374f9ec4176b73cb8f39df188ff3d1fa78a99255e1f3983",
+        "tests/scenarios/transcripts/2026-09-19-codex-integrated-remote.md": "a111061d3e8c8a9d0de716929bb9bfe86608d5a081661354bb71e8f633e341d0",
+        "tests/scenarios/transcripts/2026-09-19-codex-language-neutral-verification.md": "61b055ed91946eee062c611da5b9490422da77cafcddf78106b2c83bfdd1dfc4",
+        "tests/scenarios/transcripts/2026-09-19-codex-lifecycle-transitions.md": "eb4337b5e27e279a247677e5ff3aaa24b54ae99e7aaf8b6ce19bd69c3f714b00",
+        "tests/scenarios/transcripts/2026-09-19-codex-native-issue-intake.md": "709e70d3a47a8824ad0cc4c77c5cc1e3f6af8a6530db7c6c0fc29209858cd015",
+        "tests/scenarios/transcripts/2026-09-19-codex-native-lifecycle.md": "e716e56fa712df3d96f7616f19da289931d7b00efa2fb77754017f2422d8ddc7",
+        "tests/scenarios/transcripts/2026-09-19-codex-sibling-absent-setup.md": "80c0ea3785f53bd372df3a6b51dccd10b765d6b8311e83ac8e0b1d34f3c8f317",
+        "tests/scenarios/transcripts/2026-09-19-codex-skill-structure.md": "a16b3141a67c20855d82594d4283f8d2ba1e37b633bb9eae18a507175358c7c3",
+        "tests/scenarios/transcripts/2026-09-19-codex-superpowers-installation.md": "01678c29f1105b325f745b85bcb2ccb2825402df66f49fe5d10b5bd5e09729a7",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-checkout-regression-green.md": "7fd3909e5ddade5834bdb24e665d4054b0ef363b82aad82f3e1a5564c890dea1",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-full-skill-green.md": "c404bc45128d699fe588294e8c8a9fa570aaf57172adb297e25205ed64745389",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-package-adoption-green.md": "ec01fdc8296cc1dda22518915244127a360220c8385041e682c9082ce507364f",
+        "tests/scenarios/transcripts/2026-09-19-native-superpowers-version-floor-green.md": "91cf1f59fa44649800b19c94dc5b9804a69594fb9ae054f1a0624d2fd1f42f53",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-discovery.md": "ade764d40cbb7957245654d5ffa9e18c335294f5f7cee1103a94884de8eb7720",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-installation.md": "5d5e0a30c7124975e6d913141162f5a92ef52d2466354a88c80207d5a7636616",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-language-neutral.md": "e5a8d0bb711b3193d45f7391b6637daecc8968e0b04291bb86111d1a6f416f83",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-lifecycle.md": "0867dc3874cbaf04603f383c33f2c5877031371b2a85ecc612dffe2bb60e8509",
+        "tests/scenarios/transcripts/2026-09-19-v6.4.1-native-issue-intake.md": "3f3e5a52dcf57d8806aeb95afc5cc59d88a6ee5e63e5da671122e33203f6d363",
+        "tests/scenarios/transcripts/2026-09-20-claude-code-discovery.md": "5f988519b5c885c1e02c7b917c0e5f8d93117b2891bbb4b944a02c4430673b8e",
+        "tests/scenarios/transcripts/2026-09-20-claude-code-setup.md": "0838c3e247c37f42a87f3fd753a81d370fb687ea737dd90b1f42f42eb2fdc524",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-1.md": "29129f5988e7022a60521b05282666d2b20669fad595dfa77c26c89c7cdcfe60",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-2.md": "5ad4784e37951258377b33240bed0a65bdf1d4fcf86a396324249e20d0b2e793",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-3.md": "2bd1322bb9429daed64514bf2bca8670e5c2299ad18f0a9c7c1a464de46a8bf2",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-4.md": "9d7cc7e8c8e1d9a447573e570628c001e3e1ad37ad77cc4507f06921c521c26b",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-5.md": "59bbca7f48027dd245433f958b5f376e2291ae5140310417fe203dfa379bb6c2",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-6.md": "c7045c407d602b613e5aee4dba3eabbfef03befa7092f71283a72562ee054710",
+        "tests/scenarios/transcripts/2026-10-11-governance-baseline-case-7.md": "09ab642f8bb807d6dda2c9b96bec134aa1a4063f52df455e35dbad42ddd356ae",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-1.md": "353036394eb2c87e8d63e6804183d4c8572f3ae3306fc92f2d372211f9b10608",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-2.md": "7c2dab53e31b6c6500d914d9ac1c7a98e60a3698eea166ee75b8d072cf620454",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-3.md": "d7df91fde5702e5e78e8039d7f71fe3f8850afa7d2d6dbe1911ff75113ee49c3",
+        "tests/scenarios/transcripts/2026-10-11-governance-task2-case-4.md": "446f0fca4bae99ec427cc0ef77d76312f47046f1578de7d2dcf29450453feaa3",
+        "tests/scenarios/transcripts/2026-10-11-governance-task3-case-2.md": "727396ea67fe3d9116ce0d8d2d0bd5cab4744afb7a04fe7d7823dc9f8b9c1039",
+        "tests/scenarios/transcripts/2026-10-11-governance-task3-case-5.md": "b7ef201670954ed30c849975bf96365913a6307ec4cf9cd0483a3bf834f6ba0a",
+        "tests/scenarios/transcripts/2026-10-11-governance-task4-case-6.md": "a32ffe6475bcfbcad3687e4fb1e76c92e348de6507c33e892e0cc2a3b1860324",
+        "tests/scenarios/transcripts/2026-10-11-governance-task4-case-7.md": "57bb0fd2ee5d9cb23f333ce6e0d75550d67dc340657c28b933736cc5a72b8277",
+        "tests/scenarios/transcripts/2026-10-11-v7-discovery.md": "219dfc74ae7b149e274ce14343d82a1a7871751422ab7e571ac30ec75ecd4630",
+        "tests/scenarios/transcripts/2026-10-11-v7-installation.md": "a32b3fb9cc8cec4b509957f6082f157152aec358d8e0859e8cd0145b793d9582",
+        "tests/scenarios/transcripts/2026-10-11-v7-language-neutral.md": "4958f4b07933b8cf25357926670bb36e96785c4f376fa01fa6bcb98a507ce6d5",
+        "tests/scenarios/transcripts/2026-10-11-v7-lifecycle.md": "f6080ac6784fd6c415fdc1dc5d5f473f46267d641fa132262902d3ce3fb57f75",
+        "tests/scenarios/transcripts/2026-10-11-v7-native-issue-intake.md": "a41e75a1d0dd02980229f011e51999f2d03c7ded58b755ba2a999c1f572cd23e",
+        "tests/scenarios/transcripts/2026-10-12-governance-freshness-baseline.md": "15fe89fdea51ff0fb79c35a37801b7db0f44c4cfdd7900bee4c1ead438e53c86",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-discovery.md": "77cff5c21248cbd4bff665002adc2120b3e429ba1a487842c343bf7140662845",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-installation.md": "f22b0699a0a147041d23090a0b3233cf8104801279c20af6f534106760c47617",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-language-neutral.md": "96084d1079e312aa2c821fe225cd82f40a3af356415ed0cefbcf1235713a8a3b",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-lifecycle.md": "102d5c510be0f56b3860e049156b36398bbedbd27059910bdba47469eea7fc40",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-native-issue-intake.md": "53878abe7b1af1fc3b3b124e75e7f02e04fbb8df5a7dd3161f247396c0d4d936",
+        "tests/scenarios/transcripts/2026-10-12-mac-v7-worktree-discovery.md": "a8c4cb5eeaba94d5ffdfd230201a73afbfafe709394cd449bf345d4719b090e8",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-installation.md": "f9ceac60b38983194fa2cc6a37a94691a2a93295319cfaaf3b5e18c2804e39d1",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-language-neutral.md": "6169f963679220f57b911f17c442de0fd57b0e9959d242d140a4a0e0c6dd89be",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-lifecycle.md": "48a5ec716b0f91a723e58d40332010dd4a51d9c4d5ef236b6843c99a59d970e2",
+        "tests/scenarios/transcripts/2026-10-13-candidate1-native-issue-intake.md": "38d3078d515935655b738fbafb4e9f8c437d3cbcb960d6675fd25cabcfe7cce0",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-installation.md": "33a8b7f8c1b2cd49efffbd0a2dadda620db606ed9f4bda23385c1b311707a300",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-language-neutral.md": "2d3a336db898d6a2ff150928fedce82fcac823080df768aea6f3a3a1cc1a3c8d",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-lifecycle.md": "d7e0e625304bdf222d4ed7886398c0f9162575eeb27a99608da9e5c1393a761c",
+        "tests/scenarios/transcripts/2026-10-13-final-candidate-native-issue-intake.md": "b981896febbfe349a1dc2dc1736a9cfe8af5529baf5e2828d20b3e40a384fee7",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-1.md": "ae3a68012673749d22600ad65d9caf58268897d7eaba24acc75dfd27fa97874e",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-2.md": "dad328f66c9a86f1440c6d398ab124a9cf9206ad2055cb456055d7b2bb9afbca",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-3.md": "d15384ea6c094cb58ea8b226c9b9a8b57615b5768e75788e332a6ab7bbcb498a",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-4.md": "89b55243dc523c15ecdb5a5ee038540044d0b692ffd156d45b5223982ff158cc",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-5.md": "7e6761bb78a05f4f7f92051c3ff9cf46bda449e8caf0366187861549eb83b7ce",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-6.md": "45f67d31e9bc7d57d5c7455af6920ec8232dfc7c941ff9ee396f308dd8af80fe",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-case-7.md": "5aa56da8f78e26ceca024459517203b22684354bd0700d7e36f35d062e8bb287",
+        "tests/scenarios/transcripts/2026-10-13-governance-candidate1-freshness.md": "9cc9bf6542863a5f373392161cd022272eaf0a609817f1c452f312f924047132",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-1.md": "930d7da609c9cf5185e814e1a23172ba23283a697c3cdce1f69dc5ce92cf8e26",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-2.md": "de9b37dcd35d8943c691099de0b1dcb7975b9a1ea7be7d028537c7a1f9964f7b",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-3.md": "6f2621ca6ec25f5a6f68e449ac02fba98fbfdfdb6a33f35d9e7d1ebd7ca45e71",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-4.md": "4449dc9065b33909442337df8a56e407d7e07f4755e173963c13e8c3c4da502d",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-5.md": "5c15ff0da03d0cf58ab46c534ef4f107f66347dee4fb6e671b07838d00ddd76f",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-6.md": "c54f53d40c8e4633a9c787c896c7aa077dffa411d5b87ace9da7e062c5f873ae",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-case-7.md": "fb39a3b5fa567439804ed4117c11673118e03c8b872b793ec30859639bdcc755",
+        "tests/scenarios/transcripts/2026-10-13-governance-final-freshness.md": "928d17c2a58a57ea7ff40457f34f03f1877792cdd62cb1d909132d16c8ad345d",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-1.md": "42cc83c0d4f8e7e6bda89a9b5b755cd61795058cce4ab0014ff966a7bb3ed649",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-2.md": "c18365cee3feaad81ead8719fb4d8c48edc185c48ef6099015940bc6675d4118",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-3.md": "aed1aee147498ea1554976db594165be1deb3f2ae6555d7f5c71fe88ef2972b2",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-4.md": "b03046e6dc9903fc07164b0b3502dc14f5e31e8027b0f832d5455e866646f9eb",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-5.md": "c1fe96373fc0893b6d9844ef82f0b56576a9ea7e1f51481f8097f5362ff3ae9b",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-6.md": "ed8df38452372ae1171ca77bad839c0e74633b10193a70a4d002d3a7f90b9b06",
+        "tests/scenarios/transcripts/2026-10-13-post-review-case-7.md": "6d7f545ddb2979eb9a341f941712f1df7befef20ef8cd2912e47deca12001044",
+        "tests/scenarios/transcripts/2026-10-13-post-review-freshness.md": "5ca4267fc9673988c329107bbc0601f3d187620e61da2aa7e33dcd7ba5c6b94b",
+        "tests/scenarios/transcripts/2026-10-13-post-review-installation.md": "77d816d2f38aa032cfc1a2867eb642666549e83f104f95c507b86a1a0bc45355",
+        "tests/scenarios/transcripts/2026-10-13-post-review-language-neutral.md": "e0951b8a3023603f4245bf42cd4c64384cc536483da476a76020e2e2c34fe69e",
+        "tests/scenarios/transcripts/2026-10-13-post-review-lifecycle.md": "c2b3e3256cd1f09d3508a7f0273e4fdf3772523dfc4fbe3333659853d9b8255e",
+        "tests/scenarios/transcripts/2026-10-13-post-review-native-issue-intake.md": "8577f1b6cb133bae7b6d8c85276ebf36b3dd642ae0bdcbae1ba90e24a8fc036e",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-baseline.md": "042e45350d4e6d15ef9cf2a6277da8579635bc892de592d9e3748abcd093aa9b",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-1.md": "5bb9025b510fa48b4c6a3f003045c2931ea35bd4c39603575b43e5d6951b905d",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-2.md": "751655981e6e9beff7d4bd13ff6c9c7783f0f9707540cfc729ee8c7e4e5d07c0",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-3.md": "9d376e7114e47af90f294c64df3327f75046efee38ebb42234f4bbc691b50be5",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-4.md": "80dc195af37ab9c4e00e381611beb84a069933807392c7784a8fccfd600d6512",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-5.md": "64053d924dc29148690ec17d10721fd6594bb99be402191d5b40ecb9c9f32154",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-6.md": "b9f09b2d7edc1c37ea3a58e30d0fb2c3420458f4b725dd2aed8c87d90d0d842f",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-case-7.md": "eb1a43d54e9d7f080a4f18664d9000f4e9473605623d21391846fed1b7a5e1f7",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-followup.md": "c8252f00e1015d8b42128090b2f5b2fa3e4be9889e7489b4776c592dd1eaa364",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-freshness-retry.md": "c46dced97b2cfb47196ae4150a040b3e48eabe3de160ea1b40c9b0df84805cc9",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-freshness.md": "dac55a300e53fea2c80f3278e1f0aa806ce268f05d02a42c5fc957bc31f21057",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-installation.md": "9255e6fd4b6692120b9f529af58efc58d3461da0d1d90639fb9cc8170b408260",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-language-neutral.md": "cf8e62e1610c48b987754d828a2212c5b24788bef06ad7f7d93aea80d144cacc",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-lifecycle.md": "76a0d195d0522535d7afdc3bd6b2547c46def5163150d0556e7cf077c397cbd3",
+        "tests/scenarios/transcripts/2026-10-13-pr33-followup-native-issue-intake.md": "0a2223e08d0ff88415fc2e55eadcc3a4d3ef6652f33a8bcb8a66505d643f69fa",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-1.md": "f38aa3cb588808289121b8ffa699787acbbf2220fe372c9b5800c4113e97d5b5",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-2.md": "eda2237442ea84fd2b9d76f7d40db675c7cc715487a5594aa2a41016b8da006f",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-3.md": "4ad62b786eba4eb7c0e03e9149f43b6438bc6a0436e9c2576bc084443e53697b",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-4.md": "510b28fef4e1fcddc854572c96c63d6a8057c053fff560aca1918404ff68b490",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-5.md": "b0555fe05a634497e4039b653a10dfb83dd57de8e636cdb473ea14b099536991",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-6.md": "f21f546421e8240a2ee4438ff790ad0dc9cf5a922b9b2d89d85d503149639e0e",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-case-7.md": "3a764fcfbbe6e1457b2c38d036c1da4a64e6bdf3986508053592d0c797d84c3b",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-followup.md": "4669ba0082f07f8877b4be46e2877a379e5e09bf12153d73d097a494b8423bd3",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-freshness.md": "c8cf538f9fcd0529907de2351a36b7daa93e0dbd9bd317257b933b700b2c8808",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-installation.md": "f0a08d5f42fef4054dcbd278e68372cc3c5cc96179456f651096071d0309406f",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-language-neutral.md": "3c34a6d7d398511c858026fe4a9584d4338a17aa18dfdb9441c5385294f1210e",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-lifecycle.md": "2e211ce73217cfbd3f437821adeede709272676c9b040f11bc09f0c9bae75aba",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-native-issue-intake.md": "e2b84bfd2f194e54f427a27c0a602c2ade9285ae1042adab538045e1da5abbd1",
+        "tests/scenarios/transcripts/2026-10-14-issue31-candidate-review-consistency.md": "45b009e93083cc1cdce31d86ef0a00a9d609871f30ef96ca68212a47af3debc2",
+        "tests/scenarios/transcripts/2026-10-14-issue31-final-freshness.md": "2e8078e90e2649dbac65f22f9f4780362adbed76191415e2bdddaa652d0bca3c",
+        "tests/scenarios/transcripts/2026-10-14-issue31-final-review-consistency.md": "eaa3ecdd096c969a902fd5d38847fdb24b8128bf3ede316cf9bae7631a5df4ca",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-1.md": "601decfdd79d2c0c05e54ef435f06533b3e22c98e258927597b244f202396445",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-2.md": "e5ef6c95dffd2059f7778f9b4a0723a24e85cd7ffcc54ac8928a188e357abc7c",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-3.md": "6b83fe488fcee87b347b3342a5d683fef7055539bd380291b82ff798975c8037",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-4.md": "084475f294ba83e0f0bcfdb19e9b21fdc3256f5a4a26a9cd851c410d9673f455",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-5.md": "7cec94a627818a1e866582b6d950fc3869115a8c90b06c63a1c3b9e9beff054f",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-6.md": "631481c75984ebec881272b4df4a04434fcab34798398b8e5c8644f668c32ec4",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-case-7.md": "6433d56ec5a25bc28f8d7b3bf21a75fce6e8b69869f5984e64b4f23962047dc2",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-followup.md": "18e8ed59b733e3c38324050a06c37b46f53c09348f133ab93becbd5b967e307e",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-freshness.md": "a3000e1088935daea0c154eba8802a10a75bb6272b30348dc70058e144fc8627",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-installation.md": "01e9b1130d134ad551662508db188c7386151fd90004c4312a5218dbb61df321",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-language-neutral.md": "ba4d9831d52c2d488435239d736dfb8a15ce8c11277b0976ffc4c7b75d5e9c7a",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-lifecycle.md": "e0a2e96c6c94843d18ed2d4158fb07c5b4b402837ca59f0afe45a8a6e1de127d",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-native-issue-intake.md": "ab71cdf80fa0ce639106e16df0ac9a8942effdecb44c8ed0bbac65bd22f088ec",
+        "tests/scenarios/transcripts/2026-10-14-issue31-integrated-review-consistency-baseline.md": "71f028348164d04e8ccb18c386ba6862f8886fdaf5339047a0cb3e61b6dc9f48",
+        "tests/scenarios/transcripts/2026-10-24-claude-code-lifecycle.prompt.txt": "c61f0d21a8e4babcf88881149119c06c974bac8e5438540a3699780decb286c9",
+        "tests/scenarios/transcripts/2026-10-24-claude-code-repeat-install.prompt.txt": "a5e4e6ced735e01380a635156533f4a154eb3c4c5e483205a0935046d9229bab",
+        "tests/scenarios/transcripts/2026-10-24-v701-discovery.md": "c92951cd235420c96217020fb3d13d89d29641ef5580ee3caa1047cf40f08213",
+        "tests/scenarios/transcripts/2026-10-24-v701-discovery.prompt.txt": "d2e51c9f56246029647e4f0d2f9ccacd6260b796e3f2c21ebc52dcb38c8aec98",
+        "tests/scenarios/transcripts/2026-10-24-v701-installation.md": "b9438546edd50c2011bd8389ede77359cf66bc0115e5157cab65904a8695e3cd",
+        "tests/scenarios/transcripts/2026-10-24-v701-installation.prompt.txt": "6894bfb8deb9277196b6d00d8177587db54371d0bd85cdb8885d4dc1573bce99",
+        "tests/scenarios/transcripts/2026-10-24-v701-language-neutral.md": "1433893f49b3e9d6ef451e4bd0c5945348b2530a25f01737e612c157186279b6",
+        "tests/scenarios/transcripts/2026-10-24-v701-language-neutral.prompt.txt": "2857f664741ec21781b3f6e05c54666624d4dcdd14452817051335612bb7e6cb",
+        "tests/scenarios/transcripts/2026-10-24-v701-lifecycle.md": "ab914a9274abeddfed13dd5c8a366d4bc68d8efc5888d81c1de134d0231f1f0e",
+        "tests/scenarios/transcripts/2026-10-24-v701-lifecycle.prompt.txt": "63c4844cae4b191bad34415ec19e4445b7c844f60301106526877dacbd95160d",
+        "tests/scenarios/transcripts/2026-10-24-v701-native-issue-intake.md": "5e828357256bb0631f29913a86f02f9d151a74772c967c7c081a4fa553709980",
+        "tests/scenarios/transcripts/2026-10-24-v701-native-issue-intake.prompt.txt": "2ac27ec011624d4b096fb157a0ef55be865dd39f07e2e2c264d0c9d3adf768fc",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-closeout-source.md": "f6a0a6e802f5c5b08a568284058a41877eebda79de18cab835a9f5048e3dce90",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-conformance.md": "885593a2519bbd0a668f0bf53d1bcb867732a881d1be56651dee7886f5169290",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-final-guide.md": "d0150e6719b3806f674207a6dca9ea57f66efc293979b02c72b7dc3c6224c300",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-fixture-closeout.md": "a025fe5f20904dfbc3bc0b502a8df2d875a83fa1ec862e21e9f7e073612eb067",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-integrated-source.md": "73d0a303813287d3b7cf685e76f3468ee107f849026acf59441497ef25ea921a",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-integrated-verification.md": "4d8a1a068dec2834dcec132bcb1a928b71d1ea6e57b1dc10cbbd41d647ae665a",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-live-fixture.md": "a626e38cbe0c9228482e04108522aaf469503cd43cdf45d6ce9c1839e3c57022",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-3.14-source.md": "3e9a20675211efa088bfdde780dcc510a807e720a39b9c7ca97e7c0ba6d375fc",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-3.14.md": "c518a0628803b44ccd9bb8ac076fc5a229caa575ea471cea98e96952fa659fa5",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-harness-source.md": "57a33fcc51dfee0c6da36f014eaf96e9d477c3fb13524bf00aadf6a209f05ee6",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-python-lifecycle.md": "835380dc79d5ff34b3b0f1369fceef302a1d169b29c10adaf2c596215eb2d4e6",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-resumed-harness-source.md": "78212321044a336a70c0a67b33d79f7520f4f7b4a9474502347dcd383d8608ef",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-review-fix-source.md": "8c5fb81797ae9c6d389fd1421c2029839ea07d10d401167f7551044e9b5bb72c",
+        "tests/scenarios/transcripts/2026-10-25-issue-19-shared-catalog.md": "8b8090d1d8ce344f6ec3d3bf3332aad2ae1cae3d71da240a9bed4c66a3d9ba9d",
+        "tests/scenarios/transcripts/2026-10-25-windows-superpowers-v7.0.1.md": "23a90bb408770101cc7390dcaf66b1085293db7e3b403ed0a33ce745b39a2d52",
+        "tests/scenarios/fixtures/issue-31-checkpoint/github-state.json": "cfbd32b14e8dff0453fa9a26a34267abbece704b0d13f222d32df39e12fe826d",
+        "tests/scenarios/fixtures/issue-31-checkpoint/sentinel.txt": "8d3d11a71e4c51344a75d9827cd671175200c349be6b7619c107ad2b73b6aece",
+        "tests/scenarios/fixtures/issue-31-checkpoint/state.md": "b6567f9bebb2a88a93c18580a66cbd4d6461b1ddcf3f74e3c061bb1eaf02824b",
+        "skills/managing-superpowers-backlog/SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+        "skills/managing-superpowers-handoffs/SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+        "skills/managing-superpowers-handoffs/agents/openai.yaml": "a2ff1772c418bb1c52eb917e5747bcbe40e86b636cee1bd66f6e5a27bf62d07e",
+        "skills/managing-superpowers-handoffs/references/handoff-contract.md": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98",
+        "skills/managing-superpowers-handoffs/references/resume-assessment.md": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed",
+        "skills/managing-superpowers-backlog/agents/openai.yaml": "925cfdc40503f81f360a824f885b613a9528debadbbe1563effbc743bd2b329a",
+        "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "6ae5597ef477291cd06444bcbc1f45bca2b5febe082b977cb0767dfd765aed52",
+        "skills/managing-superpowers-backlog/references/checkpoint-format.md": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+        "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "43082db0c491a611a1a1fe2508ae9e119a01d5dff85dfac0ff4dfcad78c39f0b",
+        "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "89e971568ebe0c884b19312d43fce55b0d370383fa7776c78218d62331645954",
+        "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+        "skills/managing-superpowers-backlog/references/github-issue-contract.md": "15b1c2f68ba881ba4b6bba297df03ac6f9cad3ca93fec748548503fca35f69a5",
+        "skills/managing-superpowers-backlog/references/installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+        "skills/managing-superpowers-backlog/references/pr-completion.md": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+        "skills/managing-superpowers-backlog/references/product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+        "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+        "skills/managing-superpowers-backlog/references/superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+        "docs/superpowers-backplane/governance.md": "49d1b9d24471a8d932d7ff8753a47cab80a4bfa5d3053dd48d39e10821252caa",
+        "docs/superpowers-backplane/modes.md": "47ff4b2bd44ae410a7989cd167f637bd01afdd915c163e05b11d6b00b9cdefc0",
+        "docs/superpowers-backplane/handoffs/20261014T080251Z-issue-31-remote-satisfaction.md": "76a011bcd0dfbd3e39ede31ccc512207ee9a50367cab68070eadd8269e79899e",
+        "docs/superpowers-backplane/handoffs/20261014T084025Z-issue-31-assessment-and-prompt-preference.md": "ee940f46c9e5011fac8be17300f4796c8900f23c326608dabdc77b9658fa13be",
+        "docs/superpowers-backplane/handoffs/20261024T225444Z-adoption-readiness-after-issue-31.md": "886937d3cf3ece3a1428e6bc3374b5ee723c5a1a96efdb0aa624d3dae475de6c",
+        "docs/superpowers-backplane/handoffs/20261025T174840Z-issue-19-publication-gate.md": "e385e9907a48ec58b181bb8536953f94b5da5cdebd75bdfa7530b436201bed93",
+        "docs/superpowers-backplane/handoffs/20261025T182310Z-issue-19-complete-next-planning.md": "b2fa6d23b086e5295f4a5fe2b4ed75a3408012298a1571acc80a0de4ef4f088a",
+        "docs/superpowers-backplane/plans/2026-10-11-fdau-github-governance-design.md": "d27a384a34e19844ebcbf94b174816f207173951930e04909a5079ab77a435c3",
+        "docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-implementation.md": "ae05361badc5be68474b4fc5ea19de01f806b31e245c5f9e88be99e1da3e72f1",
+        "docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-work-item.md": "7c6cd0ce00735872a63f9127b3ac6e176b07d7cd028b4e6f95e3678ebcf173ef",
+        "docs/superpowers-backplane/plans/2026-10-11-governance-plan-corrections-verification.json": "6bf855d46f03e9cdd3a7b1f673dcaf18171c0127320a13b31e28e406435fa301",
+        "docs/superpowers-backplane/plans/2026-10-11-governance-probe-contract.md": "fc23cbae20160535f0836eff9920649c0dc78fe50b17ac3082904f2b38710f81",
+        "docs/superpowers-backplane/plans/2026-10-12-governance-freshness-probe-contract.md": "20349682b83f272925c245eb38a25530ced755ab70e94f8d08d83b0ba3592508",
+        "docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md": "48bbef7594c62ef70e0337925696fe30f950d68347d65c51f32eb96c8c28936a",
+        "docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md": "fafeb6411647f9e54d614eea8a89e9998d844cf757ccc6dc8d9455f3184df4c3",
+        "docs/superpowers-backplane/plans/2026-10-13-issue-31-pr-handoff.md": "6e1672e9a604bb0238d5e21b83ff28e675b338d14c19af7b1def06f8c4de30c5",
+        "docs/superpowers-backplane/plans/2026-10-13-issue-31-pr-publication.md": "65f254bb8c2a3127555da18245da9c0c471b0647965490b8fc9accc370949334",
+        "docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md": "06542f5d4bb9856256f5a70ad63f35802c3315a774b37379d0940b139de316cd",
+        "docs/superpowers-backplane/plans/2026-10-25-issue-19-lifecycle-fixture.md": "7e9201596ae157c1a4e8a13ed3630f08d03ea0d6307a6d8ec93da86098484d5d",
+        "docs/superpowers-backplane/specs/2026-10-11-fdau-github-governance-design.md": "677bcc5ce2707781f0ee05c15306bd1be0587a801ca48699fba195722681bdb0",
+        "docs/superpowers/handoffs/20260824T003834Z-issue-2-three-harness-adoption-design.md": "d8ffb832a6f6b5dbcf5a622ddaf3bbf8eebc99a3260fd8d01b9ffe4fa43c70b4",
+        "docs/superpowers/handoffs/20260919T145241Z-issue-2-post-sync-continuation.md": "bdf201ac7ff7fab9647d64fc28f17f4b1e40b7cb02edb68c69047c8e829c1e5d",
+        "docs/superpowers/handoffs/20260920T015816Z-remaining-host-installation-leaves.md": "d18fd221ec303a3be2cebd0746f889ab9209be82155934e06d7c673fd2c6944c",
+        "docs/superpowers/handoffs/20260920T160331Z-post-issue-17-host-continuation.md": "8612e8628ac8edd46178d341708177ce89da71d9186f020b589f3b43bbc8d28b",
+        "docs/superpowers/handoffs/20260920T202021Z-post-issue-18-claude-setup-continuation.md": "076803f2f880fc94fcc1c7847ce197d79b91da7a6ca28e04ee9c7e541674e378",
+        "docs/superpowers/handoffs/20260927T165620Z-issue-19-claude-lifecycle-plan-review.md": "45a46ed1ca116ca8058c317a6f785b30cf124f44b83b9d39642b3be74760ba13",
+        "docs/superpowers/handoffs/20261011T172308Z-github-fdau-scope-discussion.md": "e873d5e1fb804c90a1dd723cc53f8b9391b5082c46b836f57c5a1e96dbf93345",
+        "docs/superpowers/plans/2026-08-16-superpowers-backplane-bootstrap.md": "9d2a2fc5fdd0d3a981f76d0db2c479201c2dd4cc823a36d076f6fc07fa03b170",
+        "docs/superpowers/plans/2026-08-23-superpowers-session-handoffs.md": "b4a568aaf99926d7b55e634b37b36235c11e6ac95707dab0456a041bc6467504",
+        "docs/superpowers/plans/2026-09-19-codex-installation-surface.md": "ebfd4731b308707c94f235e54285d8461ecb0d9c9b346f4523b1cf44b1531716",
+        "docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md": "762e965b6f0f7bc39177466afbbf771ba385c4980a83cb94d74748bb35b7ef82",
+        "docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md": "b24298b8e857a77170a51923647d878d185ec8437c867c701e444932d8829733",
+        "docs/superpowers/plans/2026-09-20-claude-code-package-and-installation.md": "76f525a26060b68ae07c0c1a79aa8d366a45e4f00b58db18cef92181c8dfe865",
+        "docs/superpowers/plans/2026-09-20-claude-code-setup-and-upstream-adoption.md": "9b19d9b7f2fe74e528a8c4ac9d038234820f82187c163c342f04e82040f23a56",
+        "docs/superpowers/plans/2026-09-27-claude-code-lifecycle-and-conformance.md": "0b287b5ac6c9a78b97d43a1ca813c314caa9b0405075fa00a7a63bf0e2ec196d",
+        "docs/superpowers/plans/2026-10-24-claude-code-lifecycle-conformance.md": "1c8267cd243d36a9fada144d0c824fde3be70df71661f0505af0602a0bbce7ec",
+        "docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md": "21fa217b4ae232fc26c7f8d56601bb99eff95e617e1d0ce986bc7caaec7cee3f",
+        "docs/superpowers/specs/2026-08-23-superpowers-session-handoffs-design.md": "54b388c61323ea84593665f51fa77bf328906fd4332e297193f47e12985d8a33",
+        "docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md": "17d1ce585c04bbf84cd77c18cb60b9482d0eaac87dca337d67b34f83261a4233",
+        "docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md": "7cff5cc78c8f8596e51608355e0d30dd5b7335c117e4d96d88fb6c27b8590a18",
+        ".agents/plugins/marketplace.json": "87a5f3f5e560df3a6100e2a038a5f240f0fcdf61f826b9d2245181a1f1ad77e9"
+      }
+    }
+  },
+  "protected_state_preserved": true,
+  "tool_calls": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01SfwsQ6hBVYDiN8Mw6H5EVi",
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers-backplane:managing-superpowers-backlog"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01GustSibW6in747U1cEGDSc",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_018KWujr2ntZXxdV6oxcRYu6",
+      "name": "Bash",
+      "input": {
+        "command": "cd \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current\" && ls -la && ls -la captures 2>&1; git -C \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" rev-parse --show-toplevel HEAD 2>&1; git -C \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" status --short 2>&1 | head",
+        "description": "Inspect probe directory and fixture checkout identity"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_018pFYdufxv71gRtpUvQ1iHi",
+      "name": "Bash",
+      "input": {
+        "command": "ls -la \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures\" 2>&1",
+        "description": "List probe and captures directories"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01BLUSK3ebaUC8XMY5xyKfqH",
+      "name": "Bash",
+      "input": {
+        "command": "git -C \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" rev-parse --show-toplevel HEAD; git -C \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" status --short",
+        "description": "Show fixture checkout root, HEAD, and status"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01XN2sunCchR6U5okBGqNT2k",
+      "name": "Bash",
+      "input": {
+        "command": "F=\"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\"; ls -la \"$F\" \"$F/.claude-plugin\" 2>&1; ls -la \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures\"",
+        "description": "List fixture checkout contents"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01RNeH8RHaVUjj28xb8xZ5Rv",
+      "name": "Bash",
+      "input": {
+        "command": "F=\"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\"; ls -la \"$F\" \"$F/.claude-plugin\" 2>&1; cat \"$F/.claude-plugin/plugin.json\" 2>&1; cat \"$F/.claude-plugin/marketplace.json\" 2>&1",
+        "description": "List fixture contents and plugin manifests"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_019mi2upmc1aHEz2M6wAKDqr",
+      "name": "Bash",
+      "input": {
+        "command": "ls -la \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/.claude-plugin\"",
+        "description": "List fixture root and plugin manifest dir"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01BbA7nPzBfCcznoDFYPJa1D",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane\\.claude-plugin\\plugin.json"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01PtUoG39NECsm3poZBnoh55",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane\\.claude-plugin\\marketplace.json"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_017ePmFWEskkiZLvKBgRQcep",
+      "name": "Bash",
+      "input": {
+        "command": "mkdir -p \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude\" && claude plugin list --json > \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude/plugin-list.json\" 2>&1; echo \"exit=$?\"; cat \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude/plugin-list.json\"",
+        "description": "Capture effective Claude plugin inventory"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_011ZJJwM4kctEXtW23wiUHys",
+      "name": "Bash",
+      "input": {
+        "command": "claude plugin list --json",
+        "description": "List effective Claude plugin inventory as JSON"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Qr4ivn8EKXmBiEYZaRJaDn",
+      "name": "Bash",
+      "input": {
+        "command": "claude plugin marketplace list --json",
+        "description": "List configured plugin marketplaces as JSON"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_013F1NYK9vjoDvSB9zExhj8h",
+      "name": "Bash",
+      "input": {
+        "command": "git -C \"U:/repos/agents/superpowers-backplane\" ls-tree -r 4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e -- skills .claude-plugin/plugin.json",
+        "description": "List candidate commit blob IDs for skills and plugin manifest"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_015ePXjJM6Aby5DRQ5KSJkpu",
+      "name": "Bash",
+      "input": {
+        "command": "git hash-object \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/.claude-plugin/plugin.json\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/skills/managing-superpowers-backlog/SKILL.md\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/skills/managing-superpowers-backlog/references/installing-superpowers.md\" \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/skills/managing-superpowers-handoffs/SKILL.md\"",
+        "description": "Hash fixture files for comparison with candidate commit"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_014DuRw3p66YRpGKrFYokto2",
+      "name": "Write",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-duplicate-backplane-current\\captures\\claude\\setup-decision.md",
+        "content": "# Issue 11 duplicate-Backplane setup probe (Claude Code)\n\nDate: 2026-10-26\nProfile: U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\nSession plugin-dir: U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane\nSelected candidate: local development 4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e (not remotely published)\nTarget: tvproductions/superpowers-backplane #11 (read-only; not read in this probe)\n\n## `claude plugin list --json` (Backplane/upstream entries)\n\n| id | version | scope | enabled | readFromFolder |\n|---|---|---|---|---|\n| superpowers-backplane@backplane-conflict | 0.1.0 | user | true | fixtures\\duplicate-backplane |\n| superpowers-backplane@superpowers-backplane | 0.1.0 | user | true | fixtures\\current-catalog\\package |\n| cowork-plugin-management@synced | 0.2.2 | synced | true | (unrelated) |\n\nNo upstream `superpowers@...` plugin entry is present.\n\n## `claude plugin marketplace list --json`\n\n- backplane-conflict: directory, fixtures\\duplicate-backplane\n- superpowers-backplane: directory, fixtures\\current-catalog\n\n## Session-observed\n\n- Session skill list has exactly one `superpowers-backplane:*` namespace; the\n  loaded skill base directory resolved to fixtures\\duplicate-backplane.\n- No `superpowers:*` upstream skills are listed in this session.\n- Fixture directory has no `.git`; `git rev-parse --show-toplevel` from it\n  resolves to the enclosing project repo (U:/repos/agents/superpowers-backplane,\n  HEAD 4be5f0e9..., dirty tests/scenarios). Fixture tree equality with 4be5f0e\n  was not verified (blob comparison command not approved) -> unknown.\n- Fixture manifests: .claude-plugin/plugin.json name superpowers-backplane\n  0.1.0; .claude-plugin/marketplace.json name backplane-conflict, source \"./\".\n\n## Decision\n\nBLOCKED at duplicate/conflict resolution. Three enabled load routes provide the\nsame plugin name `superpowers-backplane` at the same version 0.1.0 from two\ndifferent sources (duplicate-backplane via --plugin-dir and\n@backplane-conflict; current-catalog\\package via @superpowers-backplane). The\neffective winner is host-shadowing, not an owner selection. No further\nadoption step (upstream provenance, gh preflight, intake, conformance) was run.\nNothing was installed, updated, disabled, removed, or edited; GitHub untouched.\n\n## Recovery (owner-authorized, isolated profile only)\n\nKeep exactly one Backplane route matching the selected candidate:\n1. If --plugin-dir fixtures\\duplicate-backplane is the selected route:\n   `claude plugin disable superpowers-backplane@superpowers-backplane` and\n   `claude plugin disable superpowers-backplane@backplane-conflict`\n   (disable, not uninstall, preserves both fixtures), with\n   CLAUDE_CONFIG_DIR scoped to the setup-profile.\n2. Or drop --plugin-dir and keep exactly one installed entry enabled.\n3. Verify identity of the retained source against 4be5f0e (blob comparison).\n4. Re-run `claude plugin list --json` in a fresh session; require one enabled\n   superpowers-backplane entry/route; then continue: upstream Superpowers is\n   absent and must be installed via its documented channel (separate\n   authorization) before gh preflight and conformance.\n"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01SfwsQ6hBVYDiN8Mw6H5EVi",
+      "content": "Launching skill: superpowers-backplane:managing-superpowers-backlog"
+    },
+    {
+      "tool_use_id": "toolu_01GustSibW6in747U1cEGDSc",
+      "type": "tool_result",
+      "content": "1\t# Installing Backplane With Superpowers\n2\t\n3\t## Dependency rule\n4\t\n5\tBackplane always assumes upstream Superpowers. Each supported harness needs an\n6\toperational, independent upstream installation. Adopt a compatible existing\n7\tnative plugin or sibling Git checkout. If upstream is absent, obtain it through\n8\tthe harness's upstream-documented installation channel. Never copy upstream\n9\tfiles into Backplane or require a second checkout solely because a native\n10\tplugin does not expose one.\n11\t\n12\tBackplane's authored skills live at\n13\t`<backplane-root>/skills/managing-superpowers-backlog/SKILL.md` and\n14\t`<backplane-root>/skills/managing-superpowers-handoffs/SKILL.md`. A harness\n15\tdiscovery directory such as `.agents/skills` contains optional links; it is\n16\tnot the Backplane package's skill root. Verify a link exists before using that\n17\tdirectory as a discovery source.\n18\t\n19\t## Native package mode\n20\t\n21\tRead the current upstream Superpowers installation instructions for the active\n22\tharness before using its plugin manager. Upstream may be installed from an\n23\tauthoritative `obra/superpowers` Git package source or an official marketplace\n24\tchannel that upstream itself documents. A package cache need not be a Git\n25\tcheckout.\n26\t\n27\t1. Verify the active harness and package identity. Confirm the source or\n28\t   catalog is upstream-documented; reject lookalikes, unknown provenance, and\n29\t   conflicting duplicate installations.\n30\t2. Record the package ID, source or catalog, installed version, and resolved\n31\t   tag or commit when the harness exposes one. If neither an installed version\n32\t   nor a resolved revision is observable, compatibility is unknown.\n33\t3. Confirm in a fresh session that the upstream `using-superpowers`,\n34\t   `brainstorming`, `writing-plans`, and `writing-skills` skills are\n35\t   discoverable and operational.\n36\t4. Adopt a compatible package in place. Do not clone or relocate upstream\n37\t   solely to satisfy checkout-mode rules. If upstream is absent, install it\n38\t   through that harness's documented stable channel and preserve host prompts\n39\t   and permissions.\n40\t5. Check the host compatibility boundary in the v0.1 adoption specification.\n41\t   OpenCode V1 starts at 1.18.29 and V2 at 2.0.4; an older version is reported\n42\t   unsupported until separately tested and approved.\n43\t\n44\tThe repository's own development checkout at `.agents/superpowers` remains a\n45\tseparate checkout. Its existence does not prove another harness has an\n46\toperational native plugin.\n47\t\n48\t## Sibling mode\n49\t\n50\tWhen a Superpowers checkout already exists:\n51\t\n52\t1. Resolve its absolute path and require it to differ from Backplane's path.\n53\t2. Normalize `git -C <path> remote get-url origin` and require the GitHub owner\n54\t   and repository to be exactly `obra/superpowers`; accept HTTPS or SSH\n55\t   transport but reject lookalikes.\n56\t3. Require `git -C <path> status --short` to be empty before an update.\n57\t4. Require `skills/using-superpowers/SKILL.md`,\n58\t   `skills/brainstorming/SKILL.md`, `skills/writing-plans/SKILL.md`, and\n59\t   `skills/writing-skills/SKILL.md`.\n60\t5. Record `git -C <path> rev-parse HEAD` for diagnosis.\n61\t6. Expose the Superpowers and Backplane skill directories independently\n62\t   through the active harness's supported discovery mechanism.\n63\t7. Verify from a fresh agent session that both `superpowers:using-superpowers`\n64\t   and `managing-superpowers-backlog` appear in skill discovery.\n65\t\n66\tAn authoritative sibling checkout with local changes may be adopted in place\n67\tafter provenance, required skills, compatibility, and discovery checks pass.\n68\tReport adoption separately from a requested update. Refuse the update while the\n69\tcheckout is dirty; leave its files unchanged and ask its owner to resolve the\n70\tlocal changes before any separately authorized revision change.\n71\t\n72\tDo not rewrite or relocate a valid user-managed checkout merely to match an\n73\texample layout.\n74\t\n75\t## Managed checkout mode\n76\t\n77\tWhen a checkout is required and no compatible one exists, require an unused\n78\tdestination and obtain the authoritative repository:\n79\t\n80\t```text\n81\tgh repo clone obra/superpowers <installation-root>/superpowers\n82\t```\n83\t\n84\tPlace Backplane beside it when practical:\n85\t\n86\t```text\n87\t<installation-root>/\n88\t  superpowers/\n89\t  superpowers-backplane/\n90\t  skills/                    harness discovery links or junctions\n91\t```\n92\t\n93\tUse the active harness's supported discovery surface. `.agents/skills` is a\n94\tvalid cross-runtime example, not a protocol requirement.\n95\t\n96\t## Channels and updates\n97\t\n98\tUse the latest compatible stable upstream release available through the selected\n99\tchannel by default.\n100\tUse the upstream default branch only after an explicit edge-channel selection.\n101\tAn upstream update is separate from a Backplane update.\n102\t\n103\tBefore changing an existing upstream installation:\n104\t\n105\t1. Record its package source and version or checkout origin and commit. Refuse\n106\t   to update a dirty checkout or overwrite an unknown installation.\n107\t2. Inspect the latest stable release with\n108\t   `gh release view --repo obra/superpowers --json tagName,publishedAt,url`\n109\t   and review compatibility-impacting release notes.\n110\t3. Report the candidate version and obtain explicit authorization for this\n111\t   upstream revision change.\n112\t4. In native package mode, update only the Superpowers plugin through the\n113\t   active harness's documented manager, preserving Backplane and unrelated\n114\t   plugins. Record the prior package source and version for rollback.\n115\t5. In checkout mode, fetch upstream branches and tags; check out the stable\n116\t   release or fast-forward along the selected edge branch. Never discard local\n117\t   work.\n118\t6. Run the compatibility preflight and all Backplane conformance checks.\n119\t   Verify required skills again in a fresh session, then record the installed\n120\t   version or resolved revision.\n121\t\n122\tIf compatibility fails, restore the recorded prior version through the\n123\tharness's supported path where possible; otherwise report the unresolved\n124\tstate. Never claim a failed candidate is compatible or silently mutate the\n125\tindependent upstream installation.\n126\t\n127\t## Compatibility preflight\n128\t\n129\tBackplane is known-good at bootstrap against Superpowers commit\n130\t`b36e0829c6d0140e93cfef2ca599b1b07d4a7797` and `gh` 2.97.0. These identify\n131\tthe authoring baseline, not permanent pins.\n132\t\n133\tBefore adoption or update:\n134\t\n135\t1. Verify mode-specific upstream provenance: its upstream-documented package\n136\t   source and observable version or revision in native mode, or its exact\n137\t   `obra/superpowers` Git origin and required skill files in checkout mode.\n138\t2. Verify `gh auth status` succeeds for the GitHub repository in scope.\n139\t3. Run the required intake query from `github-issue-contract.md` against a\n140\t   real issue. Failure to return any required JSON field is an incompatible\n141\t   `gh` capability surface, regardless of version text.\n142\t4. Verify `gh issue edit --help` exposes label addition and removal, and\n143\t   `gh issue close --help` exposes closure reasons.\n144\t5. Run the named conformance checks: `skill-structure`,\n145\t   `native-issue-intake`, `language-neutral-verification`,\n146\t   `lifecycle-transitions`, and `superpowers-installation`.\n147\t6. Confirm `using-superpowers` and both Backplane skills are discoverable in a\n148\t   fresh agent session.\n149\t\n150\tRun the checks without assuming a programming-language runtime:\n151\t\n152\t1. Record the candidate Superpowers source and version or commit,\n153\t   `gh --version`, required-field intake result, and Backplane skill hashes.\n154\t2. For `skill-structure`, inspect `SKILL.md` for YAML delimiters, the exact\n155\t   `name` and a `description` beginning with `Use when`; verify every directly\n156\t   linked reference exists and no placeholder remains. A harness-native skill\n157\t   validator may supplement this checklist but is not a hard dependency.\n158\t3. For each behavioral check, start a fresh agent session with the candidate\n159\t   Superpowers and Backplane skill, submit the exact prompt in the mapped file,\n160\t   capture a response record, and score every listed expectation:\n161\t\n162\t| Check | Scenario and rubric |\n163\t|---|---|\n164\t| `native-issue-intake` | `tests/scenarios/2026-08-16-native-issue-intake-green.md`, primary run |\n165\t| `language-neutral-verification` | same file, language-neutral variation |\n166\t| `lifecycle-transitions` | `tests/scenarios/2026-08-16-lifecycle-transition-refactor.md` |\n167\t| `superpowers-installation` | `tests/scenarios/2026-08-16-superpowers-installation-refactor.md` |\n168\t\n169\tEvery expectation must pass. Missing capture, unavailable fields, divergent\n170\tskill discovery, or an unscored result is unknown compatibility and fails\n171\tclosed. Bootstrap evidence exists for all five named checks against the\n172\tknown-good revisions above; candidate revisions require fresh execution.\n173\t\n174\t## Hard dependencies\n175\t\n176\t- GitHub CLI (`gh`), authenticated for the repositories in scope.\n177\t- Git, as required by Superpowers development workflows.\n178\t- An agent harness capable of discovering skills.\n179\t\n180\tDo not require a programming language runtime, GitHub Projects, or IssueOps.\n181\t"
+    },
+    {
+      "type": "tool_result",
+      "content": "This command changes directory before running a version-control command, which can pick up untrusted hooks or repository configuration from the target directory. Approve only if you trust it.",
+      "is_error": true,
+      "tool_use_id": "toolu_018KWujr2ntZXxdV6oxcRYu6"
+    },
+    {
+      "tool_use_id": "toolu_018pFYdufxv71gRtpUvQ1iHi",
+      "type": "tool_result",
+      "content": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current:\ntotal 56\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 17:52 ./\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 17:52 ../\n-rw-r--r-- 1 Jeff 197609 55558 Oct 26 17:52 before.json\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 17:52 captures/\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 17:52 neutral/\n\nU:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures:\ntotal 0\ndrwxr-xr-x 1 Jeff 197609 0 Oct 26 17:52 ./\ndrwxr-xr-x 1 Jeff 197609 0 Oct 26 17:52 ../\ndrwxr-xr-x 1 Jeff 197609 0 Oct 26 17:52 claude/",
+      "is_error": false
+    },
+    {
+      "tool_use_id": "toolu_01BLUSK3ebaUC8XMY5xyKfqH",
+      "type": "tool_result",
+      "content": "U:/repos/agents/superpowers-backplane\n4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e\n M ../../../../../tests/scenarios/2026-10-26-issue-11-claude-integrated-acceptance.json\n M ../../../../../tests/scenarios/2026-10-26-issue-11-claude-integrated-acceptance.md\n M ../../../../../tests/scenarios/2026-10-26-testing-boundary-policy.md\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-backplane-only-profile.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-current-candidate.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-dirty-adoption-current.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-dirty-adoption.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-dirty-update-refusal-current.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-dirty-update-refusal.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-execution-start.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-failure-fixtures.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-auth-failure.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-closure-failure-current.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-closure-failure.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-failure-controls.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-intake-failure.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-label-failure-current.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-gh-label-failure.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-lifecycle.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-lookalike-source.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-missing-upstream-skill.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-native-setup-workflow-2.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-native-setup-workflow.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-native-setup.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-occupied-destination.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-official-channel.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-setup-auth.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-sibling-setup-workflow-2.json\n?? ../../../../../tests/scenarios/2026-10-26-issue-11-versionless-package-current.json\n?? ../../../../../tests/scenarios/transcripts/2026-10-26-issue-11-live-source.md",
+      "is_error": false
+    },
+    {
+      "type": "tool_result",
+      "content": "ls in 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures' was blocked. For security, Claude Code may only list files in the allowed working directories for this session: 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-duplicate-backplane-current\\neutral', 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-duplicate-backplane-current', 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane'.",
+      "is_error": true,
+      "tool_use_id": "toolu_01XN2sunCchR6U5okBGqNT2k"
+    },
+    {
+      "type": "tool_result",
+      "content": "A variable set in this command can't be checked before it runs",
+      "is_error": true,
+      "tool_use_id": "toolu_01RNeH8RHaVUjj28xb8xZ5Rv"
+    },
+    {
+      "tool_use_id": "toolu_019mi2upmc1aHEz2M6wAKDqr",
+      "type": "tool_result",
+      "content": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane:\ntotal 48\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 ./\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 17:41 ../\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 .agents/\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 .claude-plugin/\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 .codex/\n-rw-r--r-- 1 Jeff 197609   113 Oct 26 16:58 .gitignore\n-rw-r--r-- 1 Jeff 197609     7 Oct 26 16:58 .python-version\n-rw-r--r-- 1 Jeff 197609  8539 Oct 26 16:58 AGENTS.md\n-rw-r--r-- 1 Jeff 197609 21483 Oct 26 16:58 HANDOFF.md\n-rw-r--r-- 1 Jeff 197609  2372 Oct 26 16:58 README.md\n-rw-r--r-- 1 Jeff 197609  2806 Oct 26 16:58 SUPERPOWERS.md\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 docs/\n-rw-r--r-- 1 Jeff 197609   456 Oct 26 16:58 opencode.jsonc\n-rw-r--r-- 1 Jeff 197609   287 Oct 26 16:58 plugin.json\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 skills/\ndrwxr-xr-x 1 Jeff 197609     0 Oct 26 16:58 tests/\n\nU:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/duplicate-backplane/.claude-plugin:\ntotal 2\ndrwxr-xr-x 1 Jeff 197609   0 Oct 26 16:58 ./\ndrwxr-xr-x 1 Jeff 197609   0 Oct 26 16:58 ../\n-rw-r--r-- 1 Jeff 197609 359 Oct 26 17:19 marketplace.json\n-rw-r--r-- 1 Jeff 197609 251 Oct 26 16:58 plugin.json",
+      "is_error": false
+    },
+    {
+      "tool_use_id": "toolu_01BbA7nPzBfCcznoDFYPJa1D",
+      "type": "tool_result",
+      "content": "1\t{\n2\t  \"name\": \"superpowers-backplane\",\n3\t  \"description\": \"Native GitHub backlog continuity for upstream Superpowers\",\n4\t  \"version\": \"0.1.0\",\n5\t  \"author\": {\"name\": \"tvproductions\"},\n6\t  \"repository\": \"https://github.com/tvproductions/superpowers-backplane\"\n7\t}\n8\t"
+    },
+    {
+      "tool_use_id": "toolu_01PtUoG39NECsm3poZBnoh55",
+      "type": "tool_result",
+      "content": "1\t{\n2\t  \"name\": \"backplane-conflict\",\n3\t  \"description\": \"Native GitHub backlog continuity for upstream Superpowers\",\n4\t  \"owner\": {\n5\t    \"name\": \"tvproductions\"\n6\t  },\n7\t  \"plugins\": [\n8\t    {\n9\t      \"name\": \"superpowers-backplane\",\n10\t      \"version\": \"0.1.0\",\n11\t      \"source\": \"./\",\n12\t      \"description\": \"Native GitHub backlog continuity for upstream Superpowers\"\n13\t    }\n14\t  ]\n15\t}\n16\t"
+    },
+    {
+      "type": "tool_result",
+      "content": "This Bash command contains multiple operations. The following parts require approval: mkdir -p \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-duplicate-backplane-current/captures/claude\", claude plugin list --json, echo \"exit=$?\"",
+      "is_error": true,
+      "tool_use_id": "toolu_017ePmFWEskkiZLvKBgRQcep"
+    },
+    {
+      "tool_use_id": "toolu_011ZJJwM4kctEXtW23wiUHys",
+      "type": "tool_result",
+      "content": "[\n  {\n    \"id\": \"superpowers-backplane@backplane-conflict\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\backplane-conflict\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\duplicate-backplane\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:52:35.731Z\",\n    \"lastUpdated\": \"2026-10-26T22:52:35.731Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]",
+      "is_error": false
+    },
+    {
+      "tool_use_id": "toolu_01Qr4ivn8EKXmBiEYZaRJaDn",
+      "type": "tool_result",
+      "content": "[\n  {\n    \"name\": \"backplane-conflict\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\duplicate-backplane\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\duplicate-backplane\"\n  },\n  {\n    \"name\": \"superpowers-backplane\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\"\n  }\n]",
+      "is_error": false
+    },
+    {
+      "type": "tool_result",
+      "content": "This command requires approval",
+      "is_error": true,
+      "tool_use_id": "toolu_013F1NYK9vjoDvSB9zExhj8h"
+    },
+    {
+      "type": "tool_result",
+      "content": "This command requires approval",
+      "is_error": true,
+      "tool_use_id": "toolu_015ePXjJM6Aby5DRQ5KSJkpu"
+    },
+    {
+      "type": "tool_result",
+      "content": "<tool_use_error>Error: No such tool available: Write. Write is disabled for this session, in subagents as well as here.</tool_use_error>",
+      "is_error": true,
+      "tool_use_id": "toolu_014DuRw3p66YRpGKrFYokto2"
+    }
+  ],
+  "result": "UNSCORED; inspect actual observed outcome against the case rubric"
+}

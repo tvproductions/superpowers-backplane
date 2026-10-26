@@ -1,0 +1,18 @@
+{
+  "repository": "anthropics/claude-plugins-official",
+  "branch": "main",
+  "catalog_commit": "58267944f92187b7d6a1c822165c96c81c864806",
+  "marketplace_name": "claude-plugins-official",
+  "superpowers_entry": {
+    "name": "superpowers",
+    "description": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new skills.",
+    "category": "development",
+    "source": {
+      "source": "url",
+      "url": "https://github.com/obra/superpowers.git",
+      "sha": "bb92a77741419a4ab5f06e711a283343f1ada0c3"
+    },
+    "homepage": "https://github.com/obra/superpowers.git"
+  },
+  "source": "Current upstream README documents this official channel; this is a read-only pre-install observation"
+}

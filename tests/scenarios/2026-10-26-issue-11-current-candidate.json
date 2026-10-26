@@ -1,0 +1,643 @@
+{
+  "result": "PASS",
+  "candidate": "4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e",
+  "publication": "local immutable commit; not yet published",
+  "catalog": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog",
+  "package": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+  "profiles": [
+    {
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "before": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "installedAt": "2026-10-26T22:14:19.108Z",
+          "lastUpdated": "2026-10-26T22:14:19.108Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "superpowers@superpowers-dev",
+          "version": "7.0.1",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+          "folderVersion": "7.0.1",
+          "installedAt": "2026-10-25T16:16:00.363Z",
+          "lastUpdated": "2026-10-25T17:26:50.846Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "after": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:31.076Z",
+          "lastUpdated": "2026-10-26T22:41:31.076Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "superpowers@superpowers-dev",
+          "version": "7.0.1",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+          "folderVersion": "7.0.1",
+          "installedAt": "2026-10-25T16:16:00.363Z",
+          "lastUpdated": "2026-10-25T17:26:50.846Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "installed_files": [
+        {
+          "path": ".claude-plugin/marketplace.json",
+          "expected": "b049265ec49dd63c33a6e765e318a4ed11e7fa81",
+          "actual": "b049265ec49dd63c33a6e765e318a4ed11e7fa81"
+        },
+        {
+          "path": ".claude-plugin/plugin.json",
+          "expected": "4cb0cea23dc3ec006c35d8323132a35117a15e87",
+          "actual": "4cb0cea23dc3ec006c35d8323132a35117a15e87"
+        },
+        {
+          "path": "README.md",
+          "expected": "b31a2c72aab7364bfe3bb1f9ed917f4ff76b5064",
+          "actual": "b31a2c72aab7364bfe3bb1f9ed917f4ff76b5064"
+        },
+        {
+          "path": "plugin.json",
+          "expected": "07f60531ddd80c8c8522a38fd68b6f93a7cc261c",
+          "actual": "07f60531ddd80c8c8522a38fd68b6f93a7cc261c"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/SKILL.md",
+          "expected": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "actual": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/agents/openai.yaml",
+          "expected": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45",
+          "actual": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json",
+          "expected": "8dc749345cc79561deb1b63384e8db11c547bada",
+          "actual": "8dc749345cc79561deb1b63384e8db11c547bada"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-format.md",
+          "expected": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad",
+          "actual": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json",
+          "expected": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6",
+          "actual": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json",
+          "expected": "ffc5909d66f519fa1704482171ed90ac7d09b8b3",
+          "actual": "ffc5909d66f519fa1704482171ed90ac7d09b8b3"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-state-template.md",
+          "expected": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9",
+          "actual": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/github-issue-contract.md",
+          "expected": "86900d853478f8a6912297424418313c1b0491cc",
+          "actual": "86900d853478f8a6912297424418313c1b0491cc"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/installing-superpowers.md",
+          "expected": "f80951f3a0d3aaca5e7040731e669c374ec0ad96",
+          "actual": "f80951f3a0d3aaca5e7040731e669c374ec0ad96"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/pr-completion.md",
+          "expected": "6a58ee6b1acaab7b4d320cc6093b9f58477333ad",
+          "actual": "6a58ee6b1acaab7b4d320cc6093b9f58477333ad"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/product-decomposition.md",
+          "expected": "4d917436e16bca9d39abf5e040680673afa68e16",
+          "actual": "4d917436e16bca9d39abf5e040680673afa68e16"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/repository-checkpoint.md",
+          "expected": "351811b336fb47f648e0ef1c0dacb01118e0bc0d",
+          "actual": "351811b336fb47f648e0ef1c0dacb01118e0bc0d"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/superpowers-binding.md",
+          "expected": "a196461e4119aeee25abefbb7bfb8ef1ca8661bd",
+          "actual": "a196461e4119aeee25abefbb7bfb8ef1ca8661bd"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/SKILL.md",
+          "expected": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+          "actual": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/agents/openai.yaml",
+          "expected": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6",
+          "actual": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/references/handoff-contract.md",
+          "expected": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902",
+          "actual": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/references/resume-assessment.md",
+          "expected": "3ac6ecac93a5997a97811ab0fc5945009a874e59",
+          "actual": "3ac6ecac93a5997a97811ab0fc5945009a874e59"
+        }
+      ]
+    },
+    {
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "before": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:09:10.468Z",
+          "lastUpdated": "2026-10-26T22:09:10.468Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "after": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "installed_files": [
+        {
+          "path": ".claude-plugin/marketplace.json",
+          "expected": "b049265ec49dd63c33a6e765e318a4ed11e7fa81",
+          "actual": "b049265ec49dd63c33a6e765e318a4ed11e7fa81"
+        },
+        {
+          "path": ".claude-plugin/plugin.json",
+          "expected": "4cb0cea23dc3ec006c35d8323132a35117a15e87",
+          "actual": "4cb0cea23dc3ec006c35d8323132a35117a15e87"
+        },
+        {
+          "path": "README.md",
+          "expected": "b31a2c72aab7364bfe3bb1f9ed917f4ff76b5064",
+          "actual": "b31a2c72aab7364bfe3bb1f9ed917f4ff76b5064"
+        },
+        {
+          "path": "plugin.json",
+          "expected": "07f60531ddd80c8c8522a38fd68b6f93a7cc261c",
+          "actual": "07f60531ddd80c8c8522a38fd68b6f93a7cc261c"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/SKILL.md",
+          "expected": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "actual": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/agents/openai.yaml",
+          "expected": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45",
+          "actual": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json",
+          "expected": "8dc749345cc79561deb1b63384e8db11c547bada",
+          "actual": "8dc749345cc79561deb1b63384e8db11c547bada"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-format.md",
+          "expected": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad",
+          "actual": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json",
+          "expected": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6",
+          "actual": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json",
+          "expected": "ffc5909d66f519fa1704482171ed90ac7d09b8b3",
+          "actual": "ffc5909d66f519fa1704482171ed90ac7d09b8b3"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/checkpoint-state-template.md",
+          "expected": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9",
+          "actual": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/github-issue-contract.md",
+          "expected": "86900d853478f8a6912297424418313c1b0491cc",
+          "actual": "86900d853478f8a6912297424418313c1b0491cc"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/installing-superpowers.md",
+          "expected": "f80951f3a0d3aaca5e7040731e669c374ec0ad96",
+          "actual": "f80951f3a0d3aaca5e7040731e669c374ec0ad96"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/pr-completion.md",
+          "expected": "6a58ee6b1acaab7b4d320cc6093b9f58477333ad",
+          "actual": "6a58ee6b1acaab7b4d320cc6093b9f58477333ad"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/product-decomposition.md",
+          "expected": "4d917436e16bca9d39abf5e040680673afa68e16",
+          "actual": "4d917436e16bca9d39abf5e040680673afa68e16"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/repository-checkpoint.md",
+          "expected": "351811b336fb47f648e0ef1c0dacb01118e0bc0d",
+          "actual": "351811b336fb47f648e0ef1c0dacb01118e0bc0d"
+        },
+        {
+          "path": "skills/managing-superpowers-backlog/references/superpowers-binding.md",
+          "expected": "a196461e4119aeee25abefbb7bfb8ef1ca8661bd",
+          "actual": "a196461e4119aeee25abefbb7bfb8ef1ca8661bd"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/SKILL.md",
+          "expected": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+          "actual": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/agents/openai.yaml",
+          "expected": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6",
+          "actual": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/references/handoff-contract.md",
+          "expected": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902",
+          "actual": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902"
+        },
+        {
+          "path": "skills/managing-superpowers-handoffs/references/resume-assessment.md",
+          "expected": "3ac6ecac93a5997a97811ab0fc5945009a874e59",
+          "actual": "3ac6ecac93a5997a97811ab0fc5945009a874e59"
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "--branch",
+        "feat/issue-11-claude-acceptance",
+        "U:\\repos\\agents\\superpowers-backplane",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package'...\ndone.\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/current-catalog/package\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+        "rev-parse",
+        "HEAD"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+        "checkout",
+        "--detach",
+        "4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "HEAD is now at 4be5f0e fix: interpret native issue relationship connections correctly\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+        "remote",
+        "set-url",
+        "origin",
+        "https://github.com/tvproductions/superpowers-backplane.git"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "4be5f0e9b6fa5acd3986584bbd8e617b6fc3e01e",
+        "--",
+        "skills",
+        "plugin.json",
+        ".claude-plugin",
+        "README.md"
+      ],
+      "profile": null,
+      "exit": 0,
+      "stdout": "100644 blob b049265ec49dd63c33a6e765e318a4ed11e7fa81\t.claude-plugin/marketplace.json\n100644 blob 4cb0cea23dc3ec006c35d8323132a35117a15e87\t.claude-plugin/plugin.json\n100644 blob b31a2c72aab7364bfe3bb1f9ed917f4ff76b5064\tREADME.md\n100644 blob 07f60531ddd80c8c8522a38fd68b6f93a7cc261c\tplugin.json\n100644 blob 280b7fe143187712b974732603f4c3e8cca8ca7b\tskills/managing-superpowers-backlog/SKILL.md\n100644 blob d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45\tskills/managing-superpowers-backlog/agents/openai.yaml\n100644 blob 8dc749345cc79561deb1b63384e8db11c547bada\tskills/managing-superpowers-backlog/references/checkpoint-complete-example.json\n100644 blob ed2d5a4b480ed1ff5744155be4a84b818e2d40ad\tskills/managing-superpowers-backlog/references/checkpoint-format.md\n100644 blob 8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6\tskills/managing-superpowers-backlog/references/checkpoint-partial-example.json\n100644 blob ffc5909d66f519fa1704482171ed90ac7d09b8b3\tskills/managing-superpowers-backlog/references/checkpoint-stale-example.json\n100644 blob bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9\tskills/managing-superpowers-backlog/references/checkpoint-state-template.md\n100644 blob 86900d853478f8a6912297424418313c1b0491cc\tskills/managing-superpowers-backlog/references/github-issue-contract.md\n100644 blob f80951f3a0d3aaca5e7040731e669c374ec0ad96\tskills/managing-superpowers-backlog/references/installing-superpowers.md\n100644 blob 6a58ee6b1acaab7b4d320cc6093b9f58477333ad\tskills/managing-superpowers-backlog/references/pr-completion.md\n100644 blob 4d917436e16bca9d39abf5e040680673afa68e16\tskills/managing-superpowers-backlog/references/product-decomposition.md\n100644 blob 351811b336fb47f648e0ef1c0dacb01118e0bc0d\tskills/managing-superpowers-backlog/references/repository-checkpoint.md\n100644 blob a196461e4119aeee25abefbb7bfb8ef1ca8661bd\tskills/managing-superpowers-backlog/references/superpowers-binding.md\n100644 blob bfd43038d6170eca97e151bda8ae1c914eb625d9\tskills/managing-superpowers-handoffs/SKILL.md\n100644 blob 3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6\tskills/managing-superpowers-handoffs/agents/openai.yaml\n100644 blob 1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902\tskills/managing-superpowers-handoffs/references/handoff-contract.md\n100644 blob 3ac6ecac93a5997a97811ab0fc5945009a874e59\tskills/managing-superpowers-handoffs/references/resume-assessment.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-19\\\\profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"installedAt\": \"2026-10-26T22:14:19.108Z\",\n    \"lastUpdated\": \"2026-10-26T22:14:19.108Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"superpowers@superpowers-dev\",\n    \"version\": \"7.0.1\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-19\\\\profile\\\\plugins\\\\cache\\\\superpowers-dev\\\\superpowers\\\\7.0.1\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.agents\\\\superpowers\",\n    \"folderVersion\": \"7.0.1\",\n    \"installedAt\": \"2026-10-25T16:16:00.363Z\",\n    \"lastUpdated\": \"2026-10-25T17:26:50.846Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-19\\\\profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "list",
+        "--json"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "[\n  {\n    \"name\": \"superpowers-backplane\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\lifecycle-catalog\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\lifecycle-catalog\"\n  },\n  {\n    \"name\": \"superpowers-dev\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.agents\\\\superpowers\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.agents\\\\superpowers\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "validate",
+        "--strict",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "Validating marketplace manifest: U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\.claude-plugin\\marketplace.json\n\nℹ Advice (does not change the verdict):\n\n  ❯ U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package\\README.md: This README has no line that installs \"superpowers-backplane\" from a marketplace. Add the install line, which works in one step on Claude Code 2.1.275 or later. In it, replace <owner>/<repo> with the repository that holds the marketplace.\n      /plugin install superpowers-backplane --marketplace <owner>/<repo>\n\n✔ Validation passed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "uninstall",
+        "superpowers-backplane@superpowers-backplane",
+        "--scope",
+        "user"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "✔ Successfully uninstalled plugin: superpowers-backplane (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "remove",
+        "superpowers-backplane"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "✔ Successfully removed marketplace: superpowers-backplane\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "add",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "Adding marketplace…✔ Successfully added marketplace: superpowers-backplane (declared in user settings)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "install",
+        "superpowers-backplane@superpowers-backplane",
+        "--scope",
+        "user"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "Installing plugin \"superpowers-backplane@superpowers-backplane\"...✔ Successfully installed plugin: superpowers-backplane@superpowers-backplane (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-19\\profile",
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-19\\\\profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:31.076Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:31.076Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"superpowers@superpowers-dev\",\n    \"version\": \"7.0.1\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-19\\\\profile\\\\plugins\\\\cache\\\\superpowers-dev\\\\superpowers\\\\7.0.1\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.agents\\\\superpowers\",\n    \"folderVersion\": \"7.0.1\",\n    \"installedAt\": \"2026-10-25T16:16:00.363Z\",\n    \"lastUpdated\": \"2026-10-25T17:26:50.846Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-19\\\\profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\clean-install\\\\superpowers-backplane\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:09:10.468Z\",\n    \"lastUpdated\": \"2026-10-26T22:09:10.468Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "list",
+        "--json"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "[\n  {\n    \"name\": \"superpowers-backplane\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\clean-install\\\\superpowers-backplane\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\clean-install\\\\superpowers-backplane\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "validate",
+        "--strict",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "Validating marketplace manifest: U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\.claude-plugin\\marketplace.json\n\nℹ Advice (does not change the verdict):\n\n  ❯ U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package\\README.md: This README has no line that installs \"superpowers-backplane\" from a marketplace. Add the install line, which works in one step on Claude Code 2.1.275 or later. In it, replace <owner>/<repo> with the repository that holds the marketplace.\n      /plugin install superpowers-backplane --marketplace <owner>/<repo>\n\n✔ Validation passed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "uninstall",
+        "superpowers-backplane@superpowers-backplane",
+        "--scope",
+        "user"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "✔ Successfully uninstalled plugin: superpowers-backplane (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "remove",
+        "superpowers-backplane"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "✔ Successfully removed marketplace: superpowers-backplane\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "add",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "Adding marketplace…✔ Successfully added marketplace: superpowers-backplane (declared in user settings)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "install",
+        "superpowers-backplane@superpowers-backplane",
+        "--scope",
+        "user"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "Installing plugin \"superpowers-backplane@superpowers-backplane\"...✔ Successfully installed plugin: superpowers-backplane@superpowers-backplane (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    }
+  ]
+}

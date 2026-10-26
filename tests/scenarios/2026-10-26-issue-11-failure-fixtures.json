@@ -1,0 +1,332 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-clean"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-clean'...\ndone.\nNote: switching to '2ce8aa15d05bd57213e6f746f953aafb7ded7a8b'.\n\nYou are in 'detached HEAD' state. You can look around, make experimental\nchanges and commit them, and you can discard any commits you make in this\nstate without impacting any branches by switching back to a branch.\n\nIf you want to create a new branch to retain commits you create, you may\ndo so (now or later) by using -c with the switch command. Example:\n\n  git switch -c <new-branch-name>\n\nOr undo this operation with:\n\n  git switch -\n\nTurn off this advice by setting config variable advice.detachedHead to false\n\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-clean",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/upstream-clean\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-clean",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-clean",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit": 0,
+      "stdout": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-clean",
+        "remote",
+        "set-url",
+        "origin",
+        "https://github.com/obra/superpowers.git"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-dirty"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-dirty'...\ndone.\nNote: switching to '2ce8aa15d05bd57213e6f746f953aafb7ded7a8b'.\n\nYou are in 'detached HEAD' state. You can look around, make experimental\nchanges and commit them, and you can discard any commits you make in this\nstate without impacting any branches by switching back to a branch.\n\nIf you want to create a new branch to retain commits you create, you may\ndo so (now or later) by using -c with the switch command. Example:\n\n  git switch -c <new-branch-name>\n\nOr undo this operation with:\n\n  git switch -\n\nTurn off this advice by setting config variable advice.detachedHead to false\n\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-dirty",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/upstream-dirty\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-dirty",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-dirty",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit": 0,
+      "stdout": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-dirty",
+        "remote",
+        "set-url",
+        "origin",
+        "https://github.com/obra/superpowers.git"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-lookalike"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-lookalike'...\ndone.\nNote: switching to '2ce8aa15d05bd57213e6f746f953aafb7ded7a8b'.\n\nYou are in 'detached HEAD' state. You can look around, make experimental\nchanges and commit them, and you can discard any commits you make in this\nstate without impacting any branches by switching back to a branch.\n\nIf you want to create a new branch to retain commits you create, you may\ndo so (now or later) by using -c with the switch command. Example:\n\n  git switch -c <new-branch-name>\n\nOr undo this operation with:\n\n  git switch -\n\nTurn off this advice by setting config variable advice.detachedHead to false\n\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-lookalike",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/upstream-lookalike\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-lookalike",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-lookalike",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit": 0,
+      "stdout": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-lookalike",
+        "remote",
+        "set-url",
+        "origin",
+        "https://github.com/obrafake/superpowers.git"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-missing-skill"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Cloning into 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-missing-skill'...\ndone.\nNote: switching to '2ce8aa15d05bd57213e6f746f953aafb7ded7a8b'.\n\nYou are in 'detached HEAD' state. You can look around, make experimental\nchanges and commit them, and you can discard any commits you make in this\nstate without impacting any branches by switching back to a branch.\n\nIf you want to create a new branch to retain commits you create, you may\ndo so (now or later) by using -c with the switch command. Example:\n\n  git switch -c <new-branch-name>\n\nOr undo this operation with:\n\n  git switch -\n\nTurn off this advice by setting config variable advice.detachedHead to false\n\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-missing-skill",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/upstream-missing-skill\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-missing-skill",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-missing-skill",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit": 0,
+      "stdout": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\upstream-missing-skill",
+        "remote",
+        "set-url",
+        "origin",
+        "https://github.com/obra/superpowers.git"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "upstream_before": {
+    "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+    "status": ""
+  },
+  "upstream_after": {
+    "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+    "status": ""
+  },
+  "source_preserved": true,
+  "fixture_names": [
+    "upstream-clean",
+    "upstream-dirty",
+    "upstream-lookalike",
+    "upstream-missing-skill",
+    "versionless-upstream",
+    "duplicate-backplane",
+    "occupied-destination"
+  ]
+}

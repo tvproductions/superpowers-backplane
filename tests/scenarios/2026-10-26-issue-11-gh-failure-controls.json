@@ -1,0 +1,236 @@
+{
+  "result": "PASS",
+  "isolated_capability_probes": 16,
+  "git_bash_mutation_denials": 4,
+  "windows_adapter_version_checks": 4,
+  "checks": [
+    {
+      "case": "auth",
+      "capability": "auth",
+      "argv": [
+        "auth",
+        "status"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Fixture: gh authentication is unavailable; authenticate the selected account before setup\n"
+    },
+    {
+      "case": "auth",
+      "capability": "intake",
+      "argv": [
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,issueType"
+      ],
+      "exit": 0,
+      "stdout": "{\"issueType\":null,\"number\":11}\n",
+      "stderr": ""
+    },
+    {
+      "case": "auth",
+      "capability": "labels",
+      "argv": [
+        "issue",
+        "edit",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Edit one or more issues within the same repository.\n\nEditing issues' projects requires authorization with the `project` scope.\nTo authorize, run `gh auth refresh -s project`.\n\nUse `--attach` to upload an image or video to a single issue. Without a body\nflag the issue keeps the body it already has and the attachment is appended to it.\nIf the body references an attached file, such as `![alt](./login.png)`, that\nreference is rewritten to point at the uploaded asset instead. Paths in a\n`--body-file` are relative to its directory, falling back to the working directory.\nYou can attach up to 50 files per command.\n\nAlt text for an image follows the path after `#`, as in\n`--attach './login.png#The login error state'`. Without it the filename is used.\nA reference already in the body keeps the alt text written there. Video renders\nas a player and has no alt text, so it cannot be given any.\n\nIf some attachments upload and others fail, the issue is still updated with the\nones that succeeded. The command then exits with a non-zero status, but the edited\nissue URLs are still printed to stdout.\n\nThe `--add-assignee` and `--remove-assignee` flags both support\nthe following special values:\n- `@me`: assign or unassign yourself\n- `@copilot`: assign or unassign Copilot (not supported on GitHub Enterprise Server)\n\n\nUSAGE\n  gh issue edit {<numbers> | <urls>} [flags]\n\nFLAGS\n      --add-assignee login         Add assigned users by their login. Use \"@me\" to assign yourself, or \"@copilot\" to assign Copilot.\n      --add-blocked-by number      Add 'blocked by' relationships by issue number or URL\n      --add-blocking number        Add 'blocking' relationships by issue number or URL\n      --add-label name             Add labels by name\n      --add-project title          Add the issue to projects by title\n      --add-sub-issue number       Add sub-issues by number or URL\n      --attach file                Attach an image or video file, in '<file>#<image alt text>' format\n  -b, --body string                Set the new body.\n  -F, --body-file file             Read body text from file (use \"-\" to read from standard input)\n  -m, --milestone name             Edit the milestone the issue belongs to by name\n      --parent number              Set the parent issue by number or URL\n      --remove-assignee login      Remove assigned users by their login. Use \"@me\" to unassign yourself, or \"@copilot\" to unassign Copilot.\n      --remove-blocked-by number   Remove 'blocked by' relationships by issue number or URL\n      --remove-blocking number     Remove 'blocking' relationships by issue number or URL\n      --remove-label name          Remove labels by name\n      --remove-milestone           Remove the milestone association from the issue\n      --remove-parent              Remove the parent issue\n      --remove-project title       Remove the issue from projects by title\n      --remove-sub-issue number    Remove sub-issues by number or URL\n      --remove-type                Remove the issue type from the issue\n  -t, --title string               Set the new title.\n      --type name                  Set the issue type by name\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  $ gh issue edit 23 --title \"I found a bug\" --body \"Nothing works\"\n  $ gh issue edit 23 --add-label \"bug,help wanted\" --remove-label \"core\"\n  $ gh issue edit 23 --add-assignee \"@me\" --remove-assignee monalisa,hubot\n  $ gh issue edit 23 --add-assignee \"@copilot\"\n  $ gh issue edit 23 --add-project \"Roadmap\" --remove-project v1,v2\n  $ gh issue edit 23 --milestone \"Version 1\"\n  $ gh issue edit 23 --remove-milestone\n  $ gh issue edit 23 --body-file body.txt\n  $ gh issue edit 23 --attach './login.png#The login error state'\n  $ gh issue edit 23 --attach ./before.png --attach ./after.png\n  $ gh issue edit 23 34 --add-label \"help wanted\"\n  $ gh issue edit 23 --type Bug\n  $ gh issue edit 23 --remove-type\n  $ gh issue edit 23 --parent 100\n  $ gh issue edit 23 --remove-parent\n  $ gh issue edit 100 --add-sub-issue 123,124\n  $ gh issue edit 123 --add-blocked-by 200 --add-blocking 300,301\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n\n",
+      "stderr": ""
+    },
+    {
+      "case": "auth",
+      "capability": "closure",
+      "argv": [
+        "issue",
+        "close",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Close issue\n\nUSAGE\n  gh issue close {<number> | <url>} [flags]\n\nFLAGS\n  -c, --comment string        Leave a closing comment\n      --duplicate-of string   Mark as duplicate of another issue by number or URL\n  -r, --reason string         Reason for closing: {completed|not planned|duplicate}\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  # Close issue\n  $ gh issue close 123\n  \n  # Close issue and add a closing comment\n  $ gh issue close 123 --comment \"Closing this issue\"\n  \n  # Close issue as a duplicate of issue #456\n  $ gh issue close 123 --duplicate-of 456\n  \n  # Close issue as not planned\n  $ gh issue close 123 --reason \"not planned\"\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n\n",
+      "stderr": ""
+    },
+    {
+      "case": "auth",
+      "git_bash_mutation_denied": true,
+      "stdout": "/u/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/gh-shims/gh\n",
+      "stderr": "Fixture adapter refuses mutation or unsupported command\n"
+    },
+    {
+      "case": "intake",
+      "capability": "auth",
+      "argv": [
+        "auth",
+        "status"
+      ],
+      "exit": 0,
+      "stdout": "github.com\n  ✓ Logged in to github.com account ahuimanu (keyring)\n  - Active account: true\n  - Git operations protocol: https\n  - Token: gho_************************************\n  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'\n",
+      "stderr": ""
+    },
+    {
+      "case": "intake",
+      "capability": "intake",
+      "argv": [
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,issueType"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Fixture: required native JSON field issueType is unsupported\n"
+    },
+    {
+      "case": "intake",
+      "capability": "labels",
+      "argv": [
+        "issue",
+        "edit",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Edit one or more issues within the same repository.\n\nEditing issues' projects requires authorization with the `project` scope.\nTo authorize, run `gh auth refresh -s project`.\n\nUse `--attach` to upload an image or video to a single issue. Without a body\nflag the issue keeps the body it already has and the attachment is appended to it.\nIf the body references an attached file, such as `![alt](./login.png)`, that\nreference is rewritten to point at the uploaded asset instead. Paths in a\n`--body-file` are relative to its directory, falling back to the working directory.\nYou can attach up to 50 files per command.\n\nAlt text for an image follows the path after `#`, as in\n`--attach './login.png#The login error state'`. Without it the filename is used.\nA reference already in the body keeps the alt text written there. Video renders\nas a player and has no alt text, so it cannot be given any.\n\nIf some attachments upload and others fail, the issue is still updated with the\nones that succeeded. The command then exits with a non-zero status, but the edited\nissue URLs are still printed to stdout.\n\nThe `--add-assignee` and `--remove-assignee` flags both support\nthe following special values:\n- `@me`: assign or unassign yourself\n- `@copilot`: assign or unassign Copilot (not supported on GitHub Enterprise Server)\n\n\nUSAGE\n  gh issue edit {<numbers> | <urls>} [flags]\n\nFLAGS\n      --add-assignee login         Add assigned users by their login. Use \"@me\" to assign yourself, or \"@copilot\" to assign Copilot.\n      --add-blocked-by number      Add 'blocked by' relationships by issue number or URL\n      --add-blocking number        Add 'blocking' relationships by issue number or URL\n      --add-label name             Add labels by name\n      --add-project title          Add the issue to projects by title\n      --add-sub-issue number       Add sub-issues by number or URL\n      --attach file                Attach an image or video file, in '<file>#<image alt text>' format\n  -b, --body string                Set the new body.\n  -F, --body-file file             Read body text from file (use \"-\" to read from standard input)\n  -m, --milestone name             Edit the milestone the issue belongs to by name\n      --parent number              Set the parent issue by number or URL\n      --remove-assignee login      Remove assigned users by their login. Use \"@me\" to unassign yourself, or \"@copilot\" to unassign Copilot.\n      --remove-blocked-by number   Remove 'blocked by' relationships by issue number or URL\n      --remove-blocking number     Remove 'blocking' relationships by issue number or URL\n      --remove-label name          Remove labels by name\n      --remove-milestone           Remove the milestone association from the issue\n      --remove-parent              Remove the parent issue\n      --remove-project title       Remove the issue from projects by title\n      --remove-sub-issue number    Remove sub-issues by number or URL\n      --remove-type                Remove the issue type from the issue\n  -t, --title string               Set the new title.\n      --type name                  Set the issue type by name\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  $ gh issue edit 23 --title \"I found a bug\" --body \"Nothing works\"\n  $ gh issue edit 23 --add-label \"bug,help wanted\" --remove-label \"core\"\n  $ gh issue edit 23 --add-assignee \"@me\" --remove-assignee monalisa,hubot\n  $ gh issue edit 23 --add-assignee \"@copilot\"\n  $ gh issue edit 23 --add-project \"Roadmap\" --remove-project v1,v2\n  $ gh issue edit 23 --milestone \"Version 1\"\n  $ gh issue edit 23 --remove-milestone\n  $ gh issue edit 23 --body-file body.txt\n  $ gh issue edit 23 --attach './login.png#The login error state'\n  $ gh issue edit 23 --attach ./before.png --attach ./after.png\n  $ gh issue edit 23 34 --add-label \"help wanted\"\n  $ gh issue edit 23 --type Bug\n  $ gh issue edit 23 --remove-type\n  $ gh issue edit 23 --parent 100\n  $ gh issue edit 23 --remove-parent\n  $ gh issue edit 100 --add-sub-issue 123,124\n  $ gh issue edit 123 --add-blocked-by 200 --add-blocking 300,301\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n\n",
+      "stderr": ""
+    },
+    {
+      "case": "intake",
+      "capability": "closure",
+      "argv": [
+        "issue",
+        "close",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Close issue\n\nUSAGE\n  gh issue close {<number> | <url>} [flags]\n\nFLAGS\n  -c, --comment string        Leave a closing comment\n      --duplicate-of string   Mark as duplicate of another issue by number or URL\n  -r, --reason string         Reason for closing: {completed|not planned|duplicate}\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  # Close issue\n  $ gh issue close 123\n  \n  # Close issue and add a closing comment\n  $ gh issue close 123 --comment \"Closing this issue\"\n  \n  # Close issue as a duplicate of issue #456\n  $ gh issue close 123 --duplicate-of 456\n  \n  # Close issue as not planned\n  $ gh issue close 123 --reason \"not planned\"\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n\n",
+      "stderr": ""
+    },
+    {
+      "case": "intake",
+      "git_bash_mutation_denied": true,
+      "stdout": "/u/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/gh-shims/gh\n",
+      "stderr": "Fixture adapter refuses mutation or unsupported command\n"
+    },
+    {
+      "case": "labels",
+      "capability": "auth",
+      "argv": [
+        "auth",
+        "status"
+      ],
+      "exit": 0,
+      "stdout": "github.com\n  ✓ Logged in to github.com account ahuimanu (keyring)\n  - Active account: true\n  - Git operations protocol: https\n  - Token: gho_************************************\n  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'\n",
+      "stderr": ""
+    },
+    {
+      "case": "labels",
+      "capability": "intake",
+      "argv": [
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,issueType"
+      ],
+      "exit": 0,
+      "stdout": "{\"issueType\":null,\"number\":11}\n",
+      "stderr": ""
+    },
+    {
+      "case": "labels",
+      "capability": "labels",
+      "argv": [
+        "issue",
+        "edit",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Fixture gh issue edit help: label addition/removal capability unavailable\n",
+      "stderr": ""
+    },
+    {
+      "case": "labels",
+      "capability": "closure",
+      "argv": [
+        "issue",
+        "close",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Close issue\n\nUSAGE\n  gh issue close {<number> | <url>} [flags]\n\nFLAGS\n  -c, --comment string        Leave a closing comment\n      --duplicate-of string   Mark as duplicate of another issue by number or URL\n  -r, --reason string         Reason for closing: {completed|not planned|duplicate}\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  # Close issue\n  $ gh issue close 123\n  \n  # Close issue and add a closing comment\n  $ gh issue close 123 --comment \"Closing this issue\"\n  \n  # Close issue as a duplicate of issue #456\n  $ gh issue close 123 --duplicate-of 456\n  \n  # Close issue as not planned\n  $ gh issue close 123 --reason \"not planned\"\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n\n",
+      "stderr": ""
+    },
+    {
+      "case": "labels",
+      "git_bash_mutation_denied": true,
+      "stdout": "/u/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/gh-shims/gh\n",
+      "stderr": "Fixture adapter refuses mutation or unsupported command\n"
+    },
+    {
+      "case": "closure",
+      "capability": "auth",
+      "argv": [
+        "auth",
+        "status"
+      ],
+      "exit": 0,
+      "stdout": "github.com\n  ✓ Logged in to github.com account ahuimanu (keyring)\n  - Active account: true\n  - Git operations protocol: https\n  - Token: gho_************************************\n  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'\n",
+      "stderr": ""
+    },
+    {
+      "case": "closure",
+      "capability": "intake",
+      "argv": [
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,issueType"
+      ],
+      "exit": 0,
+      "stdout": "{\"issueType\":null,\"number\":11}\n",
+      "stderr": ""
+    },
+    {
+      "case": "closure",
+      "capability": "labels",
+      "argv": [
+        "issue",
+        "edit",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Edit one or more issues within the same repository.\n\nEditing issues' projects requires authorization with the `project` scope.\nTo authorize, run `gh auth refresh -s project`.\n\nUse `--attach` to upload an image or video to a single issue. Without a body\nflag the issue keeps the body it already has and the attachment is appended to it.\nIf the body references an attached file, such as `![alt](./login.png)`, that\nreference is rewritten to point at the uploaded asset instead. Paths in a\n`--body-file` are relative to its directory, falling back to the working directory.\nYou can attach up to 50 files per command.\n\nAlt text for an image follows the path after `#`, as in\n`--attach './login.png#The login error state'`. Without it the filename is used.\nA reference already in the body keeps the alt text written there. Video renders\nas a player and has no alt text, so it cannot be given any.\n\nIf some attachments upload and others fail, the issue is still updated with the\nones that succeeded. The command then exits with a non-zero status, but the edited\nissue URLs are still printed to stdout.\n\nThe `--add-assignee` and `--remove-assignee` flags both support\nthe following special values:\n- `@me`: assign or unassign yourself\n- `@copilot`: assign or unassign Copilot (not supported on GitHub Enterprise Server)\n\n\nUSAGE\n  gh issue edit {<numbers> | <urls>} [flags]\n\nFLAGS\n      --add-assignee login         Add assigned users by their login. Use \"@me\" to assign yourself, or \"@copilot\" to assign Copilot.\n      --add-blocked-by number      Add 'blocked by' relationships by issue number or URL\n      --add-blocking number        Add 'blocking' relationships by issue number or URL\n      --add-label name             Add labels by name\n      --add-project title          Add the issue to projects by title\n      --add-sub-issue number       Add sub-issues by number or URL\n      --attach file                Attach an image or video file, in '<file>#<image alt text>' format\n  -b, --body string                Set the new body.\n  -F, --body-file file             Read body text from file (use \"-\" to read from standard input)\n  -m, --milestone name             Edit the milestone the issue belongs to by name\n      --parent number              Set the parent issue by number or URL\n      --remove-assignee login      Remove assigned users by their login. Use \"@me\" to unassign yourself, or \"@copilot\" to unassign Copilot.\n      --remove-blocked-by number   Remove 'blocked by' relationships by issue number or URL\n      --remove-blocking number     Remove 'blocking' relationships by issue number or URL\n      --remove-label name          Remove labels by name\n      --remove-milestone           Remove the milestone association from the issue\n      --remove-parent              Remove the parent issue\n      --remove-project title       Remove the issue from projects by title\n      --remove-sub-issue number    Remove sub-issues by number or URL\n      --remove-type                Remove the issue type from the issue\n  -t, --title string               Set the new title.\n      --type name                  Set the issue type by name\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  $ gh issue edit 23 --title \"I found a bug\" --body \"Nothing works\"\n  $ gh issue edit 23 --add-label \"bug,help wanted\" --remove-label \"core\"\n  $ gh issue edit 23 --add-assignee \"@me\" --remove-assignee monalisa,hubot\n  $ gh issue edit 23 --add-assignee \"@copilot\"\n  $ gh issue edit 23 --add-project \"Roadmap\" --remove-project v1,v2\n  $ gh issue edit 23 --milestone \"Version 1\"\n  $ gh issue edit 23 --remove-milestone\n  $ gh issue edit 23 --body-file body.txt\n  $ gh issue edit 23 --attach './login.png#The login error state'\n  $ gh issue edit 23 --attach ./before.png --attach ./after.png\n  $ gh issue edit 23 34 --add-label \"help wanted\"\n  $ gh issue edit 23 --type Bug\n  $ gh issue edit 23 --remove-type\n  $ gh issue edit 23 --parent 100\n  $ gh issue edit 23 --remove-parent\n  $ gh issue edit 100 --add-sub-issue 123,124\n  $ gh issue edit 123 --add-blocked-by 200 --add-blocking 300,301\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n\n",
+      "stderr": ""
+    },
+    {
+      "case": "closure",
+      "capability": "closure",
+      "argv": [
+        "issue",
+        "close",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "Fixture gh issue close help: closure-reason capability unavailable\n",
+      "stderr": ""
+    },
+    {
+      "case": "closure",
+      "git_bash_mutation_denied": true,
+      "stdout": "/u/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/gh-shims/gh\n",
+      "stderr": "Fixture adapter refuses mutation or unsupported command\n"
+    }
+  ]
+}

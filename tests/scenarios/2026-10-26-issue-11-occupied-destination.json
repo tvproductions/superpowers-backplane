@@ -1,0 +1,643 @@
+{
+  "case": "occupied-destination",
+  "observed_at": "2026-10-26T22:36:56.128025+00:00",
+  "prompt": "Use the installed superpowers-backplane:managing-superpowers-backlog skill and its installation reference for this real local fixture. Target repository tvproductions/superpowers-backplane, existing issue #11 (read-only). Upstream is absent from this profile/session. The proposed fallback checkout destination is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination. Inspect it before any checkout creation. Do not install or clone anything; report the setup stop and safe recovery for this existing destination. Report the observed decision and a concrete recovery if blocked. Do not install/update/remove anything, edit user or package files, mutate GitHub or create a plan/handoff. Capture any output only under the owned directory U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\captures; never hardcode /tmp files. The selected profile is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile. Do not enumerate environment variables, read credentials, inspect other profiles, or silently substitute the real development checkout. Use the gh executable resolved by PATH for every capability check; do not bypass a failed preflight with an absolute gh.exe or different account. Do not run Python outside uv. Read source files directly when possible.",
+  "argv": [
+    "claude",
+    "-p",
+    "Use the installed superpowers-backplane:managing-superpowers-backlog skill and its installation reference for this real local fixture. Target repository tvproductions/superpowers-backplane, existing issue #11 (read-only). Upstream is absent from this profile/session. The proposed fallback checkout destination is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination. Inspect it before any checkout creation. Do not install or clone anything; report the setup stop and safe recovery for this existing destination. Report the observed decision and a concrete recovery if blocked. Do not install/update/remove anything, edit user or package files, mutate GitHub or create a plan/handoff. Capture any output only under the owned directory U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\captures; never hardcode /tmp files. The selected profile is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile. Do not enumerate environment variables, read credentials, inspect other profiles, or silently substitute the real development checkout. Use the gh executable resolved by PATH for every capability check; do not bypass a failed preflight with an absolute gh.exe or different account. Do not run Python outside uv. Read source files directly when possible.",
+    "--tools",
+    "Skill,Read,Bash",
+    "--allowedTools",
+    "Skill",
+    "Read",
+    "Bash(gh *)",
+    "--permission-mode",
+    "default",
+    "--disallowedTools",
+    "Bash(env *)",
+    "Bash(printenv *)",
+    "Bash(* env *)",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--max-turns",
+    "24"
+  ],
+  "cli_exit": 0,
+  "host_result": {
+    "duration_api_ms": 37032,
+    "stop_reason": "end_turn",
+    "session_id": "eadd6dd1-febe-4e3d-bca6-537b00d7af62",
+    "total_cost_usd": 0.3186468,
+    "usage": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 25118,
+      "cache_read_input_tokens": 249514,
+      "output_tokens": 3386,
+      "output_tokens_details": {
+        "thinking_tokens": 327
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 25118,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1081,
+          "cache_read_input_tokens": 29953,
+          "cache_creation_input_tokens": 595,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 595
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 20,
+        "outputTokens": 3386,
+        "cacheReadInputTokens": 249514,
+        "cacheCreationInputTokens": 25118,
+        "webSearchRequests": 0,
+        "costUSD": 0.3186468,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 327,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 25118,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "permission_denials": [
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_012NDz41JAgQZtNnBHyWhNJb",
+        "tool_input": {
+          "command": "D='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination'; ls -la \"$D\"; echo \"---\"; cd \"$D\" 2>/dev/null && git rev-parse --show-toplevel 2>&1; git -C \"$D\" status --short 2>&1 | head; git -C \"$D\" remote -v 2>&1; git -C \"$D\" rev-parse HEAD 2>&1",
+          "description": "Inspect occupied destination contents and git identity"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_01Ybskb8yqZA1bXTscJd9r9g",
+        "tool_input": {
+          "command": "D='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination'; ls -la \"$D\"; echo \"--- tree\"; find \"$D\" -maxdepth 3 -not -path '*/.git/*' | head -50",
+          "description": "List occupied destination contents without running git"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_01E9FS6cgkFHnsMzvUmcxaVU",
+        "tool_input": {
+          "command": "ls -la \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination\"",
+          "description": "List occupied destination contents"
+        }
+      },
+      {
+        "tool_name": "Bash",
+        "tool_use_id": "toolu_0192pweEPE7rnhV8uUqvXNrz",
+        "tool_input": {
+          "command": "C='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-occupied-destination/captures'; cat > \"$C/occupied-destination-decision.md\" <<'EOF'\n# Occupied fallback destination probe (issue #11, read-only) - 2026-10-26\n\n- Destination: U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination\n- Exists as a directory (Read -> EISDIR). Session sandbox blocked enumeration (ls outside allowed working dir).\n- Absent: .git (dir or file), README.md, skills/using-superpowers/SKILL.md -> not an identifiable obra/superpowers checkout.\n- Remaining contents: unknown (not enumerable in this session).\n- gh (PATH): 2.103.2; auth OK for github.com.\n- Issue #11: OPEN, label backplane:active, updatedAt 2026-10-26T21:55:58Z (not mutated).\n- Decision: STOP. Managed checkout mode requires an unused destination; sibling-mode adoption requires obra/superpowers origin + required skills. Neither holds. No clone/install performed.\nEOF\nls \"$C\"",
+          "description": "Write decision capture to owned captures dir"
+        }
+      }
+    ],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 15,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "I stopped at setup. Nothing was cloned or installed. The fallback destination is already occupied, so it can't be used, and Superpowers is still missing from this profile.\n\n## What I saw\n\n**Destination** (`U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination`)\n- **It exists.** Opening it returned \"this is a directory\", so it isn't an unused path.\n- **I couldn't list what's in it.** The session sandbox blocked listing anything outside the `probe-occupied-destination\\neutral` folder.\n- **It isn't a Superpowers checkout I can identify.** Reading these paths directly found none of them: `.git` (as either a folder or a file), `README.md`, `skills/using-superpowers/SKILL.md`.\n- **Everything else in it is unknown.** I didn't run any Git command inside it. A Git command there could load hooks or settings from that folder.\n\n**Preflight**\n- `gh` found on PATH is version 2.103.2 and is logged in to github.com. I didn't use any other `gh` or account.\n- Issue #11 on tvproductions/superpowers-backplane is open, labelled `backplane:active`, last updated 2026-10-26T21:55:58Z. I only read it.\n\n## Decision: stop\nThe installation reference allows two routes, and neither applies here:\n- **Using an existing checkout** requires the folder to be a Git checkout whose origin is exactly `obra/superpowers` and which contains the four required skills. This folder has no `.git` and no `using-superpowers` skill.\n- **Creating a new checkout** (`gh repo clone obra/superpowers …`) requires an unused destination. This one is occupied by unknown contents, and the rules say not to take over or overwrite unknown contents.\n\nSo `superpowers:using-superpowers` is unavailable, and the backlog skill can't go past setup.\n\n## Recovery\n1. **Leave the folder alone.** Don't delete, empty or clone into it. Whoever owns it should first list and identify what's there. If it belongs to another task's fixture, keep it.\n2. **Choose a different fallback path** inside `.sp-bp/work/issue-11/fixtures/` that doesn't exist yet, for example `…\\fixtures\\superpowers-upstream`. Confirm it is inside that fixtures folder and not a link or junction pointing elsewhere.\n3. **Or use Claude Code's documented plugin channel instead.** Install the stable `obra/superpowers` plugin into the isolated setup profile (`…\\setup-profile`). This avoids needing a checkout at all and is the preferred route.\n4. **Get explicit authorization for whichever install you choose.** This run wasn't allowed to install. Afterwards, start a fresh session on that profile. Confirm `using-superpowers`, `brainstorming`, `writing-plans`, `writing-skills` and both Backplane skills appear in discovery. Then rerun the preflight before going back to issue #11.\n\nI didn't save a capture file. The sandbox blocked writes to `…\\probe-occupied-destination\\captures`, so the findings above exist only in this reply.",
+    "ttft_ms": 1240,
+    "type": "result",
+    "duration_ms": 40064,
+    "uuid": "7a3ea96f-5a79-4f72-9af0-3a5e94ca4790",
+    "ttft_stream_ms": 1032,
+    "time_to_request_ms": 106,
+    "first_content_frame_ms": 1033,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "model_usage_since_last_result": {
+      "claude-opus-5-5": {
+        "inputTokens": 20,
+        "outputTokens": 3386,
+        "cacheReadInputTokens": 249514,
+        "cacheCreationInputTokens": 25118,
+        "webSearchRequests": 0,
+        "costUSD": 0.3186468,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 327,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 25118,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "before": {
+    "plugins": [
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T22:09:10.468Z",
+        "lastUpdated": "2026-10-26T22:09:10.468Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane"
+      }
+    ],
+    "profile_hashes": {
+      "settings.json": "2d67ad195f57ed478eda7e86dd2e987b948d7e9c0ec82ca8cd8d007b73bae39a",
+      "plugins\\installed_plugins.json": "ba15096c66e8a867ba0cb5268f6f2fc183fa43180fc1d80f0807b93ae314152f",
+      "plugins\\known_marketplaces.json": "f8bcaebf24340dd01e685c0a221b2e2ad41ae72606a7902998be298f463c75b7"
+    },
+    "issue11": {
+      "blockedBy": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+            "number": 19,
+            "state": "CLOSED",
+            "title": "Verify Claude Code lifecycle and conformance",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+          },
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+            "number": 2,
+            "state": "CLOSED",
+            "title": "Define the v0.1 adoption, installation, and mutation contract",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+          }
+        ],
+        "totalCount": 2
+      },
+      "blocking": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+            "number": 6,
+            "state": "OPEN",
+            "title": "Run an external adoption pilot and fresh conformance suite",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+          }
+        ],
+        "totalCount": 1
+      },
+      "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The plan is available in the current execution repository; remote publication is pending and is not claimed. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n",
+      "closedByPullRequestsReferences": [],
+      "issueType": null,
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+          "name": "backplane:active",
+          "description": "Superpowers execution is in progress",
+          "color": "1D76DB"
+        }
+      ],
+      "number": 11,
+      "parent": {
+        "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+        "number": 1,
+        "state": "OPEN",
+        "title": "Ship an adoptable Backplane v0.1.0 release",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+      },
+      "state": "OPEN",
+      "stateReason": "",
+      "subIssues": {
+        "nodes": [],
+        "totalCount": 0
+      },
+      "subIssuesSummary": {
+        "completed": 0,
+        "percentCompleted": 0,
+        "total": 0
+      },
+      "title": "Deliver and verify the Claude Code plugin installation surface",
+      "updatedAt": "2026-10-26T21:55:58Z",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+    },
+    "project_refs": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n402ea9300eb3a57963dea781fc7250cc9d50e71c refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n",
+    "real_upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+    "real_upstream_status": "",
+    "normal_profile_hashes": {
+      "settings.json": "3351cb95b05e564612260f2a919076a7ac95fad172f52e92a10825a5ed16c0c9",
+      "plugins\\installed_plugins.json": "4db82be992ac09db3db0908d0abe29e477d99281893725a21bec35b0ca32d01c",
+      "plugins\\known_marketplaces.json": "6cbc5e44b90f7681dfbdd13a131234cf497f2da59192e8437a00c34523551690"
+    },
+    "fixture": {
+      "root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination",
+      "files": {
+        "sentinel.txt": "bf82cf407ed03f0aa8a7783b95d546d526603c6391bd7218c58820749f71e58c"
+      }
+    }
+  },
+  "after": {
+    "plugins": [
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T22:09:10.468Z",
+        "lastUpdated": "2026-10-26T22:09:10.468Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane"
+      }
+    ],
+    "profile_hashes": {
+      "settings.json": "2d67ad195f57ed478eda7e86dd2e987b948d7e9c0ec82ca8cd8d007b73bae39a",
+      "plugins\\installed_plugins.json": "ba15096c66e8a867ba0cb5268f6f2fc183fa43180fc1d80f0807b93ae314152f",
+      "plugins\\known_marketplaces.json": "f8bcaebf24340dd01e685c0a221b2e2ad41ae72606a7902998be298f463c75b7"
+    },
+    "issue11": {
+      "blockedBy": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+            "number": 19,
+            "state": "CLOSED",
+            "title": "Verify Claude Code lifecycle and conformance",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+          },
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+            "number": 2,
+            "state": "CLOSED",
+            "title": "Define the v0.1 adoption, installation, and mutation contract",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+          }
+        ],
+        "totalCount": 2
+      },
+      "blocking": {
+        "nodes": [
+          {
+            "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+            "number": 6,
+            "state": "OPEN",
+            "title": "Run an external adoption pilot and fresh conformance suite",
+            "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+          }
+        ],
+        "totalCount": 1
+      },
+      "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The plan is available in the current execution repository; remote publication is pending and is not claimed. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n",
+      "closedByPullRequestsReferences": [],
+      "issueType": null,
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+          "name": "backplane:active",
+          "description": "Superpowers execution is in progress",
+          "color": "1D76DB"
+        }
+      ],
+      "number": 11,
+      "parent": {
+        "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+        "number": 1,
+        "state": "OPEN",
+        "title": "Ship an adoptable Backplane v0.1.0 release",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+      },
+      "state": "OPEN",
+      "stateReason": "",
+      "subIssues": {
+        "nodes": [],
+        "totalCount": 0
+      },
+      "subIssuesSummary": {
+        "completed": 0,
+        "percentCompleted": 0,
+        "total": 0
+      },
+      "title": "Deliver and verify the Claude Code plugin installation surface",
+      "updatedAt": "2026-10-26T21:55:58Z",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+    },
+    "project_refs": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n402ea9300eb3a57963dea781fc7250cc9d50e71c refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n",
+    "real_upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+    "real_upstream_status": "",
+    "normal_profile_hashes": {
+      "settings.json": "3351cb95b05e564612260f2a919076a7ac95fad172f52e92a10825a5ed16c0c9",
+      "plugins\\installed_plugins.json": "4db82be992ac09db3db0908d0abe29e477d99281893725a21bec35b0ca32d01c",
+      "plugins\\known_marketplaces.json": "6cbc5e44b90f7681dfbdd13a131234cf497f2da59192e8437a00c34523551690"
+    },
+    "fixture": {
+      "root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination",
+      "files": {
+        "sentinel.txt": "bf82cf407ed03f0aa8a7783b95d546d526603c6391bd7218c58820749f71e58c"
+      }
+    }
+  },
+  "protected_state_preserved": true,
+  "tool_calls": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01QCZscMqXthEC6tWUhuMuhJ",
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers-backplane:managing-superpowers-backlog"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_013CqcJwvCyJKkdXEmvQy4Vc",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_012NDz41JAgQZtNnBHyWhNJb",
+      "name": "Bash",
+      "input": {
+        "command": "D='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination'; ls -la \"$D\"; echo \"---\"; cd \"$D\" 2>/dev/null && git rev-parse --show-toplevel 2>&1; git -C \"$D\" status --short 2>&1 | head; git -C \"$D\" remote -v 2>&1; git -C \"$D\" rev-parse HEAD 2>&1",
+        "description": "Inspect occupied destination contents and git identity"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Ybskb8yqZA1bXTscJd9r9g",
+      "name": "Bash",
+      "input": {
+        "command": "D='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination'; ls -la \"$D\"; echo \"--- tree\"; find \"$D\" -maxdepth 3 -not -path '*/.git/*' | head -50",
+        "description": "List occupied destination contents without running git"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01E9FS6cgkFHnsMzvUmcxaVU",
+      "name": "Bash",
+      "input": {
+        "command": "ls -la \"U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination\"",
+        "description": "List occupied destination contents"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01XSsy1Y56fjzPffDaJZnzm7",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01WjD2yxaN9C5dd8YzKCR1Rh",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination\\.git\\config"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01Pj7B2X3rrmkseWVwv9uxD1",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination\\README.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01ATKDZBNeYUqsSAGx31xQvm",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination\\skills\\using-superpowers\\SKILL.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01CimkKhsE1eECWQpx2CLmGv",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination\\.git"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01HJWwFwYUZtEHw5b6X86Ukv",
+      "name": "Bash",
+      "input": {
+        "command": "gh --version; gh auth status 2>&1 | grep -Ei 'logged in|github.com|error|fail' | grep -vi token",
+        "description": "Check PATH gh version and auth status"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01GrF1NV4ez6xPJ87u9Z7nbt",
+      "name": "Bash",
+      "input": {
+        "command": "gh issue view 11 --repo tvproductions/superpowers-backplane --json number,title,state,labels,updatedAt --jq '{number,title,state,labels:[.labels[].name],updatedAt}'",
+        "description": "Read issue 11 summary read-only"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_0192pweEPE7rnhV8uUqvXNrz",
+      "name": "Bash",
+      "input": {
+        "command": "C='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-occupied-destination/captures'; cat > \"$C/occupied-destination-decision.md\" <<'EOF'\n# Occupied fallback destination probe (issue #11, read-only) - 2026-10-26\n\n- Destination: U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination\n- Exists as a directory (Read -> EISDIR). Session sandbox blocked enumeration (ls outside allowed working dir).\n- Absent: .git (dir or file), README.md, skills/using-superpowers/SKILL.md -> not an identifiable obra/superpowers checkout.\n- Remaining contents: unknown (not enumerable in this session).\n- gh (PATH): 2.103.2; auth OK for github.com.\n- Issue #11: OPEN, label backplane:active, updatedAt 2026-10-26T21:55:58Z (not mutated).\n- Decision: STOP. Managed checkout mode requires an unused destination; sibling-mode adoption requires obra/superpowers origin + required skills. Neither holds. No clone/install performed.\nEOF\nls \"$C\"",
+        "description": "Write decision capture to owned captures dir"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01QCZscMqXthEC6tWUhuMuhJ",
+      "content": "Launching skill: superpowers-backplane:managing-superpowers-backlog"
+    },
+    {
+      "tool_use_id": "toolu_013CqcJwvCyJKkdXEmvQy4Vc",
+      "type": "tool_result",
+      "content": "1\t# Installing Backplane With Superpowers\n2\t\n3\t## Dependency rule\n4\t\n5\tBackplane always assumes upstream Superpowers. Each supported harness needs an\n6\toperational, independent upstream installation. Adopt a compatible existing\n7\tnative plugin or sibling Git checkout. If upstream is absent, obtain it through\n8\tthe harness's upstream-documented installation channel. Never copy upstream\n9\tfiles into Backplane or require a second checkout solely because a native\n10\tplugin does not expose one.\n11\t\n12\tBackplane's authored skills live at\n13\t`<backplane-root>/skills/managing-superpowers-backlog/SKILL.md` and\n14\t`<backplane-root>/skills/managing-superpowers-handoffs/SKILL.md`. A harness\n15\tdiscovery directory such as `.agents/skills` contains optional links; it is\n16\tnot the Backplane package's skill root. Verify a link exists before using that\n17\tdirectory as a discovery source.\n18\t\n19\t## Native package mode\n20\t\n21\tRead the current upstream Superpowers installation instructions for the active\n22\tharness before using its plugin manager. Upstream may be installed from an\n23\tauthoritative `obra/superpowers` Git package source or an official marketplace\n24\tchannel that upstream itself documents. A package cache need not be a Git\n25\tcheckout.\n26\t\n27\t1. Verify the active harness and package identity. Confirm the source or\n28\t   catalog is upstream-documented; reject lookalikes, unknown provenance, and\n29\t   conflicting duplicate installations.\n30\t2. Record the package ID, source or catalog, installed version, and resolved\n31\t   tag or commit when the harness exposes one. If neither an installed version\n32\t   nor a resolved revision is observable, compatibility is unknown.\n33\t3. Confirm in a fresh session that the upstream `using-superpowers`,\n34\t   `brainstorming`, `writing-plans`, and `writing-skills` skills are\n35\t   discoverable and operational.\n36\t4. Adopt a compatible package in place. Do not clone or relocate upstream\n37\t   solely to satisfy checkout-mode rules. If upstream is absent, install it\n38\t   through that harness's documented stable channel and preserve host prompts\n39\t   and permissions.\n40\t5. Check the host compatibility boundary in the v0.1 adoption specification.\n41\t   OpenCode V1 starts at 1.18.29 and V2 at 2.0.4; an older version is reported\n42\t   unsupported until separately tested and approved.\n43\t\n44\tThe repository's own development checkout at `.agents/superpowers` remains a\n45\tseparate checkout. Its existence does not prove another harness has an\n46\toperational native plugin.\n47\t\n48\t## Sibling mode\n49\t\n50\tWhen a Superpowers checkout already exists:\n51\t\n52\t1. Resolve its absolute path and require it to differ from Backplane's path.\n53\t2. Normalize `git -C <path> remote get-url origin` and require the GitHub owner\n54\t   and repository to be exactly `obra/superpowers`; accept HTTPS or SSH\n55\t   transport but reject lookalikes.\n56\t3. Require `git -C <path> status --short` to be empty before an update.\n57\t4. Require `skills/using-superpowers/SKILL.md`,\n58\t   `skills/brainstorming/SKILL.md`, `skills/writing-plans/SKILL.md`, and\n59\t   `skills/writing-skills/SKILL.md`.\n60\t5. Record `git -C <path> rev-parse HEAD` for diagnosis.\n61\t6. Expose the Superpowers and Backplane skill directories independently\n62\t   through the active harness's supported discovery mechanism.\n63\t7. Verify from a fresh agent session that both `superpowers:using-superpowers`\n64\t   and `managing-superpowers-backlog` appear in skill discovery.\n65\t\n66\tAn authoritative sibling checkout with local changes may be adopted in place\n67\tafter provenance, required skills, compatibility, and discovery checks pass.\n68\tReport adoption separately from a requested update. Refuse the update while the\n69\tcheckout is dirty; leave its files unchanged and ask its owner to resolve the\n70\tlocal changes before any separately authorized revision change.\n71\t\n72\tDo not rewrite or relocate a valid user-managed checkout merely to match an\n73\texample layout.\n74\t\n75\t## Managed checkout mode\n76\t\n77\tWhen a checkout is required and no compatible one exists, require an unused\n78\tdestination and obtain the authoritative repository:\n79\t\n80\t```text\n81\tgh repo clone obra/superpowers <installation-root>/superpowers\n82\t```\n83\t\n84\tPlace Backplane beside it when practical:\n85\t\n86\t```text\n87\t<installation-root>/\n88\t  superpowers/\n89\t  superpowers-backplane/\n90\t  skills/                    harness discovery links or junctions\n91\t```\n92\t\n93\tUse the active harness's supported discovery surface. `.agents/skills` is a\n94\tvalid cross-runtime example, not a protocol requirement.\n95\t\n96\t## Channels and updates\n97\t\n98\tUse the latest compatible stable upstream release available through the selected\n99\tchannel by default.\n100\tUse the upstream default branch only after an explicit edge-channel selection.\n101\tAn upstream update is separate from a Backplane update.\n102\t\n103\tBefore changing an existing upstream installation:\n104\t\n105\t1. Record its package source and version or checkout origin and commit. Refuse\n106\t   to update a dirty checkout or overwrite an unknown installation.\n107\t2. Inspect the latest stable release with\n108\t   `gh release view --repo obra/superpowers --json tagName,publishedAt,url`\n109\t   and review compatibility-impacting release notes.\n110\t3. Report the candidate version and obtain explicit authorization for this\n111\t   upstream revision change.\n112\t4. In native package mode, update only the Superpowers plugin through the\n113\t   active harness's documented manager, preserving Backplane and unrelated\n114\t   plugins. Record the prior package source and version for rollback.\n115\t5. In checkout mode, fetch upstream branches and tags; check out the stable\n116\t   release or fast-forward along the selected edge branch. Never discard local\n117\t   work.\n118\t6. Run the compatibility preflight and all Backplane conformance checks.\n119\t   Verify required skills again in a fresh session, then record the installed\n120\t   version or resolved revision.\n121\t\n122\tIf compatibility fails, restore the recorded prior version through the\n123\tharness's supported path where possible; otherwise report the unresolved\n124\tstate. Never claim a failed candidate is compatible or silently mutate the\n125\tindependent upstream installation.\n126\t\n127\t## Compatibility preflight\n128\t\n129\tBackplane is known-good at bootstrap against Superpowers commit\n130\t`b36e0829c6d0140e93cfef2ca599b1b07d4a7797` and `gh` 2.97.0. These identify\n131\tthe authoring baseline, not permanent pins.\n132\t\n133\tBefore adoption or update:\n134\t\n135\t1. Verify mode-specific upstream provenance: its upstream-documented package\n136\t   source and observable version or revision in native mode, or its exact\n137\t   `obra/superpowers` Git origin and required skill files in checkout mode.\n138\t2. Verify `gh auth status` succeeds for the GitHub repository in scope.\n139\t3. Run the required intake query from `github-issue-contract.md` against a\n140\t   real issue. Failure to return any required JSON field is an incompatible\n141\t   `gh` capability surface, regardless of version text.\n142\t4. Verify `gh issue edit --help` exposes label addition and removal, and\n143\t   `gh issue close --help` exposes closure reasons.\n144\t5. Run the named conformance checks: `skill-structure`,\n145\t   `native-issue-intake`, `language-neutral-verification`,\n146\t   `lifecycle-transitions`, and `superpowers-installation`.\n147\t6. Confirm `using-superpowers` and both Backplane skills are discoverable in a\n148\t   fresh agent session.\n149\t\n150\tRun the checks without assuming a programming-language runtime:\n151\t\n152\t1. Record the candidate Superpowers source and version or commit,\n153\t   `gh --version`, required-field intake result, and Backplane skill hashes.\n154\t2. For `skill-structure`, inspect `SKILL.md` for YAML delimiters, the exact\n155\t   `name` and a `description` beginning with `Use when`; verify every directly\n156\t   linked reference exists and no placeholder remains. A harness-native skill\n157\t   validator may supplement this checklist but is not a hard dependency.\n158\t3. For each behavioral check, start a fresh agent session with the candidate\n159\t   Superpowers and Backplane skill, submit the exact prompt in the mapped file,\n160\t   capture a response record, and score every listed expectation:\n161\t\n162\t| Check | Scenario and rubric |\n163\t|---|---|\n164\t| `native-issue-intake` | `tests/scenarios/2026-08-16-native-issue-intake-green.md`, primary run |\n165\t| `language-neutral-verification` | same file, language-neutral variation |\n166\t| `lifecycle-transitions` | `tests/scenarios/2026-08-16-lifecycle-transition-refactor.md` |\n167\t| `superpowers-installation` | `tests/scenarios/2026-08-16-superpowers-installation-refactor.md` |\n168\t\n169\tEvery expectation must pass. Missing capture, unavailable fields, divergent\n170\tskill discovery, or an unscored result is unknown compatibility and fails\n171\tclosed. Bootstrap evidence exists for all five named checks against the\n172\tknown-good revisions above; candidate revisions require fresh execution.\n173\t\n174\t## Hard dependencies\n175\t\n176\t- GitHub CLI (`gh`), authenticated for the repositories in scope.\n177\t- Git, as required by Superpowers development workflows.\n178\t- An agent harness capable of discovering skills.\n179\t\n180\tDo not require a programming language runtime, GitHub Projects, or IssueOps.\n181\t"
+    },
+    {
+      "type": "tool_result",
+      "content": "This command changes directory before running a version-control command, which can pick up untrusted hooks or repository configuration from the target directory. Approve only if you trust it.",
+      "is_error": true,
+      "tool_use_id": "toolu_012NDz41JAgQZtNnBHyWhNJb"
+    },
+    {
+      "type": "tool_result",
+      "content": "This Bash command contains multiple operations. The following part requires approval: D='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/occupied-destination'; ls -la \"$D\"; echo \"--- tree\"; find \"$D\" -maxdepth 3 -not -path '*/.git/*'",
+      "is_error": true,
+      "tool_use_id": "toolu_01Ybskb8yqZA1bXTscJd9r9g"
+    },
+    {
+      "type": "tool_result",
+      "content": "ls in 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination' was blocked. For security, Claude Code may only list files in the allowed working directories for this session: 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\neutral'.",
+      "is_error": true,
+      "tool_use_id": "toolu_01E9FS6cgkFHnsMzvUmcxaVU"
+    },
+    {
+      "type": "tool_result",
+      "content": "EISDIR: illegal operation on a directory, read 'U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\occupied-destination'",
+      "is_error": true,
+      "tool_use_id": "toolu_01XSsy1Y56fjzPffDaJZnzm7"
+    },
+    {
+      "type": "tool_result",
+      "content": "File does not exist. Note: your current working directory is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\neutral.",
+      "is_error": true,
+      "tool_use_id": "toolu_01WjD2yxaN9C5dd8YzKCR1Rh"
+    },
+    {
+      "type": "tool_result",
+      "content": "File does not exist. Note: your current working directory is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\neutral.",
+      "is_error": true,
+      "tool_use_id": "toolu_01Pj7B2X3rrmkseWVwv9uxD1"
+    },
+    {
+      "type": "tool_result",
+      "content": "File does not exist. Note: your current working directory is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\neutral.",
+      "is_error": true,
+      "tool_use_id": "toolu_01ATKDZBNeYUqsSAGx31xQvm"
+    },
+    {
+      "type": "tool_result",
+      "content": "File does not exist. Note: your current working directory is U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\probe-occupied-destination\\neutral.",
+      "is_error": true,
+      "tool_use_id": "toolu_01CimkKhsE1eECWQpx2CLmGv"
+    },
+    {
+      "tool_use_id": "toolu_01HJWwFwYUZtEHw5b6X86Ukv",
+      "type": "tool_result",
+      "content": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2\ngithub.com\n  ✓ Logged in to github.com account ahuimanu (keyring)",
+      "is_error": false
+    },
+    {
+      "tool_use_id": "toolu_01GrF1NV4ez6xPJ87u9Z7nbt",
+      "type": "tool_result",
+      "content": "{\"labels\":[\"backplane:active\"],\"number\":11,\"state\":\"OPEN\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"updatedAt\":\"2026-10-26T21:55:58Z\"}",
+      "is_error": false
+    },
+    {
+      "type": "tool_result",
+      "content": "This Bash command contains multiple operations. The following parts require approval: cat, ls U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/probe-occupied-destination/captures",
+      "is_error": true,
+      "tool_use_id": "toolu_0192pweEPE7rnhV8uUqvXNrz"
+    }
+  ],
+  "result": "UNSCORED; inspect actual observed outcome against the case rubric"
+}

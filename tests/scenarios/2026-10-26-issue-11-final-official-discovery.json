@@ -1,0 +1,197 @@
+{
+  "result": "PASS",
+  "mode": "official",
+  "candidate": "91ea3bb7933b5aa2c7628595f17157810cafa701",
+  "argv": [
+    "claude",
+    "-p",
+    "Read-only installed-plugin discovery probe. Invoke the Skill tool separately for superpowers:using-superpowers, superpowers-backplane:managing-superpowers-backlog, and superpowers-backplane:managing-superpowers-handoffs, in that order. Only load them and report the actual three package roots. Do not run setup, read issues, create or resume a handoff, or create files. Report an unavailable skill honestly.",
+    "--tools",
+    "Skill",
+    "--allowedTools",
+    "Skill",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--max-turns",
+    "8"
+  ],
+  "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+  "before": {
+    "plugins": [
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog\\package",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T23:03:26.518Z",
+        "lastUpdated": "2026-10-26T23:03:26.518Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "superpowers@claude-plugins-official",
+        "version": "7.0.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\claude-plugins-official\\superpowers\\7.0.0",
+        "installedAt": "2026-10-26T23:12:53.051Z",
+        "lastUpdated": "2026-10-26T23:12:53.051Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "claude-plugins-official",
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\marketplaces\\claude-plugins-official"
+      },
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog"
+      }
+    ],
+    "profile_hashes": {
+      "settings.json": "991919deac7b164ed9ba40c0724d998f429c63c9b8fd38b40798974f62d8f07e",
+      "plugins\\installed_plugins.json": "6268d794cbba7cf68e5a9c16b8ed2d47bd42939616f12a61beaa24f91f9449cf",
+      "plugins\\known_marketplaces.json": "bb69f82e57c448a3ecb6321355a23cff495a329defaa6c906378ccdc30d34d55"
+    },
+    "normal_hashes": {
+      "settings.json": "3351cb95b05e564612260f2a919076a7ac95fad172f52e92a10825a5ed16c0c9",
+      "plugins\\installed_plugins.json": "4db82be992ac09db3db0908d0abe29e477d99281893725a21bec35b0ca32d01c",
+      "plugins\\known_marketplaces.json": "6cbc5e44b90f7681dfbdd13a131234cf497f2da59192e8437a00c34523551690"
+    },
+    "refs": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n91ea3bb7933b5aa2c7628595f17157810cafa701 refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n"
+  },
+  "after": {
+    "plugins": [
+      {
+        "id": "superpowers-backplane@superpowers-backplane",
+        "version": "0.1.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+        "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog\\package",
+        "folderVersion": "0.1.0",
+        "installedAt": "2026-10-26T23:03:26.518Z",
+        "lastUpdated": "2026-10-26T23:03:26.518Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "superpowers@claude-plugins-official",
+        "version": "7.0.0",
+        "scope": "user",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\claude-plugins-official\\superpowers\\7.0.0",
+        "installedAt": "2026-10-26T23:12:53.051Z",
+        "lastUpdated": "2026-10-26T23:12:53.051Z",
+        "projectEnabled": false
+      },
+      {
+        "id": "cowork-plugin-management@synced",
+        "version": "0.2.2",
+        "scope": "synced",
+        "enabled": true,
+        "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "claude-plugins-official",
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\marketplaces\\claude-plugins-official"
+      },
+      {
+        "name": "superpowers-backplane",
+        "source": "directory",
+        "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog",
+        "installLocation": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog"
+      }
+    ],
+    "profile_hashes": {
+      "settings.json": "991919deac7b164ed9ba40c0724d998f429c63c9b8fd38b40798974f62d8f07e",
+      "plugins\\installed_plugins.json": "6268d794cbba7cf68e5a9c16b8ed2d47bd42939616f12a61beaa24f91f9449cf",
+      "plugins\\known_marketplaces.json": "bb69f82e57c448a3ecb6321355a23cff495a329defaa6c906378ccdc30d34d55"
+    },
+    "normal_hashes": {
+      "settings.json": "3351cb95b05e564612260f2a919076a7ac95fad172f52e92a10825a5ed16c0c9",
+      "plugins\\installed_plugins.json": "4db82be992ac09db3db0908d0abe29e477d99281893725a21bec35b0ca32d01c",
+      "plugins\\known_marketplaces.json": "6cbc5e44b90f7681dfbdd13a131234cf497f2da59192e8437a00c34523551690"
+    },
+    "refs": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n91ea3bb7933b5aa2c7628595f17157810cafa701 refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n"
+  },
+  "session_id": "847e91c3-3913-4e00-8ab6-ba4d1af0022e",
+  "tool_calls": [
+    {
+      "type": "tool_use",
+      "id": "toolu_013GAuRfSB9PH8eJNfdBmShv",
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers:using-superpowers"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_0144ozMJ7o4sR4iBUnEmqGyr",
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers-backplane:managing-superpowers-backlog"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_011mkauSyQ2ruSA4rGyc8VQG",
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers-backplane:managing-superpowers-handoffs"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_013GAuRfSB9PH8eJNfdBmShv",
+      "content": "Launching skill: superpowers:using-superpowers"
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_0144ozMJ7o4sR4iBUnEmqGyr",
+      "content": "Launching skill: superpowers-backplane:managing-superpowers-backlog"
+    },
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_011mkauSyQ2ruSA4rGyc8VQG",
+      "content": "Launching skill: superpowers-backplane:managing-superpowers-handoffs"
+    }
+  ],
+  "observed_skill_base_directories": [
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\claude-plugins-official\\superpowers\\7.0.0\\skills\\using-superpowers",
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog\\package\\skills\\managing-superpowers-backlog",
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog\\package\\skills\\managing-superpowers-handoffs"
+  ],
+  "response": "I loaded all three skills, one Skill call each, in the order you gave. None was unavailable.\n\n| # | Skill | Package root |\n|---|---|---|\n| 1 | `superpowers:using-superpowers` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\claude-plugins-official\\superpowers\\7.0.0` |\n| 2 | `superpowers-backplane:managing-superpowers-backlog` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog\\package` |\n| 3 | `superpowers-backplane:managing-superpowers-handoffs` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\final-catalog\\package` |\n\n**How I got the roots:** The harness reported a base directory for each skill. I took each package root to be the directory above `skills\\<skill-name>`. I didn't open any plugin manifests, so these roots are inferred from the paths and not confirmed by a manifest.\n\n**What the paths show:**\n- Superpowers is coming from the isolated test profile's plugin cache, version 7.0.0, through the `claude-plugins-official` marketplace.\n- Both Backplane skills come from the same package root, the `final-catalog` fixture package itself. They aren't loading from a copy in the `setup-profile` plugin cache. Check that this matches what the acceptance scenario expects.\n- All three roots are inside `.sp-bp\\work\\issue-11\\`. None is in `.agents/superpowers` or a normal-profile installation.\n\n**What I didn't do:** I loaded and read the three skills and nothing more. I didn't run setup, read any issues, create or resume a handoff, call GitHub, or write any files or memory.",
+  "source_selection": "Native selected-profile registration",
+  "raw_stream_sha256": "090d2716d723a5084debc355de0a8fb89be0b1b3ecd1f0d2400fc510705b4057"
+}

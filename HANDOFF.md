@@ -1,5 +1,44 @@
 # Handoff
 
+## Issue #11 local candidate verification — October 26, 2026
+
+This entry supersedes the preparation state below. The operator completed the
+separate Claude profile login and approved native execution continues on
+`feat/issue-11-claude-acceptance` in the standalone Windows root. Product
+candidate `91ea3bb7933b5aa2c7628595f17157810cafa701` corrects native relationship
+connection counting and carries verified start/submit authorization through
+later stages. The testing-boundary policy correction is at `402ea930`.
+Approved plan/spec bytes are preserved.
+
+The [current report](tests/scenarios/2026-10-26-issue-11-claude-integrated-acceptance.md)
+and JSON matrix record 39/39 local candidate checks PASS, including fresh
+Claude 2.1.311 conformance against development Superpowers 7.0.1 and the actual
+official-channel 7.0.0 installation. All 23 behavioral expectations pass in
+both modes; strict structure validation, nine compiled Python guide blocks,
+four parsed PowerShell blocks, Ruff and ty pass. Exact historical C/D/#34 run
+identities and applicability remain explicit. No hosted E update is claimed.
+An initial unowned-scratch/environment probe and an unrelated normal-profile
+catalogue hash change remain excluded from preservation claims; corrected
+immediate operation comparisons pass. Raw SDK streams stay ignored; derived
+evidence is screened and omits upstream skill bodies and incidental secrets.
+
+Both isolated profiles have exact E installed (21 source files verified).
+The development upstream remains clean at `2ce8aa15`; the setup profile has
+official Superpowers `bb92a777` from catalogue `1da406f4`. Native, sibling and
+official fresh sessions loaded all three skills. A metadata-only unrelated
+plugin sharing the disposable Backplane catalogue survives exact Backplane
+uninstall/restoration. Profiles/fixtures/scratch are retained; never copy
+credentials or treat the scratch as the sole recovery source.
+
+Native #11 remains OPEN/`backplane:active`, last re-read at revision
+`2026-10-26T21:55:58Z`; prerequisites #17/#18/#19 are CLOSED/COMPLETED.
+No push, PR, merge, issue closure, release or cleanup has occurred. Next:
+one fresh whole-change review, resolve material findings, then present the
+reviewed branch for publication/integration authorization. Final #11 acceptance
+requires actual integrated-target verification and published satisfaction
+before separately authorized closure. Remote transport of this execution
+evidence has not occurred, so another machine is not yet proven resumable.
+
 ## Issue #11 selected — October 26, 2026
 
 The operator selected final Claude Code acceptance #11, reviewed its plan in

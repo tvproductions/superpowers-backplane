@@ -1,0 +1,9 @@
+{
+  "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+  "exit": 1,
+  "loggedIn": false,
+  "authMethod": "none",
+  "credential_copy": false,
+  "normal_profile_fallback": false,
+  "purpose": "Separate Backplane-only profile for sibling and absent-upstream setup/failure tests"
+}

@@ -1,0 +1,357 @@
+{
+  "result": "PASS",
+  "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+  "controls": [
+    {
+      "case": "versionless-package",
+      "before": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "staged": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "superpowers@versionless-superpowers",
+          "version": "unknown",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\versionless-superpowers\\superpowers\\unknown",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\versionless-upstream",
+          "installedAt": "2026-10-26T22:51:12.342Z",
+          "lastUpdated": "2026-10-26T22:51:12.342Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "after": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "exact_fixture_removed": "superpowers@versionless-superpowers",
+      "other_plugins_preserved": true
+    },
+    {
+      "case": "duplicate-backplane",
+      "before": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "staged": [
+        {
+          "id": "superpowers-backplane@backplane-conflict",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\backplane-conflict\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:52:35.731Z",
+          "lastUpdated": "2026-10-26T22:52:35.731Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "after": [
+        {
+          "id": "superpowers-backplane@superpowers-backplane",
+          "version": "0.1.0",
+          "scope": "user",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0",
+          "readFromFolder": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\current-catalog\\package",
+          "folderVersion": "0.1.0",
+          "installedAt": "2026-10-26T22:41:35.161Z",
+          "lastUpdated": "2026-10-26T22:41:35.161Z",
+          "projectEnabled": false
+        },
+        {
+          "id": "cowork-plugin-management@synced",
+          "version": "0.2.2",
+          "scope": "synced",
+          "enabled": true,
+          "installPath": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile\\plugins\\synced\\redacted-synced-owner\\cowork-plugin-management"
+        }
+      ],
+      "exact_fixture_removed": "superpowers-backplane@backplane-conflict",
+      "other_plugins_preserved": true
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"name\": \"superpowers-backplane\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "add",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\versionless-upstream"
+      ],
+      "exit": 0,
+      "stdout": "Adding marketplace…✔ Successfully added marketplace: versionless-superpowers (declared in user settings)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "install",
+        "superpowers@versionless-superpowers",
+        "--scope",
+        "user"
+      ],
+      "exit": 0,
+      "stdout": "Installing plugin \"superpowers@versionless-superpowers\"...✔ Successfully installed plugin: superpowers@versionless-superpowers (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"superpowers@versionless-superpowers\",\n    \"version\": \"unknown\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\versionless-superpowers\\\\superpowers\\\\unknown\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\versionless-upstream\",\n    \"installedAt\": \"2026-10-26T22:51:12.342Z\",\n    \"lastUpdated\": \"2026-10-26T22:51:12.342Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "uninstall",
+        "superpowers@versionless-superpowers",
+        "--scope",
+        "user"
+      ],
+      "exit": 0,
+      "stdout": "✔ Successfully uninstalled plugin: superpowers (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "remove",
+        "versionless-superpowers"
+      ],
+      "exit": 0,
+      "stdout": "✔ Successfully removed marketplace: versionless-superpowers\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"name\": \"superpowers-backplane\",\n    \"source\": \"directory\",\n    \"path\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\",\n    \"installLocation\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "add",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\duplicate-backplane"
+      ],
+      "exit": 0,
+      "stdout": "Adding marketplace…✔ Successfully added marketplace: backplane-conflict (declared in user settings)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "install",
+        "superpowers-backplane@backplane-conflict",
+        "--scope",
+        "user"
+      ],
+      "exit": 0,
+      "stdout": "Installing plugin \"superpowers-backplane@backplane-conflict\"...✔ Successfully installed plugin: superpowers-backplane@backplane-conflict (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@backplane-conflict\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\backplane-conflict\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\duplicate-backplane\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:52:35.731Z\",\n    \"lastUpdated\": \"2026-10-26T22:52:35.731Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "uninstall",
+        "superpowers-backplane@backplane-conflict",
+        "--scope",
+        "user"
+      ],
+      "exit": 0,
+      "stdout": "✔ Successfully uninstalled plugin: superpowers-backplane (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "remove",
+        "backplane-conflict"
+      ],
+      "exit": 0,
+      "stdout": "✔ Successfully removed marketplace: backplane-conflict\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\current-catalog\\\\package\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:41:35.161Z\",\n    \"lastUpdated\": \"2026-10-26T22:41:35.161Z\",\n    \"projectEnabled\": false\n  },\n  {\n    \"id\": \"cowork-plugin-management@synced\",\n    \"version\": \"0.2.2\",\n    \"scope\": \"synced\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\synced\\\\redacted-synced-owner\\\\cowork-plugin-management\"\n  }\n]\n",
+      "stderr": ""
+    }
+  ]
+}

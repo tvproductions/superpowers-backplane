@@ -53,8 +53,11 @@ The first adapter attempt compared stripped porcelain output with an unstripped
 expected string and stopped at its assertion. The fixture was preserved. A new
 unused fixture plus a corrected normalized comparison supplied the passing
 receipt; no product defect or fixture-policy failure is inferred from that
-orchestration error. Ruff and ty passed on the proof source. The source is
-preserved in the companion transcript for reproduction.
+orchestration error. Ruff lint and ty passed on the proof source. The first
+format check after the comparison edit requested formatting; it was applied,
+and the subsequent lint, format check and type check all passed. The executed
+proof source is preserved in the companion transcript for reproduction, before
+that final formatting-only change.
 
 This is a local rule/proof correction, not completion of #11's live installation
 matrix, a published release, or fresh whole-change review. The final #11 reviewer

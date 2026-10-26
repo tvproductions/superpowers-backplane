@@ -1,10 +1,10 @@
 {
   "format": "superpowers-backplane-issue11-acceptance/v1",
-  "candidate": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+  "candidate": "91ea3bb7933b5aa2c7628595f17157810cafa701",
   "issue": "https://github.com/tvproductions/superpowers-backplane/issues/11",
   "semantic_revision": "2026-09-20T01:31:32Z",
-  "observed_revision": "2026-10-26T20:55:01Z",
-  "phase": "initial",
+  "observed_revision": "2026-10-26T21:55:58Z",
+  "phase": "local-candidate-verification",
   "rows": [
     {
       "id": "absent-setup",
@@ -26,51 +26,57 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Actual absent-upstream acquisition installed official stable 7.0.0 separately; fresh E official discovery and 23 expectations passed at that source.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-absent-setup.json",
+          "sha256": "face4dbb3ea797649896162f8bbad569619a4176e0ad679e1ec5c5fbd55bb83c"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-official-discovery.json",
+          "sha256": "9298764d8a6441fa5c651a44d477c21ca52120497e8ac0257801306d5f18bf83"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual absent-upstream acquisition installed official stable 7.0.0 separately; fresh E official discovery and 23 expectations passed at that source.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "active",
@@ -92,49 +98,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Actual approved #11 ready-to-active transition is preserved; fresh E observation confirms active, one lifecycle label and zero state mutation.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-execution-start.json",
+          "sha256": "4337b0013ed5235b880d30472529768bcdecc953a6eb2e82646f3cf308614f34"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
-          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+          "path": "tests/scenarios/2026-10-26-issue-11-status-selection.json",
+          "sha256": "e2997c286c70b11a6a2d164d537aa703a9e564ca5c146a5993e8731bf3f8cef2"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual approved #11 ready-to-active transition is preserved; fresh E observation confirms active, one lifecycle label and zero state mutation.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "blocked-resume",
@@ -156,49 +164,59 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-25-issue-19-live-fixture.json",
+          "sha256": "6847c79063e99a4dd51c1e5406c6cfbfe90d5f2f0118e1ff1fcc256df88a21c4"
         },
         {
           "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
           "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-review-submission.json",
+          "sha256": "bc687053ffaa7f5cb72af10691d02ca72db2a4ac51c5897562fe5ffea6c65a1f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "clean-install",
@@ -220,31 +238,26 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
@@ -253,18 +266,24 @@
         "Backplane skill and guide bytes"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Exact clean-install guide bootstrap C and final exact-E native installation passed; 21 installed package files match E.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-native-setup.json",
+          "sha256": "241e11a310e7676a51eaeae377aeef794cc14424f59a9f6240c7dd86d16d00a3"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-package-installation.md",
-          "sha256": "aa07ccf6367a6631bdac77f878ac4ff9c87ea562d6e06bc29e37d20850a08bdc"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-candidate.json",
+          "sha256": "cbcb82df1aa80549f75544fc059538f69f2434aa059ca5b8b997f526f30ab004"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Exact clean-install guide bootstrap C and final exact-E native installation passed; 21 installed package files match E.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "design",
@@ -286,49 +305,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Actual operator-selected #11 entered designing with unchanged scope/graph; approved local plan later linked honestly.",
       "evidence": [
         {
           "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "sha256": "d5afc92b609a90477561a6fd636e6d786296f349bd71ec0f112e08a07643cc1b"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
-          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+          "path": "tests/scenarios/2026-10-26-issue-11-execution-start.json",
+          "sha256": "4337b0013ed5235b880d30472529768bcdecc953a6eb2e82646f3cf308614f34"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual operator-selected #11 entered designing with unchanged scope/graph; approved local plan later linked honestly.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "dirty-adoption",
@@ -350,51 +371,49 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Authoritative dirty sibling accepted in place without update; fixture and actual upstream preserved.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-dirty-adoption-current.json",
+          "sha256": "d0eaaf472594f85cf7dd75a9be117c4e3bc1ebe2e7df64ae83e158abea7e9c9d"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Authoritative dirty sibling accepted in place without update; fixture and actual upstream preserved.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "dirty-update-refusal",
@@ -416,51 +435,49 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Dirty-state update refused before fetch/checkout with concrete recovery and no lost files.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-dirty-update-refusal-current.json",
+          "sha256": "fc6980a804815cf25edf4a61d8b954faeeed707b58947913d96234cda6c7fad9"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Dirty-state update refused before fetch/checkout with concrete recovery and no lost files.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "duplicate-backplane",
@@ -482,51 +499,53 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Two enabled native Backplane IDs were detected and setup stopped; exact fixture removal preserved other installed plugins.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-duplicate-backplane-current.json",
+          "sha256": "fdbc925b3f900aa966750d92ce16fe7e1201d3fabf432e2a7023f5a038636e7d"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-native-failure-controls.json",
+          "sha256": "e0042da369e928207b15102907de643dd1b904e52d8d67d5bcd5589fdfabefd6"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Two enabled native Backplane IDs were detected and setup stopped; exact fixture removal preserved other installed plugins.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "failed-preflight",
@@ -548,49 +567,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "fresh-discovery",
@@ -612,49 +633,54 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "referenced governance document; assess effect before retaining behavior evidence"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Three fresh sessions invoked upstream and both Backplane skills from verified independent roots.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-native-discovery.json",
+          "sha256": "c172c490f044b053245bae85be5ffb511e27244d3b85d0135f2373473ffd5edf"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-sibling-discovery.json",
+          "sha256": "ff2ea8f838ea09a1e5591976d50f92128e671de270185e566cdf48e0ab111d03"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-official-discovery.json",
+          "sha256": "9298764d8a6441fa5c651a44d477c21ca52120497e8ac0257801306d5f18bf83"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Three fresh sessions invoked upstream and both Backplane skills from verified independent roots.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "gh-auth-failure",
@@ -676,51 +702,53 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Injected authentication failure stopped setup; no credential copying or fallback.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-auth-failure.json",
+          "sha256": "0e0abd2949cadcee7711296cb445d0f07affb27f580f271496ae0411f1bcdc3e"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-failure-controls.json",
+          "sha256": "989b79741443fb3c7b0c903435491cdb2164acaed4b3d90d0c9e96646a322168"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Injected authentication failure stopped setup; no credential copying or fallback.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "gh-closure-failure",
@@ -742,51 +770,53 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Isolated missing closure-reason capability stopped setup; observed zero native subissues with fixed connection parsing.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-closure-failure-current.json",
+          "sha256": "9424b5a69f31146866b3e2679c1b9606560a8b59073539274cde13895f811953"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-relationship-reference.json",
+          "sha256": "59437e2d53b00e03ea374d67c1704250b6a70b797206c4daf42f4c973ebaf1bb"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Isolated missing closure-reason capability stopped setup; observed zero native subissues with fixed connection parsing.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "gh-intake-failure",
@@ -808,51 +838,53 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Required issueType failure stopped setup rather than silently reducing intake.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-intake-failure.json",
+          "sha256": "107a887082c4a13bde5a6d1e42ab9f22d69936111f16a4a2e8c521d90892fb59"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-failure-controls.json",
+          "sha256": "989b79741443fb3c7b0c903435491cdb2164acaed4b3d90d0c9e96646a322168"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Required issueType failure stopped setup rather than silently reducing intake.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "gh-label-failure",
@@ -874,51 +906,53 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Isolated missing label mutation capability stopped setup with corrected read-only adapter.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-label-failure-current.json",
+          "sha256": "5fb62866254b473de0cc4697e1091e9c314fc2b6c2430c2888e860afafb758d5"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-gh-failure-controls.json",
+          "sha256": "989b79741443fb3c7b0c903435491cdb2164acaed4b3d90d0c9e96646a322168"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Isolated missing label mutation capability stopped setup with corrected read-only adapter.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "language-neutral-verification",
@@ -940,49 +974,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "lifecycle-transitions",
@@ -1004,49 +1036,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "lookalike-source",
@@ -1068,51 +1098,49 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Actual installed setup rejected the lookalike origin and preserved fixture/protected state.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lookalike-source.json",
+          "sha256": "5df86582d45a0da265f39b0a162322c5fb753f632f3fff7981c406788472c78b"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual installed setup rejected the lookalike origin and preserved fixture/protected state.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "missing-upstream-skill",
@@ -1134,51 +1162,49 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Actual incomplete authoritative fixture was rejected for missing required writing-plans.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-missing-upstream-skill.json",
+          "sha256": "886c6e923abfb766845069e49bb2b4aa22a3134cc4a02709b674848e1b696952"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual incomplete authoritative fixture was rejected for missing required writing-plans.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "native-issue-intake",
@@ -1200,49 +1226,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "native-setup",
@@ -1264,51 +1288,57 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Corrected owned-capture native setup preflight passed; E fresh native discovery and full conformance passed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-native-setup-workflow-2.json",
+          "sha256": "d0004b88427d8afcfa5b812dedd5c18fd23e583c6f4c04c92f7bba002ba66604"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-native-discovery.json",
+          "sha256": "c172c490f044b053245bae85be5ffb511e27244d3b85d0135f2373473ffd5edf"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Corrected owned-capture native setup preflight passed; E fresh native discovery and full conformance passed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "occupied-destination",
@@ -1330,51 +1360,49 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Existing destination rejected before checkout creation; sentinel preserved.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-occupied-destination.json",
+          "sha256": "d04d4965c750890fa69ec6ac87c43f0e63e70ae4b369f6127d3d023b418bdf54"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Existing destination rejected before checkout creation; sentinel preserved.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "pinned-update",
@@ -1396,49 +1424,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "prerequisites",
@@ -1474,49 +1504,40 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [],
-      "disposition": "retained",
+      "disposition": "rerun",
       "result": "PASS",
-      "reason": "Fresh native #17/#18/#19 states, candidate remote availability and inspected tracked evidence establish prerequisites only",
+      "reason": "Fresh complete intake confirms #17/#18/#19 CLOSED/COMPLETED; integrated #19 delivery is an ancestor of E.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
-        },
-        {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
       ],
-      "observed_claim": "All three prerequisite issues are CLOSED/COMPLETED; evidence paths and immutable source are reachable",
-      "verified_input_comparison": "Fresh complete native intake in input audit; historical rows remain separately UNKNOWN"
+      "observed_claim": "Fresh complete intake confirms #17/#18/#19 CLOSED/COMPLETED; integrated #19 delivery is an ancestor of E.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "preservation",
@@ -1538,49 +1559,59 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Immediate valid operation snapshots preserve normal settings/registry/catalog hashes, unrelated plugins, user sentinel, real upstream files/revision, project refs and full issue state; shared-catalog installed sentinel also preserved.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-status-selection.json",
+          "sha256": "e2997c286c70b11a6a2d164d537aa703a9e564ca5c146a5993e8731bf3f8cef2"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Immediate valid operation snapshots preserve normal settings/registry/catalog hashes, unrelated plugins, user sentinel, real upstream files/revision, project refs and full issue state; shared-catalog installed sentinel also preserved.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "ready",
@@ -1602,49 +1633,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Actual #11 readiness followed approved plan and closed blockers, with full native before/after reconciliation.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-execution-start.json",
+          "sha256": "4337b0013ed5235b880d30472529768bcdecc953a6eb2e82646f3cf308614f34"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
-          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual #11 readiness followed approved plan and closed blockers, with full native before/after reconciliation.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "repeat-install",
@@ -1666,49 +1695,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "restoration",
@@ -1730,49 +1761,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "review",
@@ -1794,49 +1827,59 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-25-issue-19-live-fixture.json",
+          "sha256": "6847c79063e99a4dd51c1e5406c6cfbfe90d5f2f0118e1ff1fcc256df88a21c4"
         },
         {
           "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
           "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-review-submission.json",
+          "sha256": "bc687053ffaa7f5cb72af10691d02ca72db2a4ac51c5897562fe5ffea6c65a1f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "rework",
@@ -1858,49 +1901,59 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-25-issue-19-live-fixture.json",
+          "sha256": "6847c79063e99a4dd51c1e5406c6cfbfe90d5f2f0118e1ff1fcc256df88a21c4"
         },
         {
           "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
           "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-review-submission.json",
+          "sha256": "bc687053ffaa7f5cb72af10691d02ca72db2a4ac51c5897562fe5ffea6c65a1f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "rollback",
@@ -1922,49 +1975,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "selection",
@@ -1986,49 +2041,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Fresh E selection confirmed operator-selected already-active #11; no invented priority or lifecycle mutation.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-status-selection.json",
+          "sha256": "e2997c286c70b11a6a2d164d537aa703a9e564ca5c146a5993e8731bf3f8cef2"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
-          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Fresh E selection confirmed operator-selected already-active #11; no invented priority or lifecycle mutation.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "sibling-setup",
@@ -2050,51 +2103,57 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Backplane-only profile adopted separate sibling without persistent upstream install; E fresh sibling invocation loaded all three actual skill roots.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-sibling-setup-workflow-2.json",
+          "sha256": "7569302bc9f2219c97499bd7f772f8d71f084044c3d3c9ce21c0cc7e29b0557a"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-sibling-discovery.json",
+          "sha256": "ff2ea8f838ea09a1e5591976d50f92128e671de270185e566cdf48e0ab111d03"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Backplane-only profile adopted separate sibling without persistent upstream install; E fresh sibling invocation loaded all three actual skill roots.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "skill-structure",
@@ -2116,49 +2175,43 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Strict package validation in both profiles, exact metadata and existing relative reference links passed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
-        },
-        {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Strict package validation in both profiles, exact metadata and existing relative reference links passed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "status",
@@ -2180,49 +2233,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Fresh E installed status read complete actual #11 graph with zero protected-state change.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-status-selection.json",
+          "sha256": "e2997c286c70b11a6a2d164d537aa703a9e564ca5c146a5993e8731bf3f8cef2"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
-          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Fresh E installed status read complete actual #11 graph with zero protected-state change.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "superpowers-installation",
@@ -2244,49 +2295,47 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "unauthenticated-host",
@@ -2308,51 +2357,49 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Before operator login, the separately scoped host returned exit 1/loggedIn false/authMethod none; no installation, credential copy or normal-profile fallback was performed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-setup-auth.json",
+          "sha256": "e1b4602bee853e72d0579741f6e0f722e651f2975bb23f9f6c7b1b377a46d6e5"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Before operator login, the separately scoped host returned exit 1/loggedIn false/authMethod none; no installation, credential copy or normal-profile fallback was performed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "uninstall",
@@ -2374,49 +2421,51 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "result": "PASS",
+      "reason": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-lifecycle.json",
+          "sha256": "6f97ce9810331f1ea5ff9363de664a5174a9c9d1c95bc997d9dcb66ef1031933"
         },
         {
-          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
-          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+          "path": "tests/scenarios/2026-10-26-issue-11-shared-catalog.json",
+          "sha256": "953c40466eaeb56eb68c19a095c2815fbf1e130e23182ad0e074f1dc8172a786"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "verified-completion",
@@ -2438,49 +2487,59 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
-        "referenced governance document; assess effect before retaining behavior evidence"
+        "referenced governance document; assess effect before retaining behavior evidence",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
-      "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-25-issue-19-live-fixture.json",
+          "sha256": "6847c79063e99a4dd51c1e5406c6cfbfe90d5f2f0118e1ff1fcc256df88a21c4"
         },
         {
           "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
           "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-review-submission.json",
+          "sha256": "bc687053ffaa7f5cb72af10691d02ca72db2a4ac51c5897562fe5ffea6c65a1f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-final-conformance.json",
+          "sha256": "4f94692af7c1b8fb0d0d55c407b37bf0a0d094474ca9aa26fa1820fbbb75062f"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
       "id": "versionless-package",
@@ -2502,56 +2561,68 @@
         }
       },
       "candidate_inputs": {
-        "host": "2.1.310 (Claude Code)",
-        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "host": "2.1.311 (Claude Code)",
+        "backplane": "91ea3bb7933b5aa2c7628595f17157810cafa701",
         "upstream": {
-          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
-          "origin": "https://github.com/obra/superpowers.git",
-          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
-          "status": ""
+          "development": "obra/superpowers v7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "official": "anthropics/claude-plugins-official catalogue 1da406f428c285c701a1033a3aef368a9ab865dc, Superpowers 7.0.0 / bb92a77741419a4ab5f06e711a283343f1ada0c3"
         },
         "gh_capability": {
-          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
-          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "version": "2.103.2",
           "auth": "PASS",
           "complete_intake": "PASS",
           "label_help": "PASS",
-          "closure_help": "PASS"
+          "closure_help": "PASS",
+          "evidence": "2026-10-26-issue-11-candidate-verification.json"
         },
         "installed_skills": {
-          "required_names": [
-            "superpowers:using-superpowers",
-            "superpowers-backplane:managing-superpowers-backlog",
-            "superpowers-backplane:managing-superpowers-handoffs"
-          ],
-          "observed_source_files": 20,
-          "source_blob_comparison": "PASS",
-          "fresh_tool_loads": "NOT RUN"
+          "upstream": "superpowers:using-superpowers from independently verified upstream source",
+          "backlog": "superpowers-backplane:managing-superpowers-backlog from exact E package",
+          "handoffs": "superpowers-backplane:managing-superpowers-handoffs from exact E package",
+          "source_blob_files": 21,
+          "fresh_loads": "PASS in native, sibling and official modes"
         }
       },
       "changed_inputs": [
         "Claude host",
         "upstream",
-        "Backplane skill and guide bytes"
+        "Backplane skill and guide bytes",
+        "Claude auto-update to 2.1.311; current affected live check required"
       ],
       "disposition": "rerun",
-      "result": "UNKNOWN",
-      "reason": "Changed setup inputs require fresh observed outcome",
+      "result": "PASS",
+      "reason": "Actual native versionless package produced unknown compatibility and setup stopped without inventing provenance.",
       "evidence": [
         {
-          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
-          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+          "path": "tests/scenarios/2026-10-26-issue-11-versionless-package-current.json",
+          "sha256": "b5bc630b11d1ded737ad68b5c29b90431d1e653885aad260a0afe274bd6e4887"
         },
         {
-          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
-          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+          "path": "tests/scenarios/2026-10-26-issue-11-native-failure-controls.json",
+          "sha256": "e0042da369e928207b15102907de643dd1b904e52d8d67d5bcd5589fdfabefd6"
+        },
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-candidate-verification.json",
+          "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
-      ]
+      ],
+      "observed_claim": "Actual native versionless package produced unknown compatibility and setup stopped without inventing provenance.",
+      "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     }
   ],
   "rulings": [
     "Approved feature branch in exact standalone root replaces worktree creation; no reserved helper invoked",
     "Read-only preparation precedes ready/active until approved-plan publication and fixture boundary are resolved",
     "Evidence work uses direct validation/negative controls; any demonstrated product behavior correction requires TDD"
-  ]
+  ],
+  "execution_policy_correction": "tests/scenarios/2026-10-26-testing-boundary-policy.md",
+  "counts": {
+    "PASS": 3,
+    "FAIL": 0,
+    "UNKNOWN": 36
+  },
+  "review": "PENDING independent whole-change review",
+  "integrated_acceptance": "PENDING authorized publication/integration and exact-target verification",
+  "publication": "Not performed",
+  "acceptance_scope": "39 local candidate checks; final #11 acceptance remains pending integration"
 }

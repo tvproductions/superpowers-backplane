@@ -1,83 +1,71 @@
-# Issue #11 Claude integrated acceptance — initial input ledger
+# Issue #11 Claude candidate verification
 
-Candidate: `66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4`. Branch: `feat/issue-11-claude-acceptance`.
+Product candidate: `91ea3bb7933b5aa2c7628595f17157810cafa701` on `feat/issue-11-claude-acceptance`. Local verification: **39/39 PASS**. Independent review and final integrated acceptance remain pending. No push, PR, merge, closure or release has occurred.
 
-This is a prepared matrix, not final acceptance. Every historical live result retains its original scope.
+The approved implementation plan is unchanged. This report supersedes the dated preparation state preserved in [preparation history](2026-10-26-issue-11-preparation-history.md). The generic testing-boundary correction removed the unnecessary per-fixture and prior-publication gates; local verification was already authorized.
 
-| Mandatory row | Result | Owner | Current disposition |
-| --- | --- | --- | --- |
-| absent-setup | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| active | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| blocked-resume | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| clean-install | UNKNOWN | #17 | Changed setup inputs require fresh observed outcome |
-| design | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| dirty-adoption | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| dirty-update-refusal | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| duplicate-backplane | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| failed-preflight | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| fresh-discovery | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| gh-auth-failure | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| gh-closure-failure | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| gh-intake-failure | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| gh-label-failure | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| language-neutral-verification | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| lifecycle-transitions | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| lookalike-source | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| missing-upstream-skill | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| native-issue-intake | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| native-setup | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| occupied-destination | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| pinned-update | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| prerequisites | PASS | #11 | Fresh native #17/#18/#19 states, candidate remote availability and inspected tracked evidence establish prerequisites only |
-| preservation | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| ready | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| repeat-install | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| restoration | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| review | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| rework | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| rollback | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| selection | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| sibling-setup | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| skill-structure | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| status | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| superpowers-installation | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| unauthenticated-host | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
-| uninstall | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| verified-completion | UNKNOWN | #19 | Exact source audit alone does not establish the required live outcome or applicability |
-| versionless-package | UNKNOWN | #18 | Changed setup inputs require fresh observed outcome |
+## Inputs and evidence
 
-## Fresh observations
+Claude Code 2.1.311 and gh 2.103.2 on Windows; uv-managed Python 3.14.9. Existing development Superpowers remains clean at 7.0.1 (`2ce8aa1`). Absent-upstream acquisition used Claude's documented official marketplace and actually resolved Superpowers 7.0.0 (`bb92a77`), independently tested. Catalogue advanced from the pre-probe revision to `1da406f`; it was not forced to a different channel. Candidate E is locally installed and unpublished.
 
-- 37 read-only command observations captured in `2026-10-26-issue-11-input-audit.json`.
-- Python 3.14.9 in the root .venv verified through uv; the earlier cache-lock denial is resolved by authorized execution.
-- Existing issue-19 disposable profile is authenticated. Auth account/organization fields are redacted; no credentials were read or copied.
-- All 20 installed canonical skill/reference and package-manifest files match candidate C; this is source identity, not fresh Skill invocation.
-- Candidate package/skills/guide match #19 delivery. Loaded governance document changed; its behavioral effect is not yet reconciled.
-- #17/#18 host/upstream/skill/guide inputs changed, requiring fresh setup and rejection evidence.
-- #11 remains OPEN/designing. Approved-plan publication and ready/active transitions have not occurred.
+Each mode passed all 23 behavioral expectations plus the structural check. Full prompts, unedited final responses, actual calls, immediate before/after source and preservation observations are in [final conformance](2026-10-26-issue-11-final-conformance.json). Three fresh discovery receipts identify separate roots. Native graph and authority defects found during these tests were corrected with recorded RED/GREEN evidence; package, guide and other skill behavior bytes remain unchanged.
 
-## Execution boundaries
+## Matrix
 
-The approved guide creates another Git root during clean-install bootstrap, and several failures require independent Git fixture identities. AGENTS requires every mutated Git root to equal the standalone root, with an exception only for #31. The #11-specific fixture exception remains required before those commands. No such commands have run.
+| Check | Result | Owning issue | Observed scope |
+|---|---|---|---|
+| absent-setup | PASS | #18 | Actual absent-upstream acquisition installed official stable 7.0.0 separately; fresh E official discovery and 23 expectations passed at that source. |
+| active | PASS | #19 | Actual approved #11 ready-to-active transition is preserved; fresh E observation confirms active, one lifecycle label and zero state mutation. |
+| blocked-resume | PASS | #19 | Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed. |
+| clean-install | PASS | #17 | Exact clean-install guide bootstrap C and final exact-E native installation passed; 21 installed package files match E. |
+| design | PASS | #19 | Actual operator-selected #11 entered designing with unchanged scope/graph; approved local plan later linked honestly. |
+| dirty-adoption | PASS | #18 | Authoritative dirty sibling accepted in place without update; fixture and actual upstream preserved. |
+| dirty-update-refusal | PASS | #18 | Dirty-state update refused before fetch/checkout with concrete recovery and no lost files. |
+| duplicate-backplane | PASS | #18 | Two enabled native Backplane IDs were detected and setup stopped; exact fixture removal preserved other installed plugins. |
+| failed-preflight | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
+| fresh-discovery | PASS | #19 | Three fresh sessions invoked upstream and both Backplane skills from verified independent roots. |
+| gh-auth-failure | PASS | #18 | Injected authentication failure stopped setup; no credential copying or fallback. |
+| gh-closure-failure | PASS | #18 | Isolated missing closure-reason capability stopped setup; observed zero native subissues with fixed connection parsing. |
+| gh-intake-failure | PASS | #18 | Required issueType failure stopped setup rather than silently reducing intake. |
+| gh-label-failure | PASS | #18 | Isolated missing label mutation capability stopped setup with corrected read-only adapter. |
+| language-neutral-verification | PASS | #19 | Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed. |
+| lifecycle-transitions | PASS | #19 | Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed. |
+| lookalike-source | PASS | #18 | Actual installed setup rejected the lookalike origin and preserved fixture/protected state. |
+| missing-upstream-skill | PASS | #18 | Actual incomplete authoritative fixture was rejected for missing required writing-plans. |
+| native-issue-intake | PASS | #19 | Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed. |
+| native-setup | PASS | #18 | Corrected owned-capture native setup preflight passed; E fresh native discovery and full conformance passed. |
+| occupied-destination | PASS | #18 | Existing destination rejected before checkout creation; sentinel preserved. |
+| pinned-update | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
+| prerequisites | PASS | #11 | Fresh complete intake confirms #17/#18/#19 CLOSED/COMPLETED; integrated #19 delivery is an ancestor of E. |
+| preservation | PASS | #19 | Immediate valid operation snapshots preserve normal settings/registry/catalog hashes, unrelated plugins, user sentinel, real upstream files/revision, project refs and full issue state; shared-catalog installed sentinel also preserved. |
+| ready | PASS | #19 | Actual #11 readiness followed approved plan and closed blockers, with full native before/after reconciliation. |
+| repeat-install | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
+| restoration | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
+| review | PASS | #19 | Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed. |
+| rework | PASS | #19 | Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed. |
+| rollback | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
+| selection | PASS | #19 | Fresh E selection confirmed operator-selected already-active #11; no invented priority or lifecycle mutation. |
+| sibling-setup | PASS | #18 | Backplane-only profile adopted separate sibling without persistent upstream install; E fresh sibling invocation loaded all three actual skill roots. |
+| skill-structure | PASS | #19 | Strict package validation in both profiles, exact metadata and existing relative reference links passed. |
+| status | PASS | #19 | Fresh E installed status read complete actual #11 graph with zero protected-state change. |
+| superpowers-installation | PASS | #19 | Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed. |
+| unauthenticated-host | PASS | #18 | Before operator login, the separately scoped host returned exit 1/loggedIn false/authMethod none; no installation, credential copy or normal-profile fallback was performed. |
+| uninstall | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
+| verified-completion | PASS | #19 | Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed. |
+| versionless-package | PASS | #18 | Actual native versionless package produced unknown compatibility and setup stopped without inventing provenance. |
 
-Plan publication, a new absent-upstream installation and any new native mutation fixture retain their scoped authority gates. Complete unaffected preparation before requesting the concrete missing authority.
+## Applicability and exclusions
 
-## Remaining verification
+The [candidate verification receipt](2026-10-26-issue-11-candidate-verification.json) records exact component blob comparisons. The nine-block lifecycle replay used C (`66c4c4f`) and excluded test-only F (`5e01704`), then rolled back to C. Its guide, manifests and installation guards equal E. E's changed reference payload was separately installed and checked byte-for-byte, freshly discovered, behaviorally tested, and removed/restored while an unrelated installed plugin shared its catalogue. This is not a claim of a hosted E update before publication.
 
-Initial matrix coverage passed for 39 mandatory rows: one fresh prerequisite PASS, 38 UNKNOWN. The validator rejected a missing matrix before generation, then accepted the complete initial matrix; acceptance mode separately rejected the first UNKNOWN row. Python compiled all nine guide blocks; PowerShell parsed all four legacy blocks without executing them. Every mandatory UNKNOWN still blocks final acceptance. No product source correction, fresh setup result, complete-stack acceptance or release is claimed.
+Actual #34 design/readiness/execution/blocked/rework/review/integrated closure observations remain historical. E fresh conformance covers the affected interpretation and authorization behavior, and fresh actual #11 status/selection preserves its state. No completed issue was reopened as a fixture. Predecessor gh exact version is unknown in the #34 receipt; current required capabilities are directly verified rather than assumed version-equal.
 
-## Proposed execution authority needed
+Preserved excluded observations: the first native probe wrote unowned `/tmp/i11.json` and `/tmp/i11.err` despite instructions and exposed an ephemeral runtime messaging token through environment enumeration. Its result is UNKNOWN and it supports no user-file-preservation PASS. The corrected owned-capture probe is used. The first sibling parser stopped on a system string; its protected-state baseline is unavailable, so it supports no full comparison. Early dirty tests omitted the fixture path and are ungraded. The first capability adapter over-restricted a legitimate auth flag; corrected isolated repeats are used. The original closure response counted connection keys as two children; the fixed native repeat reads zero. The D language response unnecessarily requested submission approval; final E explicitly recognizes both authorized stages.
 
-The operator approved the plan and native execution. The following concrete operations remain outside that approval's explicit boundaries:
+A broad early conformance interval observed a normal-profile known-marketplaces hash change of unknown cause. No rollback or causal attribution was attempted. That interval supports no preservation PASS. Later final runs capture immediate per-operation baselines and compare all protected data without ignoring the file. The final official run's first attempt stopped before model execution because its sentinel had not been prepared; the subsequent correctly prepared run is separately identified.
 
-1. Publish the approved plan and Task 1 evidence on `feat/issue-11-claude-acceptance` in the existing public repository, then replace only #11's `Plan: not yet created.` artifact line with its immutable published plan URL. Preserve the issue body/graph otherwise; reconcile the editorial revision and carry out the authorized readiness/active transitions after prerequisites hold. No merge, closure, tag or release is included.
-2. Permit disposable Git repositories only beneath canonical `U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/` for #11's exact guide/bootstrap and setup-failure tests. Clone Backplane using the guide's `gh repo clone` then detach at candidate `66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4`; clone the independent upstream read-only source into fixtures at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` for dirty, missing-skill and lookalike-origin tests. Permit fixture-only README changes, required-skill deletion and origin replacement; never modify the authoritative upstream installation. Check canonical containment, fixture root/origin/HEAD and registration before each mutation; retain before/after evidence and do not recursively clean up. This exception does not authorize any other worktree or repository.
-3. In an explicitly isolated Backplane-only disposable Claude profile, exercise absent-upstream setup through the upstream-documented official marketplace (`anthropics/claude-plugins-official`, plugin `superpowers@claude-plugins-official`), after rechecking current documentation/catalog. Record its actual stable source/version; do not replace the existing development installation or normal profile. Credentials must not be copied, and missing profile auth remains a prerequisite.
+Raw SDK streams remain ignored. [Bounded session observations](2026-10-26-issue-11-session-observations.json) retain exact final responses and actual calls, with tool-result hashes in place of upstream document bodies or environment contents. This avoids vendoring shipped upstream skills. Authentication fields and ephemeral assignments are redacted in publishable evidence. All fixtures and profiles are retained. Ruff's first broad scratch-directory check inadvertently included third-party copies; it made no edits. The corrected checks enumerate only owned helper files. A missing executable type guard and five formatting issues were corrected, then owned-file Ruff and ty passed.
 
-These requests are caused by AGENTS' exact-root Git rule and the approved plan's separate publication/upstream-acquisition gates. Until resolved, only unaffected read-only preparation is performed.
+## Next step
 
-## Rulings
-
-- Approved feature branch in exact standalone root replaces worktree creation; no reserved helper invoked
-- Read-only preparation precedes ready/active until approved-plan publication and fixture boundary are resolved
-- Evidence work uses direct validation/negative controls; any demonstrated product behavior correction requires TDD
+Finish evidence checks and one fresh whole-change review. Then present the concrete branch for publication/integration authorization under AGENTS. Final #11 acceptance requires actual integrated-target verification and a published satisfaction assessment before separately authorized closure. #1, #6 and other host acceptance remain independent.

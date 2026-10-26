@@ -1,0 +1,65 @@
+{
+  "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\setup-profile",
+  "source": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane",
+  "commands": [
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "marketplace",
+        "add",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\clean-install\\superpowers-backplane"
+      ],
+      "exit": 0,
+      "stdout": "Adding marketplace…✔ Successfully added marketplace: superpowers-backplane (declared in user settings)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "install",
+        "superpowers-backplane@superpowers-backplane",
+        "--scope",
+        "user"
+      ],
+      "exit": 0,
+      "stdout": "Installing plugin \"superpowers-backplane@superpowers-backplane\"...✔ Successfully installed plugin: superpowers-backplane@superpowers-backplane (scope: user)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "[\n  {\n    \"id\": \"superpowers-backplane@superpowers-backplane\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\setup-profile\\\\plugins\\\\cache\\\\superpowers-backplane\\\\superpowers-backplane\\\\0.1.0\",\n    \"readFromFolder\": \"U:\\\\repos\\\\agents\\\\superpowers-backplane\\\\.sp-bp\\\\work\\\\issue-11\\\\fixtures\\\\clean-install\\\\superpowers-backplane\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-26T22:09:10.468Z\",\n    \"lastUpdated\": \"2026-10-26T22:09:10.468Z\",\n    \"projectEnabled\": false\n  }\n]\n",
+      "stderr": ""
+    }
+  ]
+}

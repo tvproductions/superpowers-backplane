@@ -1,0 +1,2557 @@
+{
+  "format": "superpowers-backplane-issue11-acceptance/v1",
+  "candidate": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+  "issue": "https://github.com/tvproductions/superpowers-backplane/issues/11",
+  "semantic_revision": "2026-09-20T01:31:32Z",
+  "observed_revision": "2026-10-26T20:55:01Z",
+  "phase": "initial",
+  "rows": [
+    {
+      "id": "absent-setup",
+      "requirement": "absent setup",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "active",
+      "requirement": "active",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "blocked-resume",
+      "requirement": "blocked resume",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "clean-install",
+      "requirement": "clean install",
+      "owner": 17,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-package-installation.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-package-installation.md",
+          "sha256": "aa07ccf6367a6631bdac77f878ac4ff9c87ea562d6e06bc29e37d20850a08bdc"
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "requirement": "design",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "dirty-adoption",
+      "requirement": "dirty adoption",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "dirty-update-refusal",
+      "requirement": "dirty update refusal",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "duplicate-backplane",
+      "requirement": "duplicate backplane",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "failed-preflight",
+      "requirement": "failed preflight",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "fresh-discovery",
+      "requirement": "fresh discovery",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "gh-auth-failure",
+      "requirement": "gh auth failure",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "gh-closure-failure",
+      "requirement": "gh closure failure",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "gh-intake-failure",
+      "requirement": "gh intake failure",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "gh-label-failure",
+      "requirement": "gh label failure",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "language-neutral-verification",
+      "requirement": "language neutral verification",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "lifecycle-transitions",
+      "requirement": "lifecycle transitions",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "lookalike-source",
+      "requirement": "lookalike source",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "missing-upstream-skill",
+      "requirement": "missing upstream skill",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "native-issue-intake",
+      "requirement": "native issue intake",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "native-setup",
+      "requirement": "native setup",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "occupied-destination",
+      "requirement": "occupied destination",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "pinned-update",
+      "requirement": "pinned update",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "prerequisites",
+      "requirement": "prerequisites",
+      "owner": 11,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [],
+      "disposition": "retained",
+      "result": "PASS",
+      "reason": "Fresh native #17/#18/#19 states, candidate remote availability and inspected tracked evidence establish prerequisites only",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ],
+      "observed_claim": "All three prerequisite issues are CLOSED/COMPLETED; evidence paths and immutable source are reachable",
+      "verified_input_comparison": "Fresh complete native intake in input audit; historical rows remain separately UNKNOWN"
+    },
+    {
+      "id": "preservation",
+      "requirement": "preservation",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "ready",
+      "requirement": "ready",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "repeat-install",
+      "requirement": "repeat install",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "restoration",
+      "requirement": "restoration",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "requirement": "review",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "rework",
+      "requirement": "rework",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "rollback",
+      "requirement": "rollback",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "selection",
+      "requirement": "selection",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "sibling-setup",
+      "requirement": "sibling setup",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "skill-structure",
+      "requirement": "skill structure",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "requirement": "status",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "superpowers-installation",
+      "requirement": "superpowers installation",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "unauthenticated-host",
+      "requirement": "unauthenticated host",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    },
+    {
+      "id": "uninstall",
+      "requirement": "uninstall",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-satisfaction.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-satisfaction.md",
+          "sha256": "30930af59efbf2aea2d7795b5f886a958b65a66985d2338714693b27b445d5eb"
+        }
+      ]
+    },
+    {
+      "id": "verified-completion",
+      "requirement": "verified completion",
+      "owner": 19,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.302",
+        "backplane": "7d7ecac36f8dc74ce1a0895ab934468332f92f53",
+        "upstream": "Superpowers 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "referenced governance document; assess effect before retaining behavior evidence"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Exact source audit alone does not establish the required live outcome or applicability",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-10-25-issue-19-fixture-closeout.json",
+          "sha256": "57385871d9023a60c9ddc23475742c95cec13b5dd30c61184dddc7ac51af0595"
+        }
+      ]
+    },
+    {
+      "id": "versionless-package",
+      "requirement": "versionless package",
+      "owner": 18,
+      "mandatory": true,
+      "original_inputs": {
+        "host": "2.1.241",
+        "backplane": "d42cff1ce4fb03a66ca0daf54d27fd78e2cbfb6a",
+        "upstream": "Superpowers 6.4.1 / official-channel 6.3.0, case-specific",
+        "gh_capability": "Historical successful capabilities; full input comparison pending",
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "evidence": "tests/scenarios/2026-09-20-claude-code-setup.md"
+        }
+      },
+      "candidate_inputs": {
+        "host": "2.1.310 (Claude Code)",
+        "backplane": "66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4",
+        "upstream": {
+          "root": "U:/repos/agents/superpowers-backplane/.agents/superpowers",
+          "origin": "https://github.com/obra/superpowers.git",
+          "head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "status": ""
+        },
+        "gh_capability": {
+          "version": "gh version 2.103.2 (2026-10-23)\nhttps://github.com/cli/cli/releases/tag/v2.103.2",
+          "evidence": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "auth": "PASS",
+          "complete_intake": "PASS",
+          "label_help": "PASS",
+          "closure_help": "PASS"
+        },
+        "installed_skills": {
+          "required_names": [
+            "superpowers:using-superpowers",
+            "superpowers-backplane:managing-superpowers-backlog",
+            "superpowers-backplane:managing-superpowers-handoffs"
+          ],
+          "observed_source_files": 20,
+          "source_blob_comparison": "PASS",
+          "fresh_tool_loads": "NOT RUN"
+        }
+      },
+      "changed_inputs": [
+        "Claude host",
+        "upstream",
+        "Backplane skill and guide bytes"
+      ],
+      "disposition": "rerun",
+      "result": "UNKNOWN",
+      "reason": "Changed setup inputs require fresh observed outcome",
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-input-audit.json",
+          "sha256": "5479011693a9aae3d95785d15bbab8cd49bb047f94e366b6e2937ed82b5085d9"
+        },
+        {
+          "path": "tests/scenarios/2026-09-20-claude-code-setup.md",
+          "sha256": "8a40989acf582b4b0b37824abc4035a5747ebac8d9dead2f9b2b002b742f3147"
+        }
+      ]
+    }
+  ],
+  "rulings": [
+    "Approved feature branch in exact standalone root replaces worktree creation; no reserved helper invoked",
+    "Read-only preparation precedes ready/active until approved-plan publication and fixture boundary are resolved",
+    "Evidence work uses direct validation/negative controls; any demonstrated product behavior correction requires TDD"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "phase": "preparation",
+  "result": "PASS",
+  "matrix_rows": 39,
+  "prerequisite_pass": 1,
+  "unknown": 38,
+  "profile_configuration_unchanged": true,
+  "guide_python_blocks_compiled": 9,
+  "guide_powershell_blocks_parsed": 4,
+  "execution_scope": "read-only preparation; no live acceptance PASS claimed",
+  "commands": [
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "validate",
+        "--strict",
+        "U:\\repos\\agents\\superpowers-backplane"
+      ],
+      "exit": 0,
+      "stdout": "Validating marketplace manifest: U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\marketplace.json\n\nPlugin directory checks for U:\\repos\\agents\\superpowers-backplane. The plugin directory is the catalog that plugins are submitted to; this is a subset of what it runs.\n\n✘ Found 1 problem the plugin directory refuses a submission for:\n\n  ❯ LICENSE: License missing (LICENSE_MISSING). This plugin has no LICENSE file and plugin.json has no `license`. The directory requires one of them.\n    Fix: Add a LICENSE file to the plugin folder, or set `license` (an SPDX id) in plugin.json. A LICENSE at the repository root also counts for a plugin in a sub-folder.\n\n⚠ Found 1 plugin directory warning:\n\n  ❯ .claude-plugin/plugin.json icon: No icon (ICON_MISSING). No icon found in the plugin. The validator looked for `icon` in plugin.json and for a file at .claude-plugin/icon.png or .svg, assets/icon.png or .svg, or a similar path.\n    Fix: Add a square PNG to the plugin folder at .claude-plugin/icon.png, or set `icon` in plugin.json to the path of a square PNG or JPEG in the plugin: 512 to 2048 px on each side, under 2 MB. SVG and WebP are not accepted. That file may become the listing icon only once: the first time the plugin is saved or submitted in the developer portal. Adding or changing it later does not change the icon.\n\nAbout these checks:\n\n  ❯ This folder also holds a marketplace manifest. The plugin directory treats such a folder as a plugin, so these checks cover only the plugin in this folder. To check another plugin that the marketplace lists, run validate on that plugin's folder.\n\nThese plugin directory checks do not change the result below. To fail on problems the directory refuses a submission for, run this command with --profile directory.\n\nThe directory also runs a safety scan and a policy review that this command does not.\n\nℹ Advice (does not change the verdict):\n\n  ❯ U:\\repos\\agents\\superpowers-backplane\\README.md: This README has no line that installs \"superpowers-backplane\" from a marketplace. Add the install line, which works in one step on Claude Code 2.1.275 or later.\n      /plugin install superpowers-backplane --marketplace tvproductions/superpowers-backplane\n\n✔ Validation passed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\parse_guide.ps1"
+      ],
+      "exit": 0,
+      "stdout": "PASS: 4 legacy PowerShell blocks parsed; none executed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "python",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py",
+        "--phase",
+        "initial"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"phase\": \"initial\",\n  \"rows\": 39,\n  \"counts\": {\n    \"PASS\": 1,\n    \"FAIL\": 0,\n    \"UNKNOWN\": 38\n  },\n  \"compiled_python_blocks\": 9\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "python",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py",
+        "--phase",
+        "acceptance"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py\", line 113, in <module>\n    print(json.dumps(verify(args.phase), indent=2))\n                     ~~~~~~^^^^^^^^^^^^\n  File \"U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py\", line 90, in verify\n    assert row[\"result\"] == \"PASS\", (\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Acceptance blocked: absent-setup=UNKNOWN\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ruff",
+        "check",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\audit_inputs.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\create_matrix.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\finalize_preparation.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_transport.py"
+      ],
+      "exit": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ruff",
+        "format",
+        "--check",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\audit_inputs.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\create_matrix.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\finalize_preparation.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_transport.py"
+      ],
+      "exit": 0,
+      "stdout": "5 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ty",
+        "check",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\audit_inputs.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\create_matrix.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_evidence.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\finalize_preparation.py",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\verify_transport.py"
+      ],
+      "exit": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    }
+  ],
+  "source_hashes": {
+    "audit_inputs.py": "9511dcbcb25bca953d2878e2485d7247848c75e1d7d3562741c1d560495524ca",
+    "create_matrix.py": "0c9a9c2cde7959dd1300e5a4b361bee490b0fa8ff030031c9d2e54ba13981b88",
+    "verify_evidence.py": "82d36fe9baa391c5e12fc76629da26245580a83287b5b5594baaa8c54915a25f",
+    "parse_guide.ps1": "ea5cb26b109d3a1460a7cd9434eb2426dca35072f0a4ea0cab63dfc1c148f53b",
+    "finalize_preparation.py": "f0694a79e09a3c6f0dc7accfea5edda15f4f1161fbfd162ac0081c08cb6ddd69",
+    "verify_transport.py": "ce4ae603508e2823488833af6f89087c08c09984b57d6adc6e517894b2c02578"
+  },
+  "transport_verification": {
+    "command": "uv run --no-project python .sp-bp/work/issue-11/verify_transport.py",
+    "result": "PASS",
+    "stdout": "PASS: staged evidence retains all 39 rows and every content hash; working/staged bytes equal\n",
+    "red": "AssertionError: Staged evidence hash differs: tests/scenarios/2026-10-26-issue-11-input-audit.json",
+    "root_cause": "Default Windows newline translation made raw worktree receipt hashes differ from LF-normalized Git content",
+    "fix": "All new receipt and transcript writers explicitly use UTF-8 and newline LF"
+  }
+}

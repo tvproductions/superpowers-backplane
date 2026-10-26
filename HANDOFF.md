@@ -1,5 +1,31 @@
 # Handoff
 
+## Issue #11 selected — October 26, 2026
+
+The operator selected final Claude Code acceptance #11, reviewed its plan in
+the conversation, and approved native execution with one fresh final reviewer.
+Work is on `feat/issue-11-claude-acceptance` in the exact standalone Windows
+root; no new worktree was created. Read the approved
+[plan](docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md)
+and [current preparation report](tests/scenarios/2026-10-26-issue-11-claude-integrated-acceptance.md).
+Task 1 has a verified 39-row initial matrix: one prerequisite PASS and 38
+UNKNOWN, not final acceptance. Native #11 is OPEN/designing, last observed
+revision `2026-10-26T20:55:01Z`; prerequisites #17/#18/#19 remain completed.
+Python 3.14.9, strict package validation, four parsed PowerShell guide blocks,
+nine compiled Python blocks and the evidence negative controls pass.
+The existing issue-19 disposable profile remains authenticated and its
+20 installed canonical package/skill files match candidate `66c4c4f`; its
+configuration hashes are unchanged through read-only preparation.
+
+The next gate is a narrowly scoped #11 exception for disposable Git fixtures
+under ignored `.sp-bp/work/issue-11/fixtures/`, plus publication of the approved
+plan/evidence and its immutable issue link. Exact proposed operations are in
+the preparation report. These are not authorized by the #31-only exception.
+No fixture clone/checkout, live setup/model test, new upstream installation,
+publication, integration or #11 closure has occurred. Preserve the existing
+upstream and normal profiles. Older handoffs below retain historical context;
+their statements that no successor was selected are superseded here.
+
 ## Policy alignment — October 26, 2026
 
 The operator designated gz-skills-first-starter as the authoritative shared

@@ -1,0 +1,518 @@
+{
+  "observed_at": "2026-10-26T21:51:57.691488+00:00",
+  "result": "PASS",
+  "project_root": "U:\\repos\\agents\\superpowers-backplane",
+  "fixture": {
+    "root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+    "origin": null,
+    "starting_revision": null,
+    "purpose": "fixture boundary and preservation policy regression"
+  },
+  "fixture_baseline_commit": "3f06c9a5bf9d0a1c53b6c3fc64a6b441a017dfd6",
+  "fixture_final_branch": "fixture/dirty-provenance",
+  "assertions": {
+    "ignored_canonical_fixture_area": true,
+    "fixture_commit_and_branch": true,
+    "deliberately_dirty_fixture": true,
+    "fixture_remote_change": true,
+    "wrong_project_root_rejected": true,
+    "no_alternates": true,
+    "project_head_branch_refs_preserved": true,
+    "upstream_head_status_origin_preserved": true
+  },
+  "starter_source_revision": "773e0d5c5b851b31c7023bdb92acc98b114647c7",
+  "starter_inputs": {
+    "docs/baseline-policy.md": {
+      "sha256": "1c71740056ec365e0f49101f195adde9fe57da3e012cd8792a4ec86d8113a10f",
+      "lines": 253
+    },
+    "docs/versioning.md": {
+      "sha256": "d2a293779e80811c08f1311c8bf54961abe9f1638967ed6a71b3babe4a0d54eb",
+      "lines": 201
+    },
+    "CHANGELOG.md": {
+      "sha256": "cd4395b9366ae0c1b0704fcf63c47bb79d3bb1585a9dae28315c2adc5dfadf8e",
+      "lines": 441
+    }
+  },
+  "agents_sha256": "964c79c8a2e57e60a5e1d32546baed22247bbda55e9e96aa038b43c6c5d543b2",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "check-ignore",
+        ".sp-bp/work/issue-11/fixtures/policy-boundary-probe"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": ".sp-bp/work/issue-11/fixtures/policy-boundary-probe\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "1d4ba0f7c2df54b92c19c24d543dc97d17933712\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "feat/issue-11-claude-acceptance\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "show-ref"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n1d4ba0f7c2df54b92c19c24d543dc97d17933712 refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "status",
+        "--porcelain=v1"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "https://github.com/obra/superpowers.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "fixture/main",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "Initialized empty Git repository in U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2/.git/\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "config",
+        "user.name",
+        "Backplane verification fixture"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "config",
+        "user.email",
+        "fixture@example.invalid"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "remote",
+        "add",
+        "origin",
+        "https://example.invalid/fixture-authority.git"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "add",
+        "--",
+        "sentinel.txt"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "commit",
+        "-m",
+        "test: establish isolated verification fixture"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "[fixture/main (root-commit) 3f06c9a] test: establish isolated verification fixture\n 1 file changed, 1 insertion(+)\n create mode 100644 sentinel.txt\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "3f06c9a5bf9d0a1c53b6c3fc64a6b441a017dfd6\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "switch",
+        "-c",
+        "fixture/dirty-provenance"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Switched to a new branch 'fixture/dirty-provenance'\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-11/fixtures/policy-boundary-probe-2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "remote",
+        "set-url",
+        "origin",
+        "https://example.invalid/lookalike.git"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "status",
+        "--porcelain=v1"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": " M sentinel.txt\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\fixtures\\policy-boundary-probe-2",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "https://example.invalid/lookalike.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "1d4ba0f7c2df54b92c19c24d543dc97d17933712\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "feat/issue-11-claude-acceptance\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "show-ref"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/heads/design/sdd-ecosystem-v1\n1d4ba0f7c2df54b92c19c24d543dc97d17933712 refs/heads/feat/issue-11-claude-acceptance\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/heads/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/heads/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/heads/plan/issue-19-claude-lifecycle-draft\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/heads/recovery/issue-19-windows\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/heads/test/issue-19-doc-lifecycle\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/HEAD\nbc23c2f72a4eabc99ae9b60f9fad13eec1949ffc refs/remotes/origin/design/sdd-ecosystem-v1\n399bbf866e07c96536991cea5def621204e3dac2 refs/remotes/origin/docs/host-installation-ownership-graph\n88183f1918e2626cc73f86da8773b022f5bebcaf refs/remotes/origin/docs/host-leaf-rescope-final-verification\n9b3642658be0c1a802608dc61c862a28f99bb78f refs/remotes/origin/docs/issue-17-claude-plan\na74722a86ed425edaac2e5ebae366dbf87aaa0fd refs/remotes/origin/docs/right-size-installation-leaves\n39e3b071849a3867e6bac1769c3ab170fee91d5a refs/remotes/origin/feat/issue-17-claude-package\n9b760f02fe8774b1c75f23b0194b14c5425d0353 refs/remotes/origin/feat/issue-31-governance-bridges\n66c4c4fa937cf6ad8111a0dc2293f10c5a3a07b4 refs/remotes/origin/main\n476514652bbaf0223085f80f58b4e30813a8109b refs/remotes/origin/plan/issue-18-claude-setup\n96e80229fb8fe6718869054796341d8e49f9c8f2 refs/remotes/origin/plan/issue-19-claude-lifecycle-draft\n742392ce2aacdc4be06d82935e1acde75a934818 refs/remotes/origin/recovery/issue-19-native\nade4e438d156ea7bb68a5e3b009718fde3b39a43 refs/remotes/origin/recovery/issue-19-windows\nb59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e refs/remotes/origin/test/issue-17-integrated-claude-evidence\n22c5b8d917a09f275c23d99bd9c9645d6c1d2e35 refs/remotes/origin/test/issue-19-doc-lifecycle\n5e01704fcdda13eefeeac52d8892da26e7164ffd refs/remotes/origin/test/issue-19-update-fixture\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "status",
+        "--porcelain=v1"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "https://github.com/obra/superpowers.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/gz-skills-first-starter/commits/main",
+        "--jq",
+        ".sha"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "773e0d5c5b851b31c7023bdb92acc98b114647c7\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/gz-skills-first-starter/contents/docs/baseline-policy.md?ref=773e0d5c5b851b31c7023bdb92acc98b114647c7",
+        "-H",
+        "Accept: application/vnd.github.raw+json"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "[Public source body omitted; immutable source revision and reviewed hashes are recorded above]",
+      "stderr": "",
+      "stdout_sha256": "1c71740056ec365e0f49101f195adde9fe57da3e012cd8792a4ec86d8113a10f"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/gz-skills-first-starter/contents/docs/versioning.md?ref=773e0d5c5b851b31c7023bdb92acc98b114647c7",
+        "-H",
+        "Accept: application/vnd.github.raw+json"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "[Public source body omitted; immutable source revision and reviewed hashes are recorded above]",
+      "stderr": "",
+      "stdout_sha256": "d2a293779e80811c08f1311c8bf54961abe9f1638967ed6a71b3babe4a0d54eb"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/gz-skills-first-starter/contents/CHANGELOG.md?ref=773e0d5c5b851b31c7023bdb92acc98b114647c7",
+        "-H",
+        "Accept: application/vnd.github.raw+json"
+      ],
+      "cwd": "U:\\repos\\agents\\superpowers-backplane",
+      "exit": 0,
+      "stdout": "[Public source body omitted; immutable source revision and reviewed hashes are recorded above]",
+      "stderr": "",
+      "stdout_sha256": "cd4395b9366ae0c1b0704fcf63c47bb79d3bb1585a9dae28315c2adc5dfadf8e"
+    }
+  ],
+  "proof_source_sha256": "0ccd443cefa4f698bcd4b46a65f19a5f78343af7db1565092da2ee69fdbbdd5d"
+}

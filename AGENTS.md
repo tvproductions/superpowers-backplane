@@ -9,17 +9,59 @@
   `docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md`.
 - Read the current plan at
   `docs/superpowers/plans/2026-08-16-superpowers-backplane-bootstrap.md`.
-- Before any Git mutation, require `git rev-parse --show-toplevel` to resolve
-  exactly to this repository root. If it resolves elsewhere or fails, stop and
-  establish the standalone repository boundary first.
-- Issue #31 execution exception, expressly approved by the operator: the exact
-  workspace returned by the authorized native worktree creation may also be
-  mutated after its root, registration, shared Git directory, and recorded
-  branch/detached identity are verified against this repository. No other
-  worktree is authorized by this exception. Record the returned identity in
-  the execution ledger before mutations there.
+- Before any Git mutation, establish the intended repository identity. Project
+  source changes belong in this standalone repository or a verified registered
+  worktree sharing its Git directory. Disposable verification repositories are
+  governed by the verification-workspace rules below. Never accidentally mutate
+  an enclosing repository or an unrelated checkout.
 - Treat this project as a companion fitted to upstream Superpowers in every
   workflow decision. It is not a standalone generic backlog framework.
+
+## Verification Workspaces
+
+- An approved task or implementation plan authorizes the reversible local
+  operations needed to test it: disposable clones/repositories, fixture commits
+  and branches, deliberately dirty or incomplete fixture files, fixture remote
+  configuration, and isolated native-host installation/lifecycle checks. Do not
+  request a new exception for each fixture or require plan publication before
+  local execution. Publication and release retain their separate authorization.
+- Put disposable repositories, profiles, catalogs and native execution records
+  under ignored `.sp-bp/work/<work-item-or-plan>/`. Verify ignore coverage and
+  canonical containment before use, accounting for links and junctions. A fixture
+  must not resolve to the project root, an existing installation or unrelated
+  user data. Inspect occupied paths; do not adopt or overwrite unknown contents.
+- Before creating a fixture repository, verify its existing parent is inside the
+  recorded fixture area. After creation, record its canonical root, origin,
+  starting revision and purpose in the execution ledger. Before later Git
+  mutations, require `git rev-parse --show-toplevel` for that target to match its
+  recorded fixture root. For intentional provenance or dirty-state tests, record
+  the planned deviation and compare against it rather than the real upstream.
+- Prefer native worktree creation when the selected workflow calls for a
+  worktree. Verify its canonical root, registration, shared Git directory and
+  branch/detached identity against this repository before project mutations;
+  record the identity in the execution ledger. No issue-specific exception is
+  needed for a worktree authorized by the selected workflow.
+- Shipped upstream installations remain read-only. Tests may modify independently
+  created disposable copies whose source and identity were verified. Local clones
+  must not share writable object stores or use alternates pointing at protected
+  repositories; use `git clone --no-hardlinks` for local fixture clones. Do not
+  place Backplane artifacts in real upstream checkouts or installed plugin caches.
+  Native host operations may manage their own caches in isolated test profiles.
+- Use child-scoped configuration for disposable host profiles. Reuse verified
+  authorized authentication where the host supports it; never copy credentials
+  or silently fall back to a normal profile. Installing a missing dependency in
+  an isolated test profile is included when required by the approved test; changing
+  an existing development/normal-profile upstream installation is separate work.
+- Keep helpers, briefs, append-only progress and review packages in the plan's
+  `.sp-bp/work/` area using native file operations when upstream helpers would
+  write to `.superpowers/`. Preserve task order, TDD appropriate to the artifact,
+  verification, fresh review and branch finishing. Do not patch shipped helpers.
+- Treat fixture results as tests, not product changes or publication. Keep
+  fixture-only versions and deliberately broken data out of product source and
+  releases. Retain supporting evidence in tracked project records. Before any
+  cleanup, verify the exact owned paths and containment; never remove unknown
+  work, the standalone repository, an upstream installation or another task's
+  fixtures. Follow the platform's filesystem safety rules.
 
 ## Runtime and Tool Boundary
 
@@ -117,14 +159,7 @@
   Backplane-local working state and `docs/superpowers-backplane/` for documents.
 - Do not publish, create a remote repository, or release without explicit user
   authorization.
-- Issue #31 native inline bookkeeping exception, expressly approved by the
-  operator: use native file operations for briefs, append-only progress, and
-  the final review package under `.sp-bp/work/2026-10-11-github-governance-bridges-implementation/`.
-  Ignore `.sp-bp/work/` before use; keep the checkpoint pair trackable. Replace
-  only upstream helper invocation, preserving task order, TDD, rulings,
-  verification, fresh whole-change review, and branch finishing. Never invoke
-  a helper that writes to `.superpowers/` or patch upstream to redirect it.
-- Issue #31 cross-machine recovery: at a machine or harness handoff, commit a
+- Cross-machine recovery: at a machine or harness handoff, commit a
   tracked execution summary and the evidence supporting its verified claims.
   Keep disposable scratch under ignored `.sp-bp/work/`; do not rely on it as
   the sole resume source. Record exact plan/spec/probe and issue revisions,

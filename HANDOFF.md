@@ -17,14 +17,18 @@ The existing issue-19 disposable profile remains authenticated and its
 20 installed canonical package/skill files match candidate `66c4c4f`; its
 configuration hashes are unchanged through read-only preparation.
 
-The next gate is a narrowly scoped #11 exception for disposable Git fixtures
-under ignored `.sp-bp/work/issue-11/fixtures/`, plus publication of the approved
-plan/evidence and its immutable issue link. Exact proposed operations are in
-the preparation report. These are not authorized by the #31-only exception.
-No fixture clone/checkout, live setup/model test, new upstream installation,
-publication, integration or #11 closure has occurred. Preserve the existing
-upstream and normal profiles. Older handoffs below retain historical context;
-their statements that no successor was selected are superseded here.
+The operator then identified that the rule was blocking required verification.
+The [testing-boundary correction](tests/scenarios/2026-10-26-testing-boundary-policy.md)
+replaces issue-specific exceptions with guarded, owned verification workspaces.
+Its eight-assertion local fixture proof passes while project refs and upstream
+identity remain unchanged. Approved local tests and native bookkeeping need no
+new per-fixture approval or prior plan publication. The earlier preparation
+report's pending boundary requests are historical and superseded; the approved
+plan/spec bytes remain unchanged. Resume #11 at live setup verification after
+linking the approved local plan and checking readiness; do not invent a push
+prerequisite. No publication, integration or #11 closure has occurred. Preserve
+the existing upstream and normal profiles. Older handoffs below retain historical
+context; their statements that no successor was selected are superseded here.
 
 ## Policy alignment — October 26, 2026
 

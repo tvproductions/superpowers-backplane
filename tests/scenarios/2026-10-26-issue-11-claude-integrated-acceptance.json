@@ -2387,8 +2387,12 @@
       ],
       "disposition": "rerun",
       "result": "PASS",
-      "reason": "Before operator login, the separately scoped host returned exit 1/loggedIn false/authMethod none; no installation, credential copy or normal-profile fallback was performed.",
+      "reason": "Fresh never-authenticated owned profile on current Claude 2.1.311: auth-status exit1, loggedIn false, no-model synthetic authentication_failed refusal with zero API time/model usage/cost/tokens; protected state and empty plugin inventory preserved.",
       "evidence": [
+        {
+          "path": "tests/scenarios/2026-10-26-issue-11-unauthenticated-final.json",
+          "sha256": "ed5bf45fd8ee1a642209464d243af2c7e46e7c08548e69114575dab7bc1f2e92"
+        },
         {
           "path": "tests/scenarios/2026-10-26-issue-11-setup-auth.json",
           "sha256": "e1b4602bee853e72d0579741f6e0f722e651f2975bb23f9f6c7b1b377a46d6e5"
@@ -2398,7 +2402,7 @@
           "sha256": "8b3fdc5c324474463827b7f2cc6075919e7a0e8948e987e1850b75867aa4ef8d"
         }
       ],
-      "observed_claim": "Before operator login, the separately scoped host returned exit 1/loggedIn false/authMethod none; no installation, credential copy or normal-profile fallback was performed.",
+      "observed_claim": "Fresh never-authenticated owned profile on current Claude 2.1.311: auth-status exit1, loggedIn false, no-model synthetic authentication_failed refusal with zero API time/model usage/cost/tokens; protected state and empty plugin inventory preserved.",
       "verified_input_comparison": "Candidate verification receipt records exact unchanged component blobs, changed graph/authorization paragraphs, two final current conformance runs, final installed payload checks and explicit limits on original C/D/#34 observations. Candidate inputs describe the evaluated E environment; original identities remain in each linked actual-run receipt. Retained does not mean freshly replayed."
     },
     {
@@ -2621,7 +2625,7 @@
     "FAIL": 0,
     "UNKNOWN": 36
   },
-  "review": "PENDING independent whole-change review",
+  "review": "PASS: one fresh whole-change reviewer; single Important evidence gap fixed and confirmed by same reviewer; no remaining findings.",
   "integrated_acceptance": "PENDING authorized publication/integration and exact-target verification",
   "publication": "Not performed",
   "acceptance_scope": "39 local candidate checks; final #11 acceptance remains pending integration"

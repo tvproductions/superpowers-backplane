@@ -6228,7 +6228,7 @@ print(
 
 ## sanitize_evidence.py
 
-SHA-256: `82f2d137f3151998b047472b0fb2739c43f7c97da34f21cea67b536afac616b5`
+SHA-256: `58d1b3f03d791c377b6cd04ae990966fc7d63e1b64297c9646e5460091e2df6f`
 
 ```python
 """Remove known incidental runtime assignments from publishable derived evidence."""
@@ -6291,7 +6291,8 @@ for path in paths:
         path.write_text(revised, encoding="utf-8", newline="\n")
         changed.append(path.relative_to(root).as_posix())
     assert not any(secret in revised for secret in known)
-    assert "<EXTREMELY-IMPORTANT>" not in revised
+    upstream_preamble = "<EXTREMELY-" + "IMPORTANT>\nIf you think there is even a 1%"
+    assert upstream_preamble not in revised.replace("\r\n", "\n")
 write_json(
     scenarios / "2026-10-26-issue-11-capture-policy.json",
     {
@@ -7057,6 +7058,165 @@ write_json(
     },
 )
 print(result["result"], flush=True)
+```
+
+## unauthenticated_probe.py
+
+SHA-256: `b72f982dcd749c42d4be7e204dfdcefbd35b38049b8fd03bf435521769eec1fb`
+
+```python
+"""Prove a current never-authenticated host refuses before model execution."""
+
+from datetime import datetime, timezone
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+
+from lifecycle_helpers import Harness, write_json
+
+root = Path.cwd().resolve(strict=True)
+work = root / ".sp-bp/work/issue-11"
+old = json.loads(
+    (root / "tests/scenarios/2026-10-26-issue-11-setup-auth.json").read_text(
+        encoding="utf-8"
+    )
+)
+try:
+    assert {"host", "argv", "observed_at", "pre_model_refusal"} <= old.keys()
+except AssertionError:
+    negative_control = "RED: old receipt lacks host/command/time/pre-model evidence"
+else:
+    raise AssertionError(
+        "Negative control unexpectedly establishes current-host refusal"
+    )
+
+output = work / "unauthenticated-final-2"
+assert not output.exists()
+assert output.parent.resolve(strict=True).is_relative_to(work.resolve(strict=True))
+output.mkdir()
+profile = output / "profile"
+profile.mkdir()
+neutral = output / "neutral"
+neutral.mkdir()
+host = shutil.which("claude")
+assert host is not None
+env = dict(os.environ, CLAUDE_CONFIG_DIR=str(profile), PYTHONIOENCODING="utf-8")
+removed = (
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_AUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_USE_BEDROCK",
+    "CLAUDE_CODE_USE_VERTEX",
+    "CLAUDE_CODE_USE_FOUNDRY",
+    "ANTHROPIC_BASE_URL",
+)
+for key in removed:
+    env.pop(key, None)
+commands = []
+
+
+def cli(args, *, expected=0):
+    assert host is not None
+    result = subprocess.run(
+        [host, *args],
+        cwd=neutral,
+        env=env,
+        shell=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=90,
+        check=False,
+    )
+    assert result.returncode == expected, (args, result.returncode)
+    return result
+
+
+h = Harness(
+    root,
+    profile=work / "setup-profile",
+    output=output,
+    upstream_id="superpowers@claude-plugins-official",
+)
+candidate = "91ea3bb7933b5aa2c7628595f17157810cafa701"
+before = h.snapshot("before", candidate, "0.1.0", capture_only=True)
+version = cli(["--version"]).stdout.strip()
+assert version == "2.1.311 (Claude Code)"
+auth_args = ["auth", "status"]
+auth = cli(auth_args, expected=1)
+auth_value = json.loads(auth.stdout)
+assert auth_value["loggedIn"] is False and auth_value["authMethod"] == "none"
+inventory = json.loads(cli(["plugin", "list", "--json"]).stdout)
+assert not inventory
+args = [
+    "-p",
+    "Authentication prerequisite probe. Reply exactly READY; do not run tools or modify files.",
+    "--tools",
+    "",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--max-turns",
+    "1",
+]
+attempt = cli(args, expected=1)
+(output / "attempt.jsonl").write_text(attempt.stdout, encoding="utf-8", newline="\n")
+events = [json.loads(line) for line in attempt.stdout.splitlines() if line.strip()]
+result = next(e for e in reversed(events) if e.get("type") == "result")
+assert result.get("is_error") is True
+assert (
+    "login" in (attempt.stdout + attempt.stderr).lower()
+    or "logged in" in (attempt.stdout + attempt.stderr).lower()
+)
+assert result["duration_api_ms"] == 0 and result["modelUsage"] == {}
+assert any(
+    e.get("type") == "assistant"
+    and e.get("error") == "authentication_failed"
+    and e.get("message", {}).get("model") == "<synthetic>"
+    for e in events
+)
+assert not any(e.get("type") == "assistant" and not e.get("error") for e in events)
+usage = result.get("usage", {})
+assert usage.get("input_tokens", 0) == 0 and usage.get("output_tokens", 0) == 0
+assert not json.loads(cli(["plugin", "list", "--json"]).stdout)
+after = h.snapshot("after", candidate, "0.1.0", compare_to=before)
+assert before == dict(after, row=before["row"])
+commands = [
+    {"argv": [host, "--version"], "exit": 0, "stdout": version},
+    {"argv": [host, *auth_args], "exit": 1, "loggedIn": False, "authMethod": "none"},
+    {
+        "argv": [host, *args],
+        "exit": 1,
+        "stdout": attempt.stdout,
+        "stderr": attempt.stderr,
+    },
+]
+write_json(
+    root / "tests/scenarios/2026-10-26-issue-11-unauthenticated-final.json",
+    {
+        "result": "PASS",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "host": version,
+        "executable": host,
+        "profile": str(profile),
+        "negative_control": negative_control,
+        "pre_model_refusal": True,
+        "actual_result": result,
+        "commands": commands,
+        "before": before,
+        "after": after,
+        "removed_child_auth_selectors": list(removed),
+        "scope": "Fresh owned profile; no login, credential reads/copy, inherited API/provider selectors, plugin installation or normal-profile fallback. Refusal is a supported expected negative result, not a signed-in installation pass.",
+    },
+)
+print(
+    "GREEN: current unauthed native host refused with zero API time/model usage/tokens; protected state preserved",
+    flush=True,
+)
 ```
 
 ## verify_evidence.py

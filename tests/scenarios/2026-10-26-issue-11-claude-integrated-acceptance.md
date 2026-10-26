@@ -1,6 +1,6 @@
 # Issue #11 Claude candidate verification
 
-Product candidate: `91ea3bb7933b5aa2c7628595f17157810cafa701` on `feat/issue-11-claude-acceptance`. Local verification: **39/39 PASS**. Independent review and final integrated acceptance remain pending. No push, PR, merge, closure or release has occurred.
+Product candidate: `91ea3bb7933b5aa2c7628595f17157810cafa701` on `feat/issue-11-claude-acceptance`. Local verification: **39/39 PASS**. Independent review passes with no remaining findings; final integrated acceptance remains pending. No push, PR, merge, closure or release has occurred.
 
 The approved implementation plan is unchanged. This report supersedes the dated preparation state preserved in [preparation history](2026-10-26-issue-11-preparation-history.md). The generic testing-boundary correction removed the unnecessary per-fixture and prior-publication gates; local verification was already authorized.
 
@@ -49,7 +49,7 @@ Each mode passed all 23 behavioral expectations plus the structural check. Full 
 | skill-structure | PASS | #19 | Strict package validation in both profiles, exact metadata and existing relative reference links passed. |
 | status | PASS | #19 | Fresh E installed status read complete actual #11 graph with zero protected-state change. |
 | superpowers-installation | PASS | #19 | Fresh E installed exact-prompt responses manually scored against all source expectations under development 7.0.1 and official 7.0.0; immediate preservation comparisons passed. |
-| unauthenticated-host | PASS | #18 | Before operator login, the separately scoped host returned exit 1/loggedIn false/authMethod none; no installation, credential copy or normal-profile fallback was performed. |
+| unauthenticated-host | PASS | #18 | Fresh Claude 2.1.311 never-authenticated profile returned auth-status exit1 and synthetic authentication_failed with zero API duration/model usage/tokens; protected state and empty plugin inventory preserved. |
 | uninstall | PASS | #19 | Nine exact guide blocks replayed C->test-only F->C with source/version byte proofs, unavailable-source refusal and fresh discovery. E payload installation and shared-catalog uninstall/restoration passed; unchanged guide/manifests retain mechanism applicability. |
 | verified-completion | PASS | #19 | Retained actual authorized #34 native transition/integrated-completion observations with original identities; current E fresh lifecycle/intake/closure/authorization responses verify affected behavior. No new #34 mutation or current #11 completion is claimed. |
 | versionless-package | PASS | #18 | Actual native versionless package produced unknown compatibility and setup stopped without inventing provenance. |
@@ -68,4 +68,8 @@ Raw SDK streams remain ignored. [Bounded session observations](2026-10-26-issue-
 
 ## Next step
 
-Finish evidence checks and one fresh whole-change review. Then present the concrete branch for publication/integration authorization under AGENTS. Final #11 acceptance requires actual integrated-target verification and a published satisfaction assessment before separately authorized closure. #1, #6 and other host acceptance remain independent.
+Evidence checks and the fresh whole-change review pass. Present the concrete branch for publication/integration authorization under AGENTS. Final #11 acceptance requires actual integrated-target verification and a published satisfaction assessment before separately authorized closure. #1, #6 and other host acceptance remain independent.
+
+## Independent review
+
+The fresh whole-change reviewer reported no Critical or Minor findings and one Important evidence gap in the signed-out-host row. The old receipt failed the evidence-completeness control. A fresh current-host negative test closes the gap with actual no-model refusal and protected-state comparison. See [review and fix disposition](2026-10-26-issue-11-final-review.md) and [current signed-out receipt](2026-10-26-issue-11-unauthenticated-final.json). Product source is unchanged. The same reviewer confirmed the fix and reports no remaining findings; final 42-helper Ruff/format/ty and 39-row evidence checks pass.

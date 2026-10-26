@@ -39,6 +39,7 @@
     ".sp-bp\\work\\issue-11\\sibling_setup_probe2.py",
     ".sp-bp\\work\\issue-11\\start_execution.py",
     ".sp-bp\\work\\issue-11\\status_selection_probe.py",
+    ".sp-bp\\work\\issue-11\\unauthenticated_probe.py",
     ".sp-bp\\work\\issue-11\\verify_evidence.py",
     ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
     ".sp-bp\\work\\issue-11\\verify_transport.py"
@@ -89,6 +90,7 @@
         ".sp-bp\\work\\issue-11\\sibling_setup_probe2.py",
         ".sp-bp\\work\\issue-11\\start_execution.py",
         ".sp-bp\\work\\issue-11\\status_selection_probe.py",
+        ".sp-bp\\work\\issue-11\\unauthenticated_probe.py",
         ".sp-bp\\work\\issue-11\\verify_evidence.py",
         ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
         ".sp-bp\\work\\issue-11\\verify_transport.py"
@@ -142,12 +144,13 @@
         ".sp-bp\\work\\issue-11\\sibling_setup_probe2.py",
         ".sp-bp\\work\\issue-11\\start_execution.py",
         ".sp-bp\\work\\issue-11\\status_selection_probe.py",
+        ".sp-bp\\work\\issue-11\\unauthenticated_probe.py",
         ".sp-bp\\work\\issue-11\\verify_evidence.py",
         ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
         ".sp-bp\\work\\issue-11\\verify_transport.py"
       ],
       "exit": 0,
-      "stdout": "41 files already formatted\n"
+      "stdout": "42 files already formatted\n"
     },
     {
       "argv": [
@@ -194,6 +197,7 @@
         ".sp-bp\\work\\issue-11\\sibling_setup_probe2.py",
         ".sp-bp\\work\\issue-11\\start_execution.py",
         ".sp-bp\\work\\issue-11\\status_selection_probe.py",
+        ".sp-bp\\work\\issue-11\\unauthenticated_probe.py",
         ".sp-bp\\work\\issue-11\\verify_evidence.py",
         ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
         ".sp-bp\\work\\issue-11\\verify_transport.py"

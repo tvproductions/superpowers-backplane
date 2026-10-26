@@ -54,6 +54,13 @@ Do not duplicate parentage or blocking edges in this section.
 - Linked PR fields and closure keywords connect delivery evidence.
 - A parent is a continuity node; execute a bounded leaf issue through one plan.
 
+Interpret the observed JSON shape before counting or traversing relationships.
+For an array, use its issue entries. For a connection object, use its `nodes`
+entries and compare their count with `totalCount` when present; object-key count
+does not count issues or edges. Retrieve missing pages before claiming a complete
+graph. If the shape or completeness cannot be established, leave the relationship
+unverified rather than inferring leaf status, resolved blockers or completion.
+
 Never parse Markdown task lists as a substitute for native relationships.
 
 ## Lifecycle labels

@@ -1,0 +1,39 @@
+{
+  "result": "PASS",
+  "scope": "Full current reference application; not an installed-package acceptance run",
+  "baseline": "tests\\scenarios\\2026-10-26-issue-11-gh-closure-failure.json",
+  "red_assertion": "Traceback (most recent call last):\n  File \"U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\check_relationship_counts.py\", line 17, in <module>\n    assert all(value == len(nodes) for value in claims), f'Native sub-issue count must be {len(nodes)}, not object-key count {claims}'\n           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Native sub-issue count must be 0, not object-key count [2]\n",
+  "baseline_reported_sub_issue_count": 2,
+  "actual_sub_issue_count": 0,
+  "contract_sha256": "e9468e7cf34f222df3b7c5737706a8113b5ed465e4aed408bdb0a52f9d18b562",
+  "prompt": "Read the complete current native issue reference at U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md. This is a read-only reference application check, not setup or issue execution. Summarize this actual gh issue snapshot for a maintainer who needs an immediate leaf/dependency decision. Do not inspect other project files or run commands. Return only one JSON object containing sub_issue_count, blocker_count, blocking_count, is_leaf, unresolved_blocker_count. Use the actual relationship data, with no invented issues.\n{\"number\": 11, \"state\": \"OPEN\", \"labels\": [{\"id\": \"LA_kwDOT6l9aM8AAAACxwzkug\", \"name\": \"backplane:active\", \"description\": \"Superpowers execution is in progress\", \"color\": \"1D76DB\"}], \"subIssues\": {\"nodes\": [], \"totalCount\": 0}, \"blockedBy\": {\"nodes\": [{\"id\": \"I_kwDOT6l9aM8AAAABSLdzGQ\", \"number\": 19, \"state\": \"CLOSED\", \"title\": \"Verify Claude Code lifecycle and conformance\", \"url\": \"https://github.com/tvproductions/superpowers-backplane/issues/19\"}, {\"id\": \"I_kwDOT6l9aM8AAAABN5EOlg\", \"number\": 2, \"state\": \"CLOSED\", \"title\": \"Define the v0.1 adoption, installation, and mutation contract\", \"url\": \"https://github.com/tvproductions/superpowers-backplane/issues/2\"}], \"totalCount\": 2}, \"blocking\": {\"nodes\": [{\"id\": \"I_kwDOT6l9aM8AAAABN5EPyw\", \"number\": 6, \"state\": \"OPEN\", \"title\": \"Run an external adoption pilot and fresh conformance suite\", \"url\": \"https://github.com/tvproductions/superpowers-backplane/issues/6\"}], \"totalCount\": 1}}",
+  "observed": {
+    "sub_issue_count": 0,
+    "blocker_count": 2,
+    "blocking_count": 1,
+    "is_leaf": true,
+    "unresolved_blocker_count": 0
+  },
+  "expected": {
+    "sub_issue_count": 0,
+    "blocker_count": 2,
+    "blocking_count": 1,
+    "is_leaf": true,
+    "unresolved_blocker_count": 0
+  },
+  "session_id": "d7bea11d-5e37-45de-8be2-586c9f5c0826",
+  "reads": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01B95BK8dUEQA4LFtrMkdNkH",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    }
+  ],
+  "response": "{\"sub_issue_count\": 0, \"blocker_count\": 2, \"blocking_count\": 1, \"is_leaf\": true, \"unresolved_blocker_count\": 0}"
+}

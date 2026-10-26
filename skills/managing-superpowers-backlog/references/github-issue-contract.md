@@ -145,6 +145,14 @@ invalidate the plan. Classify the change:
 
 ## Mutation safety
 
+For each intended action, identify its authority in the operator's request or
+existing verified approval, and its entry conditions in current evidence.
+An explicit request to start and submit after implementation authorizes both
+stages once their gates hold; explaining closure alone does not authorize closing.
+Carry that verified scope through the workflow rather than asking again solely
+because a stage occurs later. Ask for authority for actions outside that scope,
+preserving the project's publication, integration and release rules.
+
 Do not mutate for a read-only request. For an authorized transition:
 
 1. Fetch current state and relationships.

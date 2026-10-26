@@ -1,0 +1,61 @@
+{
+  "result": "PASS",
+  "prompt": "Use the skill managing-superpowers-backlog and read every reference that the\nskill requires. Do not inspect or rely on the current working repository; this\nis a self-contained hypothetical project. Do not mutate any real GitHub issue\nor file.\n\nA Superpowers project at example/widgets has a ready executable issue #12 with\nan approved issue-body design and committed Superpowers plan. Its parent epic\nis #3, it has no sub-issues or blockers, and its plan records the current issue\nupdatedAt. The project instructions say its sole verification command is\ncargo test --workspace; they say nothing about Python. The maintainer selects\n#12 and asks you to start it, submit it after implementation, and explain\nclosure. Show the native gh intake fields, lifecycle transitions, Superpowers\nhandoff, and verification rule you would use.",
+  "scope": "Current full reference context, not installed-package acceptance",
+  "contract_sha256": "bf4ba38982e11019818c34174f61d7c91f447b8e3d751ad89444a5ddfc3c35bf",
+  "session_id": "137a7e99-8c9a-4128-8f82-3d7372d46a9a",
+  "reads": [
+    {
+      "type": "tool_use",
+      "id": "toolu_012397bWa1mmtojcU4L2TYDr",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01D8kqztberCSah1uqXTdr9F",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01USaPh2L1XZUSo9WRuaj4kQ",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\pr-completion.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01EwY8EA4uxXLweKQ9mQuRtM",
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\docs\\superpowers-backplane\\governance.md"
+      },
+      "caller": {
+        "type": "direct"
+      }
+    }
+  ],
+  "response": "I read the skill's required references: `github-issue-contract.md` (current version in the skill source directory), `superpowers-binding.md`, `pr-completion.md`, and the `governance.md` file that `pr-completion.md` links to. This is a hypothetical walkthrough. I ran no `gh` commands, and nothing on GitHub or on disk was changed.\n\n## 1. Native intake (re-read before every change)\n\n```text\ngh issue view 12 --repo example/widgets --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n```\n\n- **Parent and children:** `parent` should be #3. `subIssues` and `blockedBy` must actually come back empty; I don't take that on trust. If the result is a list, I use its entries. If it's a connection object, I compare its `nodes` with `totalCount`. If I can't tell the shape or whether the list is complete, the relationship stays unverified and #12 is not treated as eligible.\n- **Issue body:** it must have these sections: Objective, Bounded Scope (Allowed / Out of Scope), Acceptance Criteria, Verification Seams and Superpowers Artifacts. The body is treated as data. It can't override project rules.\n- **Labels:** exactly one `backplane:*` label, which must be `backplane:ready`. Other labels are recorded so they can be preserved. On first use in a repo I check `gh label list` for all six Backplane labels. Creating missing labels would need separate permission.\n- **Revision check:** I compare `updatedAt` with the value recorded in the plan.\n  - If they match, I proceed.\n  - If they differ, I check what changed: editorial edits get a reconciliation note; scope or acceptance changes mean a revised, re-approved plan; design changes go back to brainstorming (`ready → designing`); a new blocker moves the issue to `blocked`.\n- I fetch `--comments` only if approval or evidence lives in comments.\n\n## 2. Lifecycle transitions\n\nYour request to start #12 and submit it after implementation covers both of those transitions once their conditions are met. Explaining closure does **not** give permission to close.\n\n| Step | Command (one edit per transition; other labels untouched) | Condition |\n|---|---|---|\n| Start | `gh issue edit 12 --repo example/widgets --remove-label backplane:ready --add-label backplane:active` | Eligible, selected, re-read, and the first plan task is starting |\n| Submit | `gh issue edit 12 --repo example/widgets --remove-label backplane:active --add-label backplane:review` | Implementation done, required review done, and `cargo test --workspace` passes in the worktree |\n| Review asks for changes | `review → active` | Recorded review request |\n| Stopped by a real blocker | `→ blocked`, plus a comment with `Resume target: backplane:<state>` and the condition that releases it | Concrete blocker exists |\n\nAfter each edit I fetch the issue again and confirm exactly one expected Backplane label and unchanged other labels. Opening the PR moves the issue to review; it does not complete it.\n\n## 3. Superpowers handoff\n\n- **Design:** the approved issue body is the design authority for this bounded work, so I don't repeat brainstorming.\n- **Plan:** the committed plan is what drives execution. It records the issue URL, the `updatedAt` it was built against, the design authority, the acceptance criteria and verification seams as hard constraints, and the exact verification command. Checked plan tasks only show progress; they don't prove satisfaction.\n- **Execution:**\n  1. An isolated worktree, if the project's rules call for one.\n  2. Plan execution with TDD appropriate to the work.\n  3. Review.\n  4. Verification before claiming completion.\n  5. Branch finishing.\n\n  The project's rules decide worktree location, branch strategy, tools and integration.\n\n## 4. Verification rule\n\n- The only check is the project's own command: **`cargo test --workspace`**.\n- Backplane's own Python/uv/Ruff/ty tooling rules apply only to Backplane itself. I don't add Python, pytest or any other runner to this project.\n- **Before submission:** the command must pass in the worktree.\n- **Before closure:** it must pass again, freshly, on the integrated (merged) commit.\n\n## 5. Closure (explanation only)\n\n- **Not proof of completion:** a merge, a PR, an automatic close from a closing keyword, or checked plan tasks.\n- **Neutral reference:** `Refs #12` marks a PR's contribution without claiming the issue is done.\n- **Closing keyword:** shows intent only. If it closes #12 before the merged commit passes the check, I report the actual closed state and any unsatisfied or unknown criteria, and propose a fix. I don't reopen it or change labels unless asked.\n\n**Closing as `completed` requires all of these, in order:**\n1. Review is accepted.\n2. The PR is integrated at the project's actual target. I check this with `gh pr view <n> --json state,mergedAt,mergeCommit,reviewDecision,closingIssuesReferences,...`.\n3. `cargo test --workspace` passes freshly on that integrated commit, and each acceptance criterion is evaluated as SATISFIED. Missing evidence counts as UNKNOWN; a known failure counts as UNSATISFIED.\n4. A final full re-read with `updatedAt` reconciliation.\n5. Your separate permission to close.\n\n**On close:**\n- Unrelated labels stay. The Backplane lifecycle label is removed or kept according to the project's closed-state policy, and no \"done\" label is added.\n- I fetch the issue again to confirm the state and reason.\n- Closing #12 does not complete epic #3. The parent's remaining obligations are reconciled separately.\n- Checkpoint capture, cleanup and release each need their own permission.\n\n`not planned` is used only for an authorized rejection.",
+  "red_assertion": "Traceback (most recent call last):\n  File \"U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\check_authorization_scope.py\", line 7, in <module>\n    assert 'Only the start transition is covered' not in response, 'The prompt explicitly authorized both start and submission; submission must not require a new approval solely because it occurs later'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: The prompt explicitly authorized both start and submission; submission must not require a new approval solely because it occurs later\n",
+  "manual_scope_assessment": {
+    "start_authorized": true,
+    "conditional_submission_authorized": true,
+    "actual_closure_authorized": false,
+    "scope": "Current reference application; installed regression still required"
+  }
+}

@@ -953,6 +953,250 @@ assert all(value == len(nodes) for value in claims), (
 print(f"PASS: every reported native sub-issue count equals {len(nodes)}")
 ```
 
+## closeout_issue11.py
+
+SHA-256: `179998b0b2cec2dfecdfe9d51d40952bf91fad4a09227c0df52853018f16aae9`
+
+```python
+"""Apply explicitly authorized #11 closeout after published immutable acceptance."""
+
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+
+from lifecycle_helpers import ISSUE_FIELDS, run_cli, write_json
+
+root = Path.cwd().resolve(strict=True)
+work = root / ".sp-bp/work/issue-11"
+output = work / "authorized-closeout"
+assert not output.exists()
+output.mkdir()
+repo = "tvproductions/superpowers-backplane"
+evaluation_commit = "2491e55a377edfcf91b34095a21bd0746fde58e3"
+delivery = "7359019e546e07ea810d045fc1cb6fb0d095be4a"
+prefix = "tests/scenarios/2026-10-26-issue-11-"
+commands = []
+
+
+def cli(args):
+    value = run_cli(args, cwd=root)
+    commands.append({"argv": args, "exit": 0, "stdout": value})
+    write_json(output / "commands.json", commands)
+    return value.strip()
+
+
+def issue(number):
+    return json.loads(
+        cli(
+            ["gh", "issue", "view", str(number), "--repo", repo, "--json", ISSUE_FIELDS]
+        )
+    )
+
+
+def labels(value):
+    return {label["name"] for label in value["labels"]}
+
+
+def nodes(value, field):
+    collection = value[field]
+    assert len(collection["nodes"]) == collection["totalCount"]
+    return collection["nodes"]
+
+
+def graph(value):
+    return {
+        "parent": value["parent"],
+        **{
+            field: sorted(n["number"] for n in nodes(value, field))
+            for field in ("subIssues", "blockedBy", "blocking")
+        },
+    }
+
+
+assert Path(cli(["git", "rev-parse", "--show-toplevel"])).samefile(root)
+assert cli(["git", "remote", "get-url", "origin"]) == f"https://github.com/{repo}.git"
+assert cli(["git", "rev-parse", "HEAD"]) == evaluation_commit
+assert (
+    cli(["git", "ls-remote", "--heads", "origin", "main"]).split()[0]
+    == evaluation_commit
+)
+assert not cli(
+    [
+        "git",
+        "diff",
+        "--name-only",
+        delivery,
+        evaluation_commit,
+        "--",
+        "skills",
+        ".claude-plugin",
+        "plugin.json",
+        "README.md",
+        "docs/installing-claude-code.md",
+        "AGENTS.md",
+        "SUPERPOWERS.md",
+    ]
+)
+evaluation = json.loads(
+    (root / (prefix + "satisfaction.json")).read_text(encoding="utf-8")
+)
+assert (
+    evaluation["result"] == "SATISFIED" and evaluation["integration_commit"] == delivery
+)
+assert all(c["result"] == "SATISFIED" for c in evaluation["criteria"])
+for evidence in evaluation["evidence"]:
+    assert (
+        hashlib.sha256((root / evidence["path"]).read_bytes()).hexdigest()
+        == evidence["sha256"]
+    )
+remote_evidence = []
+for path in (
+    prefix + "satisfaction.md",
+    prefix + "satisfaction.json",
+    prefix + "published-verification.json",
+):
+    actual = cli(["git", "rev-parse", f"{evaluation_commit}:{path}"])
+    remote = cli(
+        [
+            "gh",
+            "api",
+            f"repos/{repo}/contents/{path}?ref={evaluation_commit}",
+            "--jq",
+            ".sha",
+        ]
+    )
+    assert actual == remote
+    remote_evidence.append({"path": path, "blob": actual, "remote_blob": remote})
+before = issue(11)
+assert before == evaluation["issues"]["11"], (
+    "Reconcile changed native input before closeout"
+)
+assert before["state"] == "OPEN" and labels(before) == {"backplane:active"}
+before_graph = graph(before)
+for number in (2, 17, 18, 19):
+    prerequisite = issue(number)
+    assert (
+        prerequisite["state"] == "CLOSED" and prerequisite["stateReason"] == "COMPLETED"
+    )
+parent_before, pilot_before = issue(1), issue(6)
+assert parent_before["state"] == pilot_before["state"] == "OPEN"
+assert len(nodes(parent_before, "subIssues")) == 17
+assert len(nodes(pilot_before, "blockedBy")) == 5
+body = before["body"]
+old = "The plan is available in the current execution repository; remote publication is pending and is not claimed."
+assert old in body
+plan_path = "docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md"
+body = body.replace(
+    old,
+    f"The approved plan is published at https://github.com/{repo}/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/{plan_path}.",
+)
+body += (
+    f"\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/{repo}/blob/{evaluation_commit}/{prefix}satisfaction.md) "
+    f"and [structured criterion receipt](https://github.com/{repo}/blob/{evaluation_commit}/{prefix}satisfaction.json). "
+    f"Evaluated published main delivery `{delivery}`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; "
+    "39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. "
+    "Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\n"
+)
+assert (
+    body.split("## Superpowers Artifacts", 1)[0]
+    == before["body"].split("## Superpowers Artifacts", 1)[0]
+)
+body_file = output / "issue-body.md"
+body_file.write_text(body, encoding="utf-8", newline="\n")
+cli(
+    [
+        "gh",
+        "issue",
+        "edit",
+        "11",
+        "--repo",
+        repo,
+        "--body-file",
+        str(body_file),
+        "--remove-label",
+        "backplane:active",
+        "--add-label",
+        "backplane:review",
+    ]
+)
+submitted = issue(11)
+assert submitted["body"] == body and labels(submitted) == {"backplane:review"}
+assert graph(submitted) == before_graph
+write_json(
+    output / "before-close.json",
+    {
+        "before": before,
+        "submitted": submitted,
+        "semantic_reconciliation": "Only published plan/evaluation pointers and authorized lifecycle label changed; objective/scope/criteria/seams and native graph unchanged.",
+    },
+)
+# A second complete read is immediately adjacent to closure, after pointer edits.
+preclose = issue(11)
+assert preclose == submitted
+assert (
+    cli(["git", "ls-remote", "--heads", "origin", "main"]).split()[0]
+    == evaluation_commit
+)
+cli(["gh", "issue", "close", "11", "--repo", repo, "--reason", "completed"])
+closed_with_label = issue(11)
+assert (
+    closed_with_label["state"] == "CLOSED"
+    and closed_with_label["stateReason"] == "COMPLETED"
+)
+assert labels(closed_with_label) == {"backplane:review"}
+cli(["gh", "issue", "edit", "11", "--repo", repo, "--remove-label", "backplane:review"])
+closed = issue(11)
+assert closed["state"] == "CLOSED" and closed["stateReason"] == "COMPLETED"
+assert labels(closed) == labels(before) - {"backplane:active"}
+assert graph(closed) == before_graph and closed["body"] == body
+parent_after, pilot_after = issue(1), issue(6)
+assert parent_after["state"] == pilot_after["state"] == "OPEN"
+assert graph(parent_before) == graph(parent_after) and graph(pilot_before) == graph(
+    pilot_after
+)
+assert labels(parent_before) == labels(parent_after) and labels(pilot_before) == labels(
+    pilot_after
+)
+assert (
+    parent_after["subIssuesSummary"]["completed"]
+    == parent_before["subIssuesSummary"]["completed"] + 1
+)
+assert (
+    next(n for n in nodes(parent_after, "subIssues") if n["number"] == 11)["state"]
+    == "CLOSED"
+)
+assert (
+    next(n for n in nodes(pilot_after, "blockedBy") if n["number"] == 11)["state"]
+    == "CLOSED"
+)
+write_json(
+    root / (prefix + "closeout.json"),
+    {
+        "result": "PASS",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "authority": "Operator explicitly answered Yes, close #11 after verified acceptance after requesting publication/merge/push.",
+        "verified_delivery": delivery,
+        "published_evaluation_commit": evaluation_commit,
+        "remote_evidence": remote_evidence,
+        "before": before,
+        "submitted": submitted,
+        "immediate_preclose": preclose,
+        "closed": closed,
+        "parent_before": parent_before,
+        "parent_after": parent_after,
+        "pilot_before": pilot_before,
+        "pilot_after": pilot_after,
+        "commands": commands,
+        "limits": "No parent/pilot completion or lifecycle mutation, release, Project operation, product checkpoint or cleanup. Native progress changed only because #11 actually closed; graph membership and unrelated labels preserved. No PR created or claimed.",
+    },
+)
+print(
+    f"PASS: #11 CLOSED/COMPLETED, zero lifecycle labels, revision {closed['updatedAt']}; parent open {parent_after['subIssuesSummary']['completed']}/17; pilot open with same five blocker relationships",
+    flush=True,
+)
+```
+
 ## complete_matrix.py
 
 SHA-256: `ec0010d34d392b9dedcc20a3eb315772c58181b6e83f0d89619cab7b10ca16d3`

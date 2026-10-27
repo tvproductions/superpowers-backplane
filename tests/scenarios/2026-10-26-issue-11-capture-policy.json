@@ -1,9 +1,7 @@
 {
   "result": "PASS",
-  "files_screened": 60,
-  "derived_files_redacted": [
-    "tests/scenarios/2026-10-26-issue-11-published-verification.json"
-  ],
+  "files_screened": 61,
+  "derived_files_redacted": [],
   "known_incidental_runtime_values": 1,
   "policy": "Never inspect or copy credential stores. Known incidental values were identified only in previously captured ignored test streams. Replace them in derived publishable artifacts; raw streams stay ignored. Account/organization fields previously redacted; unrelated synced-owner path component consistently aliased. Upstream injected skill bodies omitted, retaining locator/hash observations. Historical unrelated evidence unchanged."
 }

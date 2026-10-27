@@ -1,0 +1,1157 @@
+{
+  "result": "PASS",
+  "observed_at": "2026-10-27T00:47:35.220521+00:00",
+  "authority": "Operator explicitly answered Yes, close #11 after verified acceptance after requesting publication/merge/push.",
+  "verified_delivery": "7359019e546e07ea810d045fc1cb6fb0d095be4a",
+  "published_evaluation_commit": "2491e55a377edfcf91b34095a21bd0746fde58e3",
+  "remote_evidence": [
+    {
+      "path": "tests/scenarios/2026-10-26-issue-11-satisfaction.md",
+      "blob": "f4d117c541183f520c6e32cc21d962e36d051962",
+      "remote_blob": "f4d117c541183f520c6e32cc21d962e36d051962"
+    },
+    {
+      "path": "tests/scenarios/2026-10-26-issue-11-satisfaction.json",
+      "blob": "ba0fd6ba007faa3b90e0f2dc397a45e3452ba44d",
+      "remote_blob": "ba0fd6ba007faa3b90e0f2dc397a45e3452ba44d"
+    },
+    {
+      "path": "tests/scenarios/2026-10-26-issue-11-published-verification.json",
+      "blob": "e21df33a3df3b7efa33e720e8d7f7b1d99eab253",
+      "remote_blob": "e21df33a3df3b7efa33e720e8d7f7b1d99eab253"
+    }
+  ],
+  "before": {
+    "blockedBy": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+          "number": 19,
+          "state": "CLOSED",
+          "title": "Verify Claude Code lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+          "number": 2,
+          "state": "CLOSED",
+          "title": "Define the v0.1 adoption, installation, and mutation contract",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+        }
+      ],
+      "totalCount": 2
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        }
+      ],
+      "totalCount": 1
+    },
+    "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The plan is available in the current execution repository; remote publication is pending and is not claimed. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+        "name": "backplane:active",
+        "description": "Superpowers execution is in progress",
+        "color": "1D76DB"
+      }
+    ],
+    "number": 11,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Deliver and verify the Claude Code plugin installation surface",
+    "updatedAt": "2026-10-26T21:55:58Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+  },
+  "submitted": {
+    "blockedBy": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+          "number": 19,
+          "state": "CLOSED",
+          "title": "Verify Claude Code lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+          "number": 2,
+          "state": "CLOSED",
+          "title": "Define the v0.1 adoption, installation, and mutation contract",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+        }
+      ],
+      "totalCount": 2
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        }
+      ],
+      "totalCount": 1
+    },
+    "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+        "name": "backplane:review",
+        "description": "Implementation is submitted and awaiting final review/integration",
+        "color": "5319E7"
+      }
+    ],
+    "number": 11,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Deliver and verify the Claude Code plugin installation surface",
+    "updatedAt": "2026-10-27T00:47:28Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+  },
+  "immediate_preclose": {
+    "blockedBy": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+          "number": 19,
+          "state": "CLOSED",
+          "title": "Verify Claude Code lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+          "number": 2,
+          "state": "CLOSED",
+          "title": "Define the v0.1 adoption, installation, and mutation contract",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+        }
+      ],
+      "totalCount": 2
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        }
+      ],
+      "totalCount": 1
+    },
+    "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+        "name": "backplane:review",
+        "description": "Implementation is submitted and awaiting final review/integration",
+        "color": "5319E7"
+      }
+    ],
+    "number": 11,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Deliver and verify the Claude Code plugin installation surface",
+    "updatedAt": "2026-10-27T00:47:28Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+  },
+  "closed": {
+    "blockedBy": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+          "number": 19,
+          "state": "CLOSED",
+          "title": "Verify Claude Code lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+          "number": 2,
+          "state": "CLOSED",
+          "title": "Define the v0.1 adoption, installation, and mutation contract",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+        }
+      ],
+      "totalCount": 2
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        }
+      ],
+      "totalCount": 1
+    },
+    "body": "## Objective\n\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\n\n## Bounded Scope\n\n### Allowed\n\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\n\n### Out of Scope\n\n- Implement Codex or OpenCode adapters.\n- Copy Backplane skill text or vendor upstream Superpowers.\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\n\n## Acceptance Criteria\n\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\n\n## Verification Seams\n\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\n\n## Superpowers Artifacts\n\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\n\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [],
+    "number": 11,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "CLOSED",
+    "stateReason": "COMPLETED",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Deliver and verify the Claude Code plugin installation surface",
+    "updatedAt": "2026-10-27T00:47:33Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+  },
+  "parent_before": {
+    "blockedBy": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "blocking": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "body": "## Objective\n\nPublish a small, evidence-backed Backplane v0.1.0 that an adopting project can install and operate without repository-author assistance.\n\n## Bounded Scope\n\n### Allowed\n\n- Native plugin adoption for Codex, Claude Code, OpenCode V1 and V2.\n- Clear installation, lifecycle-mutation, licensing, operations, pilot, verification, and release work.\n- Native GitHub sub-issues and blocking relationships for the release product arc.\n\n### Out of Scope\n\n- Support for agent harnesses outside Codex, Claude Code, and OpenCode in v0.1.0.\n- Deterministic helper tooling unless field evidence makes it necessary for v0.1.0.\n- GitHub Projects, IssueOps, or a standalone generic backlog framework.\n\n## Acceptance Criteria\n\n- Every release sub-issue is closed as completed with its own integration and verification evidence.\n- Codex, Claude Code, OpenCode V1, and OpenCode V2 each pass their own fresh-host installation leaf verification before release.\n- A fresh adopting-project pilot passes the Backplane compatibility and conformance contract.\n- A licensed, documented v0.1.0 release is published from verified integrated source.\n\n## Verification Seams\n\n- Native sub-issue and blocking relationships show the complete release arc.\n- Four supported host variants have native installation leaves with recorded test evidence before release.\n- The integrated target passes the project-owned release verification recorded by the release leaf.\n- GitHub exposes the resulting tag and release.\n\n## Superpowers Artifacts\n\nBackground: `docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md`.\n\nV0.1 adoption design authority: `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md` (approved 2026-09-19).\n\nThis parent is a continuity node, not an executable leaf. Each executable child must link its own approved design authority and current Superpowers plan before becoming ready.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+        "name": "backplane:backlog",
+        "description": "Captured but not ready for execution",
+        "color": "D4C5F9"
+      }
+    ],
+    "number": 1,
+    "parent": null,
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EO2A",
+          "number": 3,
+          "state": "CLOSED",
+          "title": "Deliver and document the Codex installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/3"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+          "number": 2,
+          "state": "CLOSED",
+          "title": "Define the v0.1 adoption, installation, and mutation contract",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQAg",
+          "number": 7,
+          "state": "OPEN",
+          "title": "Review, tag, and publish Backplane v0.1.0",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/7"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPKQ",
+          "number": 4,
+          "state": "OPEN",
+          "title": "Add licensing and adopter operations guidance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPeg",
+          "number": 5,
+          "state": "OPEN",
+          "title": "Validate Backplane self-hosting on its v0.1 product arc",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5rm_A",
+          "number": 10,
+          "state": "CLOSED",
+          "title": "Implement skills-only session handoff continuity",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/10"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+          "number": 11,
+          "state": "OPEN",
+          "title": "Deliver and verify the Claude Code plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfGJA",
+          "number": 12,
+          "state": "OPEN",
+          "title": "Deliver and verify the OpenCode V1/V2 plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/12"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdw5w",
+          "number": 17,
+          "state": "CLOSED",
+          "title": "Package and document Claude Code plugin installation",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/17"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+          "number": 18,
+          "state": "CLOSED",
+          "title": "Verify Claude Code setup and upstream adoption",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+          "number": 19,
+          "state": "CLOSED",
+          "title": "Verify Claude Code lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeB_A",
+          "number": 20,
+          "state": "OPEN",
+          "title": "Build and document the shared OpenCode V1/V2 adapter",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/20"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeC8A",
+          "number": 21,
+          "state": "OPEN",
+          "title": "Verify OpenCode V1 setup and compatibility failures",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/21"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeD5g",
+          "number": 22,
+          "state": "OPEN",
+          "title": "Verify OpenCode V1 lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/22"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeEoQ",
+          "number": 23,
+          "state": "OPEN",
+          "title": "Verify OpenCode V2 setup and compatibility failures",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/23"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeFNA",
+          "number": 24,
+          "state": "OPEN",
+          "title": "Verify OpenCode V2 lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/24"
+        }
+      ],
+      "totalCount": 17
+    },
+    "subIssuesSummary": {
+      "completed": 6,
+      "percentCompleted": 35,
+      "total": 17
+    },
+    "title": "Ship an adoptable Backplane v0.1.0 release",
+    "updatedAt": "2026-09-19T14:11:02Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+  },
+  "parent_after": {
+    "blockedBy": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "blocking": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "body": "## Objective\n\nPublish a small, evidence-backed Backplane v0.1.0 that an adopting project can install and operate without repository-author assistance.\n\n## Bounded Scope\n\n### Allowed\n\n- Native plugin adoption for Codex, Claude Code, OpenCode V1 and V2.\n- Clear installation, lifecycle-mutation, licensing, operations, pilot, verification, and release work.\n- Native GitHub sub-issues and blocking relationships for the release product arc.\n\n### Out of Scope\n\n- Support for agent harnesses outside Codex, Claude Code, and OpenCode in v0.1.0.\n- Deterministic helper tooling unless field evidence makes it necessary for v0.1.0.\n- GitHub Projects, IssueOps, or a standalone generic backlog framework.\n\n## Acceptance Criteria\n\n- Every release sub-issue is closed as completed with its own integration and verification evidence.\n- Codex, Claude Code, OpenCode V1, and OpenCode V2 each pass their own fresh-host installation leaf verification before release.\n- A fresh adopting-project pilot passes the Backplane compatibility and conformance contract.\n- A licensed, documented v0.1.0 release is published from verified integrated source.\n\n## Verification Seams\n\n- Native sub-issue and blocking relationships show the complete release arc.\n- Four supported host variants have native installation leaves with recorded test evidence before release.\n- The integrated target passes the project-owned release verification recorded by the release leaf.\n- GitHub exposes the resulting tag and release.\n\n## Superpowers Artifacts\n\nBackground: `docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md`.\n\nV0.1 adoption design authority: `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md` (approved 2026-09-19).\n\nThis parent is a continuity node, not an executable leaf. Each executable child must link its own approved design authority and current Superpowers plan before becoming ready.\n",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+        "name": "backplane:backlog",
+        "description": "Captured but not ready for execution",
+        "color": "D4C5F9"
+      }
+    ],
+    "number": 1,
+    "parent": null,
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EO2A",
+          "number": 3,
+          "state": "CLOSED",
+          "title": "Deliver and document the Codex installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/3"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+          "number": 2,
+          "state": "CLOSED",
+          "title": "Define the v0.1 adoption, installation, and mutation contract",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQAg",
+          "number": 7,
+          "state": "OPEN",
+          "title": "Review, tag, and publish Backplane v0.1.0",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/7"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPKQ",
+          "number": 4,
+          "state": "OPEN",
+          "title": "Add licensing and adopter operations guidance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPeg",
+          "number": 5,
+          "state": "OPEN",
+          "title": "Validate Backplane self-hosting on its v0.1 product arc",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5rm_A",
+          "number": 10,
+          "state": "CLOSED",
+          "title": "Implement skills-only session handoff continuity",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/10"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+          "number": 11,
+          "state": "CLOSED",
+          "title": "Deliver and verify the Claude Code plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfGJA",
+          "number": 12,
+          "state": "OPEN",
+          "title": "Deliver and verify the OpenCode V1/V2 plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/12"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdw5w",
+          "number": 17,
+          "state": "CLOSED",
+          "title": "Package and document Claude Code plugin installation",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/17"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdxZQ",
+          "number": 18,
+          "state": "CLOSED",
+          "title": "Verify Claude Code setup and upstream adoption",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/18"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLdzGQ",
+          "number": 19,
+          "state": "CLOSED",
+          "title": "Verify Claude Code lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/19"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeB_A",
+          "number": 20,
+          "state": "OPEN",
+          "title": "Build and document the shared OpenCode V1/V2 adapter",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/20"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeC8A",
+          "number": 21,
+          "state": "OPEN",
+          "title": "Verify OpenCode V1 setup and compatibility failures",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/21"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeD5g",
+          "number": 22,
+          "state": "OPEN",
+          "title": "Verify OpenCode V1 lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/22"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeEoQ",
+          "number": 23,
+          "state": "OPEN",
+          "title": "Verify OpenCode V2 setup and compatibility failures",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/23"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSLeFNA",
+          "number": 24,
+          "state": "OPEN",
+          "title": "Verify OpenCode V2 lifecycle and conformance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/24"
+        }
+      ],
+      "totalCount": 17
+    },
+    "subIssuesSummary": {
+      "completed": 7,
+      "percentCompleted": 41,
+      "total": 17
+    },
+    "title": "Ship an adoptable Backplane v0.1.0 release",
+    "updatedAt": "2026-09-19T14:11:02Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+  },
+  "pilot_before": {
+    "blockedBy": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfGJA",
+          "number": 12,
+          "state": "OPEN",
+          "title": "Deliver and verify the OpenCode V1/V2 plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/12"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+          "number": 11,
+          "state": "OPEN",
+          "title": "Deliver and verify the Claude Code plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EO2A",
+          "number": 3,
+          "state": "CLOSED",
+          "title": "Deliver and document the Codex installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/3"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPKQ",
+          "number": 4,
+          "state": "OPEN",
+          "title": "Add licensing and adopter operations guidance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPeg",
+          "number": 5,
+          "state": "OPEN",
+          "title": "Validate Backplane self-hosting on its v0.1 product arc",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+        }
+      ],
+      "totalCount": 5
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQlA",
+          "number": 9,
+          "state": "OPEN",
+          "title": "Evaluate deterministic Backplane helpers after field experience",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/9"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQVg",
+          "number": 8,
+          "state": "OPEN",
+          "title": "Evaluate post-v0.1 support for an additional agent harness",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/8"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQAg",
+          "number": 7,
+          "state": "OPEN",
+          "title": "Review, tag, and publish Backplane v0.1.0",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/7"
+        }
+      ],
+      "totalCount": 3
+    },
+    "body": "## Objective\n\nValidate v0.1.0 in a real adopting repository and capture fresh compatibility and conformance evidence.\n\n## Bounded Scope\n\n### Allowed\n\n- One authorized pilot repository using the supported Codex installation surface.\n- Current stable upstream Superpowers and current supported GitHub CLI capability surface.\n- All five named Backplane conformance checks and fresh-session skill discovery.\n- Capturing and resolving release-blocking pilot findings.\n\n### Out of Scope\n\n- Unapproved changes to the pilot repository's architecture, runtime, or release policy.\n- Generalizing to additional agent harnesses.\n- Waiving failed or unknown conformance results.\n\n## Acceptance Criteria\n\n- The authorized pilot installs Backplane without loss or overwrite of user work.\n- Both required skills are discoverable in a fresh session.\n- `skill-structure`, `native-issue-intake`, `language-neutral-verification`, `lifecycle-transitions`, and `superpowers-installation` all pass.\n- Release-blocking findings are resolved or represented by native blockers.\n- Durable evidence records revisions, CLI capability results, skill hashes, prompts, and scored outcomes.\n\n## Verification Seams\n\n- Execute the complete compatibility preflight and conformance protocol in `skills/managing-superpowers-backlog/references/installing-superpowers.md`.\n- Re-read the pilot issue graph and verify no unresolved blockers remain.\n- Confirm evidence was produced from the installed candidate rather than the authoring checkout.\n\n## Superpowers Artifacts\n\nDesign authority: the approved v0.1 adoption contract and installation design.\n\nPlan: not yet created.",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+        "name": "backplane:backlog",
+        "description": "Captured but not ready for execution",
+        "color": "D4C5F9"
+      }
+    ],
+    "number": 6,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Run an external adoption pilot and fresh conformance suite",
+    "updatedAt": "2026-08-23T13:55:24Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+  },
+  "pilot_after": {
+    "blockedBy": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfGJA",
+          "number": 12,
+          "state": "OPEN",
+          "title": "Deliver and verify the OpenCode V1/V2 plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/12"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABSHfBvg",
+          "number": 11,
+          "state": "CLOSED",
+          "title": "Deliver and verify the Claude Code plugin installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/11"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EO2A",
+          "number": 3,
+          "state": "CLOSED",
+          "title": "Deliver and document the Codex installation surface",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/3"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPKQ",
+          "number": 4,
+          "state": "OPEN",
+          "title": "Add licensing and adopter operations guidance",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPeg",
+          "number": 5,
+          "state": "OPEN",
+          "title": "Validate Backplane self-hosting on its v0.1 product arc",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+        }
+      ],
+      "totalCount": 5
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQlA",
+          "number": 9,
+          "state": "OPEN",
+          "title": "Evaluate deterministic Backplane helpers after field experience",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/9"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQVg",
+          "number": 8,
+          "state": "OPEN",
+          "title": "Evaluate post-v0.1 support for an additional agent harness",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/8"
+        },
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EQAg",
+          "number": 7,
+          "state": "OPEN",
+          "title": "Review, tag, and publish Backplane v0.1.0",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/7"
+        }
+      ],
+      "totalCount": 3
+    },
+    "body": "## Objective\n\nValidate v0.1.0 in a real adopting repository and capture fresh compatibility and conformance evidence.\n\n## Bounded Scope\n\n### Allowed\n\n- One authorized pilot repository using the supported Codex installation surface.\n- Current stable upstream Superpowers and current supported GitHub CLI capability surface.\n- All five named Backplane conformance checks and fresh-session skill discovery.\n- Capturing and resolving release-blocking pilot findings.\n\n### Out of Scope\n\n- Unapproved changes to the pilot repository's architecture, runtime, or release policy.\n- Generalizing to additional agent harnesses.\n- Waiving failed or unknown conformance results.\n\n## Acceptance Criteria\n\n- The authorized pilot installs Backplane without loss or overwrite of user work.\n- Both required skills are discoverable in a fresh session.\n- `skill-structure`, `native-issue-intake`, `language-neutral-verification`, `lifecycle-transitions`, and `superpowers-installation` all pass.\n- Release-blocking findings are resolved or represented by native blockers.\n- Durable evidence records revisions, CLI capability results, skill hashes, prompts, and scored outcomes.\n\n## Verification Seams\n\n- Execute the complete compatibility preflight and conformance protocol in `skills/managing-superpowers-backlog/references/installing-superpowers.md`.\n- Re-read the pilot issue graph and verify no unresolved blockers remain.\n- Confirm evidence was produced from the installed candidate rather than the authoring checkout.\n\n## Superpowers Artifacts\n\nDesign authority: the approved v0.1 adoption contract and installation design.\n\nPlan: not yet created.",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+        "name": "backplane:backlog",
+        "description": "Captured but not ready for execution",
+        "color": "D4C5F9"
+      }
+    ],
+    "number": 6,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Run an external adoption pilot and fresh conformance suite",
+    "updatedAt": "2026-08-23T13:55:24Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit": 0,
+      "stdout": "U:/repos/agents/superpowers-backplane\n"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit": 0,
+      "stdout": "https://github.com/tvproductions/superpowers-backplane.git\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "2491e55a377edfcf91b34095a21bd0746fde58e3\n"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "main"
+      ],
+      "exit": 0,
+      "stdout": "2491e55a377edfcf91b34095a21bd0746fde58e3\trefs/heads/main\n"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "7359019e546e07ea810d045fc1cb6fb0d095be4a",
+        "2491e55a377edfcf91b34095a21bd0746fde58e3",
+        "--",
+        "skills",
+        ".claude-plugin",
+        "plugin.json",
+        "README.md",
+        "docs/installing-claude-code.md",
+        "AGENTS.md",
+        "SUPERPOWERS.md"
+      ],
+      "exit": 0,
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "2491e55a377edfcf91b34095a21bd0746fde58e3:tests/scenarios/2026-10-26-issue-11-satisfaction.md"
+      ],
+      "exit": 0,
+      "stdout": "f4d117c541183f520c6e32cc21d962e36d051962\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/superpowers-backplane/contents/tests/scenarios/2026-10-26-issue-11-satisfaction.md?ref=2491e55a377edfcf91b34095a21bd0746fde58e3",
+        "--jq",
+        ".sha"
+      ],
+      "exit": 0,
+      "stdout": "f4d117c541183f520c6e32cc21d962e36d051962\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "2491e55a377edfcf91b34095a21bd0746fde58e3:tests/scenarios/2026-10-26-issue-11-satisfaction.json"
+      ],
+      "exit": 0,
+      "stdout": "ba0fd6ba007faa3b90e0f2dc397a45e3452ba44d\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/superpowers-backplane/contents/tests/scenarios/2026-10-26-issue-11-satisfaction.json?ref=2491e55a377edfcf91b34095a21bd0746fde58e3",
+        "--jq",
+        ".sha"
+      ],
+      "exit": 0,
+      "stdout": "ba0fd6ba007faa3b90e0f2dc397a45e3452ba44d\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "2491e55a377edfcf91b34095a21bd0746fde58e3:tests/scenarios/2026-10-26-issue-11-published-verification.json"
+      ],
+      "exit": 0,
+      "stdout": "e21df33a3df3b7efa33e720e8d7f7b1d99eab253\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/tvproductions/superpowers-backplane/contents/tests/scenarios/2026-10-26-issue-11-published-verification.json?ref=2491e55a377edfcf91b34095a21bd0746fde58e3",
+        "--jq",
+        ".sha"
+      ],
+      "exit": 0,
+      "stdout": "e21df33a3df3b7efa33e720e8d7f7b1d99eab253\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"}],\"totalCount\":2},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\\n\\n### Out of Scope\\n\\n- Implement Codex or OpenCode adapters.\\n- Copy Backplane skill text or vendor upstream Superpowers.\\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\\n\\n## Acceptance Criteria\\n\\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\\n\\n## Verification Seams\\n\\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The plan is available in the current execution repository; remote publication is pending and is not claimed. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzkug\",\"name\":\"backplane:active\",\"description\":\"Superpowers execution is in progress\",\"color\":\"1D76DB\"}],\"number\":11,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"updatedAt\":\"2026-10-26T21:55:58Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "2",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[],\"totalCount\":0},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSHfGJA\",\"number\":12,\"state\":\"OPEN\",\"title\":\"Deliver and verify the OpenCode V1/V2 plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/12\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfBvg\",\"number\":11,\"state\":\"OPEN\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPeg\",\"number\":5,\"state\":\"OPEN\",\"title\":\"Validate Backplane self-hosting on its v0.1 product arc\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/5\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EO2A\",\"number\":3,\"state\":\"CLOSED\",\"title\":\"Deliver and document the Codex installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/3\"}],\"totalCount\":4},\"body\":\"## Objective\\n\\nApprove the v0.1.0 adoption contract governing the supported harnesses, installation lifecycle, upstream Superpowers dependency, and Backplane lifecycle-mutation boundary.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Define supported installation and discovery for Codex, Claude Code, and OpenCode.\\n- Keep one canonical Backplane `skills/` tree with thin harness-specific manifests or discovery adapters and no duplicated skill content.\\n- Define install, discovery, update, rollback, and uninstall behavior for every supported harness.\\n- Define workflow-scoped lifecycle tracking: status and recommendation requests remain read-only; selection alone does not change a label; authorized design, readiness, execution, review, blocked, and completion workflows make evidence-gated transitions without redundant confirmation.\\n- Preserve upstream Superpowers as a separate, authoritative, independently updateable installation for each harness.\\n- Preserve sibling and managed checkout modes where a supported harness or development workflow requires them.\\n\\n### Out of Scope\\n\\n- Implement the installation surfaces.\\n- Support agent harnesses other than Codex, Claude Code, and OpenCode.\\n- Copy, bundle, or vendor upstream Superpowers files into Backplane.\\n- Introduce GitHub Projects, IssueOps, or a required project runtime.\\n- Mutate backlog state during status, orientation, or recommendation-only requests.\\n\\n## Acceptance Criteria\\n\\n- A reviewed specification defines the v0.1.0 support, packaging, installation, dependency, and lifecycle-mutation contract for Codex, Claude Code, OpenCode V1, and OpenCode V2.\\n- The specification resolves the open installation-surface and mutation-policy decisions in `HANDOFF.md`.\\n- The specification requires all harness adapters to expose the same canonical Backplane skills without copying upstream Superpowers or duplicating Backplane skill content.\\n- Each supported harness has documented install, fresh-session discovery, compatibility preflight, update, rollback, and uninstall behavior.\\n- Lifecycle labels follow evidence automatically within an explicitly authorized workflow, while read-only requests never mutate GitHub state.\\n- A current Superpowers implementation plan consumes the approved specification and this issue revision.\\n\\n## Verification Seams\\n\\n- Review the specification against `AGENTS.md`, the bootstrap design, all three Backplane reference contracts, and current primary documentation for Codex, Claude Code, and OpenCode.\\n- Review the four-variant fresh-session discovery matrix for upstream `using-superpowers` and both Backplane skills from separate installations; assign actual runs to implementation leaves.\\n- Review the install, update, rollback, uninstall, and failure contracts for preservation of user work and independently managed Superpowers; assign actual checks to implementation leaves.\\n- Walk status-only, selection, design, readiness, execution, submission, blocking, and completion scenarios against the native issue contract; require live mutation checks in implementation leaves.\\n- Confirm the plan records this issue URL and `updatedAt`, design authority, acceptance criteria, and exact project-owned verification commands.\\n\\n## Superpowers Artifacts\\n\\nBackground: `docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md`.\\n\\nDesign authority: `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md` (approved by the user 2026-09-19).\\n\\nPlan: `docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md` (approved for Native execution 2026-09-19).\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[],\"number\":2,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"CLOSED\",\"stateReason\":\"COMPLETED\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"updatedAt\":\"2026-09-19T15:30:18Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "17",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[],\"totalCount\":0},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdxZQ\",\"number\":18,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code setup and upstream adoption\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/18\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nPackage the canonical Backplane skills as a Claude Code plugin and document a pinned native installation that can be smoke tested in a disposable session.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Add Claude Code plugin and marketplace metadata that expose the repository root skills tree without copying skill text.\\n- Write a Claude Code installation guide for a versioned Backplane source, native plugin install, setup request, and initial discovery. Clearly mark update, rollback, and uninstall instructions as pending later verified work.\\n- Use compatible, separately preinstalled upstream Superpowers for one clean install and fresh-session discovery smoke run.\\n\\n### Out of Scope\\n\\n- Implement OpenCode or Codex packaging.\\n- Claim all setup modes, lifecycle operations, or conformance from the initial smoke run.\\n- Vendor upstream Superpowers, overwrite user configuration, or require a consuming-project runtime.\\n\\n## Acceptance Criteria\\n\\n- The native package and marketplace resolve both canonical Backplane skills from root skills/ with no duplicate authored copies.\\n- A disposable clean installation from a pinned Backplane revision discovers upstream using-superpowers and both Backplane skills in a fresh Claude Code session, with upstream independently installed.\\n- The guide's clean install and setup-request steps match the commands observed in that run; unverified lifecycle claims are absent.\\n\\n## Verification Seams\\n\\n- Record Claude Code version, pinned Backplane revision, upstream package/source and observable version or revision, three installed skill identities, and a PASS/FAIL/UNKNOWN result for the smoke run.\\n- Inspect manifest and marketplace references against the canonical skill folders; preserve any unrelated marketplace entries in the disposable profile.\\n- Record the exact guide commands, disposable profile, and fresh-session evidence. Host authentication must be available before a live check.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nPlan: [Claude Code package and installation](https://github.com/tvproductions/superpowers-backplane/blob/f3ce09276ce020d29f2f1b20880b30827880a4fa/docs/superpowers/plans/2026-09-20-claude-code-package-and-installation.md) (approved 2026-09-20; PR #27).\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[],\"number\":17,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"CLOSED\",\"stateReason\":\"COMPLETED\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Package and document Claude Code plugin installation\",\"updatedAt\":\"2026-09-20T15:54:41Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/17\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "18",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdw5w\",\"number\":17,\"state\":\"CLOSED\",\"title\":\"Package and document Claude Code plugin installation\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/17\"}],\"totalCount\":1},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nVerify Claude Code setup across supported upstream Superpowers modes and prove failed preflight preserves existing state.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Refine the Claude Code setup guide against native upstream adoption, a compatible sibling checkout, and absent-upstream installation through the documented stable channel.\\n- Verify provenance, exactly one effective Backplane installation, required upstream skills, GitHub CLI capabilities, and three-skill fresh discovery.\\n- Exercise unknown or versionless provenance, duplicate/conflicting Backplane installs, dirty checkout, path collision, unavailable gh capability, and incompatible upstream cases with specific recovery messages.\\n\\n### Out of Scope\\n\\n- Claim repeat install, update, rollback, uninstall, or full lifecycle conformance.\\n- Update or replace an existing upstream installation as a side effect.\\n- Mutate GitHub issue state during a failed setup probe.\\n\\n## Acceptance Criteria\\n\\n- Each supported upstream mode passes setup in a fresh Claude Code session with separate Backplane and Superpowers identities; absent-upstream setup uses the active host's documented stable channel unless edge was explicitly selected.\\n- A source without observable version or revision remains UNKNOWN and cannot be declared compatible. Authoritative source, version or revision, and required skills are recorded.\\n- Every failure probe stops before destructive mutation, reports the failed check and repair action, and preserves user files, unrelated plugins, existing upstream, and issue state.\\n\\n## Verification Seams\\n\\n- For each mode, record Claude Code version, Backplane revision, upstream package/source and version or commit, gh auth/intake/label/closure-reason capability, three installed skill identities, and PASS/FAIL/UNKNOWN.\\n- Run the complete native issue intake and required gh help checks from the approved installation reference; compare before/after hashes or native state for failure probes.\\n- Capture exact setup-guide commands and fresh-session evidence. An unauthenticated host is an unmet prerequisite, not a pass.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nPlan: [Claude Code setup and upstream adoption](https://github.com/tvproductions/superpowers-backplane/blob/main/docs/superpowers/plans/2026-09-20-claude-code-setup-and-upstream-adoption.md) (approved 2026-09-20; integrated in PR #30).\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[],\"number\":18,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"CLOSED\",\"stateReason\":\"COMPLETED\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Verify Claude Code setup and upstream adoption\",\"updatedAt\":\"2026-09-20T20:07:23Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/18\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "19",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdxZQ\",\"number\":18,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code setup and upstream adoption\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/18\"}],\"totalCount\":1},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSHfBvg\",\"number\":11,\"state\":\"OPEN\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nVerify the installed Claude Code package through its documented lifecycle and Backplane conformance checks.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Complete and replay native guide commands for repeat install, pinned update, rollback to the recorded prior revision, and Backplane-only uninstall.\\n- Verify before/after identity and preservation for each operation, including unrelated plugins, user files, upstream Superpowers, repository history, and GitHub issue state.\\n- Run all five named Backplane conformance checks and authorized issue-state scenarios against disposable or explicitly authorized issues.\\n\\n### Out of Scope\\n\\n- Change the approved host contract or silently update/remove upstream.\\n- Run mutation scenarios on production issues without authorization.\\n- Claim rollback when the previous version cannot be restored and verified.\\n\\n## Acceptance Criteria\\n\\n- Repeat install remains one effective Backplane installation; a pinned update reaches the selected revision; rollback restores the recorded prior revision and required discovery; uninstall removes only Backplane-owned state.\\n- The exact guide commands pass in a disposable Claude Code profile. Failed candidate preflight leaves the prior verified installation available where restoration is supported, with a specific recovery action.\\n- Fresh sessions after applicable operations discover upstream using-superpowers and both Backplane skills from separate packages; all five conformance checks and authorized read-only, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios are scored.\\n\\n## Verification Seams\\n\\n- Record Claude Code version, Backplane before/candidate/restored revisions, upstream source and revision, gh capability, three installed skill identities, and PASS/FAIL/UNKNOWN per operation and check.\\n- Run skill-structure, native-issue-intake, language-neutral-verification, lifecycle-transitions, and superpowers-installation with their mapped scenario rubrics.\\n- Prove zero issue mutation for read-only/selection; one correct Backplane label on each open tracked test issue; unrelated labels preserved; completed closure only after integrated evidence. Compare unrelated plugin, user-file, and upstream identity before and after every lifecycle operation.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nApproved recovery plan: [Claude Code lifecycle and conformance recovery](https://github.com/tvproductions/superpowers-backplane/blob/6903e064302e5ad30843ebcd5aa5561f67a2f287/docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md). Operator approval and native inline execution with one fresh final reviewer were confirmed on 2026-10-25. This plan consumes issue revision `2026-09-27T14:09:57Z`; the current objective, scope, acceptance criteria and native graph are unchanged. The September27 draft and recovered October24 branch plan/evidence remain historical context. Publication of the plan is not lifecycle completion; #19 remains in design preparation until readiness prerequisites are verified.\\n\\nIntegrated evaluation: [Issue #19 satisfaction assessment](https://github.com/tvproductions/superpowers-backplane/blob/cde87943bdac5e92cab2eb21c2685251f7aab5d1/tests/scenarios/2026-10-25-issue-19-satisfaction.md) evaluates delivery `7d7ecac36f8dc74ce1a0895ab934468332f92f53` from merged PR #36. All #19 criteria and verification seams are SATISFIED in the recorded Windows Claude scope, with exact current-delivery installation/discovery and protected-state verification. Its evidence storage commit `cde87943bdac5e92cab2eb21c2685251f7aab5d1` is distinct from the tested delivery. The earlier design-preparation statement is historical. Final Claude acceptance #11, release and broader host/stack acceptance remain separate.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[],\"number\":19,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"CLOSED\",\"stateReason\":\"COMPLETED\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Verify Claude Code lifecycle and conformance\",\"updatedAt\":\"2026-10-25T18:19:39Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "1",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[],\"totalCount\":0},\"blocking\":{\"nodes\":[],\"totalCount\":0},\"body\":\"## Objective\\n\\nPublish a small, evidence-backed Backplane v0.1.0 that an adopting project can install and operate without repository-author assistance.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Native plugin adoption for Codex, Claude Code, OpenCode V1 and V2.\\n- Clear installation, lifecycle-mutation, licensing, operations, pilot, verification, and release work.\\n- Native GitHub sub-issues and blocking relationships for the release product arc.\\n\\n### Out of Scope\\n\\n- Support for agent harnesses outside Codex, Claude Code, and OpenCode in v0.1.0.\\n- Deterministic helper tooling unless field evidence makes it necessary for v0.1.0.\\n- GitHub Projects, IssueOps, or a standalone generic backlog framework.\\n\\n## Acceptance Criteria\\n\\n- Every release sub-issue is closed as completed with its own integration and verification evidence.\\n- Codex, Claude Code, OpenCode V1, and OpenCode V2 each pass their own fresh-host installation leaf verification before release.\\n- A fresh adopting-project pilot passes the Backplane compatibility and conformance contract.\\n- A licensed, documented v0.1.0 release is published from verified integrated source.\\n\\n## Verification Seams\\n\\n- Native sub-issue and blocking relationships show the complete release arc.\\n- Four supported host variants have native installation leaves with recorded test evidence before release.\\n- The integrated target passes the project-owned release verification recorded by the release leaf.\\n- GitHub exposes the resulting tag and release.\\n\\n## Superpowers Artifacts\\n\\nBackground: `docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md`.\\n\\nV0.1 adoption design authority: `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md` (approved 2026-09-19).\\n\\nThis parent is a continuity node, not an executable leaf. Each executable child must link its own approved design authority and current Superpowers plan before becoming ready.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzjsw\",\"name\":\"backplane:backlog\",\"description\":\"Captured but not ready for execution\",\"color\":\"D4C5F9\"}],\"number\":1,\"parent\":null,\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EO2A\",\"number\":3,\"state\":\"CLOSED\",\"title\":\"Deliver and document the Codex installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/3\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EQAg\",\"number\":7,\"state\":\"OPEN\",\"title\":\"Review, tag, and publish Backplane v0.1.0\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/7\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPKQ\",\"number\":4,\"state\":\"OPEN\",\"title\":\"Add licensing and adopter operations guidance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/4\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPeg\",\"number\":5,\"state\":\"OPEN\",\"title\":\"Validate Backplane self-hosting on its v0.1 product arc\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/5\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5rm_A\",\"number\":10,\"state\":\"CLOSED\",\"title\":\"Implement skills-only session handoff continuity\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/10\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfBvg\",\"number\":11,\"state\":\"OPEN\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfGJA\",\"number\":12,\"state\":\"OPEN\",\"title\":\"Deliver and verify the OpenCode V1/V2 plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/12\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLdw5w\",\"number\":17,\"state\":\"CLOSED\",\"title\":\"Package and document Claude Code plugin installation\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/17\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLdxZQ\",\"number\":18,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code setup and upstream adoption\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/18\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeB_A\",\"number\":20,\"state\":\"OPEN\",\"title\":\"Build and document the shared OpenCode V1/V2 adapter\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/20\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeC8A\",\"number\":21,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V1 setup and compatibility failures\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/21\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeD5g\",\"number\":22,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V1 lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/22\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeEoQ\",\"number\":23,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V2 setup and compatibility failures\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/23\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeFNA\",\"number\":24,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V2 lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/24\"}],\"totalCount\":17},\"subIssuesSummary\":{\"completed\":6,\"percentCompleted\":35,\"total\":17},\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"updatedAt\":\"2026-09-19T14:11:02Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "6",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSHfGJA\",\"number\":12,\"state\":\"OPEN\",\"title\":\"Deliver and verify the OpenCode V1/V2 plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/12\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfBvg\",\"number\":11,\"state\":\"OPEN\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EO2A\",\"number\":3,\"state\":\"CLOSED\",\"title\":\"Deliver and document the Codex installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/3\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPKQ\",\"number\":4,\"state\":\"OPEN\",\"title\":\"Add licensing and adopter operations guidance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/4\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPeg\",\"number\":5,\"state\":\"OPEN\",\"title\":\"Validate Backplane self-hosting on its v0.1 product arc\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/5\"}],\"totalCount\":5},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EQlA\",\"number\":9,\"state\":\"OPEN\",\"title\":\"Evaluate deterministic Backplane helpers after field experience\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/9\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EQVg\",\"number\":8,\"state\":\"OPEN\",\"title\":\"Evaluate post-v0.1 support for an additional agent harness\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/8\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EQAg\",\"number\":7,\"state\":\"OPEN\",\"title\":\"Review, tag, and publish Backplane v0.1.0\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/7\"}],\"totalCount\":3},\"body\":\"## Objective\\n\\nValidate v0.1.0 in a real adopting repository and capture fresh compatibility and conformance evidence.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- One authorized pilot repository using the supported Codex installation surface.\\n- Current stable upstream Superpowers and current supported GitHub CLI capability surface.\\n- All five named Backplane conformance checks and fresh-session skill discovery.\\n- Capturing and resolving release-blocking pilot findings.\\n\\n### Out of Scope\\n\\n- Unapproved changes to the pilot repository's architecture, runtime, or release policy.\\n- Generalizing to additional agent harnesses.\\n- Waiving failed or unknown conformance results.\\n\\n## Acceptance Criteria\\n\\n- The authorized pilot installs Backplane without loss or overwrite of user work.\\n- Both required skills are discoverable in a fresh session.\\n- `skill-structure`, `native-issue-intake`, `language-neutral-verification`, `lifecycle-transitions`, and `superpowers-installation` all pass.\\n- Release-blocking findings are resolved or represented by native blockers.\\n- Durable evidence records revisions, CLI capability results, skill hashes, prompts, and scored outcomes.\\n\\n## Verification Seams\\n\\n- Execute the complete compatibility preflight and conformance protocol in `skills/managing-superpowers-backlog/references/installing-superpowers.md`.\\n- Re-read the pilot issue graph and verify no unresolved blockers remain.\\n- Confirm evidence was produced from the installed candidate rather than the authoring checkout.\\n\\n## Superpowers Artifacts\\n\\nDesign authority: the approved v0.1 adoption contract and installation design.\\n\\nPlan: not yet created.\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzjsw\",\"name\":\"backplane:backlog\",\"description\":\"Captured but not ready for execution\",\"color\":\"D4C5F9\"}],\"number\":6,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"updatedAt\":\"2026-08-23T13:55:24Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "edit",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--body-file",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-11\\authorized-closeout\\issue-body.md",
+        "--remove-label",
+        "backplane:active",
+        "--add-label",
+        "backplane:review"
+      ],
+      "exit": 0,
+      "stdout": "https://github.com/tvproductions/superpowers-backplane/issues/11\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"}],\"totalCount\":2},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\\n\\n### Out of Scope\\n\\n- Implement Codex or OpenCode adapters.\\n- Copy Backplane skill text or vendor upstream Superpowers.\\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\\n\\n## Acceptance Criteria\\n\\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\\n\\n## Verification Seams\\n\\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\\n\\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzlMw\",\"name\":\"backplane:review\",\"description\":\"Implementation is submitted and awaiting final review/integration\",\"color\":\"5319E7\"}],\"number\":11,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"updatedAt\":\"2026-10-27T00:47:28Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"}],\"totalCount\":2},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\\n\\n### Out of Scope\\n\\n- Implement Codex or OpenCode adapters.\\n- Copy Backplane skill text or vendor upstream Superpowers.\\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\\n\\n## Acceptance Criteria\\n\\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\\n\\n## Verification Seams\\n\\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\\n\\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzlMw\",\"name\":\"backplane:review\",\"description\":\"Implementation is submitted and awaiting final review/integration\",\"color\":\"5319E7\"}],\"number\":11,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"updatedAt\":\"2026-10-27T00:47:28Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"}\n"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "main"
+      ],
+      "exit": 0,
+      "stdout": "2491e55a377edfcf91b34095a21bd0746fde58e3\trefs/heads/main\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "close",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--reason",
+        "completed"
+      ],
+      "exit": 0,
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"}],\"totalCount\":2},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\\n\\n### Out of Scope\\n\\n- Implement Codex or OpenCode adapters.\\n- Copy Backplane skill text or vendor upstream Superpowers.\\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\\n\\n## Acceptance Criteria\\n\\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\\n\\n## Verification Seams\\n\\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\\n\\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzlMw\",\"name\":\"backplane:review\",\"description\":\"Implementation is submitted and awaiting final review/integration\",\"color\":\"5319E7\"}],\"number\":11,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"CLOSED\",\"stateReason\":\"COMPLETED\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"updatedAt\":\"2026-10-27T00:47:31Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "edit",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--remove-label",
+        "backplane:review"
+      ],
+      "exit": 0,
+      "stdout": "https://github.com/tvproductions/superpowers-backplane/issues/11\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "11",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"}],\"totalCount\":2},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}],\"totalCount\":1},\"body\":\"## Objective\\n\\nAccept the integrated native Claude Code installation surface against the approved v0.1 contract.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Review completed Claude package, setup, failure, lifecycle, conformance, and guide evidence from the bounded implementation work.\\n- Score the current installed-package matrix from integrated source and rerun a verification seam if its package, guide, host, upstream, or GitHub CLI input changed after the owning evidence was captured.\\n- Correct an integration defect needed to make the delivered Claude Code surface meet the approved contract.\\n\\n### Out of Scope\\n\\n- Implement Codex or OpenCode adapters.\\n- Copy Backplane skill text or vendor upstream Superpowers.\\n- Require a consuming-project runtime, GitHub Projects, or IssueOps.\\n- Treat closed prerequisites or a documentation assignment as proof of a passing live host run.\\n\\n## Acceptance Criteria\\n\\n- The Claude package, setup, and lifecycle prerequisites are each closed with reason completed and their integrated artifacts are reachable.\\n- Every mandatory row in the current Claude Code installation matrix is PASS; FAIL or UNKNOWN blocks acceptance. Each row records a current host version, Backplane revision, upstream source/version or revision, gh capability, and three separate installed skill identities.\\n- Clean installation, compatible native/sibling/absent-upstream setup, repeat installation, pinned update, rollback, Backplane-only uninstall, failed-preflight preservation, five named conformance checks, and authorized issue-state scenarios have evidence against the integrated candidate. Any changed input has its affected seam rerun.\\n- A fresh Claude Code session discovers upstream using-superpowers and both Backplane skills from independent installations. Unrelated plugin entries, user files, upstream Superpowers, repository history, and issue state remain intact through Backplane operations.\\n\\n## Verification Seams\\n\\n- Compare the approved contract and current ownership matrix row by row with the integrated package, guide, and evidence links. Require PASS on each mandatory supported-host check and precise source revisions; do not infer PASS from an issue state.\\n- Reproduce affected fresh-session or lifecycle checks when an input changed; record the exact guide commands and their observed result.\\n- Verify the five named checks and authorized status, selection, design, readiness, execution, blocked/resume, review, and verified-completion scenarios were scored on disposable or authorized issues. Require zero mutation for read-only paths, one Backplane label on open tracked issues, unrelated labels preserved, and completed closure only after integration.\\n\\n## Superpowers Artifacts\\n\\nFunctional design: docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19).\\nRescope design: docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md.\\nApproved implementation plan: `docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md` at local Git commit `1d4ba0f7c2df54b92c19c24d543dc97d17933712`. The operator approved native execution on 2026-10-26 after reviewing the plan in the conversation. This consumes semantic issue revision `2026-09-20T01:31:32Z`; the later planning-label revision does not change scope or acceptance. The approved plan is published at https://github.com/tvproductions/superpowers-backplane/blob/1d4ba0f7c2df54b92c19c24d543dc97d17933712/docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md. The current verification-workspace policy permits the approved local fixture tests without an issue-specific exception or prior push.\\n\\nIntegrated acceptance: [SATISFIED evaluation](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.md) and [structured criterion receipt](https://github.com/tvproductions/superpowers-backplane/blob/2491e55a377edfcf91b34095a21bd0746fde58e3/tests/scenarios/2026-10-26-issue-11-satisfaction.json). Evaluated published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a`; reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`; 39/39 mandatory checks and all four exact criteria pass. The operator authorized publication and then explicitly replied Yes, close #11 after verified acceptance. Integration used the authorized direct main merge/push; no PR is claimed. Parent completion, pilot readiness, release and cleanup remain independent.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[],\"number\":11,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"CLOSED\",\"stateReason\":\"COMPLETED\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"updatedAt\":\"2026-10-27T00:47:33Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "1",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[],\"totalCount\":0},\"blocking\":{\"nodes\":[],\"totalCount\":0},\"body\":\"## Objective\\n\\nPublish a small, evidence-backed Backplane v0.1.0 that an adopting project can install and operate without repository-author assistance.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- Native plugin adoption for Codex, Claude Code, OpenCode V1 and V2.\\n- Clear installation, lifecycle-mutation, licensing, operations, pilot, verification, and release work.\\n- Native GitHub sub-issues and blocking relationships for the release product arc.\\n\\n### Out of Scope\\n\\n- Support for agent harnesses outside Codex, Claude Code, and OpenCode in v0.1.0.\\n- Deterministic helper tooling unless field evidence makes it necessary for v0.1.0.\\n- GitHub Projects, IssueOps, or a standalone generic backlog framework.\\n\\n## Acceptance Criteria\\n\\n- Every release sub-issue is closed as completed with its own integration and verification evidence.\\n- Codex, Claude Code, OpenCode V1, and OpenCode V2 each pass their own fresh-host installation leaf verification before release.\\n- A fresh adopting-project pilot passes the Backplane compatibility and conformance contract.\\n- A licensed, documented v0.1.0 release is published from verified integrated source.\\n\\n## Verification Seams\\n\\n- Native sub-issue and blocking relationships show the complete release arc.\\n- Four supported host variants have native installation leaves with recorded test evidence before release.\\n- The integrated target passes the project-owned release verification recorded by the release leaf.\\n- GitHub exposes the resulting tag and release.\\n\\n## Superpowers Artifacts\\n\\nBackground: `docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md`.\\n\\nV0.1 adoption design authority: `docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md` (approved 2026-09-19).\\n\\nThis parent is a continuity node, not an executable leaf. Each executable child must link its own approved design authority and current Superpowers plan before becoming ready.\\n\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzjsw\",\"name\":\"backplane:backlog\",\"description\":\"Captured but not ready for execution\",\"color\":\"D4C5F9\"}],\"number\":1,\"parent\":null,\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EPyw\",\"number\":6,\"state\":\"OPEN\",\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EO2A\",\"number\":3,\"state\":\"CLOSED\",\"title\":\"Deliver and document the Codex installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/3\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EOlg\",\"number\":2,\"state\":\"CLOSED\",\"title\":\"Define the v0.1 adoption, installation, and mutation contract\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/2\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EQAg\",\"number\":7,\"state\":\"OPEN\",\"title\":\"Review, tag, and publish Backplane v0.1.0\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/7\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPKQ\",\"number\":4,\"state\":\"OPEN\",\"title\":\"Add licensing and adopter operations guidance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/4\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPeg\",\"number\":5,\"state\":\"OPEN\",\"title\":\"Validate Backplane self-hosting on its v0.1 product arc\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/5\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5rm_A\",\"number\":10,\"state\":\"CLOSED\",\"title\":\"Implement skills-only session handoff continuity\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/10\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfBvg\",\"number\":11,\"state\":\"CLOSED\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfGJA\",\"number\":12,\"state\":\"OPEN\",\"title\":\"Deliver and verify the OpenCode V1/V2 plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/12\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLdw5w\",\"number\":17,\"state\":\"CLOSED\",\"title\":\"Package and document Claude Code plugin installation\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/17\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLdxZQ\",\"number\":18,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code setup and upstream adoption\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/18\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLdzGQ\",\"number\":19,\"state\":\"CLOSED\",\"title\":\"Verify Claude Code lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/19\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeB_A\",\"number\":20,\"state\":\"OPEN\",\"title\":\"Build and document the shared OpenCode V1/V2 adapter\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/20\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeC8A\",\"number\":21,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V1 setup and compatibility failures\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/21\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeD5g\",\"number\":22,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V1 lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/22\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeEoQ\",\"number\":23,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V2 setup and compatibility failures\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/23\"},{\"id\":\"I_kwDOT6l9aM8AAAABSLeFNA\",\"number\":24,\"state\":\"OPEN\",\"title\":\"Verify OpenCode V2 lifecycle and conformance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/24\"}],\"totalCount\":17},\"subIssuesSummary\":{\"completed\":7,\"percentCompleted\":41,\"total\":17},\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"updatedAt\":\"2026-09-19T14:11:02Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"}\n"
+    },
+    {
+      "argv": [
+        "gh",
+        "issue",
+        "view",
+        "6",
+        "--repo",
+        "tvproductions/superpowers-backplane",
+        "--json",
+        "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+      ],
+      "exit": 0,
+      "stdout": "{\"blockedBy\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABSHfGJA\",\"number\":12,\"state\":\"OPEN\",\"title\":\"Deliver and verify the OpenCode V1/V2 plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/12\"},{\"id\":\"I_kwDOT6l9aM8AAAABSHfBvg\",\"number\":11,\"state\":\"CLOSED\",\"title\":\"Deliver and verify the Claude Code plugin installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/11\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EO2A\",\"number\":3,\"state\":\"CLOSED\",\"title\":\"Deliver and document the Codex installation surface\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/3\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPKQ\",\"number\":4,\"state\":\"OPEN\",\"title\":\"Add licensing and adopter operations guidance\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/4\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EPeg\",\"number\":5,\"state\":\"OPEN\",\"title\":\"Validate Backplane self-hosting on its v0.1 product arc\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/5\"}],\"totalCount\":5},\"blocking\":{\"nodes\":[{\"id\":\"I_kwDOT6l9aM8AAAABN5EQlA\",\"number\":9,\"state\":\"OPEN\",\"title\":\"Evaluate deterministic Backplane helpers after field experience\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/9\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EQVg\",\"number\":8,\"state\":\"OPEN\",\"title\":\"Evaluate post-v0.1 support for an additional agent harness\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/8\"},{\"id\":\"I_kwDOT6l9aM8AAAABN5EQAg\",\"number\":7,\"state\":\"OPEN\",\"title\":\"Review, tag, and publish Backplane v0.1.0\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/7\"}],\"totalCount\":3},\"body\":\"## Objective\\n\\nValidate v0.1.0 in a real adopting repository and capture fresh compatibility and conformance evidence.\\n\\n## Bounded Scope\\n\\n### Allowed\\n\\n- One authorized pilot repository using the supported Codex installation surface.\\n- Current stable upstream Superpowers and current supported GitHub CLI capability surface.\\n- All five named Backplane conformance checks and fresh-session skill discovery.\\n- Capturing and resolving release-blocking pilot findings.\\n\\n### Out of Scope\\n\\n- Unapproved changes to the pilot repository's architecture, runtime, or release policy.\\n- Generalizing to additional agent harnesses.\\n- Waiving failed or unknown conformance results.\\n\\n## Acceptance Criteria\\n\\n- The authorized pilot installs Backplane without loss or overwrite of user work.\\n- Both required skills are discoverable in a fresh session.\\n- `skill-structure`, `native-issue-intake`, `language-neutral-verification`, `lifecycle-transitions`, and `superpowers-installation` all pass.\\n- Release-blocking findings are resolved or represented by native blockers.\\n- Durable evidence records revisions, CLI capability results, skill hashes, prompts, and scored outcomes.\\n\\n## Verification Seams\\n\\n- Execute the complete compatibility preflight and conformance protocol in `skills/managing-superpowers-backlog/references/installing-superpowers.md`.\\n- Re-read the pilot issue graph and verify no unresolved blockers remain.\\n- Confirm evidence was produced from the installed candidate rather than the authoring checkout.\\n\\n## Superpowers Artifacts\\n\\nDesign authority: the approved v0.1 adoption contract and installation design.\\n\\nPlan: not yet created.\",\"closedByPullRequestsReferences\":[],\"issueType\":null,\"labels\":[{\"id\":\"LA_kwDOT6l9aM8AAAACxwzjsw\",\"name\":\"backplane:backlog\",\"description\":\"Captured but not ready for execution\",\"color\":\"D4C5F9\"}],\"number\":6,\"parent\":{\"id\":\"I_kwDOT6l9aM8AAAABN5EOQg\",\"number\":1,\"state\":\"OPEN\",\"title\":\"Ship an adoptable Backplane v0.1.0 release\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/1\"},\"state\":\"OPEN\",\"stateReason\":\"\",\"subIssues\":{\"nodes\":[],\"totalCount\":0},\"subIssuesSummary\":{\"completed\":0,\"percentCompleted\":0,\"total\":0},\"title\":\"Run an external adoption pilot and fresh conformance suite\",\"updatedAt\":\"2026-08-23T13:55:24Z\",\"url\":\"https://github.com/tvproductions/superpowers-backplane/issues/6\"}\n"
+    }
+  ],
+  "limits": "No parent/pilot completion or lifecycle mutation, release, Project operation, product checkpoint or cleanup. Native progress changed only because #11 actually closed; graph membership and unrelated labels preserved. No PR created or claimed."
+}

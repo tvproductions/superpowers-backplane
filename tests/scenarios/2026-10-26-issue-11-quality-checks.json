@@ -7,6 +7,7 @@
     ".sp-bp\\work\\issue-11\\authorization_reference_probe.py",
     ".sp-bp\\work\\issue-11\\check_authorization_scope.py",
     ".sp-bp\\work\\issue-11\\check_relationship_counts.py",
+    ".sp-bp\\work\\issue-11\\closeout_issue11.py",
     ".sp-bp\\work\\issue-11\\complete_matrix.py",
     ".sp-bp\\work\\issue-11\\conformance.py",
     ".sp-bp\\work\\issue-11\\conformance_immediate.py",
@@ -61,6 +62,7 @@
         ".sp-bp\\work\\issue-11\\authorization_reference_probe.py",
         ".sp-bp\\work\\issue-11\\check_authorization_scope.py",
         ".sp-bp\\work\\issue-11\\check_relationship_counts.py",
+        ".sp-bp\\work\\issue-11\\closeout_issue11.py",
         ".sp-bp\\work\\issue-11\\complete_matrix.py",
         ".sp-bp\\work\\issue-11\\conformance.py",
         ".sp-bp\\work\\issue-11\\conformance_immediate.py",
@@ -118,6 +120,7 @@
         ".sp-bp\\work\\issue-11\\authorization_reference_probe.py",
         ".sp-bp\\work\\issue-11\\check_authorization_scope.py",
         ".sp-bp\\work\\issue-11\\check_relationship_counts.py",
+        ".sp-bp\\work\\issue-11\\closeout_issue11.py",
         ".sp-bp\\work\\issue-11\\complete_matrix.py",
         ".sp-bp\\work\\issue-11\\conformance.py",
         ".sp-bp\\work\\issue-11\\conformance_immediate.py",
@@ -159,7 +162,7 @@
         ".sp-bp\\work\\issue-11\\verify_transport.py"
       ],
       "exit": 0,
-      "stdout": "45 files already formatted\n"
+      "stdout": "46 files already formatted\n"
     },
     {
       "argv": [
@@ -174,6 +177,7 @@
         ".sp-bp\\work\\issue-11\\authorization_reference_probe.py",
         ".sp-bp\\work\\issue-11\\check_authorization_scope.py",
         ".sp-bp\\work\\issue-11\\check_relationship_counts.py",
+        ".sp-bp\\work\\issue-11\\closeout_issue11.py",
         ".sp-bp\\work\\issue-11\\complete_matrix.py",
         ".sp-bp\\work\\issue-11\\conformance.py",
         ".sp-bp\\work\\issue-11\\conformance_immediate.py",

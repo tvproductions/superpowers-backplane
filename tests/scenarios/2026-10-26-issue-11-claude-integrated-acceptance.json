@@ -4,7 +4,7 @@
   "issue": "https://github.com/tvproductions/superpowers-backplane/issues/11",
   "semantic_revision": "2026-09-20T01:31:32Z",
   "observed_revision": "2026-10-26T21:55:58Z",
-  "phase": "published-integrated-acceptance",
+  "phase": "completed",
   "rows": [
     {
       "id": "absent-setup",
@@ -2627,7 +2627,7 @@
   },
   "review": "PASS: one fresh whole-change reviewer; single Important evidence gap fixed and confirmed by same reviewer; no remaining findings.",
   "integrated_acceptance": "SATISFIED at7359019e546e07ea810d045fc1cb6fb0d095be4a; exact hosted installation and fresh discovery in both profiles",
-  "publication": "Delivery7359019 verified on remote main; assessment storage prepared",
+  "publication": "Delivery7359019 and SATISFIED evaluation2491e55 verified on remote main; closeout record follows as separate evidence storage",
   "acceptance_scope": "39 local candidate checks; final #11 acceptance remains pending integration",
   "local_integration": {
     "target": "3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb",
@@ -2638,5 +2638,12 @@
     "scope": "Local exact-target installation/discovery in both isolated profiles; product inputs unchanged; no public final acceptance or closure claim"
   },
   "satisfaction_assessment": "tests/scenarios/2026-10-26-issue-11-satisfaction.md",
-  "published_verification": "tests/scenarios/2026-10-26-issue-11-published-verification.json"
+  "published_verification": "tests/scenarios/2026-10-26-issue-11-published-verification.json",
+  "native_closeout": {
+    "state": "CLOSED",
+    "stateReason": "COMPLETED",
+    "updatedAt": "2026-10-27T00:47:33Z",
+    "lifecycle_labels": [],
+    "evidence": "tests/scenarios/2026-10-26-issue-11-closeout.json"
+  }
 }

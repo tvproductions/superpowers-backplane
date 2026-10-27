@@ -1,5 +1,29 @@
 # Handoff
 
+## Issue #11 published acceptance — October 26, 2026
+
+The operator explicitly requested publication after choosing local merge.
+Published main delivery `7359019e546e07ea810d045fc1cb6fb0d095be4a` was pushed
+normally, fetched, and matched against live remote main. Both isolated Claude
+profiles now use immutable hosted source at that exact SHA: 21 matching package
+blobs each, strict validation, fresh three-skill discovery and immediate
+protected-state comparisons pass. Forty remote source/evidence blobs match
+local accepted bytes. The [published verification](tests/scenarios/2026-10-26-issue-11-published-verification.json)
+and [SATISFIED assessment](tests/scenarios/2026-10-26-issue-11-satisfaction.md)
+map all four exact #11 criteria to the passing 39-row matrix and reviewed
+applicable evidence. Later evidence-storage commits do not replace the tested
+delivery identity. No PR was created or claimed: integration used the explicitly
+selected direct main fast-forward and normal push.
+
+The assessment and this continuity record are prepared for authorized
+publication. After their containing commit arrives remotely, update #11's
+published plan/evaluation links and active-to-review state with full semantic
+and native-graph guards. Completed closure was asked separately because the
+approved plan reserves that operation; do not close without the answer.
+Parent #1, pilot #6, other host acceptance, release/tag, Projects, product
+checkpoint and workspace cleanup remain independent. Profiles, feature branch
+and optional scratch remain retained. Older entries below are dated history.
+
 ## Issue #11 local main integration — October 26, 2026
 
 The operator chose finishing option 1, local merge. After fetching the expected

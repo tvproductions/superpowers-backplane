@@ -1,6 +1,6 @@
 # Issue #11 Claude candidate verification
 
-Product candidate: `91ea3bb7933b5aa2c7628595f17157810cafa701` on `feat/issue-11-claude-acceptance`. Local verification: **39/39 PASS**. Independent review passes with no remaining findings; final integrated acceptance remains pending. No push, PR, merge, closure or release has occurred.
+Product candidate: `91ea3bb7933b5aa2c7628595f17157810cafa701` on `feat/issue-11-claude-acceptance`. Local verification: **39/39 PASS**. Independent review passes with no remaining findings. Published integrated acceptance is SATISFIED at7359019; see the criterion assessment below. No PR, closure or release is claimed.
 
 The approved implementation plan is unchanged. This report supersedes the dated preparation state preserved in [preparation history](2026-10-26-issue-11-preparation-history.md). The generic testing-boundary correction removed the unnecessary per-fixture and prior-publication gates; local verification was already authorized.
 
@@ -77,3 +77,7 @@ The fresh whole-change reviewer reported no Critical or Minor findings and one I
 ## Authorized local integration
 
 The operator selected local merge. After fetching and confirming remote main unchanged, local main fast-forwarded to reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`. Exact-commit installation in both isolated profiles, 21 package blob checks each, strict package validation and fresh three-skill discovery pass with protected state preserved. Product/guide/upstream-input bytes match reviewed E; behavioral results retain original run identities. See [local integration receipt](2026-10-26-issue-11-local-merge-verification.json). No push, PR, GitHub lifecycle mutation, closure, release or cleanup occurred. Remote publication/arrival and final published satisfaction remain pending.
+
+## Published acceptance
+
+Published main `7359019e546e07ea810d045fc1cb6fb0d095be4a` matches the live remote. Forty remote artifact blobs match. Both isolated profiles fetched exact immutable GitHub source and passed 21 installed package blob checks, strict validation and fresh three-skill discovery with protected-state preservation. Unchanged reviewed behavior results retain original identities. See [published verification](2026-10-26-issue-11-published-verification.json) and [SATISFIED assessment](2026-10-26-issue-11-satisfaction.md). Closure remains separately authorized.

@@ -30,6 +30,7 @@
     ".sp-bp\\work\\issue-11\\native_setup_probe2.py",
     ".sp-bp\\work\\issue-11\\prepare_failure_fixtures.py",
     ".sp-bp\\work\\issue-11\\prepare_gh_shims.py",
+    ".sp-bp\\work\\issue-11\\prepare_satisfaction.py",
     ".sp-bp\\work\\issue-11\\record_progress.py",
     ".sp-bp\\work\\issue-11\\relationship_reference_probe.py",
     ".sp-bp\\work\\issue-11\\replay_lifecycle.py",
@@ -43,6 +44,7 @@
     ".sp-bp\\work\\issue-11\\verify_evidence.py",
     ".sp-bp\\work\\issue-11\\verify_local_merge.py",
     ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
+    ".sp-bp\\work\\issue-11\\verify_published_main.py",
     ".sp-bp\\work\\issue-11\\verify_transport.py"
   ],
   "commands": [
@@ -82,6 +84,7 @@
         ".sp-bp\\work\\issue-11\\native_setup_probe2.py",
         ".sp-bp\\work\\issue-11\\prepare_failure_fixtures.py",
         ".sp-bp\\work\\issue-11\\prepare_gh_shims.py",
+        ".sp-bp\\work\\issue-11\\prepare_satisfaction.py",
         ".sp-bp\\work\\issue-11\\record_progress.py",
         ".sp-bp\\work\\issue-11\\relationship_reference_probe.py",
         ".sp-bp\\work\\issue-11\\replay_lifecycle.py",
@@ -95,6 +98,7 @@
         ".sp-bp\\work\\issue-11\\verify_evidence.py",
         ".sp-bp\\work\\issue-11\\verify_local_merge.py",
         ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
+        ".sp-bp\\work\\issue-11\\verify_published_main.py",
         ".sp-bp\\work\\issue-11\\verify_transport.py"
       ],
       "exit": 0,
@@ -137,6 +141,7 @@
         ".sp-bp\\work\\issue-11\\native_setup_probe2.py",
         ".sp-bp\\work\\issue-11\\prepare_failure_fixtures.py",
         ".sp-bp\\work\\issue-11\\prepare_gh_shims.py",
+        ".sp-bp\\work\\issue-11\\prepare_satisfaction.py",
         ".sp-bp\\work\\issue-11\\record_progress.py",
         ".sp-bp\\work\\issue-11\\relationship_reference_probe.py",
         ".sp-bp\\work\\issue-11\\replay_lifecycle.py",
@@ -150,10 +155,11 @@
         ".sp-bp\\work\\issue-11\\verify_evidence.py",
         ".sp-bp\\work\\issue-11\\verify_local_merge.py",
         ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
+        ".sp-bp\\work\\issue-11\\verify_published_main.py",
         ".sp-bp\\work\\issue-11\\verify_transport.py"
       ],
       "exit": 0,
-      "stdout": "43 files already formatted\n"
+      "stdout": "45 files already formatted\n"
     },
     {
       "argv": [
@@ -191,6 +197,7 @@
         ".sp-bp\\work\\issue-11\\native_setup_probe2.py",
         ".sp-bp\\work\\issue-11\\prepare_failure_fixtures.py",
         ".sp-bp\\work\\issue-11\\prepare_gh_shims.py",
+        ".sp-bp\\work\\issue-11\\prepare_satisfaction.py",
         ".sp-bp\\work\\issue-11\\record_progress.py",
         ".sp-bp\\work\\issue-11\\relationship_reference_probe.py",
         ".sp-bp\\work\\issue-11\\replay_lifecycle.py",
@@ -204,6 +211,7 @@
         ".sp-bp\\work\\issue-11\\verify_evidence.py",
         ".sp-bp\\work\\issue-11\\verify_local_merge.py",
         ".sp-bp\\work\\issue-11\\verify_policy_boundary.py",
+        ".sp-bp\\work\\issue-11\\verify_published_main.py",
         ".sp-bp\\work\\issue-11\\verify_transport.py"
       ],
       "exit": 0,

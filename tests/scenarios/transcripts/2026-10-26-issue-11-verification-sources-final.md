@@ -5758,6 +5758,187 @@ print(
 )
 ```
 
+## prepare_satisfaction.py
+
+SHA-256: `9aea9a430f7dcaf421a4d084bdd5179bce43e344a59e8c78baba5890c37f70d6`
+
+```python
+"""Record the exact published delivery's criterion assessment and current inputs."""
+
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+
+from lifecycle_helpers import ISSUE_FIELDS, run_cli, write_json
+
+root = Path.cwd().resolve(strict=True)
+scenarios = root / "tests/scenarios"
+work = root / ".sp-bp/work/issue-11"
+prefix = "2026-10-26-issue-11-"
+delivery = "7359019e546e07ea810d045fc1cb6fb0d095be4a"
+repository = "tvproductions/superpowers-backplane"
+
+
+def cli(args):
+    return run_cli(args, cwd=root).strip()
+
+
+assert cli(["git", "rev-parse", "HEAD"]) == delivery
+assert cli(["git", "rev-parse", "origin/main"]) == delivery
+matrix = json.loads(
+    (scenarios / (prefix + "claude-integrated-acceptance.json")).read_text(
+        encoding="utf-8"
+    )
+)
+assert len(matrix["rows"]) == 39 and all(r["result"] == "PASS" for r in matrix["rows"])
+published = json.loads(
+    (scenarios / (prefix + "published-verification.json")).read_text(encoding="utf-8")
+)
+assert published["result"] == "PASS" and published["target"] == delivery
+issues = {}
+for number in (11, 17, 18, 19, 1, 6):
+    issues[str(number)] = json.loads(
+        cli(
+            [
+                "gh",
+                "issue",
+                "view",
+                str(number),
+                "--repo",
+                repository,
+                "--json",
+                ISSUE_FIELDS,
+            ]
+        )
+    )
+issue = issues["11"]
+assert issue["state"] == "OPEN" and issue["updatedAt"] == "2026-10-26T21:55:58Z"
+assert [label["name"] for label in issue["labels"]] == ["backplane:active"]
+for number in (17, 18, 19):
+    assert (
+        issues[str(number)]["state"] == "CLOSED"
+        and issues[str(number)]["stateReason"] == "COMPLETED"
+    )
+section = (
+    issue["body"]
+    .split("## Acceptance Criteria\n\n", 1)[1]
+    .split("\n## Verification Seams", 1)[0]
+)
+criteria = [line[2:] for line in section.splitlines() if line.startswith("- ")]
+assert len(criteria) == 4
+observations = [
+    "Fresh full intake observes #17/#18/#19 CLOSED/COMPLETED. Integrated artifacts and original delivery ancestors are reachable from published main; all matrix evidence and approved plan/review blobs match GitHub immutable tree identities.",
+    "Fixed mandatory row set is 39/39 PASS. Each row retains original run identities and evaluated candidate inputs, capabilities, installed skill identities and source comparison. Published hosted source and 21 installed package blobs per profile confirm unchanged reviewed payload at the actual integration target.",
+    "Affected setup/failure and conformance seams were rerun on Claude2.1.311, including actual official7.0.0 acquisition and separate dev7.0.1 behavior. Guide/manifests are unchanged from current-host nine-block lifecycle replay; historical native #34 states remain historical with current affected semantics rerun. Pinned hosted source of the final delivery was actually installed in both profiles. No unresolved review findings.",
+    "Fresh published-target sessions actually invoke all three skills from separate upstream/Backplane installations. Immediate before/after protected comparisons preserve normal/user files, unrelated plugin inventory, shared installed sentinel files, independent upstream tracked files and identity, project refs and full issue state.",
+]
+paths = [
+    prefix + "claude-integrated-acceptance.json",
+    prefix + "published-verification.json",
+    prefix + "candidate-verification.json",
+    prefix + "final-conformance.json",
+    prefix + "lifecycle.json",
+    prefix + "shared-catalog.json",
+    prefix + "final-review.md",
+    prefix + "quality-checks.json",
+    prefix + "unauthenticated-final.json",
+]
+evidence = [
+    {
+        "path": "tests/scenarios/" + path,
+        "sha256": hashlib.sha256((scenarios / path).read_bytes()).hexdigest(),
+    }
+    for path in paths
+]
+ci = json.loads(cli(["gh", "api", f"repos/{repository}/actions/workflows"]))
+runs = json.loads(
+    cli(["gh", "api", f"repos/{repository}/actions/runs?head_sha={delivery}"])
+)
+write_json(
+    scenarios / (prefix + "satisfaction.json"),
+    {
+        "result": "SATISFIED",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "issue": issue["url"],
+        "consumed_semantic_revision": "2026-09-20T01:31:32Z",
+        "evaluated_revision": issue["updatedAt"],
+        "integration_commit": delivery,
+        "reviewed_head": "3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb",
+        "product_candidate": "91ea3bb7933b5aa2c7628595f17157810cafa701",
+        "plan_commit": "1d4ba0f7c2df54b92c19c24d543dc97d17933712",
+        "integration_method": "Explicitly authorized local main fast-forward followed by explicitly authorized normal push; no PR exists or is claimed.",
+        "criteria": [
+            {
+                "key": f"AC{n}",
+                "wording": wording,
+                "result": "SATISFIED",
+                "observed": observation,
+            }
+            for n, (wording, observation) in enumerate(
+                zip(criteria, observations, strict=True), 1
+            )
+        ],
+        "evidence": evidence,
+        "issues": issues,
+        "ci": {
+            "workflows": [
+                {"name": w["name"], "path": w["path"], "state": w["state"]}
+                for w in ci["workflows"]
+            ],
+            "target_run_count": runs["total_count"],
+            "scope": "Observed GitHub workflow state; no missing branch CI is represented as a passing CI run. Actual project checks are recorded separately.",
+        },
+        "closure": "Not performed; distinct from this assessment and conditional on applicable operator authority.",
+        "limits": "Claude Windows tuple only. Other hosts, parent completion, pilot readiness, release, Projects, product checkpoint and workspace cleanup are not claimed or performed. Excluded pilot failures remain excluded; no hosted source or behavioral response is relabeled from a historical run.",
+    },
+)
+lines = [
+    "# Issue #11 satisfaction at published main",
+    "",
+    f"**SATISFIED** for published integration `{delivery}`. Reviewed head is `3fd2606`; product candidate is `91ea3bb7`. A later evidence-only commit stores this assessment and does not replace the tested delivery identity.",
+    "",
+    "The operator selected local merge and then explicitly requested publication/push. Main was fast-forwarded, pushed normally and freshly fetched; remote arrival is verified. No PR was created or claimed. Fresh native-host installation fetched the exact immutable published GitHub source in both isolated profiles; each has 21 matching package blobs, strict package validation and actual three-skill discovery with protected-state preservation.",
+    "",
+    "Issue semantic revision `2026-09-20T01:31:32Z` is reconciled to observed `2026-10-26T21:55:58Z`: intervening local-plan links and lifecycle updates did not alter criteria, scope or native graph. Approved design/plan bytes remain unchanged. The independently reviewed reference corrections and owned-workspace policy are integrated. One Important review evidence gap was fixed and confirmed; no remaining findings or deferred minors.",
+    "",
+    "## Criterion assessment",
+    "",
+    "| Criterion | Observed result | Verdict |",
+    "|---|---|---|",
+]
+for n, observation in enumerate(observations, 1):
+    lines.append(f"| AC{n}: {criteria[n - 1]} | {observation} | SATISFIED |")
+lines += [
+    "",
+    "## Evidence and applicability",
+    "",
+    "The [39-row matrix]("
+    + prefix
+    + "claude-integrated-acceptance.json) retains exact original identities and current input comparisons. The [published-target verification]("
+    + prefix
+    + "published-verification.json) checks remote availability and installed delivery. The [criterion receipt]("
+    + prefix
+    + "satisfaction.json) preserves full native input, exact criterion wording and supporting hashes.",
+    "",
+    "Claude Code 2.1.311, gh2.103.2 and Python3.14.9; development upstream7.0.1 (`2ce8aa15`) and actual official upstream7.0.0 (`bb92a777`) were tested separately. Both final configurations passed all23 behavioral expectations plus structure. Nine exact lifecycle blocks used C and excluded test-only F; unchanged relevant guide/manifests retain mechanism evidence, with final hosted-payload installation/discovery independently observed. Historical #34 native transitions remain at their original identities, supplemented by current affected-behavior tests and actual #11 observations. This is not a claim that all historical mutations were rerun.",
+    "",
+    "Known failed/pilot observations are preserved and excluded as described in the acceptance report. Immediate final comparisons include normal-profile catalogue hashes; no unknown earlier catalogue change is attributed to a cause or counted as preservation. Credentials were never copied; publishable derived artifacts redact the incidental runtime assignment from the excluded environment probe and omit upstream document bodies. Ruff/format/ty, guide parsing/compilation and all matrix/evidence checks pass; current check commands are recorded separately. No configured CI result is invented.",
+    "",
+    "## Disposition",
+    "",
+    "All four #11 criteria are satisfied for this exact published delivery. Publication of this evaluation precedes any authorized closure. Immediately before closure, re-fetch the full native issue after pointer/label edits and reconcile scope/criteria/graph, one lifecycle label and source/evidence inputs. Parent #1 and pilot #6 remain open; their native accounting and blockers are independent. Other hosts, release/tag, Projects, product checkpoint, cleanup and transport of optional scratch are outside this acceptance claim.",
+    "",
+]
+(scenarios / (prefix + "satisfaction.md")).write_text(
+    "\n".join(lines), encoding="utf-8", newline="\n"
+)
+print(
+    "SATISFIED: four exact issue criteria at published delivery; no native closure performed",
+    flush=True,
+)
+```
+
 ## record_progress.py
 
 SHA-256: `76284893cd4f6fda0765078ec32647c25a3efe9d7e7aa114f5f3711f213593da`
@@ -7690,6 +7871,203 @@ print(
         },
         indent=2,
     )
+)
+```
+
+## verify_published_main.py
+
+SHA-256: `32f309547a17e82dbea132ecede23089cc59ea415dc52d7ecb3ae0089140ceda`
+
+```python
+"""Verify hosted immutable source, installation and discovery after authorized push."""
+
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+
+from lifecycle_helpers import BACKPLANE, Harness, run_cli, write_json
+
+root = Path.cwd().resolve(strict=True)
+work = root / ".sp-bp/work/issue-11"
+output = work / "published-main-verification"
+assert not output.exists()
+output.mkdir()
+target = "7359019e546e07ea810d045fc1cb6fb0d095be4a"
+prior = "3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb"
+repo = "tvproductions/superpowers-backplane"
+commands = []
+
+
+def command(args):
+    value = run_cli(args, cwd=root)
+    commands.append({"argv": args, "exit": 0, "stdout": value})
+    return value.strip()
+
+
+assert Path(command(["git", "rev-parse", "--show-toplevel"])).samefile(root)
+assert command(["git", "branch", "--show-current"]) == "main"
+assert command(["git", "rev-parse", "HEAD"]) == target
+assert command(["git", "rev-parse", "origin/main"]) == target
+assert command(["git", "ls-remote", "--heads", "origin", "main"]).split()[0] == target
+assert not command(
+    [
+        "git",
+        "diff",
+        "--name-only",
+        prior,
+        target,
+        "--",
+        "skills",
+        ".claude-plugin",
+        "plugin.json",
+        "README.md",
+        "AGENTS.md",
+        "SUPERPOWERS.md",
+        "docs/installing-claude-code.md",
+    ]
+)
+tree = json.loads(
+    run_cli(["gh", "api", f"repos/{repo}/git/trees/{target}?recursive=1"], cwd=root)
+)
+assert tree.get("truncated") is False
+remote = {
+    entry["path"]: entry["sha"] for entry in tree["tree"] if entry["type"] == "blob"
+}
+matrix = json.loads(
+    (
+        root / "tests/scenarios/2026-10-26-issue-11-claude-integrated-acceptance.json"
+    ).read_text(encoding="utf-8")
+)
+paths = {e["path"] for row in matrix["rows"] for e in row["evidence"]}
+paths.update(
+    {
+        "AGENTS.md",
+        "SUPERPOWERS.md",
+        "docs/installing-claude-code.md",
+        "docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md",
+        "tests/scenarios/2026-10-26-issue-11-final-review.md",
+        "tests/scenarios/2026-10-26-issue-11-claude-integrated-acceptance.json",
+    }
+)
+remote_checks = []
+for path in sorted(paths):
+    content = (root / path).read_bytes()
+    actual = hashlib.sha1(
+        f"blob {len(content)}\0".encode("ascii") + content, usedforsecurity=False
+    ).hexdigest()
+    assert remote[path] == actual, path
+    remote_checks.append(
+        {
+            "path": path,
+            "remote_blob": remote[path],
+            "actual_blob": actual,
+            "sha256": hashlib.sha256(content).hexdigest(),
+        }
+    )
+profiles = []
+for name, profile, uid in (
+    ("native", root / ".sp-bp/work/issue-19/profile", "superpowers@superpowers-dev"),
+    ("official", work / "setup-profile", "superpowers@claude-plugins-official"),
+):
+    directory = output / name
+    directory.mkdir()
+    (directory / "neutral").mkdir()
+    h = Harness(root, profile=profile, output=directory, upstream_id=uid)
+    before = h.snapshot("before", prior, "0.1.0", capture_only=True)
+    sentinel = next(
+        (
+            p
+            for p in before["plugins"]
+            if p["id"] == "sp-bp-preservation-sentinel@superpowers-backplane"
+        ),
+        None,
+    )
+    hashes = {}
+    if sentinel:
+        source = Path(sentinel["installPath"])
+        hashes = {
+            str(p.relative_to(source)): h.hash_file(p)
+            for p in source.rglob("*")
+            if p.is_file()
+        }
+    profiles.append((name, h, before, sentinel, hashes))
+catalog = work / "fixtures/final-catalog"
+assert catalog.resolve(strict=True).is_relative_to(
+    (work / "fixtures").resolve(strict=True)
+)
+manifest = catalog / ".claude-plugin/marketplace.json"
+original = json.loads(manifest.read_text(encoding="utf-8"))
+assert original["name"] == "superpowers-backplane"
+assert {p["name"] for p in original["plugins"]} == {
+    "superpowers-backplane",
+    "sp-bp-preservation-sentinel",
+}
+selected = next(p for p in original["plugins"] if p["name"] == "superpowers-backplane")
+assert selected["source"] == "./package"
+selected["source"] = {"source": "github", "repo": repo, "sha": target}
+write_json(manifest, original)
+records = []
+for name, h, before, sentinel, hashes in profiles:
+    native = []
+    for args in (
+        ["plugin", "uninstall", BACKPLANE, "--scope", "user"],
+        ["plugin", "marketplace", "update", "superpowers-backplane"],
+        ["plugin", "install", BACKPLANE, "--scope", "user"],
+        ["plugin", "validate", "--strict", str(root)],
+    ):
+        text = h.command(["claude", *args])
+        native.append({"argv": ["claude", *args], "exit": 0, "stdout": text})
+    after = h.snapshot("after", target, "0.1.0", compare_to=before)
+    h.discovery("published-main")
+    final = h.snapshot("after-discovery", target, "0.1.0", compare_to=after)
+    if sentinel:
+        source = Path(sentinel["installPath"])
+        assert hashes == {
+            str(p.relative_to(source)): h.hash_file(p)
+            for p in source.rglob("*")
+            if p.is_file()
+        }
+    registry = json.loads(
+        (h.profile / "plugins/installed_plugins.json").read_text(encoding="utf-8")
+    )["plugins"][BACKPLANE]
+    assert registry[0]["gitCommitSha"] == target
+    records.append(
+        {
+            "mode": name,
+            "before": before,
+            "after": after,
+            "after_discovery": final,
+            "native_commands": native,
+            "installed_registry": registry,
+            "shared_sentinel_file_hashes": hashes,
+            "discovery": json.loads(
+                (h.work / "published-main-discovery-summary.json").read_text(
+                    encoding="utf-8"
+                )
+            ),
+        }
+    )
+write_json(
+    root / "tests/scenarios/2026-10-26-issue-11-published-verification.json",
+    {
+        "result": "PASS",
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "target": target,
+        "reviewed_head": prior,
+        "product_candidate": "91ea3bb7933b5aa2c7628595f17157810cafa701",
+        "integration": "User-authorized direct local main fast-forward and normal main push; no PR was created or claimed.",
+        "remote_blob_checks": remote_checks,
+        "commands": commands,
+        "profiles": records,
+        "hosted_source": selected["source"],
+        "source_scope": "Native installation fetched exact immutable published GitHub source in both isolated profiles; local-directory source replaced only for the Backplane entry, shared sentinel preserved.",
+        "scope": "Remote arrival and artifact availability; exact-target hosted installation, 21 package blobs per profile, strict validation, fresh three-skill discovery and immediate protected-state preservation. Unchanged relevant product/guide/upstream inputs retain explicitly identified reviewed behavioral observations. No release or cleanup.",
+    },
+)
+print(
+    f"PASS: published main {target}; {len(remote_checks)} remote evidence/source blobs; two hosted installations and fresh discovery",
+    flush=True,
 )
 ```
 

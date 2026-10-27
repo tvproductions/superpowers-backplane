@@ -73,3 +73,7 @@ Evidence checks and the fresh whole-change review pass. Present the concrete bra
 ## Independent review
 
 The fresh whole-change reviewer reported no Critical or Minor findings and one Important evidence gap in the signed-out-host row. The old receipt failed the evidence-completeness control. A fresh current-host negative test closes the gap with actual no-model refusal and protected-state comparison. See [review and fix disposition](2026-10-26-issue-11-final-review.md) and [current signed-out receipt](2026-10-26-issue-11-unauthenticated-final.json). Product source is unchanged. The same reviewer confirmed the fix and reports no remaining findings; final 42-helper Ruff/format/ty and 39-row evidence checks pass.
+
+## Authorized local integration
+
+The operator selected local merge. After fetching and confirming remote main unchanged, local main fast-forwarded to reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`. Exact-commit installation in both isolated profiles, 21 package blob checks each, strict package validation and fresh three-skill discovery pass with protected state preserved. Product/guide/upstream-input bytes match reviewed E; behavioral results retain original run identities. See [local integration receipt](2026-10-26-issue-11-local-merge-verification.json). No push, PR, GitHub lifecycle mutation, closure, release or cleanup occurred. Remote publication/arrival and final published satisfaction remain pending.

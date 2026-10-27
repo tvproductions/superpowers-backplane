@@ -1,7 +1,9 @@
 {
   "result": "PASS",
-  "files_screened": 55,
-  "derived_files_redacted": [],
+  "files_screened": 57,
+  "derived_files_redacted": [
+    "tests/scenarios/2026-10-26-issue-11-local-merge-verification.json"
+  ],
   "known_incidental_runtime_values": 1,
   "policy": "Never inspect or copy credential stores. Known incidental values were identified only in previously captured ignored test streams. Replace them in derived publishable artifacts; raw streams stay ignored. Account/organization fields previously redacted; unrelated synced-owner path component consistently aliased. Upstream injected skill bodies omitted, retaining locator/hash observations. Historical unrelated evidence unchanged."
 }

@@ -2628,5 +2628,13 @@
   "review": "PASS: one fresh whole-change reviewer; single Important evidence gap fixed and confirmed by same reviewer; no remaining findings.",
   "integrated_acceptance": "PENDING authorized publication/integration and exact-target verification",
   "publication": "Not performed",
-  "acceptance_scope": "39 local candidate checks; final #11 acceptance remains pending integration"
+  "acceptance_scope": "39 local candidate checks; final #11 acceptance remains pending integration",
+  "local_integration": {
+    "target": "3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb",
+    "result": "PASS",
+    "evidence": "tests/scenarios/2026-10-26-issue-11-local-merge-verification.json",
+    "sha256": "25d74d506f476663d8e601843fb2229453670ed02a4dc3b9a85a3256f33efa81",
+    "publication": "Not performed; remote main still66c4c4f",
+    "scope": "Local exact-target installation/discovery in both isolated profiles; product inputs unchanged; no public final acceptance or closure claim"
+  }
 }

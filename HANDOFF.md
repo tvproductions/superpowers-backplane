@@ -1,5 +1,31 @@
 # Handoff
 
+## Issue #11 local main integration — October 26, 2026
+
+The operator chose finishing option 1, local merge. After fetching the expected
+origin and confirming remote main remained `66c4c4fa`, local `main`
+fast-forwarded to reviewed head `3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb`.
+The [local integration receipt](tests/scenarios/2026-10-26-issue-11-local-merge-verification.json)
+records exact-target native installation in both isolated Claude profiles,
+21 matching package blobs per profile, strict package validation and fresh
+three-skill discovery. Immediate snapshots preserve unrelated plugins,
+normal/user files, independent upstream, project refs and complete #11 state.
+Product, guide and upstream-input bytes equal reviewed product candidate
+`91ea3bb7`; retained behavioral results remain at their original identities.
+
+Both test profiles now record installed source `3fd26061`, distinct from the
+later evidence-only commit storing this integration receipt. The 39-row gate,
+nine Python guide compilations, four PowerShell guide parses and owned-helper
+Ruff/format/ty checks pass on local main. The feature branch, profiles and
+scratch are retained under the approved plan's no-cleanup boundary.
+
+No push, PR, GitHub lifecycle change, closure or release occurred. Native #11
+remains OPEN/active at `2026-10-26T21:55:58Z`; remote main remains `66c4c4fa`.
+Next is authorized publication, remote arrival verification and the final
+satisfaction/closure sequence when separately requested. This local merge does
+not establish remote transport or another machine's ability to resume.
+The entry below preserves the reviewed pre-merge state.
+
 ## Issue #11 local candidate verification — October 26, 2026
 
 This entry supersedes the preparation state below. The operator completed the

@@ -1,5 +1,16 @@
 # Handoff
 
+## Local tooling refresh — October 31, 2026
+
+The operator authorized the dependency-review recommendations. Python is now
+pinned to 3.14.10; the ignored local `.venv` uses that managed interpreter with
+Ruff 0.17.3 and ty 0.0.95. See the
+[refresh report](tests/scenarios/2026-10-31-tooling-refresh.md) and JSON receipt
+for exact checks and limitations, including existing guide-format findings.
+The release-policy binding records the reviewed starter source and direct
+Git/gh guidance. This is local maintenance, not publication or repeated native
+host acceptance. Issue #11's completed state below remains unchanged.
+
 ## Issue #11 completed and publication verified — October 26, 2026
 
 The operator authorized publication/push after local merge and explicitly

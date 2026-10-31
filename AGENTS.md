@@ -82,6 +82,9 @@
 - **NO pytest. EVER.** Do not add, suggest, or assume pytest.
 - Require GitHub CLI (`gh`) for GitHub operations. Assume Git because
   Superpowers itself requires Git workflows.
+- Use direct `gh` and `git` commands for routine GitHub and repository
+  operations. Reserve Python for substantive processing, through this
+  repository's prescribed `uv run --no-project python` environment.
 - Use native GitHub issue hierarchy, dependencies, issue types, labels, linked
   pull requests, and closure relationships. Do not require GitHub Projects or
   introduce IssueOps.

@@ -1,0 +1,174 @@
+{
+  "checked_at": "2026-10-31T23:32:36.372820+00:00",
+  "mode": "authorized local update",
+  "repository": "/Users/jbabb/Documents/Devel/superpowers-backplane",
+  "base_commit": "0dabbc0327b8dcc7e472b7a5781cb5ce660a225f",
+  "before": {
+    "python_pin": "3.14.9",
+    "venv": null,
+    "machine_uv": "0.13.6",
+    "machine_ruff": "0.17.3",
+    "machine_ty": "0.0.93"
+  },
+  "after": {
+    "python_pin": "3.14.10",
+    "python_version": "3.14.10 (main, Oct 26 2026, 13:59:48) [Clang 23.1.3 ]",
+    "prefix": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv",
+    "base_prefix": "/Users/jbabb/.local/share/uv/python/cpython-3.14.10-macos-aarch64-none",
+    "project_ruff": "0.17.3",
+    "project_ty": "0.0.95",
+    "machine_tools_changed": false
+  },
+  "retained_plugins": {
+    "superpowers": {
+      "version": "7.0.1",
+      "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+    },
+    "gz-skills": {
+      "version": "0.8.3",
+      "commit": "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3"
+    }
+  },
+  "starter_review": {
+    "previous": "35ac0578dab0c7b603a9545d9b6b630ee006e551",
+    "reviewed_main": "fc9cdd2b671f7af7e45fddaa1ac2739c75bb2281",
+    "latest_release": "v0.7.1",
+    "release_commit": "27594dbaec853e6bde037b0aaf3f0427a3f053f9",
+    "sha256": {
+      "docs/versioning.md": "96b3973aee9b52838655b701b349cfeacf07bde979b782743c65eec920dbeb30",
+      "docs/baseline-policy.md": "1c71740056ec365e0f49101f195adde9fe57da3e012cd8792a4ec86d8113a10f",
+      "docs/architecture.md": "9382b680b674d5158932a5c7ea5203929317a2fc816c2cdabf8fd217e7b62d7b",
+      "templates/AGENTS.skills-first.md": "5843978739a3bf794f624634d30657744ebe16de1dbd51e1eafd0a54772d43cc",
+      "docs/engineering/python.md": "185eb37de1ab56b434b72794ddc8eff9eebe4e01c25878f24fa9a32d8772e723",
+      "CHANGELOG.md": "3ca2162bf94bc75b372fa6f3d6ca57fdd20043064411f00c8714b76246bd52d1"
+    }
+  },
+  "guide": {
+    "compiled_blocks": 9,
+    "sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+    "equals_pre_update_HEAD": true,
+    "lint": "FAIL: pre-existing I001 import ordering",
+    "format": "FAIL: pre-existing formatting",
+    "type_check": "PASS"
+  },
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ruff",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "ruff 0.17.3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ty",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "ty 0.0.95 (48c5ea1ba 2026-10-29)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "check",
+        "--python",
+        ".venv"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Checked 2 packages in 11ms\nAll installed packages are compatible\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "list",
+        "--python",
+        ".venv",
+        "--outdated",
+        "--format",
+        "json"
+      ],
+      "exit": 0,
+      "stdout": "[]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ruff",
+        "check",
+        "/Users/jbabb/Documents/Devel/superpowers-backplane/.sp-bp/work/dependency-refresh-2026-10-31/guide_blocks.py"
+      ],
+      "exit": 1,
+      "stdout": "I001 [*] Import block is un-sorted or un-formatted\n --> .sp-bp/work/dependency-refresh-2026-10-31/guide_blocks.py:1:1\n  |\n1 | / import json\n2 | | import os\n3 | | from pathlib import Path\n4 | | import re\n5 | | import shutil\n6 | | import subprocess\n7 | | import tempfile\n  | |_______________^\n8 |\n9 |   profile = Path(input(\"Disposable Claude profile: \")).expanduser().resolve(strict=True)\n  |\nhelp: Organize imports\n  |\n2 | import os\n  - from pathlib import Path\n3 | import re\n4 | import shutil\n5 | import subprocess\n6 | import tempfile\n7 + from pathlib import Path\n8 |\n  |\n\nFound 1 error.\n[*] 1 fixable with `--fix`.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ruff",
+        "format",
+        "--check",
+        "/Users/jbabb/Documents/Devel/superpowers-backplane/.sp-bp/work/dependency-refresh-2026-10-31/guide_blocks.py"
+      ],
+      "exit": 1,
+      "stdout": "unformatted: File would be reformatted\n   --> .sp-bp/work/dependency-refresh-2026-10-31/guide_blocks.py:25:28\n    |\n24  |         index = int(environment.get(\"GIT_CONFIG_COUNT\", \"0\") or \"0\")\n    -         environment.update({\n    -             \"GIT_CONFIG_COUNT\": str(index + 1),\n    -             f\"GIT_CONFIG_KEY_{index}\": f\"url.https://github.com/{repo}.insteadOf\",\n    -             f\"GIT_CONFIG_VALUE_{index}\": f\"git@github.com:{repo}\",\n    -         })\n25  +         environment.update(\n26  +             {\n27  +                 \"GIT_CONFIG_COUNT\": str(index + 1),\n28  +                 f\"GIT_CONFIG_KEY_{index}\": f\"url.https://github.com/{repo}.insteadOf\",\n29  +                 f\"GIT_CONFIG_VALUE_{index}\": f\"git@github.com:{repo}\",\n30  +             }\n31  +         )\n32  |     result = subprocess.run(\n    -         [executable, *arguments[1:]], env=environment, shell=False,\n    -         capture_output=True, text=True, encoding=\"utf-8\", errors=\"replace\",\n33  +         [executable, *arguments[1:]],\n34  +         env=environment,\n35  +         shell=False,\n36  +         capture_output=True,\n37  +         text=True,\n38  +         encoding=\"utf-8\",\n39  +         errors=\"replace\",\n40  |         check=False,\n41  |     )\n42  |     if result.returncode:\n    -         raise RuntimeError(f\"Command failed; inspect state before repair: {result.stdout}{result.stderr}\")\n43  +         raise RuntimeError(\n44  +             f\"Command failed; inspect state before repair: {result.stdout}{result.stderr}\"\n45  +         )\n46  |     print(result.stdout, end=\"\" if result.stdout.endswith(\"\\n\") else \"\\n\")\n--------------------------------------------------------------------------------\n56  |         entries = existing.get(\"plugins\", [])\n    -         if (existing.get(\"name\") != \"superpowers-backplane\" or len(entries) != 1\n    -                 or entries[0].get(\"name\") != \"superpowers-backplane\"\n    -                 or entries[0].get(\"source\", {}).get(\"source\") != \"github\"\n    -                 or entries[0].get(\"source\", {}).get(\"repo\") != repo):\n    -             raise ValueError(\"Occupied catalog is not the verified dedicated Backplane source\")\n    -     available = native(\"gh\", \"api\", f\"repos/{repo}/commits/{revision}\", \"--jq\", \".sha\").strip()\n57  +         if (\n58  +             existing.get(\"name\") != \"superpowers-backplane\"\n59  +             or len(entries) != 1\n60  +             or entries[0].get(\"name\") != \"superpowers-backplane\"\n61  +             or entries[0].get(\"source\", {}).get(\"source\") != \"github\"\n62  +             or entries[0].get(\"source\", {}).get(\"repo\") != repo\n63  +         ):\n64  +             raise ValueError(\n65  +                 \"Occupied catalog is not the verified dedicated Backplane source\"\n66  +             )\n67  +     available = native(\n68  +         \"gh\", \"api\", f\"repos/{repo}/commits/{revision}\", \"--jq\", \".sha\"\n69  +     ).strip()\n70  |     if available != revision:\n71  |         raise ValueError(\"Source unavailable; retain prior catalog and installation\")\n72  |     value = {\n    -         \"name\": \"superpowers-backplane\", \"description\": \"Pinned Backplane hosted-source catalog\",\n73  +         \"name\": \"superpowers-backplane\",\n74  +         \"description\": \"Pinned Backplane hosted-source catalog\",\n75  |         \"owner\": {\"name\": \"tvproductions\"},\n    -         \"plugins\": [{\"name\": \"superpowers-backplane\", \"description\": \"Pinned Backplane package\",\n    -                      \"source\": {\"source\": \"github\", \"repo\": repo, \"sha\": revision}}],\n76  +         \"plugins\": [\n77  +             {\n78  +                 \"name\": \"superpowers-backplane\",\n79  +                 \"description\": \"Pinned Backplane package\",\n80  +                 \"source\": {\"source\": \"github\", \"repo\": repo, \"sha\": revision},\n81  +             }\n82  +         ],\n83  |     }\n84  |     manifest.parent.mkdir(parents=True, exist_ok=True)\n85  |     with tempfile.NamedTemporaryFile(\n    -         mode=\"w\", encoding=\"utf-8\", newline=\"\\n\", dir=manifest.parent, delete=False,\n86  +         mode=\"w\",\n87  +         encoding=\"utf-8\",\n88  +         newline=\"\\n\",\n89  +         dir=manifest.parent,\n90  +         delete=False,\n91  |     ) as handle:\n--------------------------------------------------------------------------------\n106 | native(\"claude\", \"plugin\", \"marketplace\", \"add\", str(catalog), \"--scope\", \"user\")\n    - native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n107 + native(\n108 +     \"claude\",\n109 +     \"plugin\",\n110 +     \"install\",\n111 +     \"superpowers-backplane@superpowers-backplane\",\n112 +     \"--scope\",\n113 +     \"user\",\n114 + )\n115 |\n116 |\n    - native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n117 + native(\n118 +     \"claude\",\n119 +     \"plugin\",\n120 +     \"install\",\n121 +     \"superpowers-backplane@superpowers-backplane\",\n122 +     \"--scope\",\n123 +     \"user\",\n124 + )\n125 |\n--------------------------------------------------------------------------------\n129 | native(\"claude\", \"plugin\", \"marketplace\", \"update\", \"superpowers-backplane\")\n    - native(\"claude\", \"plugin\", \"update\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n130 + native(\n131 +     \"claude\",\n132 +     \"plugin\",\n133 +     \"update\",\n134 +     \"superpowers-backplane@superpowers-backplane\",\n135 +     \"--scope\",\n136 +     \"user\",\n137 + )\n138 |\n--------------------------------------------------------------------------------\n142 | native(\"claude\", \"plugin\", \"marketplace\", \"update\", \"superpowers-backplane\")\n    - native(\"claude\", \"plugin\", \"uninstall\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n143 + native(\n144 +     \"claude\",\n145 +     \"plugin\",\n146 +     \"uninstall\",\n147 +     \"superpowers-backplane@superpowers-backplane\",\n148 +     \"--scope\",\n149 +     \"user\",\n150 + )\n151 |\n152 |\n    - native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n153 + native(\n154 +     \"claude\",\n155 +     \"plugin\",\n156 +     \"install\",\n157 +     \"superpowers-backplane@superpowers-backplane\",\n158 +     \"--scope\",\n159 +     \"user\",\n160 + )\n161 |\n--------------------------------------------------------------------------------\n170 |\n    - native(\"claude\", \"plugin\", \"uninstall\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n171 + native(\n172 +     \"claude\",\n173 +     \"plugin\",\n174 +     \"uninstall\",\n175 +     \"superpowers-backplane@superpowers-backplane\",\n176 +     \"--scope\",\n177 +     \"user\",\n178 + )\n179 |\n180 |\n    - native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n181 + native(\n182 +     \"claude\",\n183 +     \"plugin\",\n184 +     \"install\",\n185 +     \"superpowers-backplane@superpowers-backplane\",\n186 +     \"--scope\",\n187 +     \"user\",\n188 + )\n    |\n\n1 file would be reformatted\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--no-project",
+        "ty",
+        "check",
+        "/Users/jbabb/Documents/Devel/superpowers-backplane/.sp-bp/work/dependency-refresh-2026-10-31/guide_blocks.py"
+      ],
+      "exit": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "claude",
+        "plugin",
+        "validate",
+        ".",
+        "--strict",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\n  \"success\": true,\n  \"strict\": true,\n  \"target\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.claude-plugin/marketplace.json\",\n  \"manifest\": {\n    \"file\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.claude-plugin/marketplace.json\",\n    \"type\": \"marketplace\",\n    \"errors\": [],\n    \"warnings\": [],\n    \"notes\": [],\n    \"gatingHooks\": []\n  },\n  \"contents\": [],\n  \"advice\": [\n    {\n      \"file\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/README.md\",\n      \"message\": \"This README has no line that installs \\\"superpowers-backplane\\\" from a marketplace. Add the install line, which works in one step on Claude Code 2.1.275 or later.\",\n      \"installLine\": \"/plugin install superpowers-backplane --marketplace tvproductions/superpowers-backplane\"\n    }\n  ],\n  \"directory\": {\n    \"profile\": null,\n    \"findings\": [\n      {\n        \"code\": \"LICENSE_MISSING\",\n        \"title\": \"License missing\",\n        \"severity\": \"error\",\n        \"blocking\": true,\n        \"hold\": false,\n        \"file\": \"LICENSE\",\n        \"field\": \"\",\n        \"message\": \"This plugin has no LICENSE file and plugin.json has no `license`. The directory requires one of them.\",\n        \"fix\": \"Add a LICENSE file to the plugin folder, or set `license` (an SPDX id) in plugin.json. A LICENSE at the repository root also counts for a plugin in a sub-folder.\"\n      },\n      {\n        \"code\": \"ICON_MISSING\",\n        \"title\": \"No icon\",\n        \"severity\": \"warning\",\n        \"blocking\": false,\n        \"hold\": false,\n        \"file\": \".claude-plugin/plugin.json\",\n        \"field\": \"icon\",\n        \"message\": \"No icon found in the plugin. The validator looked for `icon` in plugin.json and for a file at .claude-plugin/icon.png or .svg, assets/icon.png or .svg, or a similar path.\",\n        \"fix\": \"Add a square PNG to the plugin folder at .claude-plugin/icon.png, or set `icon` in plugin.json to the path of a square PNG or JPEG in the plugin: 512 to 2048 px on each side, under 2 MB. SVG and WebP are not accepted. That file may become the listing icon only once: the first time the plugin is saved or submitted in the developer portal. Adding or changing it later does not change the icon.\"\n      }\n    ],\n    \"undecided\": [],\n    \"incomplete\": false,\n    \"failure\": null,\n    \"notes\": [\n      \"This folder also holds a marketplace manifest. The plugin directory treats such a folder as a plugin, so these checks cover only the plugin in this folder. To check another plugin that the marketplace lists, run validate on that plugin's folder.\"\n    ]\n  }\n}\n",
+      "stderr": ""
+    }
+  ],
+  "resolution_repeat": "Exact uv pip install repeated: checked two packages, no changes.",
+  "limits": [
+    "No repository package project or lock; no profile adoption.",
+    "No vulnerability scanner is configured; no vulnerability audit performed.",
+    "Historical Windows helper fixtures are absent on this host; no lifecycle or behavioral acceptance rerun.",
+    "Directory listing reports missing license and icon separately from passing strict manifest validation.",
+    "No source modernization required for this same-family patch; retain portable existing stdlib usage.",
+    "No machine-global tool, plugin cache, publication, tag or release change."
+  ],
+  "final_document_validation": {
+    "local_links": 23,
+    "receipt_parse": "PASS",
+    "pin": "3.14.10"
+  }
+}

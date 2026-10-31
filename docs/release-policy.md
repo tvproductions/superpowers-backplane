@@ -91,3 +91,37 @@ The five policy inputs above retain their recorded hashes in that commit;
 the initial working-tree review is reconciled to this immutable source identity.
 Development version 0.7.0 remains unreleased. This record verifies source-policy
 alignment; release acceptance, installation and native readiness remain separate.
+
+## Source review and tooling refresh — October 31, 2026
+
+Reviewed starter main at
+[`fc9cdd2b671f7af7e45fddaa1ac2739c75bb2281`](https://github.com/tvproductions/gz-skills-first-starter/commit/fc9cdd2b671f7af7e45fddaa1ac2739c75bb2281),
+rechecked unchanged after review. The latest published starter is `v0.7.1`,
+whose annotated tag resolves to `27594dbaec853e6bde037b0aaf3f0427a3f053f9`.
+This supersedes the earlier source's unreleased-version observation without
+rewriting its historical evidence. Reviewed versioning, baseline, architecture,
+adopter guidance, Python policy and changelog, including the diff from the
+previous reviewed source. Input hashes and verification are in the
+[tooling refresh receipt](../tests/scenarios/2026-10-31-tooling-refresh.json)
+and [report](../tests/scenarios/2026-10-31-tooling-refresh.md).
+
+The SemVer, coherent minor bundles, prospective major PRDs and Backplane-owned
+mode/lifecycle authorities remain consistent. The source now permits scheduled
+scans and reviewed update PRs, leaving adoption and timing to each project.
+No schedule or scanning service is selected here. Starter-specific cognitive
+engine exceptions do not become Backplane exceptions or acceptance evidence.
+
+The new direct Git/gh guidance is unreleased at the reviewed main revision;
+adopt it explicitly in AGENTS.md while retaining Backplane's existing
+`uv run --no-project python` execution command. The starter's locked-project
+command does not apply to this repository, which has no Python package project
+or lock. This preserves the existing Backplane-owned runtime decision rather
+than adopting the starter bundle or claiming formal conformance.
+
+The operator authorized updating the assessed tooling: keep the approved Python
+3.14 family, advance its exact pin to 3.14.10 and provision the ignored local
+environment with Ruff 0.17.3 and ty 0.0.95. No new release-policy exception is
+taken. No source package, consumer runtime requirement, plugin revision or
+release is changed. Retain newer-family Python 3.15 as a separate compatibility
+decision. Record current guide-format findings separately from runtime and
+manifest validation; this maintenance does not repeat historical host acceptance.

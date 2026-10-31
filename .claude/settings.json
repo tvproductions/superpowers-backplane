@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "gz-skills": {
+      "source": {
+        "source": "github",
+        "repo": "tvproductions/gz-skills",
+        "ref": "v0.8.3"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "gz-skills@gz-skills": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "checked_at": "2026-10-31T23:00:46.054565+00:00",
+  "repository": "/Users/jbabb/Documents/Devel/superpowers-backplane",
+  "base_commit": "c0a0a487ef8c9d9f2d8b4167ff7f307a300b7dd5",
+  "release": "v0.8.3",
+  "release_tree": "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3",
+  "release_commit": "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3",
+  "scope": "repository",
+  "codex": {
+    "id": "gz-skills@superpowers-backplane",
+    "installed": true,
+    "enabled": true,
+    "skills": 20,
+    "outside_repository_discovery": false
+  },
+  "claude": {
+    "id": "gz-skills@gz-skills",
+    "version": "0.8.3",
+    "scope": "project",
+    "enabled": true,
+    "skills": 20,
+    "other_installation_identities_preserved": true,
+    "outside_repository_project_enablement": false
+  },
+  "opencode": {
+    "id": "gz-skills",
+    "source": {
+      "type": "package",
+      "target": "git+https://github.com/tvproductions/gz-skills.git#v0.8.3",
+      "version": "d6acc26e28ca1c4f43e5bb46d8973021d7d006c3"
+    },
+    "state": {
+      "status": "active"
+    },
+    "skills": 20,
+    "outside_repository_discovery": false
+  },
+  "matching_skill_tree_blobs_per_host": 44,
+  "user_settings_hashes_unchanged": {
+    ".codex/config.toml": "0d98c4d0799daaf1c93a473e57b213161a0489906520a98403eea45236b20f8a",
+    ".claude/settings.json": "73edc9d05922855bb96ab8b3d92755277c8ad9a6f450c5d445d8997576db8cb8",
+    ".claude/settings.local.json": null,
+    ".config/opencode/opencode.json": "35add636ad16ebb8d27a80ac80a546d3f2d29939b967cca94af88971edcb5979",
+    ".config/opencode/opencode.jsonc": null
+  },
+  "skill_names": [
+    "gzs-agent-context-diet",
+    "gzs-change-review",
+    "gzs-cross-platform-python",
+    "gzs-dependency-risk-audit",
+    "gzs-git-sync",
+    "gzs-hexagonal-architecture-audit",
+    "gzs-intent-audit",
+    "gzs-plan-audit",
+    "gzs-project-setup",
+    "gzs-pythonic-pattern-apply",
+    "gzs-pythonic-pattern-detect",
+    "gzs-quality-gate",
+    "gzs-release",
+    "gzs-repository-hygiene",
+    "gzs-root-cause-debugging",
+    "gzs-router",
+    "gzs-session-handoff",
+    "gzs-tech-debt-review",
+    "gzs-test-driven-change",
+    "gzs-update-dependencies"
+  ],
+  "limits": [
+    "Native installation and discovery only; no behavioral suite or full ecosystem acceptance.",
+    "Current conversation requires restart to refresh skill inventory.",
+    "No commit, push, tag or release."
+  ]
+}

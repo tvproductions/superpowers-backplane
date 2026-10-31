@@ -32,11 +32,19 @@ For Claude Code, follow the [installation and setup guide](docs/installing-claud
 Upstream Superpowers supplies the development workflow; this Backplane adds
 native GitHub backlog and product continuity around that workflow. gz-skills
 is a separate, optional companion, installed and configured independently.
-The three projects are meant to work together. This repository does not
-install, vendor, or configure gz-skills. It obtains the stable upstream release
+The three projects are meant to work together. For development here, this
+repository enables the released gz-skills `v0.8.3` plugin through repository
+configuration for Codex, Claude Code and OpenCode V2. This is a development
+tool choice, not a dependency imposed on Backplane adopters or adoption of the
+starter bundle. Superpowers and Backplane retain their workflow authority;
+gz-skills procedures support that workflow. Skill trees are not vendored.
+This repository obtains the stable upstream Superpowers release
 independently under the ignored `.agents/superpowers` checkout and records that resolved
 revision in `SUPERPOWERS.md`.
 
 For repository-scoped OpenCode V2 use, `opencode.jsonc` pins the native
-Superpowers plugin to `v7.0.1` and exposes this repository's own `./skills`.
-Restart OpenCode in this repository after changing that configuration.
+Superpowers plugin to `v7.0.1`, gz-skills to `v0.8.3`, and exposes this
+repository's own `./skills`. Codex uses `.agents/plugins/marketplace.json`
+with `.codex/config.toml`; Claude Code uses `.claude/settings.json` at project
+scope. Native plugin managers own their caches; these settings do not enable
+gz-skills account-wide. Restart an existing session to refresh its skill list.

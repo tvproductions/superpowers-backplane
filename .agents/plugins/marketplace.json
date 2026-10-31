@@ -6,5 +6,14 @@
     "source": {"source": "local", "path": "./"},
     "policy": {"installation": "AVAILABLE", "authentication": "ON_USE"},
     "category": "Productivity"
+  }, {
+    "name": "gz-skills",
+    "source": {
+      "source": "url",
+      "url": "https://github.com/tvproductions/gz-skills.git",
+      "ref": "v0.8.3"
+    },
+    "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+    "category": "Developer Tools"
   }]
 }

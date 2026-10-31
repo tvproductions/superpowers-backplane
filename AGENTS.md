@@ -114,6 +114,13 @@
 
 ## Superpowers Dependency
 
+- Repository-scoped gz-skills plugins provide supporting engineering procedures
+  in Codex, Claude Code and OpenCode. Superpowers retains feature-workflow
+  authority and Backplane retains backlog/lifecycle/handoff authority. This
+  development-tool installation does not adopt the starter bundle or require
+  gz-skills in consuming projects. Update plugins through their native managers;
+  keep installed caches read-only during Backplane work.
+
 - Use `.agents/superpowers` as the upstream Superpowers checkout when working
   on this repository.
 - Keep the upstream checkout independently identifiable and updateable; do not
@@ -167,3 +174,23 @@
   findings, and the first task requiring revalidation. Verify authorized
   transport and arrival before claiming another host can resume. Missing
   predecessor evidence remains unknown. Preserve the approved plan/spec bytes.
+
+### Lite-mode task pacing
+
+- In explicitly selected lite mode, offer an optional cadence of one
+  operator-selected approved plan task per handoff. This guidance applies only
+  to lite mode; heavy-mode methodology remains unchanged. Do not infer mode
+  selection from this cadence or from installed plugins.
+- Preserve stable plan-local task IDs: `T10` means Task 10 in the named plan,
+  not GitHub issue #10. Keep the selected task's approved scope visible and
+  surface scope drift before continuing beyond it.
+- Implement and test the selected task, run the project's full required quality
+  gate, and commit within existing authorization. Then hand off the exact next
+  task, supporting evidence and open gaps. Keep implementation, verification,
+  local commit, push/CI and actual host acceptance distinct.
+- On resume, reconcile current Git state and receipts with the existing plan
+  and handoff records. Continue under standing approval without repeating the
+  planning interview; surface changed scope, invalidated assumptions or missing
+  authority when they require a new decision.
+- Reuse existing plan/handoff records and quality requirements. This optional
+  pacing adds no issue hierarchy, lifecycle or reduced verification standard.

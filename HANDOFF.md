@@ -1,5 +1,11 @@
 # Handoff
 
+## Issue #20 completed and publication verified — November 1, 2026
+
+The operator authorized remaining publication, exact published acceptance and closure. Published delivery386bdb5 passed both native hosted installations,70 package-file comparisons per host, fresh three-skill loads and all16 final checks. Adapter9/9 and helper15/15 plus Ruff/format/ty pass. Independent review has no unresolved defects. SATISFIED evaluation published at3cf6c87; exact remote assessment blobs were verified before issue linking.
+
+Native #20 is CLOSED/COMPLETED with no lifecycle label, observed updatedAt2026-11-01T17:01:53Z. See tests/scenarios/2026-11-01-issue-20-closeout.md and its structured receipt. Parent#1 remains open8/17; #21/#23 remain backlog with resolved#20 prerequisite. No next issue selected; #4/#5 plans remain unapproved. No PR, release/tag, Project mutation, product checkpoint or cleanup. Profiles and native worktree/branch remain retained. The later closeout-storage commit is separate from delivery and assessment; final authorized sync verifies its arrival. Older entries below are historical.
+
 ## Issue #20 local integration — November 1, 2026
 
 The operator selected local main integration of reviewed source/evidence branch head 3d90ac41f962a7dff2cdd76fce4f2090674f8eca. Both authenticated native smokes and all16 final evidence checks passed against product candidate bc6d30e; see tests/scenarios/2026-11-01-issue-20-unblock.md and its screened receipt. Native #20 is OPEN/active, observed revision 2026-11-01T16:33:53Z. Local main merge is 2c969915aac2049211cad86ea78143d50776beb4. Post-merge tests and all16 current installed-candidate checks pass; see tests/scenarios/2026-11-01-issue-20-local-integration.md and its screened receipt. Earlier native evidence is not a newly installed merge-SHA claim.

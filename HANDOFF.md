@@ -1,3 +1,17 @@
+# Issues #4/#5 local execution — November 1, 2026
+
+Both plans were approved and implementation started in native detached worktree
+`C:/Users/Jeff/.codex/worktrees/fb9c/superpowers-backplane`. Read the
+[execution checkpoint](docs/superpowers-backplane/plans/2026-11-01-issues-4-5-execution-checkpoint.md)
+for exact commits, task dispositions, verified checks and open acceptance gaps.
+Source/evidence at `588e1ac` contains MIT with copyright holder `g0`, adopter
+guidance, native replay and self-hosting assessment. Fresh review's two Important
+evidence findings were corrected by demonstrated controls. Neither issue is
+accepted complete. Both remain OPEN/backlog; remote writes were rejected pending
+publication/binding approval. No push, integration, closure or release occurred.
+Approved plan bytes and all unrelated worktrees remain preserved. Older entries
+below are historical; #4/#5 are now approved, not unapproved drafts.
+
 # Handoff
 
 ## Completed #20 session handoff — November 1, 2026

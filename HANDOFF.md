@@ -1,5 +1,30 @@
 # Handoff
 
+## Issue #20 local implementation — November 1, 2026
+
+The operator approved the revised #20 implementation plan and inline execution.
+The shared OpenCode adapter and initial-install guide are locally committed in
+native detached worktree `C:/Users/Jeff/.codex/worktrees/fc58/superpowers-backplane`,
+product candidate `bc6d30e54621c8a1747a0f2baa0551f25080b06a`, based on
+standalone main `337aa19`. The approved plan bytes are preserved. Read the
+[execution checkpoint](tests/scenarios/2026-11-01-issue-20-execution-checkpoint.md)
+and its linked report/receipt before continuing.
+
+Nine adapter tests and eleven receipt tests pass; five owned Python helpers
+pass Ruff/format/ty. Native V1 1.18.31 and V2 2.1.4 discover the Git-installed
+skills independently from upstream; both final 67-file inventory comparisons
+and protected-state checks pass. Fresh independent source review found two
+Important verification-tool gaps, corrected by demonstrated negative controls;
+no adapter defect or unresolved Minor was reported.
+
+Overall #20 acceptance remains UNKNOWN: both profiles lack completed native
+model authentication, and two V2 OAuth requests expired. Revalidate the exact
+workspace, issue semantics, profile paths/provenance/auth and model availability
+before native fresh-session tests. Do not copy credentials or replay expired
+OAuth requests. The checkpoint links foreground sign-in commands. No merge,
+push, release, issue closure or cleanup occurred. #4/#5 remain separate drafts.
+These records are local; remote arrival is unverified and not claimed.
+
 ## Local tooling refresh — October 31, 2026
 
 The operator authorized the dependency-review recommendations. Python is now

@@ -1,0 +1,40 @@
+"""Foreground login for one existing owned profile; never copy credentials."""
+
+import argparse
+import importlib.util
+import subprocess
+from pathlib import Path
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--variant", choices=("v1", "v2"), required=True)
+args = parser.parse_args()
+spec = importlib.util.spec_from_file_location(
+    "host_smoke", Path(__file__).with_name("host-smoke.py")
+)
+assert spec is not None and spec.loader is not None
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
+profile = runner.AREA / "profiles" / args.variant
+runner.owned_directory(profile)
+executable = (
+    runner.AREA / "hosts/v1/opencode.exe" if args.variant == "v1" else runner.V2_EXE
+)
+native_args = (
+    ["auth", "login", "--provider", "openai"]
+    if args.variant == "v1"
+    else [
+        "auth",
+        "login",
+        "openai",
+        "--method",
+        "chatgpt-token-sharing",
+        "--standalone",
+    ]
+)
+raise SystemExit(
+    subprocess.call(
+        [str(executable), *native_args],
+        cwd=profile / "config/opencode",
+        env=runner.child_env(profile, args.variant),
+    )
+)

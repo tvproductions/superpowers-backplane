@@ -1,0 +1,180 @@
+"""Breaks caught: false PASS on missing evidence or escaped host paths."""
+
+import copy
+import importlib.util
+import os
+import tempfile
+import unittest
+from pathlib import Path
+from typing import Any
+
+HERE = Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location("host_smoke", HERE / "host-smoke.py")
+assert spec is not None and spec.loader is not None
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
+
+
+class ReceiptTests(unittest.TestCase):
+    def setUp(self):
+        self.assertIsNotNone(runner, "fixture runner must exist and load")
+        self.profile = HERE / "profiles" / "test"
+        root = self.profile / "cache" / "opencode" / "node_modules" / "backplane"
+        self.record: dict[str, Any] = {
+            "variant": "v2",
+            "host_version": "2.1.4",
+            "host_source_sha": "1" * 40,
+            "host_executable_sha256": "2" * 64,
+            "candidate_sha": "3" * 40,
+            "package_spec": "git+file:///fixture.git#" + "3" * 40,
+            "installed_package_root": str(root),
+            "profile": str(self.profile),
+            "upstream_origin": "https://github.com/obra/superpowers.git",
+            "upstream_revision": "4" * 40,
+            "upstream_root": str(HERE / "upstream"),
+            "upstream_verified": True,
+            "configuration_sources": [
+                str(self.profile / "config/opencode/opencode.json")
+            ],
+            "configuration_verified": True,
+            "upstream_skill_path": str(
+                HERE / "upstream/skills/using-superpowers/SKILL.md"
+            ),
+            "model": "provider/model",
+            "session_id": "session-fixture",
+            "commands": [{"returncode": 0, "timeout": False}],
+            "auth_verified": True,
+            "source_isolated": True,
+            "gh_capabilities_verified": True,
+            "package_inventory_matches": True,
+            "protected_state_unchanged": True,
+            "skills": {},
+            "captures": [{"path": "capture.json", "sha256": "5" * 64}],
+            "before": {"sentinel": "6" * 64},
+            "after": {"sentinel": "6" * 64},
+        }
+        for name in (
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs",
+        ):
+            self.record["skills"][name] = {
+                "path": self.record["upstream_skill_path"]
+                if name == "using-superpowers"
+                else str(root / "skills" / name / "SKILL.md"),
+                "sha256": "7" * 64,
+                "loaded": True,
+                "capture_sha256": "5" * 64,
+            }
+
+    def test_complete_record_passes(self):
+        self.assertEqual(runner.classify_smoke(self.record), "PASS")
+
+    def test_each_missing_field_is_unknown(self):
+        for key in self.record:
+            with self.subTest(field=key):
+                incomplete = copy.deepcopy(self.record)
+                del incomplete[key]
+                self.assertEqual(runner.classify_smoke(incomplete), "UNKNOWN")
+
+    def test_unverified_evidence_is_unknown(self):
+        for key in (
+            "auth_verified",
+            "source_isolated",
+            "gh_capabilities_verified",
+            "package_inventory_matches",
+            "protected_state_unchanged",
+            "upstream_origin",
+            "upstream_revision",
+        ):
+            with self.subTest(field=key):
+                incomplete = copy.deepcopy(self.record)
+                incomplete[key] = None
+                self.assertEqual(runner.classify_smoke(incomplete), "UNKNOWN")
+        for key in ("loaded", "capture_sha256"):
+            incomplete = copy.deepcopy(self.record)
+            incomplete["skills"]["managing-superpowers-backlog"][key] = None
+            self.assertEqual(runner.classify_smoke(incomplete), "UNKNOWN")
+
+    def test_development_discovery_fails(self):
+        self.record["skills"]["managing-superpowers-backlog"]["path"] = str(
+            HERE / "development/skills/backlog/SKILL.md"
+        )
+        self.assertEqual(runner.classify_smoke(self.record), "FAIL")
+
+    def test_failed_skill_and_failed_command_fail(self):
+        bad = copy.deepcopy(self.record)
+        bad["skills"]["managing-superpowers-backlog"]["loaded"] = False
+        self.assertEqual(runner.classify_smoke(bad), "FAIL")
+        for command in (
+            {"returncode": 1, "timeout": False},
+            {"returncode": None, "timeout": True},
+        ):
+            bad = copy.deepcopy(self.record)
+            bad["commands"] = [command]
+            self.assertEqual(runner.classify_smoke(bad), "FAIL")
+
+    def test_failure_beats_missing_auth(self):
+        self.record["auth_verified"] = None
+        self.record["protected_state_unchanged"] = False
+        self.assertEqual(runner.classify_smoke(self.record), "FAIL")
+
+    def test_child_environment_is_scoped_without_parent_mutation(self):
+        before = os.environ.copy()
+        env = runner.child_env(self.profile, "v2")
+        self.assertEqual(os.environ, before)
+        self.assertEqual(env["XDG_DATA_HOME"], str(self.profile / "data"))
+        self.assertEqual(env["OPENCODE_TEST_HOME"], str(self.profile / "home"))
+        self.assertNotIn("OPENCODE_CONFIG_CONTENT", env)
+        self.assertEqual(env["ProgramData"], str(self.profile / "programdata"))
+
+    def test_untrusted_origin_and_unbound_upstream_path_cannot_pass(self):
+        bad = copy.deepcopy(self.record)
+        bad["upstream_origin"] = "https://example.invalid/untrusted.git"
+        self.assertNotEqual(runner.classify_smoke(bad), "PASS")
+        bad = copy.deepcopy(self.record)
+        bad["skills"]["using-superpowers"]["path"] = str(HERE / "untrusted/SKILL.md")
+        self.assertNotEqual(runner.classify_smoke(bad), "PASS")
+
+    def test_only_real_boolean_verification_and_loads_can_pass(self):
+        for key in ("auth_verified", "source_isolated", "package_inventory_matches"):
+            bad = copy.deepcopy(self.record)
+            bad[key] = "unverified"
+            self.assertEqual(runner.classify_smoke(bad), "UNKNOWN")
+        bad = copy.deepcopy(self.record)
+        bad["skills"]["managing-superpowers-backlog"]["loaded"] = "unverified"
+        self.assertEqual(runner.classify_smoke(bad), "UNKNOWN")
+
+    def test_local_directory_or_wrong_git_revision_cannot_pass(self):
+        for target in (
+            "C:/development/backplane",
+            "git+file:///fixture.git#main",
+            "git+file:///fixture.git#" + "9" * 40,
+        ):
+            bad = copy.deepcopy(self.record)
+            bad["package_spec"] = target
+            self.assertNotEqual(runner.classify_smoke(bad), "PASS")
+
+    def test_capture_integrity_is_checked_against_actual_files(self):
+        self.assertTrue(
+            callable(getattr(runner, "check_captures", None)),
+            "final verification needs a real capture-integrity check",
+        )
+        with tempfile.TemporaryDirectory(
+            dir=HERE, prefix="capture-integrity-"
+        ) as folder:
+            directory = Path(folder)
+            capture = directory / "capture.json"
+            capture.write_text('{"observed":true}\n', encoding="utf-8")
+            record = {
+                "captures": [{"path": "capture.json", "sha256": runner.digest(capture)}]
+            }
+            self.assertTrue(runner.check_captures(record, directory))
+            capture.write_text('{"observed":false}\n', encoding="utf-8")
+            self.assertFalse(runner.check_captures(record, directory))
+            record["captures"][0]["path"] = "../outside.json"
+            self.assertFalse(runner.check_captures(record, directory))
+
+
+if __name__ == "__main__":
+    unittest.main()

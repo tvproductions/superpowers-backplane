@@ -2,7 +2,7 @@
 
 ## Completed #20 session handoff — November 1, 2026
 
-Read the append-only [completed-session handoff](docs/superpowers-backplane/handoffs/20261101T171725Z-issue-20-completed-and-synced.md) before choosing further work. #20 is CLOSED/COMPLETED and published; no next issue selected. #4/#5 drafts remain unapproved. The requested Git sync also advances the retained #20 source branch to its already-merged3d90ac4. Its receipt records observed transport separately from this handoff. No backlog mutation or release occurs in handoff/sync.
+Read the append-only [completed-session handoff](docs/superpowers-backplane/handoffs/20261101T171725Z-issue-20-completed-and-synced.md) before choosing further work. #20 is CLOSED/COMPLETED and published; no next issue selected. #4/#5 drafts remain unapproved. The requested Git sync also advances the retained #20 source branch to its already-merged3d90ac4. The [sync receipt](tests/scenarios/2026-11-01-issue-20-completed-handoff-sync.json) records verified arrival of handoff commit0aa86fe and source branch3d90ac4, including13 matching remote blobs. Its later storage commit is separate. No backlog mutation or release occurs in handoff/sync.
 
 ## Issue #20 completed and publication verified — November 1, 2026
 

@@ -1,0 +1,48 @@
+{
+  "schema": "superpowers-backplane-completed-handoff-sync/v1",
+  "observed_at": "2026-11-01T17:18:22.598869+00:00",
+  "request": "create handoff and git sync",
+  "repository": "https://github.com/tvproductions/superpowers-backplane.git",
+  "main_handoff_delivery": "0aa86fe6e32a695fd96baa69305abb0fb229f01c",
+  "source_branch": "handoff/issue-20-opencode-auth",
+  "source_delivery": "3d90ac41f962a7dff2cdd76fce4f2090674f8eca",
+  "handoff": "docs/superpowers-backplane/handoffs/20261101T171725Z-issue-20-completed-and-synced.md",
+  "reconciliation": "Fetched expected origin; main had no incoming changes. Normal atomic push delivered handoff and advanced retained source ref from84f0fd3 to its already-merged3d90ac4. Fresh fetch and ls-remote matched both local refs.",
+  "remote_blob_comparisons": {
+    "main": {
+      "docs/superpowers-backplane/handoffs/20261101T171725Z-issue-20-completed-and-synced.md": "5fa5b83b5450a19352081ec16340210ecaeaae03",
+      "HANDOFF.md": "40cdd0540ced433c8ad838138f3e5f6535a264b9",
+      "tests/scenarios/2026-11-01-issue-20-closeout.md": "8e59daf60829f0ebd0b50c8fd9f4c34bb1ec618e",
+      "tests/scenarios/2026-11-01-issue-20-closeout.json": "6cd78cac8f70d11ffa402de6e79db0e350b9b8bd",
+      "tests/scenarios/2026-11-01-issue-20-satisfaction.md": "e43b30e7ad773d884056b0e5c992504e26adb219",
+      "tests/scenarios/2026-11-01-issue-20-satisfaction.json": "fa7912a2ab3548cacfe4abd77d23af57d41148f1",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-20-opencode-adapter.md": "e8b35178b048c618801513d57bb14d51164672c8",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-4-license-and-operations.md": "7ef09263693b9ae5160ea4eaaaec983d8a520a08",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md": "0abedf42a9c5e9d1cdb5b6b1f0cebc6053fc73b4"
+    },
+    "source": {
+      "tests/scenarios/2026-11-01-issue-20-unblock.md": "89096d49f9fccd87b392b175ce35de5cc660c5d5",
+      "tests/scenarios/2026-11-01-issue-20-unblock.json": "0add0aca02e44538ee9ef4d4feabf0a9f92a0830",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-unblock-host-smoke.py.txt": "8ff73079a407716ac29483ab6dc37df2b050bdd2",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-unblock-test_issue20_receipt.py.txt": "7bb9574d8d7f84e52c890ac583755309c87c24bc"
+    }
+  },
+  "matching_main_blobs": 9,
+  "matching_source_blobs": 4,
+  "tested_product_delivery": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+  "assessment_storage": "3cf6c87f0bc590e5f8fa243d0d1010ddf9efcab7",
+  "completed_closeout_storage": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+  "issue20": {
+    "state": "CLOSED",
+    "reason": "COMPLETED",
+    "labels": [],
+    "updatedAt": "2026-11-01T17:01:53Z"
+  },
+  "attribution_clarification": "MIT selection is retained from predecessor/draft records; this sync does not independently re-observe the earlier operator conversation or approve#4/#5 plans.",
+  "limits": [
+    "No new native acceptance run for docs-only handoff/sync; prior exact delivery results retain scope",
+    "Ignored profiles, scratch and credentials are not transported",
+    "No next issue selection, backlog mutation, release or cleanup",
+    "This receipt storage is a later commit than main_handoff_delivery; its own arrival is verified separately"
+  ]
+}

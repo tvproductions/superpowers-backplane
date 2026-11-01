@@ -1,0 +1,174 @@
+test_evidenced_unsatisfied_is_valid_report (test_verify_self_hosting.EvidenceTests.test_evidenced_unsatisfied_is_valid_report) ... FAIL
+test_incomplete_enumeration_rejected (test_verify_self_hosting.EvidenceTests.test_incomplete_enumeration_rejected) ... FAIL
+test_missing_authorization_cannot_support_pass (test_verify_self_hosting.EvidenceTests.test_missing_authorization_cannot_support_pass) ... FAIL
+test_missing_issue_rejected (test_verify_self_hosting.EvidenceTests.test_missing_issue_rejected) ... FAIL
+test_satisfied_cannot_hide_unknown_seam (test_verify_self_hosting.EvidenceTests.test_satisfied_cannot_hide_unknown_seam) ... FAIL
+test_truncated_relationship_rejects_acceptance (test_verify_self_hosting.EvidenceTests.test_truncated_relationship_rejects_acceptance) ... FAIL
+test_two_valid_labels_rejected (test_verify_self_hosting.EvidenceTests.test_two_valid_labels_rejected) ... FAIL
+test_unknown_label_alone_rejected (test_verify_self_hosting.EvidenceTests.test_unknown_label_alone_rejected) ... FAIL
+test_unsupported_pass_rejected (test_verify_self_hosting.EvidenceTests.test_unsupported_pass_rejected) ... FAIL
+test_valid_plus_invalid_label_rejected (test_verify_self_hosting.EvidenceTests.test_valid_plus_invalid_label_rejected) ... FAIL
+test_valid_unknown_with_unrelated_label (test_verify_self_hosting.EvidenceTests.test_valid_unknown_with_unrelated_label) ... FAIL
+test_verification_after_closure_rejected (test_verify_self_hosting.EvidenceTests.test_verification_after_closure_rejected) ... FAIL
+test_zero_lifecycle_labels_rejected (test_verify_self_hosting.EvidenceTests.test_zero_lifecycle_labels_rejected) ... FAIL
+
+======================================================================
+FAIL: test_evidenced_unsatisfied_is_valid_report (test_verify_self_hosting.EvidenceTests.test_evidenced_unsatisfied_is_valid_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 103, in test_evidenced_unsatisfied_is_valid_report
+    self.assertEqual(self.validate(value), [])
+                     ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_incomplete_enumeration_rejected (test_verify_self_hosting.EvidenceTests.test_incomplete_enumeration_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 50, in test_incomplete_enumeration_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_missing_authorization_cannot_support_pass (test_verify_self_hosting.EvidenceTests.test_missing_authorization_cannot_support_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 81, in test_missing_authorization_cannot_support_pass
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_missing_issue_rejected (test_verify_self_hosting.EvidenceTests.test_missing_issue_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 55, in test_missing_issue_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_satisfied_cannot_hide_unknown_seam (test_verify_self_hosting.EvidenceTests.test_satisfied_cannot_hide_unknown_seam)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 97, in test_satisfied_cannot_hide_unknown_seam
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_truncated_relationship_rejects_acceptance (test_verify_self_hosting.EvidenceTests.test_truncated_relationship_rejects_acceptance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 45, in test_truncated_relationship_rejects_acceptance
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_two_valid_labels_rejected (test_verify_self_hosting.EvidenceTests.test_two_valid_labels_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 65, in test_two_valid_labels_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_unknown_label_alone_rejected (test_verify_self_hosting.EvidenceTests.test_unknown_label_alone_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 70, in test_unknown_label_alone_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_unsupported_pass_rejected (test_verify_self_hosting.EvidenceTests.test_unsupported_pass_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 92, in test_unsupported_pass_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_valid_plus_invalid_label_rejected (test_verify_self_hosting.EvidenceTests.test_valid_plus_invalid_label_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 75, in test_valid_plus_invalid_label_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_valid_unknown_with_unrelated_label (test_verify_self_hosting.EvidenceTests.test_valid_unknown_with_unrelated_label)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 39, in test_valid_unknown_with_unrelated_label
+    self.assertEqual(self.validate(value), [])
+                     ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_verification_after_closure_rejected (test_verify_self_hosting.EvidenceTests.test_verification_after_closure_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 87, in test_verification_after_closure_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+======================================================================
+FAIL: test_zero_lifecycle_labels_rejected (test_verify_self_hosting.EvidenceTests.test_zero_lifecycle_labels_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 60, in test_zero_lifecycle_labels_rejected
+    self.assertTrue(self.validate(value))
+                    ~~~~~~~~~~~~~^^^^^^^
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 33, in validate
+    self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Evidence validator has not been implemented
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.002s
+
+FAILED (failures=13)

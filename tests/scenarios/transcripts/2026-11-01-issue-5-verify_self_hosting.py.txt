@@ -1,0 +1,76 @@
+"""Validate a self-hosting evidence report without promoting its verdicts."""
+
+import json
+import sys
+from datetime import datetime
+from pathlib import Path
+from typing import Any, cast
+
+LABELS = {
+    "backplane:" + name
+    for name in ("backlog", "designing", "ready", "active", "blocked", "review")
+}
+
+
+def validate(receipt: dict[str, object]) -> list[str]:
+    data = cast(dict[str, Any], receipt)
+    errors: list[str] = []
+    enumeration = data.get("enumeration", {})
+    issues = data.get("issues", [])
+    numbers = [issue["number"] for issue in issues]
+    if enumeration.get("complete") is not True:
+        errors.append("Incomplete issue enumeration")
+    if set(numbers) != set(enumeration.get("numbers", [])) or len(numbers) != len(
+        set(numbers)
+    ):
+        errors.append("Missing or duplicate issue intake")
+    for issue in issues:
+        labels = [
+            item["name"]
+            for item in issue["labels"]
+            if item["name"].startswith("backplane:")
+        ]
+        if issue["state"] == "OPEN" and (len(labels) != 1 or labels[0] not in LABELS):
+            errors.append(f"Invalid open lifecycle labels: #{issue['number']}")
+        if issue["state"] == "CLOSED" and labels:
+            errors.append(f"Closed issue retains lifecycle labels: #{issue['number']}")
+        for field in ("subIssues", "blockedBy", "blocking"):
+            connection = issue[field]
+            if len(connection["nodes"]) != connection["totalCount"]:
+                errors.append(f"Incomplete {field}: #{issue['number']}")
+    seams = {row["id"]: row for row in data.get("seams", [])}
+    for row in seams.values():
+        if row["result"] not in {"PASS", "FAIL", "UNKNOWN"}:
+            errors.append(f"Invalid check result: {row['id']}")
+        if row["result"] in {"PASS", "FAIL"} and not row.get("evidence"):
+            errors.append(f"Unsupported {row['result']}: {row['id']}")
+    for criterion in data.get("criteria", []):
+        references = criterion.get("seams", [])
+        if criterion["result"] == "SATISFIED" and (
+            not references
+            or any(seams.get(ref, {}).get("result") != "PASS" for ref in references)
+        ):
+            errors.append(f"Unsupported satisfaction: {criterion['id']}")
+    for event in data.get("lifecycle_trace", []):
+        if event.get("result") != "PASS":
+            continue
+        if not event.get("authorization"):
+            errors.append("Missing historical authorization")
+        try:
+            verified = datetime.fromisoformat(event["verified_at"])
+            closed = datetime.fromisoformat(event["closed_at"])
+            if verified > closed:
+                errors.append("Verification follows closure")
+        except (KeyError, ValueError, TypeError):
+            errors.append("Unavailable verification/closure ordering")
+    return errors
+
+
+if __name__ == "__main__":
+    try:
+        value = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8-sig"))
+        problems = validate(value)
+    except (IndexError, OSError, ValueError, KeyError, TypeError) as error:
+        problems = [f"Invalid evidence input: {error}"]
+    print(json.dumps({"valid_structure": not problems, "errors": problems}, indent=2))
+    raise SystemExit(bool(problems))

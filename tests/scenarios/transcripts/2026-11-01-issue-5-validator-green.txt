@@ -1,0 +1,18 @@
+test_evidenced_unsatisfied_is_valid_report (test_verify_self_hosting.EvidenceTests.test_evidenced_unsatisfied_is_valid_report) ... ok
+test_incomplete_enumeration_rejected (test_verify_self_hosting.EvidenceTests.test_incomplete_enumeration_rejected) ... ok
+test_missing_authorization_cannot_support_pass (test_verify_self_hosting.EvidenceTests.test_missing_authorization_cannot_support_pass) ... ok
+test_missing_issue_rejected (test_verify_self_hosting.EvidenceTests.test_missing_issue_rejected) ... ok
+test_satisfied_cannot_hide_unknown_seam (test_verify_self_hosting.EvidenceTests.test_satisfied_cannot_hide_unknown_seam) ... ok
+test_truncated_relationship_rejects_acceptance (test_verify_self_hosting.EvidenceTests.test_truncated_relationship_rejects_acceptance) ... ok
+test_two_valid_labels_rejected (test_verify_self_hosting.EvidenceTests.test_two_valid_labels_rejected) ... ok
+test_unknown_label_alone_rejected (test_verify_self_hosting.EvidenceTests.test_unknown_label_alone_rejected) ... ok
+test_unsupported_pass_rejected (test_verify_self_hosting.EvidenceTests.test_unsupported_pass_rejected) ... ok
+test_valid_plus_invalid_label_rejected (test_verify_self_hosting.EvidenceTests.test_valid_plus_invalid_label_rejected) ... ok
+test_valid_unknown_with_unrelated_label (test_verify_self_hosting.EvidenceTests.test_valid_unknown_with_unrelated_label) ... ok
+test_verification_after_closure_rejected (test_verify_self_hosting.EvidenceTests.test_verification_after_closure_rejected) ... ok
+test_zero_lifecycle_labels_rejected (test_verify_self_hosting.EvidenceTests.test_zero_lifecycle_labels_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.000s
+
+OK

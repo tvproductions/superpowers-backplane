@@ -1,0 +1,125 @@
+"""Evidence validator controls; each mutation would permit false acceptance."""
+
+import importlib.util
+import unittest
+from copy import deepcopy
+from pathlib import Path
+
+SOURCE = Path(__file__).with_name("verify_self_hosting.py")
+MODULE = None
+if SOURCE.exists():
+    SPEC = importlib.util.spec_from_file_location("self_hosting", SOURCE)
+    assert SPEC and SPEC.loader
+    MODULE = importlib.util.module_from_spec(SPEC)
+    SPEC.loader.exec_module(MODULE)
+
+
+def fixture():
+    return {
+        "enumeration": {"numbers": [4], "complete": True},
+        "issues": [
+            {
+                "number": 4,
+                "state": "OPEN",
+                "labels": [{"name": "backplane:backlog"}, {"name": "documentation"}],
+                "subIssues": {"nodes": [], "totalCount": 0},
+                "blockedBy": {"nodes": [], "totalCount": 0},
+                "blocking": {"nodes": [], "totalCount": 0},
+            }
+        ],
+        "seams": [{"id": "completion", "result": "UNKNOWN", "evidence": []}],
+        "criteria": [{"id": "AC1", "result": "UNKNOWN", "seams": ["completion"]}],
+        "lifecycle_trace": [],
+    }
+
+
+class EvidenceTests(unittest.TestCase):
+    def validate(self, value):
+        self.assertIsNotNone(MODULE, "Evidence validator has not been implemented")
+        assert MODULE is not None
+        return MODULE.validate(value)
+
+    def test_valid_unknown_with_unrelated_label(self):
+        value = fixture()
+        before = deepcopy(value)
+        self.assertEqual(self.validate(value), [])
+        self.assertEqual(value, before)
+
+    def test_truncated_relationship_rejects_acceptance(self):
+        value = fixture()
+        value["issues"][0]["blockedBy"]["totalCount"] = 1
+        self.assertTrue(self.validate(value))
+
+    def test_incomplete_enumeration_rejected(self):
+        value = fixture()
+        value["enumeration"]["complete"] = False
+        self.assertTrue(self.validate(value))
+
+    def test_missing_issue_rejected(self):
+        value = fixture()
+        value["enumeration"]["numbers"].append(5)
+        self.assertTrue(self.validate(value))
+
+    def test_zero_lifecycle_labels_rejected(self):
+        value = fixture()
+        value["issues"][0]["labels"] = []
+        self.assertTrue(self.validate(value))
+
+    def test_two_valid_labels_rejected(self):
+        value = fixture()
+        value["issues"][0]["labels"].append({"name": "backplane:ready"})
+        self.assertTrue(self.validate(value))
+
+    def test_unknown_label_alone_rejected(self):
+        value = fixture()
+        value["issues"][0]["labels"] = [{"name": "backplane:done"}]
+        self.assertTrue(self.validate(value))
+
+    def test_valid_plus_invalid_label_rejected(self):
+        value = fixture()
+        value["issues"][0]["labels"].append({"name": "backplane:done"})
+        self.assertTrue(self.validate(value))
+
+    def test_missing_authorization_cannot_support_pass(self):
+        value = fixture()
+        value["lifecycle_trace"] = [
+            {
+                "result": "PASS",
+                "authorization": "",
+                "verified_at": "2026-10-26T12:00:00Z",
+                "closed_at": "2026-10-26T13:00:00Z",
+            }
+        ]
+        self.assertTrue(self.validate(value))
+
+    def test_verification_after_closure_rejected(self):
+        value = fixture()
+        value["lifecycle_trace"] = [
+            {
+                "result": "PASS",
+                "authorization": "operator receipt",
+                "verified_at": "2026-10-26T14:00:00Z",
+                "closed_at": "2026-10-26T13:00:00Z",
+            }
+        ]
+        self.assertTrue(self.validate(value))
+
+    def test_unsupported_pass_rejected(self):
+        value = fixture()
+        value["seams"][0]["result"] = "PASS"
+        self.assertTrue(self.validate(value))
+
+    def test_satisfied_cannot_hide_unknown_seam(self):
+        value = fixture()
+        value["criteria"][0]["result"] = "SATISFIED"
+        self.assertTrue(self.validate(value))
+
+    def test_evidenced_unsatisfied_is_valid_report(self):
+        value = fixture()
+        value["seams"][0].update(result="FAIL", evidence=["observed failure receipt"])
+        value["criteria"][0]["result"] = "UNSATISFIED"
+        self.assertEqual(self.validate(value), [])
+
+
+if __name__ == "__main__":
+    unittest.main()

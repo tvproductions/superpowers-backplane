@@ -1,0 +1,60 @@
+{
+  "schema": "superpowers-backplane-handoff-sync/v1",
+  "observed_at": "2026-11-01T22:09:47.263143+00:00",
+  "request": "create handoff and git sync",
+  "repository": "https://github.com/tvproductions/superpowers-backplane.git",
+  "branch": "main",
+  "previous_published_main": "2bba30df27c71c073694dae86bfc5a297f329fab",
+  "handoff_delivery": "3ab3d821a0d958063c126a13c3364ae334b59986",
+  "handoff": "docs/superpowers-backplane/handoffs/20261101T220814Z-issues-4-5-partial-main-and-next-checks.md",
+  "same-session_predecessor": "docs/superpowers-backplane/handoffs/20261101T220725Z-issues-4-5-partial-main-and-next-checks.md",
+  "lineage_clarification": "The first append-only artifact combined Specification and Plan identity labels; its successor preserves all content/authority while supplying separate required identity fields. Both artifacts remain unchanged after creation. The session entry pointer selects the successor explicitly.",
+  "reconciliation": "Fetched expected origin before work and again before publication; no incoming changes. Normal main push succeeded. Fresh fetch and ls-remote returned exact handoff delivery.",
+  "remote_blob_comparisons": {
+    "HANDOFF.md": "2e9829b8ff80171d0a01e594e6d9016fdf7bfbec",
+    "tests/scenarios/2026-11-01-issues-4-5-integration.json": "3c166741fb34a944f2b97b5ac3b1ef7fc7d1e4c4",
+    "docs/superpowers-backplane/plans/2026-11-01-issue-4-license-and-operations.md": "949e561175ab0bbde3ac72416dc0a3e6324239e7",
+    "docs/superpowers-backplane/handoffs/20261101T220814Z-issues-4-5-partial-main-and-next-checks.md": "c4aec7abdf13674a2f3ee769ec4176881f1b9dc8",
+    "docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md": "82ec8e3feee1d443859501dbbb98096a927700b7",
+    "tests/scenarios/2026-11-01-issues-4-5-integration.md": "5a39d75490da458f5b5fec0eb8531d25a0970881",
+    "docs/superpowers-backplane/handoffs/20261101T220725Z-issues-4-5-partial-main-and-next-checks.md": "3a0584e5c9d395dd97973d48cedc4413a5e7ead7"
+  },
+  "matching_remote_blobs": 7,
+  "product_delivery": "567892202e0f9d326ba375b2345d9615237174e3",
+  "integration_receipt_storage": "2bba30df27c71c073694dae86bfc5a297f329fab",
+  "issues_after_sync": {
+    "4": {
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+          "name": "backplane:backlog",
+          "description": "Captured but not ready for execution",
+          "color": "D4C5F9"
+        }
+      ],
+      "state": "OPEN",
+      "updatedAt": "2026-11-01T22:00:15Z"
+    },
+    "5": {
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+          "name": "backplane:backlog",
+          "description": "Captured but not ready for execution",
+          "color": "D4C5F9"
+        }
+      ],
+      "state": "OPEN",
+      "updatedAt": "2026-11-01T22:00:18Z"
+    }
+  },
+  "workspace": "U:/repos/agents/superpowers-backplane",
+  "implementation_worktree_absent": true,
+  "limits": [
+    "No backlog mutations, issue closure, release, new branch or worktree",
+    "No new native host acceptance run for documentation-only handoff/sync",
+    "Authenticated profiles and ignored fixtures are not transported; no credentials copied",
+    "Both issues remain incomplete under their existing approved plans",
+    "This receipt is stored in a later commit than handoff_delivery; its own arrival is verified separately"
+  ]
+}

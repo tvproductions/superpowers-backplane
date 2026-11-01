@@ -8,8 +8,11 @@ gaps. No next issue is selected. Verified delivery `1f07291`, SATISFIED
 assessment publication `7c42702` and closeout publication `59aebbd` remain
 separate identities. The handoff preserves the corrected scope distinction,
 resolved publication approvals, source provenance and retained-profile limits.
-This requested handoff/sync changes no backlog state. Its later sync receipt
-records actual transport; credentials and ignored profiles are not transported.
+This requested handoff/sync changes no backlog state. The
+[sync receipt](tests/scenarios/2026-11-01-issue-5-completed-handoff-sync.json)
+records verified arrival of handoff commit `325a76d`, nine matching remote blobs
+and unchanged complete #4/#5 snapshots. Its later storage commit remains
+separate. Credentials and ignored profiles are not transported.
 
 # Issue #5 completed and publication verified — November 1, 2026
 

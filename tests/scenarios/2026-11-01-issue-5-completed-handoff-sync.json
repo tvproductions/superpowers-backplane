@@ -1,0 +1,58 @@
+{
+  "schema": "superpowers-backplane-handoff-sync/v1",
+  "observed_at": "2026-11-01T22:53:52.793826+00:00",
+  "request": "create handoff and git sync",
+  "repository": "https://github.com/tvproductions/superpowers-backplane.git",
+  "branch": "main",
+  "previous_published_main": "59aebbd94776fdd88fb64724e1b427710c83f6e8",
+  "handoff_delivery": "325a76d5cbaa66e682387324accb8f38a8e8b47e",
+  "handoff": "docs/superpowers-backplane/handoffs/20261101T225245Z-issue-5-completed-and-synced.md",
+  "verified_delivery": "1f072913414da2d9d1a2401b8449b7e3146bfd94",
+  "assessment_publication": "7c42702331d0eeafe449f826badbd862a1ba5729",
+  "closeout_publication": "59aebbd94776fdd88fb64724e1b427710c83f6e8",
+  "reconciliation": "Fetched expected origin before creation and again before publication; no incoming changes. Normal push succeeded; fresh fetch and ls-remote match handoff_delivery.",
+  "remote_blob_comparisons": {
+    "HANDOFF.md": "6875de7ec3561e6e14c94eee76c797fce1465112",
+    "docs/superpowers-backplane/handoffs/20261101T225245Z-issue-5-completed-and-synced.md": "4a2d2f489d0bdf1cc3169121a2071844b72a1325",
+    "tests/scenarios/2026-11-01-issue-5-closeout.md": "111c4679b4331fcb096282be30cecff64837be73",
+    "tests/scenarios/2026-11-01-issue-5-closeout.json": "8c181e54247cae87d71f7eb4d819066520ecae52",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-closeout.ps1.txt": "92a95f6dac2119e6d0b42bec06afcf160871fd79",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-published-gate.txt": "1cad37be58c076a1287b59d59926aeb8f21cdee4",
+    "tests/scenarios/2026-11-01-issue-5-satisfaction.md": "6bc7086118ad59895db1aad299fd28b2887f981f",
+    "tests/scenarios/2026-11-01-issue-5-satisfaction.json": "efb824569ebdabc6957759221828c2877cd09db9",
+    "tests/scenarios/2026-11-01-issue-5-satisfaction-review.md": "5e42fbbc60b751ca19363408669c0b55983e894c"
+  },
+  "matching_remote_blobs": 9,
+  "issues_after_sync": {
+    "4": {
+      "number": 4,
+      "state": "OPEN",
+      "stateReason": "",
+      "labels": [
+        {
+          "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+          "name": "backplane:backlog",
+          "description": "Captured but not ready for execution",
+          "color": "D4C5F9"
+        }
+      ],
+      "updatedAt": "2026-11-01T22:00:15Z",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+    },
+    "5": {
+      "number": 5,
+      "state": "CLOSED",
+      "stateReason": "COMPLETED",
+      "labels": [],
+      "updatedAt": "2026-11-01T22:46:57Z",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+    }
+  },
+  "full_issue4_issue5_snapshots_unchanged": true,
+  "workspace": "U:/repos/agents/superpowers-backplane",
+  "limits": [
+    "No backlog mutation, new host acceptance, next issue selection, release or cleanup",
+    "Profiles and credentials are not transported",
+    "This receipt is stored later than handoff_delivery; its own arrival is separately verified without changing the append-only handoff"
+  ]
+}

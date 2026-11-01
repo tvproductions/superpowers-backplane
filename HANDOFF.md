@@ -1,3 +1,7 @@
+# Issue #20 unblocked — 2026-11-01
+
+Both native authenticated smokes now PASS; final gate exits0. Source/package/guide candidate remains bc6d30e; only verification helpers and evidence changed. Native issue is OPEN/active. See tests/scenarios/2026-11-01-issue-20-unblock.md and its screened JSON receipt for exact results, independent review, Windows cache correction and limits. Unblock evidence is local until separately transported. Integration/publication/closure not performed. Preserve profiles and worktree.
+
 # Handoff
 
 ## Issue #20 local implementation — November 1, 2026

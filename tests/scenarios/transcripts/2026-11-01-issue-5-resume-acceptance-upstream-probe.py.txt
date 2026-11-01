@@ -1,0 +1,80 @@
+"""One-use native acceptance capture; raw streams stay ignored."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import datetime, timezone
+
+ROOT = Path.cwd().resolve()
+AREA = (ROOT / '.sp-bp/work/issue-5').resolve(strict=True)
+OUT = (AREA / 'resume-acceptance-upstream').resolve(strict=True)
+PROFILE = (ROOT / '.sp-bp/work/issue-4/claude-profile').resolve(strict=True)
+NEUTRAL = (ROOT / '.sp-bp/work/issue-4/native-neutral').resolve(strict=True)
+assert AREA.is_relative_to(ROOT) and OUT.is_relative_to(AREA)
+assert PROFILE.is_relative_to(ROOT / '.sp-bp/work/issue-4')
+assert NEUTRAL.is_relative_to(ROOT / '.sp-bp/work/issue-4')
+assert not (OUT / 'before.json').exists(), 'Do not overwrite a previous capture'
+FIELDS = 'number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url'
+ENV = os.environ.copy()
+ENV['CLAUDE_CONFIG_DIR'] = str(PROFILE)
+
+def run(args, **kw):
+    p = subprocess.run(args, cwd=ROOT, capture_output=True, text=True,
+                       encoding='utf-8', **kw)
+    if p.returncode:
+        raise RuntimeError(f'{args[:3]} exited {p.returncode}: {p.stderr[:500]}')
+    return p.stdout
+
+def save(name, obj):
+    (OUT / name).write_text(json.dumps(obj, indent=2, ensure_ascii=True) + '\n', encoding='utf-8')
+
+def snapshot():
+    pages = json.loads(run(['gh', 'api', '--paginate', '--slurp',
+                           'repos/tvproductions/superpowers-backplane/issues?state=all&per_page=100']))
+    full = json.loads(run(['gh', 'issue', 'view', '5', '--repo',
+                          'tvproductions/superpowers-backplane', '--json', FIELDS]))
+    return {'pages': pages, 'issue5': full}
+
+def protected():
+    files = [ROOT / 'AGENTS.md', PROFILE / 'settings.json',
+             PROFILE / 'issue-4-preserve.txt', PROFILE / 'plugins/installed_plugins.json',
+             ROOT / '.agents/superpowers/skills/using-superpowers/SKILL.md']
+    files += sorted((PROFILE / 'plugins/cache').rglob('SKILL.md'))
+    return {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in files if p.is_file()}
+
+auth = json.loads(run(['claude', 'auth', 'status', '--json'], env=ENV))
+assert auth.get('loggedIn') is True
+save('auth.json', {k: auth[k] for k in ('loggedIn', 'authMethod', 'apiProvider') if k in auth})
+save('identity.json', {'root': str(ROOT), 'profile': str(PROFILE), 'cwd': str(NEUTRAL),
+     'head': run(['git', 'rev-parse', 'HEAD']).strip(), 'claude': run(['claude', '--version']).strip(),
+     'started_at': datetime.now(timezone.utc).isoformat()})
+save('protected-before.json', protected())
+before = snapshot()
+save('before.json', before)
+prompt = '''This is an authorized native installed-package acceptance test, recommendation-only and read-only.
+Load superpowers:using-superpowers and superpowers-backplane:managing-superpowers-backlog via actual Skill calls.
+Read their required references. Do not delegate, create handoffs, change files, install anything, or mutate GitHub.
+Use only gh issue list/view reads against tvproductions/superpowers-backplane. Retrieve all required native fields and relationship totals.
+Assess current next-work options without inventing priority, selecting an issue, or changing labels.
+Current project authority is supplied verbatim below. Apply it to this test even though the neutral test cwd has no instructions.
+Explicitly distinguish current issue eligibility from authority for approved local verification. Neither report completion nor fabricate authorization from a handoff.
+Answer this policy counterfactual separately: if an operator-approved plan were local and unpublished, would that alone prohibit reversible local fixture verification under the supplied project instructions? Explain from the supplied authority; do not change any state to test it.
+The two existing approved plans are named in current native #4/#5; do not require their republication. Their approval-time status prose is historical; current execution evidence is partial.
+PROJECT AGENTS.md:\n''' + (ROOT / 'AGENTS.md').read_text(encoding='utf-8')
+(OUT / 'prompt.txt').write_text(prompt, encoding='utf-8')
+with (OUT / 'native.jsonl').open('w', encoding='utf-8') as stdout, (OUT / 'native.stderr.txt').open('w', encoding='utf-8') as stderr:
+    p = subprocess.run(['claude', '-p', '--verbose', '--output-format', 'stream-json',
+                        '--plugin-dir', str(ROOT / '.agents/superpowers'), '--no-session-persistence', '--permission-mode', 'dontAsk',
+                        '--allowedTools', 'Skill,Read,Bash(gh issue view *),Bash(gh issue list *)'],
+                       input=prompt, cwd=NEUTRAL, env=ENV, text=True, encoding='utf-8',
+                       stdout=stdout, stderr=stderr, timeout=600)
+after = snapshot()
+save('after.json', after)
+save('protected-after.json', protected())
+save('result.json', {'exit': p.returncode, 'issue_pages_equal': before['pages'] == after['pages'],
+                     'issue5_equal': before['issue5'] == after['issue5'],
+                     'protected_equal': json.loads((OUT / 'protected-before.json').read_text()) == protected(),
+                     'finished_at': datetime.now(timezone.utc).isoformat()})
+print((OUT / 'result.json').read_text())

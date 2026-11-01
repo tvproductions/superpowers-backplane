@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from pathlib import Path; import json; d=json.loads(Path("tests/scenarios/transcripts/2026-11-01-issue-5-context-recommendation.json").read_text(encoding="utf-8")); a=d["attempts"][1]; results={r["tool_use_id"]:r for r in a.get("skill_results",[])}; assert all(c["id"] in results and not results[c["id"]]["is_error"] and "Launching skill" in str(results[c["id"]]["content"]) for c in a["skill_calls"]), "Successful native Skill results must survive outside ignored scratch"
+                                                                                                                                                                                                                                                                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Successful native Skill results must survive outside ignored scratch

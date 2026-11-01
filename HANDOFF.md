@@ -1,3 +1,18 @@
+# Local acceptance continuation — November 1, 2026
+
+The operator resumed the #4/#5 thread and explicitly approved the public-context
+Claude probe after its destination-approval rejection. Read the supplemental
+[context-aware recommendation evidence](tests/scenarios/2026-11-01-issue-5-context-recommendation.md)
+before repeating it. The corrected fixture loaded independent upstream and
+Backplane skills, preserved native issue/protected snapshots and correctly
+allowed approved local verification without publication. Broader unpublished-plan
+eligibility advice remains unaccepted. The first fixture's missing session-only
+upstream argument is preserved as a failed prerequisite, not host acceptance.
+Both issues remain OPEN/backlog; Codex discovery and #4's remaining operation
+checks remain incomplete. These continuation records are local, with publication
+and remote arrival unverified. The append-only handoff below still supplies the
+thread's authority anchors; reconcile these later records during RESUME.
+
 # Session handoff after #4/#5 partial integration — November 1, 2026
 
 Read the append-only

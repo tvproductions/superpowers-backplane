@@ -1,0 +1,1 @@
+Successful native Skill result retention PASS; all calls have preserved result summaries

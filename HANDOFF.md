@@ -2,7 +2,7 @@
 
 ## Issue #20 local integration — November 1, 2026
 
-The operator selected local main integration of reviewed source/evidence branch head 3d90ac41f962a7dff2cdd76fce4f2090674f8eca. Both authenticated native smokes and all16 final evidence checks passed against product candidate bc6d30e; see tests/scenarios/2026-11-01-issue-20-unblock.md and its screened receipt. Native #20 is OPEN/active, observed revision 2026-11-01T16:33:53Z. Local main verification is recorded separately; earlier native evidence is not a newly installed merged-target claim.
+The operator selected local main integration of reviewed source/evidence branch head 3d90ac41f962a7dff2cdd76fce4f2090674f8eca. Both authenticated native smokes and all16 final evidence checks passed against product candidate bc6d30e; see tests/scenarios/2026-11-01-issue-20-unblock.md and its screened receipt. Native #20 is OPEN/active, observed revision 2026-11-01T16:33:53Z. Local main merge is 2c969915aac2049211cad86ea78143d50776beb4. Post-merge tests and all16 current installed-candidate checks pass; see tests/scenarios/2026-11-01-issue-20-local-integration.md and its screened receipt. Earlier native evidence is not a newly installed merge-SHA claim.
 
 Main retains the approved #20 plan and unapproved #4/#5 drafts. MIT was selected for #4. No push, PR, issue closure, release or cleanup is authorized by the local merge choice. Preserve the source branch, host-owned worktree and test profiles. The entries below are historical snapshots.
 

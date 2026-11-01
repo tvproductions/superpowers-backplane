@@ -1,0 +1,767 @@
+{
+  "schema": "superpowers-backplane-issue20-local-integration/v1",
+  "observed_at": "2026-11-01T16:55:30.364420+00:00",
+  "merge_commit": "2c969915aac2049211cad86ea78143d50776beb4",
+  "merge_parents": [
+    "4cb634b0106413ee68694ecd38865e1ea1c4e7f6",
+    "3d90ac41f962a7dff2cdd76fce4f2090674f8eca"
+  ],
+  "native_installed_candidate": "bc6d30e54621c8a1747a0f2baa0551f25080b06a",
+  "source_verification_root": "U:\\repos\\agents\\superpowers-backplane",
+  "tested_source_inputs_equal_reviewed_branch": true,
+  "quality": {
+    "node": "9/9 PASS after merge",
+    "unittest": "15/15 PASS after merge",
+    "ruff": "PASS six helpers",
+    "format": "PASS six helpers",
+    "ty": "PASS six helpers",
+    "git_diff_check": "PASS"
+  },
+  "final_gate": {
+    "v1": {
+      "score": "PASS",
+      "checks": {
+        "schema_and_score": true,
+        "capture_integrity": true,
+        "current_package_inventory_and_candidate": true,
+        "guide_and_runtime_links": true,
+        "upstream_provenance_and_path": true,
+        "host_executable_identity": true,
+        "preservation_current": true,
+        "native_effective_configuration_verified": true
+      }
+    },
+    "v2": {
+      "score": "PASS",
+      "checks": {
+        "schema_and_score": true,
+        "capture_integrity": true,
+        "current_package_inventory_and_candidate": true,
+        "guide_and_runtime_links": true,
+        "upstream_provenance_and_path": true,
+        "host_executable_identity": true,
+        "preservation_current": true,
+        "native_effective_configuration_verified": true
+      }
+    }
+  },
+  "smokes": {
+    "v1": {
+      "variant": "v1",
+      "host_version": "1.18.31",
+      "host_source_sha": "014614d35b397775e5d397a490fc72368c894ec2",
+      "host_executable_sha256": "0242a0dc705af67c90882b456a36b619883c1c786aad8fe071a1bc64e5d1d440",
+      "candidate_sha": "bc6d30e54621c8a1747a0f2baa0551f25080b06a",
+      "package_spec": "git+https://github.com/tvproductions/superpowers-backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a",
+      "installed_package_root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\cache\\v1\\opencode\\packages\\git+https_\\github.com\\tvproductions\\superpowers-backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a\\node_modules\\superpowers-backplane",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1",
+      "upstream_origin": "https://github.com/obra/superpowers.git",
+      "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "upstream_skill_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\SKILL.md",
+      "upstream_root": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+      "upstream_verified": true,
+      "configuration_sources": [
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode\\opencode.json"
+      ],
+      "configuration_verified": true,
+      "model": "openai/gpt-6.1-sol",
+      "session_id": "ses_e67f798b5ffe2vsySLihrylOaH",
+      "commands": [
+        {
+          "args": [
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\hosts\\v1\\opencode.exe",
+            "debug",
+            "skill"
+          ],
+          "cwd": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode",
+          "timeout": false,
+          "returncode": 0,
+          "capture_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v1-installed-skills-007.json"
+        },
+        {
+          "args": [
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\hosts\\v1\\opencode.exe",
+            "debug",
+            "config"
+          ],
+          "cwd": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode",
+          "timeout": false,
+          "returncode": 0,
+          "capture_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v1-smoke-config-005.json"
+        },
+        {
+          "args": [
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\hosts\\v1\\opencode.exe",
+            "auth",
+            "list"
+          ],
+          "cwd": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode",
+          "timeout": false,
+          "returncode": 0,
+          "capture_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-007.json"
+        },
+        {
+          "args": [
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\hosts\\v1\\opencode.exe",
+            "run",
+            "--format",
+            "json",
+            "--model",
+            "openai/gpt-6.1-sol",
+            "Use the native skill tool to load using-superpowers, managing-superpowers-backlog, and managing-superpowers-handoffs. Report each tool result and its source path. Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery."
+          ],
+          "cwd": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode",
+          "timeout": false,
+          "returncode": 0,
+          "capture_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v1-fresh-smoke-004.json"
+        }
+      ],
+      "auth_verified": true,
+      "cache_root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\cache\\v1",
+      "source_isolated": true,
+      "gh_capabilities_verified": true,
+      "package_inventory_matches": true,
+      "protected_state_unchanged": true,
+      "skills": {
+        "using-superpowers": {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "sha256": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba",
+          "loaded": true,
+          "capture_sha256": "0c48dd2064cdfebc3087df0da7dd77d5946b018555601852de02645d94bbc60d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\cache\\v1\\opencode\\packages\\git+https_\\github.com\\tvproductions\\superpowers-backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "sha256": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+          "loaded": true,
+          "capture_sha256": "0c48dd2064cdfebc3087df0da7dd77d5946b018555601852de02645d94bbc60d",
+          "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "managing-superpowers-backlog": {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\cache\\v1\\opencode\\packages\\git+https_\\github.com\\tvproductions\\superpowers-backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "sha256": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+          "loaded": true,
+          "capture_sha256": "0c48dd2064cdfebc3087df0da7dd77d5946b018555601852de02645d94bbc60d",
+          "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+        }
+      },
+      "before": {
+        "files": {
+          "U:\\repos\\agents\\superpowers-backplane\\plugin.json": "bcd8b9203f102392d3df62193f74d7040d6386537439560f96bf9e5ab381003e",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\plugin.json": "32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565",
+          "U:\\repos\\agents\\superpowers-backplane\\.agents\\plugins\\marketplace.json": "3adc93632a37c257b1a790fccd624f34cec50dafd90d134f909efe61fe097cd3",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\marketplace.json": "e9903b166d7fe302a51280a75d613d019a8945d8bee23a77819bb2e2ae839da1",
+          "U:\\repos\\agents\\superpowers-backplane\\opencode.jsonc": "26531127b1f0a0b192246eb9f11987b4c0a68d25482952e8d30c1581d42247f8",
+          "U:\\repos\\agents\\superpowers-backplane\\README.md": "85b0acac6066a94d3dccfa63954c5932ae3ca386e31f56db74d9f1b9e34e05ac",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\index.js": "3695e306e9a737cf57655179beed3c33c377646e626cec0d928b6d329cddd788",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\package.json": "4eaae6325da2b430aba600b36fe0afb5c539e7282f37700c416d77620c1ca2aa",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode\\opencode.json": "d1df434525497a3284755d55afad15357511241dab2342565455ea5d8369d9ce",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode\\opencode.json": "78fd0ed4144a50edc4a8bd275b664e8f5708e193d09483c5f673a2e72760a41a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\handoff-contract.md": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\resume-assessment.md": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-format.md": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-state-template.md": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md": "bf4ba38982e11019818c34174f61d7c91f447b8e3d751ad89444a5ddfc3c35bf",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\pr-completion.md": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\repository-checkpoint.md": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.json": null,
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.jsonc": "5fe7a35b90fca35516b09a546fe99dd5a1f051b12a75c33d33d6e1a0528ed09f"
+        },
+        "refs": "refs/heads/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/heads/feat/issue-11-claude-acceptance:3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb\nrefs/heads/handoff/issue-20-opencode-auth:3d90ac41f962a7dff2cdd76fce4f2090674f8eca\nrefs/heads/main:2c969915aac2049211cad86ea78143d50776beb4\nrefs/heads/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/heads/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/heads/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/heads/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/HEAD:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/remotes/origin/docs/host-installation-ownership-graph:399bbf866e07c96536991cea5def621204e3dac2\nrefs/remotes/origin/docs/host-leaf-rescope-final-verification:88183f1918e2626cc73f86da8773b022f5bebcaf\nrefs/remotes/origin/docs/issue-17-claude-plan:9b3642658be0c1a802608dc61c862a28f99bb78f\nrefs/remotes/origin/docs/right-size-installation-leaves:a74722a86ed425edaac2e5ebae366dbf87aaa0fd\nrefs/remotes/origin/feat/issue-17-claude-package:39e3b071849a3867e6bac1769c3ab170fee91d5a\nrefs/remotes/origin/feat/issue-31-governance-bridges:9b760f02fe8774b1c75f23b0194b14c5425d0353\nrefs/remotes/origin/handoff/issue-20-opencode-auth:84f0fd384e71bec1579df54971a926a916136f36\nrefs/remotes/origin/main:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/remotes/origin/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/remotes/origin/recovery/issue-19-native:742392ce2aacdc4be06d82935e1acde75a934818\nrefs/remotes/origin/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/remotes/origin/test/issue-17-integrated-claude-evidence:b59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e\nrefs/remotes/origin/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/test/issue-19-update-fixture:5e01704fcdda13eefeeac52d8892da26e7164ffd",
+        "main_head": "2c969915aac2049211cad86ea78143d50776beb4",
+        "upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "upstream_status": ""
+      },
+      "after": {
+        "files": {
+          "U:\\repos\\agents\\superpowers-backplane\\plugin.json": "bcd8b9203f102392d3df62193f74d7040d6386537439560f96bf9e5ab381003e",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\plugin.json": "32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565",
+          "U:\\repos\\agents\\superpowers-backplane\\.agents\\plugins\\marketplace.json": "3adc93632a37c257b1a790fccd624f34cec50dafd90d134f909efe61fe097cd3",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\marketplace.json": "e9903b166d7fe302a51280a75d613d019a8945d8bee23a77819bb2e2ae839da1",
+          "U:\\repos\\agents\\superpowers-backplane\\opencode.jsonc": "26531127b1f0a0b192246eb9f11987b4c0a68d25482952e8d30c1581d42247f8",
+          "U:\\repos\\agents\\superpowers-backplane\\README.md": "85b0acac6066a94d3dccfa63954c5932ae3ca386e31f56db74d9f1b9e34e05ac",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\index.js": "3695e306e9a737cf57655179beed3c33c377646e626cec0d928b6d329cddd788",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\package.json": "4eaae6325da2b430aba600b36fe0afb5c539e7282f37700c416d77620c1ca2aa",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode\\opencode.json": "d1df434525497a3284755d55afad15357511241dab2342565455ea5d8369d9ce",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode\\opencode.json": "78fd0ed4144a50edc4a8bd275b664e8f5708e193d09483c5f673a2e72760a41a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\handoff-contract.md": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\resume-assessment.md": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-format.md": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-state-template.md": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md": "bf4ba38982e11019818c34174f61d7c91f447b8e3d751ad89444a5ddfc3c35bf",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\pr-completion.md": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\repository-checkpoint.md": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.json": null,
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.jsonc": "5fe7a35b90fca35516b09a546fe99dd5a1f051b12a75c33d33d6e1a0528ed09f"
+        },
+        "refs": "refs/heads/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/heads/feat/issue-11-claude-acceptance:3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb\nrefs/heads/handoff/issue-20-opencode-auth:3d90ac41f962a7dff2cdd76fce4f2090674f8eca\nrefs/heads/main:2c969915aac2049211cad86ea78143d50776beb4\nrefs/heads/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/heads/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/heads/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/heads/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/HEAD:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/remotes/origin/docs/host-installation-ownership-graph:399bbf866e07c96536991cea5def621204e3dac2\nrefs/remotes/origin/docs/host-leaf-rescope-final-verification:88183f1918e2626cc73f86da8773b022f5bebcaf\nrefs/remotes/origin/docs/issue-17-claude-plan:9b3642658be0c1a802608dc61c862a28f99bb78f\nrefs/remotes/origin/docs/right-size-installation-leaves:a74722a86ed425edaac2e5ebae366dbf87aaa0fd\nrefs/remotes/origin/feat/issue-17-claude-package:39e3b071849a3867e6bac1769c3ab170fee91d5a\nrefs/remotes/origin/feat/issue-31-governance-bridges:9b760f02fe8774b1c75f23b0194b14c5425d0353\nrefs/remotes/origin/handoff/issue-20-opencode-auth:84f0fd384e71bec1579df54971a926a916136f36\nrefs/remotes/origin/main:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/remotes/origin/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/remotes/origin/recovery/issue-19-native:742392ce2aacdc4be06d82935e1acde75a934818\nrefs/remotes/origin/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/remotes/origin/test/issue-17-integrated-claude-evidence:b59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e\nrefs/remotes/origin/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/test/issue-19-update-fixture:5e01704fcdda13eefeeac52d8892da26e7164ffd",
+        "main_head": "2c969915aac2049211cad86ea78143d50776beb4",
+        "upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "upstream_status": ""
+      },
+      "captures": [
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-auth-list-000.json",
+          "sha256": "126cffdf0418385cd24416c0c2ff0e1e206afbde4438bd70fc69855e3f225788"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-auth-list-001.json",
+          "sha256": "126cffdf0418385cd24416c0c2ff0e1e206afbde4438bd70fc69855e3f225788"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-auth-list-002.json",
+          "sha256": "126cffdf0418385cd24416c0c2ff0e1e206afbde4438bd70fc69855e3f225788"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-config-000.json",
+          "sha256": "5ae95a28fd5a08979aa161207887d4123b4a2b4fabde1b2d59b35ff53e5d302e"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-config-001.json",
+          "sha256": "900f63661c5087a2ef88a84224ea101ea9a82ec680ffa23543bab542f4e74d02"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-config-002.json",
+          "sha256": "afe7369f6de7f814a083c7a4d31a5aa102e7ebc000a01342bdf8364ae60dbdbe"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-fresh-smoke-000.json",
+          "sha256": "2f2fd2a4124f73d585a43426bbcf0ddb3837fd7794ef4f0d6493658d12b255ce"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-fresh-smoke-001.json",
+          "sha256": "2d40381e92dbec4a64d5327fb23ecdf67bc8a82589bde705cfc2dda1223cf229"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-fresh-smoke-002.json",
+          "sha256": "82234fa84b9194a263fe4af448abade8cc65f89b82d75faad78d8debc3c367f2"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-fresh-smoke-003.json",
+          "sha256": "906075562dcb1aa027784f86b594d6c9d97200a2b3b20b5386df53a9ad531e80"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-fresh-smoke-004.json",
+          "sha256": "0c48dd2064cdfebc3087df0da7dd77d5946b018555601852de02645d94bbc60d"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-000.json",
+          "sha256": "c87d14b8e7a9741148045f5f43bb20e3369db287479d2a5ba936768ab71591b3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-001.json",
+          "sha256": "427e753ea6d4ab6e8730294ba12bd53100e7740b44f557b5dd213954c927f6da"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-002.json",
+          "sha256": "1c79d1cebb1230b53e24037e6e99a497cc15c387b7e2c070fb37541d2eb53aab"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-003.json",
+          "sha256": "4cd5005a7cabf4eca4508a4034e035952073e6b2f026b5ad95afa2d492bbf4c3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-004.json",
+          "sha256": "cf84dc06a4d561a45ffe8f52438c2d14a5f80b1713654f4f078afba1119bbb1d"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-005.json",
+          "sha256": "c8af029b485af6c339a87a8ec0403a8aabeaeb1e5e5674d99030d6fa6941fdfb"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-006.json",
+          "sha256": "8c414286f655d01220039e73dee557c2797cc02fe22d391164d7b6dd2e7572e1"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-installed-skills-007.json",
+          "sha256": "bc6803b67e92360704e6fe09acadd9a9d88865723fd730f8e1d6ab6b0ce43c70"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-login-help-000.json",
+          "sha256": "cc58351e264df8468a7afaaef4fa7d038550809cfa0640a000bf4e9169a92b4c"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-paths-000.json",
+          "sha256": "948b933c90d553463344d1cffa41639cc2859559e7b46412df9d5ade86a1cab3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-paths-001.json",
+          "sha256": "948b933c90d553463344d1cffa41639cc2859559e7b46412df9d5ade86a1cab3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-paths-002.json",
+          "sha256": "948b933c90d553463344d1cffa41639cc2859559e7b46412df9d5ade86a1cab3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-resume-auth-000.json",
+          "sha256": "3ca18548bce9202cc880839731a47bdf90188efba14f7f636205884b4d8d7242"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-resume-auth-001.json",
+          "sha256": "662102317652033a7bb59f0e5be13e76e5c77041d3dfbdade882c29ee250c04a"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-resume-models-001.json",
+          "sha256": "5893a760feb99e5e73e92460cf0becafa6e64a5932accbbb95e279610d1ca79f"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-resume-models-help-000.json",
+          "sha256": "c190059c15ae2260d7b6813826e3e416932a9157d7572a6a46530d8b320f85e7"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-run-help-000.json",
+          "sha256": "d09f34e1adf38d5c528efe79b1d43f7c52f09cb158b9cf453057a9c54949ce95"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-run-help-001.json",
+          "sha256": "d09f34e1adf38d5c528efe79b1d43f7c52f09cb158b9cf453057a9c54949ce95"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-run-help-002.json",
+          "sha256": "d09f34e1adf38d5c528efe79b1d43f7c52f09cb158b9cf453057a9c54949ce95"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-skills-000.json",
+          "sha256": "146866d143e5a8c62b10e6392f5ddb680212e40e5d0ca296b997641cd01a2ebc"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-skills-001.json",
+          "sha256": "1e51d682e9797d11e56aa20791d9da52ee51b8ec6743074ebe1b2fb46d862d77"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-skills-002.json",
+          "sha256": "1c8aa4520939ca5925ff6bca5380e1c891db15d93dfae3d69602f8bf2d1a27a4"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-000.json",
+          "sha256": "126cffdf0418385cd24416c0c2ff0e1e206afbde4438bd70fc69855e3f225788"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-001.json",
+          "sha256": "126cffdf0418385cd24416c0c2ff0e1e206afbde4438bd70fc69855e3f225788"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-002.json",
+          "sha256": "5e0d0be7e3e4cac20f4e5a3086aab586c95cbf01f1fffdd52b0fee8791c0a54e"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-003.json",
+          "sha256": "0b7cecb788f9c1c703baf1f909b084e5888c9e5c26142e943ab347b209391b08"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-004.json",
+          "sha256": "d201ac61b87031ae667d92e2fffdd5d6c51eeee30925cdfa7f40fbf6bf3f5bde"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-005.json",
+          "sha256": "0671d897e6121ebcaa64111f1c153231ea143e2c301ab7a2f7a07ce77c2c5181"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-006.json",
+          "sha256": "b917436394767968a5ff12e8da3bacf9d0c4f64dd5dec376b56fc9980dcca5db"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-auth-007.json",
+          "sha256": "ed87e93105682a040039044f84f7de675cf5aaf3a3eabf9720d923c045cb49e2"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-config-000.json",
+          "sha256": "bfa7fbab4b3d065099390c03a5879efc8b83accb979a04512d46f2a97c132402"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-config-001.json",
+          "sha256": "d701652e424e125072a450d008e6be7e56fdb347c39a74f931b73e70136aed86"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-config-002.json",
+          "sha256": "84057aec342acb5276f7c5fcba368863324133a31cd5bd0c0d9aa484a952159a"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-config-003.json",
+          "sha256": "fe28b73da5083b70e2a98ca9657697b7bce388566e5c7014ca5d8695f0674d4a"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-config-004.json",
+          "sha256": "0af7b8f7b12f7b215a477867589dda25df52e78ddb9635b1c75c240bca4da67f"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-smoke-config-005.json",
+          "sha256": "4d53a7f0dcabad48e245109025f0e070f610c45e11ed9a75c8ee5a3c012db6b1"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-version-000.json",
+          "sha256": "9e8d6507285cf8937d358d563aeb525a75879f263e6f258056a5ed6293940254"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-version-001.json",
+          "sha256": "9e8d6507285cf8937d358d563aeb525a75879f263e6f258056a5ed6293940254"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v1-version-002.json",
+          "sha256": "9e8d6507285cf8937d358d563aeb525a75879f263e6f258056a5ed6293940254"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\package-inventory.json",
+          "sha256": "b9a9038690126cda25fa6e39ec4bddbb453deddde32f0aa4af1feb77a9331095"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\gh-preflight.json",
+          "sha256": "7a3c7f2f1cbb7bf690733fe393163aa2be33b84e9dbbb752e7d1050685252bba"
+        }
+      ],
+      "score": "PASS"
+    },
+    "v2": {
+      "variant": "v2",
+      "host_version": "2.1.4",
+      "host_source_sha": "68bc26b7da1990ce10ffecfbc1e09eb13aa5d824",
+      "host_executable_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "candidate_sha": "bc6d30e54621c8a1747a0f2baa0551f25080b06a",
+      "package_spec": "git+file:///U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-20/sources/backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a",
+      "installed_package_root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\cache\\opencode\\npm\\git-backplane-37235870c3e7\\1793543773031\\node_modules\\superpowers-backplane",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2",
+      "upstream_origin": "https://github.com/obra/superpowers.git",
+      "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "upstream_skill_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\SKILL.md",
+      "upstream_root": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+      "upstream_verified": true,
+      "configuration_sources": [
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode\\opencode.json",
+        "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode"
+      ],
+      "configuration_verified": true,
+      "model": "openai/gpt-6.1-sol",
+      "session_id": "ses_e67f7b4cbffeRqHX2FylmCtgA5",
+      "commands": [
+        {
+          "returncode": 0,
+          "timeout": false,
+          "capture": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v2-installed-inventory.json",
+          "sha256": "c36f1d4572491463b0f6e17cfb4ddf99ca31f07609e879600374a490bf35e56b"
+        },
+        {
+          "args": [
+            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "auth",
+            "list"
+          ],
+          "cwd": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode",
+          "timeout": false,
+          "returncode": 0,
+          "capture_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-006.json"
+        },
+        {
+          "args": [
+            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "run",
+            "--standalone",
+            "--format",
+            "json",
+            "--model",
+            "openai/gpt-6.1-sol",
+            "Use the native skill tool to load using-superpowers, managing-superpowers-backlog, and managing-superpowers-handoffs. Report each tool result and its source path. Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery."
+          ],
+          "cwd": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode",
+          "timeout": false,
+          "returncode": 0,
+          "capture_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\captures\\v2-fresh-smoke-003.json"
+        }
+      ],
+      "auth_verified": true,
+      "cache_root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\cache",
+      "source_isolated": true,
+      "gh_capabilities_verified": true,
+      "package_inventory_matches": true,
+      "protected_state_unchanged": true,
+      "skills": {
+        "using-superpowers": {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "sha256": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba",
+          "loaded": true,
+          "capture_sha256": "564a35a24fab167fb85d0fe9411c77c0c931cbd48f8192becee25b46a0b85758"
+        },
+        "managing-superpowers-backlog": {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\cache\\opencode\\npm\\git-backplane-37235870c3e7\\1793543773031\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "sha256": "2090768fe891684b0e9e8ef06e65d3dd8a56d5a0f4e97da62b7a4764e96ffda7",
+          "loaded": true,
+          "capture_sha256": "564a35a24fab167fb85d0fe9411c77c0c931cbd48f8192becee25b46a0b85758",
+          "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+        },
+        "managing-superpowers-handoffs": {
+          "path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\cache\\opencode\\npm\\git-backplane-37235870c3e7\\1793543773031\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "sha256": "ac7672cf88fab2521370375bbcfe114b2789f99fa5ea9d7adf794680b3b27615",
+          "loaded": true,
+          "capture_sha256": "564a35a24fab167fb85d0fe9411c77c0c931cbd48f8192becee25b46a0b85758",
+          "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "before": {
+        "files": {
+          "U:\\repos\\agents\\superpowers-backplane\\plugin.json": "bcd8b9203f102392d3df62193f74d7040d6386537439560f96bf9e5ab381003e",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\plugin.json": "32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565",
+          "U:\\repos\\agents\\superpowers-backplane\\.agents\\plugins\\marketplace.json": "3adc93632a37c257b1a790fccd624f34cec50dafd90d134f909efe61fe097cd3",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\marketplace.json": "e9903b166d7fe302a51280a75d613d019a8945d8bee23a77819bb2e2ae839da1",
+          "U:\\repos\\agents\\superpowers-backplane\\opencode.jsonc": "26531127b1f0a0b192246eb9f11987b4c0a68d25482952e8d30c1581d42247f8",
+          "U:\\repos\\agents\\superpowers-backplane\\README.md": "85b0acac6066a94d3dccfa63954c5932ae3ca386e31f56db74d9f1b9e34e05ac",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\index.js": "3695e306e9a737cf57655179beed3c33c377646e626cec0d928b6d329cddd788",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\package.json": "4eaae6325da2b430aba600b36fe0afb5c539e7282f37700c416d77620c1ca2aa",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode\\opencode.json": "d1df434525497a3284755d55afad15357511241dab2342565455ea5d8369d9ce",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode\\opencode.json": "78fd0ed4144a50edc4a8bd275b664e8f5708e193d09483c5f673a2e72760a41a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\handoff-contract.md": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\resume-assessment.md": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-format.md": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-state-template.md": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md": "bf4ba38982e11019818c34174f61d7c91f447b8e3d751ad89444a5ddfc3c35bf",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\pr-completion.md": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\repository-checkpoint.md": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.json": null,
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.jsonc": "5fe7a35b90fca35516b09a546fe99dd5a1f051b12a75c33d33d6e1a0528ed09f"
+        },
+        "refs": "refs/heads/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/heads/feat/issue-11-claude-acceptance:3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb\nrefs/heads/handoff/issue-20-opencode-auth:3d90ac41f962a7dff2cdd76fce4f2090674f8eca\nrefs/heads/main:2c969915aac2049211cad86ea78143d50776beb4\nrefs/heads/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/heads/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/heads/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/heads/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/HEAD:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/remotes/origin/docs/host-installation-ownership-graph:399bbf866e07c96536991cea5def621204e3dac2\nrefs/remotes/origin/docs/host-leaf-rescope-final-verification:88183f1918e2626cc73f86da8773b022f5bebcaf\nrefs/remotes/origin/docs/issue-17-claude-plan:9b3642658be0c1a802608dc61c862a28f99bb78f\nrefs/remotes/origin/docs/right-size-installation-leaves:a74722a86ed425edaac2e5ebae366dbf87aaa0fd\nrefs/remotes/origin/feat/issue-17-claude-package:39e3b071849a3867e6bac1769c3ab170fee91d5a\nrefs/remotes/origin/feat/issue-31-governance-bridges:9b760f02fe8774b1c75f23b0194b14c5425d0353\nrefs/remotes/origin/handoff/issue-20-opencode-auth:84f0fd384e71bec1579df54971a926a916136f36\nrefs/remotes/origin/main:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/remotes/origin/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/remotes/origin/recovery/issue-19-native:742392ce2aacdc4be06d82935e1acde75a934818\nrefs/remotes/origin/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/remotes/origin/test/issue-17-integrated-claude-evidence:b59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e\nrefs/remotes/origin/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/test/issue-19-update-fixture:5e01704fcdda13eefeeac52d8892da26e7164ffd",
+        "main_head": "2c969915aac2049211cad86ea78143d50776beb4",
+        "upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "upstream_status": ""
+      },
+      "after": {
+        "files": {
+          "U:\\repos\\agents\\superpowers-backplane\\plugin.json": "bcd8b9203f102392d3df62193f74d7040d6386537439560f96bf9e5ab381003e",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\plugin.json": "32bbd2859083522cf3fc040b45864a1de6fc1fcd370c5bf30c21f87086486565",
+          "U:\\repos\\agents\\superpowers-backplane\\.agents\\plugins\\marketplace.json": "3adc93632a37c257b1a790fccd624f34cec50dafd90d134f909efe61fe097cd3",
+          "U:\\repos\\agents\\superpowers-backplane\\.claude-plugin\\marketplace.json": "e9903b166d7fe302a51280a75d613d019a8945d8bee23a77819bb2e2ae839da1",
+          "U:\\repos\\agents\\superpowers-backplane\\opencode.jsonc": "26531127b1f0a0b192246eb9f11987b4c0a68d25482952e8d30c1581d42247f8",
+          "U:\\repos\\agents\\superpowers-backplane\\README.md": "85b0acac6066a94d3dccfa63954c5932ae3ca386e31f56db74d9f1b9e34e05ac",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\index.js": "3695e306e9a737cf57655179beed3c33c377646e626cec0d928b6d329cddd788",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\sentinel\\package.json": "4eaae6325da2b430aba600b36fe0afb5c539e7282f37700c416d77620c1ca2aa",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\config\\opencode\\opencode.json": "d1df434525497a3284755d55afad15357511241dab2342565455ea5d8369d9ce",
+          "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\config\\opencode\\opencode.json": "78fd0ed4144a50edc4a8bd275b664e8f5708e193d09483c5f673a2e72760a41a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\handoff-contract.md": "d706780bce579e3806d5534e99c1508be3900930a6b450c7e6c5c7d3cee2dd98",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\references\\resume-assessment.md": "0b8d963b830d79b831fcbb0cd7020f18606ab44872896d448763fc4368b633ed",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-format.md": "bf1d58572a2edaa70f3b4e3487719c209b239bc93da5a98319e0737c4069d53c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\checkpoint-state-template.md": "ec4459357ec644aa8434bd04582d351be63614438fc0af898dc477286f32ee8c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md": "bf4ba38982e11019818c34174f61d7c91f447b8e3d751ad89444a5ddfc3c35bf",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\installing-superpowers.md": "50d82ccacbf71d368e983984157abe91d1fafd977f1f4d654c0fd58b5393329d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\pr-completion.md": "28b75e0ec4e7d69e9af21812b1e3a079346d078124596f2547e3a2cd5e411f9c",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\product-decomposition.md": "5a8c5b0a99f4c0d27f316e4e7111e15c508350cf01ee9241453f21f1fd843a6a",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\repository-checkpoint.md": "af763c0bdb5caaf2ef4355d8e5837cf193fe86753f97083ff36898ecaea6a00d",
+          "U:\\repos\\agents\\superpowers-backplane\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md": "641c3f3bf07a77bb6a8b175eb487f8ed6361b54b19d366c17072620a8058e231",
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.json": null,
+          "C:\\Users\\Jeff\\.config\\opencode\\opencode.jsonc": "5fe7a35b90fca35516b09a546fe99dd5a1f051b12a75c33d33d6e1a0528ed09f"
+        },
+        "refs": "refs/heads/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/heads/feat/issue-11-claude-acceptance:3fd26061c8c5d8a220e4791d662d0bcf6a69c6bb\nrefs/heads/handoff/issue-20-opencode-auth:3d90ac41f962a7dff2cdd76fce4f2090674f8eca\nrefs/heads/main:2c969915aac2049211cad86ea78143d50776beb4\nrefs/heads/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/heads/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/heads/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/heads/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/HEAD:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/design/sdd-ecosystem-v1:bc23c2f72a4eabc99ae9b60f9fad13eec1949ffc\nrefs/remotes/origin/docs/host-installation-ownership-graph:399bbf866e07c96536991cea5def621204e3dac2\nrefs/remotes/origin/docs/host-leaf-rescope-final-verification:88183f1918e2626cc73f86da8773b022f5bebcaf\nrefs/remotes/origin/docs/issue-17-claude-plan:9b3642658be0c1a802608dc61c862a28f99bb78f\nrefs/remotes/origin/docs/right-size-installation-leaves:a74722a86ed425edaac2e5ebae366dbf87aaa0fd\nrefs/remotes/origin/feat/issue-17-claude-package:39e3b071849a3867e6bac1769c3ab170fee91d5a\nrefs/remotes/origin/feat/issue-31-governance-bridges:9b760f02fe8774b1c75f23b0194b14c5425d0353\nrefs/remotes/origin/handoff/issue-20-opencode-auth:84f0fd384e71bec1579df54971a926a916136f36\nrefs/remotes/origin/main:4cb634b0106413ee68694ecd38865e1ea1c4e7f6\nrefs/remotes/origin/plan/issue-18-claude-setup:476514652bbaf0223085f80f58b4e30813a8109b\nrefs/remotes/origin/plan/issue-19-claude-lifecycle-draft:96e80229fb8fe6718869054796341d8e49f9c8f2\nrefs/remotes/origin/recovery/issue-19-native:742392ce2aacdc4be06d82935e1acde75a934818\nrefs/remotes/origin/recovery/issue-19-windows:ade4e438d156ea7bb68a5e3b009718fde3b39a43\nrefs/remotes/origin/test/issue-17-integrated-claude-evidence:b59ea72633d5fc4c08dcdbd4fb6ea11ae47c956e\nrefs/remotes/origin/test/issue-19-doc-lifecycle:22c5b8d917a09f275c23d99bd9c9645d6c1d2e35\nrefs/remotes/origin/test/issue-19-update-fixture:5e01704fcdda13eefeeac52d8892da26e7164ffd",
+        "main_head": "2c969915aac2049211cad86ea78143d50776beb4",
+        "upstream_head": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "upstream_status": ""
+      },
+      "captures": [
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-auth-baseline-plugin.json",
+          "sha256": "9ddf78de6929bd9576e633d68ab307ccb7ddc2c04da6ad3520a70bafffb65ab1"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-auth-baseline-skills.json",
+          "sha256": "0ce685502da6eb2c78aba1813a79464374dfb37ee5699cbdef953e2e57e1b63a"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-auth-list-000.json",
+          "sha256": "1117dbf8c43cad9c29d4bd8148ac4eb2b7ea6d1a0d57d41deeb0c19a6e95f4c3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-config-000.json",
+          "sha256": "6c68e44b1ca909a10ba7d43113103c9a1062e188617e5dad3763d88087754875"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-diagnostic-config.json",
+          "sha256": "7f7c0343edcee0dc9ba0a1794357b0cda2f5c9ae03cec05199fbfa5ea90d0d21"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-diagnostic-plugin.json",
+          "sha256": "05e6ed54edc1cd5184b58a6ba8590a600cbb1f27a467fb2418229bdc477b7d0e"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-diagnostic-skill.json",
+          "sha256": "9aa8540e6e46050775d7dc05640a1b318cc898e297bd197ff54cd055c27663cc"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-fresh-smoke-000.json",
+          "sha256": "ab65a43911b28b69047bc61c5c466e99b3c823f4fb5a24e032234bdaaf35348e"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-fresh-smoke-001.json",
+          "sha256": "47c9a1542560735823a4641e335be5703d99b9acedf452ac4c2cf32b78bc490a"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-fresh-smoke-002.json",
+          "sha256": "c4de285753fafc128b58daebc05fee8b5945cb5fb93f24095bc6b52aac02f515"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-fresh-smoke-003.json",
+          "sha256": "564a35a24fab167fb85d0fe9411c77c0c931cbd48f8192becee25b46a0b85758"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-installed-inventory.json",
+          "sha256": "c36f1d4572491463b0f6e17cfb4ddf99ca31f07609e879600374a490bf35e56b"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-login-help-000.json",
+          "sha256": "3e0311f572b53af1139157280e095fdf445491dcb4d45ac92a65cd4eee569739"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-paths-000.json",
+          "sha256": "a01f9be903bef5004b92f6be0973cfc366e3114cebf97be490b4625430067368"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-plugin-000.json",
+          "sha256": "98625cb7d8612a23e41d1177ad23234a389bd928b018f8f6c460592b4c9ae48e"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-resume-auth-000.json",
+          "sha256": "f6767359eaa07aef03aab661ab976bb11b77178b1f2cf6bd4063d2232cf562c7"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-resume-models-001.json",
+          "sha256": "20169bb6155b913b95f2b71c1daae0ec7bbd7f1d3627759bebe1bf21bc099d7b"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-resume-models-help-000.json",
+          "sha256": "cd6e88e0fc5db9ceaf56599bc23e97bfdc17f0161aa944edf484feb8a2154f8b"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-run-help-000.json",
+          "sha256": "f92b640cc1dd71bf4338a4daab2006b0f094daa87d072ccf86ff2ad416fd2b57"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-serve-help-000.json",
+          "sha256": "f86cadfc32dd97bc02a810f82b7de98bd268ec740f41c5bfb1e29c687f310213"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-skill-000.json",
+          "sha256": "a4216a13fb0bd74478c07dc2d36cc695aaa34a4bf5a08751e7566bf6f95aa4cc"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-000.json",
+          "sha256": "1117dbf8c43cad9c29d4bd8148ac4eb2b7ea6d1a0d57d41deeb0c19a6e95f4c3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-001.json",
+          "sha256": "1117dbf8c43cad9c29d4bd8148ac4eb2b7ea6d1a0d57d41deeb0c19a6e95f4c3"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-002.json",
+          "sha256": "33e6534c11881e1470516b7fc031bd33d481537899bb78fb4a70fe1cc0e73d01"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-003.json",
+          "sha256": "18d4e31fafa65c5d06e8a8461e70ad69f171daff2c2e448ca9b93af0a335ae65"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-004.json",
+          "sha256": "d244bd761d55e1dc19af18d84513eef6c0ef101f9ff112ccf63493cce3014064"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-005.json",
+          "sha256": "3c3a2ef7d6fe35e7945b9f76f03681d10346385fff4f1b0ee3173efb6f845e5a"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-smoke-auth-006.json",
+          "sha256": "d4d89bcef0dccf80a43f4ad884bf7467da590cb7c619abd999eca9845200fdb1"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\captures\\v2-version-000.json",
+          "sha256": "9fba7c75084a949f9426f7e0be441e321457d60482854b7931cc6668e7304875"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\package-inventory.json",
+          "sha256": "b9a9038690126cda25fa6e39ec4bddbb453deddde32f0aa4af1feb77a9331095"
+        },
+        {
+          "path": ".sp-bp\\work\\issue-20\\gh-preflight.json",
+          "sha256": "7a3c7f2f1cbb7bf690733fe393163aa2be33b84e9dbbb752e7d1050685252bba"
+        }
+      ],
+      "score": "PASS"
+    }
+  },
+  "screened_native_skill_calls": {
+    "v1": [
+      {
+        "tool": "skill",
+        "input": {
+          "name": "using-superpowers"
+        },
+        "status": "completed",
+        "directory": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers",
+        "session_id": "ses_e67f798b5ffe2vsySLihrylOaH"
+      },
+      {
+        "tool": "skill",
+        "input": {
+          "name": "managing-superpowers-backlog"
+        },
+        "status": "completed",
+        "directory": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\cache\\v1\\opencode\\packages\\git+https_\\github.com\\tvproductions\\superpowers-backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog",
+        "session_id": "ses_e67f798b5ffe2vsySLihrylOaH"
+      },
+      {
+        "tool": "skill",
+        "input": {
+          "name": "managing-superpowers-handoffs"
+        },
+        "status": "completed",
+        "directory": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\cache\\v1\\opencode\\packages\\git+https_\\github.com\\tvproductions\\superpowers-backplane#bc6d30e54621c8a1747a0f2baa0551f25080b06a\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs",
+        "session_id": "ses_e67f798b5ffe2vsySLihrylOaH"
+      }
+    ],
+    "v2": [
+      {
+        "tool": "skill",
+        "input": {
+          "id": "using-superpowers"
+        },
+        "status": "completed",
+        "directory": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers",
+        "session_id": "ses_e67f7b4cbffeRqHX2FylmCtgA5"
+      },
+      {
+        "tool": "skill",
+        "input": {
+          "id": "managing-superpowers-backlog"
+        },
+        "status": "completed",
+        "directory": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\cache\\opencode\\npm\\git-backplane-37235870c3e7\\1793543773031\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog",
+        "session_id": "ses_e67f7b4cbffeRqHX2FylmCtgA5"
+      },
+      {
+        "tool": "skill",
+        "input": {
+          "id": "managing-superpowers-handoffs"
+        },
+        "status": "completed",
+        "directory": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v2\\cache\\opencode\\npm\\git-backplane-37235870c3e7\\1793543773031\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs",
+        "session_id": "ses_e67f7b4cbffeRqHX2FylmCtgA5"
+      }
+    ]
+  },
+  "limits": [
+    "Existing immutable installed candidate retained; no installation of merge SHA claimed",
+    "Main additionally retains previously saved planning/handoff documents; no new full merged-SHA package inventory claim",
+    "No push, PR, native issue lifecycle change, closure, release or cleanup",
+    "Source branch, host-owned worktree and authenticated isolated profiles retained",
+    "Sandboxed initial Node run failed spawn EPERM; authorized external rerun passed9/9"
+  ]
+}

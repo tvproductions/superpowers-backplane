@@ -1,0 +1,728 @@
+{
+  "schema": "superpowers-backplane-issue-4-operations/v1",
+  "observed_at": "2026-11-01T21:39:08.824410+00:00",
+  "repository": "https://github.com/tvproductions/superpowers-backplane.git",
+  "root": "C:\\Users\\Jeff\\.codex\\worktrees\\fb9c\\superpowers-backplane",
+  "branch": "detached",
+  "base": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+  "plan_commit": "8de107f26b7a63fae35d83b4aab2ad3147fb395b",
+  "plan_blob": "949e561175ab0bbde3ac72416dc0a3e6324239e7",
+  "spec_blob": "a790d953691d178f711757e9164afb60932eb65a",
+  "issue": {
+    "blockedBy": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "blocking": {
+      "nodes": [
+        {
+          "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+          "number": 6,
+          "state": "OPEN",
+          "title": "Run an external adoption pilot and fresh conformance suite",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+        }
+      ],
+      "totalCount": 1
+    },
+    "body": "## Objective\n\nGive adopters clear legal terms and operational guidance for installing and maintaining Backplane.\n\n## Bounded Scope\n\n### Allowed\n\n- An explicit human-approved repository license.\n- README quick start and supported-scope statement.\n- Installation prerequisites, update, rollback, uninstall, troubleshooting, and security-sensitive authorization guidance.\n\n### Out of Scope\n\n- Choosing a license without human approval.\n- Claiming support for unverified harnesses.\n- Replacing project-owned deployment or verification policy.\n\n## Acceptance Criteria\n\n- GitHub recognizes the approved license.\n- The README accurately distinguishes supported, experimental, and out-of-scope surfaces.\n- An adopter can follow the documented setup, update, rollback, and removal paths without undocumented maintainer knowledge.\n- Documentation states that GitHub Projects and IssueOps are not required and no project runtime is imposed.\n\n## Verification Seams\n\n- Confirm `gh repo view` reports the intended license.\n- Execute every documented command path in a clean adoption fixture.\n- Review documentation against the approved v0.1 adoption contract and current compatibility evidence.\n\n## Superpowers Artifacts\n\nDesign authority: human license selection plus the approved v0.1 adoption contract.\n\nPlan: not yet created.",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+        "name": "backplane:backlog",
+        "description": "Captured but not ready for execution",
+        "color": "D4C5F9"
+      }
+    ],
+    "number": 4,
+    "parent": {
+      "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+      "number": 1,
+      "state": "OPEN",
+      "title": "Ship an adoptable Backplane v0.1.0 release",
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+    },
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Add licensing and adopter operations guidance",
+    "updatedAt": "2026-08-23T13:55:22Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+  },
+  "license": {
+    "selected": "MIT",
+    "copyright": "2026 g0",
+    "authority": "Direct operator approval of MIT retained from approved plan; direct user correction: no, use g0",
+    "standard_template_comparison": "PASS",
+    "hosted_licenseInfo": null,
+    "hosted_result": "UNKNOWN: new LICENSE is unpublished"
+  },
+  "commands": [
+    {
+      "id": "codex-block-01",
+      "host": "codex",
+      "guide": "docs/installing-codex.md",
+      "guide_sha256": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+      "heading": "Install the Backplane package",
+      "ordinal": 1,
+      "language": "powershell",
+      "source": "gh auth status\nif ($LASTEXITCODE -ne 0) { throw 'GitHub CLI authentication is required' }\n$backplaneRoot = git rev-parse --show-toplevel\nif ($LASTEXITCODE -ne 0 -or -not $backplaneRoot) { throw 'Run this from the Backplane checkout' }\n$backplaneRoot = $backplaneRoot.Trim()\n$origin = git -C $backplaneRoot remote get-url origin\nif ($LASTEXITCODE -ne 0 -or -not $origin) { throw 'Backplane origin is unavailable' }\n$origin = $origin.Trim()\n$acceptedOrigins = @(\n  'https://github.com/tvproductions/superpowers-backplane',\n  'https://github.com/tvproductions/superpowers-backplane.git',\n  'git@github.com:tvproductions/superpowers-backplane',\n  'git@github.com:tvproductions/superpowers-backplane.git',\n  'ssh://git@github.com/tvproductions/superpowers-backplane',\n  'ssh://git@github.com/tvproductions/superpowers-backplane.git'\n)\nif ($origin -notin $acceptedOrigins) { throw \"Unexpected Backplane origin: $origin\" }\n$backplaneRevision = git -C $backplaneRoot rev-parse HEAD\nif ($LASTEXITCODE -ne 0 -or -not $backplaneRevision) { throw 'Backplane commit is unavailable' }\n$backplaneRevision = $backplaneRevision.Trim()\n$publishedRevision = gh api \"repos/tvproductions/superpowers-backplane/commits/$backplaneRevision\" --jq .sha\nif ($LASTEXITCODE -ne 0 -or $publishedRevision -ne $backplaneRevision) { throw 'Backplane commit is not published at the expected origin' }\n$installed = codex plugin list --json | ConvertFrom-Json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect existing plugins' }\nif (@($installed.installed | Where-Object { $_.pluginId -like 'superpowers-backplane@*' }).Count -gt 0) { throw 'Backplane is already installed; inspect it before changing versions' }\n$registered = codex plugin marketplace list --json | ConvertFrom-Json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect existing marketplaces' }\nif (@($registered.marketplaces | Where-Object name -eq 'superpowers-backplane').Count -gt 0) { throw 'Backplane marketplace is already configured; inspect it before changing refs' }\ncodex plugin marketplace add tvproductions/superpowers-backplane --ref $backplaneRevision\nif ($LASTEXITCODE -ne 0) { throw 'Backplane marketplace registration failed' }\ncodex plugin add superpowers-backplane@superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Backplane plugin installation failed' }\ncodex plugin list --json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect installed plugins' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "CLI blocks exited zero; authenticated three-skill discovery and nontrivial unrelated-plugin preservation not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\codex-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-codex-replay.json"
+    },
+    {
+      "id": "codex-block-02",
+      "host": "codex",
+      "guide": "docs/installing-codex.md",
+      "guide_sha256": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+      "heading": "Change or restore a pinned Backplane revision",
+      "ordinal": 2,
+      "language": "powershell",
+      "source": "$priorRevision = '<recorded-prior-40-character-commit-sha>'\n$candidateRevision = '<reviewed-candidate-40-character-commit-sha>'\nif ($priorRevision -notmatch '^[0-9a-f]{40}$' -or $candidateRevision -notmatch '^[0-9a-f]{40}$') { throw 'Use full reviewed commit SHAs' }\n$marketplaces = codex plugin marketplace list --json | ConvertFrom-Json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect marketplaces' }\n$market = @($marketplaces.marketplaces | Where-Object name -eq 'superpowers-backplane')\nif ($market.Count -ne 1) { throw 'Expected one Backplane marketplace' }\nif ($market[0].marketplaceSource.sourceType -ne 'git' -or\n    $market[0].marketplaceSource.source -ne 'https://github.com/tvproductions/superpowers-backplane.git') {\n  throw 'Unexpected Backplane marketplace source'\n}\n$resolvedPrior = (git -C $market[0].root rev-parse HEAD).Trim()\nif ($LASTEXITCODE -ne 0 -or $resolvedPrior -ne $priorRevision) { throw 'Recorded prior revision does not match the installed marketplace' }\n$before = codex plugin list --json | ConvertFrom-Json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect installed plugins' }\n$backplanePlugins = @($before.installed | Where-Object { $_.pluginId -like 'superpowers-backplane@*' })\nif ($backplanePlugins.Count -ne 1 -or $backplanePlugins[0].pluginId -ne 'superpowers-backplane@superpowers-backplane') { throw 'Resolve alternate, duplicate, or absent Backplane installations first' }\n$beforeIds = @($before.installed | Where-Object marketplaceName -eq 'superpowers-backplane' | ForEach-Object pluginId | Sort-Object)\n$publishedCandidate = gh api \"repos/tvproductions/superpowers-backplane/commits/$candidateRevision\" --jq .sha\nif ($LASTEXITCODE -ne 0 -or $publishedCandidate -ne $candidateRevision) { throw 'Candidate revision is not published at the expected origin' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "CLI blocks exited zero; authenticated three-skill discovery and nontrivial unrelated-plugin preservation not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\codex-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-codex-replay.json"
+    },
+    {
+      "id": "codex-block-03",
+      "host": "codex",
+      "guide": "docs/installing-codex.md",
+      "guide_sha256": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+      "heading": "Change or restore a pinned Backplane revision",
+      "ordinal": 3,
+      "language": "powershell",
+      "source": "codex plugin marketplace remove superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Could not remove the prior Backplane marketplace' }\ncodex plugin marketplace add tvproductions/superpowers-backplane --ref $candidateRevision\nif ($LASTEXITCODE -ne 0) { throw 'Candidate registration failed; restore the prior revision below' }\ncodex plugin add superpowers-backplane@superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Candidate installation failed; restore the prior revision below' }\n$marketplaces = codex plugin marketplace list --json | ConvertFrom-Json\n$market = @($marketplaces.marketplaces | Where-Object name -eq 'superpowers-backplane')\nif ($LASTEXITCODE -ne 0 -or $market.Count -ne 1) { throw 'Candidate marketplace is missing' }\n$resolvedCandidate = (git -C $market[0].root rev-parse HEAD).Trim()\nif ($LASTEXITCODE -ne 0 -or $resolvedCandidate -ne $candidateRevision) { throw 'Candidate checkout is at the wrong commit' }\n$after = codex plugin list --json | ConvertFrom-Json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect candidate plugins' }\n$afterIds = @($after.installed | Where-Object marketplaceName -eq 'superpowers-backplane' | ForEach-Object pluginId | Sort-Object)\nif (@($after.installed | Where-Object { $_.pluginId -like 'superpowers-backplane@*' }).Count -ne 1) { throw 'Candidate left a duplicate or absent Backplane installation' }\nif (@(Compare-Object $beforeIds $afterIds).Count -ne 0) { throw 'A plugin from the marketplace was lost or added unexpectedly' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "CLI blocks exited zero; authenticated three-skill discovery and nontrivial unrelated-plugin preservation not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\codex-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-codex-replay.json"
+    },
+    {
+      "id": "codex-block-04",
+      "host": "codex",
+      "guide": "docs/installing-codex.md",
+      "guide_sha256": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+      "heading": "Change or restore a pinned Backplane revision",
+      "ordinal": 4,
+      "language": "powershell",
+      "source": "$priorRevision = '<recorded-prior-40-character-commit-sha>'\nif ($priorRevision -notmatch '^[0-9a-f]{40}$') { throw 'Use the full recorded prior commit SHA' }\n$marketplaces = codex plugin marketplace list --json | ConvertFrom-Json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect marketplaces before restoration' }\nif (@($marketplaces.marketplaces | Where-Object name -eq 'superpowers-backplane').Count -gt 0) {\n  codex plugin marketplace remove superpowers-backplane\n  if ($LASTEXITCODE -ne 0) { throw 'Could not remove the candidate marketplace' }\n}\ncodex plugin marketplace add tvproductions/superpowers-backplane --ref $priorRevision\nif ($LASTEXITCODE -ne 0) { throw 'Could not restore the prior marketplace' }\ncodex plugin add superpowers-backplane@superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Could not restore the prior plugin' }\n$marketplaces = codex plugin marketplace list --json | ConvertFrom-Json\n$market = @($marketplaces.marketplaces | Where-Object name -eq 'superpowers-backplane')\nif ($LASTEXITCODE -ne 0 -or $market.Count -ne 1) { throw 'Restored marketplace is missing' }\n$resolvedPrior = (git -C $market[0].root rev-parse HEAD).Trim()\nif ($LASTEXITCODE -ne 0 -or $resolvedPrior -ne $priorRevision) { throw 'Restored checkout is at the wrong commit' }\ncodex plugin list --json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect restored plugins' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "CLI blocks exited zero; authenticated three-skill discovery and nontrivial unrelated-plugin preservation not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\codex-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-codex-replay.json"
+    },
+    {
+      "id": "codex-block-05",
+      "host": "codex",
+      "guide": "docs/installing-codex.md",
+      "guide_sha256": "3cc4d4dc34c985d0ccff1c01104cda62c04d5a0485206ae7c2f059c7cdeb7a3f",
+      "heading": "Change or restore a pinned Backplane revision",
+      "ordinal": 5,
+      "language": "powershell",
+      "source": "codex plugin remove superpowers-backplane@superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Backplane removal failed' }\ncodex plugin list --json\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect installed plugins after removal' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "CLI blocks exited zero; authenticated three-skill discovery and nontrivial unrelated-plugin preservation not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\codex-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-codex-replay.json"
+    },
+    {
+      "id": "codex-session-56",
+      "host": "codex",
+      "guide": "docs/installing-codex.md",
+      "line": 56,
+      "source": "Ask Codex: `Set up Superpowers Backplane in this Codex session.` The setup agent follows the [Backplane installation and compatibility reference](../skills/managing-superpowers-backlog/references/installing-superpowers.md) before any backlog operation.",
+      "result": "UNKNOWN",
+      "gap": "Fresh native session not yet observed in issue 4",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\codex-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks"
+    },
+    {
+      "id": "claude-block-01",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Clone and inspect the reviewed Backplane revision",
+      "ordinal": 1,
+      "language": "powershell",
+      "source": "gh auth status\nif ($LASTEXITCODE -ne 0) { throw 'GitHub CLI authentication is required' }\n$backplaneRevision = Read-Host 'Reviewed 40-character Backplane commit'\nif ($backplaneRevision -cnotmatch '^[0-9a-f]{40}$') { throw 'Use a full lowercase commit SHA' }\n$backplaneCheckout = Join-Path (Get-Location) 'superpowers-backplane'\nif (Test-Path -LiteralPath $backplaneCheckout) { throw \"Checkout path already exists: $backplaneCheckout\" }\ngh repo clone tvproductions/superpowers-backplane $backplaneCheckout\nif ($LASTEXITCODE -ne 0) { throw 'Backplane clone failed' }\ngit -C $backplaneCheckout checkout --detach $backplaneRevision\nif ($LASTEXITCODE -ne 0) { throw 'Reviewed revision is not in the clone' }\n$origin = git -C $backplaneCheckout remote get-url origin\nif ($LASTEXITCODE -ne 0 -or -not $origin) { throw 'Backplane origin is unavailable' }\n$origin = $origin.Trim()\n$acceptedOrigins = @(\n  'https://github.com/tvproductions/superpowers-backplane',\n  'https://github.com/tvproductions/superpowers-backplane.git',\n  'git@github.com:tvproductions/superpowers-backplane',\n  'git@github.com:tvproductions/superpowers-backplane.git',\n  'ssh://git@github.com/tvproductions/superpowers-backplane',\n  'ssh://git@github.com/tvproductions/superpowers-backplane.git'\n)\nif ($origin -notin $acceptedOrigins) { throw \"Unexpected Backplane origin: $origin\" }\n$resolvedRevision = git -C $backplaneCheckout rev-parse HEAD\nif ($LASTEXITCODE -ne 0 -or $resolvedRevision.Trim() -ne $backplaneRevision) { throw 'Checkout is at the wrong revision' }\n$publishedRevision = gh api \"repos/tvproductions/superpowers-backplane/commits/$backplaneRevision\" --jq .sha\nif ($LASTEXITCODE -ne 0 -or $publishedRevision.Trim() -ne $backplaneRevision) { throw 'Revision is not published at the expected origin' }\n$dirty = git -C $backplaneCheckout status --porcelain\nif ($LASTEXITCODE -ne 0 -or $dirty) { throw 'Reviewed checkout is not clean' }\n$claudeManifest = Get-Content -LiteralPath (Join-Path $backplaneCheckout '.claude-plugin/plugin.json') -Raw | ConvertFrom-Json\n$marketplace = Get-Content -LiteralPath (Join-Path $backplaneCheckout '.claude-plugin/marketplace.json') -Raw | ConvertFrom-Json\nif ($claudeManifest.name -ne 'superpowers-backplane' -or $marketplace.name -ne 'superpowers-backplane' -or\n    $marketplace.plugins.Count -ne 1 -or $marketplace.plugins[0].name -ne 'superpowers-backplane' -or\n    $marketplace.plugins[0].source -ne './' -or $marketplace.plugins[0].version -ne $claudeManifest.version) {\n  throw 'Claude package identity or root source is unexpected'\n}\nforeach ($skill in @('managing-superpowers-backlog', 'managing-superpowers-handoffs')) {\n  if (-not (Test-Path -LiteralPath (Join-Path $backplaneCheckout \"skills/$skill/SKILL.md\"))) {\n    throw \"Canonical skill is missing: $skill\"\n  }\n}\nclaude plugin validate --strict $backplaneCheckout\nif ($LASTEXITCODE -ne 0) { throw 'Claude package validation failed' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Native clone/install/preflight exited zero; model-session setup/discovery unavailable",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-install.json"
+    },
+    {
+      "id": "claude-block-02",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Install the Backplane plugin",
+      "ordinal": 2,
+      "language": "powershell",
+      "source": "claude plugin marketplace add $backplaneCheckout\nif ($LASTEXITCODE -ne 0) { throw 'Backplane marketplace registration failed' }\nclaude plugin install superpowers-backplane@superpowers-backplane --scope user\nif ($LASTEXITCODE -ne 0) { throw 'Backplane plugin installation failed' }\nclaude plugin list\nif ($LASTEXITCODE -ne 0) { throw 'Could not inspect installed plugins' }\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Native clone/install/preflight exited zero; model-session setup/discovery unavailable",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-install.json"
+    },
+    {
+      "id": "claude-block-03",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Check the target issue and request setup",
+      "ordinal": 3,
+      "language": "powershell",
+      "source": "$targetRepo = Read-Host 'Target GitHub owner/repo'\n$targetIssue = Read-Host 'Existing issue number in that repository'\ngh issue view $targetIssue --repo $targetRepo --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\nif ($LASTEXITCODE -ne 0) { throw 'Cannot read the target issue with complete native fields' }\ngh issue edit --help\ngh issue close --help\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Native clone/install/preflight exited zero; model-session setup/discovery unavailable",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "PASS",
+      "command_exit": 0,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-install.json"
+    },
+    {
+      "id": "claude-block-04",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Select the upstream source",
+      "ordinal": 4,
+      "language": "powershell",
+      "source": "$upstreamCheckout = (Resolve-Path -LiteralPath (Read-Host 'Existing Superpowers checkout') -ErrorAction Stop).Path\n$upstreamOrigin = git -C $upstreamCheckout remote get-url origin\nif ($LASTEXITCODE -ne 0 -or -not $upstreamOrigin) { throw 'Superpowers origin is unavailable' }\n$acceptedUpstreamOrigins = @(\n  'https://github.com/obra/superpowers',\n  'https://github.com/obra/superpowers.git',\n  'git@github.com:obra/superpowers',\n  'git@github.com:obra/superpowers.git',\n  'ssh://git@github.com/obra/superpowers',\n  'ssh://git@github.com/obra/superpowers.git'\n)\nif ($upstreamOrigin.Trim() -cnotin $acceptedUpstreamOrigins) { throw 'Choose the authoritative obra/superpowers checkout' }\n$upstreamRevision = git -C $upstreamCheckout rev-parse HEAD\nif ($LASTEXITCODE -ne 0 -or $upstreamRevision.Trim() -cnotmatch '^[0-9a-f]{40}$') { throw 'Superpowers revision is unavailable' }\n$upstreamStatus = git -C $upstreamCheckout status --porcelain=v1\nif ($LASTEXITCODE -ne 0) { throw 'Superpowers checkout status is unavailable' }\nforeach ($skill in @('using-superpowers','brainstorming','writing-plans','writing-skills')) {\n  if (-not (Test-Path -LiteralPath (Join-Path $upstreamCheckout \"skills/$skill/SKILL.md\"))) { throw \"Missing upstream skill: $skill\" }\n}\nclaude --plugin-dir $upstreamCheckout\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Not yet replayed in this issue; historical results remain at their recorded identities",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3"
+    },
+    {
+      "id": "claude-block-05",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Pinned hosted-source lifecycle",
+      "ordinal": 5,
+      "language": "python",
+      "source": "import json\nimport os\nfrom pathlib import Path\nimport re\nimport shutil\nimport subprocess\nimport tempfile\n\nprofile = Path(input(\"Disposable Claude profile: \")).expanduser().resolve(strict=True)\ncatalog = Path(input(\"Dedicated catalog directory: \")).expanduser().resolve()\nprior = input(\"Prior verified 40-character Backplane commit: \").strip()\ncandidate = input(\"Reviewed candidate 40-character Backplane commit: \").strip()\nrepo = \"tvproductions/superpowers-backplane\"\n\n\ndef native(*arguments):\n    executable = shutil.which(arguments[0])\n    if executable is None:\n        raise RuntimeError(f\"Required command unavailable: {arguments[0]}\")\n    environment = dict(os.environ)\n    if arguments[0] == \"claude\":\n        environment[\"CLAUDE_CONFIG_DIR\"] = str(profile)\n        print(f\"CLAUDE_CONFIG_DIR={profile}\")\n        index = int(environment.get(\"GIT_CONFIG_COUNT\", \"0\") or \"0\")\n        environment.update({\n            \"GIT_CONFIG_COUNT\": str(index + 1),\n            f\"GIT_CONFIG_KEY_{index}\": f\"url.https://github.com/{repo}.insteadOf\",\n            f\"GIT_CONFIG_VALUE_{index}\": f\"git@github.com:{repo}\",\n        })\n    result = subprocess.run(\n        [executable, *arguments[1:]], env=environment, shell=False,\n        capture_output=True, text=True, encoding=\"utf-8\", errors=\"replace\",\n        check=False,\n    )\n    if result.returncode:\n        raise RuntimeError(f\"Command failed; inspect state before repair: {result.stdout}{result.stderr}\")\n    print(result.stdout, end=\"\" if result.stdout.endswith(\"\\n\") else \"\\n\")\n    return result.stdout\n\n\ndef pin(revision):\n    if re.fullmatch(r\"[0-9a-f]{40}\", revision) is None:\n        raise ValueError(\"Use a full lowercase 40-character commit SHA\")\n    manifest = catalog / \".claude-plugin\" / \"marketplace.json\"\n    if catalog.exists():\n        existing = json.loads(manifest.read_text(encoding=\"utf-8-sig\"))\n        entries = existing.get(\"plugins\", [])\n        if (existing.get(\"name\") != \"superpowers-backplane\" or len(entries) != 1\n                or entries[0].get(\"name\") != \"superpowers-backplane\"\n                or entries[0].get(\"source\", {}).get(\"source\") != \"github\"\n                or entries[0].get(\"source\", {}).get(\"repo\") != repo):\n            raise ValueError(\"Occupied catalog is not the verified dedicated Backplane source\")\n    available = native(\"gh\", \"api\", f\"repos/{repo}/commits/{revision}\", \"--jq\", \".sha\").strip()\n    if available != revision:\n        raise ValueError(\"Source unavailable; retain prior catalog and installation\")\n    value = {\n        \"name\": \"superpowers-backplane\", \"description\": \"Pinned Backplane hosted-source catalog\",\n        \"owner\": {\"name\": \"tvproductions\"},\n        \"plugins\": [{\"name\": \"superpowers-backplane\", \"description\": \"Pinned Backplane package\",\n                     \"source\": {\"source\": \"github\", \"repo\": repo, \"sha\": revision}}],\n    }\n    manifest.parent.mkdir(parents=True, exist_ok=True)\n    with tempfile.NamedTemporaryFile(\n        mode=\"w\", encoding=\"utf-8\", newline=\"\\n\", dir=manifest.parent, delete=False,\n    ) as handle:\n        temporary = Path(handle.name)\n        handle.write(json.dumps(value, ensure_ascii=False, indent=2) + \"\\n\")\n    try:\n        temporary.replace(manifest)\n    finally:\n        temporary.unlink(missing_ok=True)\n\n\npin(prior)\nnative(\"claude\", \"plugin\", \"validate\", \"--strict\", str(catalog))\nnative(\"claude\", \"plugin\", \"marketplace\", \"list\", \"--json\")\nnative(\"claude\", \"plugin\", \"list\", \"--json\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-06",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Pinned hosted-source lifecycle",
+      "ordinal": 6,
+      "language": "python",
+      "source": "native(\"claude\", \"plugin\", \"marketplace\", \"add\", str(catalog), \"--scope\", \"user\")\nnative(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-07",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Repeat install and update",
+      "ordinal": 7,
+      "language": "python",
+      "source": "native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-08",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Repeat install and update",
+      "ordinal": 8,
+      "language": "python",
+      "source": "pin(candidate)\nnative(\"claude\", \"plugin\", \"validate\", \"--strict\", str(catalog))\nnative(\"claude\", \"plugin\", \"marketplace\", \"update\", \"superpowers-backplane\")\nnative(\"claude\", \"plugin\", \"update\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-09",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Rollback and failed candidate preflight",
+      "ordinal": 9,
+      "language": "python",
+      "source": "pin(prior)\nnative(\"claude\", \"plugin\", \"validate\", \"--strict\", str(catalog))\nnative(\"claude\", \"plugin\", \"marketplace\", \"update\", \"superpowers-backplane\")\nnative(\"claude\", \"plugin\", \"uninstall\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-10",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Rollback and failed candidate preflight",
+      "ordinal": 10,
+      "language": "python",
+      "source": "native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-11",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Rollback and failed candidate preflight",
+      "ordinal": 11,
+      "language": "python",
+      "source": "try:\n    pin(\"0\" * 40)\nexcept (RuntimeError, ValueError) as error:\n    print(f\"Candidate rejected before replacement: {error}\")\nelse:\n    raise RuntimeError(\"Unavailable candidate unexpectedly accepted\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-12",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Backplane-only uninstall and test restoration",
+      "ordinal": 12,
+      "language": "python",
+      "source": "native(\"claude\", \"plugin\", \"uninstall\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-block-13",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "guide_sha256": "925b39f48e09bf6963903283b410102acb374022e44ebdb1bd2d095e2f627c5b",
+      "heading": "Backplane-only uninstall and test restoration",
+      "ordinal": 13,
+      "language": "python",
+      "source": "native(\"claude\", \"plugin\", \"install\", \"superpowers-backplane@superpowers-backplane\", \"--scope\", \"user\")\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Command outcome and owned sentinel captured; per-operation exact package payload/fresh-session discovery not established",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "cli_result": "CLI_PASS",
+      "sentinel_unchanged": true,
+      "evidence": "transcripts/2026-11-01-issue-4-claude-lifecycle.json",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "claude-session-99",
+      "host": "claude",
+      "guide": "docs/installing-claude-code.md",
+      "line": 99,
+      "source": "> Set up Superpowers Backplane in this Claude Code session.",
+      "result": "UNKNOWN",
+      "gap": "Fresh native session not yet observed in issue 4",
+      "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile",
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "c5415d29adf45eea5339c7a73c1a9413b64e54d3",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks"
+    },
+    {
+      "id": "opencode-block-01",
+      "host": "opencode",
+      "guide": "docs/installing-opencode.md",
+      "guide_sha256": "ac957c7c1fc1bea17ad3f5eb6a16fe98dbdf2a3d59bca6cebdc95647e8cc81ea",
+      "heading": "Choose an immutable source",
+      "ordinal": 1,
+      "language": "text",
+      "source": "git+https://github.com/tvproductions/superpowers-backplane.git#FULL_COMMIT_SHA\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Not yet replayed in this issue; historical results remain at their recorded identities",
+      "profile": null,
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "8dee01426faf0e8d780cce540155435d2969b0da"
+    },
+    {
+      "id": "opencode-block-02",
+      "host": "opencode",
+      "guide": "docs/installing-opencode.md",
+      "guide_sha256": "ac957c7c1fc1bea17ad3f5eb6a16fe98dbdf2a3d59bca6cebdc95647e8cc81ea",
+      "heading": "Configure the package",
+      "ordinal": 2,
+      "language": "json",
+      "source": "{\n  \"plugin\": [\n    \"EXISTING_SUPERPOWERS_ENTRY\",\n    \"git+https://github.com/tvproductions/superpowers-backplane.git#FULL_COMMIT_SHA\"\n  ]\n}\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Not yet replayed in this issue; historical results remain at their recorded identities",
+      "profile": null,
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "8dee01426faf0e8d780cce540155435d2969b0da",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "opencode-block-03",
+      "host": "opencode",
+      "guide": "docs/installing-opencode.md",
+      "guide_sha256": "ac957c7c1fc1bea17ad3f5eb6a16fe98dbdf2a3d59bca6cebdc95647e8cc81ea",
+      "heading": "Configure the package",
+      "ordinal": 3,
+      "language": "json",
+      "source": "{\n  \"plugins\": [\n    \"EXISTING_SUPERPOWERS_ENTRY\",\n    \"git+https://github.com/tvproductions/superpowers-backplane.git#FULL_COMMIT_SHA\"\n  ]\n}\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Not yet replayed in this issue; historical results remain at their recorded identities",
+      "profile": null,
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "8dee01426faf0e8d780cce540155435d2969b0da",
+      "syntax_result": "PASS"
+    },
+    {
+      "id": "opencode-block-04",
+      "host": "opencode",
+      "guide": "docs/installing-opencode.md",
+      "guide_sha256": "ac957c7c1fc1bea17ad3f5eb6a16fe98dbdf2a3d59bca6cebdc95647e8cc81ea",
+      "heading": "Start a fresh session and verify",
+      "ordinal": 4,
+      "language": "text",
+      "source": "Use the native skill tool to load using-superpowers, managing-superpowers-backlog, and managing-superpowers-handoffs. Report each tool result and its source path. Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery.\n",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks",
+      "result": "UNKNOWN",
+      "gap": "Not yet replayed in this issue; historical results remain at their recorded identities",
+      "profile": null,
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "8dee01426faf0e8d780cce540155435d2969b0da"
+    },
+    {
+      "id": "opencode-session-95",
+      "host": "opencode",
+      "guide": "docs/installing-opencode.md",
+      "line": 95,
+      "source": "Use the native skill tool to load using-superpowers, managing-superpowers-backlog, and managing-superpowers-handoffs. Report each tool result and its source path. Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery.",
+      "result": "UNKNOWN",
+      "gap": "Fresh native session not yet observed in issue 4",
+      "profile": null,
+      "source_sha": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53",
+      "platform": "Windows",
+      "substitutions": {
+        "prior": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+        "candidate": "d557b27452ba5fb60188f06c1736c8cdc8ce9d53"
+      },
+      "guide_blob": "8dee01426faf0e8d780cce540155435d2969b0da",
+      "expected": "Literal guide command plus operation-specific identity, preservation and fresh-session checks"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "AC1",
+      "result": "UNKNOWN",
+      "reason": "Hosted MIT recognition pending publication"
+    },
+    {
+      "id": "AC2",
+      "result": "UNKNOWN",
+      "reason": "Local support statements checked; integrated acceptance pending"
+    },
+    {
+      "id": "AC3",
+      "result": "UNKNOWN",
+      "reason": "Authenticated fresh-session and pending OpenCode operation evidence unavailable"
+    },
+    {
+      "id": "AC4",
+      "result": "UNKNOWN",
+      "reason": "Local documentation checked; integrated acceptance pending"
+    }
+  ],
+  "checks": {
+    "powershell_syntax": [
+      {
+        "errors": [],
+        "id": "codex-block-01"
+      },
+      {
+        "errors": [],
+        "id": "codex-block-02"
+      },
+      {
+        "errors": [],
+        "id": "codex-block-03"
+      },
+      {
+        "errors": [],
+        "id": "codex-block-04"
+      },
+      {
+        "errors": [],
+        "id": "codex-block-05"
+      },
+      {
+        "errors": [],
+        "id": "claude-block-01"
+      },
+      {
+        "errors": [],
+        "id": "claude-block-02"
+      },
+      {
+        "errors": [],
+        "id": "claude-block-03"
+      },
+      {
+        "errors": [],
+        "id": "claude-block-04"
+      }
+    ],
+    "python_blocks_compiled": 9,
+    "codex_cli_blocks": 5,
+    "claude_install_blocks": 3,
+    "claude_lifecycle_blocks": 9,
+    "fresh_auth": {
+      "codex": "SIGNED_OUT",
+      "claude": "SIGNED_OUT"
+    },
+    "normal_profile_preservation": "UNVERIFIED: no before/after normal-profile baseline, no preservation PASS claimed"
+  },
+  "gaps": [
+    "No authenticated fresh skill sessions",
+    "OpenCode setup/lifecycle acceptance belongs to its pending issues",
+    "Exact installed payloads not checked after every CLI operation",
+    "Plan binding and lifecycle writes rejected by automatic approval review; no remote mutation executed",
+    "Separate publication/integration/hosted-recognition authority pending"
+  ]
+}

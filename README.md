@@ -24,12 +24,22 @@ adopts gz-skills-first-starter as the authoritative shared policy source,
 including SemVer, new major-release PRDs and source consistency checks.
 This is policy alignment without circular template adoption.
 
-This repository is in bootstrap state. Start with `HANDOFF.md`.
+This repository is in development. Manifest versions do not establish a published release. For development continuity, read `HANDOFF.md`.
+
+Backplane is licensed under the [MIT license](LICENSE). Start with the
+[adopter operations guide](docs/adopter-operations.md) for prerequisites,
+verified support limits, recovery and authorization guidance.
 
 For Codex, follow the [installation and setup guide](docs/installing-codex.md).
 For Claude Code, follow the [installation and setup guide](docs/installing-claude-code.md).
 For OpenCode V1/V2, see the [initial installation guide](docs/installing-opencode.md);
 setup, lifecycle and final integrated acceptance remain pending.
+
+Codex and Claude Code have native acceptance at the exact versions, platforms
+and source revisions linked in the operations guide. OpenCode has initial
+installation smoke evidence only; update, rollback and removal are not yet
+verified. Other harnesses are outside the approved v0.1 scope. GitHub Projects
+are optional; IssueOps is not required, and no consuming-project runtime is imposed.
 
 Upstream Superpowers supplies the development workflow; this Backplane adds
 native GitHub backlog and product continuity around that workflow. gz-skills

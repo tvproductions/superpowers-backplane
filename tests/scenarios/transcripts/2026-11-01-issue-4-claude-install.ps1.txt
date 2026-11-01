@@ -1,0 +1,56 @@
+$ErrorActionPreference='Stop'
+$env:CLAUDE_CONFIG_DIR='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-4/claude-profile'
+$backplaneCheckout='U:/repos/agents/superpowers-backplane/.sp-bp/work/issue-4/claude-source-parent/superpowers-backplane'
+$backplaneRevision='d557b27452ba5fb60188f06c1736c8cdc8ce9d53'
+git -C $backplaneCheckout checkout --detach $backplaneRevision
+if ($LASTEXITCODE -ne 0) { throw 'Reviewed revision is not in the clone' }
+$origin = git -C $backplaneCheckout remote get-url origin
+if ($LASTEXITCODE -ne 0 -or -not $origin) { throw 'Backplane origin is unavailable' }
+$origin = $origin.Trim()
+$acceptedOrigins = @(
+  'https://github.com/tvproductions/superpowers-backplane',
+  'https://github.com/tvproductions/superpowers-backplane.git',
+  'git@github.com:tvproductions/superpowers-backplane',
+  'git@github.com:tvproductions/superpowers-backplane.git',
+  'ssh://git@github.com/tvproductions/superpowers-backplane',
+  'ssh://git@github.com/tvproductions/superpowers-backplane.git'
+)
+if ($origin -notin $acceptedOrigins) { throw "Unexpected Backplane origin: $origin" }
+$resolvedRevision = git -C $backplaneCheckout rev-parse HEAD
+if ($LASTEXITCODE -ne 0 -or $resolvedRevision.Trim() -ne $backplaneRevision) { throw 'Checkout is at the wrong revision' }
+$publishedRevision = gh api "repos/tvproductions/superpowers-backplane/commits/$backplaneRevision" --jq .sha
+if ($LASTEXITCODE -ne 0 -or $publishedRevision.Trim() -ne $backplaneRevision) { throw 'Revision is not published at the expected origin' }
+$dirty = git -C $backplaneCheckout status --porcelain
+if ($LASTEXITCODE -ne 0 -or $dirty) { throw 'Reviewed checkout is not clean' }
+$claudeManifest = Get-Content -LiteralPath (Join-Path $backplaneCheckout '.claude-plugin/plugin.json') -Raw | ConvertFrom-Json
+$marketplace = Get-Content -LiteralPath (Join-Path $backplaneCheckout '.claude-plugin/marketplace.json') -Raw | ConvertFrom-Json
+if ($claudeManifest.name -ne 'superpowers-backplane' -or $marketplace.name -ne 'superpowers-backplane' -or
+    $marketplace.plugins.Count -ne 1 -or $marketplace.plugins[0].name -ne 'superpowers-backplane' -or
+    $marketplace.plugins[0].source -ne './' -or $marketplace.plugins[0].version -ne $claudeManifest.version) {
+  throw 'Claude package identity or root source is unexpected'
+}
+foreach ($skill in @('managing-superpowers-backlog', 'managing-superpowers-handoffs')) {
+  if (-not (Test-Path -LiteralPath (Join-Path $backplaneCheckout "skills/$skill/SKILL.md"))) {
+    throw "Canonical skill is missing: $skill"
+  }
+}
+claude plugin validate --strict $backplaneCheckout
+if ($LASTEXITCODE -ne 0) { throw 'Claude package validation failed' }
+
+Write-Output 'END claude-block-01'
+claude plugin marketplace add $backplaneCheckout
+if ($LASTEXITCODE -ne 0) { throw 'Backplane marketplace registration failed' }
+claude plugin install superpowers-backplane@superpowers-backplane --scope user
+if ($LASTEXITCODE -ne 0) { throw 'Backplane plugin installation failed' }
+claude plugin list
+if ($LASTEXITCODE -ne 0) { throw 'Could not inspect installed plugins' }
+
+Write-Output 'END claude-block-02'
+$targetRepo = 'tvproductions/superpowers-backplane'
+$targetIssue = '4'
+gh issue view $targetIssue --repo $targetRepo --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url
+if ($LASTEXITCODE -ne 0) { throw 'Cannot read the target issue with complete native fields' }
+gh issue edit --help
+gh issue close --help
+
+Write-Output 'END claude-block-03'

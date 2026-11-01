@@ -1,0 +1,14 @@
+{
+  "exit": 0,
+  "commands": [],
+  "responses": [
+    "The read attempt was blocked by execution policy before any file contents were returned. All three installed skill loads remain **UNKNOWN**.\n\n| Skill | Advertised exact source path | Advertised package root |\n|---|---|---|\n| using-superpowers | `U:\\repos\\agents\\superpowers-backplane\\.agents\\skills\\superpowers\\using-superpowers\\SKILL.md` | `U:\\repos\\agents\\superpowers-backplane\\.agents\\skills\\superpowers` |\n| managing-superpowers-backlog | `U:\\repos\\agents\\superpowers-backplane\\.agents\\skills\\managing-superpowers-backlog\\SKILL.md` | `U:\\repos\\agents\\superpowers-backplane\\.agents\\skills` |\n| managing-superpowers-handoffs | `U:\\repos\\agents\\superpowers-backplane\\.agents\\skills\\managing-superpowers-handoffs\\SKILL.md` | `U:\\repos\\agents\\superpowers-backplane\\.agents\\skills` |\n\nThese are advertised paths, not verified resolved package locations. No setup, credential/settings inspection, environment enumeration, GitHub queries, modifications, handoff creation, or delegation occurred."
+  ],
+  "event_types": [
+    "thread.started",
+    "turn.started",
+    "item.completed",
+    "turn.completed"
+  ],
+  "scope": "Fresh native installed-skill file discovery only; exact tool loads/path identities require scoring"
+}

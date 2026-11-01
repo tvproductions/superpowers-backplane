@@ -2776,12 +2776,15 @@
     },
     {
       "id": "recommendation-only",
-      "result": "UNKNOWN",
-      "classification": "historical simulation only; no current-applicable native run",
+      "result": "PASS",
+      "classification": "Fresh authenticated native installed-package recommendation-only observation",
       "evidence": [
-        "tests/scenarios/2026-08-16-status-selection-refactor.md"
+        "tests/scenarios/transcripts/2026-11-01-issue-5-native-recommendation.json"
       ],
-      "required_probe": "Authenticated installed-package recommendation-only session with exact native before/after preservation"
+      "limits": [
+        "Native response did not read project instructions; its publication/readiness advice is not accepted",
+        "No new lifecycle transition, fixture issue or product-satisfaction closure"
+      ]
     }
   ],
   "criteria": [
@@ -2817,17 +2820,18 @@
   "overall": "UNKNOWN",
   "canonical_skill_diff_since_accepted_issue11": [],
   "findings": [
-    "Issue #5 pending-design sentence and #4/#5 plan pointers are editorially stale; no body rewrite authorized/executed"
+    "Issue #5 pending-design sentence and #4/#5 plan pointers are editorially stale; no body rewrite authorized/executed",
+    "Fresh native recommendation preserved issue state and refused invented priority, but claimed remote plan publication is required; reject that additional gate under AGENTS.md"
   ],
   "gaps": [
-    "Recommendation-only native zero-mutation seam remains UNKNOWN",
     "Publication and issue-plan binding remain separately unauthorized",
-    "No new issue mutation or authenticated fresh-host acceptance claimed"
+    "Native recommendation response adds an unaccepted publication prerequisite; readiness advice is not project authority"
   ],
   "validator": {
     "negative_control": "13 assertion-level failures before implementation",
-    "green": "13 tests passed after implementation",
+    "green": "19/19 PASS after two Important review fixes; initial review RED reproduced 5 missing-evidence failures",
     "source": "tests/scenarios/transcripts/2026-11-01-issue-5-verify_self_hosting.py.txt",
-    "tests": "tests/scenarios/transcripts/2026-11-01-issue-5-test_verify_self_hosting.py.txt"
+    "tests": "tests/scenarios/transcripts/2026-11-01-issue-5-test_verify_self_hosting.py.txt",
+    "inventory_tests": "Separate issue4 inventory 4/4 PASS after4 intended RED failures"
   }
 }

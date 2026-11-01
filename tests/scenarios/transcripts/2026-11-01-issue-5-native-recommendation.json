@@ -1,0 +1,92 @@
+{
+  "exit": 0,
+  "subtype": "success",
+  "is_error": false,
+  "response": "**No issue is eligible today, so I can't recommend one, and with no project priority policy I'm not ranking any.** All 12 open issues carry `backplane:backlog`, none has `backplane:ready`, and none has a remotely published plan. Nothing was selected or mutated.\n\n## Eligible\nNone. `backplane:ready` is required, and that gate alone fails for all 12.\n\n## Pending: closest to eligible\nThese are open leaves with no open native blockers. They are in issue-number order, which is not a ranking.\n\n| Issue | Blockers | Design authority in body | Plan in body | Still missing |\n|---|---|---|---|---|\n| #4 Licensing and operations | None | Human license selection plus the v0.1 contract; no license is named | \"Not yet created\" | Publish the plan, update the body pointer, move to ready |\n| #5 Self-hosting validation | #2 and #10, both closed completed | Stale: still says \"pending\", though #2 records the contract as approved 2026-09-19 | \"Not yet created\" | Same as #4, plus correct the design pointer |\n| #21 OpenCode V1 setup | #20, closed completed | Approved specs linked | \"Not yet created\" | Create a plan, then move to ready |\n| #23 OpenCode V2 setup | #20, closed completed | Approved specs linked | \"Not yet created\" | Create a plan, then move to ready |\n\n#4 and #5 are one step ahead of #21 and #23 only because you report local plan approval. Remotely, all four show no plan. Neither #4 nor #5 has a native edge ordering it against the other, and both block #6.\n\n## Pending: blocked by open issues\n\n| Issue | Open blockers | Also missing |\n|---|---|---|\n| #22 OpenCode V1 lifecycle | #21 | Plan |\n| #24 OpenCode V2 lifecycle | #23 | Plan |\n| #12 OpenCode acceptance | #22, #24 | Plan |\n| #6 External pilot | #4, #5, #12 | Plan |\n| #7 Release | #6 | Plan |\n| #8 Additional harness | #6 | Design authority and plan |\n| #9 Helper evaluation | #6 | Design authority and plan |\n\n#1 is a parent continuity node, not an executable leaf. It shows 8 of 17 sub-issues complete, which matches its listed children. #8 and #9 have no parent, so they sit outside the release arc.\n\n## Decisions before anything becomes eligible\n1. Publish the #4 and #5 plans remotely, then update the issue pointers. Each plan must consume its issue's current revision:\n   - #4: `2026-08-23T13:55:22Z`\n   - #5: `2026-09-19T14:16:55Z`\n2. Choose among the issues once at least one reaches `backplane:ready`. The contract leaves that choice to you when no priority policy exists.\n\n## Evidence limits\n- **Local plans:** I did not read the #4 or #5 plans, so their approval rests on your statement and whether they bind those revisions is unverified. The session-start Git status also showed both plan files with uncommitted modifications, so check that the approved bytes are the ones you publish.\n- **Closed blockers:** I confirmed `stateReason: COMPLETED` for #2, #10 and #20 but did not re-evaluate their closure evidence. #2 and #10 list no closing pull requests. #20's body cites direct integration and a satisfied evaluation, which I did not open.\n- **Closed issues not viewed:** #3 and #11 appear closed only through the edge data in #6, so I did not check their close reasons. This doesn't change the result, since #6 stays blocked regardless.\n- **Comments:** I did not read issue comments because the requested intake fields exclude them. Any approval, license selection or blocker recorded only there is not reflected here.\n- **Repository records:** I did not read `HANDOFF.md`, the design or the plan, because this task was limited to the skills' references and `gh`.\n- **Native fields:** `issueType` is null on the three issues viewed individually, #2, #5, #10 and #20 aside from the list results where all 12 open issues also show null. Relationship node counts matched `totalCount` on every returned issue, and the list returned all 12 open issues under its limit of 200.",
+  "tool_calls": [
+    {
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers-backplane:managing-superpowers-backlog",
+        "args": "Recommendation-only, read-only next-work assessment of tvproductions/superpowers-backplane. No selection, no mutation."
+      }
+    },
+    {
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\github-issue-contract.md"
+      }
+    },
+    {
+      "name": "Bash",
+      "input": {
+        "command": "gh issue view 5 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url",
+        "description": "View native issue 5 intake fields"
+      }
+    },
+    {
+      "name": "Bash",
+      "input": {
+        "command": "gh issue list --repo tvproductions/superpowers-backplane --state open --limit 200 --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url",
+        "description": "List open issues with native intake fields"
+      }
+    },
+    {
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile\\projects\\U--repos-agents-superpowers-backplane--sp-bp-work-issue-4-native-neutral\\b3928bfa-56fa-4baf-af92-98a0f8f5468f\\tool-results\\blgfxcxse.txt",
+        "allow_large": true
+      }
+    },
+    {
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\references\\superpowers-binding.md"
+      }
+    },
+    {
+      "name": "Skill",
+      "input": {
+        "skill": "superpowers:using-superpowers"
+      }
+    },
+    {
+      "name": "Read",
+      "input": {
+        "file_path": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers\\references\\claude-code-tools.md"
+      }
+    },
+    {
+      "name": "Bash",
+      "input": {
+        "command": "gh issue view 2 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url",
+        "description": "View closed blocker issue 2 intake"
+      }
+    },
+    {
+      "name": "Bash",
+      "input": {
+        "command": "gh issue view 10 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url",
+        "description": "View closed blocker issue 10 intake"
+      }
+    },
+    {
+      "name": "Bash",
+      "input": {
+        "command": "gh issue view 20 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url",
+        "description": "View closed blocker issue 20 intake"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "scope": "Authenticated installed-package native recommendation-only probe; before/after state comparison and manual response scoring required",
+  "zero_issue_mutation": true,
+  "all_rest_issue_snapshots_equal": true,
+  "full_issue5_snapshots_equal": true,
+  "scored_result": "PASS for recommendation-only no-ranking/no-selection/zero-mutation behavior",
+  "readiness_advice": "UNACCEPTED: response adds a remote-publication prerequisite not required for approved local execution; this is not authority to alter project policy",
+  "limits": [
+    "Native response did not read project instructions; its publication/readiness advice is not accepted",
+    "No new lifecycle transition, fixture issue or product-satisfaction closure"
+  ]
+}

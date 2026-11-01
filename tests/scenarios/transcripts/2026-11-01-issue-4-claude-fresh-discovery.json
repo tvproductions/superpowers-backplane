@@ -1,0 +1,15 @@
+{
+  "exit": 0,
+  "result_subtype": "success",
+  "is_error": false,
+  "skill_calls": [
+    "superpowers:using-superpowers",
+    "superpowers-backplane:managing-superpowers-backlog",
+    "superpowers-backplane:managing-superpowers-handoffs"
+  ],
+  "tool_errors": [],
+  "response": "All three skills loaded through Skill, in the requested order, and none were missing. The two Backplane skills share a plugin root, while Superpowers comes from a separate one.\n\n| # | Skill | Source root (base directory reported by the harness) |\n|---|---|---|\n| 1 | `superpowers:using-superpowers` | `U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers\\skills\\using-superpowers` |\n| 2 | `superpowers-backplane:managing-superpowers-backlog` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog` |\n| 3 | `superpowers-backplane:managing-superpowers-handoffs` | `U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-4\\claude-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-handoffs` |\n\n- **Superpowers source:** it resolved to the repository's `.agents\\superpowers` checkout, not to a plugin cache inside the isolated `claude-profile`. If this probe was meant to show Superpowers installed in that profile, this result doesn't show that.\n- **Evidence limit:** these paths are only what the harness reported. I didn't check the files on disk, so I can't confirm revisions, digests or how those paths resolve.\n- **Not run:** I didn't read either skill's reference files, so neither skill's prerequisite validation ran. That leaves the Superpowers prerequisite unconfirmed for those skills and compatibility unassessed.\n- **Probe limits:** I ran no setup or GitHub queries, created no handoff and changed no files. I also didn't enumerate the environment, inspect credentials or delegate anything.",
+  "upstream": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+  "backplane_source": "ab061f1dbf3f7afda082a25b51665e02ea46d694",
+  "scope": "Fresh native skill loading only; no complete lifecycle/package preservation claim"
+}

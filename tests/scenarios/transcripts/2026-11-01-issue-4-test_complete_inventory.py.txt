@@ -1,0 +1,60 @@
+"""Catch silently omitted prose setup/discovery and recovery instructions."""
+
+import importlib.util
+import unittest
+from pathlib import Path
+
+SOURCE = Path(__file__).with_name("complete_inventory.py")
+MODULE = None
+if SOURCE.exists():
+    SPEC = importlib.util.spec_from_file_location("inventory", SOURCE)
+    assert SPEC and SPEC.loader
+    MODULE = importlib.util.module_from_spec(SPEC)
+    SPEC.loader.exec_module(MODULE)
+
+
+class InventoryTests(unittest.TestCase):
+    def collect(self, source):
+        self.assertIsNotNone(MODULE, "Prose inventory has not been implemented")
+        assert MODULE is not None
+        return MODULE.inventory_prose("claude", "docs/guide.md", source)
+
+    def test_each_upstream_setup_branch_is_preserved(self):
+        source = "## Setup\n\n**Native.** Adopt in place.\n\n**Sibling.** Use --plugin-dir.\n\n**Absent.** Install independent upstream.\n"
+        rows = self.collect(source)
+        self.assertEqual(len(rows), 3)
+        self.assertEqual([r["line"] for r in rows], [3, 5, 7])
+        self.assertIn("--plugin-dir", rows[1]["expected"])
+
+    def test_fenced_commands_are_not_duplicated_as_prose(self):
+        rows = self.collect(
+            "## Update\n\n```text\ninstall command\n```\n\nRestart and verify three skills.\n"
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["line"], 7)
+        self.assertIn("three skills", rows[0]["expected"])
+
+    def test_each_recovery_row_keeps_failed_check_and_repair(self):
+        rows = self.collect(
+            "## Recovery\n\n| Check that failed | Result and recovery |\n|---|---|\n| Unknown source | Stop; verify provenance. |\n| Signed out | Authenticate once; retry discovery. |\n"
+        )
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["prerequisites"], "Unknown source")
+        self.assertEqual(
+            rows[1]["recovery_condition"], "Authenticate once; retry discovery."
+        )
+        self.assertTrue(all(r["result"] == "UNKNOWN" for r in rows))
+
+    def test_operation_specific_paragraphs_keep_separate_resume_targets(self):
+        rows = self.collect(
+            "## Update\n\nRestart and prove candidate hashes.\n\n## Rollback\n\nRestart and prove prior hashes.\n\n## Uninstall\n\nRequire Backplane absent and upstream loadable.\n"
+        )
+        self.assertEqual(
+            [r["heading"] for r in rows], ["Update", "Rollback", "Uninstall"]
+        )
+        self.assertEqual(len({r["id"] for r in rows}), 3)
+        self.assertIn("prior hashes", rows[1]["expected"])
+
+
+if __name__ == "__main__":
+    unittest.main()

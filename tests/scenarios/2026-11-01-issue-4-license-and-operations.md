@@ -24,8 +24,8 @@ The nine adapter baseline tests passed. Neither plan's approved bytes changed.
   Projects and IssueOps are not required and no consumer runtime is imposed.
 - The operations guide retains host-owned command recipes, immutable source
   selection, independent upstream ownership, recovery and authorization rules.
-- The structured receipt inventories 25 fenced blocks/session requests from all
-  three guides. Code syntax and invocation results are distinguished from full
+- The corrected structured receipt inventories 25 fenced block/session representations
+  plus 74 prose instructions and recovery branches from all three guides. Code syntax and invocation results are distinguished from full
   host acceptance. Historical host records retain their original revisions.
 
 ## Native command replay
@@ -48,10 +48,14 @@ results; they do not prove fresh skill discovery or exact installed-payload
 acceptance at every intermediate step. The raw native inventories are retained
 as supporting local captures and screened derived receipts are stored here.
 
-Both newly owned profiles report signed-out state through native auth-status
-commands. No login was attempted, credential copied, normal-profile fallback
-used or desktop/browser controlled. Fresh model-session setup and three-skill
-discovery remain UNKNOWN. OpenCode's previously accepted initial smoke is not a
+Both profiles initially reported signed-out state. The operator subsequently
+completed native sign-in in those exact profiles; native status now confirms
+authentication. No credential was copied, no normal-profile fallback used and no
+agent browser/desktop control performed. A fresh Claude session successfully
+loaded all three skills through actual Skill calls, using installed Backplane and
+the independent upstream sibling checkout. A fresh Codex session reported an
+execution-policy block on the public skill read; its discovery remains UNKNOWN.
+Full setup and per-operation payload/preservation checks remain incomplete. OpenCode's previously accepted initial smoke is not a
 new #4 run and supplies no pending setup/update/rollback/removal acceptance.
 
 ## Criterion disposition
@@ -80,7 +84,7 @@ recognition was null before publication, not a failed local MIT comparison.
 
 ## Remaining work
 
-Complete authenticated fresh-session checks in the exact owned profiles; retain
+Resolve Codex execution-policy and remaining operation-specific checks; retain
 all missing operation rows UNKNOWN until verified. Resolve OpenCode operation
 coverage through its owning issues. Obtain separate authorization for plan/source
 publication and issue binding, then integrate, reverify and observe hosted MIT

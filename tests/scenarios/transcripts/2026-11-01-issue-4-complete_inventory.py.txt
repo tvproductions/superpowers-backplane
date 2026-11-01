@@ -1,0 +1,75 @@
+"""Preserve prose-defined guide requests and recovery targets beside code blocks."""
+
+
+def inventory_prose(host: str, guide: str, source: str) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    heading = ""
+    fenced = False
+    pending: list[str] = []
+    start = 0
+
+    def flush() -> None:
+        if not pending:
+            return
+        text = "\n".join(pending)
+        rows.append(
+            {
+                "id": f"{host}-prose-{start:03}",
+                "host": host,
+                "guide": guide,
+                "line": start,
+                "heading": heading,
+                "source": text,
+                "kind": "prose-requirement",
+                "prerequisites": heading,
+                "expected": text,
+                "recovery_condition": text,
+                "result": "UNKNOWN",
+                "evidence": [],
+            }
+        )
+        pending.clear()
+
+    for number, line in enumerate(source.splitlines(), 1):
+        if line.startswith("```"):
+            flush()
+            fenced = not fenced
+            continue
+        if fenced:
+            continue
+        if line.startswith("#"):
+            flush()
+            heading = line.lstrip("# ")
+            continue
+        if not line.strip():
+            flush()
+            continue
+        if line.startswith("|"):
+            flush()
+            cells = [cell.strip() for cell in line.strip("| ").split("|")]
+            if not cells or all(set(cell) <= set("-: ") for cell in cells):
+                continue
+            if cells[0] == "Check that failed":
+                continue
+            rows.append(
+                {
+                    "id": f"{host}-recovery-{number:03}",
+                    "host": host,
+                    "guide": guide,
+                    "line": number,
+                    "heading": heading,
+                    "source": line,
+                    "kind": "recovery-branch",
+                    "prerequisites": cells[0],
+                    "expected": " | ".join(cells[1:]),
+                    "recovery_condition": " | ".join(cells[1:]),
+                    "result": "UNKNOWN",
+                    "evidence": [],
+                }
+            )
+            continue
+        if not pending:
+            start = number
+        pending.append(line)
+    flush()
+    return rows

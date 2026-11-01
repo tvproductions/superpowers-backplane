@@ -1,0 +1,69 @@
+test_claimed_native_lifecycle_requires_trace (test_verify_self_hosting.EvidenceTests.test_claimed_native_lifecycle_requires_trace) ... FAIL
+test_empty_enumeration_only_report_rejected (test_verify_self_hosting.EvidenceTests.test_empty_enumeration_only_report_rejected) ... FAIL
+test_evidenced_unsatisfied_is_valid_report (test_verify_self_hosting.EvidenceTests.test_evidenced_unsatisfied_is_valid_report) ... ok
+test_incomplete_enumeration_rejected (test_verify_self_hosting.EvidenceTests.test_incomplete_enumeration_rejected) ... ok
+test_invalid_criterion_vocabulary_rejected (test_verify_self_hosting.EvidenceTests.test_invalid_criterion_vocabulary_rejected) ... FAIL
+test_missing_authorization_cannot_support_pass (test_verify_self_hosting.EvidenceTests.test_missing_authorization_cannot_support_pass) ... ok
+test_missing_issue_rejected (test_verify_self_hosting.EvidenceTests.test_missing_issue_rejected) ... ok
+test_missing_schema_rejected (test_verify_self_hosting.EvidenceTests.test_missing_schema_rejected) ... FAIL
+test_satisfied_cannot_hide_unknown_seam (test_verify_self_hosting.EvidenceTests.test_satisfied_cannot_hide_unknown_seam) ... ok
+test_truncated_relationship_rejects_acceptance (test_verify_self_hosting.EvidenceTests.test_truncated_relationship_rejects_acceptance) ... ok
+test_two_valid_labels_rejected (test_verify_self_hosting.EvidenceTests.test_two_valid_labels_rejected) ... ok
+test_unknown_label_alone_rejected (test_verify_self_hosting.EvidenceTests.test_unknown_label_alone_rejected) ... ok
+test_unknown_lifecycle_allows_missing_trace (test_verify_self_hosting.EvidenceTests.test_unknown_lifecycle_allows_missing_trace) ... ok
+test_unscored_actual_shape_transition_requires_authority (test_verify_self_hosting.EvidenceTests.test_unscored_actual_shape_transition_requires_authority) ... FAIL
+test_unsupported_pass_rejected (test_verify_self_hosting.EvidenceTests.test_unsupported_pass_rejected) ... ok
+test_valid_plus_invalid_label_rejected (test_verify_self_hosting.EvidenceTests.test_valid_plus_invalid_label_rejected) ... ok
+test_valid_unknown_with_unrelated_label (test_verify_self_hosting.EvidenceTests.test_valid_unknown_with_unrelated_label) ... ok
+test_verification_after_closure_rejected (test_verify_self_hosting.EvidenceTests.test_verification_after_closure_rejected) ... ok
+test_zero_lifecycle_labels_rejected (test_verify_self_hosting.EvidenceTests.test_zero_lifecycle_labels_rejected) ... ok
+
+======================================================================
+FAIL: test_claimed_native_lifecycle_requires_trace (test_verify_self_hosting.EvidenceTests.test_claimed_native_lifecycle_requires_trace)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 143, in test_claimed_native_lifecycle_requires_trace
+    self.assertTrue(self.validate(value))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_empty_enumeration_only_report_rejected (test_verify_self_hosting.EvidenceTests.test_empty_enumeration_only_report_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 132, in test_empty_enumeration_only_report_rejected
+    self.assertTrue(self.validate({"enumeration": {"complete": True}}))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_invalid_criterion_vocabulary_rejected (test_verify_self_hosting.EvidenceTests.test_invalid_criterion_vocabulary_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 137, in test_invalid_criterion_vocabulary_rejected
+    self.assertTrue(self.validate(value))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_schema_rejected (test_verify_self_hosting.EvidenceTests.test_missing_schema_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 129, in test_missing_schema_rejected
+    self.assertTrue(self.validate(value))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_unscored_actual_shape_transition_requires_authority (test_verify_self_hosting.EvidenceTests.test_unscored_actual_shape_transition_requires_authority)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-5\test_verify_self_hosting.py", line 150, in test_unscored_actual_shape_transition_requires_authority
+    self.assertTrue(self.validate(value))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.001s
+
+FAILED (failures=5)

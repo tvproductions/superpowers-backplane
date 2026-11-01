@@ -1,0 +1,9 @@
+test_each_recovery_row_keeps_failed_check_and_repair (test_complete_inventory.InventoryTests.test_each_recovery_row_keeps_failed_check_and_repair) ... ok
+test_each_upstream_setup_branch_is_preserved (test_complete_inventory.InventoryTests.test_each_upstream_setup_branch_is_preserved) ... ok
+test_fenced_commands_are_not_duplicated_as_prose (test_complete_inventory.InventoryTests.test_fenced_commands_are_not_duplicated_as_prose) ... ok
+test_operation_specific_paragraphs_keep_separate_resume_targets (test_complete_inventory.InventoryTests.test_operation_specific_paragraphs_keep_separate_resume_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

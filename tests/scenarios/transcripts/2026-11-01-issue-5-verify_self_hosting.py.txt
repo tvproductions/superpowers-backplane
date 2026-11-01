@@ -15,8 +15,33 @@ LABELS = {
 def validate(receipt: dict[str, object]) -> list[str]:
     data = cast(dict[str, Any], receipt)
     errors: list[str] = []
+    required = {
+        "schema",
+        "observed_at",
+        "overall",
+        "enumeration",
+        "issues",
+        "seams",
+        "criteria",
+        "lifecycle_trace",
+    }
+    if required - data.keys():
+        return [
+            "Missing required report fields: "
+            + ", ".join(sorted(required - data.keys()))
+        ]
+    if data["schema"] != "superpowers-backplane-issue-5-self-hosting/v1":
+        errors.append("Invalid report schema")
+    if data["overall"] not in {"SATISFIED", "UNSATISFIED", "UNKNOWN"}:
+        errors.append("Invalid overall result")
+    try:
+        datetime.fromisoformat(data["observed_at"])
+    except (ValueError, TypeError):
+        errors.append("Invalid observation time")
     enumeration = data.get("enumeration", {})
     issues = data.get("issues", [])
+    if not issues or not data["seams"] or not data["criteria"]:
+        errors.append("Required evidence collections are empty")
     numbers = [issue["number"] for issue in issues]
     if enumeration.get("complete") is not True:
         errors.append("Incomplete issue enumeration")
@@ -45,17 +70,35 @@ def validate(receipt: dict[str, object]) -> list[str]:
         if row["result"] in {"PASS", "FAIL"} and not row.get("evidence"):
             errors.append(f"Unsupported {row['result']}: {row['id']}")
     for criterion in data.get("criteria", []):
+        if criterion["result"] not in {"SATISFIED", "UNSATISFIED", "UNKNOWN"}:
+            errors.append(f"Invalid criterion result: {criterion['id']}")
         references = criterion.get("seams", [])
         if criterion["result"] == "SATISFIED" and (
             not references
             or any(seams.get(ref, {}).get("result") != "PASS" for ref in references)
         ):
             errors.append(f"Unsupported satisfaction: {criterion['id']}")
-    for event in data.get("lifecycle_trace", []):
-        if event.get("result") != "PASS":
-            continue
+    trace = data["lifecycle_trace"]
+    if seams.get("lifecycle-blocked-rework", {}).get("result") == "PASS":
+        stages = {event.get("stage") for event in trace}
+        needed = {
+            "designing",
+            "ready",
+            "active",
+            "review",
+            "rework",
+            "blocked",
+            "resume",
+            "submission",
+            "completion",
+        }
+        if needed - stages:
+            errors.append("Claimed lifecycle PASS lacks required native trace stages")
+    for event in trace:
         if not event.get("authorization"):
             errors.append("Missing historical authorization")
+        if event.get("stage") != "completion" and event.get("result") != "PASS":
+            continue
         try:
             verified = datetime.fromisoformat(event["verified_at"])
             closed = datetime.fromisoformat(event["closed_at"])
@@ -63,6 +106,11 @@ def validate(receipt: dict[str, object]) -> list[str]:
                 errors.append("Verification follows closure")
         except (KeyError, ValueError, TypeError):
             errors.append("Unavailable verification/closure ordering")
+    if data["overall"] == "SATISFIED" and (
+        any(row["result"] != "SATISFIED" for row in data["criteria"])
+        or any(row["result"] != "PASS" for row in seams.values())
+    ):
+        errors.append("Overall satisfaction hides an unresolved criterion or seam")
     return errors
 
 

@@ -1,0 +1,53 @@
+test_each_recovery_row_keeps_failed_check_and_repair (test_complete_inventory.InventoryTests.test_each_recovery_row_keeps_failed_check_and_repair) ... FAIL
+test_each_upstream_setup_branch_is_preserved (test_complete_inventory.InventoryTests.test_each_upstream_setup_branch_is_preserved) ... FAIL
+test_fenced_commands_are_not_duplicated_as_prose (test_complete_inventory.InventoryTests.test_fenced_commands_are_not_duplicated_as_prose) ... FAIL
+test_operation_specific_paragraphs_keep_separate_resume_targets (test_complete_inventory.InventoryTests.test_operation_specific_paragraphs_keep_separate_resume_targets) ... FAIL
+
+======================================================================
+FAIL: test_each_recovery_row_keeps_failed_check_and_repair (test_complete_inventory.InventoryTests.test_each_recovery_row_keeps_failed_check_and_repair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 36, in test_each_recovery_row_keeps_failed_check_and_repair
+    rows = self.collect("## Recovery\n\n| Check that failed | Result and recovery |\n|---|---|\n| Unknown source | Stop; verify provenance. |\n| Signed out | Authenticate once; retry discovery. |\n")
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 18, in collect
+    self.assertIsNotNone(MODULE, "Prose inventory has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Prose inventory has not been implemented
+
+======================================================================
+FAIL: test_each_upstream_setup_branch_is_preserved (test_complete_inventory.InventoryTests.test_each_upstream_setup_branch_is_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 24, in test_each_upstream_setup_branch_is_preserved
+    rows = self.collect(source)
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 18, in collect
+    self.assertIsNotNone(MODULE, "Prose inventory has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Prose inventory has not been implemented
+
+======================================================================
+FAIL: test_fenced_commands_are_not_duplicated_as_prose (test_complete_inventory.InventoryTests.test_fenced_commands_are_not_duplicated_as_prose)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 30, in test_fenced_commands_are_not_duplicated_as_prose
+    rows = self.collect("## Update\n\n```text\ninstall command\n```\n\nRestart and verify three skills.\n")
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 18, in collect
+    self.assertIsNotNone(MODULE, "Prose inventory has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Prose inventory has not been implemented
+
+======================================================================
+FAIL: test_operation_specific_paragraphs_keep_separate_resume_targets (test_complete_inventory.InventoryTests.test_operation_specific_paragraphs_keep_separate_resume_targets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 43, in test_operation_specific_paragraphs_keep_separate_resume_targets
+    rows = self.collect("## Update\n\nRestart and prove candidate hashes.\n\n## Rollback\n\nRestart and prove prior hashes.\n\n## Uninstall\n\nRequire Backplane absent and upstream loadable.\n")
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-4\test_complete_inventory.py", line 18, in collect
+    self.assertIsNotNone(MODULE, "Prose inventory has not been implemented")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Prose inventory has not been implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

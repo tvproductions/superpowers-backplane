@@ -1,0 +1,37 @@
+[
+  {
+    "case": "missing-schema",
+    "result": "PASS: invalid support rejected",
+    "errors": [
+      "Missing required report fields: schema"
+    ]
+  },
+  {
+    "case": "missing-trace",
+    "result": "PASS: invalid support rejected",
+    "errors": [
+      "Claimed lifecycle PASS lacks required native trace stages"
+    ]
+  },
+  {
+    "case": "missing-active-authority",
+    "result": "PASS: invalid support rejected",
+    "errors": [
+      "Missing historical authorization"
+    ]
+  },
+  {
+    "case": "invalid-criterion",
+    "result": "PASS: invalid support rejected",
+    "errors": [
+      "Invalid criterion result: AC1"
+    ]
+  },
+  {
+    "case": "enumeration-only",
+    "result": "PASS: invalid support rejected",
+    "errors": [
+      "Missing required report fields: criteria, issues, lifecycle_trace, observed_at, overall, schema, seams"
+    ]
+  }
+]

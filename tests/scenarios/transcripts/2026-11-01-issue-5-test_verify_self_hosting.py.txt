@@ -16,6 +16,9 @@ if SOURCE.exists():
 
 def fixture():
     return {
+        "schema": "superpowers-backplane-issue-5-self-hosting/v1",
+        "observed_at": "2026-11-01T18:00:00+00:00",
+        "overall": "UNKNOWN",
         "enumeration": {"numbers": [4], "complete": True},
         "issues": [
             {
@@ -118,6 +121,51 @@ class EvidenceTests(unittest.TestCase):
         value = fixture()
         value["seams"][0].update(result="FAIL", evidence=["observed failure receipt"])
         value["criteria"][0]["result"] = "UNSATISFIED"
+        self.assertEqual(self.validate(value), [])
+
+    def test_missing_schema_rejected(self):
+        value = fixture()
+        del value["schema"]
+        self.assertTrue(self.validate(value))
+
+    def test_empty_enumeration_only_report_rejected(self):
+        self.assertTrue(self.validate({"enumeration": {"complete": True}}))
+
+    def test_invalid_criterion_vocabulary_rejected(self):
+        value = fixture()
+        value["criteria"][0]["result"] = "BANANA"
+        self.assertTrue(self.validate(value))
+
+    def test_claimed_native_lifecycle_requires_trace(self):
+        value = fixture()
+        value["seams"].append(
+            {
+                "id": "lifecycle-blocked-rework",
+                "result": "PASS",
+                "evidence": ["native receipt"],
+            }
+        )
+        self.assertTrue(self.validate(value))
+
+    def test_unscored_actual_shape_transition_requires_authority(self):
+        value = fixture()
+        value["lifecycle_trace"] = [
+            {
+                "stage": "active",
+                "before": {},
+                "after": {},
+                "classification": "applicable historical native observation",
+                "authorization": "",
+                "source": "native receipt",
+            }
+        ]
+        self.assertTrue(self.validate(value))
+
+    def test_unknown_lifecycle_allows_missing_trace(self):
+        value = fixture()
+        value["seams"].append(
+            {"id": "lifecycle-blocked-rework", "result": "UNKNOWN", "evidence": []}
+        )
         self.assertEqual(self.validate(value), [])
 
 

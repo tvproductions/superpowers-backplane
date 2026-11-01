@@ -1,10 +1,10 @@
 # Issue #5 self-hosting assessment
 
 **Overall: UNKNOWN for full issue acceptance.** The current native graph and
-historical completed-leaf trace pass their observed checks. A current-applicable
-native recommendation-only zero-mutation observation remains unverified; the
-August micro-test is retained as historical simulation, not promoted to a
-current installed-package run. This is a local assessment, not issue closure.
+historical completed-leaf trace pass their observed checks. The initial recommendation gap was followed by a fresh authenticated native
+probe: it refused invented priority and made zero issue mutations. Its additional
+remote-publication prerequisite is unaccepted readiness advice under project
+policy. The August micro-test remains historical simulation, not a fresh run. This is a local assessment, not issue closure.
 
 ## Current authority and capture
 
@@ -70,11 +70,18 @@ approved plan bindings are in the structured assessment.
 | One leaf progresses through verified completion | SATISFIED historically | #11 accepted delivery/closeout plus current native event confirmation; #34 supplements blocked/rework paths |
 | Authority layers remain distinct | SATISFIED for reviewed mapping | Exact issue/spec/plan/delivery/evaluation/closure identities remain separate |
 
-Mandatory recommendation-only native zero-mutation coverage remains UNKNOWN.
-The [August status/selection micro-test](2026-08-16-status-selection-refactor.md)
-is explicitly hypothetical, made no GitHub calls and predates later skill
-changes. It is not evidence that today's installed package made a native
-recommendation without mutation. Do not close #5 while this seam is unresolved.
+A fresh authenticated Claude recommendation-only probe now supplies actual
+installed Skill loads, public-reference reads and complete native gh intake.
+All REST issue snapshots and full #5 intake are equal immediately before/after;
+all executed shell calls are gh issue view/list reads. It refused invented
+priority, selected nothing and performed zero issue mutations. This narrowly
+satisfies the recommendation-only zero-mutation seam. Its response also says
+remote publication is required before local execution; that extra gate is not
+accepted under AGENTS.md. The probe did not load current project instructions,
+so its broader readiness advice is not used as authority. See the
+[native probe receipt](transcripts/2026-11-01-issue-5-native-recommendation.json).
+The older [August micro-test](2026-08-16-status-selection-refactor.md) retains
+its original hypothetical, network-free scope. No native mutation was repeated.
 Current #4/#5 approved plan links remain local and their issue bodies still say
 the plan is not yet created; #5's pending-design sentence is stale relative to
 the approved contract and completed #2. Those editorial links need separately
@@ -83,7 +90,9 @@ authorized publication/binding, not an acceptance or graph rewrite.
 ## Verification and negative controls
 
 The owned evidence validator was developed RED then GREEN: all 13 initial tests
-failed with the intended missing-validator assertion; all 13 then passed. They
+failed with the intended missing-validator assertion; all 13 then passed. Fresh review then found required-structure/authority validation
+gaps; five new controls failed against the original implementation. The corrected
+validator now passes all 19 controls, including legitimate UNKNOWN reports. They
 cover incomplete enumeration/connections, missing issues, zero/two/unknown
 lifecycle labels, valid-plus-invalid labels, unrelated-label preservation,
 missing historical authorization, verification after closure, unsupported PASS,

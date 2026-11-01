@@ -1,0 +1,80 @@
+{
+  "schema": "superpowers-backplane-handoff-sync/v1",
+  "observed_at": "2026-11-01T15:57:34.123222+00:00",
+  "request": "create handoff and git sync",
+  "repository": "https://github.com/tvproductions/superpowers-backplane.git",
+  "remote_visibility": "PUBLIC",
+  "viewer_permission": "ADMIN",
+  "fetch_reconciliation": "Initial main/origin/main both337aa19; no incoming commits. Both delivered refs freshly fetched and observed via ls-remote.",
+  "source": {
+    "branch": "handoff/issue-20-opencode-auth",
+    "commit": "84f0fd384e71bec1579df54971a926a916136f36",
+    "tree": "b18be041032da1589c2d36500fb91771938f7fc9",
+    "native_workspace": "C:/Users/Jeff/.codex/worktrees/fc58/superpowers-backplane",
+    "merge_to_main": "not performed",
+    "tested_package_candidate": "bc6d30e54621c8a1747a0f2baa0551f25080b06a",
+    "package_input_changes_since_tested_candidate": []
+  },
+  "main_delivery": {
+    "commit": "b67dc82dbc3b53faa9a47f7488820bbc8b2029dd",
+    "tree": "5bc8d5cd63b46c38916559f5135abd60f8033a15",
+    "plan_save_commit": "4c4e523231ef0b0d594385a813a5529c407c15c2",
+    "handoff": "docs/superpowers-backplane/handoffs/20261101T155220Z-issue-20-terminal-auth-and-git-sync.md",
+    "scope": "Approved #20 plan, unapproved #4/#5 drafts, append-only handoff and root continuity only"
+  },
+  "remote_artifact_blob_comparisons": {
+    "source": {
+      "HANDOFF.md": "86be4345b685adae727d0338812caaa78bc618a2",
+      "README.md": "b7248b4fe412117428ef3aeb17edf845bdd50d56",
+      "docs/installing-opencode.md": "8dee01426faf0e8d780cce540155435d2969b0da",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-20-opencode-adapter.md": "e8b35178b048c618801513d57bb14d51164672c8",
+      "index.js": "c96a668ce427f1f8017894f58e291882c82e171a",
+      "package.json": "d1652036b9f758c4ec20888a551872c35b0f54b0",
+      "tests/opencode-adapter.test.mjs": "1ee86be0af537b1624723e218ba688f9e980aaa7",
+      "tests/scenarios/2026-11-01-issue-20-execution-checkpoint.md": "a54fd233bdbcca0cc20cd4a117b40d8e690edb88",
+      "tests/scenarios/2026-11-01-issue-20-lifecycle.json": "db988e0c4b71a6f45195160d87156d676a15d632",
+      "tests/scenarios/2026-11-01-issue-20-opencode-adapter.json": "5a5b56e1f2234f6195a94ff7ccc14c3aa2eef2bc",
+      "tests/scenarios/2026-11-01-issue-20-opencode-adapter.md": "6f6adaca7509cc78c46f957d9bd1d67ae5fc2d08",
+      "tests/scenarios/2026-11-01-issue-20-review.md": "1e32d69378da9fa63cca5dee0adbd8523df574f5",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-diagnose-v2.py.txt": "cb67317c3c29fc37b1a7a5fcadf683c2a45f2e56",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-host-smoke.py.txt": "c909b8431d3c23cb01a6df8535a370fd2d8cc29a",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-install-fixture.py.txt": "4f5b7a2caaf42699da8b9775fe8143e1affba6e7",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-login.py.txt": "f599c1dfe49300c3d1d2e679a5e795174b4f7ba7",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-test_issue20_login.py.txt": "b1906da581c908eb2b0d7cef27e809c87b94ff0c",
+      "tests/scenarios/transcripts/2026-11-01-issue-20-test_issue20_receipt.py.txt": "b405a86e42d9b265b9f9ee89358e521de383b934"
+    },
+    "main": {
+      "HANDOFF.md": "214fc4e27318e5565c48d799eb71def7adc4be98",
+      "docs/superpowers-backplane/handoffs/20261101T155220Z-issue-20-terminal-auth-and-git-sync.md": "ccc2d78d8b430f47db3e6e19b7878ac4a7d13015",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-20-opencode-adapter.md": "e8b35178b048c618801513d57bb14d51164672c8",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-4-license-and-operations.md": "7ef09263693b9ae5160ea4eaaaec983d8a520a08",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md": "0abedf42a9c5e9d1cdb5b6b1f0cebc6053fc73b4"
+    }
+  },
+  "verification": {
+    "source_blobs_matching": 18,
+    "main_blobs_matching": 5,
+    "source_node_tests": "9/9 PASS in current handoff",
+    "fixture_tests": "13/13 PASS in current handoff",
+    "ruff": "PASS, six helpers",
+    "ruff_format": "PASS, six helpers",
+    "ty": "PASS, six helpers"
+  },
+  "approval_review": {
+    "initial_batch": "Rejected before execution for branch-publication authority and remote trust/privacy concerns",
+    "checks_before_retry": "Verified expected existing PUBLIC repository/ADMIN access, scoped and screened exact source, excluded ignored raw logs, prepared concrete commits.",
+    "later_result": "Normal explicit-ref pushes succeeded after these checks; no force push or indirect workaround."
+  },
+  "transport_probe_correction": "Tree-list response sha echoed the requested commit ID; a failed tree-ID assertion stopped receipt creation. Separate Git commit metadata now verifies the actual tree identities, and all selected remote blob IDs match.",
+  "operator_boundary": "No desktop or browser UI control. Operator performs sign-in manually; V1 launcher selects headless. No new sign-in started for handoff/sync.",
+  "known_limits": [
+    "#20 remains OPEN/backplane:blocked at observed2026-11-01T15:00:05Z, resume active",
+    "Authenticated native fresh-session loads/full gate remain UNKNOWN",
+    "Launcher regression tests do not prove successful login",
+    "Hosted source transport verified; fresh hosted installation not performed",
+    "Native issue body retains historical pre-sync local-only annotation; no backlog mutation performed",
+    "#4/#5 plans remain unapproved drafts",
+    "Ignored profiles/credentials are not transported",
+    "Receipt storage is a later commit; verify its remote arrival separately"
+  ]
+}

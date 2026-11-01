@@ -16,11 +16,14 @@ The headless V1 launcher correction is tested at the argument/import boundary,
 not claimed as a successful sign-in. No desktop or browser UI control is allowed;
 the operator performs browser authentication manually. No credentials are copied.
 
-The first publication batch was rejected by automatic approval review before
-execution. The expected existing remote is now verified PUBLIC with ADMIN access.
-The operator requested Git sync; transport remains pending at handoff creation.
-A later tracked sync receipt must verify arrival before another host is told it
-can resume. Do not merge/close #20 or infer native/hosted acceptance from a push.
+Authorized Git sync verified source branch `handoff/issue-20-opencode-auth`
+at `84f0fd3` and main handoff/plans at `b67dc82`, with 18 source and five main
+artifact blob comparisons matching GitHub-served data. See the
+[transport receipt](tests/scenarios/2026-11-01-issue-20-handoff-sync.json).
+Its later storage commit is separate from those observed delivery identities.
+The first approval-review rejection was resolved after remote identity/privacy
+and exact-content checks; subsequent normal pushes succeeded. No backlog state
+was changed. Do not merge/close #20 or infer native/hosted acceptance from transport.
 Older entries below preserve historical completed work.
 
 ## Local tooling refresh — October 31, 2026

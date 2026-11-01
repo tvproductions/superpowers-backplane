@@ -45,12 +45,12 @@ async function readSkills() {
 export const BackplanePlugin = async () => {
   await readSkills();
   return {
-  config: async (config) => {
-    config.skills ??= {};
-    config.skills.paths ??= [];
-    const directory = path.resolve(skillsDirectory);
-    if (!config.skills.paths.includes(directory)) config.skills.paths.push(directory);
-  },
+    config: async (config) => {
+      config.skills ??= {};
+      config.skills.paths ??= [];
+      const directory = path.resolve(skillsDirectory);
+      if (!config.skills.paths.includes(directory)) config.skills.paths.push(directory);
+    },
   };
 };
 

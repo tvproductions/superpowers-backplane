@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { test } from "node:test";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -6,8 +7,25 @@ import { pathToFileURL } from "node:url";
 
 const root = path.resolve(import.meta.dirname, "..");
 const names = ["managing-superpowers-backlog", "managing-superpowers-handoffs"];
-const area = process.env.SP_BP_TEST_AREA;
-assert.ok(area, "SP_BP_TEST_AREA must name the verified ignored fixture directory");
+const area = path.resolve(process.env.SP_BP_TEST_AREA ?? path.join(root, ".sp-bp", "work", "issue-20", "tests"));
+const inside = (parent, child) => {
+  const relative = path.relative(parent, child);
+  return relative !== ".." && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative);
+};
+if (!process.env.SP_BP_TEST_AREA) {
+  let parent = area;
+  for (;;) {
+    try { parent = await fs.realpath(parent); break; }
+    catch (error) { if (error.code !== "ENOENT") throw error; parent = path.dirname(parent); }
+  }
+  assert.ok(inside(await fs.realpath(root), parent), "default fixture parent must remain in this worktree");
+  execFileSync("git", ["check-ignore", "--quiet", "--", area], { cwd: root });
+  await fs.mkdir(area, { recursive: true });
+}
+const canonicalArea = await fs.realpath(area);
+const fixtureRoot = execFileSync("git", ["rev-parse", "--show-toplevel"], { cwd: canonicalArea, encoding: "utf8" }).trim();
+assert.ok(inside(await fs.realpath(fixtureRoot), canonicalArea), "fixture directory must remain inside its owning repository");
+execFileSync("git", ["check-ignore", "--quiet", "--", canonicalArea], { cwd: fixtureRoot });
 
 async function fixture() {
   const directory = await fs.mkdtemp(path.join(area, "adapter space "));

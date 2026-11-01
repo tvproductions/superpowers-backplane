@@ -1,3 +1,16 @@
+# Completed #5 session handoff — November 1, 2026
+
+Read the append-only
+[session handoff](docs/superpowers-backplane/handoffs/20261101T225245Z-issue-5-completed-and-synced.md)
+and invoke RESUME against that exact path before selecting further work.
+#5 remains CLOSED/COMPLETED; #4 remains OPEN/backlog with its recorded operation
+gaps. No next issue is selected. Verified delivery `1f07291`, SATISFIED
+assessment publication `7c42702` and closeout publication `59aebbd` remain
+separate identities. The handoff preserves the corrected scope distinction,
+resolved publication approvals, source provenance and retained-profile limits.
+This requested handoff/sync changes no backlog state. Its later sync receipt
+records actual transport; credentials and ignored profiles are not transported.
+
 # Issue #5 completed and publication verified — November 1, 2026
 
 #5 is CLOSED/COMPLETED with zero lifecycle labels, observed revision

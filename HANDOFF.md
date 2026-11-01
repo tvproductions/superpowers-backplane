@@ -1,3 +1,15 @@
+# Session handoff after #4/#5 partial integration — November 1, 2026
+
+Read the append-only
+[session handoff](docs/superpowers-backplane/handoffs/20261101T220814Z-issues-4-5-partial-main-and-next-checks.md)
+and invoke RESUME against that exact path before continuing. Both approved plans
+are published, but #4 and #5 remain OPEN/backlog and incomplete. Main is the resume
+workspace; the implementation worktree was removed. The handoff preserves
+Codex's policy-limited read, remaining #4 operation checks and #5's unaccepted
+readiness advice, including the missing-project-context possibility. Profiles
+are retained locally; credentials are not transported. This handoff/sync changes
+no backlog state. Earlier entries below retain their recorded historical scope.
+
 # Issues #4/#5 published main integration — November 1, 2026
 
 The operator approved publication, immutable issue bindings and main integration,

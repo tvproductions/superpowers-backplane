@@ -1,0 +1,184 @@
+"""Negative controls for native acceptance evidence and child-profile isolation."""
+
+import importlib.util
+import unittest
+from pathlib import Path
+from typing import Any
+
+AREA = Path(__file__).resolve().parent
+MODULE = AREA / "acceptance.py"
+candidate: Any = None
+if MODULE.exists():
+    spec = importlib.util.spec_from_file_location("acceptance", MODULE)
+    assert spec is not None and spec.loader is not None
+    candidate = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(candidate)
+
+
+def positive():
+    owned = AREA.resolve()
+    return {
+        "id": "S-sibling",
+        "variant": "v1",
+        "kind": "native",
+        "host_version": "1.18.31",
+        "executable_hash": "a" * 64,
+        "candidate_sha": "b" * 40,
+        "package_root": str(owned / "cache/pkg"),
+        "cache_root": str(owned / "cache"),
+        "profile_root": str(owned / "profile"),
+        "owned_root": str(owned),
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "c" * 40,
+        "configuration_sources": [str(owned / "profile/config/opencode/opencode.json")],
+        "requires_auth": True,
+        "auth_verified": True,
+        "model": "openai/test-model",
+        "commands": [{"exit": 0, "timeout": False}],
+        "native_results": [
+            {"id": "call1", "status": "completed", "capture_sha256": "d" * 64}
+        ],
+        "expected_status": "completed",
+        "checks": {"source": True, "payload": True, "preservation": True},
+        "before": {"sentinel": "same"},
+        "after": {"sentinel": "same"},
+        "recovery": None,
+        "connections": [{"nodes": [], "totalCount": 0}],
+    }
+
+
+class EvidenceTests(unittest.TestCase):
+    def setUp(self):
+        self.assertTrue(
+            callable(getattr(candidate, "classify", None)),
+            "Missing native evidence classifier",
+        )
+
+    def test_complete_native_positive(self):
+        self.assertEqual(candidate.classify(positive()), "PASS")
+
+    def test_each_missing_required_field_is_unknown(self):
+        for key in positive():
+            with self.subTest(key=key):
+                row = positive()
+                del row[key]
+                self.assertEqual(candidate.classify(row), "UNKNOWN")
+
+    def test_known_failure_wins_over_missing_field(self):
+        row = positive()
+        del row["model"]
+        row["checks"]["payload"] = False
+        self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_synthetic_cannot_satisfy_native(self):
+        row = positive()
+        row["kind"] = "synthetic"
+        self.assertEqual(candidate.classify(row), "UNKNOWN")
+
+    def test_package_outside_cache_rejected(self):
+        row = positive()
+        row["package_root"] = str(AREA / "development-source")
+        self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_configuration_outside_profile_rejected(self):
+        row = positive()
+        row["configuration_sources"] = [str(AREA / "normal-profile/config.json")]
+        self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_nonzero_command_and_timeout_rejected(self):
+        for change in ({"exit": 1}, {"timeout": True}):
+            row = positive()
+            row["commands"][0].update(change)
+            self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_missing_positive_native_results_unknown(self):
+        row = positive()
+        row["native_results"] = []
+        self.assertEqual(candidate.classify(row), "UNKNOWN")
+
+    def test_wrong_native_status_rejected(self):
+        row = positive()
+        row["native_results"][0]["status"] = "error"
+        self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_preservation_comparison_is_real(self):
+        row = positive()
+        row["after"]["sentinel"] = "changed"
+        self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_unknown_auth_and_provenance_unknown(self):
+        for key in ("auth_verified", "upstream_revision"):
+            row = positive()
+            row[key] = None
+            self.assertEqual(candidate.classify(row), "UNKNOWN")
+
+    def test_duplicate_and_wrong_restoration_rejected(self):
+        for key in ("one_backplane", "restored_sha_matches", "supported_floor"):
+            row = positive()
+            row["checks"][key] = False
+            self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_negative_refusal_needs_expected_result_and_recovery(self):
+        row = positive()
+        row["id"] = "F-lookalike"
+        row["expected_status"] = "refused"
+        row["native_results"][0]["status"] = "refused"
+        row["recovery"] = "Use authoritative source; preserve existing checkout"
+        self.assertEqual(candidate.classify(row), "PASS")
+        row["recovery"] = None
+        self.assertEqual(candidate.classify(row), "UNKNOWN")
+
+    def test_child_roots_remove_case_insensitive_inherited_paths(self):
+        environment = candidate.child_environment(
+            AREA / "profile",
+            "v1",
+            AREA / "auth-data",
+            {
+                "Home": "normal",
+                "USERPROFILE": "normal",
+                "AppData": "normal",
+                "OPENCODE_ATTACH": "normal",
+                "PATH": "keep",
+            },
+        )
+        self.assertEqual(environment["PATH"], "keep")
+        self.assertNotIn("Home", environment)
+        self.assertNotIn("AppData", environment)
+        self.assertNotIn("OPENCODE_ATTACH", environment)
+        self.assertEqual(
+            environment["XDG_DATA_HOME"], str((AREA / "auth-data").resolve())
+        )
+        for key in (
+            "HOME",
+            "USERPROFILE",
+            "APPDATA",
+            "LOCALAPPDATA",
+            "PROGRAMDATA",
+            "XDG_CONFIG_HOME",
+            "XDG_CACHE_HOME",
+            "XDG_STATE_HOME",
+            "TMP",
+            "TEMP",
+        ):
+            self.assertTrue(
+                Path(environment[key]).resolve().is_relative_to(AREA.resolve()), key
+            )
+
+    def test_truncated_native_connections_cannot_pass(self):
+        row = positive()
+        row["connections"][0]["totalCount"] = 1
+        self.assertEqual(candidate.classify(row), "FAIL")
+
+    def test_actual_host_floor_is_checked_before_support_claim(self):
+        for variant, version in [("v1", "1.18.28"), ("v2", "2.0.3")]:
+            row = positive()
+            row.update(variant=variant, host_version=version)
+            self.assertEqual(candidate.classify(row), "FAIL")
+        for variant, version in [("v1", "1.18.29"), ("v2", "2.0.4")]:
+            row = positive()
+            row.update(variant=variant, host_version=version)
+            self.assertEqual(candidate.classify(row), "PASS")
+
+
+if __name__ == "__main__":
+    unittest.main()

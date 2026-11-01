@@ -1,0 +1,207 @@
+"""Evidence scoring and isolated native-host environment for OpenCode acceptance."""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+from pathlib import Path
+from typing import Any
+
+REQUIRED = (
+    "id",
+    "variant",
+    "kind",
+    "host_version",
+    "executable_hash",
+    "candidate_sha",
+    "package_root",
+    "cache_root",
+    "profile_root",
+    "owned_root",
+    "upstream_origin",
+    "upstream_revision",
+    "configuration_sources",
+    "requires_auth",
+    "auth_verified",
+    "model",
+    "commands",
+    "native_results",
+    "expected_status",
+    "checks",
+    "before",
+    "after",
+    "recovery",
+    "connections",
+)
+
+
+def classify(row: dict[str, Any]) -> str:
+    checks = row.get("checks")
+    if isinstance(checks, dict) and any(value is False for value in checks.values()):
+        return "FAIL"
+    commands = row.get("commands", [])
+    if isinstance(commands, list):
+        for command in commands:
+            if command.get("timeout") is True or command.get("exit") not in (
+                None,
+                command.get("expected_exit", 0),
+            ):
+                return "FAIL"
+    if row.get("before") and row.get("after") and row["before"] != row["after"]:
+        return "FAIL"
+    if any(key not in row for key in REQUIRED):
+        return "UNKNOWN"
+    if (
+        row["kind"] != "native"
+        or not isinstance(checks, dict)
+        or not checks
+        or any(value is not True for value in checks.values())
+    ):
+        return "UNKNOWN"
+    if row["variant"] not in ("v1", "v2") or row["expected_status"] not in (
+        "completed",
+        "refused",
+    ):
+        return "FAIL"
+    version = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", str(row["host_version"]))
+    if version is None:
+        return "UNKNOWN"
+    floor = (1, 18, 29) if row["variant"] == "v1" else (2, 0, 4)
+    if (
+        tuple(map(int, version.groups())) < floor
+        and row["expected_status"] == "completed"
+    ):
+        return "FAIL"
+    for connection in row["connections"]:
+        if len(connection.get("nodes", [])) != connection.get("totalCount"):
+            return "FAIL"
+    if row["requires_auth"] is True and row["auth_verified"] is not True:
+        return "UNKNOWN" if row["auth_verified"] is None else "FAIL"
+    if any(
+        not row[key]
+        for key in REQUIRED
+        if key not in ("recovery", "auth_verified", "requires_auth")
+    ):
+        return "UNKNOWN"
+    if row["expected_status"] == "refused" and not row["recovery"]:
+        return "UNKNOWN"
+    if not re.fullmatch("[0-9a-f]{40}", str(row["candidate_sha"])) or not re.fullmatch(
+        "[0-9a-f]{40}", str(row["upstream_revision"])
+    ):
+        return "UNKNOWN"
+    if not re.fullmatch("[0-9a-f]{64}", str(row["executable_hash"])):
+        return "UNKNOWN"
+    owned = Path(row["owned_root"]).resolve()
+    profile = Path(row["profile_root"]).resolve()
+    cache = Path(row["cache_root"]).resolve()
+    package = Path(row["package_root"]).resolve()
+    if (
+        not profile.is_relative_to(owned)
+        or not cache.is_relative_to(owned)
+        or not package.is_relative_to(cache)
+    ):
+        return "FAIL"
+    if any(
+        not Path(path).resolve().is_relative_to(profile)
+        for path in row["configuration_sources"]
+    ):
+        return "FAIL"
+    for result in row["native_results"]:
+        if result.get("status") != row["expected_status"]:
+            return "FAIL"
+        if not result.get("id") or not re.fullmatch(
+            "[0-9a-f]{64}", str(result.get("capture_sha256", ""))
+        ):
+            return "UNKNOWN"
+    if any(command.get("exit") is None for command in commands):
+        return "UNKNOWN"
+    return "PASS"
+
+
+def child_environment(
+    profile: Path,
+    variant: str,
+    auth_data: Path,
+    inherited: dict[str, str] | None = None,
+) -> dict[str, str]:
+    profile = profile.resolve()
+    auth_data = auth_data.resolve()
+    source = dict(os.environ if inherited is None else inherited)
+    roots = {
+        "HOME",
+        "USERPROFILE",
+        "APPDATA",
+        "LOCALAPPDATA",
+        "PROGRAMDATA",
+        "TMPDIR",
+        "TMP",
+        "TEMP",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME",
+        "XDG_CACHE_HOME",
+        "XDG_STATE_HOME",
+    }
+    blocked = (
+        "OPENCODE_",
+        "OPENAI_",
+        "ANTHROPIC_",
+        "GOOGLE_",
+        "GEMINI_",
+        "AZURE_OPENAI_",
+        "AWS_",
+        "VERTEX_",
+    )
+    env = {
+        key: value
+        for key, value in source.items()
+        if key.upper() not in roots and not key.upper().startswith(blocked)
+    }
+    env.update(
+        HOME=str(profile / "home"),
+        USERPROFILE=str(profile / "home"),
+        APPDATA=str(profile / "roaming"),
+        LOCALAPPDATA=str(profile / "local"),
+        PROGRAMDATA=str(profile / "programdata"),
+        OPENCODE_TEST_HOME=str(profile / "home"),
+        OPENCODE_CONFIG_DIR=str(profile / "config/opencode"),
+        XDG_CONFIG_HOME=str(profile / "config"),
+        XDG_DATA_HOME=str(auth_data),
+        XDG_CACHE_HOME=str(profile.parent / "cache"),
+        XDG_STATE_HOME=str(profile / "state"),
+        TMPDIR=str(profile / "tmp"),
+        TMP=str(profile / "tmp"),
+        TEMP=str(profile / "tmp"),
+    )
+    if variant == "v1":
+        env.update(
+            OPENCODE_DISABLE_PROJECT_CONFIG="true", OPENCODE_DISABLE_AUTOUPDATE="true"
+        )
+    elif variant != "v2":
+        raise ValueError("Unsupported variant")
+    return env
+
+
+def verify(path: Path) -> dict[str, Any]:
+    data = json.loads(path.read_text(encoding="utf-8-sig"))
+    rows = data.get("rows", [])
+    results = [{"id": row.get("id"), "result": classify(row)} for row in rows]
+    return {
+        "valid": bool(rows) and all(row["result"] == "PASS" for row in results),
+        "rows": results,
+    }
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("operation", choices=("preflight", "run", "verify"))
+    parser.add_argument("receipt", nargs="?")
+    parser.add_argument("--case")
+    args = parser.parse_args()
+    if args.operation == "verify" and args.receipt:
+        result = verify(Path(args.receipt))
+        print(json.dumps(result, indent=2))
+        raise SystemExit(0 if result["valid"] else 1)
+    raise SystemExit("Native case runner not yet implemented; no acceptance claimed")

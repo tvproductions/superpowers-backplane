@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "before": {
+    ".sp-bp\\work\\issue-4\\codex-profile\\config.toml": "939fe4bf1d59f2d5d699af4099ad74dc2f7fee83eb2222ca97b99716dd82d7fb",
+    ".sp-bp\\work\\issue-4\\codex-profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1\\skills\\using-superpowers\\SKILL.md": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba",
+    ".sp-bp\\work\\issue-4\\codex-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+    ".sp-bp\\work\\issue-4\\codex-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-handoffs\\SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de"
+  },
+  "after": {
+    ".sp-bp\\work\\issue-4\\codex-profile\\config.toml": "939fe4bf1d59f2d5d699af4099ad74dc2f7fee83eb2222ca97b99716dd82d7fb",
+    ".sp-bp\\work\\issue-4\\codex-profile\\plugins\\cache\\superpowers-dev\\superpowers\\7.0.1\\skills\\using-superpowers\\SKILL.md": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba",
+    ".sp-bp\\work\\issue-4\\codex-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-backlog\\SKILL.md": "168d5dffa43e89fae7249859f5758f3a46e53f03ea72e9bf1686983d49808f16",
+    ".sp-bp\\work\\issue-4\\codex-profile\\plugins\\cache\\superpowers-backplane\\superpowers-backplane\\0.1.0\\skills\\managing-superpowers-handoffs\\SKILL.md": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de"
+  },
+  "protected_equal": true,
+  "finished_at": "2026-11-01T23:08:30.919892+00:00"
+}

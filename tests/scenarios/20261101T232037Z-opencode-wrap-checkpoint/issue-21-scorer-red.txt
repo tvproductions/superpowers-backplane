@@ -1,0 +1,145 @@
+test_child_roots_remove_case_insensitive_inherited_paths (test_acceptance.EvidenceTests.test_child_roots_remove_case_insensitive_inherited_paths) ... FAIL
+test_complete_native_positive (test_acceptance.EvidenceTests.test_complete_native_positive) ... FAIL
+test_configuration_outside_profile_rejected (test_acceptance.EvidenceTests.test_configuration_outside_profile_rejected) ... FAIL
+test_duplicate_and_wrong_restoration_rejected (test_acceptance.EvidenceTests.test_duplicate_and_wrong_restoration_rejected) ... FAIL
+test_each_missing_required_field_is_unknown (test_acceptance.EvidenceTests.test_each_missing_required_field_is_unknown) ... FAIL
+test_known_failure_wins_over_missing_field (test_acceptance.EvidenceTests.test_known_failure_wins_over_missing_field) ... FAIL
+test_missing_positive_native_results_unknown (test_acceptance.EvidenceTests.test_missing_positive_native_results_unknown) ... FAIL
+test_negative_refusal_needs_expected_result_and_recovery (test_acceptance.EvidenceTests.test_negative_refusal_needs_expected_result_and_recovery) ... FAIL
+test_nonzero_command_and_timeout_rejected (test_acceptance.EvidenceTests.test_nonzero_command_and_timeout_rejected) ... FAIL
+test_package_outside_cache_rejected (test_acceptance.EvidenceTests.test_package_outside_cache_rejected) ... FAIL
+test_preservation_comparison_is_real (test_acceptance.EvidenceTests.test_preservation_comparison_is_real) ... FAIL
+test_synthetic_cannot_satisfy_native (test_acceptance.EvidenceTests.test_synthetic_cannot_satisfy_native) ... FAIL
+test_unknown_auth_and_provenance_unknown (test_acceptance.EvidenceTests.test_unknown_auth_and_provenance_unknown) ... FAIL
+test_wrong_native_status_rejected (test_acceptance.EvidenceTests.test_wrong_native_status_rejected) ... FAIL
+
+======================================================================
+FAIL: test_child_roots_remove_case_insensitive_inherited_paths (test_acceptance.EvidenceTests.test_child_roots_remove_case_insensitive_inherited_paths)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_complete_native_positive (test_acceptance.EvidenceTests.test_complete_native_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_configuration_outside_profile_rejected (test_acceptance.EvidenceTests.test_configuration_outside_profile_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_duplicate_and_wrong_restoration_rejected (test_acceptance.EvidenceTests.test_duplicate_and_wrong_restoration_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_each_missing_required_field_is_unknown (test_acceptance.EvidenceTests.test_each_missing_required_field_is_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_known_failure_wins_over_missing_field (test_acceptance.EvidenceTests.test_known_failure_wins_over_missing_field)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_missing_positive_native_results_unknown (test_acceptance.EvidenceTests.test_missing_positive_native_results_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_negative_refusal_needs_expected_result_and_recovery (test_acceptance.EvidenceTests.test_negative_refusal_needs_expected_result_and_recovery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_nonzero_command_and_timeout_rejected (test_acceptance.EvidenceTests.test_nonzero_command_and_timeout_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_package_outside_cache_rejected (test_acceptance.EvidenceTests.test_package_outside_cache_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_preservation_comparison_is_real (test_acceptance.EvidenceTests.test_preservation_comparison_is_real)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_synthetic_cannot_satisfy_native (test_acceptance.EvidenceTests.test_synthetic_cannot_satisfy_native)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_unknown_auth_and_provenance_unknown (test_acceptance.EvidenceTests.test_unknown_auth_and_provenance_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+======================================================================
+FAIL: test_wrong_native_status_rejected (test_acceptance.EvidenceTests.test_wrong_native_status_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 30, in setUp
+    self.assertTrue(callable(getattr(candidate,'classify',None)), 'Missing native evidence classifier')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Missing native evidence classifier
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+FAILED (failures=14)

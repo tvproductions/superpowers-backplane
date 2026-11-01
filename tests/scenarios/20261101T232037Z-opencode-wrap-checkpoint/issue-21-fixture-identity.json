@@ -1,0 +1,9 @@
+{
+  "root": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-21\\profile",
+  "auth_data_pointer": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\profiles\\v1\\data",
+  "purpose": "#21 isolated V1 setup/failure cases",
+  "origin": null,
+  "starting_revision": "unborn",
+  "upstream": "U:\\repos\\agents\\superpowers-backplane\\.agents\\superpowers",
+  "source": "34c59af8164be3a8516f7750c0b98e0fff48e405"
+}

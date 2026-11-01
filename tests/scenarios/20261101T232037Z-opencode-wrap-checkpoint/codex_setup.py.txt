@@ -1,0 +1,38 @@
+"""Bounded public installed-skill discovery using native automatic approvals."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import UTC, datetime
+
+root = Path.cwd().resolve()
+area = (root / '.sp-bp/work/issue-4/acceptance-wrap').resolve(strict=True)
+profile = (root / '.sp-bp/work/issue-4/codex-profile').resolve(strict=True)
+cwd = (area / 'native-project').resolve(strict=True)
+assert all(p.is_relative_to(root / '.sp-bp/work/issue-4') for p in (area,profile,cwd))
+assert not (area/'codex-setup-native.jsonl').exists()
+env = os.environ.copy()
+env['CODEX_HOME'] = str(profile)
+bp = profile/'plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0'
+sp = profile/'plugins/cache/superpowers-dev/superpowers/7.0.1'
+paths = [sp/'skills/using-superpowers/SKILL.md',
+         bp/'skills/managing-superpowers-backlog/SKILL.md',
+         bp/'skills/managing-superpowers-handoffs/SKILL.md']
+assert all(p.is_file() and p.resolve().is_relative_to(profile) for p in paths)
+protected = [profile/'config.toml', *paths]
+baseline = {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in protected}
+prompt = 'Set up Superpowers Backplane in this Codex session. Target repository tvproductions/superpowers-backplane, existing issue4 for complete read-only native intake. This is the operator-authorized #4 actual setup acceptance test. Backplane and independent Superpowers are already installed in this isolated CODEX_HOME. Read the actual installed Backplane installing-superpowers reference and follow its ordered adoption/compatibility checks. Use native codex plugin/marketplace list, git source/status reads, gh auth status, complete gh issue view4 and label/closure help as needed. Report package/source/revision, upstream provenance/version, gh capabilities and actual three-skill source identities. Do not install/update/repair/configure anything, change policy, inspect credentials/settings contents or enumerate environment, access apps/MCP, mutate files/issues or delegate. Use ordinary automatic approval review; stop on any denied or missing check. The independent source checkout is U:/repos/agents/superpowers-backplane/.agents/superpowers, clean at2ce8aa15d05bd57213e6f746f953aafb7ded7a8b from https://github.com/obra/superpowers.git. Its native cache skill files must match that source. Installed Backplane source d557b27452ba5fb60188f06c1736c8cdc8ce9d53. Do not use parent-project discovery links as substitutes.'
+(area/'codex-setup-prompt.txt').write_text(prompt,encoding='utf-8')
+identity={'profile':str(profile),'cwd':str(cwd),'requested_paths':[str(p) for p in paths],
+          'started_at':datetime.now(UTC).isoformat(),'policy':'--approve-for-me; no bypass or ignored rules'}
+(area/'codex-setup-identity.json').write_text(json.dumps(identity,indent=2),encoding='utf-8')
+with (area/'codex-setup-native.jsonl').open('w',encoding='utf-8') as stdout, (area/'codex-setup-native.stderr.txt').open('w',encoding='utf-8') as stderr:
+    result=subprocess.run(['codex','exec','--approve-for-me','--json','--ephemeral','-C',str(cwd),'-'],
+                          input=prompt,text=True,encoding='utf-8',env=env,cwd=root,
+                          stdout=stdout,stderr=stderr,timeout=300)
+after={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in protected}
+record={'exit':result.returncode,'before':baseline,'after':after,'protected_equal':baseline==after,
+        'finished_at':datetime.now(UTC).isoformat()}
+(area/'codex-setup-result.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(record,indent=2))

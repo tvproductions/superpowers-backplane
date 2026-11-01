@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\hosts\\v1\\opencode.exe",
+    "--version"
+  ],
+  "exit": 0,
+  "stdout": "1.18.31\n",
+  "stderr": "",
+  "observed_at": "2026-11-01T23:17:18.543117+00:00"
+}

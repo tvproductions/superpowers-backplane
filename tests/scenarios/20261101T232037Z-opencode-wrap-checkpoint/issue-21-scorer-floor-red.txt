@@ -1,0 +1,58 @@
+test_actual_host_floor_is_checked_before_support_claim (test_acceptance.EvidenceTests.test_actual_host_floor_is_checked_before_support_claim) ... FAIL
+test_child_roots_remove_case_insensitive_inherited_paths (test_acceptance.EvidenceTests.test_child_roots_remove_case_insensitive_inherited_paths) ... ok
+test_complete_native_positive (test_acceptance.EvidenceTests.test_complete_native_positive) ... ok
+test_configuration_outside_profile_rejected (test_acceptance.EvidenceTests.test_configuration_outside_profile_rejected) ... ok
+test_duplicate_and_wrong_restoration_rejected (test_acceptance.EvidenceTests.test_duplicate_and_wrong_restoration_rejected) ... ok
+test_each_missing_required_field_is_unknown (test_acceptance.EvidenceTests.test_each_missing_required_field_is_unknown) ...
+  test_each_missing_required_field_is_unknown (test_acceptance.EvidenceTests.test_each_missing_required_field_is_unknown) (key='connections') ... FAIL
+test_known_failure_wins_over_missing_field (test_acceptance.EvidenceTests.test_known_failure_wins_over_missing_field) ... ok
+test_missing_positive_native_results_unknown (test_acceptance.EvidenceTests.test_missing_positive_native_results_unknown) ... ok
+test_negative_refusal_needs_expected_result_and_recovery (test_acceptance.EvidenceTests.test_negative_refusal_needs_expected_result_and_recovery) ... ok
+test_nonzero_command_and_timeout_rejected (test_acceptance.EvidenceTests.test_nonzero_command_and_timeout_rejected) ... ok
+test_package_outside_cache_rejected (test_acceptance.EvidenceTests.test_package_outside_cache_rejected) ... ok
+test_preservation_comparison_is_real (test_acceptance.EvidenceTests.test_preservation_comparison_is_real) ... ok
+test_synthetic_cannot_satisfy_native (test_acceptance.EvidenceTests.test_synthetic_cannot_satisfy_native) ... ok
+test_truncated_native_connections_cannot_pass (test_acceptance.EvidenceTests.test_truncated_native_connections_cannot_pass) ... FAIL
+test_unknown_auth_and_provenance_unknown (test_acceptance.EvidenceTests.test_unknown_auth_and_provenance_unknown) ... ok
+test_wrong_native_status_rejected (test_acceptance.EvidenceTests.test_wrong_native_status_rejected) ... ok
+
+======================================================================
+FAIL: test_actual_host_floor_is_checked_before_support_claim (test_acceptance.EvidenceTests.test_actual_host_floor_is_checked_before_support_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 92, in test_actual_host_floor_is_checked_before_support_claim
+    self.assertEqual(candidate.classify(row),'FAIL')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'FAIL'
+- PASS
++ FAIL
+
+
+======================================================================
+FAIL: test_each_missing_required_field_is_unknown (test_acceptance.EvidenceTests.test_each_missing_required_field_is_unknown) (key='connections')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 38, in test_each_missing_required_field_is_unknown
+    self.assertEqual(candidate.classify(row),'UNKNOWN')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'UNKNOWN'
+- PASS
++ UNKNOWN
+
+
+======================================================================
+FAIL: test_truncated_native_connections_cannot_pass (test_acceptance.EvidenceTests.test_truncated_native_connections_cannot_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "U:\repos\agents\superpowers-backplane\.sp-bp\work\issue-21\test_acceptance.py", line 88, in test_truncated_native_connections_cannot_pass
+    self.assertEqual(candidate.classify(row),'FAIL')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'FAIL'
+- PASS
++ FAIL
+
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.008s
+
+FAILED (failures=3)

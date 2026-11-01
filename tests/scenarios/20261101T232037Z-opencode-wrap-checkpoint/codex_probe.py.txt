@@ -1,0 +1,44 @@
+"""Bounded public installed-skill discovery using native automatic approvals."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import UTC, datetime
+
+root = Path.cwd().resolve()
+area = (root / '.sp-bp/work/issue-4/acceptance-wrap').resolve(strict=True)
+profile = (root / '.sp-bp/work/issue-4/codex-profile').resolve(strict=True)
+cwd = (root / '.sp-bp/work/issue-4/native-neutral').resolve(strict=True)
+assert all(p.is_relative_to(root / '.sp-bp/work/issue-4') for p in (area,profile,cwd))
+assert not (area/'codex-native.jsonl').exists()
+env = os.environ.copy()
+env['CODEX_HOME'] = str(profile)
+bp = profile/'plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0'
+sp = profile/'plugins/cache/superpowers-dev/superpowers/7.0.1'
+paths = [sp/'skills/using-superpowers/SKILL.md',
+         bp/'skills/managing-superpowers-backlog/SKILL.md',
+         bp/'skills/managing-superpowers-handoffs/SKILL.md']
+assert all(p.is_file() and p.resolve().is_relative_to(profile) for p in paths)
+protected = [profile/'config.toml', *paths]
+baseline = {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in protected}
+prompt = '''This is the operator-authorized #4 native installed-plugin discovery acceptance probe.
+Use the three exact public installed skill files below; do not use repository discovery junctions as substitutes.
+Read each through the native shell tool, then report its name, source path and whether the read succeeded.
+The earlier run used read-only/approval-never and was rejected before execution. This is a distinct probe using Codex's documented automatic approval review, with ordinary sandboxing and approvals intact.
+Do not change policies, install/configure anything, inspect credentials/settings, enumerate environment variables, access apps/MCP, query GitHub, delegate or create handoffs. Do not retry denied calls through alternate executables or encodings. If approval rejects a read, stop and report UNKNOWN.
+Read only these public SKILL.md files, and stop after reporting discovery:
+''' + '\n'.join(str(p) for p in paths)
+(area/'codex-prompt.txt').write_text(prompt,encoding='utf-8')
+identity={'profile':str(profile),'cwd':str(cwd),'requested_paths':[str(p) for p in paths],
+          'started_at':datetime.now(UTC).isoformat(),'policy':'--approve-for-me; no bypass or ignored rules'}
+(area/'codex-identity.json').write_text(json.dumps(identity,indent=2),encoding='utf-8')
+with (area/'codex-native.jsonl').open('w',encoding='utf-8') as stdout, (area/'codex-native.stderr.txt').open('w',encoding='utf-8') as stderr:
+    result=subprocess.run(['codex','exec','--approve-for-me','--json','--ephemeral','-C',str(cwd),'-'],
+                          input=prompt,text=True,encoding='utf-8',env=env,cwd=root,
+                          stdout=stdout,stderr=stderr,timeout=300)
+after={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in protected}
+record={'exit':result.returncode,'before':baseline,'after':after,'protected_equal':baseline==after,
+        'finished_at':datetime.now(UTC).isoformat()}
+(area/'codex-result.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(record,indent=2))

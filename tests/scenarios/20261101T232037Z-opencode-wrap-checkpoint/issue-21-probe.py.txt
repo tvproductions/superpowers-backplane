@@ -1,0 +1,85 @@
+"""Owned V1 case orchestration; no credential copy or normal-profile fallback."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import UTC,datetime
+
+from acceptance import child_environment
+
+ROOT=Path.cwd().resolve(strict=True)
+AREA=Path(__file__).resolve().parent
+PROFILE=AREA/'profile'
+AUTH_DATA=ROOT/'.sp-bp/work/issue-20/profiles/v1/data'
+EXE=ROOT/'.sp-bp/work/issue-20/hosts/v1/opencode.exe'
+UPSTREAM=ROOT/'.agents/superpowers'
+SENTINEL=ROOT/'.sp-bp/work/issue-20/sentinel'
+SOURCE='34c59af8164be3a8516f7750c0b98e0fff48e405'
+
+def digest(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+def save(name,value):
+    path=AREA/name
+    path.write_text(json.dumps(value,indent=2,ensure_ascii=True)+'\n',encoding='utf-8')
+
+def prepare():
+    assert AREA.resolve().is_relative_to(ROOT/'.sp-bp/work/issue-21')
+    assert AUTH_DATA.resolve(strict=True).is_relative_to(ROOT/'.sp-bp/work/issue-20')
+    assert EXE.is_file() and SENTINEL.is_dir()
+    assert subprocess.check_output(['git','-C',str(UPSTREAM),'rev-parse','HEAD'],text=True).strip()=='2ce8aa15d05bd57213e6f746f953aafb7ded7a8b'
+    if PROFILE.exists() and not (PROFILE/'.issue-21-owner').is_file(): raise ValueError('Unknown profile occupant')
+    PROFILE.mkdir(exist_ok=True)
+    (PROFILE/'.issue-21-owner').write_text('Owned #21 test profile; auth pointer is separate, never copied\n',encoding='utf-8')
+    for name in ('home','roaming','local','programdata','tmp','config/opencode','state'):
+        (PROFILE/name).mkdir(parents=True,exist_ok=True)
+    (AREA/'cache').mkdir(exist_ok=True)
+    (AREA/'captures').mkdir(exist_ok=True)
+    config=PROFILE/'config/opencode/opencode.json'
+    if config.exists(): raise ValueError('Do not overwrite an existing case configuration')
+    config.write_text(json.dumps({'$schema':'https://opencode.ai/config.json','plugin':[str(UPSTREAM),str(SENTINEL)]},indent=2)+'\n',encoding='utf-8')
+    save('fixture-identity.json',{'root':str(PROFILE.resolve()),'auth_data_pointer':str(AUTH_DATA.resolve()),
+                               'purpose':'#21 isolated V1 setup/failure cases','origin':None,'starting_revision':'unborn',
+                               'upstream':str(UPSTREAM.resolve()),'source':SOURCE})
+    print('Prepared canonical owned profile; existing auth data referenced through native XDG_DATA_HOME, not copied')
+
+def environment():
+    env=child_environment(PROFILE,'v1',AUTH_DATA)
+    gh_root=Path(os.environ['APPDATA'])/'GitHub CLI'
+    if not (gh_root/'hosts.yml').is_file(): raise RuntimeError('Verified native gh store pointer unavailable')
+    env['GH_CONFIG_DIR']=str(gh_root)
+    return env
+
+def native(label,args,timeout=90):
+    path=AREA/f'captures/{label}.json'
+    if path.exists(): raise ValueError('Capture collision')
+    p=subprocess.run([str(EXE),*args],cwd=PROFILE/'config/opencode',env=environment(),capture_output=True,text=True,
+                     encoding='utf-8',errors='replace',timeout=timeout)
+    row={'argv':[str(EXE),*args],'exit':p.returncode,'stdout':p.stdout,'stderr':p.stderr,'observed_at':datetime.now(UTC).isoformat()}
+    save(f'captures/{label}.json',row)
+    return row
+
+def preflight():
+    version=native('version',['--version'])
+    assert version['exit']==0 and '1.18.31' in version['stdout']
+    auth=native('auth',['auth','list'])
+    text=(auth['stdout']+auth['stderr']).lower()
+    authenticated=auth['exit']==0 and 'openai' in text and '0 credentials' not in text
+    save('preflight.json',{'host_version':'1.18.31','executable':str(EXE),'executable_sha256':digest(EXE),
+                          'profile':str(PROFILE.resolve()),'authenticated':authenticated,
+                          'auth_mechanism':'Existing authorized native XDG_DATA_HOME pointer; no credential file copied',
+                          'gh_store_pointer':'Verified existing GH_CONFIG_DIR, child-scoped',
+                          'configuration':str((PROFILE/'config/opencode/opencode.json').resolve()),
+                          'cache':str((AREA/'cache').resolve())})
+    if not authenticated: raise RuntimeError('Isolated V1 authentication unavailable; no login/fallback attempted')
+    models=native('models',['models','openai'])
+    assert models['exit']==0 and 'openai/gpt-6.1-sol' in models['stdout']
+    print('V1 exact binary, isolated auth and selected model preflight PASS')
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(); parser.add_argument('operation',choices=('prepare','preflight'))
+    args=parser.parse_args()
+    prepare() if args.operation=='prepare' else preflight()

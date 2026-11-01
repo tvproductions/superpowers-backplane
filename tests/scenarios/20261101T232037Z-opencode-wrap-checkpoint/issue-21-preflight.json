@@ -1,0 +1,11 @@
+{
+  "host_version": "1.18.31",
+  "executable": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-20\\hosts\\v1\\opencode.exe",
+  "executable_sha256": "0242a0dc705af67c90882b456a36b619883c1c786aad8fe071a1bc64e5d1d440",
+  "profile": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-21\\profile",
+  "authenticated": true,
+  "auth_mechanism": "Existing authorized native XDG_DATA_HOME pointer; no credential file copied",
+  "gh_store_pointer": "Verified existing GH_CONFIG_DIR, child-scoped",
+  "configuration": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-21\\profile\\config\\opencode\\opencode.json",
+  "cache": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-21\\cache"
+}

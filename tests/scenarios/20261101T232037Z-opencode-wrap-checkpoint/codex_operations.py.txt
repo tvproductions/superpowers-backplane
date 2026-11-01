@@ -1,0 +1,112 @@
+"""Replay the unchanged Codex guide with immediate operation-specific checks."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+from datetime import UTC, datetime
+
+root=Path.cwd().resolve()
+area=(root/'.sp-bp/work/issue-4/acceptance-wrap').resolve(strict=True)
+profile=(root/'.sp-bp/work/issue-4/codex-profile').resolve(strict=True)
+project=(area/'native-project').resolve(strict=True)
+source=(root/'.sp-bp/work/issue-4/codex-source').resolve(strict=True)
+assert all(p.is_relative_to(root/'.sp-bp/work/issue-4') for p in (area,profile,project,source))
+env=os.environ.copy(); env['CODEX_HOME']=str(profile)
+prior='d557b27452ba5fb60188f06c1736c8cdc8ce9d53'
+candidate='34c59af8164be3a8516f7750c0b98e0fff48e405'
+bp=profile/'plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0'
+sp=profile/'plugins/cache/superpowers-dev/superpowers/7.0.1'
+blocks=re.findall(r'```powershell\n(.*?)\n```',(root/'docs/installing-codex.md').read_text(encoding='utf-8'),re.S)
+assert len(blocks)==5
+assert subprocess.check_output(['git','-C',str(source),'rev-parse','--show-toplevel'],text=True).strip().replace('\\','/')==source.as_posix()
+assert subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()==prior
+sentinel=area/'keep-user.txt'
+if not sentinel.exists(): sentinel.write_text('Owned issue4 user-file preservation sentinel\n',encoding='utf-8')
+record={'profile':str(profile),'project':str(project),'project_origin':None,'project_start':'unborn',
+        'purpose':'Prevent ancestor discovery from contaminating native installed package checks',
+        'prior':prior,'candidate':candidate,'started_at':datetime.now(UTC).isoformat(),'operations':[]}
+assert not (area/'codex-operations.json').exists()
+
+def native(*args):
+    p=subprocess.run(list(args),cwd=source,env=env,capture_output=True,text=True,encoding='utf-8',timeout=180)
+    if p.returncode: raise RuntimeError(f'{args}: {p.stdout[-1000:]} {p.stderr[-1000:]}')
+    return p.stdout
+
+def inventory():
+    return json.loads(native('codex','plugin','list','--json'))['installed']
+
+def protect():
+    rows=inventory()
+    return {'unrelated_plugins':sorted((i['pluginId'],i['enabled'],i['installed']) for i in rows if i['name']!='superpowers-backplane'),
+            'user_file':hashlib.sha256(sentinel.read_bytes()).hexdigest(),
+            'upstream_files':{str(p.relative_to(sp)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((sp/'skills').rglob('*')) if p.is_file()},
+            'upstream_head':subprocess.check_output(['git','-C',str(root/'.agents/superpowers'),'rev-parse','HEAD'],text=True).strip()}
+
+def discovery(label, present):
+    files=[sp/'skills/using-superpowers/SKILL.md']
+    if present: files += [bp/f'skills/{n}/SKILL.md' for n in ('managing-superpowers-backlog','managing-superpowers-handoffs')]
+    prompt='Operator-authorized installed-package discovery only. Read only these exact public installed SKILL.md files through native shell and report names/source paths/read success. Do not query GitHub, inspect settings/credentials/environment, access apps/MCP, mutate files or installations, create handoffs, or delegate. Stop on a denied call; do not use alternate executables to bypass it.\n'+'\n'.join(str(p) for p in files)
+    if not present: prompt+='\nBackplane has been uninstalled: confirm neither Backplane skill is advertised by the installed plugin. Do not use parent-project discovery or fetch any missing skill.'
+    with (area/f'codex-{label}-discovery.jsonl').open('w',encoding='utf-8') as out, (area/f'codex-{label}-discovery.stderr.txt').open('w',encoding='utf-8') as err:
+        p=subprocess.run(['codex','exec','--approve-for-me','--json','--ephemeral','-C',str(project),'-'],input=prompt,text=True,encoding='utf-8',env=env,cwd=root,stdout=out,stderr=err,timeout=300)
+    assert p.returncode==0
+    events=[json.loads(s) for s in (area/f'codex-{label}-discovery.jsonl').read_text(encoding='utf-8').splitlines() if s.strip()]
+    commands=[r['item'] for r in events if r.get('type')=='item.completed' and r.get('item',{}).get('type')=='command_execution']
+    assert commands and all(c.get('exit_code')==0 for c in commands)
+    assert all(any(str(path).replace('\\','/') in c['command'].replace('\\\\','/').replace('\\','/') for c in commands) for path in files)
+    return {'capture':f'codex-{label}-discovery.jsonl','commands':[{'command':c['command'],'exit_code':c['exit_code']} for c in commands],
+            'response':[r['item']['text'] for r in events if r.get('item',{}).get('type')=='agent_message'][-1:]}
+
+def payload(revision):
+    items=[i for i in inventory() if i['name']=='superpowers-backplane']
+    assert len(items)==1
+    observed=subprocess.check_output(['git','-C',str(bp),'rev-parse','HEAD'],text=True).strip()
+    assert observed==revision
+    names=subprocess.check_output(['git','ls-tree','-r','--name-only',revision,'--','skills','plugin.json','.agents/plugins/marketplace.json','README.md','docs/installing-codex.md'],cwd=root,text=True).splitlines()
+    rows=[]
+    for name in names:
+        p=bp/name; assert p.is_file(),name
+        observed=subprocess.check_output(['git','hash-object','--stdin','--path',name],cwd=root,input=p.read_bytes()).decode().strip()
+        expected=subprocess.check_output(['git','rev-parse',revision+':'+name],cwd=root,text=True).strip()
+        assert observed==expected,name
+        rows.append({'path':name,'git_blob':observed,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+    return rows
+
+def stage(label, script, revision, expected_failure=False):
+    before=protect()
+    path=area/f'codex-{label}.ps1'
+    path.write_text("$ErrorActionPreference='Stop'\n"+script,encoding='utf-8')
+    result=subprocess.run(['pwsh','-NoProfile','-File',str(path)],cwd=source,env=env,capture_output=True,text=True,encoding='utf-8',timeout=240)
+    (area/f'codex-{label}.stdout.txt').write_text(result.stdout,encoding='utf-8')
+    (area/f'codex-{label}.stderr.txt').write_text(result.stderr,encoding='utf-8')
+    assert (result.returncode!=0) if expected_failure else result.returncode==0, label+result.stderr[-1000:]
+    after=protect(); assert before==after,label+' preservation'
+    if revision:
+        files=payload(revision)
+    else:
+        assert not [i for i in inventory() if i['name']=='superpowers-backplane']
+        files=[]
+    row={'id':label,'exit':result.returncode,'expected_failure':expected_failure,'before':before,'after':after,
+         'preserved':True,'revision':revision,'installed_files':files}
+    if not expected_failure: row['fresh_discovery']=discovery(label,revision is not None)
+    record['operations'].append(row)
+    (area/'codex-operations.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
+    print(label,'PASS',flush=True)
+
+# The authenticated owned profile was previously installed; record/reset only its exact Backplane entry.
+baseline=protect()
+native('codex','plugin','remove','superpowers-backplane@superpowers-backplane')
+native('codex','plugin','marketplace','remove','superpowers-backplane')
+assert protect()==baseline
+stage('install',blocks[0],prior)
+stage('repeat-install',"codex plugin add superpowers-backplane@superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Repeat install failed' }",prior)
+preflight=blocks[1].replace('<recorded-prior-40-character-commit-sha>',prior).replace('<reviewed-candidate-40-character-commit-sha>',candidate)
+stage('update',preflight+'\n'+blocks[2],candidate)
+stage('rollback',blocks[3].replace('<recorded-prior-40-character-commit-sha>',prior),prior)
+stage('unavailable-candidate',preflight.replace(candidate,'0'*40),prior,True)
+stage('uninstall',blocks[4],None)
+stage('restore-test-profile',"codex plugin add superpowers-backplane@superpowers-backplane\nif ($LASTEXITCODE -ne 0) { throw 'Restoration failed' }",prior)
+record['finished_at']=datetime.now(UTC).isoformat()
+(area/'codex-operations.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')

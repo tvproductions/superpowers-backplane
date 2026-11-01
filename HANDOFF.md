@@ -1,3 +1,7 @@
+# Inline OpenCode execution checkpoint — 2026-11-01
+
+Read [20261101T232037Z-opencode-wrap-inline-checkpoint.md](docs/superpowers-backplane/handoffs/20261101T232037Z-opencode-wrap-inline-checkpoint.md) and invoke RESUME against that exact path. Five approved plans are in progress; no OpenCode live acceptance or closure is claimed. Latest V1 preflight authenticated but requested model was absent. Supporting helper sources and result records are archived in [20261101T232037Z-opencode-wrap-checkpoint](tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/manifest.json). Checkpoint transport is local only.
+
 # Completed #5 session handoff — November 1, 2026
 
 Read the append-only

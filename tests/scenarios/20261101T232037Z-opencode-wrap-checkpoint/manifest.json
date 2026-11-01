@@ -1,0 +1,175 @@
+{
+  "created_at": "2026-11-01T23:20:37.797911+00:00",
+  "root": "U:\\repos\\agents\\superpowers-backplane",
+  "origin": "https://github.com/tvproductions/superpowers-backplane.git",
+  "head_before_checkpoint": "df7ca4a880904b8e5e9f154cb5b0d8f7a565b593",
+  "branch": "main",
+  "remote_tracking_head_not_freshly_fetched": "34c59af8164be3a8516f7750c0b98e0fff48e405",
+  "plans": [
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-opencode-remaining-acceptance-probe-contract.md",
+      "blob": "1b856ff783c9cfd88d0e06184be894f16651898b",
+      "sha256": "505c7cc80b804b194a5871a1ca1b220b60fb73e45caf73480e50462850a2a7cd"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-21-opencode-v1-setup.md",
+      "blob": "9c83ebb065dca67041d1cfac9528adf7e6a5d549",
+      "sha256": "75fb883a21754bce1ac557061b4dbc5296b757ee39f154181227f5ce60100fca"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-23-opencode-v2-setup.md",
+      "blob": "8e1a6e35765410b0ea917eaee586aad8fa08af02",
+      "sha256": "8d4e3f12c1f127f9e274a90df0eabd79191a4962fdce5a61cbd21e8ce55bb6b3"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-22-opencode-v1-lifecycle.md",
+      "blob": "9718bd77eac6520a52b01563ab2997728af03398",
+      "sha256": "43eff90f02486fc48bcbcab76f2dc3cce04a1fd9ed896772ee178e13859481d3"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-24-opencode-v2-lifecycle.md",
+      "blob": "882b389bf49ced3e7de517a4146cfd822e9c29e5",
+      "sha256": "fe7398dcbc76f7fe1ab0f107a79e77e8bd8733e69ea58cbdad6f882d92235f64"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-12-opencode-final-acceptance.md",
+      "blob": "60a8904e0d2286c03d898a10aedfe575440c3468",
+      "sha256": "60c8a46fa9264dee429e669ad7ff304fc4d1b328dad32ac38a2682ad894f931c"
+    }
+  ],
+  "specs": [
+    {
+      "path": "docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md",
+      "blob": "a790d953691d178f711757e9164afb60932eb65a"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md",
+      "blob": "e1e42d0b89bf950b988b05097dd011c6490aefe6"
+    }
+  ],
+  "artifacts": [
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex-result.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-result.json",
+      "sha256": "584c13758dc5cdfd3da1b87eec83a3e0bd4171c4a5a82140d9f60d7d5f2ad006"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex-operations.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-operations.json",
+      "sha256": "0c569e48186709095434d34d649b816eeb5d20f3ad362c4e22e8b9ffa3a52f6c"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex-conformance.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-conformance.json",
+      "sha256": "b6fc8506119537bc3faa512716b1f9d52dda344b255d7a5a90242427f3bfe101"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex-setup-result.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-setup-result.json",
+      "sha256": "9d9087c92bb85891263e340ca598be651dfd1788bfb7671006daa20c66732d48"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex_probe.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_probe.py.txt",
+      "sha256": "8a3688df341fe6278797ffd81e9ccfb3f59641896c6d252214cb803a577e8d77"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex_operations.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_operations.py.txt",
+      "sha256": "33824eedb8b34acd309ecc4978f9b9cdc305dcf734861dea3edd145d0ede1a5c"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex_setup.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_setup.py.txt",
+      "sha256": "9c1bdc4648a4a3bdd9ab91fcafafceac794019ede8a2d2a56e52ee6c3bd81b9a"
+    },
+    {
+      "source": ".sp-bp/work/issue-4/acceptance-wrap/codex_conformance.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_conformance.py.txt",
+      "sha256": "9a848b1b7b9651745e395d5f37fb7a3ad1b94873967ac66a4f2f5df904fc24f0"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/acceptance.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-acceptance.py.txt",
+      "sha256": "35a88954c86f3a6488df91caf90fbe6cf7e69e515419f3dec09b3a0016152050"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/test_acceptance.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-test_acceptance.py.txt",
+      "sha256": "2f74df0157bb430bbba5298fd956d57ecbefc201cf65f09332ba62e79ee6160d"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/probe.py",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-probe.py.txt",
+      "sha256": "91f4c61d3b8583d862cfa28accc4c845ab899854f56eeda28be1619496d0a4d7"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/preflight.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-preflight.json",
+      "sha256": "f5287b4058b45860dae1ed1ec1611cf6927aa73f0fa09eaf009b44b2dbfccbae"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/fixture-identity.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-fixture-identity.json",
+      "sha256": "fa89dcefc90371e8e4d546abc1c3a3be0cf1aa7e18392cbc204cfa7f7506a7b1"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/scorer-green.txt",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-scorer-green.txt",
+      "sha256": "58f383e67dcf575f9df44d0f44beb8d0f4a9a666928520bd2b4c1e33d846a9e6"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/scorer-red.txt",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-scorer-red.txt",
+      "sha256": "947a12d2b36906a1d339151463606aae7292f9ea5f6340090342f1db01a5c99a"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/scorer-floor-red.txt",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-scorer-floor-red.txt",
+      "sha256": "6f5cb0dc59026d7de2079d739429de19ad94851537a2978afdb39aa5676d88c4",
+      "normalization": "Trailing whitespace removed from archived test log; original retained in ignored scratch"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/captures/version.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-version.json",
+      "sha256": "81537840cb009980757e1a9178118a360de6cafd08129c667bec0adbb0dc1207"
+    },
+    {
+      "source": ".sp-bp/work/issue-21/captures/models.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-models.json",
+      "sha256": "bb639486b89f28fb692aa797bc59d52b00d8c5a2010c8e2933713006924ac598"
+    },
+    {
+      "source": ".sp-bp/work/opencode-wrap-planning/issue-12.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-12-intake.json",
+      "sha256": "3437325a9fa30ee1b0566a8b2b4fb2899ddf3a5341adfa2571aa594dc4119b5f"
+    },
+    {
+      "source": ".sp-bp/work/opencode-wrap-planning/issue-21.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-intake.json",
+      "sha256": "c77eac1ae035eb65ce5c20ddedd3bba5d2cdecfc040e44d36a0294ccf557a581"
+    },
+    {
+      "source": ".sp-bp/work/opencode-wrap-planning/issue-22.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-22-intake.json",
+      "sha256": "27cf3e80a21aff99e960f06515a744ebfdd00d63a22a77884e4111cea3e99e68"
+    },
+    {
+      "source": ".sp-bp/work/opencode-wrap-planning/issue-23.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-23-intake.json",
+      "sha256": "0015bad0f256c6f9e692f4bf32d2ef581939278f68fbb2344403c07c3c568bd7"
+    },
+    {
+      "source": ".sp-bp/work/opencode-wrap-planning/issue-24.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-24-intake.json",
+      "sha256": "0c456ff2b19b8150f6910f8621493254dafecc9b609f86c16d4a6e15f5c63256"
+    },
+    {
+      "source": ".sp-bp/work/opencode-wrap-planning/workspace-identity.json",
+      "archive": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/workspace-identity.json",
+      "sha256": "d5ccd301062bb8c30df071ee69eaabaf728b3f7cfd6ea003797fa3b49927244a"
+    }
+  ],
+  "acceptance_status": "INCOMPLETE; no OpenCode live setup or lifecycle acceptance yet; no issue transitions",
+  "transport": "Local checkpoint only; no push or cross-machine arrival verified"
+}

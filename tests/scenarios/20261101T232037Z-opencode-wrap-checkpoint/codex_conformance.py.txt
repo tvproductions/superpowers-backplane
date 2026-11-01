@@ -1,0 +1,47 @@
+"""Run the four mapped behavioral cases in fresh installed Codex sessions."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+
+root=Path.cwd().resolve()
+area=(root/'.sp-bp/work/issue-4/acceptance-wrap').resolve(strict=True)
+profile=(root/'.sp-bp/work/issue-4/codex-profile').resolve(strict=True)
+project=(area/'native-project').resolve(strict=True)
+env=os.environ.copy(); env['CODEX_HOME']=str(profile)
+bp=profile/'plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0'
+sp=profile/'plugins/cache/superpowers-dev/superpowers/7.0.1'
+names=('managing-superpowers-backlog','managing-superpowers-handoffs')
+for name in names:
+    p=bp/f'skills/{name}/SKILL.md'; text=p.read_text(encoding='utf-8')
+    assert text.startswith('---\n') and re.search(r'^name: '+re.escape(name)+r'$',text,re.M)
+    assert re.search(r'^description: Use when',text,re.M)
+    for target in re.findall(r'\]\(([^)]+)\)',text):
+        assert target.startswith('http') or (p.parent/target).exists(),target
+cases=[('native-issue-intake','2026-08-16-native-issue-intake-green.md',0),
+       ('language-neutral-verification','2026-08-16-native-issue-intake-green.md',1),
+       ('lifecycle-transitions','2026-08-16-lifecycle-transition-refactor.md',0),
+       ('superpowers-installation','2026-08-16-superpowers-installation-refactor.md',0)]
+output={'skill_structure':'PASS','source':'d557b27452ba5fb60188f06c1736c8cdc8ce9d53',
+        'upstream':'2ce8aa15d05bd57213e6f746f953aafb7ded7a8b','cases':[]}
+for name,source,index in cases:
+    path=root/'tests/scenarios'/source
+    prompt=re.findall(r'(?ms)^```text\r?\n(.*?)^```',path.read_text(encoding='utf-8'))[index].rstrip()
+    instruction='This is an operator-authorized read-only installed-public-package conformance test. All project/issue/checkout facts in the scenario below are hypothetical. Do not inspect this working repository, query real GitHub, change any file/profile/issue/checkout, use apps/MCP, inspect credentials/settings/environment or delegate. Show hypothetical commands as response text only. Read the exact installed using-superpowers and Backplane skill/reference files as needed, never parent repository discovery links. Native automatic approval review remains enabled for public skill reads. Installed upstream root: '+str(sp)+'; installed Backplane root: '+str(bp)+'\n\n'
+    (area/f'codex-conformance-{name}-prompt.txt').write_text(instruction+prompt,encoding='utf-8')
+    stream=area/f'codex-conformance-{name}.jsonl'; assert not stream.exists()
+    with stream.open('w',encoding='utf-8') as out, (area/f'codex-conformance-{name}.stderr.txt').open('w',encoding='utf-8') as err:
+        p=subprocess.run(['codex','exec','--approve-for-me','--json','--ephemeral','-C',str(project),'-'],input=instruction+prompt,
+                         text=True,encoding='utf-8',cwd=root,env=env,stdout=out,stderr=err,timeout=300)
+    events=[json.loads(s) for s in stream.read_text(encoding='utf-8').splitlines() if s.strip()]
+    calls=[r['item'] for r in events if r.get('type')=='item.completed' and r.get('item',{}).get('type')=='command_execution']
+    response=[r['item']['text'] for r in events if r.get('item',{}).get('type')=='agent_message'][-1:]
+    output['cases'].append({'id':name,'exit':p.returncode,'prompt_source':str(path.relative_to(root)),
+                            'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
+                            'commands':[{'command':c['command'],'exit_code':c.get('exit_code')} for c in calls],
+                            'response':response,'scoring':'PENDING manual rubric scoring'})
+    (area/'codex-conformance.json').write_text(json.dumps(output,indent=2,ensure_ascii=True)+'\n',encoding='utf-8')
+    assert p.returncode==0 and calls and all(c.get('exit_code')==0 for c in calls)
+    print(name,'capture complete; manual scoring pending',flush=True)

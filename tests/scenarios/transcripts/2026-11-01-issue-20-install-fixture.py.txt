@@ -1,0 +1,66 @@
+"""Install the immutable candidate through the native Git package resolver."""
+
+import importlib.util
+import json
+import subprocess
+from pathlib import Path
+
+spec = importlib.util.spec_from_file_location(
+    "host_smoke", Path(__file__).with_name("host-smoke.py")
+)
+assert spec is not None and spec.loader is not None
+m = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(m)
+candidate = "7e7094c730b605bc28e5dd410501a22414091a70"
+source = m.AREA / "sources/backplane"
+assert source.parent.resolve().is_relative_to(m.AREA)
+if source.exists():
+    raise SystemExit("Occupied fixture source; inspect instead of overwriting")
+source.parent.mkdir(exist_ok=True)
+assert (
+    Path(
+        subprocess.check_output(
+            ["git", "-C", str(m.WORKTREE), "rev-parse", "--show-toplevel"],
+            text=True,
+            encoding="utf-8",
+        ).strip()
+    ).resolve()
+    == m.WORKTREE.resolve()
+)
+subprocess.run(
+    ["git", "clone", "--no-hardlinks", str(m.WORKTREE), str(source)],
+    check=True,
+    capture_output=True,
+)
+assert (
+    Path(
+        subprocess.check_output(
+            ["git", "rev-parse", "--show-toplevel"],
+            cwd=source,
+            text=True,
+            encoding="utf-8",
+        ).strip()
+    ).resolve()
+    == source.resolve()
+)
+assert (
+    subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=source, text=True, encoding="utf-8"
+    ).strip()
+    == candidate
+)
+assert not (source / ".git/objects/info/alternates").exists()
+with (m.AREA / "execution.md").open("a", encoding="utf-8") as ledger:
+    ledger.write(
+        f"\nTask 3: Ruling: use a non-bare local clone instead of the planned bare mirror because AGENTS requires show-toplevel identity checks before fixture mutations. Native Git-package source semantics are unchanged; cost is an extra checkout.\nFixture source: {source.resolve()}; origin {m.WORKTREE}; starting HEAD {candidate}; purpose native immutable Git-package smoke; no hardlinks/alternates.\n"
+    )
+package = "git+" + source.as_uri() + "#" + candidate
+for variant in ("v1", "v2"):
+    config = m.AREA / "profiles" / variant / "config/opencode/opencode.json"
+    document = json.loads(config.read_text(encoding="utf-8"))
+    key = "plugin" if variant == "v1" else "plugins"
+    assert len(document[key]) == 2
+    document[key].append(package)
+    m.write_json(config, document)
+print("Configured native Git-package candidate", candidate)
+print("Source", package)

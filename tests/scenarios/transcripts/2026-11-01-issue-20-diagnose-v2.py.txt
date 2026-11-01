@@ -1,0 +1,93 @@
+"""Bounded private-server initialization observation; raw logs stay ignored."""
+
+import base64
+import importlib.util
+import json
+import secrets
+import socket
+import subprocess
+import time
+import urllib.request
+from pathlib import Path
+
+spec = importlib.util.spec_from_file_location(
+    "host_smoke", Path(__file__).with_name("host-smoke.py")
+)
+assert spec is not None and spec.loader is not None
+m = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(m)
+profile = m.AREA / "profiles/v2"
+cwd = profile / "config/opencode"
+env = m.child_env(profile, "v2")
+password = secrets.token_urlsafe(32)
+env["OPENCODE_PASSWORD"] = password
+with socket.socket() as sock:
+    sock.bind(("127.0.0.1", 0))
+    port = sock.getsockname()[1]
+headers = {
+    "x-opencode-directory": str(cwd),
+    "Authorization": "Basic "
+    + base64.b64encode(("opencode:" + password).encode()).decode(),
+}
+
+
+def get(route):
+    request = urllib.request.Request(
+        f"http://127.0.0.1:{port}/api/{route}", headers=headers
+    )
+    with urllib.request.urlopen(request, timeout=3) as response:
+        return json.load(response)
+
+
+with (m.AREA / "captures/v2-initialization-diagnostic.log").open("wb") as output:
+    proc = subprocess.Popen(
+        [
+            str(m.V2_EXE),
+            "serve",
+            "--hostname",
+            "127.0.0.1",
+            "--port",
+            str(port),
+            "--print-logs",
+            "--log-level",
+            "debug",
+        ],
+        cwd=cwd,
+        env=env,
+        stdout=output,
+        stderr=subprocess.STDOUT,
+        creationflags=subprocess.CREATE_NO_WINDOW,
+    )
+    try:
+        deadline = time.monotonic() + 30
+        samples = []
+        while time.monotonic() < deadline:
+            try:
+                get("config")
+                value = get("skill")
+                names = [x.get("id") for x in value.get("data", [])]
+                samples.append(names)
+                if "using-superpowers" in names:
+                    break
+            except (OSError, ValueError):
+                pass
+            time.sleep(0.3)
+        for route in ("skill", "plugin", "config"):
+            value = get(route)
+            m.write_json(m.AREA / f"captures/v2-diagnostic-{route}.json", value)
+            if route != "config":
+                print(
+                    route,
+                    [
+                        (x.get("id"), x.get("state", {}).get("status"))
+                        for x in value.get("data", [])
+                    ],
+                )
+        print("samples", len(samples), "first", samples[:2], "last", samples[-1:])
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            proc.wait()

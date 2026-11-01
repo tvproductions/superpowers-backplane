@@ -28,6 +28,8 @@ This repository is in bootstrap state. Start with `HANDOFF.md`.
 
 For Codex, follow the [installation and setup guide](docs/installing-codex.md).
 For Claude Code, follow the [installation and setup guide](docs/installing-claude-code.md).
+For OpenCode V1/V2, see the [initial installation guide](docs/installing-opencode.md);
+setup, lifecycle and final integrated acceptance remain pending.
 
 Upstream Superpowers supplies the development workflow; this Backplane adds
 native GitHub backlog and product continuity around that workflow. gz-skills

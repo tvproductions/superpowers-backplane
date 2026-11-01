@@ -1,6 +1,12 @@
 # Handoff
 
-## Issue #20 terminal-only handoff and Git sync — November 1, 2026
+## Issue #20 local integration — November 1, 2026
+
+The operator selected local main integration of reviewed source/evidence branch head 3d90ac41f962a7dff2cdd76fce4f2090674f8eca. Both authenticated native smokes and all16 final evidence checks passed against product candidate bc6d30e; see tests/scenarios/2026-11-01-issue-20-unblock.md and its screened receipt. Native #20 is OPEN/active, observed revision 2026-11-01T16:33:53Z. Local main verification is recorded separately; earlier native evidence is not a newly installed merged-target claim.
+
+Main retains the approved #20 plan and unapproved #4/#5 drafts. MIT was selected for #4. No push, PR, issue closure, release or cleanup is authorized by the local merge choice. Preserve the source branch, host-owned worktree and test profiles. The entries below are historical snapshots.
+
+## Historical: Issue #20 terminal-only handoff and Git sync — November 1, 2026
 
 Read the append-only [current session handoff](docs/superpowers-backplane/handoffs/20261101T155220Z-issue-20-terminal-auth-and-git-sync.md) before continuing.
 Unfinished #20 source/evidence is retained on `handoff/issue-20-opencode-auth`
@@ -25,6 +31,42 @@ The first approval-review rejection was resolved after remote identity/privacy
 and exact-content checks; subsequent normal pushes succeeded. No backlog state
 was changed. Do not merge/close #20 or infer native/hosted acceptance from transport.
 Older entries below preserve historical completed work.
+
+## Historical: Issue #20 local implementation — November 1, 2026
+
+Operator constraint: no desktop or browser UI control. The original V1 login
+launcher waited at method selection; it now selects native headless sign-in,
+with URL/code entry performed manually by the operator. The owned browser-mode
+login was canceled. Combined helper tests pass 13/13; no new sign-in or native
+acceptance is claimed by this correction.
+
+The operator approved the revised #20 implementation plan and inline execution.
+The shared OpenCode adapter and initial-install guide are locally committed in
+native detached worktree `C:/Users/Jeff/.codex/worktrees/fc58/superpowers-backplane`,
+product candidate `bc6d30e54621c8a1747a0f2baa0551f25080b06a`, based on
+standalone main `337aa19`. The approved plan bytes are preserved. Read the
+[execution checkpoint](tests/scenarios/2026-11-01-issue-20-execution-checkpoint.md)
+and its linked report/receipt before continuing.
+
+Nine adapter tests and eleven receipt tests pass; five owned Python helpers
+pass Ruff/format/ty. Native V1 1.18.31 and V2 2.1.4 discover the Git-installed
+skills independently from upstream; both final 67-file inventory comparisons
+and protected-state checks pass. Fresh independent source review found two
+Important verification-tool gaps, corrected by demonstrated negative controls;
+no adapter defect or unresolved Minor was reported.
+
+Native #20 is OPEN/`backplane:blocked`, observed revision
+`2026-11-01T15:00:05Z`, with recorded resume target `backplane:active`.
+The [lifecycle receipt](tests/scenarios/2026-11-01-issue-20-lifecycle.json)
+preserves the guarded transitions and exact blocker.
+
+Overall #20 acceptance remains UNKNOWN: both profiles lack completed native
+model authentication, and two V2 OAuth requests expired. Revalidate the exact
+workspace, issue semantics, profile paths/provenance/auth and model availability
+before native fresh-session tests. Do not copy credentials or replay expired
+OAuth requests. The checkpoint links foreground sign-in commands. No merge,
+push, release, issue closure or cleanup occurred. #4/#5 remain separate drafts.
+These records are local; remote arrival is unverified and not claimed.
 
 ## Local tooling refresh — October 31, 2026
 

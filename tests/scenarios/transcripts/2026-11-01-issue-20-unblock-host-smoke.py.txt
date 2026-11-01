@@ -1,0 +1,919 @@
+"""Owned, disposable #20 host orchestration. No normal-profile fallback."""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import contextlib
+import hashlib
+import json
+import os
+import re
+import secrets
+import socket
+import subprocess
+import time
+import urllib.request
+import zipfile
+from pathlib import Path
+from typing import Any
+
+AREA = Path(__file__).resolve().parent
+ROOT = AREA.parents[2]
+WORKTREE = Path("C:/Users/Jeff/.codex/worktrees/fc58/superpowers-backplane")
+V2_EXE = Path(
+    "C:/Users/Jeff/AppData/Roaming/npm/node_modules/@opencode/cli/bin/opencode.exe"
+)
+ARCHIVE_SHA = "0ecd7ffc7f26390ce7799e7bcd409e4f11c410144308a6a5b0fcdce63d871006"
+NAMES = (
+    "using-superpowers",
+    "managing-superpowers-backlog",
+    "managing-superpowers-handoffs",
+)
+FLAGS = (
+    "auth_verified",
+    "source_isolated",
+    "gh_capabilities_verified",
+    "package_inventory_matches",
+    "protected_state_unchanged",
+    "upstream_verified",
+    "configuration_verified",
+)
+REQUIRED = (
+    "variant",
+    "host_version",
+    "host_source_sha",
+    "host_executable_sha256",
+    "candidate_sha",
+    "package_spec",
+    "installed_package_root",
+    "profile",
+    "upstream_origin",
+    "upstream_revision",
+    "upstream_skill_path",
+    "upstream_root",
+    "configuration_sources",
+    "model",
+    "session_id",
+    "commands",
+    "skills",
+    "captures",
+    "before",
+    "after",
+    *FLAGS,
+)
+
+
+def digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def classify_smoke(record: dict[str, Any]) -> str:
+    unknown = any(record.get(key) in (None, "", [], {}) for key in REQUIRED)
+    if any(record.get(key) is False for key in FLAGS):
+        return "FAIL"
+    unknown |= any(record.get(key) is not True for key in FLAGS)
+    candidate, target = record.get("candidate_sha"), record.get("package_spec")
+    if (
+        candidate
+        and target
+        and (
+            not isinstance(candidate, str)
+            or not re.fullmatch(r"[0-9a-f]{40}", candidate)
+            or not isinstance(target, str)
+            or not target.startswith("git+")
+            or not target.endswith("#" + candidate)
+        )
+    ):
+        return "FAIL"
+    if record.get("upstream_origin") not in (
+        None,
+        "",
+        "https://github.com/obra/superpowers.git",
+    ):
+        return "FAIL"
+    for command in record.get("commands", []):
+        if command.get("timeout") or command.get("returncode") not in (0, None):
+            return "FAIL"
+        if command.get("returncode") is None:
+            unknown = True
+    skills = record.get("skills", {})
+    if set(skills) != set(NAMES):
+        unknown = True
+    package = record.get("installed_package_root")
+    profile = record.get("profile")
+    cache_root = None
+    if profile:
+        expected_cache = (
+            Path(profile).parents[1] / "cache" / Path(profile).name
+            if record.get("variant") == "v1"
+            else Path(profile) / "cache"
+        ).resolve()
+        cache_root = Path(record.get("cache_root") or Path(profile) / "cache").resolve()
+        if cache_root != expected_cache:
+            return "FAIL"
+    if (
+        package
+        and profile
+        and cache_root
+        and not Path(package).resolve().is_relative_to(cache_root)
+    ):
+        return "FAIL"
+    for name in NAMES:
+        skill = skills.get(name, {})
+        if skill.get("loaded") is False:
+            return "FAIL"
+        if skill.get("loaded") is not True:
+            unknown = True
+        if any(
+            skill.get(key) in (None, "")
+            for key in ("path", "sha256", "loaded", "capture_sha256")
+        ):
+            unknown = True
+        if (
+            skill.get("path")
+            and package
+            and name != "using-superpowers"
+            and not Path(skill["path"])
+            .resolve()
+            .is_relative_to(Path(package).resolve())
+        ):
+            return "FAIL"
+        if skill.get("loaded") is True and skill.get("capture_sha256") not in {
+            entry.get("sha256") for entry in record.get("captures", [])
+        }:
+            unknown = True
+    loaded_upstream = skills.get("using-superpowers", {}).get("path")
+    upstream_path, upstream_root = (
+        record.get("upstream_skill_path"),
+        record.get("upstream_root"),
+    )
+    if (
+        upstream_path
+        and loaded_upstream
+        and Path(upstream_path).resolve() != Path(loaded_upstream).resolve()
+    ):
+        return "FAIL"
+    if (
+        upstream_root
+        and loaded_upstream
+        and Path(loaded_upstream).resolve()
+        != (Path(upstream_root) / "skills/using-superpowers/SKILL.md").resolve()
+    ):
+        return "FAIL"
+    if profile:
+        for source in record.get("configuration_sources", []):
+            if not isinstance(source, str) or not Path(source).resolve().is_relative_to(
+                Path(profile).resolve()
+            ):
+                return "FAIL"
+    if (
+        record.get("before")
+        and record.get("after")
+        and record["before"] != record["after"]
+    ):
+        return "FAIL"
+    return "UNKNOWN" if unknown else "PASS"
+
+
+def collect_skill_events(
+    stream: str, identities: dict[str, Any], capture: str
+) -> str | None:
+    session_id = None
+
+    def visit(value: Any) -> None:
+        nonlocal session_id
+        if isinstance(value, dict):
+            if isinstance(value.get("sessionID"), str):
+                session_id = value["sessionID"]
+            state = value.get("state", {})
+            if value.get("tool") == "skill" and isinstance(state, dict):
+                name = state.get("input", {}).get("name") or state.get("input", {}).get(
+                    "id"
+                )
+                if name in identities:
+                    if state.get("status") == "completed":
+                        identities[name].update(loaded=True, capture_sha256=capture)
+                    elif state.get("status") == "error":
+                        identities[name].update(loaded=False, capture_sha256=capture)
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+
+    for line in stream.splitlines():
+        try:
+            visit(json.loads(line))
+        except ValueError:
+            continue
+    return session_id
+
+
+def child_env(profile: Path, variant: str) -> dict[str, str]:
+    env = {
+        key: value
+        for key, value in os.environ.items()
+        if not key.upper().startswith("OPENCODE_")
+    }
+    # Windows environment names are case-insensitive; remove inherited aliases.
+    names = (
+        "HOME",
+        "USERPROFILE",
+        "APPDATA",
+        "LOCALAPPDATA",
+        "PROGRAMDATA",
+        "TMPDIR",
+        "TMP",
+        "TEMP",
+        "XDG_CONFIG_HOME",
+        "XDG_DATA_HOME",
+        "XDG_CACHE_HOME",
+        "XDG_STATE_HOME",
+    )
+    env = {key: value for key, value in env.items() if key.upper() not in names}
+    env.update(
+        {
+            "HOME": str(profile / "home"),
+            "USERPROFILE": str(profile / "home"),
+            "OPENCODE_TEST_HOME": str(profile / "home"),
+            "APPDATA": str(profile / "roaming"),
+            "LOCALAPPDATA": str(profile / "local"),
+            "ProgramData": str(profile / "programdata"),
+            "OPENCODE_CONFIG_DIR": str(profile / "config/opencode"),
+        }
+    )
+    for kind in ("config", "data", "cache", "state"):
+        env[f"XDG_{kind.upper()}_HOME"] = str(profile / kind)
+    for name in ("TMPDIR", "TMP", "TEMP"):
+        env[name] = str(profile / "tmp")
+    if variant == "v1":
+        env.update(
+            OPENCODE_DISABLE_PROJECT_CONFIG="true", OPENCODE_DISABLE_AUTOUPDATE="true"
+        )
+        env["XDG_CACHE_HOME"] = str(profile.parents[1] / "cache" / profile.name)
+    return env
+
+
+def owned_directory(path: Path) -> None:
+    resolved = path.resolve()
+    if resolved == AREA or not resolved.is_relative_to(AREA):
+        raise ValueError(f"Escaping fixture directory: {path}")
+    marker = path / ".issue-20-owner"
+    if path.exists():
+        if not marker.is_file() or marker.read_text(encoding="utf-8") != "issue-20\n":
+            raise ValueError(f"Unknown occupied path: {path}")
+    else:
+        path.mkdir(parents=True)
+        marker.write_text("issue-20\n", encoding="utf-8")
+
+
+def write_json(path: Path, value: object) -> None:
+    path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+
+
+def prepare() -> None:
+    assert AREA.resolve().is_relative_to(ROOT.resolve())
+    subprocess.run(
+        ["git", "check-ignore", str(AREA / "probe")],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    for variant in ("v1", "v2"):
+        profile = AREA / "profiles" / variant
+        owned_directory(profile)
+        for folder in (
+            "home",
+            "config/opencode",
+            "data",
+            "cache",
+            "state",
+            "roaming",
+            "local",
+            "tmp",
+            "programdata",
+        ):
+            (profile / folder).mkdir(exist_ok=True, parents=True)
+        config = profile / "config/opencode/opencode.json"
+        if not config.exists():
+            upstream = str((ROOT / ".agents/superpowers").resolve(strict=True))
+            sentinel = AREA / "sentinel"
+            owned_directory(sentinel)
+            (sentinel / "package.json").write_text(
+                '{"name":"issue-20-preservation-sentinel","type":"module","main":"index.js"}\n',
+                encoding="utf-8",
+            )
+            (sentinel / "index.js").write_text(
+                'export const Sentinel = async () => ({});\nexport default {id:"issue-20-preservation-sentinel",server:Sentinel,setup:async () => {}};\n',
+                encoding="utf-8",
+            )
+            document = {
+                "plugin" if variant == "v1" else "plugins": [upstream, str(sentinel)]
+            }
+            if variant == "v2":
+                document["update"] = "disable"
+            write_json(config, document)
+    hosts = AREA / "hosts/v1"
+    owned_directory(hosts)
+    archive = hosts / "opencode-windows-x64.zip"
+    if not archive.exists():
+        subprocess.run(
+            [
+                "gh",
+                "release",
+                "download",
+                "v1.18.31",
+                "--repo",
+                "anomalyco/opencode",
+                "--pattern",
+                archive.name,
+                "--dir",
+                str(hosts),
+            ],
+            check=True,
+            timeout=55,
+        )
+    if digest(archive) != ARCHIVE_SHA:
+        raise ValueError("V1 archive digest mismatch")
+    executable = hosts / "opencode.exe"
+    if not executable.exists():
+        with zipfile.ZipFile(archive) as bundle:
+            for item in bundle.infolist():
+                target = (hosts / item.filename).resolve()
+                if not target.is_relative_to(
+                    hosts.resolve()
+                ) or item.filename.startswith(("/", "\\")):
+                    raise ValueError("Unsafe archive member")
+            bundle.extractall(hosts)
+    print(
+        "Prepared owned profiles and verified V1 release archive; normal profiles untouched."
+    )
+
+
+def host_command(variant: str, args: list[str], label: str) -> dict[str, Any]:
+    profile = AREA / "profiles" / variant
+    owned_directory(profile)
+    if variant == "v1":
+        owned_directory(Path(child_env(profile, variant)["XDG_CACHE_HOME"]))
+    executable = AREA / "hosts/v1/opencode.exe" if variant == "v1" else V2_EXE
+    captures = AREA / "captures"
+    owned_directory(captures)
+    sequence = len(list(captures.glob(f"{variant}-{label}-*.json")))
+    record: dict[str, Any] = {
+        "args": [str(executable), *args],
+        "cwd": str(profile / "config/opencode"),
+        "timeout": False,
+    }
+    try:
+        result = subprocess.run(
+            record["args"],
+            check=False,
+            cwd=record["cwd"],
+            env=child_env(profile, variant),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=55,
+        )
+        record.update(
+            returncode=result.returncode, stdout=result.stdout, stderr=result.stderr
+        )
+    except subprocess.TimeoutExpired:
+        record.update(
+            returncode=None, timeout=True, stdout="", stderr="bounded host timeout"
+        )
+    target = captures / f"{variant}-{label}-{sequence:03}.json"
+    record["capture_path"] = str(target)
+    write_json(target, record)
+    print(
+        json.dumps(
+            {
+                "variant": variant,
+                "label": label,
+                "returncode": record["returncode"],
+                "timeout": record["timeout"],
+                "capture": str(target.relative_to(ROOT)),
+            }
+        )
+    )
+    return record
+
+
+def preflight(variant: str) -> None:
+    version = host_command(variant, ["--version"], "version")
+    expected = "1.18.31" if variant == "v1" else "2.1.4"
+    if version["returncode"] != 0 or expected not in version["stdout"]:
+        raise ValueError("Selected host version unconfirmed")
+    host_command(variant, ["run", "--help"], "run-help")
+    host_command(variant, ["debug", "paths"], "paths")
+    if variant == "v1":
+        host_command(variant, ["debug", "config"], "config")
+        host_command(variant, ["debug", "skill"], "skills")
+    else:
+        location = AREA / "profiles/v2/config/opencode"
+        for route in ("config", "plugin", "skill"):
+            host_command(
+                variant,
+                [
+                    "api",
+                    "GET",
+                    f"/api/{route}",
+                    "--standalone",
+                    "--header",
+                    f"x-opencode-directory:{location}",
+                ],
+                route,
+            )
+    host_command(variant, ["auth", "list"], "auth-list")
+
+
+def git(*args: str, cwd: Path = WORKTREE, data: bytes | None = None) -> str:
+    return (
+        subprocess.check_output(["git", *args], cwd=cwd, input=data)
+        .decode("utf-8")
+        .strip()
+    )
+
+
+def protected_snapshot() -> dict[str, Any]:
+    paths = [
+        ROOT / name
+        for name in (
+            "plugin.json",
+            ".claude-plugin/plugin.json",
+            ".agents/plugins/marketplace.json",
+            ".claude-plugin/marketplace.json",
+            "opencode.jsonc",
+            "README.md",
+        )
+    ]
+    paths += list((AREA / "sentinel").glob("*.js"))
+    paths += [AREA / "sentinel/package.json"]
+    paths += [
+        AREA / "profiles" / variant / "config/opencode/opencode.json"
+        for variant in ("v1", "v2")
+    ]
+    paths += list((ROOT / "skills").rglob("*.md"))
+    paths += [
+        Path.home() / ".config/opencode" / name
+        for name in ("opencode.json", "opencode.jsonc")
+    ]
+    upstream = ROOT / ".agents/superpowers"
+    return {
+        "files": {
+            str(path): digest(path) if path.is_file() else None for path in paths
+        },
+        "refs": git("for-each-ref", "--format=%(refname):%(objectname)", cwd=ROOT),
+        "main_head": git("rev-parse", "HEAD", cwd=ROOT),
+        "upstream_head": git("rev-parse", "HEAD", cwd=upstream),
+        "upstream_status": git("status", "--porcelain", cwd=upstream),
+    }
+
+
+@contextlib.contextmanager
+def private_v2_inventory():
+    profile = AREA / "profiles/v2"
+    cwd = profile / "config/opencode"
+    env = child_env(profile, "v2")
+    password = secrets.token_urlsafe(32)
+    env["OPENCODE_PASSWORD"] = password
+    with socket.socket() as sock:
+        sock.bind(("127.0.0.1", 0))
+        port = sock.getsockname()[1]
+    headers = {
+        "x-opencode-directory": str(cwd),
+        "Authorization": "Basic "
+        + base64.b64encode(("opencode:" + password).encode()).decode(),
+    }
+
+    def request(route: str) -> Any:
+        req = urllib.request.Request(
+            f"http://127.0.0.1:{port}/api/{route}", headers=headers
+        )
+        with urllib.request.urlopen(req, timeout=3) as response:
+            return json.load(response)
+
+    log = AREA / "captures/v2-private-acceptance.log"
+    with log.open("wb") as output:
+        proc = subprocess.Popen(
+            [str(V2_EXE), "serve", "--hostname", "127.0.0.1", "--port", str(port)],
+            cwd=cwd,
+            env=env,
+            stdout=output,
+            stderr=subprocess.STDOUT,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        )
+        try:
+            deadline = time.monotonic() + 45
+            inventory = None
+            while time.monotonic() < deadline:
+                try:
+                    configuration = request("config")
+                    skills = request("skill")
+                    plugins = request("plugin")
+                    ids = {entry.get("id") for entry in skills.get("data", [])}
+                    active = {
+                        entry.get("id")
+                        for entry in plugins.get("data", [])
+                        if entry.get("state", {}).get("status") == "active"
+                    }
+                    if (
+                        set(NAMES) <= ids
+                        and {
+                            "superpowers",
+                            "superpowers-backplane",
+                            "issue-20-preservation-sentinel",
+                        }
+                        <= active
+                    ):
+                        inventory = {
+                            "skills": skills,
+                            "plugins": plugins,
+                            "config": configuration,
+                        }
+                        break
+                except (OSError, ValueError):
+                    pass
+                time.sleep(0.25)
+            if inventory is None:
+                raise RuntimeError(
+                    "UNKNOWN: required native V2 skills/plugins did not become ready"
+                )
+            yield inventory
+        finally:
+            proc.terminate()
+            try:
+                proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                proc.wait()
+
+
+def installed_inventory(
+    variant: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if variant == "v1":
+        record = host_command("v1", ["debug", "skill"], "installed-skills")
+        return json.loads(record["stdout"]), [record]
+    with private_v2_inventory() as value:
+        target = AREA / "captures/v2-installed-inventory.json"
+        write_json(target, value)
+        return value["skills"]["data"], [
+            {
+                "returncode": 0,
+                "timeout": False,
+                "capture": str(target),
+                "sha256": digest(target),
+            }
+        ]
+
+
+def smoke(variant: str, candidate: str, model: str) -> None:
+    profile = AREA / "profiles" / variant
+    before = protected_snapshot()
+    inventory, commands = installed_inventory(variant)
+    if variant == "v1":
+        effective = host_command("v1", ["debug", "config"], "smoke-config")
+        commands.append(effective)
+        configuration = json.loads(effective["stdout"])
+        configuration_sources = sorted(
+            {entry["source"] for entry in configuration.get("plugin_origins", [])}
+        )
+        config_skills = configuration.get("skills", {}).get("paths", [])
+    else:
+        native = json.loads(
+            (AREA / "captures/v2-installed-inventory.json").read_text(encoding="utf-8")
+        )
+        configuration_sources = [
+            entry["path"] for entry in native["config"] if entry.get("path")
+        ]
+        config_skills = [
+            skill
+            for entry in native["config"]
+            for skill in entry.get("info", {}).get("skills", [])
+        ]
+    identities: dict[str, Any] = {}
+    package_root = None
+    inventory_matches = True
+    for entry in inventory:
+        name = entry.get("id", entry.get("name"))
+        if name not in NAMES:
+            continue
+        source = Path(entry.get("path", entry.get("location"))).resolve(strict=True)
+        identities[name] = {
+            "path": str(source),
+            "sha256": digest(source),
+            "loaded": None,
+            "capture_sha256": None,
+        }
+        if name != "using-superpowers":
+            package_root = source.parents[2]
+            relative = f"skills/{name}/SKILL.md"
+            observed = git(
+                "hash-object", "--stdin", "--path", relative, data=source.read_bytes()
+            )
+            expected = git("rev-parse", f"{candidate}:{relative}")
+            identities[name]["git_blob"] = observed
+            inventory_matches &= observed == expected
+    if package_root is None or set(identities) != set(NAMES):
+        raise RuntimeError("UNKNOWN: missing installed skill identities")
+    upstream = (ROOT / ".agents/superpowers").resolve(strict=True)
+    upstream_origin = git("remote", "get-url", "origin", cwd=upstream)
+    upstream_revision = git("rev-parse", "HEAD", cwd=upstream)
+    upstream_verified = (
+        upstream_origin == "https://github.com/obra/superpowers.git"
+        and upstream_revision == "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+        and not git("status", "--porcelain", cwd=upstream)
+        and Path(identities["using-superpowers"]["path"]).resolve()
+        == (upstream / "skills/using-superpowers/SKILL.md").resolve()
+    )
+    allowed_skills = {
+        str((upstream / "skills").resolve()),
+        str((package_root / "skills").resolve()),
+    }
+    configuration_verified = bool(configuration_sources) and all(
+        Path(source).resolve().is_relative_to(profile.resolve())
+        for source in configuration_sources
+    )
+    configuration_verified &= all(
+        isinstance(source, str) and str(Path(source).resolve()) in allowed_skills
+        for source in config_skills
+    )
+    if variant == "v1":
+        configuration_verified &= (
+            Path(
+                git("rev-parse", "--show-toplevel", cwd=profile / "config/opencode")
+            ).resolve()
+            == (profile / "config/opencode").resolve()
+        )
+    inventory_record = json.loads(
+        (AREA / "package-inventory.json").read_text(encoding="utf-8-sig")
+    )[0]
+    for entry in inventory_record["files"]:
+        relative = entry["path"]
+        installed = package_root / relative
+        if not installed.is_file():
+            inventory_matches = False
+            continue
+        expected = git("rev-parse", f"{candidate}:{relative}")
+        observed = git(
+            "hash-object", "--stdin", "--path", relative, data=installed.read_bytes()
+        )
+        inventory_matches &= expected == observed
+    auth = host_command(variant, ["auth", "list"], "smoke-auth")
+    commands.append(auth)
+    auth_text = (auth["stdout"] + auth["stderr"]).lower()
+    authenticated = (
+        auth["returncode"] == 0
+        and any(word in auth_text for word in ("openai", "chatgpt"))
+        and "0 credentials" not in auth_text
+        and "no authenticated" not in auth_text
+    )
+    session_id = None
+    if (
+        authenticated
+        and upstream_verified
+        and configuration_verified
+        and inventory_matches
+    ):
+        prompt = "Use the native skill tool to load using-superpowers, managing-superpowers-backlog, and managing-superpowers-handoffs. Report each tool result and its source path. Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery."
+        args = [
+            "run",
+            *(["--standalone"] if variant == "v2" else []),
+            "--format",
+            "json",
+            "--model",
+            model,
+            prompt,
+        ]
+        run = host_command(variant, args, "fresh-smoke")
+        commands.append(run)
+        capture = digest(Path(run["capture_path"]))
+
+        session_id = collect_skill_events(run["stdout"], identities, capture)
+    after = protected_snapshot()
+    executable = AREA / "hosts/v1/opencode.exe" if variant == "v1" else V2_EXE
+    config = json.loads(
+        (profile / "config/opencode/opencode.json").read_text(encoding="utf-8")
+    )
+    sources = config["plugin" if variant == "v1" else "plugins"]
+    record = {
+        "variant": variant,
+        "host_version": "1.18.31" if variant == "v1" else "2.1.4",
+        "host_source_sha": "014614d35b397775e5d397a490fc72368c894ec2"
+        if variant == "v1"
+        else "68bc26b7da1990ce10ffecfbc1e09eb13aa5d824",
+        "host_executable_sha256": digest(executable),
+        "candidate_sha": candidate,
+        "package_spec": sources[-1],
+        "installed_package_root": str(package_root),
+        "profile": str(profile),
+        "upstream_origin": upstream_origin,
+        "upstream_revision": before["upstream_head"],
+        "upstream_skill_path": identities["using-superpowers"]["path"],
+        "upstream_root": str(upstream),
+        "upstream_verified": upstream_verified,
+        "configuration_sources": configuration_sources,
+        "configuration_verified": configuration_verified,
+        "model": model,
+        "session_id": session_id,
+        "commands": commands,
+        "auth_verified": True if authenticated and session_id else None,
+        "cache_root": child_env(profile, variant)["XDG_CACHE_HOME"],
+        "source_isolated": package_root.is_relative_to(
+            Path(child_env(profile, variant)["XDG_CACHE_HOME"])
+        ),
+        "gh_capabilities_verified": json.loads(
+            (AREA / "gh-preflight.json").read_text(encoding="utf-8-sig")
+        ).get("verified")
+        is True
+        if (AREA / "gh-preflight.json").is_file()
+        else None,
+        "package_inventory_matches": inventory_matches,
+        "protected_state_unchanged": before == after,
+        "skills": identities,
+        "before": before,
+        "after": after,
+        "captures": [
+            {"path": str(path.relative_to(ROOT)), "sha256": digest(path)}
+            for path in [
+                *sorted((AREA / "captures").glob(f"{variant}-*.json")),
+                AREA / "package-inventory.json",
+                AREA / "gh-preflight.json",
+            ]
+        ],
+    }
+    record["score"] = classify_smoke(record)
+    # Public receipts include selected identity/status fields, not raw tool bodies.
+    for command in record["commands"]:
+        command.pop("stdout", None)
+        command.pop("stderr", None)
+    write_json(AREA / f"{variant}-smoke.json", record)
+    print(
+        json.dumps(
+            {
+                "variant": variant,
+                "score": record["score"],
+                "auth_verified": record["auth_verified"],
+                "package_inventory_matches": inventory_matches,
+                "protected_state_unchanged": before == after,
+            }
+        )
+    )
+
+
+def check_captures(record: dict[str, Any], root: Path = ROOT) -> bool:
+    if not isinstance(record.get("captures"), list) or not record["captures"]:
+        return False
+    for capture in record["captures"]:
+        path = (root / capture["path"]).resolve()
+        if (
+            not path.is_relative_to(root.resolve())
+            or not path.is_file()
+            or digest(path) != capture.get("sha256")
+        ):
+            return False
+    return True
+
+
+def verify_record(record: dict[str, Any]) -> dict[str, bool]:
+    candidate = record["candidate_sha"]
+    package_root = Path(record["installed_package_root"]).resolve(strict=True)
+    package = json.loads(git("show", f"{candidate}:package.json"))
+    tracked = git("ls-tree", "-r", "--name-only", candidate).splitlines()
+    expected_paths = {"package.json"} | {
+        p
+        for p in tracked
+        if any(
+            p == rule.rstrip("/") or p.startswith(rule.rstrip("/") + "/")
+            for rule in package["files"]
+        )
+    }
+    inventory = json.loads(
+        (AREA / "package-inventory.json").read_text(encoding="utf-8-sig")
+    )[0]
+    actual_paths = {entry["path"] for entry in inventory["files"]}
+    identities_match = expected_paths == actual_paths
+    for relative in actual_paths:
+        installed = (package_root / relative).resolve()
+        current = (WORKTREE / relative).resolve()
+        if (
+            not installed.is_relative_to(package_root)
+            or not installed.is_file()
+            or not current.is_file()
+        ):
+            identities_match = False
+            continue
+        expected = git("rev-parse", f"{candidate}:{relative}")
+        identities_match &= (
+            git(
+                "hash-object",
+                "--stdin",
+                "--path",
+                relative,
+                data=installed.read_bytes(),
+            )
+            == expected
+        )
+        identities_match &= (
+            git("hash-object", "--stdin", "--path", relative, data=current.read_bytes())
+            == expected
+        )
+    links_valid = True
+    documents = [
+        WORKTREE / "README.md",
+        WORKTREE / "docs/installing-opencode.md",
+        *list((WORKTREE / "skills").rglob("*.md")),
+    ]
+    for document in documents:
+        for href in re.findall(r"\]\(([^)]+)\)", document.read_text(encoding="utf-8")):
+            if "://" in href or href.startswith("#"):
+                continue
+            target = (document.parent / href.split("#")[0]).resolve()
+            links_valid &= target.is_file()
+            if document.is_relative_to(WORKTREE / "skills"):
+                installed_target = package_root / target.relative_to(WORKTREE)
+                links_valid &= (
+                    installed_target.resolve().is_relative_to(package_root)
+                    and installed_target.is_file()
+                )
+    upstream = (ROOT / ".agents/superpowers").resolve(strict=True)
+    loaded_upstream = Path(record["skills"]["using-superpowers"]["path"]).resolve(
+        strict=True
+    )
+    executable = AREA / "hosts/v1/opencode.exe" if record["variant"] == "v1" else V2_EXE
+    return {
+        "schema_and_score": classify_smoke(record) == "PASS"
+        and record.get("score") == "PASS",
+        "capture_integrity": check_captures(record),
+        "current_package_inventory_and_candidate": identities_match,
+        "guide_and_runtime_links": links_valid,
+        "upstream_provenance_and_path": git("remote", "get-url", "origin", cwd=upstream)
+        == record["upstream_origin"]
+        == "https://github.com/obra/superpowers.git"
+        and git("rev-parse", "HEAD", cwd=upstream) == record["upstream_revision"]
+        and loaded_upstream
+        == (upstream / "skills/using-superpowers/SKILL.md").resolve()
+        and digest(loaded_upstream) == record["skills"]["using-superpowers"]["sha256"],
+        "host_executable_identity": digest(executable)
+        == record["host_executable_sha256"],
+        "preservation_current": protected_snapshot()
+        == record["after"]
+        == record["before"],
+        "native_effective_configuration_verified": record.get("configuration_verified")
+        is True
+        and all(
+            Path(source).resolve().is_relative_to(Path(record["profile"]).resolve())
+            for source in record.get("configuration_sources", [])
+        ),
+    }
+
+
+def verify() -> None:
+    results: dict[str, dict[str, Any]] = {}
+    for variant in ("v1", "v2"):
+        path = AREA / f"{variant}-smoke.json"
+        if path.is_file():
+            record = json.loads(path.read_text(encoding="utf-8"))
+            results[variant] = {
+                "score": classify_smoke(record),
+                "checks": verify_record(record),
+            }
+        else:
+            results[variant] = {"score": "UNKNOWN", "checks": {}}
+    print(json.dumps(results))
+    write_json(AREA / "final-verification.json", results)
+    if any(
+        value["score"] != "PASS" or not all(value["checks"].values())
+        for value in results.values()
+    ):
+        raise SystemExit(1)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "operation", choices=("prepare", "preflight", "smoke", "verify")
+    )
+    parser.add_argument("--variant", choices=("v1", "v2"))
+    parser.add_argument("--candidate")
+    parser.add_argument("--model")
+    args = parser.parse_args()
+    if args.operation == "prepare":
+        prepare()
+    elif args.operation == "preflight" and args.variant:
+        preflight(args.variant)
+    elif args.operation == "smoke" and args.variant and args.candidate and args.model:
+        smoke(args.variant, args.candidate, args.model)
+    elif args.operation == "verify":
+        verify()
+    else:
+        raise SystemExit(
+            "UNKNOWN: native smoke/verification requires candidate evidence; not implemented yet"
+        )
+
+
+if __name__ == "__main__":
+    main()

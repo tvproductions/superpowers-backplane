@@ -1,0 +1,285 @@
+{
+  "observed_at": "2026-11-01T23:34:06.342282+00:00",
+  "handoff": "docs/superpowers-backplane/handoffs/20261101T233052Z-opencode-preflight-and-release-accounting.md",
+  "origin": "https://github.com/tvproductions/superpowers-backplane.git",
+  "verified_remote_main": "bd282c23e928ee77ac0173d1356750f160019442",
+  "included_preceding_local_commits": [
+    "df7ca4a880904b8e5e9f154cb5b0d8f7a565b593",
+    "f0a4ba1daaa02f17ac03c2c890c238931cf68cdc"
+  ],
+  "remote_tree_truncated": false,
+  "artifact_comparisons": [
+    {
+      "path": "HANDOFF.md",
+      "local_blob": "aa4f943912e240af0b0edf2f82ef0b9778297e48",
+      "remote_blob": "aa4f943912e240af0b0edf2f82ef0b9778297e48"
+    },
+    {
+      "path": "docs/superpowers-backplane/handoffs/20261101T232037Z-opencode-wrap-inline-checkpoint.md",
+      "local_blob": "ce5efb1f042cc9c6739f22b0dcf6d38ae883e9f4",
+      "remote_blob": "ce5efb1f042cc9c6739f22b0dcf6d38ae883e9f4"
+    },
+    {
+      "path": "docs/superpowers-backplane/handoffs/20261101T233052Z-opencode-preflight-and-release-accounting.md",
+      "local_blob": "75def8ba9c5acb810472121f1ca2122ca7987e13",
+      "remote_blob": "75def8ba9c5acb810472121f1ca2122ca7987e13"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-12-opencode-final-acceptance.md",
+      "local_blob": "60a8904e0d2286c03d898a10aedfe575440c3468",
+      "remote_blob": "60a8904e0d2286c03d898a10aedfe575440c3468"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-21-opencode-v1-setup.md",
+      "local_blob": "9c83ebb065dca67041d1cfac9528adf7e6a5d549",
+      "remote_blob": "9c83ebb065dca67041d1cfac9528adf7e6a5d549"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-22-opencode-v1-lifecycle.md",
+      "local_blob": "9718bd77eac6520a52b01563ab2997728af03398",
+      "remote_blob": "9718bd77eac6520a52b01563ab2997728af03398"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-23-opencode-v2-setup.md",
+      "local_blob": "8e1a6e35765410b0ea917eaee586aad8fa08af02",
+      "remote_blob": "8e1a6e35765410b0ea917eaee586aad8fa08af02"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-issue-24-opencode-v2-lifecycle.md",
+      "local_blob": "882b389bf49ced3e7de517a4146cfd822e9c29e5",
+      "remote_blob": "882b389bf49ced3e7de517a4146cfd822e9c29e5"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-opencode-remaining-acceptance-probe-contract.md",
+      "local_blob": "1b856ff783c9cfd88d0e06184be894f16651898b",
+      "remote_blob": "1b856ff783c9cfd88d0e06184be894f16651898b"
+    },
+    {
+      "path": "docs/superpowers-backplane/plans/2026-11-01-opencode-wrap-approval.json",
+      "local_blob": "351746621c2dccf28ab9a7840dd587f5a64821dd",
+      "remote_blob": "351746621c2dccf28ab9a7840dd587f5a64821dd"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-conformance.json",
+      "local_blob": "bcd1bf820ece5a57bac11642feab55d73acc1e8b",
+      "remote_blob": "bcd1bf820ece5a57bac11642feab55d73acc1e8b"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-operations.json",
+      "local_blob": "6ec7fe5687d95c61204d46b919e8ef026cc1481c",
+      "remote_blob": "6ec7fe5687d95c61204d46b919e8ef026cc1481c"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-result.json",
+      "local_blob": "bdf748fe2b0103cfdb974bb60dfa06f5f6a49428",
+      "remote_blob": "bdf748fe2b0103cfdb974bb60dfa06f5f6a49428"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex-setup-result.json",
+      "local_blob": "daf35f4fd69cb8c1329913e33c02c5a8c1a36428",
+      "remote_blob": "daf35f4fd69cb8c1329913e33c02c5a8c1a36428"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_conformance.py.txt",
+      "local_blob": "8508c2cf1c4e81ebe56bcf43752c6b18693a81ea",
+      "remote_blob": "8508c2cf1c4e81ebe56bcf43752c6b18693a81ea"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_operations.py.txt",
+      "local_blob": "fd15b561f3aa0b9c7760d2e7e60b0d6cd18bb98c",
+      "remote_blob": "fd15b561f3aa0b9c7760d2e7e60b0d6cd18bb98c"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_probe.py.txt",
+      "local_blob": "e0e6e0718288274c6baae76b187c24180911d0a1",
+      "remote_blob": "e0e6e0718288274c6baae76b187c24180911d0a1"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/codex_setup.py.txt",
+      "local_blob": "fc82eb6e5c18879f32e6bf87ca0e4cdbe0db6a6b",
+      "remote_blob": "fc82eb6e5c18879f32e6bf87ca0e4cdbe0db6a6b"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-12-intake.json",
+      "local_blob": "eebea3d64a03d1f171b5fea91617255040708292",
+      "remote_blob": "eebea3d64a03d1f171b5fea91617255040708292"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-acceptance.py.txt",
+      "local_blob": "4a33652b26b33698ec1a577fabac4f3c08343e81",
+      "remote_blob": "4a33652b26b33698ec1a577fabac4f3c08343e81"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-fixture-identity.json",
+      "local_blob": "65273d842399980da7a0218fab0ef54eae5744cc",
+      "remote_blob": "65273d842399980da7a0218fab0ef54eae5744cc"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-intake.json",
+      "local_blob": "4523db5a7fe8709b1a84394a64179daabb21643d",
+      "remote_blob": "4523db5a7fe8709b1a84394a64179daabb21643d"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-models.json",
+      "local_blob": "5f1ee7a81640a1216b38e2c16757337ac238e7e7",
+      "remote_blob": "5f1ee7a81640a1216b38e2c16757337ac238e7e7"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-preflight.json",
+      "local_blob": "5328e8142d5cf1b56d9c73192cbf157bf52eb1fc",
+      "remote_blob": "5328e8142d5cf1b56d9c73192cbf157bf52eb1fc"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-probe.py.txt",
+      "local_blob": "7b3d75ef0289dd998cdc4bf2edbdc50eb60083a4",
+      "remote_blob": "7b3d75ef0289dd998cdc4bf2edbdc50eb60083a4"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-scorer-floor-red.txt",
+      "local_blob": "3e038e364aa11bbb36baeb8c2a17d4f1a6ef28a4",
+      "remote_blob": "3e038e364aa11bbb36baeb8c2a17d4f1a6ef28a4"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-scorer-green.txt",
+      "local_blob": "620c606092843aed5fd1ecdda10ceafa16d86258",
+      "remote_blob": "620c606092843aed5fd1ecdda10ceafa16d86258"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-scorer-red.txt",
+      "local_blob": "ed372173a18b29c1b7a19db03a37b410b2623efe",
+      "remote_blob": "ed372173a18b29c1b7a19db03a37b410b2623efe"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-test_acceptance.py.txt",
+      "local_blob": "730d77fe67b8493ba63c89c051387bc5678a00cb",
+      "remote_blob": "730d77fe67b8493ba63c89c051387bc5678a00cb"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-21-version.json",
+      "local_blob": "3a5d6e900f825b223fa81dc038510add5a6ea608",
+      "remote_blob": "3a5d6e900f825b223fa81dc038510add5a6ea608"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-22-intake.json",
+      "local_blob": "4b48d3cdbf6de84973e9e6fda227bec5cf1ad73a",
+      "remote_blob": "4b48d3cdbf6de84973e9e6fda227bec5cf1ad73a"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-23-intake.json",
+      "local_blob": "db18fc146b5f0ca917dcd1fee5d439f5f45d5136",
+      "remote_blob": "db18fc146b5f0ca917dcd1fee5d439f5f45d5136"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/issue-24-intake.json",
+      "local_blob": "548ff3066f3c10dad7a5f340da55163a4225aa56",
+      "remote_blob": "548ff3066f3c10dad7a5f340da55163a4225aa56"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/manifest.json",
+      "local_blob": "e43d6fc8ba35d5de7a188fd7dc0af1b831614f9d",
+      "remote_blob": "e43d6fc8ba35d5de7a188fd7dc0af1b831614f9d"
+    },
+    {
+      "path": "tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/workspace-identity.json",
+      "local_blob": "813262627a38d9fbbae6d4c0a2424283f21aac1f",
+      "remote_blob": "813262627a38d9fbbae6d4c0a2424283f21aac1f"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/execution-summary.txt",
+      "local_blob": "a2426dfb5f330eae2b4ab209f00011ebd8f5cbd0",
+      "remote_blob": "a2426dfb5f330eae2b4ab209f00011ebd8f5cbd0"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/identity.json",
+      "local_blob": "ae0ba63fd2edd59daf51d5e4f4efef0ab4093cfb",
+      "remote_blob": "ae0ba63fd2edd59daf51d5e4f4efef0ab4093cfb"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-1.json",
+      "local_blob": "587355674e9d528feecff21daba19b55f01b5851",
+      "remote_blob": "587355674e9d528feecff21daba19b55f01b5851"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-12.json",
+      "local_blob": "eebea3d64a03d1f171b5fea91617255040708292",
+      "remote_blob": "eebea3d64a03d1f171b5fea91617255040708292"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-21.json",
+      "local_blob": "4523db5a7fe8709b1a84394a64179daabb21643d",
+      "remote_blob": "4523db5a7fe8709b1a84394a64179daabb21643d"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-22.json",
+      "local_blob": "4b48d3cdbf6de84973e9e6fda227bec5cf1ad73a",
+      "remote_blob": "4b48d3cdbf6de84973e9e6fda227bec5cf1ad73a"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-23.json",
+      "local_blob": "db18fc146b5f0ca917dcd1fee5d439f5f45d5136",
+      "remote_blob": "db18fc146b5f0ca917dcd1fee5d439f5f45d5136"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-24.json",
+      "local_blob": "548ff3066f3c10dad7a5f340da55163a4225aa56",
+      "remote_blob": "548ff3066f3c10dad7a5f340da55163a4225aa56"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-31.json",
+      "local_blob": "546434d19fa417d57fd0076d014462ca16c28458",
+      "remote_blob": "546434d19fa417d57fd0076d014462ca16c28458"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-4.json",
+      "local_blob": "123f01c65275f86a1b010c0d1e07d9c96e06911f",
+      "remote_blob": "123f01c65275f86a1b010c0d1e07d9c96e06911f"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-5.json",
+      "local_blob": "0b082942513146333502e283ceda2d06caaa95de",
+      "remote_blob": "0b082942513146333502e283ceda2d06caaa95de"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-6.json",
+      "local_blob": "ea81e317b4857f5c52616d56bd8eb41e014fe0e5",
+      "remote_blob": "ea81e317b4857f5c52616d56bd8eb41e014fe0e5"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-7.json",
+      "local_blob": "58c94f1f6b3f0e28a2c7de80f255a14849826743",
+      "remote_blob": "58c94f1f6b3f0e28a2c7de80f255a14849826743"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/manifest.json",
+      "local_blob": "e72b232e079dc932142f3a7f2e80b329e670ed63",
+      "remote_blob": "e72b232e079dc932142f3a7f2e80b329e670ed63"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/native-preflight.json",
+      "local_blob": "8e16bcfc2270f3de7c26814948d8a3b2f0efedc2",
+      "remote_blob": "8e16bcfc2270f3de7c26814948d8a3b2f0efedc2"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/releases.json",
+      "local_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "remote_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/starter-source-sha.txt",
+      "local_blob": "df55600284859d72e1a6d707791bf3d39f17ff09",
+      "remote_blob": "df55600284859d72e1a6d707791bf3d39f17ff09"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/starter-versioning.md",
+      "local_blob": "3e07676e61796d7ecc4162628920aedc4fdf7a9c",
+      "remote_blob": "3e07676e61796d7ecc4162628920aedc4fdf7a9c"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/tags.json",
+      "local_blob": "17212447ad865132483dcdfa48ef076935b051fb",
+      "remote_blob": "17212447ad865132483dcdfa48ef076935b051fb"
+    }
+  ],
+  "manifest_committed_hashes": "all18 matched",
+  "scope": "Requested handoff and Git sync; no issue mutation, version bump, release, rescope or cleanup. Receipt storage commit is later than verified handoff target."
+}

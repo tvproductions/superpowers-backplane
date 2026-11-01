@@ -1,4 +1,19 @@
-# Issues #4/#5 local execution — November 1, 2026
+# Issues #4/#5 published main integration — November 1, 2026
+
+The operator approved publication, immutable issue bindings and main integration,
+and requested removal of the implementation branch/worktree. Main delivery
+`5678922` is published and verified with31 matching GitHub blobs; post-merge
+package9/9 and evidence23/23 plus Ruff/format/ty pass. GitHub recognizes MIT.
+Both approved plans are linked immutably from native #4/#5; scope, criteria,
+labels and graph remain unchanged. Both issues remain OPEN/backlog with their
+recorded acceptance gaps. The implementation worktree `fb9c` and redundant owned
+stash are removed; no temporary implementation branch was created. Unrelated
+worktrees remain untouched. Read the
+[integration/cleanup receipt](tests/scenarios/2026-11-01-issues-4-5-integration.md)
+before resuming on this standalone main. Its evidence-storage commit is later
+than the evaluated delivery. Older entries below are historical.
+
+# Historical: Issues #4/#5 local execution — November 1, 2026
 
 Both plans were approved and implementation started in native detached worktree
 `C:/Users/Jeff/.codex/worktrees/fb9c/superpowers-backplane`. Read the

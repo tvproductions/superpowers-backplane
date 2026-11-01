@@ -1,0 +1,332 @@
+{
+  "schema": "superpowers-backplane-issues-4-5-integration/v1",
+  "observed_at": "2026-11-01T22:03:02.960835+00:00",
+  "authority": "Operator: approve, but do not keep braches and worktrees, merge back to main",
+  "repository": "https://github.com/tvproductions/superpowers-backplane.git",
+  "integration": "fast-forward main; no temporary source branch created",
+  "delivery": "567892202e0f9d326ba375b2345d9615237174e3",
+  "source_evidence": "588e1acd26bbe6aa11c4e396c2bee17765088902",
+  "plan_preservation": "8de107f26b7a63fae35d83b4aab2ad3147fb395b",
+  "remote_delivery_verified": "567892202e0f9d326ba375b2345d9615237174e3",
+  "remote_blob_comparisons": {
+    "HANDOFF.md": "437c5ddb288486082aad30570d8019e2cc95316f",
+    "LICENSE": "a87a7d852be1ddbc40ef23d1639b802bf09a90f0",
+    "README.md": "e445e2c74bedb0e622c6bcb8060d550d18ab9789",
+    "docs/adopter-operations.md": "d1dfaa3cdc95fde0cfda918fe366cb0df191f6af",
+    "docs/superpowers-backplane/plans/2026-11-01-issue-4-license-and-operations.md": "949e561175ab0bbde3ac72416dc0a3e6324239e7",
+    "docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md": "82ec8e3feee1d443859501dbbb98096a927700b7",
+    "docs/superpowers-backplane/plans/2026-11-01-issues-4-5-execution-checkpoint.md": "9714905f54f822b76591616ff5ba58027e726123",
+    "tests/scenarios/2026-11-01-issue-4-license-and-operations.json": "05f76de3c34daeb6a9516d82c6e1453d76144823",
+    "tests/scenarios/2026-11-01-issue-4-license-and-operations.md": "e154640c3ab589824038ecf7038d96af44885e36",
+    "tests/scenarios/2026-11-01-issue-5-self-hosting.json": "5fc964855292b727eaf9ac11486680f6b2d409fc",
+    "tests/scenarios/2026-11-01-issue-5-self-hosting.md": "d049c698f708fb9767f4250848863df1af364747",
+    "tests/scenarios/2026-11-01-issues-4-5-review.md": "c7ddaf2152301a69656b4dc0cfd3049686d94cd3",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-claude-fresh-discovery.json": "1e45c2610796405f068a434c8158adf644c7143f",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-claude-install.json": "88dc6e8be7c44c4bb8abfd1397a40101ab8ff320",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-claude-install.ps1.txt": "a8952f4470a1bbb903b07ab91f1e6f04eec05b3a",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-claude-lifecycle.json": "05554f0fa913c2cc526eff5ed4737af2957f2764",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-codex-fresh-discovery.json": "192a6d9ff5274f1eceb7a45f2d124619cbca332a",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-codex-replay.json": "3f347aac9ca89fcb0486c160dfb0512a22bc47dc",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-codex-replay.ps1.txt": "fc218216963818e731dfb2ff8f3767ddce6e4fdd",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-complete_inventory.py.txt": "3fd3ccbef8277162d12eb12ae584c87d0f5e540a",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-review-green.txt": "977847dcfa042cf94cca5ccfab487be2e6245ff0",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-review-red.txt": "a897ee1f039c9bbba12ffa67c3ea5892f6d93e90",
+    "tests/scenarios/transcripts/2026-11-01-issue-4-test_complete_inventory.py.txt": "eb76aa62165be643d5609325abbad167de1d4b9d",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-native-recommendation.json": "ad6dedf07b240c9e7759fc36c6f9cdbda558b04c",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-review-actual-shape.json": "3c761de07a0e0861cd0baa295ee58b601a682bcd",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-review-green.txt": "e75a5c9332b89c80bf13c474287bfe9f0297b5dd",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-review-red.txt": "41b9deba9a82dfe755be555aed32444e65ecc699",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-test_verify_self_hosting.py.txt": "2bfef0a74f6db83c319d3711973a426e5dc9299e",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-validator-green.txt": "cddee7c779f583ff7d81e1392cc4c1964dff2a37",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-validator-red.txt": "423f9dcebad1aed03e8ab2c7c3e1d6d7bb6526c9",
+    "tests/scenarios/transcripts/2026-11-01-issue-5-verify_self_hosting.py.txt": "8d7fea186de66788a917bcf7d08a170875a45b1c"
+  },
+  "hosted_license": {
+    "path": "LICENSE",
+    "sha": "a87a7d852be1ddbc40ef23d1639b802bf09a90f0",
+    "spdx_id": "MIT"
+  },
+  "postmerge_checks": {
+    "package_tests": "9/9 PASS",
+    "evidence_tests": "23/23 PASS from merged tracked transcript sources",
+    "receipt_validator": "valid_structure true; no satisfaction inferred",
+    "ruff": "PASS",
+    "format": "4 files already formatted",
+    "ty": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "issues": {
+    "4": {
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+              "number": 6,
+              "state": "OPEN",
+              "title": "Run an external adoption pilot and fresh conformance suite",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nGive adopters clear legal terms and operational guidance for installing and maintaining Backplane.\n\n## Bounded Scope\n\n### Allowed\n\n- An explicit human-approved repository license.\n- README quick start and supported-scope statement.\n- Installation prerequisites, update, rollback, uninstall, troubleshooting, and security-sensitive authorization guidance.\n\n### Out of Scope\n\n- Choosing a license without human approval.\n- Claiming support for unverified harnesses.\n- Replacing project-owned deployment or verification policy.\n\n## Acceptance Criteria\n\n- GitHub recognizes the approved license.\n- The README accurately distinguishes supported, experimental, and out-of-scope surfaces.\n- An adopter can follow the documented setup, update, rollback, and removal paths without undocumented maintainer knowledge.\n- Documentation states that GitHub Projects and IssueOps are not required and no project runtime is imposed.\n\n## Verification Seams\n\n- Confirm `gh repo view` reports the intended license.\n- Execute every documented command path in a clean adoption fixture.\n- Review documentation against the approved v0.1 adoption contract and current compatibility evidence.\n\n## Superpowers Artifacts\n\nDesign authority: human license selection plus the approved v0.1 adoption contract.\n\nPlan: not yet created.",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 4,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Add licensing and adopter operations guidance",
+        "updatedAt": "2026-08-23T13:55:22Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+              "number": 6,
+              "state": "OPEN",
+              "title": "Run an external adoption pilot and fresh conformance suite",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nGive adopters clear legal terms and operational guidance for installing and maintaining Backplane.\n\n## Bounded Scope\n\n### Allowed\n\n- An explicit human-approved repository license.\n- README quick start and supported-scope statement.\n- Installation prerequisites, update, rollback, uninstall, troubleshooting, and security-sensitive authorization guidance.\n\n### Out of Scope\n\n- Choosing a license without human approval.\n- Claiming support for unverified harnesses.\n- Replacing project-owned deployment or verification policy.\n\n## Acceptance Criteria\n\n- GitHub recognizes the approved license.\n- The README accurately distinguishes supported, experimental, and out-of-scope surfaces.\n- An adopter can follow the documented setup, update, rollback, and removal paths without undocumented maintainer knowledge.\n- Documentation states that GitHub Projects and IssueOps are not required and no project runtime is imposed.\n\n## Verification Seams\n\n- Confirm `gh repo view` reports the intended license.\n- Execute every documented command path in a clean adoption fixture.\n- Review documentation against the approved v0.1 adoption contract and current compatibility evidence.\n\n## Superpowers Artifacts\n\nDesign authority: human license selection plus the approved v0.1 adoption contract.\n\nApproved implementation plan (operator approval 2026-11-01; unchanged blob 949e561175ab0bbde3ac72416dc0a3e6324239e7; consumed semantic revision 2026-08-23T13:55:22Z): https://github.com/tvproductions/superpowers-backplane/blob/567892202e0f9d326ba375b2345d9615237174e3/docs/superpowers-backplane/plans/2026-11-01-issue-4-license-and-operations.md\n\nPublished partial implementation and execution evidence, directly integrated into main by operator selection: 567892202e0f9d326ba375b2345d9615237174e3.\n\nExecution assessment (acceptance remains incomplete; no completed closure claimed): https://github.com/tvproductions/superpowers-backplane/blob/567892202e0f9d326ba375b2345d9615237174e3/tests/scenarios/2026-11-01-issue-4-license-and-operations.md\n\nThe operator approved publication, immutable plan binding, main integration and cleanup on 2026-11-01. This artifact update preserves objective, bounded scope, criteria, verification seams and native graph. Product satisfaction and completed closure remain separate gates.",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 4,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Add licensing and adopter operations guidance",
+        "updatedAt": "2026-11-01T22:00:15Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/4"
+      },
+      "scope": "Only immutable artifact bindings and issue5 stale design-authority pointer corrected; state, labels, scope, criteria and native graph preserved"
+    },
+    "5": {
+      "before": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5rm_A",
+              "number": 10,
+              "state": "CLOSED",
+              "title": "Implement skills-only session handoff continuity",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/10"
+            },
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+              "number": 2,
+              "state": "CLOSED",
+              "title": "Define the v0.1 adoption, installation, and mutation contract",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+            }
+          ],
+          "totalCount": 2
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+              "number": 6,
+              "state": "OPEN",
+              "title": "Run an external adoption pilot and fresh conformance suite",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nDemonstrate that Backplane can govern its own v0.1.0 product arc using the same native issue contract required of adopters.\n\n## Bounded Scope\n\n### Allowed\n\n- Native lifecycle labels, parent/sub-issue relationships, blocking edges, revision reconciliation, artifact links, and closure evidence in this repository.\n- Exercising at least one executable leaf through the complete lifecycle.\n\n### Out of Scope\n\n- GitHub Projects or IssueOps.\n- Automated enforcement not required by field evidence.\n- Treating local plans or handoff documents as the backlog master.\n\n## Acceptance Criteria\n\n- Every open tracked issue has exactly one valid `backplane:*` label.\n- The release hierarchy and dependencies are represented natively rather than duplicated as authoritative prose.\n- At least one executable leaf progresses from backlog through verified completion under the approved contract.\n- Issue, specification, plan, integration, and verification evidence remain correctly layered.\n\n## Verification Seams\n\n- Run complete native intake on every release issue and inspect label cardinality, hierarchy, blockers, linked closing pull requests, and `updatedAt`.\n- Verify the selected leaf plan records its issue URL and consumed revision.\n- Verify closure happens only after integrated acceptance and fresh project-owned verification.\n- Exercise status, recommendation, and selection as zero-mutation paths, then authorized design, readiness, active, blocked, review, and completion transitions on disposable or explicitly authorized test issues; verify `updatedAt`, label cardinality, preserved unrelated labels, and blocker/PR gates after each action.\n\n## Superpowers Artifacts\n\nDesign authority: pending the approved v0.1 adoption contract.\n\nPlan: not yet created.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 5,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Validate Backplane self-hosting on its v0.1 product arc",
+        "updatedAt": "2026-09-19T14:16:55Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5rm_A",
+              "number": 10,
+              "state": "CLOSED",
+              "title": "Implement skills-only session handoff continuity",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/10"
+            },
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5EOlg",
+              "number": 2,
+              "state": "CLOSED",
+              "title": "Define the v0.1 adoption, installation, and mutation contract",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/2"
+            }
+          ],
+          "totalCount": 2
+        },
+        "blocking": {
+          "nodes": [
+            {
+              "id": "I_kwDOT6l9aM8AAAABN5EPyw",
+              "number": 6,
+              "state": "OPEN",
+              "title": "Run an external adoption pilot and fresh conformance suite",
+              "url": "https://github.com/tvproductions/superpowers-backplane/issues/6"
+            }
+          ],
+          "totalCount": 1
+        },
+        "body": "## Objective\n\nDemonstrate that Backplane can govern its own v0.1.0 product arc using the same native issue contract required of adopters.\n\n## Bounded Scope\n\n### Allowed\n\n- Native lifecycle labels, parent/sub-issue relationships, blocking edges, revision reconciliation, artifact links, and closure evidence in this repository.\n- Exercising at least one executable leaf through the complete lifecycle.\n\n### Out of Scope\n\n- GitHub Projects or IssueOps.\n- Automated enforcement not required by field evidence.\n- Treating local plans or handoff documents as the backlog master.\n\n## Acceptance Criteria\n\n- Every open tracked issue has exactly one valid `backplane:*` label.\n- The release hierarchy and dependencies are represented natively rather than duplicated as authoritative prose.\n- At least one executable leaf progresses from backlog through verified completion under the approved contract.\n- Issue, specification, plan, integration, and verification evidence remain correctly layered.\n\n## Verification Seams\n\n- Run complete native intake on every release issue and inspect label cardinality, hierarchy, blockers, linked closing pull requests, and `updatedAt`.\n- Verify the selected leaf plan records its issue URL and consumed revision.\n- Verify closure happens only after integrated acceptance and fresh project-owned verification.\n- Exercise status, recommendation, and selection as zero-mutation paths, then authorized design, readiness, active, blocked, review, and completion transitions on disposable or explicitly authorized test issues; verify `updatedAt`, label cardinality, preserved unrelated labels, and blocker/PR gates after each action.\n\n## Superpowers Artifacts\n\nDesign authority: the bounded issue body and the approved v0.1 adoption contract: https://github.com/tvproductions/superpowers-backplane/blob/567892202e0f9d326ba375b2345d9615237174e3/docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md (approved 2026-09-19; #2 completed).\n\nApproved implementation plan (operator approval 2026-11-01; unchanged blob 82ec8e3feee1d443859501dbbb98096a927700b7; consumed semantic revision 2026-09-19T14:16:55Z): https://github.com/tvproductions/superpowers-backplane/blob/567892202e0f9d326ba375b2345d9615237174e3/docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md\n\nPublished partial implementation and execution evidence, directly integrated into main by operator selection: 567892202e0f9d326ba375b2345d9615237174e3.\n\nExecution assessment (acceptance remains incomplete; no completed closure claimed): https://github.com/tvproductions/superpowers-backplane/blob/567892202e0f9d326ba375b2345d9615237174e3/tests/scenarios/2026-11-01-issue-5-self-hosting.md\n\nThe operator approved publication, immutable plan binding, main integration and cleanup on 2026-11-01. This artifact update preserves objective, bounded scope, criteria, verification seams and native graph. Product satisfaction and completed closure remain separate gates.\n",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 5,
+        "parent": {
+          "id": "I_kwDOT6l9aM8AAAABN5EOQg",
+          "number": 1,
+          "state": "OPEN",
+          "title": "Ship an adoptable Backplane v0.1.0 release",
+          "url": "https://github.com/tvproductions/superpowers-backplane/issues/1"
+        },
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Validate Backplane self-hosting on its v0.1 product arc",
+        "updatedAt": "2026-11-01T22:00:18Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/5"
+      },
+      "scope": "Only immutable artifact bindings and issue5 stale design-authority pointer corrected; state, labels, scope, criteria and native graph preserved"
+    }
+  },
+  "cleanup": {
+    "worktree": "C:\\Users\\Jeff\\.codex\\worktrees\\fb9c\\superpowers-backplane",
+    "canonical_owner": "C:\\Users\\Jeff\\.codex\\worktrees\\fb9c",
+    "root": "U:\\repos\\agents\\superpowers-backplane",
+    "delivery": "567892202e0f9d326ba375b2345d9615237174e3",
+    "tracked_untracked_and_ignored_clean": true,
+    "owned_stash": "2b3b7a4873fa4eec5606228607f0cd68d69d6fc4",
+    "approved_plan_blobs_preserved_in_main": true,
+    "owned_test_fixtures_preserved_elsewhere": true
+  },
+  "cleanup_result": {
+    "worktree_removed": true,
+    "registration_removed": true,
+    "source_branch_created": false,
+    "source_branch_retained": false,
+    "owned_stash_removed": true,
+    "unrelated_worktrees": "preserved",
+    "owned_generated_test_files_preserved": 172,
+    "authenticated_profiles": "retained under ignored standalone-root issue-4 area; credentials not copied"
+  },
+  "negative_results": [
+    "Initial issue-edit guard refused because PowerShell ConvertFrom-Json converted updatedAt to DateTime; DateKind String preserved exact original revision and guards were rerun before writes",
+    "Initial cleanup guard found ignored Node regression fixtures; provenance and canonical containment verified,172 files moved to owned ignored retention area,then clean worktree removed without force"
+  ],
+  "acceptance_limits": [
+    "Hosted MIT recognition now SATISFIED for exact published LICENSE",
+    "Full issue4 adopter-command acceptance remains incomplete",
+    "Issue5 assessment remains UNKNOWN for broader native readiness advice",
+    "Codex native skill-read execution-policy result remains UNKNOWN; not bypassed",
+    "No issue closure, release/tag, Project write or new hosted installation acceptance claimed"
+  ],
+  "receipt_storage": "This receipt is a later evidence-only commit; its own remote arrival is verified separately"
+}

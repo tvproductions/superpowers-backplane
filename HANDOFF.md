@@ -1,5 +1,28 @@
 # Handoff
 
+## Issue #20 terminal-only handoff and Git sync — November 1, 2026
+
+Read the append-only [current session handoff](docs/superpowers-backplane/handoffs/20261101T155220Z-issue-20-terminal-auth-and-git-sync.md) before continuing.
+Unfinished #20 source/evidence is retained on `handoff/issue-20-opencode-auth`
+at `84f0fd384e71bec1579df54971a926a916136f36`, with native worktree
+`C:/Users/Jeff/.codex/worktrees/fc58/superpowers-backplane`. Main stores the
+approved #20 plan and unapproved #4/#5 drafts, not the unfinished adapter.
+MIT was selected for #4; its plan and #5's plan still need approval.
+
+#20 remains OPEN/`backplane:blocked` at `2026-11-01T15:00:05Z`, resume target
+`backplane:active`. Source tests pass 9/9; helper tests pass 13/13, and six
+helpers pass Ruff/format/ty. Complete native smoke acceptance remains UNKNOWN.
+The headless V1 launcher correction is tested at the argument/import boundary,
+not claimed as a successful sign-in. No desktop or browser UI control is allowed;
+the operator performs browser authentication manually. No credentials are copied.
+
+The first publication batch was rejected by automatic approval review before
+execution. The expected existing remote is now verified PUBLIC with ADMIN access.
+The operator requested Git sync; transport remains pending at handoff creation.
+A later tracked sync receipt must verify arrival before another host is told it
+can resume. Do not merge/close #20 or infer native/hosted acceptance from a push.
+Older entries below preserve historical completed work.
+
 ## Local tooling refresh — October 31, 2026
 
 The operator authorized the dependency-review recommendations. Python is now

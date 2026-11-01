@@ -2,6 +2,12 @@
 
 ## Issue #20 local implementation — November 1, 2026
 
+Operator constraint: no desktop or browser UI control. The original V1 login
+launcher waited at method selection; it now selects native headless sign-in,
+with URL/code entry performed manually by the operator. The owned browser-mode
+login was canceled. Combined helper tests pass 13/13; no new sign-in or native
+acceptance is claimed by this correction.
+
 The operator approved the revised #20 implementation plan and inline execution.
 The shared OpenCode adapter and initial-install guide are locally committed in
 native detached worktree `C:/Users/Jeff/.codex/worktrees/fc58/superpowers-backplane`,

@@ -936,7 +936,11 @@
     },
     "login.py": {
       "path": "tests\\scenarios\\transcripts\\2026-11-01-issue-20-login.py.txt",
-      "sha256": "10654aee6b352276ef901e48b27f741591aac63a13195951e702cd4e070763e2"
+      "sha256": "a1d974f686cb8574e0b549ff9cc19ea74069c641d09df59723df834ca179c758"
+    },
+    "test_issue20_login.py": {
+      "path": "tests\\scenarios\\transcripts\\2026-11-01-issue-20-test_issue20_login.py.txt",
+      "sha256": "101350d10b44906a0fcf52578123440512d939dddab1f6956ece367ddea95df8"
     }
   },
   "limits": [
@@ -1008,5 +1012,13 @@
     "receipt": "tests/scenarios/2026-11-01-issue-20-lifecycle.json",
     "comment": "https://github.com/tvproductions/superpowers-backplane/issues/20#issuecomment-6559645339",
     "resume_target": "backplane:active"
+  },
+  "login_launcher_correction": {
+    "cause": "V1 native login waited for method selection; launcher had no explicit browser-opening action",
+    "operator_constraint": "No desktop or browser UI control. Operator performs browser sign-in manually.",
+    "change": "Select ChatGPT Pro/Plus (headless) explicitly for V1; guard argument parsing/process launch behind main",
+    "verification": "Two regression tests RED then GREEN; combined 13 helper tests pass; Ruff/format/ty pass on changed helpers",
+    "live_headless_login": "Not started or claimed verified",
+    "cancelled_login": "Owned V1 browser-method login canceled via its terminal session"
   }
 }

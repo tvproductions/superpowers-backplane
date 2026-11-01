@@ -1,0 +1,56 @@
+"""Login must be import-safe and select a terminal-only V1 method."""
+
+import importlib.util
+import sys
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+
+class LoginTests(unittest.TestCase):
+    def load(self):
+        spec = importlib.util.spec_from_file_location(
+            "issue20_login", Path(__file__).with_name("login.py")
+        )
+        assert spec is not None and spec.loader is not None
+        module = importlib.util.module_from_spec(spec)
+        with patch.object(sys, "argv", ["login.py", "--help"]):
+            try:
+                spec.loader.exec_module(module)
+            except SystemExit:
+                self.fail(
+                    "Importing the launcher must not parse arguments or start login"
+                )
+        return module
+
+    def test_v1_selects_headless_without_a_hidden_method_prompt(self):
+        module = self.load()
+        self.assertEqual(
+            module.native_login_args("v1"),
+            [
+                "auth",
+                "login",
+                "--provider",
+                "openai",
+                "--method",
+                "ChatGPT Pro/Plus (headless)",
+            ],
+        )
+
+    def test_v2_keeps_an_explicit_method_and_private_server(self):
+        module = self.load()
+        self.assertEqual(
+            module.native_login_args("v2"),
+            [
+                "auth",
+                "login",
+                "openai",
+                "--method",
+                "chatgpt-token-sharing",
+                "--standalone",
+            ],
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()

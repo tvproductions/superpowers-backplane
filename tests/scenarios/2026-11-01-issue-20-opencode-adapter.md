@@ -123,3 +123,19 @@ Rebuild both receipts and rerun the full final gate after successful native
 loads. Restore an issue's active resume target only after the blocker and its
 entry conditions have been revalidated. Integration/publication/closure remain
 separate decisions. #4/#5 plans were not approved or implemented by this task.
+
+## Login launcher correction and operator boundary
+
+The operator reported that no browser opened. Reproduction showed V1 was
+waiting at its Login method selector; the original launcher did not select a
+method or open a browser itself. The operator explicitly rejected desktop
+control. All desktop/browser UI automation stopped, and the owned browser-mode
+login was canceled via its terminal session. No sign-in completed.
+
+The V1 launcher now explicitly selects `ChatGPT Pro/Plus (headless)`, leaving
+URL/code entry to the operator in their own browser. Argument parsing/process
+launch is import-safe. Two regression tests were observed RED, then GREEN; the
+combined helper suite passes 13 tests, and changed helpers pass Ruff/format/ty.
+No new login was started to claim end-to-end success. Native authentication
+and model-backed acceptance remain UNKNOWN. Do not use desktop/browser UI
+automation to overcome this prerequisite on resume.

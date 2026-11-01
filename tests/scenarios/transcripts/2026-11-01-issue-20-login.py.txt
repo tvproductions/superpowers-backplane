@@ -1,28 +1,22 @@
-"""Foreground login for one existing owned profile; never copy credentials."""
+"""Terminal-only native login; the operator controls browser sign-in."""
 
 import argparse
 import importlib.util
 import subprocess
 from pathlib import Path
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--variant", choices=("v1", "v2"), required=True)
-args = parser.parse_args()
-spec = importlib.util.spec_from_file_location(
-    "host_smoke", Path(__file__).with_name("host-smoke.py")
-)
-assert spec is not None and spec.loader is not None
-runner = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(runner)
-profile = runner.AREA / "profiles" / args.variant
-runner.owned_directory(profile)
-executable = (
-    runner.AREA / "hosts/v1/opencode.exe" if args.variant == "v1" else runner.V2_EXE
-)
-native_args = (
-    ["auth", "login", "--provider", "openai"]
-    if args.variant == "v1"
-    else [
+
+def native_login_args(variant: str) -> list[str]:
+    if variant == "v1":
+        return [
+            "auth",
+            "login",
+            "--provider",
+            "openai",
+            "--method",
+            "ChatGPT Pro/Plus (headless)",
+        ]
+    return [
         "auth",
         "login",
         "openai",
@@ -30,11 +24,40 @@ native_args = (
         "chatgpt-token-sharing",
         "--standalone",
     ]
-)
-raise SystemExit(
-    subprocess.call(
-        [str(executable), *native_args],
-        cwd=profile / "config/opencode",
-        env=runner.child_env(profile, args.variant),
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--variant", choices=("v1", "v2"), required=True)
+    args = parser.parse_args()
+    spec = importlib.util.spec_from_file_location(
+        "host_smoke", Path(__file__).with_name("host-smoke.py")
     )
-)
+    assert spec is not None and spec.loader is not None
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+    profile = runner.AREA / "profiles" / args.variant
+    runner.owned_directory(profile)
+    executable = (
+        runner.AREA / "hosts/v1/opencode.exe" if args.variant == "v1" else runner.V2_EXE
+    )
+    print(
+        "This command does not control your desktop. Open the URL printed by OpenCode yourself.",
+        flush=True,
+    )
+    if args.variant == "v1":
+        print(
+            "V1 uses headless sign-in: enter its one-time code in your own browser.",
+            flush=True,
+        )
+    raise SystemExit(
+        subprocess.call(
+            [str(executable), *native_login_args(args.variant)],
+            cwd=profile / "config/opencode",
+            env=runner.child_env(profile, args.variant),
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

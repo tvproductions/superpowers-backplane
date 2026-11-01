@@ -1,3 +1,18 @@
+# Issue #5 completed and publication verified — November 1, 2026
+
+#5 is CLOSED/COMPLETED with zero lifecycle labels, observed revision
+`2026-11-01T22:46:57Z`. The operator requested completion and explicitly approved
+publication and closure. The four-criterion/eight-seam SATISFIED evaluation is
+published at `7c42702331d0eeafe449f826badbd862a1ba5729`; all 17 changed artifact
+blobs matched GitHub before native binding and closure. Published-target
+package9/9, evidence23/23, receipt validation and Ruff/format/ty pass. Read the
+[closeout receipt](tests/scenarios/2026-11-01-issue-5-closeout.md) before resuming.
+Its later storage identity is separate from verified delivery `1f07291` and
+assessment publication. Parent #1 remains OPEN9/17; pilot #6 still has five
+native blocker edges, with #4/#12 unresolved. #4 remains OPEN/backlog and retains
+its operation-specific gaps. No next issue selected, release, Project mutation,
+product checkpoint or cleanup. Earlier entries below retain historical scope.
+
 # Local acceptance continuation — November 1, 2026
 
 The operator resumed the #4/#5 thread and explicitly approved the public-context

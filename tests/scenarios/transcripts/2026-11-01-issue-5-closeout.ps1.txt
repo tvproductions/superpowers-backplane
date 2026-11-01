@@ -1,0 +1,83 @@
+param([ValidateSet('start','submit','bind','close')][string]$Action, [string]$AssessmentCommit)
+$ErrorActionPreference='Stop'
+$taskRoot=(git rev-parse --show-toplevel).Trim()
+if ($taskRoot -ne 'U:/repos/agents/superpowers-backplane' -or (git remote get-url origin).Trim() -ne 'https://github.com/tvproductions/superpowers-backplane.git') { throw 'Repository identity mismatch' }
+$taskArea=Join-Path $taskRoot '.sp-bp/work/issue-5/closeout'
+$taskFields='number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url'
+$taskInput=Get-Content -Raw -LiteralPath (Join-Path $taskRoot 'tests/scenarios/2026-11-01-issue-5-satisfaction.json') | ConvertFrom-Json -DateKind String
+function Read-TaskIssue {
+    $raw=gh issue view 5 --repo tvproductions/superpowers-backplane --json $taskFields
+    if ($LASTEXITCODE -ne 0) { throw 'Complete issue intake failed' }
+    return ($raw | ConvertFrom-Json -DateKind String)
+}
+function Check-TaskIssue($item,$label) {
+    if ($item.state -ne 'OPEN') { throw 'Issue is not open' }
+    $actual=@($item.labels | Where-Object name -like 'backplane:*' | ForEach-Object name)
+    if ($actual.Count -ne 1 -or $actual[0] -ne $label) { throw 'Unexpected lifecycle' }
+    foreach ($field in @('number','title','issueType','parent','subIssues','blockedBy','blocking','closedByPullRequestsReferences')) {
+        if ((ConvertTo-Json -InputObject $item.$field -Depth 100 -Compress) -cne (ConvertTo-Json -InputObject $taskInput.issue5.$field -Depth 100 -Compress)) { throw "Native input drift: $field" }
+    }
+    $actualCore=($item.body.Split('## Superpowers Artifacts')[0] -replace '\s+',' ').Trim()
+    $expectedCore=($taskInput.issue5.body.Split('## Superpowers Artifacts')[0] -replace '\s+',' ').Trim()
+    if ($actualCore -cne $expectedCore) { throw 'Objective, scope, acceptance or seam drift' }
+    $actualOther=@($item.labels | Where-Object name -notlike 'backplane:*' | ForEach-Object name | Sort-Object)
+    $expectedOther=@($taskInput.issue5.labels | Where-Object name -notlike 'backplane:*' | ForEach-Object name | Sort-Object)
+    if ((ConvertTo-Json -InputObject $actualOther -Compress) -cne (ConvertTo-Json -InputObject $expectedOther -Compress)) { throw 'Unrelated labels changed' }
+    foreach ($connection in @('subIssues','blockedBy','blocking')) { if (@($item.$connection.nodes).Count -ne $item.$connection.totalCount) { throw 'Truncated connection' } }
+    if (@($item.blockedBy.nodes | Where-Object state -ne 'CLOSED').Count -gt 0) { throw 'Open blocker' }
+}
+function Save-TaskReceipt($name,$value) {
+    $path=Join-Path $taskArea $name
+    if (Test-Path -LiteralPath $path) { throw 'Receipt collision' }
+    ConvertTo-Json -InputObject $value -Depth 100 | Set-Content -LiteralPath $path -Encoding utf8
+}
+function Move-TaskIssue($from,$to) {
+    $before=Read-TaskIssue
+    Check-TaskIssue $before $from
+    gh issue edit 5 --repo tvproductions/superpowers-backplane --remove-label $from --add-label $to
+    if ($LASTEXITCODE -ne 0) { throw 'Label transition failed' }
+    $after=Read-TaskIssue
+    Check-TaskIssue $after $to
+    Save-TaskReceipt "transition-$($from.Replace('backplane:',''))-$($to.Replace('backplane:','')).json" @{before=$before;after=$after;authority='Operator: yes complete #5';purpose='Current lifecycle reconciliation using existing approved artifacts; not a replay of historical implementation';observed_at=[DateTimeOffset]::UtcNow.ToString('o')}
+}
+if ($Action -eq 'start') {
+    Move-TaskIssue 'backplane:backlog' 'backplane:designing'
+    Move-TaskIssue 'backplane:designing' 'backplane:ready'
+    Move-TaskIssue 'backplane:ready' 'backplane:active'
+} elseif ($Action -eq 'submit') {
+    if ($taskInput.overall -ne 'SATISFIED' -or $taskInput.verification.result -ne 'PASS' -or $taskInput.review_acceptance.final_assessment_review -like 'pending*') { throw 'Final acceptance gates pending' }
+    Move-TaskIssue 'backplane:active' 'backplane:review'
+} elseif ($Action -eq 'bind') {
+    if ($AssessmentCommit -notmatch '^[0-9a-f]{40}$') { throw 'Full published assessment commit required' }
+    $before=Read-TaskIssue
+    Check-TaskIssue $before 'backplane:review'
+    $served=gh api "repos/tvproductions/superpowers-backplane/commits/$AssessmentCommit" --jq .sha
+    if ($LASTEXITCODE -ne 0 -or $served.Trim() -ne $AssessmentCommit) { throw 'Assessment not published' }
+    $append="`n`nFinal satisfaction evaluation: SATISFIED for verified delivery 1f072913414da2d9d1a2401b8449b7e3146bfd94 and the unchanged criteria. This supersedes the historical partial assessment disposition without rewriting it.`n`nhttps://github.com/tvproductions/superpowers-backplane/blob/$AssessmentCommit/tests/scenarios/2026-11-01-issue-5-satisfaction.md`n`nStructured evaluation: https://github.com/tvproductions/superpowers-backplane/blob/$AssessmentCommit/tests/scenarios/2026-11-01-issue-5-satisfaction.json`n`nFinal review: https://github.com/tvproductions/superpowers-backplane/blob/$AssessmentCommit/tests/scenarios/2026-11-01-issue-5-satisfaction-review.md`n`nThe operator explicitly requested completion of #5. Current lifecycle labels are reconciled through the allowed states using existing approved artifacts and current verification; these are current closeout observations, not newly repeated historical fixture or host acceptance.`n"
+    $bodyPath=Join-Path $taskArea 'issue5-final-body.md'
+    if (Test-Path -LiteralPath $bodyPath) { throw 'Body file collision' }
+    ($before.body.TrimEnd()+$append) | Set-Content -LiteralPath $bodyPath -Encoding utf8
+    $immediate=Read-TaskIssue
+    if ((ConvertTo-Json -InputObject $immediate -Depth 100 -Compress) -cne (ConvertTo-Json -InputObject $before -Depth 100 -Compress)) { throw 'Issue changed before body edit' }
+    gh issue edit 5 --repo tvproductions/superpowers-backplane --body-file $bodyPath
+    if ($LASTEXITCODE -ne 0) { throw 'Evaluation binding failed' }
+    $after=Read-TaskIssue
+    Check-TaskIssue $after 'backplane:review'
+    if ($after.body.TrimEnd() -cne ([System.IO.File]::ReadAllText($bodyPath).TrimEnd())) { throw 'Body mismatch' }
+    Save-TaskReceipt 'binding.json' @{before=$before;after=$after;assessment_commit=$AssessmentCommit;classification='Editorial evaluation-pointer addition only';observed_at=[DateTimeOffset]::UtcNow.ToString('o')}
+} elseif ($Action -eq 'close') {
+    $bound=Get-Content -Raw -LiteralPath (Join-Path $taskArea 'binding.json') | ConvertFrom-Json -DateKind String
+    $before=Read-TaskIssue
+    Check-TaskIssue $before 'backplane:review'
+    if ((ConvertTo-Json -InputObject $before -Depth 100 -Compress) -cne (ConvertTo-Json -InputObject $bound.after -Depth 100 -Compress)) { throw 'Issue changed after evaluation binding' }
+    gh issue close 5 --repo tvproductions/superpowers-backplane --reason completed
+    if ($LASTEXITCODE -ne 0) { throw 'Completed closure failed' }
+    $closed=Read-TaskIssue
+    if ($closed.state -ne 'CLOSED' -or $closed.stateReason -ne 'COMPLETED') { throw 'Closure not observed' }
+    gh issue edit 5 --repo tvproductions/superpowers-backplane --remove-label 'backplane:review'
+    if ($LASTEXITCODE -ne 0) { throw 'Closed lifecycle cleanup failed' }
+    $after=Read-TaskIssue
+    if ($after.state -ne 'CLOSED' -or $after.stateReason -ne 'COMPLETED' -or @($after.labels | Where-Object name -like 'backplane:*').Count -ne 0) { throw 'Final closed-state policy failed' }
+    if ($after.body -cne $before.body) { throw 'Body changed during closure' }
+    Save-TaskReceipt 'closed.json' @{before=$before;closed=$closed;after=$after;observed_at=[DateTimeOffset]::UtcNow.ToString('o')}
+}

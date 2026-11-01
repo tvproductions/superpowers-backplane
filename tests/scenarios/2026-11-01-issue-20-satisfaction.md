@@ -1,0 +1,15 @@
+# Issue #20 satisfaction — 2026-11-01
+
+Result: **SATISFIED** for [#20](https://github.com/tvproductions/superpowers-backplane/issues/20), evaluated native issue revision2026-11-01T16:33:53Z, approved plan blob `e8b35178b048c618801513d57bb14d51164672c8` and unchanged approved functional/rescope specifications. Evaluated published delivery: `386bdb5a8570360f5d34359c68f68947eb7a90fc`. User explicitly authorized remaining publication, acceptance and completed closeout. No PR exists: the operator selected direct local main merge, then authorized normal publication.
+
+| Exact current criterion | Accepted contribution | Result |
+|---|---|---|
+| One package entry point supports both native contracts; package metadata resolves canonical Backplane skill folders without duplicated authored copies. | Reviewed single adapter and package;9 runtime tests;70 declared package files match exact Git identities in both host caches. | SATISFIED |
+| The guide identifies the V1 and V2 configuration differences and uses a pinned Backplane source. Its install steps are replayed in a disposable session for each supported variant. | Published pinned Git source installed natively in V1 1.18.31 and V2 2.1.4; singular/plural plugin keys replayed; installed inventory, guide/runtime links and effective configuration pass. | SATISFIED |
+| Each fresh smoke session sees upstream using-superpowers plus both Backplane skills from separate installations. Unverified update, rollback, and uninstall instructions are clearly pending. | Both fresh authenticated openai/gpt-6.1-sol sessions complete all three native skill calls from independent upstream and host caches; later lifecycle scope remains explicitly pending in guide. | SATISFIED |
+
+[Structured evidence](2026-11-01-issue-20-satisfaction.json) preserves exact input body/graph, plan/spec blobs, both complete current smoke records, six screened native call summaries, snapshots, capture identities and76 GitHub-served blob matches. Final gate exits0 with both PASS/all16 checks true. Adapter9/9 and helper15/15 pass, plus Ruff lint/format and ty on six helpers and git diff --check. No configured GitHub workflow exists; no CI result is invented. Raw authentication streams remain ignored.
+
+Independent adapter review and fresh bounded helper review have no unresolved defects. The new published-target run supersedes local-only installation limitations for this delivery; historical failed and unknown attempts remain at their original identities. V1 uses the verified shorter owned cache and suffix-free immutable hosted URL; arbitrary longer Windows paths and other host versions are not certified.
+
+The later assessment-storage commit is distinct from the tested published delivery. This assessment is prepared before closure and does not claim that closure already happened. Parent release#1, pilot#6, setup/lifecycle#21–#24 and final acceptance#12 remain separate. No release/tag, Project mutation, product checkpoint or workspace cleanup occurs. Profiles, branch and worktree remain retained.

@@ -1,0 +1,68 @@
+"""One-use local reconciliation; no model request or configuration changes."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+from datetime import datetime, timezone
+
+root = Path.cwd().resolve()
+out = (root / '.sp-bp/work/issue-5/resume-acceptance').resolve(strict=True)
+assert out.is_relative_to(root / '.sp-bp/work/issue-5')
+
+def run(args, env=None):
+    p = subprocess.run(args, cwd=root, env=env, capture_output=True)
+    if p.returncode:
+        raise RuntimeError(f'{args[:3]} exited {p.returncode}')
+    return p.stdout
+
+def text(args, env=None):
+    return run(args, env).decode('utf-8').strip()
+
+result = {'observed_at': datetime.now(timezone.utc).isoformat(),
+          'root': str(root), 'head': text(['git','rev-parse','HEAD']),
+          'profiles': {}, 'policy': {}, 'limits': [
+              'Current installed payload checks only; no historical intermediate-operation acceptance',
+              'No new native discovery model run; rejected probe remains UNKNOWN',
+              'No credentials read or copied; auth output reduced to booleans']}
+for host, variable in [('codex', 'CODEX_HOME'), ('claude', 'CLAUDE_CONFIG_DIR')]:
+    profile = (root / f'.sp-bp/work/issue-4/{host}-profile').resolve(strict=True)
+    assert profile.is_relative_to(root / '.sp-bp/work/issue-4')
+    env = os.environ.copy()
+    env[variable] = str(profile)
+    if host == 'codex':
+        auth = subprocess.run(['codex','login','status'],env=env,capture_output=True)
+        logged = auth.returncode == 0 and b'Logged in' in auth.stdout + auth.stderr
+    else:
+        logged = json.loads(run(['claude','auth','status','--json'],env)).get('loggedIn') is True
+    inventory = json.loads(run([host,'plugin','list','--json'],env))
+    (out / f'{host}-inventory.json').write_text(json.dumps(inventory,indent=2),encoding='utf-8')
+    bp = (profile / 'plugins/cache/superpowers-backplane/superpowers-backplane/0.1.0').resolve(strict=True)
+    assert bp.is_relative_to(profile)
+    ref = 'd557b27452ba5fb60188f06c1736c8cdc8ce9d53'
+    files = text(['git','ls-tree','-r','--name-only',ref,'--','skills']).splitlines()
+    compared = []
+    for name in files:
+        expected = hashlib.sha256(run(['git','show',f'{ref}:{name}'])).hexdigest()
+        path = bp / name
+        actual = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+        compared.append({'path':name,'expected':expected,'actual':actual,'equal':expected==actual})
+    result['profiles'][host] = {'profile':str(profile), 'version':text([host,'--version'],env),
+                                'authenticated':logged, 'installed_root':str(bp),
+                                'source_ref':ref,'skills':compared}
+
+session = root / '.sp-bp/work/issue-4/codex-profile/sessions/2026/11/01/rollout-2026-11-01T15-46-50-01a19914-575c-7380-8608-d9e9ef689f79.jsonl'
+rows = [json.loads(s) for s in session.read_text(encoding='utf-8').splitlines()]
+context = next(r['payload'] for r in rows if r['type']=='turn_context')
+result['policy'] = {k:context[k] for k in ('cwd','approval_policy','sandbox_policy','model')}
+result['policy']['profile_rule_files'] = [str(p.relative_to(root)) for p in (root / '.sp-bp/work/issue-4/codex-profile').glob('rules/*.rules')]
+result['policy']['conclusion'] = 'Confirmed read-only sandbox with approval_policy never; exact denying rule/cause remains UNKNOWN. No policy change or retry.'
+for suffix in ('before',):
+    pages = json.loads(text(['gh','api','--paginate','--slurp','repos/tvproductions/superpowers-backplane/issues?state=all&per_page=100']))
+    (out / f'local-issue-pages-{suffix}.json').write_text(json.dumps(pages,indent=2),encoding='utf-8')
+    result['issue_count'] = sum(1 for page in pages for i in page if 'pull_request' not in i)
+result['github_license'] = json.loads(text(['gh','repo','view','tvproductions/superpowers-backplane','--json','licenseInfo']))
+(out / 'local-checks.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'profiles':{k:{'authenticated':v['authenticated'],'skill_files':len(v['skills']),
+                   'equal':all(r['equal'] for r in v['skills'])} for k,v in result['profiles'].items()},
+                  'policy':result['policy'],'issue_count':result['issue_count'],'license':result['github_license']},indent=2))

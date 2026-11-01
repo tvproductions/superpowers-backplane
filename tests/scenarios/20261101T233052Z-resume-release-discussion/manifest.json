@@ -1,0 +1,115 @@
+{
+  "files": [
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/execution-summary.txt",
+      "working_capture_sha256": "5625d53b42e91a23ea0c9625ce10fc65912e6fcbc192e947e6c8c6a859c77f29",
+      "git_blob": "a2426dfb5f330eae2b4ab209f00011ebd8f5cbd0",
+      "committed_sha256": "f7323be6ad5bcd59b44c1815757bcfab2d5eebb7ade3fcd2304477c4714ecaaa"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/identity.json",
+      "working_capture_sha256": "c257cde6a3c643a745d18c5808fa4b46da8597c321b51900b6803e036df7cb21",
+      "git_blob": "ae0ba63fd2edd59daf51d5e4f4efef0ab4093cfb",
+      "committed_sha256": "c257cde6a3c643a745d18c5808fa4b46da8597c321b51900b6803e036df7cb21"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-1.json",
+      "working_capture_sha256": "8475b5640e7dc7b210c7d264ad62a708b2d4366eb320587ebb1845a3f830a834",
+      "git_blob": "587355674e9d528feecff21daba19b55f01b5851",
+      "committed_sha256": "4c6c36fbaf0ba2833ced07a86fe2a17244e0e9f147e8482c4dc1531cc9bf8642"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-12.json",
+      "working_capture_sha256": "3437325a9fa30ee1b0566a8b2b4fb2899ddf3a5341adfa2571aa594dc4119b5f",
+      "git_blob": "eebea3d64a03d1f171b5fea91617255040708292",
+      "committed_sha256": "949b06b874821fd3e6e4ca2d8a2e9437d198a20d2ea48755af3771276b28c52e"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-21.json",
+      "working_capture_sha256": "c77eac1ae035eb65ce5c20ddedd3bba5d2cdecfc040e44d36a0294ccf557a581",
+      "git_blob": "4523db5a7fe8709b1a84394a64179daabb21643d",
+      "committed_sha256": "2ac0a355d94e324167bbfd01788526e2ef3b5e89855232fa90c863d0fab2aa48"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-22.json",
+      "working_capture_sha256": "27cf3e80a21aff99e960f06515a744ebfdd00d63a22a77884e4111cea3e99e68",
+      "git_blob": "4b48d3cdbf6de84973e9e6fda227bec5cf1ad73a",
+      "committed_sha256": "db87b619cc2c37c70e24fb4728143d8b4659af41fd7c7e7f35c71a22ba00ef39"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-23.json",
+      "working_capture_sha256": "0015bad0f256c6f9e692f4bf32d2ef581939278f68fbb2344403c07c3c568bd7",
+      "git_blob": "db18fc146b5f0ca917dcd1fee5d439f5f45d5136",
+      "committed_sha256": "aad6850d07e3ea3465ebd4117aaae508e78ef68ba0de2d12e3dfb6a6eb1fe3ec"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-24.json",
+      "working_capture_sha256": "0c456ff2b19b8150f6910f8621493254dafecc9b609f86c16d4a6e15f5c63256",
+      "git_blob": "548ff3066f3c10dad7a5f340da55163a4225aa56",
+      "committed_sha256": "b68bb1007f873412e0f34b9c660b502fb351b8607f7dba2fff534171e232a214"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-31.json",
+      "working_capture_sha256": "da100193f03e48fadfaab21f10d3f0e66242d99ac2bd6e7ba5b12274cfa87bbd",
+      "git_blob": "546434d19fa417d57fd0076d014462ca16c28458",
+      "committed_sha256": "eb5ae2138c8279d198bb798b771853e1f0a8c3f29c1be7b37315d0ca356a61d5"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-4.json",
+      "working_capture_sha256": "7791a3ae24a474e0c482b168d9fb5af3655a1d1271ee0d15f24b07d06fe00a60",
+      "git_blob": "123f01c65275f86a1b010c0d1e07d9c96e06911f",
+      "committed_sha256": "e9aeea32022b5c916197ab8257c76f88b26e10b140dec320e7f28498ad24b4a6"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-5.json",
+      "working_capture_sha256": "da2e1b7087ddc3c6029f5819f2484c83de26169d257ca50f3e9e73914ab6f237",
+      "git_blob": "0b082942513146333502e283ceda2d06caaa95de",
+      "committed_sha256": "dd8b9a0f64b09804aba1524932c12eccb9e1ef365620c796578c55131e33e0fe"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-6.json",
+      "working_capture_sha256": "add9fd7fb065171202a34a3e5330605bbb92f61f4ca5d6dadad8e069be565188",
+      "git_blob": "ea81e317b4857f5c52616d56bd8eb41e014fe0e5",
+      "committed_sha256": "e9e9b10e268f7f124534531c2a6ff75826e925198f472231755cf269235e0794"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/issue-7.json",
+      "working_capture_sha256": "7c0fc1e5b48b6f350d06a6f670c3701d7b095d1556b2a7f9a2c3fa24ad462f24",
+      "git_blob": "58c94f1f6b3f0e28a2c7de80f255a14849826743",
+      "committed_sha256": "c8b08274c0545283759d3fb5d88ce2f09124b9a08ec42c2086df5f1da9d3cbb7"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/native-preflight.json",
+      "working_capture_sha256": "4ebd2e62ac7e237557b4d6832e77585fdacde4ae68e6d9e91dbd473ac12176ae",
+      "git_blob": "8e16bcfc2270f3de7c26814948d8a3b2f0efedc2",
+      "committed_sha256": "4ebd2e62ac7e237557b4d6832e77585fdacde4ae68e6d9e91dbd473ac12176ae"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/releases.json",
+      "working_capture_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "committed_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/starter-source-sha.txt",
+      "working_capture_sha256": "6c548fc5a4bafb8198e0dce24482eb342a4894b71edff5cc9e59180a661c1c7b",
+      "git_blob": "df55600284859d72e1a6d707791bf3d39f17ff09",
+      "committed_sha256": "ccaf09100348a7e207fb482066ced70aa0304c48d6bbd2253d9c43e1fa3fac0d"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/starter-versioning.md",
+      "working_capture_sha256": "443c80364203cee22fd2662a411e5698d1b37353b271e81bbf88ffbdf76a3fac",
+      "git_blob": "3e07676e61796d7ecc4162628920aedc4fdf7a9c",
+      "committed_sha256": "693fdb63c2aafd7874998a3b31c0917fa33437382441ce2c0cb26ae39b9a7596"
+    },
+    {
+      "path": "tests/scenarios/20261101T233052Z-resume-release-discussion/tags.json",
+      "working_capture_sha256": "2dc5ed5371b9d7175847db30a96aa2af41d708bc9dd33f1dec9fe6efcd139c05",
+      "git_blob": "17212447ad865132483dcdfa48ef076935b051fb",
+      "committed_sha256": "a930ec39e7339fde7af6a7f1009d621c595aab52ec9324dde1e8387212ae64aa"
+    }
+  ],
+  "screen": "Heuristic credential-pattern screen passed; raw streams/auth stores excluded",
+  "claims": "Preflight only; no setup acceptance, issue mutation or release",
+  "encoding_note": "Git normalizes CRLF to LF; committed hashes and blob IDs govern transported evidence. Working capture hashes retain the original observation."
+}

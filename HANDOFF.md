@@ -1,3 +1,7 @@
+# Resume and release-accounting handoff — November 1, 2026
+
+Read [20261101T233052Z-opencode-preflight-and-release-accounting.md](docs/superpowers-backplane/handoffs/20261101T233052Z-opencode-preflight-and-release-accounting.md) and invoke RESUME against that exact path. #5 remains completed; #4 and OpenCode acceptance remain unfinished. V1 model execution now succeeds with catalog-present gpt-6-astra; setup acceptance is not claimed. User raised release-accounting and minor-version concerns; no version bump or release rescope was approved. This requested handoff/sync includes the preceding two local plan/checkpoint commits. See supporting evidence under `tests/scenarios/20261101T233052Z-resume-release-discussion` and the subsequent sync receipt for verified arrival.
+
 # Inline OpenCode execution checkpoint — 2026-11-01
 
 Read [20261101T232037Z-opencode-wrap-inline-checkpoint.md](docs/superpowers-backplane/handoffs/20261101T232037Z-opencode-wrap-inline-checkpoint.md) and invoke RESUME against that exact path. Five approved plans are in progress; no OpenCode live acceptance or closure is claimed. Latest V1 preflight authenticated but requested model was absent. Supporting helper sources and result records are archived in [20261101T232037Z-opencode-wrap-checkpoint](tests/scenarios/20261101T232037Z-opencode-wrap-checkpoint/manifest.json). Checkpoint transport is local only.

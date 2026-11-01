@@ -1,0 +1,7 @@
+# SDD ledger — plan: docs/superpowers-backplane/plans/2026-11-01-issue-21-opencode-v1-setup.md
+
+Resume at f0a4ba1; exact approved artifact hashes and all archived manifest hashes verified. Native #21/#23/#22/#24/#12 revisions unchanged. #5 CLOSED/COMPLETED.
+Task 1: partial; archived scorer controls retained, no live setup acceptance.
+Ruling: Use openai/gpt-6-astra for the next V1 preflight — the shared contract accepts a verified authenticated model and the saved V1 catalog lists it; gpt-6.1-sol is absent — if native execution fails, acceptance remains UNKNOWN.
+
+Observed native model execution exit 0 and completed using-superpowers skill load. Outer terminal print failed with cp1252 UnicodeEncodeError after capture storage; saved UTF-8 JSON was re-read successfully. No setup acceptance.

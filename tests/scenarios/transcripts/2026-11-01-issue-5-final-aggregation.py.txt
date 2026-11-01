@@ -1,0 +1,200 @@
+"""One-use final aggregation of existing accepted self-hosting observations."""
+
+import hashlib
+import json
+import subprocess
+from datetime import UTC, datetime
+from pathlib import Path
+
+root = Path.cwd().resolve()
+area = (root / ".sp-bp/work/issue-5/closeout").resolve(strict=True)
+assert area.is_relative_to(root)
+
+
+def read(path):
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def git(*args):
+    return subprocess.check_output(
+        ["git", *args], cwd=root, text=True, encoding="utf-8"
+    ).strip()
+
+
+old_path = root / "tests/scenarios/2026-11-01-issue-5-self-hosting.json"
+data = read(old_path)
+native = read(
+    root / "tests/scenarios/transcripts/2026-11-01-issue-5-context-recommendation.json"
+)
+issues = read(area / "intakes.json")
+pages = read(area / "pages-before.json")
+lookup = {i["number"]: i for i in issues}
+rest = {i["number"]: i for page in pages for i in page if "pull_request" not in i}
+assert set(lookup) == set(rest)
+assert all(i["updatedAt"] == rest[i["number"]]["updated_at"] for i in issues)
+valid_labels = {
+    "backplane:" + n
+    for n in ("backlog", "designing", "ready", "active", "blocked", "review")
+}
+for issue in issues:
+    labels = [l["name"] for l in issue["labels"] if l["name"].startswith("backplane:")]
+    assert (
+        (len(labels) == 1 and labels[0] in valid_labels)
+        if issue["state"] == "OPEN"
+        else not labels
+    )
+    for field in ("blockedBy", "blocking", "subIssues"):
+        assert len(issue[field]["nodes"]) == issue[field]["totalCount"]
+    for item in issue["blockedBy"]["nodes"]:
+        assert issue["number"] in {
+            n["number"] for n in lookup[item["number"]]["blocking"]["nodes"]
+        }
+for child in lookup[1]["subIssues"]["nodes"]:
+    assert lookup[child["number"]]["parent"]["number"] == 1
+assert not git(
+    "diff", "7359019e546e07ea810d045fc1cb6fb0d095be4a", "HEAD", "--", "skills"
+)
+source_checks = []
+for source in data["historical_sources"]:
+    actual = git("rev-parse", f"HEAD:{source['path']}")
+    assert actual == source["blob"], source["path"]
+    source_checks.append(
+        {
+            "path": source["path"],
+            "recorded_blob": source["blob"],
+            "current_blob": actual,
+            "result": "PASS",
+        }
+    )
+for attempt in native["attempts"]:
+    assert (
+        attempt["outcome"]["issue_pages_equal"] and attempt["outcome"]["issue5_equal"]
+    )
+    assert attempt["outcome"]["protected_equal"] and attempt["outcome"]["exit"] == 0
+corrected = native["attempts"][1]
+results = {r["tool_use_id"]: r for r in corrected["skill_results"]}
+assert all(
+    not results[c["id"]]["is_error"]
+    and "Launching skill" in str(results[c["id"]]["content"])
+    for c in corrected["skill_calls"]
+)
+
+head = git("rev-parse", "HEAD")
+data.update(
+    observed_at=datetime.now(UTC).isoformat(),
+    root=str(root),
+    branch="main",
+    base=head,
+    verified_delivery=head,
+    issue5=lookup[5],
+    issues=issues,
+    overall="SATISFIED",
+    findings=[],
+    gaps=[],
+)
+data["supersedes"] = {
+    "path": str(old_path.relative_to(root)).replace("\\", "/"),
+    "blob": git(
+        "rev-parse", "HEAD:" + str(old_path.relative_to(root)).replace("\\", "/")
+    ),
+    "reason": "Later publication/binding and reviewed context-aware recommendation reconcile the earlier UNKNOWN; historical receipt remains unchanged",
+}
+data["enumeration"] = {
+    "command": [
+        "gh",
+        "api",
+        "--paginate",
+        "--slurp",
+        "repos/tvproductions/superpowers-backplane/issues?state=all&per_page=100",
+    ],
+    "complete": True,
+    "numbers": sorted(lookup),
+    "pages": len(pages),
+    "rest_items_in_final_page": len(pages[-1]),
+    "terminal_evidence": "gh --paginate exhausted pages; final page has fewer than 100 entries",
+    "rest_sha256": hashlib.sha256(
+        (area / "pages-before.json").read_bytes()
+    ).hexdigest(),
+    "per_issue_revisions_match_rest": True,
+}
+data["relationships"] = [
+    {
+        "number": i["number"],
+        **{k: i[k] for k in ("parent", "subIssues", "blockedBy", "blocking")},
+    }
+    for i in issues
+]
+for seam in data["seams"]:
+    if seam["id"] in ("labels", "native-graph"):
+        seam["classification"] = (
+            "fresh complete native intake and terminal REST enumeration"
+        )
+    elif seam["id"] == "recommendation-only":
+        seam.update(
+            classification="Reviewed native context-aware installed-package recommendation; both actual Skill results retained",
+            evidence=[
+                "tests/scenarios/transcripts/2026-11-01-issue-5-context-recommendation.json",
+                "tests/scenarios/2026-11-01-issue-5-context-review.md",
+            ],
+            limits=[
+                "Only required recommendation/no-mutation behavior is accepted; broader unpublished-plan eligibility assertion is not adopted"
+            ],
+        )
+data["criteria"] = [
+    {
+        "id": r["id"],
+        "wording": w.strip("- "),
+        "result": "SATISFIED",
+        "seams": r["seams"],
+    }
+    for r, w in zip(
+        data["criteria"],
+        lookup[5]["body"]
+        .split("## Acceptance Criteria")[1]
+        .split("## Verification Seams")[0]
+        .strip()
+        .splitlines(),
+    )
+    if w.strip()
+]
+assert len(data["criteria"]) == 4
+data["source_checks"] = source_checks
+data["input_reconciliation"] = {
+    "plan_consumed_revision": "2026-09-19T14:16:55Z",
+    "evaluated_revision": lookup[5]["updatedAt"],
+    "plan_blob": git(
+        "rev-parse",
+        "HEAD:docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md",
+    ),
+    "classification": "Editorial artifact binding only; objective, bounded scope, acceptance and verification wording unchanged",
+    "comparison_source": "tests/scenarios/2026-11-01-issues-4-5-integration.json",
+    "product_delta_since_accepted_issue11": "Canonical skills unchanged; historical lifecycle evidence retained, not repeated",
+}
+data["review_acceptance"] = {
+    "whole_change": "tests/scenarios/2026-11-01-issues-4-5-review.md",
+    "supplement": "tests/scenarios/2026-11-01-issue-5-context-review.md",
+    "unresolved_material_findings": [],
+    "final_assessment_review": "pending separate read-only assessment review before publication/closure",
+}
+data["verification"] = {
+    "commands": [
+        "node --test tests/opencode-adapter.test.mjs",
+        "uv run --no-project python -m unittest discover -s .sp-bp/work/issue-5/postmerge-source -p test_*.py",
+        "uv run --no-project ruff check .sp-bp/work/issue-5/postmerge-source",
+        "uv run --no-project ruff format --check .sp-bp/work/issue-5/postmerge-source",
+        "uv run --no-project ty check .sp-bp/work/issue-5/postmerge-source",
+    ],
+    "result": "pending fresh final delivery gate before publication/closure",
+}
+data["non_gating_observations"] = [
+    "Broader native unpublished-plan eligibility advice is rejected as policy; it does not fail any #5 acceptance criterion",
+    "Original context-free model advice cause remains unknown; causal diagnosis is not a #5 requirement",
+    "#4/Codex/OpenCode operations belong to separate acceptance scopes and are not #5 blockers",
+    "No scope exclusion or deferral is needed; no new host acceptance or historical native mutation is claimed",
+]
+dest = root / "tests/scenarios/2026-11-01-issue-5-satisfaction.json"
+assert not dest.exists()
+dest.write_text(json.dumps(data, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+print(
+    "Final receipt built: 4 satisfied criteria, 8 passing seams; review and fresh gate precede use"
+)

@@ -17,6 +17,11 @@ and protected-state checks pass. Fresh independent source review found two
 Important verification-tool gaps, corrected by demonstrated negative controls;
 no adapter defect or unresolved Minor was reported.
 
+Native #20 is OPEN/`backplane:blocked`, observed revision
+`2026-11-01T15:00:05Z`, with recorded resume target `backplane:active`.
+The [lifecycle receipt](tests/scenarios/2026-11-01-issue-20-lifecycle.json)
+preserves the guarded transitions and exact blocker.
+
 Overall #20 acceptance remains UNKNOWN: both profiles lack completed native
 model authentication, and two V2 OAuth requests expired. Revalidate the exact
 workspace, issue semantics, profile paths/provenance/auth and model availability

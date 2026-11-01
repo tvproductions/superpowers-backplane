@@ -35,3 +35,9 @@ model-backed session, hosted acceptance, merge, push, release, closure or
 cleanup is claimed. The final gate exits 1 because native smoke remains
 UNKNOWN; source review is not merge readiness. Later evidence-only commits
 preserve the product candidate above as the evaluated delivery identity.
+
+Current native #20 is OPEN/`backplane:blocked` at `2026-11-01T15:00:05Z`,
+with recorded `backplane:active` resume target. See the
+[lifecycle receipt](2026-11-01-issue-20-lifecycle.json). Source/evidence is
+locally retained at `400c20be907bbff7461b7e31aa4c17f6d75d4f42`; this later
+lifecycle-storage commit is separate, and no remote arrival is claimed.

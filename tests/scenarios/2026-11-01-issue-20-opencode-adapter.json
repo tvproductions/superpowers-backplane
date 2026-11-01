@@ -998,5 +998,15 @@
       "pass": 11,
       "fail": 0
     }
-  ]
+  ],
+  "current_issue_observation": {
+    "state": "OPEN",
+    "labels": [
+      "backplane:blocked"
+    ],
+    "updatedAt": "2026-11-01T15:00:05Z",
+    "receipt": "tests/scenarios/2026-11-01-issue-20-lifecycle.json",
+    "comment": "https://github.com/tvproductions/superpowers-backplane/issues/20#issuecomment-6559645339",
+    "resume_target": "backplane:active"
+  }
 }

@@ -72,6 +72,10 @@
   environments, dependencies, tool installation, and execution; Ruff for
   linting and formatting; and `ty` for type checking.
 - Use uv-managed Python 3.14 for this repository's tooling and `.venv`.
+  This is Backplane's independent ordinary-project policy, aligned with the
+  maintainer's current rule: 3.14 unless X-Plane/XPPython3-bound, then the supported
+  3.12 host exception. Backplane is not such a host-bound project. gz-skills
+  workflows must consume this decision rather than supply a fallback baseline.
   `.python-version` records the verified patch; keep it and the environment
   aligned. Preserve historical verification records at their original runtimes.
   Create the environment with `uv venv --managed-python .venv` and execute

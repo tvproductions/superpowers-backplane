@@ -125,3 +125,36 @@ taken. No source package, consumer runtime requirement, plugin revision or
 release is changed. Retain newer-family Python 3.15 as a separate compatibility
 decision. Record current guide-format findings separately from runtime and
 manifest validation; this maintenance does not repeat historical host acceptance.
+
+## Independent Python family alignment — November 7, 2026
+
+The maintainer explicitly directed fixing alignment across the three repositories
+and reaffirmed the current rule: Python 3.14 unless X-Plane/XPPython3-bound,
+then supported 3.12. Reviewed starter authority is
+`4f8bb09633655473cd6aab9e1ddc60963c487bb1`, especially baseline/Python policy,
+versioning, AGENTS and the gz-skills workflow mapping. Its Python-family rule
+is distinct from the new minimum-only uv compatibility requirement.
+
+Backplane independently owns its ordinary Python tooling choice: 3.14, exact
+managed 3.14.10. No XPPython3 exception applies to Backplane itself. Its own
+AGENTS establishes this without circular starter adoption. The independent
+strict-Astral tooling metadata remains separate pending work in this checkout.
+Portable workflows, including gz-skills, consume that policy and do not supply an alternative runtime or tool baseline. Consuming
+projects remain language-neutral and retain their own approved standards.
+
+The existing strict Astral reconciliation is separate, already-changing work;
+this authority correction preserves its files and acceptance gaps. The earlier
+no-project commands describe the committed baseline; the separate pending
+reconciliation supplies locked commands in this worktree. This narrow save point
+does not publish that tooling migration. Keep unverified evidence explicit.
+No installed cache, plugin,
+GitHub issue, tag, release or independent source revision is changed here.
+
+The maintainer subsequently authorized ordinary Git synchronization. The exact
+committed starter source is `a483e382146c6082e590e31494c07d1812645014`,
+verified on its origin/main. This narrow save point publishes only the independent Python-authority clarification and
+receipt; separate release-scope and strict-Astral changes remain in the worktree.
+The committed tree has no project quality CI; a pending workflow is not hosted
+execution evidence. No release, native install or broader acceptance is implied.
+
+See [the scoped authority receipt](../tests/scenarios/2026-11-07-python-policy-authority.md).

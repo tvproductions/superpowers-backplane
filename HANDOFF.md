@@ -1,3 +1,16 @@
+# v0.2.0 published and verified — November 7, 2026
+
+[Backplane v0.2.0](https://github.com/tvproductions/superpowers-backplane/releases/tag/v0.2.0)
+is published from integrated main commit `0b18e34e65379e729d8fece97151a1bb8604b461`.
+Its annotated immutable tag, public/latest release status, exact notes and all
+542 GitHub source-archive files are verified. Linux/macOS/Windows release-commit
+CI passes. Read `tests/scenarios/2026-11-07-v0.2.0-publication.md` and its JSON
+receipt for the exact identities and preserved scope limits.
+The engineering bundle is released; #4/#6/#7 and the complete adoption milestone
+remain open. Unapproved release-policy/spec drafts remain local and excluded.
+Future operator-requested version bumps include publication under the selected
+bundle's applicable gates. Earlier unreleased/pending entries below are history.
+
 # v0.2.0 release execution — November 7, 2026
 
 The maintainer clarified that the requested minor bump includes publication.

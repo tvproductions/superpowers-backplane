@@ -184,6 +184,13 @@
   Backplane-local working state and `docs/superpowers-backplane/` for documents.
 - Do not publish, create a remote repository, or release without explicit user
   authorization.
+- An operator-requested version bump includes release publication after required
+  verification. Do not silently stop at an unreleased version change. If an
+  existing release gate cannot pass, surface the concrete scope/gate decision;
+  publication authority alone does not fabricate acceptance evidence.
+  Apply gates to the operator-selected bundle. Do not reapply another release
+  outcome's gates to a separately selected engineering release or ask again for
+  publication authority already given; preserve unfinished adoption obligations.
 - Cross-machine recovery: at a machine or harness handoff, commit a
   tracked execution summary and the evidence supporting its verified claims.
   Keep disposable scratch under ignored `.sp-bp/work/`; do not rely on it as

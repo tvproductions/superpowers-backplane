@@ -1,3 +1,13 @@
+# v0.2.0 release execution — November 7, 2026
+
+The maintainer clarified that the requested minor bump includes publication.
+The selected bundle is the verified strict Astral engineering baseline; the
+complete adoption milestone's separate obligations remain open. Read
+`docs/superpowers-backplane/releases/2026-11-07-v0.2.0.md` for the release-specific
+authority, first-version policy override, evidence reuse and execution sequence.
+Remote publication is claimed only after its tag/release receipt is recorded.
+Earlier no-publication boundaries below are historical and superseded.
+
 # Minor development version approved — November 7, 2026
 
 The maintainer approved a minor increment for the strict Astral work alone.

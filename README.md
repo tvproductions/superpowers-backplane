@@ -24,7 +24,11 @@ adopts gz-skills-first-starter as the authoritative shared policy source,
 including SemVer, new major-release PRDs and source consistency checks.
 This is policy alignment without circular template adoption.
 
-This repository is in development. Manifest versions do not establish a published release. For development continuity, read `HANDOFF.md`.
+[Release v0.2.0](https://github.com/tvproductions/superpowers-backplane/releases/tag/v0.2.0)
+records the verified strict Astral engineering baseline. The complete adoption
+milestone, external pilot and remaining operations/OpenCode acceptance are
+still open; see the [release scope](docs/superpowers-backplane/releases/2026-11-07-v0.2.0.md).
+For development continuity, read `HANDOFF.md`.
 
 Backplane development **MUST** meet the
 [strict Python/Astral engineering contract](docs/engineering/python.md).

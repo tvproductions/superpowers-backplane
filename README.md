@@ -26,6 +26,12 @@ This is policy alignment without circular template adoption.
 
 This repository is in development. Manifest versions do not establish a published release. For development continuity, read `HANDOFF.md`.
 
+Backplane development **MUST** meet the
+[strict Python/Astral engineering contract](docs/engineering/python.md).
+Locked project configuration, actual verification and applicable acceptance
+evidence are required; configuration alone is not compliance. This requirement
+does not change consuming projects' runtime or verification policies.
+
 Backplane is licensed under the [MIT license](LICENSE). Start with the
 [adopter operations guide](docs/adopter-operations.md) for prerequisites,
 verified support limits, recovery and authorization guidance.

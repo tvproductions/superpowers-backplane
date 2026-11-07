@@ -6,3 +6,7 @@
 
 .sp-bp/work/
 .venv/
+__pycache__/
+.ruff_cache/
+.coverage
+htmlcov/

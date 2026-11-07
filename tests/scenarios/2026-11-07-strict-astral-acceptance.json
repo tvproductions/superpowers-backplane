@@ -1,0 +1,552 @@
+{
+  "schema": "superpowers-backplane-strict-astral-acceptance/v1",
+  "observed_at": "2026-11-07T17:16:21.609616+00:00",
+  "authority": "User explicitly required strict compliance as a MUST and directed this bounded migration.",
+  "overall": "INCOMPLETE; policy mandatory, local routine gate passes, A09/A18 remain UNKNOWN.",
+  "workspace": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane",
+  "base_commit": "0aa0cc007db63449455a1c4f9b6d92cb60c5d29a",
+  "starter_source": "4f8bb09633655473cd6aab9e1ddc60963c487bb1",
+  "python_product": "non-distributable development project; no runtime package or product CLI",
+  "selection": {
+    "python": "3.14.10",
+    "uv": "0.13.7",
+    "uv_minimum": ">=0.13.5",
+    "ruff": "0.17.4",
+    "ty": "0.0.99",
+    "pre_commit": "4.7.0"
+  },
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "75f6f06dc40ff2cfaab3885488db6f830f17adb53a8be95d0179938dbf134dbe"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1cd12ad7e7b8bb3302e79f023ba6d0498162a43be5c09f36819a37c594430635"
+    },
+    {
+      "path": "HANDOFF.md",
+      "sha256": "00924ddeb4fa974f628fd0d99d28fdde746bea60610805627b0137e9786f7c7c"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "7e1389d637d27233c4780ca6ea440b18d43b61afb583717dc1db07189086317b"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "dbe1ba63ad4f9e3a4648555c269d5404261c36a0e110dfc805a5517bd40385ee"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "3d00969885dbec9290479f96c27361b3128aab5adee22cdcceae3b141ebdcd18"
+    },
+    {
+      "path": ".python-version",
+      "sha256": "4f4c88910b6d485ae689143880e5e81b595a48a51ecb391b2f14feaec106d180"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha256": "b39b18776b26d82b054c4383679344825f9eed5a5e344e94f8c1b3d5ff1a5859"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "6610d3570f9c993777861a3628e19eec1c7ffa1884709be3b766513270114ecf"
+    },
+    {
+      "path": "tests/test_repository.py",
+      "sha256": "e4889c57ad93f69446fcbe5d56250b3157dc931846bf3600925de521ac0efe74"
+    },
+    {
+      "path": "docs/engineering/python.md",
+      "sha256": "2fda21778fb17e35f66cc44102b92f2fe2a7404b92b4725b8e8431fc690dbde0"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "lock",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 15 packages in 26ms\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "1 file already formatted\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ty",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_canonical_skill_identities (test_repository.ShippedResourcesTests.test_canonical_skill_identities)\nReject an absent or renamed canonical skill entry point. ... ok\ntest_local_skill_references_exist (test_repository.ShippedResourcesTests.test_local_skill_references_exist)\nReject a package whose canonical instructions link missing resources. ... ok\ntest_native_product_versions_agree (test_repository.ShippedResourcesTests.test_native_product_versions_agree)\nReject native host packages advertising conflicting product identities. ... ok\ntest_python_guide_examples_compile (test_repository.ShippedResourcesTests.test_python_guide_examples_compile)\nCatch syntax errors in documented Python before users execute the guides. ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.026s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "exit_code": 0,
+      "stdout": "Ruff check...............................................................Passed\nRuff format..............................................................Passed\nty.......................................................................Passed\nunittest.................................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "tests/opencode-adapter.test.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "\u2714 v1_preserves_paths_and_registers_once (53.76225ms)\n\u2714 v1_context_does_not_activate_v2 (29.546666ms)\n\u2714 v2_registers_exact_canonical_payloads (25.696375ms)\n\u2714 v2_replay_preserves_unrelated_skills (39.138916ms)\n\u2714 paths_resolve_from_package_with_spaces_and_different_cwd (28.285042ms)\n\u2714 malformed_skill_rejects_before_any_registration (191.955459ms)\n\u2714 missing_skill_rejects_before_any_registration (33.0435ms)\n\u2714 quoted_metadata_is_decoded_without_changing_body (61.707542ms)\n\u2714 v1_rejects_broken_canonical_tree_before_config_mutation (102.112958ms)\n\u2139 tests 9\n\u2139 suites 0\n\u2139 pass 9\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1933.296125\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--all-groups"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 15 packages in 12ms\nChecked 14 packages in 16ms\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "-c",
+        "import importlib.metadata,json,platform,shutil,sys; from pathlib import Path; root=Path.cwd().resolve(); assert Path(sys.prefix).resolve()==root/'.venv'; assert sys.version_info[:3]==(3,14,10); tools={name:{'version':importlib.metadata.version(name),'executable':shutil.which(name)} for name in ('uv','ruff','ty','pre-commit')}; assert all(Path(item['executable']).resolve().is_relative_to(root/'.venv') for item in tools.values()); print(json.dumps({'python':sys.version,'prefix':sys.prefix,'base_prefix':sys.base_prefix,'platform':platform.platform(),'tools':tools},indent=2))"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"python\": \"3.14.10 (main, Oct 26 2026, 13:59:48) [Clang 23.1.3 ]\",\n  \"prefix\": \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv\",\n  \"base_prefix\": \"/Users/jbabb/.local/share/uv/python/cpython-3.14.10-macos-aarch64-none\",\n  \"platform\": \"macOS-26.6.2-arm64-arm-64bit-Mach-O\",\n  \"tools\": {\n    \"uv\": {\n      \"version\": \"0.13.7\",\n      \"executable\": \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/bin/uv\"\n    },\n    \"ruff\": {\n      \"version\": \"0.17.4\",\n      \"executable\": \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/bin/ruff\"\n    },\n    \"ty\": {\n      \"version\": \"0.0.99\",\n      \"executable\": \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/bin/ty\"\n    },\n    \"pre-commit\": {\n      \"version\": \"4.7.0\",\n      \"executable\": \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/bin/pre-commit\"\n    }\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ruff",
+        "check",
+        "--show-files",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/pyproject.toml\n/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/tests/test_repository.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ruff",
+        "check",
+        "--show-settings",
+        "tests/test_repository.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Resolved settings for: \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/tests/test_repository.py\"\nSettings path: \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/pyproject.toml\"\n\n# General Settings\ncache_dir = \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.ruff_cache\"\nfix = false\nfix_only = false\noutput_format = full\noutput_prefer_rule_codes = false\nshow_fixes = false\nunsafe_fixes = hint\n\n# File Resolver Settings\nfile_resolver.exclude = [\n\t\".bzr\",\n\t\".direnv\",\n\t\".eggs\",\n\t\".git\",\n\t\".git-rewrite\",\n\t\".hg\",\n\t\".ipynb_checkpoints\",\n\t\".mypy_cache\",\n\t\".nox\",\n\t\".pants.d\",\n\t\".pyenv\",\n\t\".pytest_cache\",\n\t\".pytype\",\n\t\".ruff_cache\",\n\t\".svn\",\n\t\".tox\",\n\t\".venv\",\n\t\".vscode\",\n\t\"__pypackages__\",\n\t\"_build\",\n\t\"buck-out\",\n\t\"dist\",\n\t\"node_modules\",\n\t\"site-packages\",\n\t\"venv\",\n]\nfile_resolver.extend_exclude = []\nfile_resolver.force_exclude = false\nfile_resolver.include = [\n\t\"*.py\",\n\t\"*.pyi\",\n\t\"*.ipynb\",\n\t\"**/pyproject.toml\",\n]\nfile_resolver.extend_include = []\nfile_resolver.respect_gitignore = true\nfile_resolver.project_root = \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane\"\n\n# Linter Settings\nlinter.exclude = []\nlinter.project_root = \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane\"\nlinter.rules.enabled = [\n\tunary-prefix-increment-decrement (B002),\n\tassignment-to-os-environ (B003),\n\tunreliable-callable-check (B004),\n\tstrip-with-multi-characters (B005),\n\tmutable-argument-default (B006),\n\tunused-loop-control-variable (B007),\n\tfunction-call-in-default-argument (B008),\n\tget-attr-with-constant (B009),\n\tset-attr-with-constant (B010),\n\tassert-false (B011),\n\tjump-statement-in-finally (B012),\n\tredundant-tuple-in-exception-handler (B013),\n\tduplicate-handler-exception (B014),\n\tuseless-comparison (B015),\n\traise-literal (B016),\n\tassert-raises-exception (B017),\n\tuseless-expression (B018),\n\tcached-instance-method (B019),\n\tloop-variable-overrides-iterator (B020),\n\tf-string-docstring (B021),\n\tuseless-contextlib-suppress (B022),\n\tfunction-uses-loop-variable (B023),\n\tabstract-base-class-without-abstract-method (B024),\n\tduplicate-try-block-exception (B025),\n\tstar-arg-unpacking-after-keyword-arg (B026),\n\tempty-method-without-abstract-decorator (B027),\n\tno-explicit-stacklevel (B028),\n\texcept-with-empty-tuple (B029),\n\texcept-with-non-exception-classes (B030),\n\treuse-of-groupby-generator (B031),\n\tunintentional-type-annotation (B032),\n\tduplicate-value (B033),\n\tre-sub-positional-args (B034),\n\tstatic-key-dict-comprehension (B035),\n\tmutable-contextvar-default (B039),\n\traise-without-from-inside-except (B904),\n\tzip-without-explicit-strict (B905),\n\tbatched-without-explicit-strict (B911),\n\tmap-without-explicit-strict (B912),\n\tduplicate-isinstance-call (SIM101),\n\tcollapsible-if (SIM102),\n\tneedless-bool (SIM103),\n\tsuppressible-exception (SIM105),\n\treturn-in-try-except-finally (SIM107),\n\tif-else-block-instead-of-if-exp (SIM108),\n\tcompare-with-tuple (SIM109),\n\treimplemented-builtin (SIM110),\n\tuncapitalized-environment-variables (SIM112),\n\tenumerate-for-loop (SIM113),\n\tif-with-same-arms (SIM114),\n\topen-file-with-context-handler (SIM115),\n\tif-else-block-instead-of-dict-lookup (SIM116),\n\tmultiple-with-statements (SIM117),\n\tin-dict-keys (SIM118),\n\tnegate-equal-op (SIM201),\n\tnegate-not-equal-op (SIM202),\n\tdouble-negation (SIM208),\n\tif-expr-with-true-false (SIM210),\n\tif-expr-with-false-true (SIM211),\n\tif-expr-with-twisted-arms (SIM212),\n\texpr-and-not-expr (SIM220),\n\texpr-or-not-expr (SIM221),\n\texpr-or-true (SIM222),\n\texpr-and-false (SIM223),\n\tyoda-conditions (SIM300),\n\tif-else-block-instead-of-dict-get (SIM401),\n\tsplit-static-string (SIM905),\n\tdict-get-with-none-default (SIM910),\n\tzip-dict-keys-and-values (SIM911),\n\tunsorted-imports (I001),\n\tmissing-required-import (I002),\n\tmultiple-imports-on-one-line (E401),\n\tmodule-import-not-at-top-of-file (E402),\n\tmultiple-statements-on-one-line-colon (E701),\n\tmultiple-statements-on-one-line-semicolon (E702),\n\tuseless-semicolon (E703),\n\tnone-comparison (E711),\n\ttrue-false-comparison (E712),\n\tnot-in-test (E713),\n\tnot-is-test (E714),\n\ttype-comparison (E721),\n\tbare-except (E722),\n\tlambda-assignment (E731),\n\tambiguous-variable-name (E741),\n\tambiguous-class-name (E742),\n\tambiguous-function-name (E743),\n\tio-error (E902),\n\tunused-import (F401),\n\timport-shadowed-by-loop-var (F402),\n\tundefined-local-with-import-star (F403),\n\tlate-future-import (F404),\n\tundefined-local-with-import-star-usage (F405),\n\tundefined-local-with-nested-import-star-usage (F406),\n\tfuture-feature-not-defined (F407),\n\tpercent-format-invalid-format (F501),\n\tpercent-format-expected-mapping (F502),\n\tpercent-format-expected-sequence (F503),\n\tpercent-format-extra-named-arguments (F504),\n\tpercent-format-missing-argument (F505),\n\tpercent-format-mixed-positional-and-named (F506),\n\tpercent-format-positional-count-mismatch (F507),\n\tpercent-format-star-requires-sequence (F508),\n\tpercent-format-unsupported-format-character (F509),\n\tstring-dot-format-invalid-format (F521),\n\tstring-dot-format-extra-named-arguments (F522),\n\tstring-dot-format-extra-positional-arguments (F523),\n\tstring-dot-format-missing-arguments (F524),\n\tstring-dot-format-mixing-automatic (F525),\n\tf-string-missing-placeholders (F541),\n\tmulti-value-repeated-key-literal (F601),\n\tmulti-value-repeated-key-variable (F602),\n\texpressions-in-star-assignment (F621),\n\tmultiple-starred-expressions (F622),\n\tassert-tuple (F631),\n\tis-literal (F632),\n\tinvalid-print-syntax (F633),\n\tif-tuple (F634),\n\tbreak-outside-loop (F701),\n\tcontinue-outside-loop (F702),\n\tyield-outside-function (F704),\n\treturn-outside-function (F706),\n\tdefault-except-not-last (F707),\n\tforward-annotation-syntax-error (F722),\n\tredefined-while-unused (F811),\n\tundefined-name (F821),\n\tundefined-export (F822),\n\tundefined-local (F823),\n\tunused-variable (F841),\n\tunused-annotation (F842),\n\traise-not-implemented (F901),\n\tuseless-metaclass-type (UP001),\n\ttype-of-primitive (UP003),\n\tuseless-object-inheritance (UP004),\n\tdeprecated-unittest-alias (UP005),\n\tnon-pep585-annotation (UP006),\n\tnon-pep604-annotation-union (UP007),\n\tsuper-call-with-parameters (UP008),\n\tutf8-encoding-declaration (UP009),\n\tunnecessary-future-import (UP010),\n\tlru-cache-without-parameters (UP011),\n\tunnecessary-encode-utf8 (UP012),\n\tconvert-typed-dict-functional-to-class (UP013),\n\tconvert-named-tuple-functional-to-class (UP014),\n\tredundant-open-modes (UP015),\n\tdatetime-timezone-utc (UP017),\n\tnative-literals (UP018),\n\ttyping-text-str-alias (UP019),\n\topen-alias (UP020),\n\treplace-universal-newlines (UP021),\n\treplace-stdout-stderr (UP022),\n\tdeprecated-c-element-tree (UP023),\n\tos-error-alias (UP024),\n\tunicode-kind-prefix (UP025),\n\tdeprecated-mock-import (UP026),\n\tyield-in-for-loop (UP028),\n\tunnecessary-builtin-import (UP029),\n\tformat-literals (UP030),\n\tprintf-string-formatting (UP031),\n\tf-string (UP032),\n\tlru-cache-with-maxsize-none (UP033),\n\textraneous-parentheses (UP034),\n\tdeprecated-import (UP035),\n\toutdated-version-block (UP036),\n\tquoted-annotation (UP037),\n\tunnecessary-class-parentheses (UP039),\n\tnon-pep695-type-alias (UP040),\n\ttimeout-error-alias (UP041),\n\treplace-str-enum (UP042),\n\tunnecessary-default-type-args (UP043),\n\tnon-pep646-unpack (UP044),\n\tnon-pep604-annotation-optional (UP045),\n\tnon-pep695-generic-class (UP046),\n\tnon-pep695-generic-function (UP047),\n\tprivate-type-parameter (UP049),\n\tuseless-class-metaclass-type (UP050),\n\tambiguous-unicode-character-string (RUF001),\n\tambiguous-unicode-character-docstring (RUF002),\n\tambiguous-unicode-character-comment (RUF003),\n\tcollection-literal-concatenation (RUF005),\n\tasyncio-dangling-task (RUF006),\n\tzip-instead-of-pairwise (RUF007),\n\tmutable-dataclass-default (RUF008),\n\tfunction-call-in-dataclass-default-argument (RUF009),\n\texplicit-f-string-type-conversion (RUF010),\n\tmutable-class-default (RUF012),\n\timplicit-optional (RUF013),\n\tunnecessary-iterable-allocation-for-first-element (RUF015),\n\tinvalid-index-type (RUF016),\n\tquadratic-list-summation (RUF017),\n\tassignment-in-assert (RUF018),\n\tunnecessary-key-check (RUF019),\n\tnever-union (RUF020),\n\tparenthesize-chained-operators (RUF021),\n\tunsorted-dunder-all (RUF022),\n\tunsorted-dunder-slots (RUF023),\n\tmutable-fromkeys-value (RUF024),\n\tdefault-factory-kwarg (RUF026),\n\tinvalid-formatter-suppression-comment (RUF028),\n\tassert-with-print-message (RUF030),\n\tdecimal-from-float-literal (RUF032),\n\tpost-init-default (RUF033),\n\tuseless-if-else (RUF034),\n\tnone-not-at-end-of-union (RUF036),\n\tunnecessary-empty-iterable-within-deque-call (RUF037),\n\tinvalid-assert-message-literal-argument (RUF040),\n\tunnecessary-nested-literal (RUF041),\n\tpytest-raises-ambiguous-pattern (RUF043),\n\tunnecessary-cast-to-int (RUF046),\n\tmap-int-version-parsing (RUF048),\n\tdataclass-enum (RUF049),\n\tif-key-in-dict-del (RUF051),\n\tclass-with-mixed-type-vars (RUF053),\n\tunnecessary-round (RUF057),\n\tstarmap-zip (RUF058),\n\tunused-unpacked-variable (RUF059),\n\tin-empty-collection (RUF060),\n\tlegacy-form-pytest-raises (RUF061),\n\taccess-annotations-from-class-dict (RUF063),\n\tnon-octal-permissions (RUF064),\n\tduplicate-entry-in-dunder-all (RUF068),\n\tos-path-commonprefix (RUF071),\n\tunused-noqa (RUF100),\n\tredirected-noqa (RUF101),\n\tinvalid-rule-code (RUF102),\n\tinvalid-suppression-comment (RUF103),\n\tunmatched-suppression-comment (RUF104),\n\tinvalid-pyproject-toml (RUF200),\n]\nlinter.rules.should_fix = [\n\tunary-prefix-increment-decrement (B002),\n\tassignment-to-os-environ (B003),\n\tunreliable-callable-check (B004),\n\tstrip-with-multi-characters (B005),\n\tmutable-argument-default (B006),\n\tunused-loop-control-variable (B007),\n\tfunction-call-in-default-argument (B008),\n\tget-attr-with-constant (B009),\n\tset-attr-with-constant (B010),\n\tassert-false (B011),\n\tjump-statement-in-finally (B012),\n\tredundant-tuple-in-exception-handler (B013),\n\tduplicate-handler-exception (B014),\n\tuseless-comparison (B015),\n\traise-literal (B016),\n\tassert-raises-exception (B017),\n\tuseless-expression (B018),\n\tcached-instance-method (B019),\n\tloop-variable-overrides-iterator (B020),\n\tf-string-docstring (B021),\n\tuseless-contextlib-suppress (B022),\n\tfunction-uses-loop-variable (B023),\n\tabstract-base-class-without-abstract-method (B024),\n\tduplicate-try-block-exception (B025),\n\tstar-arg-unpacking-after-keyword-arg (B026),\n\tempty-method-without-abstract-decorator (B027),\n\tno-explicit-stacklevel (B028),\n\texcept-with-empty-tuple (B029),\n\texcept-with-non-exception-classes (B030),\n\treuse-of-groupby-generator (B031),\n\tunintentional-type-annotation (B032),\n\tduplicate-value (B033),\n\tre-sub-positional-args (B034),\n\tstatic-key-dict-comprehension (B035),\n\tmutable-contextvar-default (B039),\n\traise-without-from-inside-except (B904),\n\tzip-without-explicit-strict (B905),\n\tbatched-without-explicit-strict (B911),\n\tmap-without-explicit-strict (B912),\n\tduplicate-isinstance-call (SIM101),\n\tcollapsible-if (SIM102),\n\tneedless-bool (SIM103),\n\tsuppressible-exception (SIM105),\n\treturn-in-try-except-finally (SIM107),\n\tif-else-block-instead-of-if-exp (SIM108),\n\tcompare-with-tuple (SIM109),\n\treimplemented-builtin (SIM110),\n\tuncapitalized-environment-variables (SIM112),\n\tenumerate-for-loop (SIM113),\n\tif-with-same-arms (SIM114),\n\topen-file-with-context-handler (SIM115),\n\tif-else-block-instead-of-dict-lookup (SIM116),\n\tmultiple-with-statements (SIM117),\n\tin-dict-keys (SIM118),\n\tnegate-equal-op (SIM201),\n\tnegate-not-equal-op (SIM202),\n\tdouble-negation (SIM208),\n\tif-expr-with-true-false (SIM210),\n\tif-expr-with-false-true (SIM211),\n\tif-expr-with-twisted-arms (SIM212),\n\texpr-and-not-expr (SIM220),\n\texpr-or-not-expr (SIM221),\n\texpr-or-true (SIM222),\n\texpr-and-false (SIM223),\n\tyoda-conditions (SIM300),\n\tif-else-block-instead-of-dict-get (SIM401),\n\tsplit-static-string (SIM905),\n\tdict-get-with-none-default (SIM910),\n\tzip-dict-keys-and-values (SIM911),\n\tunsorted-imports (I001),\n\tmissing-required-import (I002),\n\tmultiple-imports-on-one-line (E401),\n\tmodule-import-not-at-top-of-file (E402),\n\tmultiple-statements-on-one-line-colon (E701),\n\tmultiple-statements-on-one-line-semicolon (E702),\n\tuseless-semicolon (E703),\n\tnone-comparison (E711),\n\ttrue-false-comparison (E712),\n\tnot-in-test (E713),\n\tnot-is-test (E714),\n\ttype-comparison (E721),\n\tbare-except (E722),\n\tlambda-assignment (E731),\n\tambiguous-variable-name (E741),\n\tambiguous-class-name (E742),\n\tambiguous-function-name (E743),\n\tio-error (E902),\n\tunused-import (F401),\n\timport-shadowed-by-loop-var (F402),\n\tundefined-local-with-import-star (F403),\n\tlate-future-import (F404),\n\tundefined-local-with-import-star-usage (F405),\n\tundefined-local-with-nested-import-star-usage (F406),\n\tfuture-feature-not-defined (F407),\n\tpercent-format-invalid-format (F501),\n\tpercent-format-expected-mapping (F502),\n\tpercent-format-expected-sequence (F503),\n\tpercent-format-extra-named-arguments (F504),\n\tpercent-format-missing-argument (F505),\n\tpercent-format-mixed-positional-and-named (F506),\n\tpercent-format-positional-count-mismatch (F507),\n\tpercent-format-star-requires-sequence (F508),\n\tpercent-format-unsupported-format-character (F509),\n\tstring-dot-format-invalid-format (F521),\n\tstring-dot-format-extra-named-arguments (F522),\n\tstring-dot-format-extra-positional-arguments (F523),\n\tstring-dot-format-missing-arguments (F524),\n\tstring-dot-format-mixing-automatic (F525),\n\tf-string-missing-placeholders (F541),\n\tmulti-value-repeated-key-literal (F601),\n\tmulti-value-repeated-key-variable (F602),\n\texpressions-in-star-assignment (F621),\n\tmultiple-starred-expressions (F622),\n\tassert-tuple (F631),\n\tis-literal (F632),\n\tinvalid-print-syntax (F633),\n\tif-tuple (F634),\n\tbreak-outside-loop (F701),\n\tcontinue-outside-loop (F702),\n\tyield-outside-function (F704),\n\treturn-outside-function (F706),\n\tdefault-except-not-last (F707),\n\tforward-annotation-syntax-error (F722),\n\tredefined-while-unused (F811),\n\tundefined-name (F821),\n\tundefined-export (F822),\n\tundefined-local (F823),\n\tunused-variable (F841),\n\tunused-annotation (F842),\n\traise-not-implemented (F901),\n\tuseless-metaclass-type (UP001),\n\ttype-of-primitive (UP003),\n\tuseless-object-inheritance (UP004),\n\tdeprecated-unittest-alias (UP005),\n\tnon-pep585-annotation (UP006),\n\tnon-pep604-annotation-union (UP007),\n\tsuper-call-with-parameters (UP008),\n\tutf8-encoding-declaration (UP009),\n\tunnecessary-future-import (UP010),\n\tlru-cache-without-parameters (UP011),\n\tunnecessary-encode-utf8 (UP012),\n\tconvert-typed-dict-functional-to-class (UP013),\n\tconvert-named-tuple-functional-to-class (UP014),\n\tredundant-open-modes (UP015),\n\tdatetime-timezone-utc (UP017),\n\tnative-literals (UP018),\n\ttyping-text-str-alias (UP019),\n\topen-alias (UP020),\n\treplace-universal-newlines (UP021),\n\treplace-stdout-stderr (UP022),\n\tdeprecated-c-element-tree (UP023),\n\tos-error-alias (UP024),\n\tunicode-kind-prefix (UP025),\n\tdeprecated-mock-import (UP026),\n\tyield-in-for-loop (UP028),\n\tunnecessary-builtin-import (UP029),\n\tformat-literals (UP030),\n\tprintf-string-formatting (UP031),\n\tf-string (UP032),\n\tlru-cache-with-maxsize-none (UP033),\n\textraneous-parentheses (UP034),\n\tdeprecated-import (UP035),\n\toutdated-version-block (UP036),\n\tquoted-annotation (UP037),\n\tunnecessary-class-parentheses (UP039),\n\tnon-pep695-type-alias (UP040),\n\ttimeout-error-alias (UP041),\n\treplace-str-enum (UP042),\n\tunnecessary-default-type-args (UP043),\n\tnon-pep646-unpack (UP044),\n\tnon-pep604-annotation-optional (UP045),\n\tnon-pep695-generic-class (UP046),\n\tnon-pep695-generic-function (UP047),\n\tprivate-type-parameter (UP049),\n\tuseless-class-metaclass-type (UP050),\n\tambiguous-unicode-character-string (RUF001),\n\tambiguous-unicode-character-docstring (RUF002),\n\tambiguous-unicode-character-comment (RUF003),\n\tcollection-literal-concatenation (RUF005),\n\tasyncio-dangling-task (RUF006),\n\tzip-instead-of-pairwise (RUF007),\n\tmutable-dataclass-default (RUF008),\n\tfunction-call-in-dataclass-default-argument (RUF009),\n\texplicit-f-string-type-conversion (RUF010),\n\tmutable-class-default (RUF012),\n\timplicit-optional (RUF013),\n\tunnecessary-iterable-allocation-for-first-element (RUF015),\n\tinvalid-index-type (RUF016),\n\tquadratic-list-summation (RUF017),\n\tassignment-in-assert (RUF018),\n\tunnecessary-key-check (RUF019),\n\tnever-union (RUF020),\n\tparenthesize-chained-operators (RUF021),\n\tunsorted-dunder-all (RUF022),\n\tunsorted-dunder-slots (RUF023),\n\tmutable-fromkeys-value (RUF024),\n\tdefault-factory-kwarg (RUF026),\n\tinvalid-formatter-suppression-comment (RUF028),\n\tassert-with-print-message (RUF030),\n\tdecimal-from-float-literal (RUF032),\n\tpost-init-default (RUF033),\n\tuseless-if-else (RUF034),\n\tnone-not-at-end-of-union (RUF036),\n\tunnecessary-empty-iterable-within-deque-call (RUF037),\n\tinvalid-assert-message-literal-argument (RUF040),\n\tunnecessary-nested-literal (RUF041),\n\tpytest-raises-ambiguous-pattern (RUF043),\n\tunnecessary-cast-to-int (RUF046),\n\tmap-int-version-parsing (RUF048),\n\tdataclass-enum (RUF049),\n\tif-key-in-dict-del (RUF051),\n\tclass-with-mixed-type-vars (RUF053),\n\tunnecessary-round (RUF057),\n\tstarmap-zip (RUF058),\n\tunused-unpacked-variable (RUF059),\n\tin-empty-collection (RUF060),\n\tlegacy-form-pytest-raises (RUF061),\n\taccess-annotations-from-class-dict (RUF063),\n\tnon-octal-permissions (RUF064),\n\tduplicate-entry-in-dunder-all (RUF068),\n\tos-path-commonprefix (RUF071),\n\tunused-noqa (RUF100),\n\tredirected-noqa (RUF101),\n\tinvalid-rule-code (RUF102),\n\tinvalid-suppression-comment (RUF103),\n\tunmatched-suppression-comment (RUF104),\n\tinvalid-pyproject-toml (RUF200),\n]\nlinter.per_file_ignores = {}\nlinter.safety_table.forced_safe = []\nlinter.safety_table.forced_unsafe = []\nlinter.unresolved_target_version = 3.14\nlinter.per_file_target_version = {}\nlinter.preview = disabled\nlinter.explicit_preview_rules = false\nlinter.extension = ExtensionMapping({})\nlinter.allowed_confusables = []\nlinter.builtins = []\nlinter.dummy_variable_rgx = ^(_+|(_+[\\p{XID_Continue}]*[\\p{XID_Continue}--_]+?))$\nlinter.external = []\nlinter.ignore_init_module_imports = true\nlinter.logger_objects = []\nlinter.namespace_packages = []\nlinter.src = [\n\t\"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane\",\n\t\"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/src\",\n]\nlinter.tab_size = 4\nlinter.line_length = 100\nlinter.task_tags = [\n\tTODO,\n\tFIXME,\n\tXXX,\n]\nlinter.typing_modules = []\nlinter.typing_extensions = true\n\n# Linter Plugins\nlinter.flake8_annotations.mypy_init_return = false\nlinter.flake8_annotations.suppress_dummy_args = false\nlinter.flake8_annotations.suppress_none_returning = false\nlinter.flake8_annotations.allow_star_arg_any = false\nlinter.flake8_annotations.ignore_fully_untyped = false\nlinter.flake8_bandit.hardcoded_tmp_directory = [\n\t/tmp,\n\t/var/tmp,\n\t/dev/shm,\n]\nlinter.flake8_bandit.check_typed_exception = false\nlinter.flake8_bandit.extend_markup_names = []\nlinter.flake8_bandit.allowed_markup_calls = []\nlinter.flake8_bugbear.extend_immutable_calls = []\nlinter.flake8_builtins.allowed_modules = []\nlinter.flake8_builtins.ignorelist = []\nlinter.flake8_builtins.strict_checking = false\nlinter.flake8_comprehensions.allow_dict_calls_with_keyword_arguments = false\nlinter.flake8_copyright.notice_rgx = (?i)Copyright\\s+((?:\\(C\\)|\u00a9)\\s+)?\\d{4}((-|,\\s)\\d{4})*\nlinter.flake8_copyright.author = none\nlinter.flake8_copyright.min_file_size = 0\nlinter.flake8_errmsg.max_string_length = 0\nlinter.flake8_gettext.function_names = [\n\t_,\n\tgettext,\n\tngettext,\n]\nlinter.flake8_implicit_str_concat.allow_multiline = true\nlinter.flake8_import_conventions.aliases = {\n\taltair = alt,\n\tdatetime = dt,\n\tholoviews = hv,\n\tmatplotlib = mpl,\n\tmatplotlib.pyplot = plt,\n\tnetworkx = nx,\n\tnumpy = np,\n\tnumpy.typing = npt,\n\tpandas = pd,\n\tpanel = pn,\n\tplotly.express = px,\n\tpolars = pl,\n\tpyarrow = pa,\n\tseaborn = sns,\n\ttensorflow = tf,\n\ttkinter = tk,\n\txml.etree.ElementTree = ET,\n}\nlinter.flake8_import_conventions.banned_aliases = {}\nlinter.flake8_import_conventions.banned_from = []\nlinter.flake8_pytest_style.fixture_parentheses = false\nlinter.flake8_pytest_style.parametrize_names_type = tuple\nlinter.flake8_pytest_style.parametrize_values_type = list\nlinter.flake8_pytest_style.parametrize_values_row_type = tuple\nlinter.flake8_pytest_style.raises_require_match_for = [\n\tBaseException,\n\tException,\n\tValueError,\n\tOSError,\n\tIOError,\n\tEnvironmentError,\n\tsocket.error,\n]\nlinter.flake8_pytest_style.raises_extend_require_match_for = []\nlinter.flake8_pytest_style.mark_parentheses = false\nlinter.flake8_quotes.inline_quotes = double\nlinter.flake8_quotes.multiline_quotes = double\nlinter.flake8_quotes.docstring_quotes = double\nlinter.flake8_quotes.avoid_escape = true\nlinter.flake8_self.ignore_names = [\n\t_make,\n\t_asdict,\n\t_replace,\n\t_fields,\n\t_field_defaults,\n\t_name_,\n\t_value_,\n]\nlinter.flake8_tidy_imports.ban_relative_imports = \"parents\"\nlinter.flake8_tidy_imports.banned_api = {}\nlinter.flake8_tidy_imports.banned_module_level_imports = []\nlinter.flake8_tidy_imports.require_lazy = []\nlinter.flake8_tidy_imports.ban_lazy = []\nlinter.flake8_type_checking.strict = false\nlinter.flake8_type_checking.exempt_modules = [\n\ttyping,\n\ttyping_extensions,\n]\nlinter.flake8_type_checking.runtime_evaluated_base_classes = {}\nlinter.flake8_type_checking.runtime_evaluated_decorators = {}\nlinter.flake8_type_checking.quote_annotations = false\nlinter.flake8_unused_arguments.ignore_variadic_names = false\nlinter.isort.required_imports = []\nlinter.isort.combine_as_imports = false\nlinter.isort.force_single_line = false\nlinter.isort.force_sort_within_sections = false\nlinter.isort.detect_same_package = true\nlinter.isort.case_sensitive = false\nlinter.isort.force_wrap_aliases = false\nlinter.isort.force_to_top = []\nlinter.isort.known_modules = {}\nlinter.isort.order_by_type = true\nlinter.isort.relative_imports_order = furthest_to_closest\nlinter.isort.single_line_exclusions = []\nlinter.isort.split_on_trailing_comma = true\nlinter.isort.classes = []\nlinter.isort.constants = []\nlinter.isort.variables = []\nlinter.isort.no_lines_before = []\nlinter.isort.import_headings = {}\nlinter.isort.lines_after_imports = -1\nlinter.isort.lines_between_types = 0\nlinter.isort.forced_separate = []\nlinter.isort.section_order = [\n\tknown { type = future },\n\tknown { type = standard_library },\n\tknown { type = third_party },\n\tknown { type = first_party },\n\tknown { type = local_folder },\n]\nlinter.isort.default_section = known { type = third_party }\nlinter.isort.no_sections = false\nlinter.isort.from_first = false\nlinter.isort.length_sort = false\nlinter.isort.length_sort_straight = false\nlinter.mccabe.max_complexity = 10\nlinter.pep8_naming.ignore_names = [\n\tsetUp,\n\ttearDown,\n\tsetUpClass,\n\ttearDownClass,\n\tsetUpModule,\n\ttearDownModule,\n\tasyncSetUp,\n\tasyncTearDown,\n\tsetUpTestData,\n\tfailureException,\n\tlongMessage,\n\tmaxDiff,\n]\nlinter.pep8_naming.classmethod_decorators = []\nlinter.pep8_naming.staticmethod_decorators = []\nlinter.pycodestyle.max_line_length = 100\nlinter.pycodestyle.max_doc_length = none\nlinter.pycodestyle.ignore_overlong_task_comments = false\nlinter.pyflakes.extend_generics = []\nlinter.pyflakes.allowed_unused_imports = []\nlinter.pylint.allow_magic_value_types = [\n\tstr,\n\tbytes,\n]\nlinter.pylint.allow_magic_values = [\n\t0,\n\t1,\n\t-1,\n\t0.0,\n\t1.0,\n\t-1.0,\n\t\"\",\n\t\"__main__\",\n]\nlinter.pylint.allow_dunder_method_names = []\nlinter.pylint.max_args = 5\nlinter.pylint.max_positional_args = 5\nlinter.pylint.max_returns = 6\nlinter.pylint.max_bool_expr = 5\nlinter.pylint.max_branches = 12\nlinter.pylint.max_statements = 50\nlinter.pylint.max_statements_in_try = 5\nlinter.pylint.max_public_methods = 20\nlinter.pylint.max_locals = 15\nlinter.pylint.max_nested_blocks = 5\nlinter.pyupgrade.keep_runtime_typing = false\nlinter.ruff.parenthesize_tuple_in_subscript = false\nlinter.ruff.strictly_empty_init_modules = false\n\n# Formatter Settings\nformatter.exclude = []\nformatter.unresolved_target_version = 3.14\nformatter.per_file_target_version = {}\nformatter.preview = disabled\nformatter.line_width = 100\nformatter.line_ending = auto\nformatter.indent_style = space\nformatter.indent_width = 4\nformatter.quote_style = double\nformatter.nested_string_quote_style = alternating\nformatter.magic_trailing_comma = respect\nformatter.docstring_code_format = disabled\nformatter.docstring_code_line_width = dynamic\n\n# Analyze Settings\nanalyze.exclude = []\nanalyze.preview = disabled\nanalyze.target_version = 3.14\nanalyze.string_imports = disabled\nanalyze.extension = ExtensionMapping({})\nanalyze.include_dependencies = {}\nanalyze.type_checking_imports = true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "ty",
+        "check",
+        "-vv"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": "2026-11-07 11:18:28.045217 DEBUG Version: 0.0.99 (9b48f40c9 2026-11-06)\n2026-11-07 11:18:28.04671 DEBUG Architecture: aarch64, OS: macos\n2026-11-07 11:18:28.046721 DEBUG Searching for a project in '/Users/jbabb/.codex/worktrees/206f/superpowers-backplane'\n2026-11-07 11:18:28.04799 DEBUG Found project at '/Users/jbabb/.codex/worktrees/206f/superpowers-backplane'\n2026-11-07 11:18:28.048002 DEBUG Searching for a user-level configuration at `/Users/jbabb/.config/ty/ty.toml`\n2026-11-07 11:18:28.048891 INFO Defaulting to python-platform `darwin`\n2026-11-07 11:18:28.048899 DEBUG Resolving `VIRTUAL_ENV` environment variable: /Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv\n2026-11-07 11:18:28.048957 DEBUG Attempting to parse virtual environment metadata at '/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/pyvenv.cfg'\n2026-11-07 11:18:28.050609 DEBUG Searching for site-packages directory in sys.prefix /Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv\n2026-11-07 11:18:28.05064 DEBUG Resolved site-packages directories for this virtual environment are: [\"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/lib/python3.14/site-packages\"]\n2026-11-07 11:18:28.051295 DEBUG Searching for real stdlib directory in sys.prefix /Users/jbabb/.local/share/uv/python/cpython-3.14.10-macos-aarch64-none\n2026-11-07 11:18:28.051311 DEBUG Resolved real stdlib path for this virtual environment is: /Users/jbabb/.local/share/uv/python/cpython-3.14.10-macos-aarch64-none/lib/python3.14\n2026-11-07 11:18:28.051335 DEBUG Adding first-party search path `/Users/jbabb/.codex/worktrees/206f/superpowers-backplane`\n2026-11-07 11:18:28.051346 DEBUG Using vendored stdlib\n2026-11-07 11:18:28.051505 DEBUG Adding site-packages search path `/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/lib/python3.14/site-packages`\n2026-11-07 11:18:28.051512 INFO Python version: Python 3.14, platform: darwin\n2026-11-07 11:18:28.051519 DEBUG Adding new file root '/Users/jbabb/.codex/worktrees/206f/superpowers-backplane' of kind Project\n2026-11-07 11:18:28.052056 DEBUG Adding new file root '/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.venv/lib/python3.14/site-packages' of kind SearchPath\n2026-11-07 11:18:28.052155 DEBUG Starting main loop\n2026-11-07 11:18:28.052168 DEBUG Waiting for next main loop message.\n2026-11-07 11:18:28.052216 DEBUG Checking all files in project 'superpowers-backplane-dev'\n2026-11-07 11:18:28.112643 INFO Indexed 1 file(s) in 0.060s\n2026-11-07 11:18:28.112837 DEBUG Checking file '/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/tests/test_repository.py'\n2026-11-07 11:18:28.118185 DEBUG Resolving dynamic module resolution paths\n2026-11-07 11:18:28.132992 DEBUG Module `__builtins__` not found in search paths\n2026-11-07 11:18:28.153919 DEBUG Checking all files took 0.041s\n2026-11-07 11:18:28.15398 DEBUG Exiting main loop\n"
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "missing-reference",
+      "negative_exit": 1,
+      "restored_exit": 0,
+      "negative_output": "test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist)\nReject a package whose canonical instructions link missing resources. ... \n  test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist) (document='skills/managing-superpowers-backlog/SKILL.md', target='references/github-issue-contract.md')\nReject a package whose canonical instructions link missing resources. ... FAIL\n  test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist) (document='skills/managing-superpowers-backlog/references/pr-completion.md', target='github-issue-contract.md')\nReject a package whose canonical instructions link missing resources. ... FAIL\n  test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist) (document='skills/managing-superpowers-backlog/references/product-decomposition.md', target='github-issue-contract.md')\nReject a package whose canonical instructions link missing resources. ... FAIL\n\n======================================================================\nFAIL: test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist) (document='skills/managing-superpowers-backlog/SKILL.md', target='references/github-issue-contract.md')\nReject a package whose canonical instructions link missing resources.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.sp-bp/work/strict-astral-20261107/negative-controls/tests/test_repository.py\", line 33, in test_local_skill_references_exist\n    self.assertTrue((document.parent / target.split(\"#\", 1)[0]).is_file())\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n\n======================================================================\nFAIL: test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist) (document='skills/managing-superpowers-backlog/references/pr-completion.md', target='github-issue-contract.md')\nReject a package whose canonical instructions link missing resources.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.sp-bp/work/strict-astral-20261107/negative-controls/tests/test_repository.py\", line 33, in test_local_skill_references_exist\n    self.assertTrue((document.parent / target.split(\"#\", 1)[0]).is_file())\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n\n======================================================================\nFAIL: test_local_skill_references_exist (__main__.ShippedResourcesTests.test_local_skill_references_exist) (document='skills/managing-superpowers-backlog/references/product-decomposition.md', target='github-issue-contract.md')\nReject a package whose canonical instructions link missing resources.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.sp-bp/work/strict-astral-20261107/negative-controls/tests/test_repository.py\", line 33, in test_local_skill_references_exist\n    self.assertTrue((document.parent / target.split(\"#\", 1)[0]).is_file())\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n\n----------------------------------------------------------------------\nRan 1 test in 0.027s\n\nFAILED (failures=3)\n"
+    },
+    {
+      "case": "conflicting-product-version",
+      "negative_exit": 1,
+      "restored_exit": 0,
+      "negative_output": "test_native_product_versions_agree (__main__.ShippedResourcesTests.test_native_product_versions_agree)\nReject native host packages advertising conflicting product identities. ... FAIL\n\n======================================================================\nFAIL: test_native_product_versions_agree (__main__.ShippedResourcesTests.test_native_product_versions_agree)\nReject native host packages advertising conflicting product identities.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.sp-bp/work/strict-astral-20261107/negative-controls/tests/test_repository.py\", line 42, in test_native_product_versions_agree\n    self.assertEqual(len(set(identities)), 1)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 2 != 1\n\n----------------------------------------------------------------------\nRan 1 test in 0.014s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "case": "invalid-guide-python",
+      "negative_exit": 1,
+      "restored_exit": 0,
+      "negative_output": "test_python_guide_examples_compile (__main__.ShippedResourcesTests.test_python_guide_examples_compile)\nCatch syntax errors in documented Python before users execute the guides. ... \n  test_python_guide_examples_compile (__main__.ShippedResourcesTests.test_python_guide_examples_compile) (guide='installing-codex.md', block=1)\nCatch syntax errors in documented Python before users execute the guides. ... ERROR\n\n======================================================================\nERROR: test_python_guide_examples_compile (__main__.ShippedResourcesTests.test_python_guide_examples_compile) (guide='installing-codex.md', block=1)\nCatch syntax errors in documented Python before users execute the guides.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.sp-bp/work/strict-astral-20261107/negative-controls/tests/test_repository.py\", line 55, in test_python_guide_examples_compile\n    compile(code, f\"{guide.name}:python-block-{number}\", \"exec\")\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"installing-codex.md:python-block-1\", line 1\n    def broken(\n              ^\nSyntaxError: '(' was never closed\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "case": "stale-lock",
+      "negative_exit": 1,
+      "restored_exit": 0,
+      "negative_output": "Using CPython 3.14.10\nResolved 15 packages in 38ms\nerror: The lockfile at `uv.lock` needs to be updated, but `--check` was provided.\n\nhint: To update the lockfile, run `uv lock`.\n"
+    }
+  ],
+  "configuration": {
+    "configuration_inventory": [
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.config/uv/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/etc/uv/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.config/ty/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/pyproject.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/206f/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/pyproject.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/worktrees/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/pyproject.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.codex/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/pyproject.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/jbabb/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/pyproject.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/Users/ty.toml",
+        "exists": false
+      },
+      {
+        "path": "/uv.toml",
+        "exists": false
+      },
+      {
+        "path": "/pyproject.toml",
+        "exists": false
+      },
+      {
+        "path": "/ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/.ruff.toml",
+        "exists": false
+      },
+      {
+        "path": "/ty.toml",
+        "exists": false
+      }
+    ],
+    "override_names_only": [
+      "UV_RUN_RECURSION_DEPTH"
+    ]
+  },
+  "hook_installation": {
+    "path": "/Users/jbabb/Documents/Devel/superpowers-backplane/.git/hooks/pre-commit",
+    "sha256": "44ffc08581f57df3aa2f943d178575a3a279a5c63ce7fa696da8292efeabe056",
+    "prior_state": "Verified absent, no user hook overwritten",
+    "install": "uv run --locked pre-commit install -> exit0",
+    "execution": "uv run --locked .git/hooks/pre-commit -> exit0; four checks pass",
+    "transient": "Initial invocation raced the still-running install and reported missing file; rerun after observed install completion passed without source changes."
+  },
+  "hosted_ci": "UNKNOWN; configuration only, no authorized push or observed exact-commit runs",
+  "wider_engineering": "UNKNOWN; named on-demand applicability table added to report, required unperformed measurements remain explicit.",
+  "native_host_acceptance": "Not rerun; native manifest validation passes with nonblocking icon/README advice.",
+  "publication": "No push, tag, release or issue mutation",
+  "hook_fixture": {
+    "root": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane/.sp-bp/work/strict-astral-20261107/negative-controls",
+    "origin": null,
+    "starting_revision": null,
+    "commit": "17b53c9",
+    "result": "Actual installed pre-commit hook executed all four checks during fixture commit; all passed. No shared hook was changed."
+  },
+  "standalone_verification": {
+    "observed_at": "2026-11-07T17:22:20.574295+00:00",
+    "root": "/Users/jbabb/Documents/Devel/superpowers-backplane",
+    "base_commit": "0aa0cc007db63449455a1c4f9b6d92cb60c5d29a",
+    "commands": [
+      {
+        "argv": [
+          "uv",
+          "lock",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Resolved 15 packages in 5ms\n"
+      },
+      {
+        "argv": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "-c",
+          "import importlib.metadata,json,shutil,sys; from pathlib import Path; root=Path.cwd().resolve(); assert Path(sys.prefix).resolve()==root/'.venv'; assert sys.version_info[:3]==(3,14,10); tools={name:{'version':importlib.metadata.version(name),'executable':shutil.which(name)} for name in ('uv','ruff','ty','pre-commit')}; assert all(Path(item['executable']).resolve().is_relative_to(root/'.venv') for item in tools.values()); print(json.dumps({'python':sys.version,'prefix':sys.prefix,'base_prefix':sys.base_prefix,'tools':tools},indent=2))"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"python\": \"3.14.10 (main, Oct 26 2026, 13:59:48) [Clang 23.1.3 ]\",\n  \"prefix\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.venv\",\n  \"base_prefix\": \"/Users/jbabb/.local/share/uv/python/cpython-3.14.10-macos-aarch64-none\",\n  \"tools\": {\n    \"uv\": {\n      \"version\": \"0.13.7\",\n      \"executable\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/uv\"\n    },\n    \"ruff\": {\n      \"version\": \"0.17.4\",\n      \"executable\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/ruff\"\n    },\n    \"ty\": {\n      \"version\": \"0.0.99\",\n      \"executable\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/ty\"\n    },\n    \"pre-commit\": {\n      \"version\": \"4.7.0\",\n      \"executable\": \"/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/pre-commit\"\n    }\n  }\n}\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "uv",
+          "run",
+          "--locked",
+          "ruff",
+          "check",
+          "."
+        ],
+        "exit_code": 0,
+        "stdout": "All checks passed!\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "uv",
+          "run",
+          "--locked",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "exit_code": 0,
+        "stdout": "1 file already formatted\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "uv",
+          "run",
+          "--locked",
+          "ty",
+          "check"
+        ],
+        "exit_code": 0,
+        "stdout": "All checks passed!\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_canonical_skill_identities (test_repository.ShippedResourcesTests.test_canonical_skill_identities)\nReject an absent or renamed canonical skill entry point. ... ok\ntest_local_skill_references_exist (test_repository.ShippedResourcesTests.test_local_skill_references_exist)\nReject a package whose canonical instructions link missing resources. ... ok\ntest_native_product_versions_agree (test_repository.ShippedResourcesTests.test_native_product_versions_agree)\nReject native host packages advertising conflicting product identities. ... ok\ntest_python_guide_examples_compile (test_repository.ShippedResourcesTests.test_python_guide_examples_compile)\nCatch syntax errors in documented Python before users execute the guides. ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.037s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "uv",
+          "run",
+          "--locked",
+          ".git/hooks/pre-commit"
+        ],
+        "exit_code": 0,
+        "stdout": "[WARNING] Unstaged files detected.\n[INFO] Stashing unstaged files to /Users/jbabb/.cache/pre-commit/patch1794072136-14738.\nRuff check...............................................................Passed\nRuff format..............................................................Passed\nty.......................................................................Passed\nunittest.................................................................Passed\n[INFO] Restored changes from /Users/jbabb/.cache/pre-commit/patch1794072136-14738.\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "tests/opencode-adapter.test.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "\u2714 v1_preserves_paths_and_registers_once (36.061083ms)\n\u2714 v1_context_does_not_activate_v2 (20.96425ms)\n\u2714 v2_registers_exact_canonical_payloads (53.511917ms)\n\u2714 v2_replay_preserves_unrelated_skills (14.824875ms)\n\u2714 paths_resolve_from_package_with_spaces_and_different_cwd (18.371541ms)\n\u2714 malformed_skill_rejects_before_any_registration (66.107458ms)\n\u2714 missing_skill_rejects_before_any_registration (12.765875ms)\n\u2714 quoted_metadata_is_decoded_without_changing_body (20.246167ms)\n\u2714 v1_rejects_broken_canonical_tree_before_config_mutation (15.850625ms)\n\u2139 tests 9\n\u2139 suites 0\n\u2139 pass 9\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 684.673458\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "uv",
+          "sync",
+          "--locked",
+          "--all-groups"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Resolved 15 packages in 8ms\nChecked 14 packages in 10ms\n"
+      }
+    ],
+    "earlier_drafts": "Seven earlier source/evidence files preserved byte-for-byte during materialization; no release-policy draft overwritten."
+  },
+  "independent_review": {
+    "reviewer": "strict_astral_review",
+    "critical": 0,
+    "important": 1,
+    "finding": "Retain provenance/exact-sync/effective-discovery observations supporting PASS claims",
+    "fix": "Added actual probes, exact command vectors/outputs/identities and installed-hook observations; no product behavior changed.",
+    "minor": 0,
+    "remaining": "A09 hosted CI and A18 named applicability/results/guide-quality remain incomplete; no strict-compliance acceptance."
+  }
+}

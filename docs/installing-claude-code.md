@@ -174,20 +174,23 @@ revision, unrelated plugin/marketplace inventory, user-file hashes and independe
 upstream identity. Compare them immediately after every operation, including
 failure, before repair. Do not copy credentials or reuse an unknown marketplace.
 
-Run these Python blocks in the same `uv run --no-project python` session. Pause
+Run these Python blocks in one session using the project’s approved Python
+execution policy (`uv run --locked python` for Backplane development). Pause
 after each block to perform its verification. Python provides portable paths,
 UTF-8 files and shell-free subprocess calls; `gh` handles GitHub operations and
 Claude's native plugin manager handles package downloads. Select an existing
 disposable profile and a new or previously verified dedicated catalog directory.
 
 ```python
+"""Manage an immutable Backplane catalog in an authenticated disposable profile."""
+
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import subprocess
 import tempfile
+from pathlib import Path
 
 profile = Path(input("Disposable Claude profile: ")).expanduser().resolve(strict=True)
 catalog = Path(input("Dedicated catalog directory: ")).expanduser().resolve()
@@ -197,6 +200,7 @@ repo = "tvproductions/superpowers-backplane"
 
 
 def native(*arguments):
+    """Run a native command with child-scoped configuration and explicit failure reporting."""
     executable = shutil.which(arguments[0])
     if executable is None:
         raise RuntimeError(f"Required command unavailable: {arguments[0]}")
@@ -205,46 +209,69 @@ def native(*arguments):
         environment["CLAUDE_CONFIG_DIR"] = str(profile)
         print(f"CLAUDE_CONFIG_DIR={profile}")
         index = int(environment.get("GIT_CONFIG_COUNT", "0") or "0")
-        environment.update({
-            "GIT_CONFIG_COUNT": str(index + 1),
-            f"GIT_CONFIG_KEY_{index}": f"url.https://github.com/{repo}.insteadOf",
-            f"GIT_CONFIG_VALUE_{index}": f"git@github.com:{repo}",
-        })
+        environment.update(
+            {
+                "GIT_CONFIG_COUNT": str(index + 1),
+                f"GIT_CONFIG_KEY_{index}": f"url.https://github.com/{repo}.insteadOf",
+                f"GIT_CONFIG_VALUE_{index}": f"git@github.com:{repo}",
+            }
+        )
     result = subprocess.run(
-        [executable, *arguments[1:]], env=environment, shell=False,
-        capture_output=True, text=True, encoding="utf-8", errors="replace",
+        [executable, *arguments[1:]],
+        env=environment,
+        shell=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
         check=False,
     )
     if result.returncode:
-        raise RuntimeError(f"Command failed; inspect state before repair: {result.stdout}{result.stderr}")
+        raise RuntimeError(
+            f"Command failed; inspect state before repair: {result.stdout}{result.stderr}"
+        )
     print(result.stdout, end="" if result.stdout.endswith("\n") else "\n")
     return result.stdout
 
 
 def pin(revision):
+    """Atomically pin a verified source after checking dedicated catalog ownership."""
     if re.fullmatch(r"[0-9a-f]{40}", revision) is None:
         raise ValueError("Use a full lowercase 40-character commit SHA")
     manifest = catalog / ".claude-plugin" / "marketplace.json"
     if catalog.exists():
         existing = json.loads(manifest.read_text(encoding="utf-8-sig"))
         entries = existing.get("plugins", [])
-        if (existing.get("name") != "superpowers-backplane" or len(entries) != 1
-                or entries[0].get("name") != "superpowers-backplane"
-                or entries[0].get("source", {}).get("source") != "github"
-                or entries[0].get("source", {}).get("repo") != repo):
+        if (
+            existing.get("name") != "superpowers-backplane"
+            or len(entries) != 1
+            or entries[0].get("name") != "superpowers-backplane"
+            or entries[0].get("source", {}).get("source") != "github"
+            or entries[0].get("source", {}).get("repo") != repo
+        ):
             raise ValueError("Occupied catalog is not the verified dedicated Backplane source")
     available = native("gh", "api", f"repos/{repo}/commits/{revision}", "--jq", ".sha").strip()
     if available != revision:
         raise ValueError("Source unavailable; retain prior catalog and installation")
     value = {
-        "name": "superpowers-backplane", "description": "Pinned Backplane hosted-source catalog",
+        "name": "superpowers-backplane",
+        "description": "Pinned Backplane hosted-source catalog",
         "owner": {"name": "tvproductions"},
-        "plugins": [{"name": "superpowers-backplane", "description": "Pinned Backplane package",
-                     "source": {"source": "github", "repo": repo, "sha": revision}}],
+        "plugins": [
+            {
+                "name": "superpowers-backplane",
+                "description": "Pinned Backplane package",
+                "source": {"source": "github", "repo": repo, "sha": revision},
+            }
+        ],
     }
     manifest.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(
-        mode="w", encoding="utf-8", newline="\n", dir=manifest.parent, delete=False,
+        mode="w",
+        encoding="utf-8",
+        newline="\n",
+        dir=manifest.parent,
+        delete=False,
     ) as handle:
         temporary = Path(handle.name)
         handle.write(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
@@ -269,7 +296,9 @@ For the selected dedicated catalog, register and install the prior package:
 
 ```python
 native("claude", "plugin", "marketplace", "add", str(catalog), "--scope", "user")
-native("claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user"
+)
 ```
 
 Require exactly one effective Backplane installation. Inspect the full
@@ -282,7 +311,9 @@ skills from their separate packages. Keep upstream unchanged.
 ### Repeat install and update
 
 ```python
-native("claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user"
+)
 ```
 
 Require one installation, unchanged source/content, preservation and fresh
@@ -292,7 +323,9 @@ three-skill loads. For an approved candidate with a different package version:
 pin(candidate)
 native("claude", "plugin", "validate", "--strict", str(catalog))
 native("claude", "plugin", "marketplace", "update", "superpowers-backplane")
-native("claude", "plugin", "update", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude", "plugin", "update", "superpowers-backplane@superpowers-backplane", "--scope", "user"
+)
 ```
 
 Restart Claude. Require the selected full commit, expected version, expected
@@ -309,13 +342,22 @@ it does not assume the update command supports downgrades:
 pin(prior)
 native("claude", "plugin", "validate", "--strict", str(catalog))
 native("claude", "plugin", "marketplace", "update", "superpowers-backplane")
-native("claude", "plugin", "uninstall", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude",
+    "plugin",
+    "uninstall",
+    "superpowers-backplane@superpowers-backplane",
+    "--scope",
+    "user",
+)
 ```
 
 Immediately verify Backplane absence and preservation before reinstalling:
 
 ```python
-native("claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user"
+)
 ```
 
 Restart and prove the prior full commit, version, file hashes and actual fresh
@@ -339,7 +381,14 @@ sequence and verify it before proceeding. An unverified restore stays `UNKNOWN`.
 ### Backplane-only uninstall and test restoration
 
 ```python
-native("claude", "plugin", "uninstall", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude",
+    "plugin",
+    "uninstall",
+    "superpowers-backplane@superpowers-backplane",
+    "--scope",
+    "user",
+)
 ```
 
 Compare preservation immediately. In a fresh session using this same profile,
@@ -348,7 +397,9 @@ all marketplaces and unrelated entries. Restore the test profile from the
 still-prior-pinned catalog:
 
 ```python
-native("claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user")
+native(
+    "claude", "plugin", "install", "superpowers-backplane@superpowers-backplane", "--scope", "user"
+)
 ```
 
 Restart and verify the prior commit, installed bytes and three direct skill

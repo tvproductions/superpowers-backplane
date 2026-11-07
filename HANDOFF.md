@@ -1,3 +1,15 @@
+# Strict Astral full-verification continuation — November 7, 2026
+
+Strict Astral/Python compliance is a MUST. Read `docs/engineering/python.md` and
+`tests/scenarios/2026-11-07-strict-astral-full-verification.md` for the current
+candidate and evidence. The earlier acceptance file is a historical incomplete
+checkpoint. Local routine and deeper acceptance now pass, with independently
+reviewed cognitive evidence and guide behavior coverage/mutation results.
+Exact-candidate hosted CI remains the final prerequisite; new Python feature
+work remains gated until it passes. Corrective compliance work is authorized.
+The user requested dedicated-branch hosted verification; no release, issue
+mutation or native-host acceptance is implied. Release-design drafts remain local.
+
 # Resume and release-accounting handoff — November 1, 2026
 
 Read [20261101T233052Z-opencode-preflight-and-release-accounting.md](docs/superpowers-backplane/handoffs/20261101T233052Z-opencode-preflight-and-release-accounting.md) and invoke RESUME against that exact path. #5 remains completed; #4 and OpenCode acceptance remain unfinished. V1 model execution now succeeds with catalog-present gpt-6-astra; setup acceptance is not claimed. User raised release-accounting and minor-version concerns; no version bump or release rescope was approved. This requested handoff/sync includes the preceding two local plan/checkpoint commits. See supporting evidence under `tests/scenarios/20261101T233052Z-resume-release-discussion` and the subsequent sync receipt for verified arrival.

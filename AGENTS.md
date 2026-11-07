@@ -71,6 +71,12 @@
   strictly and thoroughly for all Python needs: `uv` for Python versions,
   environments, dependencies, tool installation, and execution; Ruff for
   linting and formatting; and `ty` for type checking.
+- **STRICT Astral/Python compliance is mandatory.** Follow
+  [the engineering contract](docs/engineering/python.md) and its full applicable
+  acceptance matrix. This is a Backplane development requirement in every mode,
+  not optional guidance or a requirement imposed on consumers. Missing required
+  evidence means nonconformance; do not begin new Python feature work until the
+  baseline is accepted. Corrective reconciliation remains authorized.
 - Use uv-managed Python 3.14 for this repository's tooling and `.venv`.
   This is Backplane's independent ordinary-project policy, aligned with the
   maintainer's current rule: 3.14 unless X-Plane/XPPython3-bound, then the supported
@@ -78,8 +84,13 @@
   workflows must consume this decision rather than supply a fallback baseline.
   `.python-version` records the verified patch; keep it and the environment
   aligned. Preserve historical verification records at their original runtimes.
-  Create the environment with `uv venv --managed-python .venv` and execute
-  Python through `uv run --no-project python` from this repository root.
+  Create a missing environment with `uv venv --managed-python .venv`, exact-sync
+  with `uv sync --locked --all-groups`, and execute Python through
+  `uv run --locked python` from the verified repository/worktree root.
+  Commit `pyproject.toml` and uv-generated `uv.lock`; use declared development
+  groups and effective tool configuration. No no-project/ad hoc installation
+  shortcut establishes compliance. Apply src/uv_build and clean artifact proof
+  when Python runtime packaging is introduced; current tooling is non-package.
 - Keep orchestration portable across Windows, macOS, and Linux: use Python
   paths, explicit text encodings, and shell-free subprocess argument lists.
   Limit shell-specific code to adapters for an explicitly tested shell surface.
@@ -88,7 +99,7 @@
   Superpowers itself requires Git workflows.
 - Use direct `gh` and `git` commands for routine GitHub and repository
   operations. Reserve Python for substantive processing, through this
-  repository's prescribed `uv run --no-project python` environment.
+  repository's prescribed `uv run --locked python` environment.
 - Use native GitHub issue hierarchy, dependencies, issue types, labels, linked
   pull requests, and closure relationships. Do not require GitHub Projects or
   introduce IssueOps.

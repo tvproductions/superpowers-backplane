@@ -97,3 +97,16 @@ obtain fresh independent review. Publish the reviewed compliance candidate to a
 dedicated verification branch for exact-commit CI; this supersedes the earlier
 no-push boundary only for that bounded verification. No release or unrelated
 proposal publication is included.
+
+### Verified execution disposition — November 7, 2026
+
+Tasks 1–3 and the authorized full-compliance continuation are complete for the
+assessed non-package Python development scope. The initial incomplete receipt
+is preserved. The [current acceptance record](../../../tests/scenarios/2026-11-07-strict-astral-full-verification.md)
+records all applicable rows PASS, reasoned N/A rows and no exception.
+Source candidate 57ac0cd passed the installed Git hook and hosted run 42402031031
+on Linux, macOS and Windows. The subsequent evidence-only commit records those
+observations and is verified separately. Remote main integration, product
+release, broader release-doctrine implementation and native-host acceptance
+remain outside this execution. The native worktree and owned fixture evidence
+are retained; tracked receipts preserve the sources and results needed to resume.

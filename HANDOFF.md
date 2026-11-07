@@ -5,8 +5,10 @@ Strict Astral/Python compliance is a MUST. Read `docs/engineering/python.md` and
 candidate and evidence. The earlier acceptance file is a historical incomplete
 checkpoint. Local routine and deeper acceptance now pass, with independently
 reviewed cognitive evidence and guide behavior coverage/mutation results.
-Exact-candidate hosted CI remains the final prerequisite; new Python feature
-work remains gated until it passes. Corrective compliance work is authorized.
+Exact-candidate hosted CI now passes on Linux, macOS and Windows (run 42402031031,
+source 57ac0cd). All applicable A01–A18 rows pass without exception; the Python
+feature prerequisite is satisfied for this baseline. Maintain the mandatory
+contract and reassess requirements when adding Python runtime/package scope.
 The user requested dedicated-branch hosted verification; no release, issue
 mutation or native-host acceptance is implied. Release-design drafts remain local.
 

@@ -1,15 +1,16 @@
 # Strict Astral full-verification candidate
 
-Date: November 7, 2026. **Local analysis passes; hosted CI
-is pending.** This supplements the preserved
-[initial incomplete checkpoint](2026-11-07-strict-astral-acceptance.md).
-No full-compliance claim is made before the remaining observations complete.
+Date: November 7, 2026. **Strict acceptance PASS for the assessed Backplane
+Python development-tooling scope. All applicable A01–A18 rows pass; remaining
+rows have evidenced N/A dispositions. No exception was used.** This supersedes
+the preserved [initial incomplete checkpoint](2026-11-07-strict-astral-acceptance.md).
+New Python feature work may proceed under the mandatory ongoing contract.
 
 ## Scope and authority
 
 The user explicitly requested full compliance, including the previously missing
 hosted CI, deeper checks and guide quality. Execution reuses the registered native
-worktree206f at baseline `0aa0cc007db63449455a1c4f9b6d92cb60c5d29a`.
+worktree 206f at baseline `0aa0cc007db63449455a1c4f9b6d92cb60c5d29a`.
 The user-facing product remains two skills plus the minimal native adapter;
 Python is a locked non-package development project. No release, issue mutation,
 upstream installation change or migration of other projects is included.
@@ -54,8 +55,9 @@ candidate does not claim it is installed or qualified.
 A01 and A04–A08/A10/A17 require the retained current identities, effective config,
 managed interpreter/tool origins, fresh lock and exact sync. A18 requires the
 actual results and reviewed findings above, plus completed independent cognitive review.
-A09 still requires observed hosted CI on the exact candidate, including the
-configured Linux/macOS/Windows routine matrix and actual local hook evidence.
+A09 now passes: the installed local Git hook ran all four checks during the
+candidate commit, and exact-commit hosted CI completed successfully on Linux,
+macOS and Windows.
 
 A02/A03/A11/A12/A13 are N/A to Python runtime distribution because none exists;
 this is not a fake build/install pass. A14 is N/A to workspaces; A15 to private
@@ -72,6 +74,29 @@ unused import: it refuses the lint defect and passes the restored fixture.
 This complements the earlier missing-resource/version/syntax/stale-lock controls.
 No native guide operation was executed as a lint or documentation check.
 
+## Current A01–A18 acceptance
+
+| Row | Result | Evidence / applicability |
+| --- | --- | --- |
+| A01 | PASS | Verified standalone root/native worktree and guarded reconciliation; tracked candidate and remote arrival identities separate. |
+| A02 | N/A | No runtime Python package/CLI; non-distributable uv tooling project; reassess src layout when introduced. |
+| A03 | N/A | No Python distribution/build backend; uv_build mandatory when applicable. |
+| A04 | PASS | Central pyproject and retained effective Ruff/ty discovery and configuration inventory; guide cells checked separately. |
+| A05 | PASS | Actual uv-managed Python 3.14.10 matches .python-version, metadata, Ruff/ty and passing three-platform CI. |
+| A06 | PASS | Dated official selection review for routine tools and eight deeper tools with actual pinned versions and compatibility results. |
+| A07 | PASS | uv-generated fresh lock, exact intended-environment sync, stale-lock refusal control and clean CI sync. |
+| A08 | PASS | Actual intended interpreter/tool origins, Ruff lint/format, ty, five unittest checks and nine Node regressions pass. |
+| A09 | PASS | Installed local hook executes all four checks at candidate commit; observed exact-commit Linux/macOS/Windows CI success. |
+| A10 | PASS | No runtime dependencies; separate exact dev/hygiene groups and owning-tool lock preserve dependency intent. |
+| A11 | N/A | No Python wheel/sdist release product; native-plugin release acceptance is distinct. |
+| A12 | N/A | No installed Python runtime API; native-host acceptance is separate. |
+| A13 | N/A | No typed Python library, namespace or published Python support range. |
+| A14 | N/A | Standalone uv tooling project, no workspace. |
+| A15 | N/A | Public resolution only; no private/special runtime sources or credential handling. |
+| A16 | N/A | No Python deployment/native extension/container/embedded-host product. |
+| A17 | PASS | Reviewed uv minimum compatibility and exact tested/project-local tool selection; no standalone application/PEP723 tool. |
+| A18 | PASS | All applicable deeper checks performed and reviewed, current guide quality repaired and guarded, independent cognitive evidence accepted, real helper coverage/mutation measured; documented N/A remains bounded. |
+
 ## Hosted verification boundary
 
 Publish only the reviewed compliance unit on a dedicated verification branch to
@@ -80,3 +105,10 @@ unrelated work. A pushed candidate is not a product release. Record source,
 tested commit, branch, CI jobs and later evidence-storage identity separately.
 Only actual passing CI plus accepted independent evidence can close the remaining
 rows and lift the Python-feature gate for the assessed candidate.
+
+Observed tested candidate: `57ac0cde90b93e32d2b5fb9332c0a885fd149f56` on
+`chore/strict-astral-compliance`. [Hosted run 42402031031](https://github.com/tvproductions/superpowers-backplane/actions/runs/42402031031)
+completed successfully with all three jobs passing. The structured receipt
+retains job identities, steps and timestamps. The following evidence-only commit
+records that observation; its own CI is observed separately to avoid a
+self-referential receipt. This does not merge the branch into remote main.

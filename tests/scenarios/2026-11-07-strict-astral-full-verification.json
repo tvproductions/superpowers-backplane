@@ -1,7 +1,7 @@
 {
   "schema": "superpowers-backplane-full-python-acceptance/v1",
   "observed_at": "2026-11-07T18:18:14.607531+00:00",
-  "status": "LOCAL_ACCEPTANCE_PASS_HOSTED_CI_PENDING",
+  "status": "STRICT_ACCEPTANCE_PASS_FOR_ASSESSED_SCOPE",
   "workspace": "/Users/jbabb/.codex/worktrees/206f/superpowers-backplane",
   "base_commit": "0aa0cc007db63449455a1c4f9b6d92cb60c5d29a",
   "corpus": [
@@ -3583,5 +3583,450 @@
     "reproduction": "Create these retained files in an owned ignored fixture, replace absolute project path in TOML with verified project root, and run the retained commands from fixture root. Never execute guide top-level native operations."
   },
   "candidate_parent": "60591bd461c5490b2e05024139d403acaf01f390",
-  "root_reconciliation": "Root advanced by separately authorized Python authority commit 60591bd; all 13 prior task input hashes remained unchanged. Guarded copy retained that commit and unrelated draft bytes."
+  "root_reconciliation": "Root advanced by separately authorized Python authority commit 60591bd; all 13 prior task input hashes remained unchanged. Guarded copy retained that commit and unrelated draft bytes.",
+  "hosted_ci": {
+    "conclusion": "success",
+    "headSha": "57ac0cde90b93e32d2b5fb9332c0a885fd149f56",
+    "jobs": [
+      {
+        "completedAt": "2026-11-07T18:35:31Z",
+        "conclusion": "success",
+        "databaseId": 128491683661,
+        "name": "checks (ubuntu-latest)",
+        "startedAt": "2026-11-07T18:35:20Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-11-07T18:35:22Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-11-07T18:35:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:23Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-11-07T18:35:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:24Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2",
+            "number": 3,
+            "startedAt": "2026-11-07T18:35:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:26Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --all-groups",
+            "number": 4,
+            "startedAt": "2026-11-07T18:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:27Z",
+            "conclusion": "success",
+            "name": "Run uv run --locked pre-commit run --all-files",
+            "number": 5,
+            "startedAt": "2026-11-07T18:35:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:28Z",
+            "conclusion": "success",
+            "name": "Run node --test tests/opencode-adapter.test.mjs",
+            "number": 6,
+            "startedAt": "2026-11-07T18:35:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:28Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2",
+            "number": 11,
+            "startedAt": "2026-11-07T18:35:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:28Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 12,
+            "startedAt": "2026-11-07T18:35:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:28Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-11-07T18:35:28Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/42402031031/job/128491683661"
+      },
+      {
+        "completedAt": "2026-11-07T18:35:33Z",
+        "conclusion": "success",
+        "databaseId": 128491683796,
+        "name": "checks (macos-latest)",
+        "startedAt": "2026-11-07T18:35:20Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-11-07T18:35:21Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-11-07T18:35:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:23Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-11-07T18:35:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:24Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2",
+            "number": 3,
+            "startedAt": "2026-11-07T18:35:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:28Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --all-groups",
+            "number": 4,
+            "startedAt": "2026-11-07T18:35:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:29Z",
+            "conclusion": "success",
+            "name": "Run uv run --locked pre-commit run --all-files",
+            "number": 5,
+            "startedAt": "2026-11-07T18:35:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:30Z",
+            "conclusion": "success",
+            "name": "Run node --test tests/opencode-adapter.test.mjs",
+            "number": 6,
+            "startedAt": "2026-11-07T18:35:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:30Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2",
+            "number": 11,
+            "startedAt": "2026-11-07T18:35:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:30Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 12,
+            "startedAt": "2026-11-07T18:35:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:31Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-11-07T18:35:30Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/42402031031/job/128491683796"
+      },
+      {
+        "completedAt": "2026-11-07T18:35:54Z",
+        "conclusion": "success",
+        "databaseId": 128491683848,
+        "name": "checks (windows-latest)",
+        "startedAt": "2026-11-07T18:35:20Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-11-07T18:35:22Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-11-07T18:35:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:29Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-11-07T18:35:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:31Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2",
+            "number": 3,
+            "startedAt": "2026-11-07T18:35:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:41Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --all-groups",
+            "number": 4,
+            "startedAt": "2026-11-07T18:35:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:45Z",
+            "conclusion": "success",
+            "name": "Run uv run --locked pre-commit run --all-files",
+            "number": 5,
+            "startedAt": "2026-11-07T18:35:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:49Z",
+            "conclusion": "success",
+            "name": "Run node --test tests/opencode-adapter.test.mjs",
+            "number": 6,
+            "startedAt": "2026-11-07T18:35:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:49Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2",
+            "number": 11,
+            "startedAt": "2026-11-07T18:35:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:52Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 12,
+            "startedAt": "2026-11-07T18:35:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-07T18:35:52Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-11-07T18:35:52Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/42402031031/job/128491683848"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/42402031031"
+  },
+  "completed_observation_at": "2026-11-07T18:36:45.100988+00:00",
+  "exceptions": [],
+  "new_python_feature_gate": "Baseline accepted; subsequent Python changes must preserve this contract and reassess newly applicable requirements.",
+  "acceptance_matrix": [
+    {
+      "id": "A01",
+      "result": "PASS",
+      "evidence": "Verified standalone root/native worktree and guarded reconciliation; tracked candidate and remote arrival identities separate."
+    },
+    {
+      "id": "A02",
+      "result": "N/A",
+      "evidence": "No runtime Python package/CLI; non-distributable uv tooling project; reassess src layout when introduced."
+    },
+    {
+      "id": "A03",
+      "result": "N/A",
+      "evidence": "No Python distribution/build backend; uv_build mandatory when applicable."
+    },
+    {
+      "id": "A04",
+      "result": "PASS",
+      "evidence": "Central pyproject and retained effective Ruff/ty discovery and configuration inventory; guide cells checked separately."
+    },
+    {
+      "id": "A05",
+      "result": "PASS",
+      "evidence": "Actual uv-managed Python 3.14.10 matches .python-version, metadata, Ruff/ty and passing three-platform CI."
+    },
+    {
+      "id": "A06",
+      "result": "PASS",
+      "evidence": "Dated official selection review for routine tools and eight deeper tools with actual pinned versions and compatibility results."
+    },
+    {
+      "id": "A07",
+      "result": "PASS",
+      "evidence": "uv-generated fresh lock, exact intended-environment sync, stale-lock refusal control and clean CI sync."
+    },
+    {
+      "id": "A08",
+      "result": "PASS",
+      "evidence": "Actual intended interpreter/tool origins, Ruff lint/format, ty, five unittest checks and nine Node regressions pass."
+    },
+    {
+      "id": "A09",
+      "result": "PASS",
+      "evidence": "Installed local hook executes all four checks at candidate commit; observed exact-commit Linux/macOS/Windows CI success."
+    },
+    {
+      "id": "A10",
+      "result": "PASS",
+      "evidence": "No runtime dependencies; separate exact dev/hygiene groups and owning-tool lock preserve dependency intent."
+    },
+    {
+      "id": "A11",
+      "result": "N/A",
+      "evidence": "No Python wheel/sdist release product; native-plugin release acceptance is distinct."
+    },
+    {
+      "id": "A12",
+      "result": "N/A",
+      "evidence": "No installed Python runtime API; native-host acceptance is separate."
+    },
+    {
+      "id": "A13",
+      "result": "N/A",
+      "evidence": "No typed Python library, namespace or published Python support range."
+    },
+    {
+      "id": "A14",
+      "result": "N/A",
+      "evidence": "Standalone uv tooling project, no workspace."
+    },
+    {
+      "id": "A15",
+      "result": "N/A",
+      "evidence": "Public resolution only; no private/special runtime sources or credential handling."
+    },
+    {
+      "id": "A16",
+      "result": "N/A",
+      "evidence": "No Python deployment/native extension/container/embedded-host product."
+    },
+    {
+      "id": "A17",
+      "result": "PASS",
+      "evidence": "Reviewed uv minimum compatibility and exact tested/project-local tool selection; no standalone application/PEP723 tool."
+    },
+    {
+      "id": "A18",
+      "result": "PASS",
+      "evidence": "All applicable deeper checks performed and reviewed, current guide quality repaired and guarded, independent cognitive evidence accepted, real helper coverage/mutation measured; documented N/A remains bounded."
+    }
+  ],
+  "final_source_files": [
+    {
+      "path": ".python-version",
+      "sha256": "4f4c88910b6d485ae689143880e5e81b595a48a51ecb391b2f14feaec106d180"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "1be7082eb29832ec338d5743e1b6c060b2c02b7bf9104740a89e35b49a02acef"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "c96788243018b5c064dd4753a411e3c44b1fb699747a89b0244c10fe2aeb191d"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha256": "b39b18776b26d82b054c4383679344825f9eed5a5e344e94f8c1b3d5ff1a5859"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "6610d3570f9c993777861a3628e19eec1c7ffa1884709be3b766513270114ecf"
+    },
+    {
+      "path": "tests/test_repository.py",
+      "sha256": "d66b16f24c4c31ca012fe2a80a1640b612cfe4ab9abe2038c93e7a8bcd192d4c"
+    },
+    {
+      "path": "docs/installing-claude-code.md",
+      "sha256": "f547ceb7b01433bd47026bb24cc8b577983e4e3e5bbe715ca05d91ab9e894084"
+    },
+    {
+      "path": "docs/engineering/python.md",
+      "sha256": "7f83b7fb5b2b4fec4562f7115aac774c77a3d6ee3325a6c8c472eb34d200b6fe"
+    }
+  ],
+  "root_final_provenance": {
+    "root": "/Users/jbabb/Documents/Devel/superpowers-backplane",
+    "sys_executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/python",
+    "prefix": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv",
+    "base_prefix": "/Users/jbabb/.local/share/uv/python/cpython-3.14.10-macos-aarch64-none",
+    "python": "3.14.10 (main, Oct 26 2026, 13:59:48) [Clang 23.1.3 ]",
+    "tools": {
+      "uv": {
+        "version": "0.13.7",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/uv"
+      },
+      "ruff": {
+        "version": "0.17.4",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/ruff"
+      },
+      "ty": {
+        "version": "0.0.99",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/ty"
+      },
+      "pre-commit": {
+        "version": "4.7.0",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/pre-commit"
+      },
+      "lizard": {
+        "version": "1.25.1",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/lizard"
+      },
+      "cohesion": {
+        "version": "1.2.0",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/cohesion"
+      },
+      "interrogate": {
+        "version": "1.7.0",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/interrogate"
+      },
+      "vulture": {
+        "version": "2.16",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/vulture"
+      },
+      "bandit": {
+        "version": "1.9.4",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/bandit"
+      },
+      "pip-audit": {
+        "version": "2.10.1",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/pip-audit"
+      },
+      "coverage": {
+        "version": "7.17.2",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/coverage"
+      },
+      "cosmic-ray": {
+        "version": "8.7.0",
+        "executable": "/Users/jbabb/Documents/Devel/superpowers-backplane/.venv/bin/cosmic-ray"
+      }
+    },
+    "exact_sync": "uv sync --locked --all-groups exited 0, resolved 72 packages; 71 actual distributions plus virtual non-package project",
+    "hook_commit": "57ac0cde90b93e32d2b5fb9332c0a885fd149f56: installed normal Git hook ran four checks successfully; unrelated tracked drafts stashed/restored by pre-commit"
+  }
 }

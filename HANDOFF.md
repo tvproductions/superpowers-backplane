@@ -1,3 +1,12 @@
+# Minor development version approved — November 7, 2026
+
+The maintainer approved a minor increment for the strict Astral work alone.
+Development version is now 0.2.0 across native manifests and tooling metadata;
+read `CHANGELOG.md` and `tests/scenarios/2026-11-07-minor-version-bump.md`.
+The changelog is unreleased. Earlier 0.1.0 release-scope proposals retain their
+historical status and need reconciliation before release publication. Their
+host acceptance, pilot and issue obligations are unchanged by this version bump.
+
 # Strict Astral full-verification continuation — November 7, 2026
 
 Strict Astral/Python compliance is a MUST. Read `docs/engineering/python.md` and

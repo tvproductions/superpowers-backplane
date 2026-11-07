@@ -1,6 +1,6 @@
 {
   "name": "superpowers-backplane",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Native GitHub backlog continuity for upstream Superpowers",
   "type": "module",
   "main": "index.js",

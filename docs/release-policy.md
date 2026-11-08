@@ -126,6 +126,40 @@ release is changed. Retain newer-family Python 3.15 as a separate compatibility
 decision. Record current guide-format findings separately from runtime and
 manifest validation; this maintenance does not repeat historical host acceptance.
 
+## Bounded release-scope review — November 7, 2026
+
+The operator requested a comparison of the existing four-host first release
+with a Codex/Claude initial bundle and later OpenCode minor. The
+[proposal](superpowers-backplane/specs/2026-11-07-release-scope-review.md) records
+the assessed scope, evidence gaps, proposed obligation transfers, conditional
+window and manual review cadence. Scope changes and the cadence remain proposed;
+this source review does not approve or publish them.
+
+Reviewed canonical starter main
+[`8d090f88bf45b9a755808a62c1445beeb005daff`](https://github.com/tvproductions/gz-skills-first-starter/commit/8d090f88bf45b9a755808a62c1445beeb005daff)
+against prior review `fc9cdd2b671f7af7e45fddaa1ac2739c75bb2281`.
+Published `v0.8.0` resolves to `e0b752fcc13b87ec7868fe0b0f85badefdb6bf52`;
+reviewed main is one commit later, containing unreleased Windows scope-fix work.
+The versioning, changelog, baseline, architecture and Python-engineering input
+blob identities are in the
+[review receipt](../tests/scenarios/2026-11-07-release-scope-review.json).
+
+Applicable release guidance explicitly identifies 0.1.0 as the first substantive
+public commitment. Existing untagged work therefore belongs in the initial
+bundle; supported OpenCode adoption after that baseline would be a minor
+addition. Coherent bundles, compatible patches, new major PRDs and independent
+versions remain consistent with this binding. No policy exception is proposed.
+
+The source also strengthens adopter activation-scope guidance. Reconcile native
+installation/update preservation with the selected tuple during #4 acceptance;
+do not certify that evidence from this document review. Starter implementation
+changes and its Python-only adopter baseline are not adopted into Backplane or
+its consumers. Existing project tooling and consumer language neutrality remain
+authoritative. Full release-specific freshness, engineering applicability and
+exact-candidate qualification remain outstanding. No runtime/plugin update,
+formal starter conformance, new automatic schedule or release authorization is
+implied. Recheck the source before final release alignment claims.
+
 ## Independent Python family alignment — November 7, 2026
 
 The maintainer explicitly directed fixing alignment across the three repositories
@@ -158,3 +192,19 @@ The committed tree has no project quality CI; a pending workflow is not hosted
 execution evidence. No release, native install or broader acceptance is implied.
 
 See [the scoped authority receipt](../tests/scenarios/2026-11-07-python-policy-authority.md).
+
+## Discussion save point after v0.2.0 — November 7, 2026
+
+The bounded scope review above predates the maintainer-selected, published
+v0.2.0 engineering release. Its proposed 0.1.0/0.2.0 host allocation and dates
+remain historical planning inputs, not current publication status or completed
+native scope transfers. Read the [verified publication receipt](../tests/scenarios/2026-11-07-v0.2.0-publication.md)
+for the actual first release and its explicit version-policy decision.
+
+The [release-doctrine discussion](superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md)
+is saved for reappraisal; publication of the document does not activate the
+proposed ownership transfer or starter enforcement. Its earlier incomplete
+Astral checkpoint is historical: the separate [full acceptance](../tests/scenarios/2026-11-07-strict-astral-full-verification.md)
+and v0.2.0 publication supersede that prerequisite's status. Current engineering
+compliance does not implement the remaining release doctrine. The design's
+current discussion-3 identity and earlier gap-review-2 receipt remain distinct.

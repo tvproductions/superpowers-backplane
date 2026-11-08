@@ -1,0 +1,183 @@
+{
+  "schema": "superpowers-backplane-release-doctrine-alignment/v1",
+  "observed_at": "2026-11-07T16:22:53.322085+00:00",
+  "status": "CONSOLIDATED DESIGN; not implemented enforcement or published authority",
+  "user_direction": [
+    "Backplane owns portable release-impact doctrine independently of gz packages.",
+    "Starter adopts and enforces doctrine; gz-skills lite may use different release management but semantics must align.",
+    "Comprehend, align, consolidate existing outlines."
+  ],
+  "earlier_scope_review": {
+    "path": "docs/superpowers-backplane/specs/2026-11-07-release-scope-review.md",
+    "approval": "User said looks good, then discussed release-doctrine ownership.",
+    "boundary": "Scope proposal approved; GitHub changes, version/tag/release publication not performed.",
+    "sha256": "cc0ba02e2d30e1bda927018e5ab1705bc2a6bae6a9a9904067b19fe2326ef32a"
+  },
+  "backplane": {
+    "root": "/Users/jbabb/Documents/Devel/superpowers-backplane",
+    "branch": "main",
+    "base": "0aa0cc007db63449455a1c4f9b6d92cb60c5d29a",
+    "existing_changes": [
+      "docs/release-policy.md",
+      "docs/superpowers-backplane/specs/2026-11-07-release-scope-review.md",
+      "tests/scenarios/2026-11-07-release-scope-review.json"
+    ]
+  },
+  "superpowers": {
+    "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+    "sources": [
+      ".agents/superpowers/README.md",
+      ".agents/skills/superpowers/brainstorming/SKILL.md"
+    ],
+    "boundary": "Read-only upstream; no proposed upstream edits."
+  },
+  "gz_skills": {
+    "revision": "9a7970208207d68cc4a04eff7c3d39bcea664463",
+    "source_checkout_available": false,
+    "sources": [
+      {
+        "path": "AGENTS.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/AGENTS.md"
+      },
+      {
+        "path": "README.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/README.md"
+      },
+      {
+        "path": "docs/release-policy.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/docs/release-policy.md"
+      },
+      {
+        "path": "docs/packaging.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/docs/packaging.md"
+      },
+      {
+        "path": "docs/proposals/lightweight-sdd-ecosystem.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/docs/proposals/lightweight-sdd-ecosystem.md"
+      },
+      {
+        "path": "skills/gzs-release/SKILL.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/skills/gzs-release/SKILL.md"
+      },
+      {
+        "path": "skills/gzs-project-setup/SKILL.md",
+        "url": "https://github.com/tvproductions/gz-skills/blob/9a7970208207d68cc4a04eff7c3d39bcea664463/skills/gzs-project-setup/SKILL.md"
+      }
+    ],
+    "boundary": "Read via gh from immutable source; installed caches and consumer plugin copy not editing targets.",
+    "findings": [
+      "gzs-release already supports project-owned standalone recommend/prepare/publish.",
+      "Lite setup/README wording omits release management; clarify no ongoing central management.",
+      "Ecosystem proposal remains candidate; do not promote its unimplemented node/runtime design.",
+      "Release binding still makes starter the shared release-policy authority."
+    ]
+  },
+  "starter": {
+    "root": "/Users/jbabb/Documents/Devel/gz-skills-first-starter",
+    "origin": "https://github.com/tvproductions/gz-skills-first-starter.git",
+    "base": "8d090f88bf45b9a755808a62c1445beeb005daff",
+    "working_tree": "Pre-existing uncommitted November 7 maintenance; not modified by this task.",
+    "source_files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "0ad9500d5f16dfdc6387aa909af595d80d4e8d4cdddd10e4a11d6eb2e5166467"
+      },
+      {
+        "path": "README.md",
+        "sha256": "08967ef73a17f88bfa9e9273c2430d710ed74dcc0c64b24f3fff2e433e8fe596"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "cfb099103560106a82b618ffeb245df4c7e6787cd8aee596642e07a778f77bcf"
+      },
+      {
+        "path": "ROADMAP.md",
+        "sha256": "fcfa3d0b44026a0032566750aea64f904d2830133d7b0321265030f4ec63e59d"
+      },
+      {
+        "path": "docs/versioning.md",
+        "sha256": "693fdb63c2aafd7874998a3b31c0917fa33437382441ce2c0cb26ae39b9a7596"
+      },
+      {
+        "path": "docs/architecture.md",
+        "sha256": "a4e31dab5be14e16769a8837c09c6c5dad439de1cda821de5f09956e704f132c"
+      },
+      {
+        "path": "docs/baseline-policy.md",
+        "sha256": "09c7d91f96ed4d0b5db4cfdefd7313099ff8411005ddd4d49658367f8dd6d5ea"
+      },
+      {
+        "path": "docs/adoption-workflow.md",
+        "sha256": "550da9c54777f27ee977c775165688cf2d89b854ebd7db0f6d11870e36c11b54"
+      },
+      {
+        "path": "docs/structure.md",
+        "sha256": "12df8ac53841c36af41f4f40d6f8e86fc1d7c80987750b2edd446a621191a691"
+      },
+      {
+        "path": "docs/project-configuration.md",
+        "sha256": "85fc5def3aa7db5bca328c782e946b7cff71b04c001b3c5d3bc22436d9a32a89"
+      },
+      {
+        "path": "docs/engineering/python.md",
+        "sha256": "9a0c8609daae836c6dee213d92c0a68b9d1252c981e9a10123365d322b067e45"
+      },
+      {
+        "path": "docs/handoffs/2026-10-24-session-close.md",
+        "sha256": "1aa72745ebb2c24abf83649084e57b9ee3e6aa6bee39aaeb8c2ccf0945c96331"
+      },
+      {
+        "path": "templates/AGENTS.skills-first.md",
+        "sha256": "8ea68fcea319904a14c81b228a2310496dc2f414d494eaa764265b37213db52c"
+      },
+      {
+        "path": "src/skills_first_starter/resources/templates/AGENTS.skills-first.md",
+        "sha256": "8ea68fcea319904a14c81b228a2310496dc2f414d494eaa764265b37213db52c"
+      },
+      {
+        "path": "src/skills_first_starter/cli.py",
+        "sha256": "5c95e92fa2a6d3b49b0aa04bef4e505fab0a9efe013c0f8bb1a91d2469933aae"
+      },
+      {
+        "path": "tests/test_starter.py",
+        "sha256": "c1a88c807e02641f151b6f9cc310f95ac49b7260de423c04073ea4db3a1dba07"
+      },
+      {
+        "path": "tests/test_native_hosts.py",
+        "sha256": "a66ab0de73b897e8ac5d340e7fe1c11f51107bb00f0e7e00a0a2144d212701b2"
+      },
+      {
+        "path": "bundle.json",
+        "sha256": "32d30a221968dcdf4e79c48b38ffbdb6b5fa87b76609e1bdf2c6a714e1c60816"
+      }
+    ],
+    "findings": [
+      "SemVer and major PRDs already required in both modes.",
+      "Helper validates configuration and preserves profile; release evidence/PRD validation not implemented.",
+      "Generated instructions currently duplicate policy; authority references must be reconciled with resources.",
+      "Backplane default deferred/disabled is not a reason to waive adopted release policy."
+    ]
+  },
+  "design": "docs/superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md",
+  "unimplemented": [
+    "Portable release-impact accounting integration",
+    "Authority relocation in active repository guidance",
+    "Starter release-check command and evidence schema",
+    "Lite/heavy semantic equivalence behavior tests and integrated acceptance"
+  ],
+  "no_operations": [
+    "No GitHub issue mutation",
+    "No source implementation or skill edits",
+    "No plugin/cache/profile changes",
+    "No version/tag/release changes",
+    "No starter working-tree edits",
+    "No OpenCode execution"
+  ],
+  "validation": {
+    "fresh_builder_check": "Nothing important left; clarify ownership transition and confirm evidence link.",
+    "ownership_transition": "Design now explicitly identifies existing starter authority and staged effective revisions.",
+    "evidence_link": "Exists; source record was created while independent review ran.",
+    "local_checks": "PASS: links, JSON, whitespace, earlier proposal and 18 starter hashes unchanged.",
+    "runtime_acceptance": "Not run; no product, skill or starter implementation changed."
+  }
+}

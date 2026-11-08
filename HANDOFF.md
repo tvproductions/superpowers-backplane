@@ -1,3 +1,19 @@
+# Release-design discussion save point — November 7, 2026
+
+The operator requested Git sync of the remaining discussion artifacts. Read
+`docs/superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md`
+(discussion 3) and the earlier gap-review receipts before further design work.
+These documents are published as discussion/evidence, not activated doctrine or
+implemented starter enforcement. The gap-review-2 hash identifies an earlier
+design; it is not a fresh independent review of discussion-3 additions.
+
+The scope review's first-release numbering/window and the design's incomplete
+Astral checkpoint predate the verified v0.2.0 engineering release below. Keep
+those observations at their original identities. Python/Astral compliance is
+accepted; broader doctrine implementation, native adoption transfers and remaining
+host/pilot work stay separate. See `tests/scenarios/2026-11-07-release-design-savepoint.json`
+for the saved source identities and this chronology. No release tag is moved.
+
 # v0.2.0 published and verified — November 7, 2026
 
 [Backplane v0.2.0](https://github.com/tvproductions/superpowers-backplane/releases/tag/v0.2.0)

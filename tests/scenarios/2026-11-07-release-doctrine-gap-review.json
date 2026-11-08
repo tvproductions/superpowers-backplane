@@ -1,0 +1,144 @@
+{
+  "schema": "superpowers-backplane-release-doctrine-gap-review/v1",
+  "observed_at": "2026-11-07T16:37:45.919226+00:00",
+  "request": "Review gaps, fix them, then review design for reappraisal.",
+  "boundary": "Design corrections only; no implementation approval inferred.",
+  "design": {
+    "path": "docs/superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md",
+    "revision": "gap-review 2",
+    "sha256": "a6e78791e3c959cf854f1b2e584d13aa04f004b2e2c13ee94b7b4d9421ff97b9"
+  },
+  "report": {
+    "path": "tests/scenarios/2026-11-07-release-doctrine-gap-review.md",
+    "sha256": "f51915d9ded4947eb0aebfabfe4f88840bcbcf2095d98c2988fc578c18e988b9"
+  },
+  "findings": {
+    "important": [
+      "G1 whole-candidate coverage",
+      "G2 mandatory check fallback bypass",
+      "G3 self-release profile conflict",
+      "G4 final candidate identity"
+    ],
+    "supporting": [
+      "G5 human versus mechanical acceptance",
+      "G6 policy drift and conformance",
+      "G7 exceptions and evidence-read boundaries",
+      "G8 scope disposition"
+    ],
+    "disposition": "Corrected in design; implementation proof remains required."
+  },
+  "independent_reappraisal": {
+    "agent": "design_reappraisal",
+    "verdict": "No remaining Critical or Important findings; ready for design approval.",
+    "reviewed_boundary": "Semantic design gap-review 2; final source-state wording is editorial.",
+    "remaining": [
+      "User reappraisal/approval",
+      "Authorized per-repository issue/scope disposition",
+      "Issue-bound implementation planning, implementation and behavioral verification",
+      "Separate integration/publication authority and acceptance"
+    ]
+  },
+  "starter_observation": {
+    "head": "e918dbbd02353258b697de5f63739a2431d65327",
+    "worktree": "clean",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "0ad9500d5f16dfdc6387aa909af595d80d4e8d4cdddd10e4a11d6eb2e5166467",
+        "matches_initial": true
+      },
+      {
+        "path": "README.md",
+        "sha256": "08967ef73a17f88bfa9e9273c2430d710ed74dcc0c64b24f3fff2e433e8fe596",
+        "matches_initial": true
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "cfb099103560106a82b618ffeb245df4c7e6787cd8aee596642e07a778f77bcf",
+        "matches_initial": true
+      },
+      {
+        "path": "ROADMAP.md",
+        "sha256": "fcfa3d0b44026a0032566750aea64f904d2830133d7b0321265030f4ec63e59d",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/versioning.md",
+        "sha256": "693fdb63c2aafd7874998a3b31c0917fa33437382441ce2c0cb26ae39b9a7596",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/architecture.md",
+        "sha256": "a4e31dab5be14e16769a8837c09c6c5dad439de1cda821de5f09956e704f132c",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/baseline-policy.md",
+        "sha256": "09c7d91f96ed4d0b5db4cfdefd7313099ff8411005ddd4d49658367f8dd6d5ea",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/adoption-workflow.md",
+        "sha256": "550da9c54777f27ee977c775165688cf2d89b854ebd7db0f6d11870e36c11b54",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/structure.md",
+        "sha256": "12df8ac53841c36af41f4f40d6f8e86fc1d7c80987750b2edd446a621191a691",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/project-configuration.md",
+        "sha256": "85fc5def3aa7db5bca328c782e946b7cff71b04c001b3c5d3bc22436d9a32a89",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/engineering/python.md",
+        "sha256": "9a0c8609daae836c6dee213d92c0a68b9d1252c981e9a10123365d322b067e45",
+        "matches_initial": true
+      },
+      {
+        "path": "docs/handoffs/2026-10-24-session-close.md",
+        "sha256": "72b0ae65d286adf6254484a5ac1074568136e472a479f53c4e587d6287b32c65",
+        "matches_initial": false
+      },
+      {
+        "path": "templates/AGENTS.skills-first.md",
+        "sha256": "8ea68fcea319904a14c81b228a2310496dc2f414d494eaa764265b37213db52c",
+        "matches_initial": true
+      },
+      {
+        "path": "src/skills_first_starter/resources/templates/AGENTS.skills-first.md",
+        "sha256": "8ea68fcea319904a14c81b228a2310496dc2f414d494eaa764265b37213db52c",
+        "matches_initial": true
+      },
+      {
+        "path": "src/skills_first_starter/cli.py",
+        "sha256": "5c95e92fa2a6d3b49b0aa04bef4e505fab0a9efe013c0f8bb1a91d2469933aae",
+        "matches_initial": true
+      },
+      {
+        "path": "tests/test_starter.py",
+        "sha256": "c1a88c807e02641f151b6f9cc310f95ac49b7260de423c04073ea4db3a1dba07",
+        "matches_initial": true
+      },
+      {
+        "path": "tests/test_native_hosts.py",
+        "sha256": "a66ab0de73b897e8ac5d340e7fe1c11f51107bb00f0e7e00a0a2144d212701b2",
+        "matches_initial": true
+      },
+      {
+        "path": "bundle.json",
+        "sha256": "32d30a221968dcdf4e79c48b38ffbdb6b5fa87b76609e1bdf2c6a714e1c60816",
+        "matches_initial": true
+      }
+    ],
+    "boundary": "Independent maintenance observed read-only; not modified by this task."
+  },
+  "validation": {
+    "json": "PASS",
+    "previous_release_proposal_preserved": "PASS",
+    "starter_source_comparison": "17 unchanged inputs; one reconciled handoff change",
+    "native_acceptance": "Not run: no product or skill implementation changed"
+  }
+}

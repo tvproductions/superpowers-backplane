@@ -1,0 +1,65 @@
+{
+  "schema": "superpowers-backplane-release-design-savepoint/v1",
+  "date": "2026-11-07",
+  "authority": "Explicit gzs-git-sync invocation: publish remaining current-repository documentation/evidence; no new doctrine activation, issue mutation or product release.",
+  "parent_commit": "b4f317c76e2be07f2e0cc2722d06e54321226876",
+  "branch": "main",
+  "remote": "https://github.com/tvproductions/superpowers-backplane.git",
+  "preserved_discussion_artifacts": [
+    {
+      "path": "docs/superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md",
+      "sha256": "55be97181567899bbbe5cbca746bb419ec18122ec6c4894e6933970e7d168aca"
+    },
+    {
+      "path": "docs/superpowers-backplane/specs/2026-11-07-release-scope-review.md",
+      "sha256": "cc0ba02e2d30e1bda927018e5ab1705bc2a6bae6a9a9904067b19fe2326ef32a"
+    },
+    {
+      "path": "tests/scenarios/2026-11-07-release-doctrine-gap-review.md",
+      "sha256": "f51915d9ded4947eb0aebfabfe4f88840bcbcf2095d98c2988fc578c18e988b9"
+    },
+    {
+      "path": "tests/scenarios/2026-11-07-release-doctrine-alignment.json",
+      "sha256": "b12e3591e25adcd3c973f3cc98ca4ec98369ca7f77de3caa4d375ca4fa1e65ba"
+    },
+    {
+      "path": "tests/scenarios/2026-11-07-release-doctrine-gap-review.json",
+      "sha256": "d667f404fd28847f6c0df51396122947a428d93837fadd4c469c4151e1492db9"
+    },
+    {
+      "path": "tests/scenarios/2026-11-07-release-scope-review.json",
+      "sha256": "de8b91c82e2268c01a6cd9e318041ff1d0ba4f5cf6bc2c1f483b2e2aeb7ee261"
+    }
+  ],
+  "chronology": {
+    "current_design": "discussion 3, for reappraisal",
+    "earlier_reviewed_design": {
+      "path": "docs/superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md",
+      "revision": "gap-review 2",
+      "sha256": "a6e78791e3c959cf854f1b2e584d13aa04f004b2e2c13ee94b7b4d9421ff97b9"
+    },
+    "gap_report_hash_matches": true,
+    "earlier_scope_proposal_hash_matches": true,
+    "review_disposition": "Prior gap-review-2 verdict does not certify later discussion-3 additions.",
+    "historical_astral_unknown": "Superseded by actual full acceptance and v0.2.0 release; historical bytes retained.",
+    "historical_first_adoption_proposal": "First public v0.2.0 engineering release supersedes proposed initial version/publication assumptions; native first-adoption obligations remain open."
+  },
+  "release_preserved": {
+    "tag": "v0.2.0",
+    "commit": "0b18e34e65379e729d8fece97151a1bb8604b461"
+  },
+  "source_reconciliation": "Remote fetched; origin/main and local main were equal before this documentation-only save point.",
+  "publication_boundary": "This record precedes its own storage commit; Git sync verifies actual commit/remote arrival separately.",
+  "validation": {
+    "uv sync --locked --all-groups": "PASS:72 resolved entries,71 installed distributions; exact environment unchanged",
+    "uv lock --check": "PASS",
+    "uv run --locked ruff check .": "PASS",
+    "uv run --locked ruff format --check .": "PASS",
+    "uv run --locked ty check": "PASS",
+    "uv run --locked python -m unittest discover -s tests -p test_*.py -v": "PASS:5 tests",
+    "uv run --locked pre-commit run --all-files": "PASS:all four checks",
+    "node --test tests/opencode-adapter.test.mjs": "PASS:9 tests",
+    "git diff --check": "PASS",
+    "json_local_links_and_historical_hashes": "PASS; six draft/review artifact bytes preserved; differing review revisions recorded rather than relabeled"
+  }
+}

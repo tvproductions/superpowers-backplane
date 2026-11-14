@@ -106,7 +106,7 @@
 
 ## Companion Starter Guidance
 
-- [gz-skills-first-starter](https://github.com/tvproductions/gz-skills-first-starter)
+- [GZ Starter](https://github.com/tvproductions/gz-starter)
   is the authoritative shared engineering and release policy alignment source.
   Follow [docs/release-policy.md](docs/release-policy.md): check the source before
   release preparation, at scoped policy/tooling maintenance and when notified of

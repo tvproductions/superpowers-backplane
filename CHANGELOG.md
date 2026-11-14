@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Follow the canonical starter repository rename to `tvproductions/gz-starter`
+  in active policy links and the coordinated handoff. Preserve this project's
+  independent identity/version and historical source evidence; no workflow or
+  native installation is changed.
+
 - Draft the lite-record/commit alignment design alongside the starter: preserve
   Backplane semantic authority, one owner per field, requirement/evidence and
   lifecycle distinctions, explicit lite-to-heavy transfer and four routine

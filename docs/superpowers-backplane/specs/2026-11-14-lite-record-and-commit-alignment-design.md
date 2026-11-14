@@ -29,7 +29,7 @@ this draft neither activates it nor replaces earlier approved contracts.
 
 ## Paired candidate and provenance
 
-Paired starter repository: tvproductions/gz-skills-first-starter, draft path
+Paired starter repository: tvproductions/gz-starter, draft path
 `docs/superpowers/specs/2026-11-14-lite-record-and-commit-contract-draft.md`.
 Both documents are working-tree candidates, not published source guarantees.
 The starter base is 8c8ff4b plus separately identified local changes; Backplane
@@ -109,7 +109,7 @@ for consumers by this document.
 The maintainer requested a small typed JSON record in every governed new commit.
 The starter's proposed transport is one Starter-Record Git trailer containing
 one compact JSON object. Its proposed five keys are format, kind, records,
-evidence and reason; format is skills-first-commit/v1, records use RecordRef and
+evidence and reason; format is gz-starter-commit/v1, records use RecordRef and
 evidence uses SourceRef. Kind describes change category, not SemVer. Its exact
 enum, serialization and 8,192-byte payload limit belong to the starter binding.
 

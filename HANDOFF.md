@@ -1,3 +1,75 @@
+# Evening three-repository save point — November 14, 2026
+
+Latest maintainer request explicitly authorizes updating handoffs and ordinary
+Git synchronization of GZ Starter, gz-skills and Backplane. Keep every new design
+marked draft; implement nothing and publish no release. This supersedes the
+earlier save-point authorization limits below. Do not activate commit trailers,
+change mode authority or install new models/hooks from the drafts.
+
+Resume the paired-design review below and the starter contract counterpart.
+Settle exact narrative/schema binding, compatibility mapping, migration and
+prospective commit-policy enforcement, then obtain separately identified ADR
+approvals before implementation. JSON/Git, bounded recovery, one authority per
+field, native GitHub ownership in heavy and the four routine checks remain.
+Superpowers stays the feature inner loop. Work remains local; no cloud or new
+hosting target is selected. GZ Starter is the short display/conversational name;
+canonical repository/package/command identities remain unchanged.
+
+Published Backplane baseline remains v0.2.0. This save point changes design and
+handoff/changelog documentation only, with no new version, issue mutation,
+native install, schema/model/hook activation or release. The recorded SP/tool
+freshness gap needs separately authorized maintenance; do not migrate it during
+this sync. Preserve the historical acceptance and doctrine-transfer status.
+
+Use normal hooks and observe hosted Linux/macOS/Windows CI for the exact pushed
+commit. The sync response records final SHAs/CI links; a prior green run is not
+proof. Do not add a receipt-only commit chain for CI observations.
+
+Verified starter transport: origin/main equals
+`454c59643013bd9aea4c5e3f4760ab873b86934e`. Read its
+[immutable paired draft](https://github.com/tvproductions/gz-skills-first-starter/blob/454c59643013bd9aea4c5e3f4760ab873b86934e/docs/superpowers/specs/2026-11-14-lite-record-and-commit-contract-draft.md).
+The source is committed/pushed but the design remains draft. Starter exact-commit
+CI is observed separately by the coordinating sync, not inferred here.
+Backplane's local Node adapter checks pass 9/9; normal commit hooks will run its
+four routine checks. No analyzer or host configuration input has changed.
+
+# Paired starter/Backplane record design — November 14, 2026
+
+The maintainer authorized simultaneous local design from the starter chat.
+Read [the paired design](docs/superpowers-backplane/specs/2026-11-14-lite-record-and-commit-alignment-design.md)
+and the starter candidate at repository tvproductions/gz-skills-first-starter,
+path docs/superpowers/specs/2026-11-14-lite-record-and-commit-contract-draft.md.
+Both are proposals, not approved ADRs or implemented mode/schema/commit behavior.
+
+Selected direction: JSON sidecars and Markdown views for lite, Git history,
+bounded local recovery, no SQLite/Dolt/permanent ledger; Backplane-aligned meaning
+and explicit verified transfer to heavy. The starter follows Backplane design
+cues; Backplane may improve its owning semantic contract through this paired work.
+Proposed Starter-Record trailers carry typed change references without becoming
+lifecycle or approval authority. Preserve four routine checks and native GitHub
+authority; no new hook or event replay. Superpowers remains the feature inner loop.
+
+Existing Backplane base is 05505f8009989eb7514ec62750e33c78bc40abf9; published
+baseline remains v0.2.0. The starter candidate is uncommitted over 8c8ff4b.
+No implementation, issue mutation, installation, Git sync or publication is
+authorized by these design records. Recheck exact inputs and source hashes before
+acceptance. Existing release-doctrine transfer remains proposed and historical
+v0.2.0 evidence retains its original scope. All earlier handoff entries follow.
+
+Paired design source identities (local working-tree review, November 14):
+
+- Starter base: 8c8ff4b113fa5ec8bd01d5ec3f09ba95c15f5574; draft SHA-256 e2f2fc7816d807d1eaa287a3747ad1dc4d830781632cd6aa61e3ab15c190ae3a.
+- Backplane base: 05505f8009989eb7514ec62750e33c78bc40abf9; draft SHA-256 b046c843e8b9980814256a8890b97982bc7c23537966d95204853f4f25079439.
+
+These hashes identify the reviewed candidate bytes, not approval or remote
+arrival. Prose-only verification is diff/reference review and comparison of the
+paired RecordRef/SourceRef, five commit fields and authority boundaries. The
+starter's direct Git parser demo succeeds. No new Python/skill behavior changed;
+prior quality evidence is not relabeled as fresh native or hosted acceptance.
+The four routine checks remain configured unchanged. Remaining acceptance work
+is explicit in both drafts. Do not introduce speculative hosting targets or
+change the current mode definitions through this checkpoint.
+
 # Release-design discussion save point — November 7, 2026
 
 The operator requested Git sync of the remaining discussion artifacts. Read

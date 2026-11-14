@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Draft the lite-record/commit alignment design alongside the starter: preserve
+  Backplane semantic authority, one owner per field, requirement/evidence and
+  lifecycle distinctions, explicit lite-to-heavy transfer and four routine
+  checks. Record JSON/Git storage, bounded recovery and typed commit trailers as
+  proposed interfaces. No schema, model, hook, skill behavior or policy activation
+  is delivered; existing v0.2.0 version mirrors remain unchanged.
+
 ## 0.2.0 — November 7, 2026
 
 The maintainer selected this coherent minor bundle on November 7, 2026:

@@ -34,6 +34,15 @@ version 0.2.0. The checkpoint/v1 Authority enum has no ADR kind; Evidence alread
 supports other and approval. Unknown fields/kinds are rejected. Backplane's
 governance and delivery lifecycles are independent of a decision's edition/state.
 
+## Naming precedent: remote GZKit drydock
+
+Reuse the [ratified classic-ADR naming plan](https://github.com/tvproductions/gzkit/blob/8208381d149b8b8704bd012849332ed3a1f2fb38/docs/governance/harbor-classic-adr-change-order.md),
+including H5, as detailed in the owning design: stable `ADR-[0-9]{4,}` identity,
+minimum three-digit edition and `[a-z0-9-]+` slug. Preserve existing conventions
+and independent decision/edition/release identities. This is a proposed naming
+clarification for review, not GZKit implementation proof or adoption of its
+resolver, ledger, drydock or crossover machinery.
+
 ## Alternatives
 
 1. Add only project instructions. This is small but leaves the shipped backlog

@@ -1,10 +1,13 @@
 # Architectural decisions at existing Backplane checkpoints
 
-Date: November 15, 2026. **DRAFT — not approved; no implementation authority.**
-Edition: design-1. Design approval: pending. Separate architectural approval:
-pending [ADR-0001 edition 1](proposals/ADR-0001-001-reference-decisions-through-existing-checkpoints.md).
-The maintainer's direction to keep the approved starter scope and complete its
-prerequisites authorizes preparing this owning proposal, not approval of it.
+Date: November 15, 2026. **DESIGN APPROVED; implementation-plan review pending.**
+Edition: design-1. The maintainer explicitly approved both companion designs,
+then required review in the main conversation. That review accepted the shared
+responsibility split, checked the remote naming precedent and concluded with
+“proceed with that design”. Separate actual architectural approval is captured
+in [Current ADR-0001 edition 1](../../decisions/ADR-0001-001-reference-decisions-through-existing-checkpoints.md)
+with the exact original bytes/response; design assent supplies no substitute.
+No implemented integration, qualification or release is claimed here.
 
 ## Intent and source
 
@@ -22,11 +25,36 @@ checkpoint/v1 contracts supply the existing integration surfaces. No ADR-feature
 owner issue or approved owner design was identified at intake. The November 14
 paired records/commit design and November 7 release-doctrine transfer remain drafts.
 
+## Naming precedent: remote GZKit drydock
+
+Reviewed the remote [classic ADR change order](https://github.com/tvproductions/gzkit/blob/8208381d149b8b8704bd012849332ed3a1f2fb38/docs/governance/harbor-classic-adr-change-order.md) at
+`8208381d149b8b8704bd012849332ed3a1f2fb38`, especially the settled design and
+H5 ruling of November 8. Reuse its decision/edition grammar rather than presenting
+this contribution as inventing a naming scheme:
+
+- Stable identity: `ADR-[0-9]{4,}`, starting with `ADR-0001` in a new collection.
+- Edition file: `ADR-[0-9]{4,}-[0-9]{3,}-<slug>.md`; number and edition are
+  zero-padded to minimum widths four and three, with no overflow rename or cap.
+- Slug uses the stated `[a-z0-9-]+` grammar. Keep the readable kebab-case title;
+  do not silently substitute a stricter parser contract.
+- A revision changes the edition/filename, not the stable decision identity.
+  Neither number is a product/release version. Preserve prior editions/history.
+- Preserve suitable existing conventions and legacy records; an actual migration
+  needs an explicit crossover and reconciliation, not a blanket rename.
+
+The starter already uses `ADR-0001-001-title-in-kebab-case.md` from the shared
+lightweight source. The precise width/slug rules above were reviewed in the main conversation
+and accepted when the maintainer directed proceeding with this design.
+GZKit records this as ratified planning; it is not proof of landed implementation.
+Its drydock orders, resolver, ledger/event machinery, operator identity and
+GZKit-specific crossover are outside this contribution. No GZKit dependency or
+integration follows. Existing consumer policy retains authority.
+
 ## Approach and boundaries
 
-Recommend a focused backlog reference plus explicit calls from existing relevant
-checkpoints. This is the coordinating agent's proposed implementation choice;
-the maintainer delegated the method, but has not approved these written bytes.
+Use a focused backlog reference plus explicit calls from existing relevant
+checkpoints. The agent recommended this approach; the recorded design approval
+and main-conversation continuation select it within the stated boundaries.
 An instruction-only repository binding would leave portable backlog checkpoints
 unqualified. A new ADR registry, typed checkpoint object or approval service would
 expand capability unnecessarily. Select the existing-reference approach for review.
@@ -161,6 +189,7 @@ and `git diff --check`; exact-commit hosted CI remains a separate observation.
 Do not add another routine hook or runtime package. Structural tests cannot supply
 agent behavior, human approval, genuine internal use or immutable publication.
 
-Remaining approvals/evidence: design, identified ADR, native owner intake/current
-plan, final portable workflow tuple, fresh behavioral/native tests, internal use,
-current release acceptance and immutable contribution. None is claimed here.
+Design and identified ADR approval are recorded in the sources above. Remaining
+gates are native owner intake/current approved plan, final workflow tuple, actual
+behavioral/native tests, internal use and release acceptance/publication. Those
+execution and qualification results are not claimed by this design.

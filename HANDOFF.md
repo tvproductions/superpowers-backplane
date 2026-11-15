@@ -1,3 +1,7 @@
+# Published Backplane 0.3.0 — latest checkpoint
+
+Owner #37 implementation, qualification, fresh review, immutable publication and exact-source CI are complete. See tests/scenarios/2026-11-15-adr-publication.md and its sanitized JSON. Historical observations below are superseded for this finite contribution only. No historical pilot/adoption obligation is closed.
+
 # ADR 0.3.0 candidate — November 15 latest continuation
 
 The maintainer explicitly requests publication of starter 0.10.0 under its

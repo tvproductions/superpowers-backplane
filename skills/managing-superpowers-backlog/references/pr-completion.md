@@ -6,6 +6,11 @@ the [native issue contract](github-issue-contract.md), and
 existing lifecycle; it does not create a second approval process or infer
 completion from tracker state.
 
+When architectural constraints apply, use [architectural decisions](architectural-decisions.md)
+to compare delivery with the approved decision and reviewed edition. Green checks,
+review acceptance, merge and release assent do not approve a replacement choice.
+Correct drift or obtain separate approval before dependent acceptance.
+
 ## Required inputs and closeout assessment
 
 Read the full 15-field native issue contract for each affected issue, current

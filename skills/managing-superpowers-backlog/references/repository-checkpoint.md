@@ -9,6 +9,12 @@ Git, authenticated gh, operational Superpowers, and the host's available native
 JSON/file capabilities suffice. No language, helper engine, or extra skill
 bundle is prescribed. Follow the project's exact root/worktree and namespace rules.
 
+For applicable ADRs, use [architectural decisions](architectural-decisions.md)
+to retain reviewed decision content and actual approval through existing typed
+Authority/Evidence/Evaluation records. Preserve unavailable/stale content and
+user edits; capture/index acceptance confers no architectural approval. The
+format, exact field sets, pair acceptance and recovery contracts are unchanged.
+
 ## Establish capture scope and sources
 
 Record actual repository and selected issue/graph scope, excluded/external

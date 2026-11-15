@@ -219,3 +219,12 @@
   authority when they require a new decision.
 - Reuse existing plan/handoff records and quality requirements. This optional
   pacing adds no issue hierarchy, lifecycle or reduced verification standard.
+
+## Architectural decisions
+
+Follow [the repository architectural-decision binding](docs/engineering/architectural-decisions.md)
+during design, implementation and review. Inspect actual docs/decisions records
+and approval evidence; reuse covered decisions and obtain separate explicit
+identified-edition approval before dependent new/material choices. Continue
+independent authorized work. Follow the focused native backlog checkpoint
+integration without changing checkpoint/v1 or creating a second authority store.

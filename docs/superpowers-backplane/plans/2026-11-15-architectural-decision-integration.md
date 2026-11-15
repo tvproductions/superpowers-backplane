@@ -172,3 +172,15 @@ then directed “so, we'll just move on”. Native means the controller implemen
 in this session, with one fresh independent final review. No duplicate plan or
 architectural approval is requested. Original reviewed plan bytes remain in
 that immutable Git history; this section is administrative execution capture.
+
+## Resumed execution — explicit release instruction
+
+The maintainer now explicitly requests “publish 0.10.0 now please” in the main
+starter conversation. The required owning prerequisite remains in approved scope.
+Under that new authority, the actual native #37 transitions are observed:
+designing -> ready at 2026-11-15T22:11:11Z, then ready -> active at
+2026-11-15T22:11:37Z. Full native fields were fetched before/after each write;
+body, criteria, selected leaf and zero blockers remain unchanged. These timestamp
+changes are lifecycle-only semantic reconciliations, not plan/design changes.
+Earlier automatic-review rejections remain preserved history, not a current stop.
+T3 now reuses actual Current ADR-0001 edition 1 and its original reviewed approval.

@@ -108,6 +108,11 @@ concrete release condition. If the original target is no longer valid after
 resolution, transition to `designing` or `backlog` according to current facts;
 never guess the former state.
 
+Before a consequential start or transition, reconcile applicable decision and
+exact-edition approval evidence through [architectural decisions](architectural-decisions.md).
+A ready/indexed state cannot supply missing approval; retain independent authorized
+work and the existing native eligibility/mutation gates.
+
 ## Eligibility and selection
 
 An issue is eligible only when all are true:

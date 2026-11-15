@@ -1,0 +1,91 @@
+{
+  "stop": {
+    "action_assertions": "PASS",
+    "changed_originals": [
+      "active-execution/README.md",
+      "checkpoint-capture/README.md",
+      "design-plan/README.md",
+      "ready-start/README.md",
+      "review-closeout/README.md"
+    ],
+    "independent_corrections": 5,
+    "protected_authority_inputs": "all candidate canonical Git-archive bytes unchanged",
+    "capture": "partial diagnostic, not accepted live capture; initial false missing-governance assertion preserved then corrected by actual direct source read"
+  },
+  "continue": {
+    "action_assertions": "PASS",
+    "changed_originals": [
+      "active-execution/README.md",
+      "active-execution/architecture.json",
+      "checkpoint-capture/README.md",
+      "design-plan/README.md",
+      "design-plan/architecture.json",
+      "ready-start/README.md",
+      "ready-start/architecture.json",
+      "review-closeout/README.md"
+    ],
+    "independent_corrections": 5,
+    "protected_authority_inputs": "all candidate canonical Git-archive bytes unchanged",
+    "capture": "partial diagnostic, not accepted live capture; initial false missing-governance assertion preserved then corrected by actual direct source read"
+  },
+  "exact_approved_implementation": {
+    "verdict": "PASS",
+    "cases": 3,
+    "raw_approval_content": "exact original frozen bytes match direct SHA256, no newline reconstruction required",
+    "protected_inputs": "unchanged except exact authorized implementation/README files"
+  },
+  "missing-approval": {
+    "verdict": "PASS",
+    "existing_pair": "exact original byte hashes preserved",
+    "diagnostic_status": "partial",
+    "approval_evidence": "missing/wrong-edition variants rechecked after incidental hash inconsistencies removed"
+  },
+  "wrong-edition": {
+    "verdict": "PASS",
+    "existing_pair": "exact original byte hashes preserved",
+    "diagnostic_status": "partial",
+    "approval_evidence": "missing/wrong-edition variants rechecked after incidental hash inconsistencies removed"
+  },
+  "source-drift": {
+    "verdict": "PASS",
+    "existing_pair": "exact original byte hashes preserved",
+    "diagnostic_status": "stale",
+    "approval_evidence": "original exact-source variant retained"
+  },
+  "intervening-edit": {
+    "verdict": "PASS",
+    "existing_pair": "exact original byte hashes preserved",
+    "diagnostic_status": "partial",
+    "approval_evidence": "original exact-source variant retained"
+  },
+  "neutral_consumer": {
+    "verdict": "PASS",
+    "supporting_bundle": "not supplied or required",
+    "consumer_runtime": "none required; exact git diff --check/file inspection",
+    "changed_files": "architecture.json and README only, native transcript inspected"
+  },
+  "canonical_source": {
+    "verdict": "PASS",
+    "tree": "8ebd89f08a9fcb353ec43ead826242a7fbd88d9a",
+    "resources_and_bindings": 21,
+    "checkpoint_schema": "unchanged",
+    "model": "UNKNOWN",
+    "host": "Windows Codex 0.169.0; actual default selection"
+  },
+  "approved_review_drift": {
+    "verdict": "PASS",
+    "implementation": "remote contradicts valid approved local decision; architecture/authority inputs preserved",
+    "review": "changes required despite green syntax check; decision unaffected by release regrouping",
+    "independent_task": "README corrected",
+    "evidence": "actual native report/actions plus all protected input SHA256 checks"
+  },
+  "native_candidate_install": {
+    "verdict": "PASS",
+    "host": "Codex 0.169.0",
+    "version": "0.3.0",
+    "resources": 18,
+    "source": "clean canonical staged source export; every skill resource and governance hash matches; not tagged arrival",
+    "scope": "isolated owned CODEX_HOME only; normal profile unchanged",
+    "claude": "strict plugin and marketplace validators PASS; optional directory icon/advice retained"
+  }
+}

@@ -35,6 +35,11 @@ Load focused operation references when that operation is requested. A missing
 required reference or evidence makes that operation unavailable; do not invent
 its contract. Standard status/selection does not require a Project or checkpoint.
 
+For consequential choices or operations consuming architectural constraints, read
+[architectural decisions](references/architectural-decisions.md) at design,
+planning, start, execution, review and checkpoint boundaries. Reuse covered
+approvals; pause dependent work only when the required authority is unresolved.
+
 ## Preserve authority and lifecycle
 
 Keep native hierarchy/dependencies authoritative. An approved issue body may

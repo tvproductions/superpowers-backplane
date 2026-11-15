@@ -16,6 +16,11 @@ GitHub issue continuity
   -> integration, evidence, and GitHub closure
 ```
 
+Use [architectural decisions](architectural-decisions.md) when design/planning
+or active execution introduces a consequential choice or consumes an applicable
+decision. Separate architectural approval constrains the existing workflow; it
+does not replace spec/plan approval or restart covered authorized work.
+
 ## Design authority decision
 
 Use a human-approved issue body as design authority when the work is bounded,

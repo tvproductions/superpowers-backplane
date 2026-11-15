@@ -1,3 +1,26 @@
+# ADR 0.3.0 candidate — November 15 latest continuation
+
+The maintainer explicitly requests publication of starter 0.10.0 under its
+preserved scope. Earlier remote-operation rejections below are historical:
+Backplane #37 is now OPEN/active at lifecycle-only revision 2026-11-15T22:11:37Z;
+its approved criteria/body remain unchanged. T3's focused ADR checkpoint reference
+and actual publisher binding are implemented under reused real ADR-0001 edition 1.
+T4's native/action/typed-record/file-Git/neutral-consumer evidence is retained in
+tests/scenarios/2026-11-15-adr-integration.md/.json and qualified-artifacts.zip,
+including initial fixture/source-floor failures and actual bounded corrections.
+Every required targeted assertion passes; fresh independent whole-change/real-ADR
+alignment review remains mandatory before release acceptance.
+
+The finite pending minor remains 0.2.0 -> 0.3.0. Five metadata mirrors and the
+uv-generated virtual-project lock version agree; registry selections are unchanged.
+Preserve all original dirty checkouts, normal installs and earlier evidence.
+Required next gates: final fresh review, coherent full integration checks and
+ordinary main push with exact Linux/macOS/Windows CI, immutable-source native
+arrival, then annotated tag/GitHub release and separate owner closeout. Starter
+Task4's exact-combination/both-lane controls and its own publication follow.
+No release, complete starter/Backplane adoption, normal activation or proposed
+CLI implementation is claimed by the candidate. Earlier handoffs follow.
+
 # ADR prerequisites — November 15, 2026 resumed checkpoint
 
 Continue the approved Native plan at

@@ -1,0 +1,526 @@
+{
+  "format": "sp-bp-checkpoint/v1",
+  "capture": {
+    "id": "invented-adr-capture-20261115",
+    "started_at": "2026-11-15T22:00:00Z",
+    "finished_at": "2026-11-15T22:18:23.593214Z",
+    "mode": "issues-only",
+    "status": "complete",
+    "origin": "invented-fixture",
+    "rechecks": [
+      {
+        "kind": "issue",
+        "id": "example/governance-fixture#101",
+        "initial_revision": "2026-10-01T12:00:00Z",
+        "final_revision": "2026-10-01T12:00:00Z",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Fixture full body/native relationships unchanged."
+      },
+      {
+        "kind": "graph",
+        "id": "selected-native-graph",
+        "initial_revision": "fixture-graph-1",
+        "final_revision": "fixture-graph-1",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "All selected connections enumerated and compared."
+      },
+      {
+        "kind": "authority",
+        "id": "S1",
+        "initial_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "final_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture authority unchanged."
+      },
+      {
+        "kind": "authority",
+        "id": "A1",
+        "initial_revision": "2026-10-01T12:00:00Z",
+        "final_revision": "2026-10-01T12:00:00Z",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture authority unchanged."
+      },
+      {
+        "kind": "authority",
+        "id": "A2",
+        "initial_revision": "2026-10-01T12:00:00Z",
+        "final_revision": "2026-10-01T12:00:00Z",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture authority unchanged."
+      },
+      {
+        "kind": "evidence",
+        "id": "E1",
+        "initial_revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+        "final_revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture evidence unchanged."
+      },
+      {
+        "kind": "evidence",
+        "id": "RV1",
+        "initial_revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+        "final_revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Embedded fixture evidence unchanged."
+      },
+      {
+        "kind": "delivery",
+        "id": "example/governance-fixture#101",
+        "initial_revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+        "final_revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Fixture current delivery B; source A identifies the capture context rather than the verified delivery."
+      },
+      {
+        "kind": "evidence",
+        "id": "EADR-REVIEWED",
+        "initial_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "final_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Invented available source bytes rechecked exactly; no real approval claim."
+      },
+      {
+        "kind": "evidence",
+        "id": "EADR-CURRENT",
+        "initial_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "final_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Invented available source bytes rechecked exactly; no real approval claim."
+      },
+      {
+        "kind": "evidence",
+        "id": "EADR-APPROVAL",
+        "initial_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "final_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Invented available source bytes rechecked exactly; no real approval claim."
+      },
+      {
+        "kind": "authority",
+        "id": "AADR",
+        "initial_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "final_revision": "f242185f2332885382a421b57d516e0db1900205",
+        "result": "unchanged",
+        "approval_ids": [],
+        "details": "Exact invented edition-1 interaction/content rechecked; distinct from review approval A2."
+      }
+    ]
+  },
+  "repository": {
+    "id": "example/governance-fixture",
+    "url": "https://github.com/example/governance-fixture",
+    "owner": "example",
+    "name": "governance-fixture"
+  },
+  "project": null,
+  "source": {
+    "commit": "f242185f2332885382a421b57d516e0db1900205"
+  },
+  "scope": {
+    "issue_ids": [
+      "example/governance-fixture#101"
+    ],
+    "excluded_ids": [],
+    "external_records": [],
+    "collections": [
+      {
+        "name": "issues",
+        "owner_id": "example/governance-fixture",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "example/governance-fixture#101"
+            ],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "subIssues",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "blockedBy",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "blocking",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "closingPRReferences",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "labels",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": "fixture-L1",
+            "record_ids": [
+              "L1"
+            ],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "assignees",
+        "owner_id": "example/governance-fixture#101",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "fixture-owner"
+            ],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "pullRequests",
+        "owner_id": "example/governance-fixture",
+        "expected_total": 1,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "record_ids": [
+              "example/governance-fixture!201"
+            ],
+            "has_next_page": false
+          }
+        ],
+        "complete": true
+      },
+      {
+        "name": "closingIssuesReferences",
+        "owner_id": "example/governance-fixture!201",
+        "expected_total": 0,
+        "pages": [
+          {
+            "cursor_in": null,
+            "cursor_out": null,
+            "has_next_page": false,
+            "record_ids": []
+          }
+        ],
+        "complete": true
+      }
+    ],
+    "complete": true
+  },
+  "issues": [
+    {
+      "id": "example/governance-fixture#101",
+      "number": 101,
+      "url": "https://github.com/example/governance-fixture/issues/101",
+      "title": "Preserve an existing valid installation",
+      "body": "## Objective\nPreserve an existing valid installation.\n## Acceptance Criteria\nAC1: Preserve the existing valid installation.\n## Backplane Record\nCode: CAP1.1; Kind: outcome; authority S1.\n## Coverage and Satisfaction\nAC1 maps to R1/S1; accepted evaluation EV1 at delivery B is SATISFIED.\n",
+      "state": "OPEN",
+      "state_reason": "",
+      "issue_type": {
+        "id": "TYPE_FEATURE",
+        "name": "Feature",
+        "description": "Fixture native issue type",
+        "color": "GREEN"
+      },
+      "labels": [
+        {
+          "id": "L1",
+          "name": "backplane:review",
+          "description": "Awaiting closeout",
+          "color": "5319e7"
+        }
+      ],
+      "assignees": [
+        "fixture-owner"
+      ],
+      "milestone": null,
+      "updated_at": "2026-10-01T12:00:00Z",
+      "parent_id": null,
+      "child_ids": [],
+      "sub_issues_summary": {
+        "total": 0,
+        "completed": 0,
+        "percent_completed": 0
+      },
+      "blocked_by_ids": [],
+      "blocking_ids": [],
+      "closing_pr_ids": [],
+      "backplane_record": {
+        "code": "CAP1.1",
+        "namespace": "CAP1",
+        "kind": "outcome",
+        "authority_ids": [
+          "S1"
+        ]
+      },
+      "accepted_evaluation_ids": [
+        "EV1"
+      ],
+      "limitations": []
+    }
+  ],
+  "pull_requests": [
+    {
+      "id": "example/governance-fixture!201",
+      "number": 201,
+      "url": "https://github.com/example/governance-fixture/pull/201",
+      "title": "Preservation contribution",
+      "body": "Refs #101; contributes AC1 at S1.",
+      "state": "MERGED",
+      "base_ref": "main",
+      "head_ref": "fixture-preservation",
+      "merged_at": "2026-10-01T11:00:00Z",
+      "merge_commit": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "review_status": "accepted",
+      "closing_issue_ids": [],
+      "closure_intent": "contribution",
+      "updated_at": "2026-10-01T12:00:00Z",
+      "limitations": []
+    }
+  ],
+  "authorities": [
+    {
+      "id": "S1",
+      "kind": "specification",
+      "locator": "fixture:spec/S1",
+      "revision": "f242185f2332885382a421b57d516e0db1900205",
+      "content": "R1: Preserve an existing valid installation. AC1 implements R1. ADR-0001 edition 1 retains project installation-manifest authority and preservation of unrelated valid entries under R1/AC1. Immutable source f242185f2332885382a421b57d516e0db1900205:ADR-0001-001-retain-project-installation-authority.md; reviewed bytes EADR-REVIEWED SHA256 4d6375c792aefeb7aa8c61f22460d5cbc6b2dedf6f8759ed355202b9a30085dc, administrative Current record EADR-CURRENT, actual staged response EADR-APPROVAL and approval authority AADR.",
+      "availability": "available",
+      "approver": null,
+      "approved_scope": null,
+      "approval_ids": [
+        "A1",
+        "AADR"
+      ],
+      "limitations": []
+    },
+    {
+      "id": "A1",
+      "kind": "approval",
+      "locator": "fixture:approval/A1",
+      "revision": "2026-10-01T12:00:00Z",
+      "content": "Fixture approver approved R1 and AC1 at S1.",
+      "availability": "available",
+      "approver": "fixture-approver",
+      "approved_scope": "R1/AC1 at S1",
+      "approval_ids": [],
+      "limitations": []
+    },
+    {
+      "id": "A2",
+      "kind": "approval",
+      "locator": "fixture:review/A2",
+      "revision": "2026-10-01T12:00:00Z",
+      "content": "Fixture reviewer accepted AC1 at S1 and delivery B.",
+      "availability": "available",
+      "approver": "fixture-reviewer",
+      "approved_scope": "AC1 at S1/B",
+      "approval_ids": [],
+      "limitations": []
+    },
+    {
+      "id": "AADR",
+      "kind": "approval",
+      "locator": "fixture:approval/approval.txt",
+      "revision": "f242185f2332885382a421b57d516e0db1900205",
+      "content": "FICTIONAL EVALUATION INPUT. Fixture operator, 2026-11-15, separately responds: Approve ADR-0001 edition 1 as written. Reviewed bytes SHA256 4d6375c792aefeb7aa8c61f22460d5cbc6b2dedf6f8759ed355202b9a30085dc; source context: invented separate architectural review, not spec/plan/release assent. Scope: project-owned installation manifest and R1/AC1 preservation.\n ADR-0001 edition 1 retains project installation-manifest authority and preservation of unrelated valid entries under R1/AC1. Immutable source f242185f2332885382a421b57d516e0db1900205:ADR-0001-001-retain-project-installation-authority.md; reviewed bytes EADR-REVIEWED SHA256 4d6375c792aefeb7aa8c61f22460d5cbc6b2dedf6f8759ed355202b9a30085dc, administrative Current record EADR-CURRENT, actual staged response EADR-APPROVAL and approval authority AADR.",
+      "availability": "available",
+      "approver": "fictional fixture operator",
+      "approved_scope": "ADR-0001 edition 1 retains project installation-manifest authority and preservation of unrelated valid entries under R1/AC1.",
+      "approval_ids": [],
+      "limitations": []
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1@S1",
+      "key": "R1",
+      "text": "Preserve an existing valid installation.",
+      "authority_id": "S1",
+      "authority_revision": "f242185f2332885382a421b57d516e0db1900205"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "example/governance-fixture#101:AC1",
+      "issue_id": "example/governance-fixture#101",
+      "key": "AC1",
+      "text": "Preserve the existing valid installation.",
+      "authority_id": "S1",
+      "authority_revision": "f242185f2332885382a421b57d516e0db1900205",
+      "delivery_commit": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "requirement_ids": [
+        "R1@S1"
+      ]
+    }
+  ],
+  "dispositions": [],
+  "coverage": [
+    {
+      "id": "COV1",
+      "issue_id": "example/governance-fixture#101",
+      "criterion_id": "example/governance-fixture#101:AC1",
+      "requirement_ids": [
+        "R1@S1"
+      ],
+      "contribution_issue_ids": [
+        "example/governance-fixture#101"
+      ],
+      "pr_ids": [
+        "example/governance-fixture!201"
+      ],
+      "combined_result_owner": "fixture-owner",
+      "scope": "The sole fixture criterion is covered by preservation contribution PR201."
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "EV1",
+      "criterion_id": "example/governance-fixture#101:AC1",
+      "requirement_ids": [
+        "R1@S1"
+      ],
+      "verified_commit": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "method": "Fixture preservation verification; ADR edition/content/approval and local manifest ownership alignment checked in invented fixture",
+      "observed_result": "PASS supplied by the invented fixture.",
+      "result": "SATISFIED",
+      "observed_at": "2026-10-01T12:00:00Z",
+      "evidence_ids": [
+        "E1",
+        "RV1",
+        "EADR-REVIEWED",
+        "EADR-CURRENT",
+        "EADR-APPROVAL"
+      ],
+      "review_approval_ids": [
+        "A2"
+      ],
+      "applicability": "current",
+      "remaining_contributions": [],
+      "limitations": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "kind": "verification",
+      "locator": "fixture:verification/E1",
+      "revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "sha256": null,
+      "availability": "available",
+      "content": "Invented fixture result: AC1 passed preservation verification against S1 and B.",
+      "verified_commit": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "limitations": []
+    },
+    {
+      "id": "RV1",
+      "kind": "review",
+      "locator": "fixture:review/RV1",
+      "revision": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "sha256": null,
+      "availability": "available",
+      "content": "Invented fixture review accepted AC1 at S1/B.",
+      "verified_commit": "b3b0c71f897bd265185baf2cfcc22269fc44d8f1",
+      "limitations": []
+    },
+    {
+      "id": "EADR-REVIEWED",
+      "kind": "other",
+      "locator": "fixture:adr/ADR-0001-001-reviewed.txt",
+      "revision": "f242185f2332885382a421b57d516e0db1900205",
+      "sha256": "4d6375c792aefeb7aa8c61f22460d5cbc6b2dedf6f8759ed355202b9a30085dc",
+      "availability": "available",
+      "content": "# Proposed ADR-0001 edition 1: retain project installation authority\n\nThe project owns its installation manifest and preserves unrelated existing valid entries. This constrains fixture requirement R1 and criterion AC1. Alternatives: project ownership or a remote service owning writes. Project ownership preserves the existing product contract. No remote operation, runtime, approval store or publication is introduced.\n",
+      "verified_commit": null,
+      "limitations": []
+    },
+    {
+      "id": "EADR-CURRENT",
+      "kind": "other",
+      "locator": "fixture:adr/ADR-0001-001-retain-project-installation-authority.md",
+      "revision": "f242185f2332885382a421b57d516e0db1900205",
+      "sha256": "4be6c42ef5a643b136911a9a70db740bde445675075a1a9e54f0f58997b07ef0",
+      "availability": "available",
+      "content": "---\nid: ADR-0001\ntitle: Retain project installation authority\nrevision: 1\nstate: Current\ndecision_date: 2026-11-15\nrevision_date: 2026-11-15\napproved_by: fictional fixture operator\napproved_revision: 1\napproval_ref: approval.txt\n---\n\n# Proposed ADR-0001 edition 1: retain project installation authority\n\nThe project owns its installation manifest and preserves unrelated existing valid entries. This constrains fixture requirement R1 and criterion AC1. Alternatives: project ownership or a remote service owning writes. Project ownership preserves the existing product contract. No remote operation, runtime, approval store or publication is introduced.\n\nAdministrative approval capture only; decision unchanged. Original reviewed proposal is ADR-0001-001-reviewed.txt at SHA256 4d6375c792aefeb7aa8c61f22460d5cbc6b2dedf6f8759ed355202b9a30085dc. Fictional input, not actual publisher approval.\n",
+      "verified_commit": null,
+      "limitations": []
+    },
+    {
+      "id": "EADR-APPROVAL",
+      "kind": "approval",
+      "locator": "fixture:adr/approval.txt",
+      "revision": "f242185f2332885382a421b57d516e0db1900205",
+      "sha256": "7dfcfe2ebe61c4a4ddbaebc0f43fea47cb5483be4ee80756c251de23323b7463",
+      "availability": "available",
+      "content": "FICTIONAL EVALUATION INPUT. Fixture operator, 2026-11-15, separately responds: Approve ADR-0001 edition 1 as written. Reviewed bytes SHA256 4d6375c792aefeb7aa8c61f22460d5cbc6b2dedf6f8759ed355202b9a30085dc; source context: invented separate architectural review, not spec/plan/release assent. Scope: project-owned installation manifest and R1/AC1 preservation.\n",
+      "verified_commit": null,
+      "limitations": []
+    }
+  ],
+  "limitations": []
+}

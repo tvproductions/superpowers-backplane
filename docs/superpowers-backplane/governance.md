@@ -33,6 +33,13 @@ An existing bounded approved issue may proceed to planning without repeating
 brainstorming. Cross-cutting behavior uses a reviewed specification. Backplane
 surrounds upstream Superpowers; it adds no alternate development lifecycle.
 
+At consequential design, planning, start, execution, review and capture boundaries,
+follow the focused [architectural-decision integration](../../skills/managing-superpowers-backlog/references/architectural-decisions.md).
+Project ADRs own decisions and their actual approval; Backplane preserves references
+using existing issue/spec/plan and typed evidence records. Reuse covered approvals,
+continue independent authorized work, and withhold dependent work/claims when
+required approval is unavailable. This adds no lifecycle or checkpoint schema.
+
 ## Product identity and decomposition
 
 A project supplies its code legend. For example, `INSTALL1` is a capability and

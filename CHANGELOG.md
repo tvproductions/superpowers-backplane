@@ -1,23 +1,40 @@
 # Changelog
 
 ## Unreleased
-- Preserve approved ADR integration plan/intake and partial prerequisite tooling
-  maintenance: current uv/Ruff/ty and hygiene selections, owning lock/CI update,
-  frozen probe contract and raw unscored native captures. Product ADR integration,
-  installed-source reconciliation, deeper changed-tool acceptance and 0.3.0
-  release remain pending. No CLI behavior, schema or lifecycle change.
 
-- Follow the canonical starter repository rename to `tvproductions/gz-starter`
-  in active policy links and the coordinated handoff. Preserve this project's
-  independent identity/version and historical source evidence; no workflow or
-  native installation is changed.
+## 0.3.0 — November 15, 2026
 
-- Draft the lite-record/commit alignment design alongside the starter: preserve
-  Backplane semantic authority, one owner per field, requirement/evidence and
-  lifecycle distinctions, explicit lite-to-heavy transfer and four routine
-  checks. Record JSON/Git storage, bounded recovery and typed commit trailers as
-  proposed interfaces. No schema, model, hook, skill behavior or policy activation
-  is delivered; existing v0.2.0 version mirrors remain unchanged.
+Published baseline 0.2.0 -> minor 0.3.0 delivers the approved ADR integration
+required by starter 0.10.0, owner #37. A focused reference consumes project policy
+at design/planning, eligibility/start, active execution, review/closeout and
+checkpoint capture. Preserve exact-edition actual approval, covered continuation,
+independent authorized work and genuine publisher ADR reuse/alignment.
+
+- Preserve decision/applicability in existing issue/spec/plan content; reviewed
+  bytes use other evidence, actual approval uses existing approval records, and
+  architectural approval remains distinct from review approval. No checkpoint/v1
+  field, kind, enum, pair/recovery capability or lifecycle is added.
+- Consumers retain their own ADR policy, language, runtime and tools. No mandatory
+  gz-skills/starter dependency, approval store, resolver, service or generic ADR
+  procedure is introduced.
+- Complete prerequisite tooling migration/compatibility and source selection:
+  current uv/Ruff/ty/Lizard/coverage/Cosmic Ray selections and transitive locks;
+  independent SP 7.0.2 and supporting gz-skills 0.13.0 in project declarations.
+  Preserve user settings, normal installations and exact Python 3.14.10 policy.
+- Preserve actual native stop/continue, source/approval and guarded checkpoint
+  acceptance tests, initial failures/corrections, genuine use/alignment and exact
+  source identities in the owning qualification/release records. No installation
+  or manifest alone establishes model or combined-stack behavior.
+- Retain the canonical GZ Starter rename in active policy links. Historical
+  lite-record/commit and release-doctrine discussions remain drafts. Their
+  publication as discussion does not implement a schema, hook or workflow.
+
+Compatibility: new checkpoint approval/reference behavior warrants a minor during
+0.x; no stable promotion or major is selected. Historical OpenCode/pilot and the
+separate adoption milestone remain open. Consumer propagation, normal-profile
+activation, public-directory/registry publication and starter acceptance remain
+separate. Immutable publication and exact-source CI/channel outcomes are recorded
+in docs/superpowers-backplane/releases/2026-11-15-v0.3.0.md.
 
 ## 0.2.0 — November 7, 2026
 

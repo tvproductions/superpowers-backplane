@@ -1,0 +1,46 @@
+{
+  "source": "39fbe3065c16ac119c4c10a3c2428fda39d57e61",
+  "tag_object": "cf081471a6f419e9978865022cc8b78a9698ed17",
+  "release": "https://github.com/tvproductions/superpowers-backplane/releases/tag/v0.3.0",
+  "exact_ci": "https://github.com/tvproductions/superpowers-backplane/actions/runs/43772211920",
+  "ci_result": "all three platforms PASS",
+  "archive_files_equal": 579,
+  "native_skills": [
+    {
+      "name": "gzs-architectural-decisions",
+      "sha256": "a85b8a48fc700da52d65b5b61fa4ee525a1c0b7ffd303f02f753a26d5cf2339a",
+      "enabled": true
+    },
+    {
+      "name": "superpowers-backplane:managing-superpowers-backlog",
+      "sha256": "21cf2ac4a6a7f4cb85fdffcd68afc7741acca608475fbe0636ead4f9786fe3de",
+      "enabled": true
+    },
+    {
+      "name": "superpowers-backplane:managing-superpowers-handoffs",
+      "sha256": "a6052755128be9c7d268d71241dd389b9bf1c720834e47e61cbf9535f4ca92de",
+      "enabled": true
+    },
+    {
+      "name": "superpowers:brainstorming",
+      "sha256": "2c9ca71f94886f9ca9f4aef055f7cafb3e1a9bdf3aeebf8f4cb547c69405d207",
+      "enabled": true
+    },
+    {
+      "name": "superpowers:using-superpowers",
+      "sha256": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba",
+      "enabled": true
+    },
+    {
+      "name": "superpowers:writing-plans",
+      "sha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a",
+      "enabled": true
+    },
+    {
+      "name": "superpowers:writing-skills",
+      "sha256": "8cb3ac68c6d8c4bb46886b998b09af7989643cab8bd0e46ee86dd62e64546bbe",
+      "enabled": true
+    }
+  ],
+  "raw_records": "retained locally; no raw logs, absolute paths, authentication or install metadata exported"
+}

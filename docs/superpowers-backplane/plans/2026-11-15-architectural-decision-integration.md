@@ -10,9 +10,17 @@
 
 **Spec:** [Owning integration design](../specs/2026-11-15-architectural-decision-integration-design.md), including the remote GZKit H5 naming precedent at `8208381d149b8b8704bd012849332ed3a1f2fb38`.
 
-**Plan status:** DRAFT for main-conversation review; not approved or execution-ready. The maintainer said “proceed with that design” after design/naming review. The [actual approval capture](../../decisions/approvals/ADR-0001-001-approval.md) preserves that direction separately from the explicit “Approve Backplane ADR-0001 edition 1 as written”. The [Current ADR](../../decisions/ADR-0001-001-reference-decisions-through-existing-checkpoints.md) retains the approved original choice and links [exact reviewed bytes](../../decisions/approvals/ADR-0001-001-reviewed.txt) at `335bd2575eeaae92ce094582cd11dccf18f37b41`, SHA-256 `5a39dcb0db8553af4a30d4acdbd57461c9a62d9a2f72da285caa57ceb0630d7b`. Later naming commentary remains design context. Validate this capture and applicability without requesting duplicate architectural approval; this plan does not supply or broaden it.
+**Plan status:** APPROVED for Native execution; actual main-conversation approval is captured below. Re-read the native issue/entry gates before starting. The maintainer said “proceed with that design” after design/naming review. The [actual approval capture](../../decisions/approvals/ADR-0001-001-approval.md) preserves that direction separately from the explicit “Approve Backplane ADR-0001 edition 1 as written”. The [Current ADR](../../decisions/ADR-0001-001-reference-decisions-through-existing-checkpoints.md) retains the approved original choice and links [exact reviewed bytes](../../decisions/approvals/ADR-0001-001-reviewed.txt) at `335bd2575eeaae92ce094582cd11dccf18f37b41`, SHA-256 `5a39dcb0db8553af4a30d4acdbd57461c9a62d9a2f72da285caa57ceb0630d7b`. Later naming commentary remains design context. Validate this capture and applicability without requesting duplicate architectural approval; this plan does not supply or broaden it.
 
-**Owner work binding:** No number or consumed `updatedAt` is asserted. The exact proposed leaf body is [prepared for review](../specs/2026-11-15-architectural-decision-integration-intake.md). After plan approval, the coordinator will create/reconcile only that bounded native work item under the existing intake contract; this prepared payload does not post itself. Record its actual URL, current `updatedAt`, design/ADR identities and approved plan revision here before eligibility; their absence currently blocks starting product implementation.
+**Owner work binding:** [Backplane #37](https://github.com/tvproductions/superpowers-backplane/issues/37), intake revision
+`2026-11-15T18:53:19Z`. All fifteen native fields were fetched and preserved;
+state OPEN, exactly one `backplane:designing` label, no parent/children or native
+blockers observed. Body/acceptance match the approved bounded intake payload.
+Issue type is recorded as observed, not invented. Native work remains designing
+until re-read/reconciliation and entry gates are satisfied; no active/complete
+state follows from this capture alone. The proposed intake body remains at
+`docs/superpowers-backplane/specs/2026-11-15-architectural-decision-integration-intake.md`.
+
 
 ## Global Constraints
 
@@ -153,3 +161,14 @@ Recommend **Native** execution after main-conversation plan review: the cohesive
 references share one existing record contract, so one implementer can preserve
 their consistency, with fresh whole-change review and native behavioral sessions.
 This recommendation neither selects execution nor marks the plan approved.
+
+## Execution approval — November 15, 2026
+
+The maintainer approved this plan in the main conversation, responding
+“approve, are we sure "native" is the best term?” to the review of the immutable
+plan at `18ee7b53b7e900aa31b687a1de098aec138a152e`. Subsequent discussion confirmed retaining Superpowers'
+**Native** label rather than contradicting its owning skill; the maintainer
+then directed “so, we'll just move on”. Native means the controller implements
+in this session, with one fresh independent final review. No duplicate plan or
+architectural approval is requested. Original reviewed plan bytes remain in
+that immutable Git history; this section is administrative execution capture.

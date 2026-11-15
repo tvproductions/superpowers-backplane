@@ -1,0 +1,28 @@
+{
+  "status": "PRESERVED_UNSCORED_CONFORMANCE; not integration/release acceptance",
+  "host": "Windows, Codex CLI 0.169.0, PowerShell7.6.10",
+  "model": "UNKNOWN; not exposed in native events",
+  "archive_sha256": "638fd61e39d393110f76715a8a074b416190ac67bd51e2fbd70d62243f0b4a71",
+  "entries": {
+    "compat-language-neutral-verification-answer.txt": "08bbe2afbbb956e61e8335c529670e3ff5179c35fc8be80d07d6208ee9afb73a",
+    "compat-language-neutral-verification-events.jsonl": "decd5bfb38f2479fbd73474ff8fb757a843a71f849cde086aa316c236f2a232c",
+    "compat-language-neutral-verification-prompt.txt": "445fbf3dd006b9a279eeababe8277152d12d04a37ff08d1ef0927c3b75d28916",
+    "compat-language-neutral-verification-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compat-lifecycle-transitions-answer.txt": "a2472ab01a3e689ef2310db1d848580554d702715802a4e761e0716ec5fd3b09",
+    "compat-lifecycle-transitions-events.jsonl": "4823b411af89c35fd292b08a2781ff4aa30686f893da7bf548401ab157ea21ec",
+    "compat-lifecycle-transitions-prompt.txt": "069f9ca812b2733993ff9beb29301a699d98a3feb354ca81a387a022c4ee7f13",
+    "compat-lifecycle-transitions-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compat-native-issue-intake-answer.txt": "9e4efb4ab1a8a1a270cbfad4e118fc412c33cf851ff26120f424b37c97e0f92b",
+    "compat-native-issue-intake-events.jsonl": "3dcd7e3a830ea4b0c087b30571153e4f1b96684e8bdc549c3b101bb4d8455e0d",
+    "compat-native-issue-intake-prompt.txt": "a80c0951b6694d9073b5bf1fd4bc7d75742831e8349ac324212473a83d84f48f",
+    "compat-native-issue-intake-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compat-superpowers-installation-answer.txt": "b25f6ee160f4377b4f00900414dd2684987a98dd2d70710a81bcb5ec6b30da56",
+    "compat-superpowers-installation-events.jsonl": "90d718dd5a69f8c84ceb2c456ce4fe62a124b4401f1c9ee24d9cae2e24800f00",
+    "compat-superpowers-installation-prompt.txt": "abc898dec92e043eef1fb868919bc7b8b4dcde0349afd49e549b1a4e88fa183f",
+    "compat-superpowers-installation-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "compatibility-inputs.json": "7adfaaa766af97483e721a635595e3169e2bfa7b02f4d23d32def4257fc0c1be",
+    "issue-37-intake.json": "a2ced2588a563fe0aa51db18a26dd72edac47ae53ab893aa4ec6f1c002563da1",
+    "issue-37-maintenance-intake.json": "a2ced2588a563fe0aa51db18a26dd72edac47ae53ab893aa4ec6f1c002563da1",
+    "run-compatibility.ps1": "2421bd6c607ae2d2411ddcc95fb8360b1c10e7ca62e7667a10e9e57ccdde6008"
+  }
+}

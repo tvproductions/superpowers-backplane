@@ -1,6 +1,11 @@
 # Changelog
 
 ## Unreleased
+- Preserve approved ADR integration plan/intake and partial prerequisite tooling
+  maintenance: current uv/Ruff/ty and hygiene selections, owning lock/CI update,
+  frozen probe contract and raw unscored native captures. Product ADR integration,
+  installed-source reconciliation, deeper changed-tool acceptance and 0.3.0
+  release remain pending. No CLI behavior, schema or lifecycle change.
 
 - Follow the canonical starter repository rename to `tvproductions/gz-starter`
   in active policy links and the coordinated handoff. Preserve this project's

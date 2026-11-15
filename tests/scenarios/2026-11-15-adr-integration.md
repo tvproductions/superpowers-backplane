@@ -138,3 +138,42 @@ This completes T3/T4 implementation/action evidence subject to the required fres
 independent alignment/whole-change review. Engineering integration, exact-commit
 three-platform CI and actual immutable publication/native-source arrival remain
 T5/T6 gates; no owning release or starter qualification is inferred yet.
+
+## Exact shared B01–B16 reuse and targeted applicability
+
+The immutable [canonical evaluation](https://github.com/tvproductions/gz-skills/blob/0bdab63fc503c6b36e2dd487932689b4e555e41a/docs/evidence/2026-11-15-adr-canonical.json),
+[complete source manifest](https://github.com/tvproductions/gz-skills/blob/0bdab63fc503c6b36e2dd487932689b4e555e41a/docs/evidence/2026-11-15-adr-qualified-inputs.json)
+and [full prompts/actions/fixtures archive](https://github.com/tvproductions/gz-skills/blob/0bdab63fc503c6b36e2dd487932689b4e555e41a/docs/evidence/2026-11-15-adr-canonical.zip)
+own the reused PASS results. Archive SHA256:
+62594620cd8fb993fcc9c5216ac79942a28562db28035e28d12a14e29873b2e8.
+Procedure SHA256 a85b8a48fc700da52d65b5b61fa4ee525a1c0b7ffd303f02f753a26d5cf2339a;
+template SHA256 88fcf67e431e4df013b6c52b342361e9370adf15fc3f39b521d41f7aad706916.
+These exactly match selected v0.13.0. Backplane neither edits nor vendors them;
+its focused reference delegates project decision semantics and adds only the
+existing checkpoint mapping. Earlier remaining-publication fields in the matrix
+are historical; owning completion is in the linked 0.13.0 release receipt.
+
+| Reused result | Unchanged semantic input and Backplane applicability/targeted observation |
+| --- | --- |
+| B01 missing choice | Same project-governed approval barrier; new design/start/active/closeout/capture routes actually stop dependent work and continue independent corrections. |
+| B02 existing decision | Same approved-decision reuse; three exact-byte positive implementation cases and complete native pair acceptance demonstrate covered continuation without duplicate ADRs. |
+| B03 conflicting direction | Same conflict/replacement semantics, with no new winner rule; source-drift control and approved-local-versus-remote delivery review withhold contradictory current claims. |
+| B04 vague assent | Same separation from spec/plan assent; native core fixtures supply approved design/plan but insufficient architectural approval and still stop dependent edits. |
+| B05 exact approval | Same genuine interaction/reviewed-byte preservation and continuation; exact raw-byte positives plus proper typed approval/evidence mapping and actual real publisher approval reuse supplement the shared result. |
+| B06 wrong edition | Same exact-edition predicate; corrected typed wrong-edition control has internally consistent content hashes yet refuses edition-2 assent for edition 1. |
+| B07 mid-work discovery | Same dependent-only pause and independent task rule; active-work stop/continue cases exercise the new route and observable file effects. |
+| B08 editorial amendment | Delegated unchanged project policy/template semantics; no Backplane amendment engine or stricter parser exists. New-reference minimum-width/legacy guidance preserves that input; shared overflow/legacy supplements remain applicable. |
+| B09 material replacement | Delegated unchanged replacement/retirement history semantics; source-drift/new-decision controls do not rewrite approval to bless a new source choice. No retirement service or automatic conversion is added. |
+| B10 honest backfill | Same observed/inferred/unknown distinction; partial diagnostic/evidence cases retain actual gaps and do not manufacture Current approval/history from metadata or capture. |
+| B11 independent evolution | Same independent histories; actual approved-decision review with release regrouping keeps the unchanged decision and its original approval untouched. |
+| B12 review drift | Same implementation-alignment predicate; valid approved local choice plus remote delivery and green syntax checks produces changes-required, preserving inputs. |
+| B13 authority to act | Same operation authority separation; authorized local edits/captures occur while tracker/network/publication remain excluded in every invented control. Real publisher release authority is separately established. |
+| B14 access/unavailable content | Same selected project policy/workflow semantics; missing approval and source-drift diagnostics retain gaps and accepted pair bytes. The neutral consumer proves no mandatory supporting bundle. Starter owns separate link/local/conflict and disabled-lane binding checks; they are not claimed here. |
+| B15 human initiation | Same project workflow invoked for an explicitly requested ADR; Backplane introduces no agent-only detection prerequisite. The actual approved human-directed contribution uses that route; no shared procedure change requires replay. |
+| B16 weak justification | Same project-owned recovery/uncertainty rule; the integration adds no justification shortcut, and source/evidence gaps remain explicit. No claim that new typed indexing supplies missing rationale. |
+
+Every shared result is reused only for the unchanged procedure/template and its
+original observed Windows Codex/default-model-UNKNOWN scope. Backplane's targeted
+source/action results establish only the added binding and mapping. Source
+selection/cache installation does not expand model/host/mode claims. Starter
+both-lane/disabled/exact-combination qualification remains a separate owner gate.

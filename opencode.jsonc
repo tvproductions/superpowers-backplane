@@ -4,8 +4,8 @@
   // release. Both plugins are enabled only for this repository.
   // SUPERPOWERS.md remains the upstream dependency record.
   "plugins": [
-    "superpowers@git+https://github.com/obra/superpowers.git#v7.0.1",
-    "git+https://github.com/tvproductions/gz-skills.git#v0.8.3"
+    "superpowers@git+https://github.com/obra/superpowers.git#v7.0.2",
+    "git+https://github.com/tvproductions/gz-skills.git#v0.13.0"
   ],
   // Backplane's own development skills supplement the managed plugins.
   "skills": ["./skills"]

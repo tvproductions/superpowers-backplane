@@ -2,9 +2,9 @@
 
 - Upstream: `https://github.com/obra/superpowers.git`
 - Channel: stable
-- Release: `v7.0.1`
-- Published: `2026-10-21T21:05:11Z`
-- Resolved commit: `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`
+- Release: `v7.0.2`
+- Published: `2026-11-03T22:17:54Z`
+- Resolved commit: `22f0b463e7a5e579904dd6211a520321035526f7`
 - Local checkout: `.agents/superpowers`
 - Discovery surface: `.agents/skills/superpowers`
 
@@ -47,3 +47,15 @@ compatibility changes, obtain explicit authorization, run the Backplane
 compatibility preflight and all five conformance checks, then update this record
 to the verified revision. The upstream default branch is an explicit edge-
 channel choice, never the implicit update target.
+
+On November 15, authorized ADR prerequisite maintenance selects stable 7.0.2.
+The registered continuation worktree exposes its independently verified clean
+checkout through `.agents/superpowers`; the original checkout and normal native
+profiles remain untouched. All five compatibility checks are scored PASS and
+fresh Codex discovery reads independent Superpowers and both Backplane skills.
+See `tests/scenarios/2026-11-15-adr-release-tooling.md` for exact preserved inputs,
+rubrics, actions and limitations. Project source declarations select 7.0.2 and
+supporting gz-skills v0.13.0 (release SHA 0bdab63fc503c6b36e2dd487932689b4e555e41a).
+Configured selection does not update or prove normal-profile cache installation.
+Rollback source remains stable 7.0.1 / 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b.
+No starter adoption, user activation or consumer migration is performed.

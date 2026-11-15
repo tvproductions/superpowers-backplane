@@ -1,0 +1,39 @@
+{
+  "source_commit": "5904713f47fae21e94813327b4e2daa9878605e3",
+  "runtime": "managed Python 3.14.10; uv 0.13.8",
+  "registry_packages_current_against_same_day_official_receipt": 71,
+  "cosmic_ray": "8.9.0",
+  "structured_worker_counts": [
+    {
+      "worker_outcome": "NORMAL",
+      "test_outcome": "KILLED",
+      "count": 128
+    },
+    {
+      "worker_outcome": "NORMAL",
+      "test_outcome": "SURVIVED",
+      "count": 7
+    }
+  ],
+  "survivors": "all seven exact diffs match previously reviewed equivalent/JSON-whitespace dispositions",
+  "coverage": {
+    "covered_lines": 42,
+    "num_statements": 42,
+    "percent_covered": 100.0,
+    "percent_covered_display": "100",
+    "missing_lines": 0,
+    "excluded_lines": 0,
+    "percent_statements_covered": 100.0,
+    "percent_statements_covered_display": "100",
+    "num_branches": 14,
+    "num_partial_branches": 0,
+    "covered_branches": 14,
+    "missing_branches": 0,
+    "percent_branches_covered": 100.0,
+    "percent_branches_covered_display": "100"
+  },
+  "source_parity": "retained fixture hashes verified; actual helper function ASTs equal current guide source",
+  "lizard": "1.26.0; seven functions; maximum 10; module/overall means below 20",
+  "audit": "71 packages; zero known vulnerabilities; zero skipped registry packages; locked hashed export; task-local cache",
+  "prior_receipt": "tests/scenarios/2026-11-07-strict-astral-full-verification.json"
+}

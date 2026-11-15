@@ -4,7 +4,7 @@
       "source": {
         "source": "github",
         "repo": "tvproductions/gz-skills",
-        "ref": "v0.8.3"
+        "ref": "v0.13.0"
       }
     }
   },

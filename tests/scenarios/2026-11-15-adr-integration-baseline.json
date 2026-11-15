@@ -1,0 +1,35 @@
+{
+  "stop": {
+    "protected_inputs": "all unchanged except exact authorized deliverables",
+    "changed_originals": [
+      "active-execution/README.md",
+      "checkpoint-capture/README.md",
+      "design-plan/README.md",
+      "ready-start/README.md",
+      "review-closeout/README.md"
+    ],
+    "source_choice_assertions": "PASS",
+    "independent_corrections": 5,
+    "capture_status": "partial",
+    "capture_floor": "UNKNOWN: source alias omits canonical docs parent; not a product failure",
+    "baseline_claim": "observed stop/continue actions PASS; no fabricated behavioral regression or complete-capture acceptance"
+  },
+  "continue": {
+    "protected_inputs": "all unchanged except exact authorized deliverables",
+    "changed_originals": [
+      "active-execution/architecture.json",
+      "active-execution/README.md",
+      "checkpoint-capture/README.md",
+      "design-plan/architecture.json",
+      "design-plan/README.md",
+      "ready-start/architecture.json",
+      "ready-start/README.md",
+      "review-closeout/README.md"
+    ],
+    "source_choice_assertions": "PASS",
+    "independent_corrections": 5,
+    "capture_status": "partial",
+    "capture_floor": "UNKNOWN: source alias omits canonical docs parent; not a product failure",
+    "baseline_claim": "observed stop/continue actions PASS; no fabricated behavioral regression or complete-capture acceptance"
+  }
+}

@@ -1,3 +1,48 @@
+# ADR prerequisites — November 15, 2026 resumed checkpoint
+
+Continue the approved Native plan at
+`docs/superpowers-backplane/plans/2026-11-15-architectural-decision-integration.md`.
+Actual ADR-0001 edition-1 approval and reviewed hash remain unchanged. The latest
+coordinating handoff is in GZ Starter, November 15 ADR/release session handoff.
+
+Local maintenance commit: 2a9ef916fb9293b291e59f4259da59defa40495a; remote main
+remains 5904713f47fae21e94813327b4e2daa9878605e3. All four normal hooks and nine
+adapter tests pass. Required changed-tool evidence, current audit, all five SP
+conformance checks and fresh independent discovery are retained in
+`tests/scenarios/2026-11-15-adr-release-tooling.md` and its companion archives.
+No normal-profile plugin installation or activation changed. Original dirty
+checkout remains untouched. The inspected absent shared hook was installed under
+authorized maintenance; no existing hook was overwritten.
+
+Pre-authorship native baseline is now observed. Read
+`tests/scenarios/2026-11-15-adr-integration-baseline.md` and both transcript/file
+archives. Wrong-edition stop and covered local continuation behave correctly;
+independent tasks complete and protected authority bytes remain unchanged.
+Capture qualification remains UNKNOWN for a diagnosed fixture alias-layout gap:
+canonical governance exists, while the alias's relative docs parent is absent.
+Preserve these partial observations; expose the actual canonical docs parent in
+later fixtures and qualify all required T4 complete/stale/edited-pair controls.
+Do not manufacture a failing approval baseline. Product ADR guidance is unwritten.
+
+Automatic approval review rejected an interim main push and the proposed #37
+`designing -> ready -> active` label changes, citing absent explicit remote
+mutation authorization. Those commands did not run. A concrete authorization
+request is pending in the main starter session for the transitions and maintenance
+push/CI. Until approved, preserve the local commit/evidence and issue's designing
+state; no dependent T3 product implementation or workaround. Issue body/revision
+still matches 2026-11-15T18:53:19Z with complete leaf contract and zero blockers.
+Re-read/reconcile live state before any later authorized transition.
+
+The owning portable contribution is now independently published/verified:
+gz-skills v0.13.0, source 0bdab63fc503c6b36e2dd487932689b4e555e41a;
+evidence descendant 36377cb27638194e122f268781557a729c9bdf5c equals its remote
+main. Clean source/package gates, independent review, downloaded asset hashes
+and all four exact tagged channels pass. OpenCode 2.3.0 exact-tag loading passes
+without adapter changes; an initial empty catalog preceded completed activation.
+Earlier inconclusive probes remain historical, not fully explained by this result.
+No Backplane 0.3.0 or starter 0.10.0 acceptance/publication is claimed. The proposed
+enforcement CLI remains out of scope. Prior historical handoffs follow.
+
 # Evening three-repository save point — November 14, 2026
 
 ## Canonical gz-starter migration — November 14 follow-up

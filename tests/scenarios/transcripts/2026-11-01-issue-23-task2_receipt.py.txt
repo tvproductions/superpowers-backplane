@@ -1,0 +1,692 @@
+"""Screen native transcripts and assemble the issue #23 acceptance receipt."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import subprocess
+from pathlib import Path
+from typing import Any
+
+import acceptance
+import v2_cases as native
+
+AREA = acceptance.AREA
+ROOT = AREA.parents[2]
+BP_SHA = native.BP.rsplit("#", 1)[1]
+SP_702 = "22f0b463e7a5e579904dd6211a520321035526f7"
+SP_SKILL = "069d578445805a28b8dacbf70cdf045e1673def0"
+CASES = acceptance.SETUP_CASES
+PATTERNS = {
+    "F-lookalike": r"lookalike|non.authoritative|example\.invalid",
+    "F-versionless": r"versionless|no observable|revision.*(?:unknown|cannot|unverif)",
+    "F-duplicate": r"duplicate|two conflicting|two backplane|multiple backplane",
+    "F-dirty-update": r"refus.{0,60}update|update.{0,80}(?:blocked|refus|unsafe|must not)",
+    "F-collision": r"collision|occupied.path|occupied local",
+    "F-gh-auth": r"(?:github|gh).{0,60}(?:authentication.*(?:fail|unavailable)|not logged in|auth.*(?:fail|blocked))",
+    "F-gh-intake": r"intake|unknown json field|unsupported json",
+    "F-gh-label": r"add-label|remove-label|label flags",
+    "F-gh-close": r"--reason|closure.reason|close reason",
+    "F-missing-skill": r"using-superpowers.{0,100}(?:missing|absent|unavailable|not (?:found|loaded))|(?:missing|absent|unavailable).{0,100}using-superpowers",
+    "F-incompatible": r"v5\.1\.0|(?:no|lack|missing|without).{0,70}(?:v2|index\.js).{0,40}(?:plugin|entry)?",
+}
+SECRET = re.compile(
+    r"gh[pousr]_[A-Za-z0-9]+|github_pat_[A-Za-z0-9_]+|[Bb]earer\s+[A-Za-z0-9_.-]+|(?:access|refresh)_token.{0,3}[\w.+/-]{12,}|[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+"
+)
+RECOVERY_HEADING = re.compile(r"^\W*(?:recovery|next steps?|safe next steps?)\W*(.*)$", re.I)
+RECOVERY_ACTION = re.compile(
+    r"\b(?:upgrade|sign in|log in|reauthenticate|restore|choose|obtain|remove|resolve|reconcile|verify|permit|use|install|authenticate|replace|update|revision change|compatible independent installation)\b",
+    re.I,
+)
+
+
+def digest(data: object) -> str:
+    return hashlib.sha256(json.dumps(data, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+
+
+def events(command: dict[str, Any]) -> list[dict[str, Any]]:
+    emitted = []
+    for line in command.get("stdout", "").splitlines():
+        try:
+            record = json.loads(line)
+        except ValueError:
+            continue
+        if isinstance(record, dict):
+            emitted.append(record)
+    return emitted
+
+
+def last_text(command: dict[str, Any]) -> str:
+    texts = [
+        record["part"]["text"]
+        for record in events(command)
+        if record.get("type") == "text" and record.get("part", {}).get("text")
+    ]
+    return texts[-1] if texts else ""
+
+
+def excerpts(text: str, case: str) -> list[str]:
+    lines = [line.strip() for line in text.splitlines() if line.strip() and not SECRET.search(line)]
+    selected = lines[:1]
+    pattern = PATTERNS.get(case, r"requested.*(?:passed|pass)|checks passed|installed|restart")
+    for regex in (re.compile(pattern, re.I), RECOVERY_HEADING):
+        match = next(
+            (line for line in lines[1:] if regex.search(line) and line not in selected), None
+        )
+        if match:
+            selected.append(match)
+    return [line[:560] for line in selected]
+
+
+def git_blob(path: Path) -> str:
+    return (
+        subprocess.check_output(
+            ["git", "hash-object", "--stdin"], cwd=ROOT, input=path.read_bytes(), timeout=15
+        )
+        .decode("ascii")
+        .strip()
+    )
+
+
+def package_files(root: Path) -> list[dict[str, str]]:
+    expected = {}
+    for line in native.git(ROOT, "ls-tree", "-r", BP_SHA).splitlines():
+        metadata, relative = line.split("\t")
+        expected[relative] = metadata.split()[-1]
+    return [
+        {
+            "path": path.relative_to(root).as_posix(),
+            "expected": expected.get(path.relative_to(root).as_posix(), ""),
+            "actual": git_blob(path),
+        }
+        for path in sorted(root.rglob("*"))
+        if path.is_file()
+    ]
+
+
+def same_issue(data: dict[str, Any]) -> tuple[dict[str, Any], bool]:
+    views = [data.get(key, {}) for key in ("issue_before", "issue_after")]
+    if any(view.get("exit") != 0 for view in views):
+        return {}, False
+    before, after = (json.loads(view["stdout"]) for view in views)
+    return before, before == after and set(before) == set(native.FIELDS.split(","))
+
+
+def status_plugins(inventory: dict[str, Any], name: str) -> list[dict[str, Any]]:
+    return [entry for entry in inventory.get("plugin", {}).get("data", []) if entry["id"] == name]
+
+
+def protect(
+    data: dict[str, Any], issue: dict[str, Any], identity: bool, case: str
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    if case == "F-below-floor":
+        configs = [data["config_before_sha256"], data["config_after_sha256"]]
+    elif case == "F-unauthenticated":
+        configs = [True, data["configuration_equal"]]
+    else:
+        before = json.loads(data["config_before"])
+        after = json.loads(data["config_after"])
+        if case == "S-absent":
+            before["plugins"].append(f"{native.UPSTREAM}#v7.0.2")
+        configs = [digest(before), digest(after)]
+    baseline = {
+        "protected_files": digest(data["before"]),
+        "configuration": configs[0],
+        "issue": digest(issue),
+    }
+    observed = {
+        "protected_files": digest(data["after"]),
+        "configuration": configs[1],
+        "issue": digest(issue) if identity else None,
+    }
+    return baseline, observed
+
+
+def shell_observations(command: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    shell = {}
+    for event in events(command):
+        part = event.get("part", {})
+        state = part.get("state", {})
+        request = state.get("input", {}).get("command", "")
+        if (
+            event.get("type") == "tool_use"
+            and part.get("tool") == "shell"
+            and isinstance(request, str)
+        ):
+            shell[request] = {
+                "status": state.get("status"),
+                "exit": state.get("metadata", {}).get("metadata", {}).get("exit"),
+                "output": state.get("output", ""),
+            }
+    return shell
+
+
+def github_ok(setup: dict[str, Any], expected: dict[str, Any]) -> bool:
+    shell = shell_observations(setup)
+    entries = [shell.get(" ".join(command), {}) for command in native.GH]
+    if not all(entry.get("status") == "completed" and entry.get("exit") == 0 for entry in entries):
+        return False
+    try:
+        received = json.loads(entries[1]["output"])
+    except TypeError, ValueError:
+        return False
+    return (
+        received == expected
+        and all(flag in entries[2]["output"] for flag in ("--add-label", "--remove-label"))
+        and all(flag in entries[3]["output"] for flag in ("--reason", "completed", "not planned"))
+    )
+
+
+def discover(command: dict[str, Any], inventory: dict[str, Any]) -> list[dict[str, Any]]:
+    by_id = {
+        entry["id"]: Path(entry["path"]).resolve()
+        for entry in inventory.get("skill", {}).get("data", [])
+        if entry.get("id") in acceptance.SKILLS
+    }
+    results = acceptance.parse_skill_results(command.get("stdout", ""))
+    proven = []
+    for event in events(command):
+        part = event.get("part", {})
+        state = part.get("state", {})
+        details = state.get("metadata", {}).get("metadata", {})
+        directory = details.get("directory")
+        matching = [
+            result
+            for result in results
+            if result["call_id"] == (part.get("id") or part.get("callID"))
+        ]
+        if len(matching) != 1 or not isinstance(directory, str):
+            continue
+        result = matching[0]
+        path = (Path(directory) / "SKILL.md").resolve()
+        if path != by_id.get(result["id"]):
+            continue
+        proven.append({**result, "source_path": str(path), "git_blob": git_blob(path)})
+    return proven
+
+
+def commands(data: dict[str, Any], case: str) -> list[dict[str, Any]]:
+    if case == "F-below-floor":
+        return [
+            {**project(data["version"]), "expected_exit": 0},
+            {**project(data["refusal"]), "expected_exit": 1},
+        ]
+    if case == "F-unauthenticated":
+        return [
+            {**project(data["auth"]), "expected_exit": 0},
+            {**project(data["model"]), "expected_exit": 1},
+        ]
+    return [project(item) for item in data.get("commands", [])]
+
+
+def project(item: dict[str, Any]) -> dict[str, Any]:
+    return {key: item[key] for key in ("argv", "exit", "timeout")}
+
+
+def facade_failure(case: str, gh: list[dict[str, Any]]) -> bool:
+    if case == "F-gh-auth":
+        return gh[0]["exit"] != 0 and "not logged" in gh[0]["stderr"].lower()
+    if case == "F-gh-intake":
+        return gh[1]["exit"] != 0 and any(
+            token in gh[1]["stderr"].lower()
+            for token in ("unknown json field", "invalid value", "unknown field")
+        )
+    if case == "F-gh-label":
+        return not all(
+            flag in gh[2]["stdout"] for flag in ("--add-label", "--remove-label")
+        ) and bool(gh[2]["stdout"] or gh[2]["stderr"])
+    if case == "F-gh-close":
+        return gh[3]["exit"] == 0 and bool(gh[3]["stdout"]) and "--reason" not in gh[3]["stdout"]
+    return False
+
+
+def host_failure(case: str, data: dict[str, Any]) -> bool:
+    if case == "F-below-floor":
+        return (
+            data["version"]["stdout"].strip() == "opencode v2.0.3"
+            and "Unsupported OpenCode V2 host" in data["refusal"]["stderr"]
+            and data["cache_has_no_files"]
+            and bool(data["before"]["unrelated"])
+        )
+    if case == "F-unauthenticated":
+        return (
+            data["auth"]["exit"] == 0
+            and "openai" not in (data["auth"]["stdout"] + data["auth"]["stderr"]).lower()
+            and data["model"]["exit"] != 0
+        )
+    return False
+
+
+def entrypoint_failure(case, profile, gitobs, inventory):
+    if case == "F-missing-skill":
+        return (
+            bool(gitobs and not gitobs[2])
+            and not (profile / "upstream/skills/using-superpowers/SKILL.md").exists()
+            and all(entry["id"] != "using-superpowers" for entry in inventory["skill"]["data"])
+        )
+    if case == "F-incompatible":
+        return (
+            bool(gitobs and gitobs[0] == native.ORIGIN)
+            and not (profile / "upstream/index.js").exists()
+        )
+    return False
+
+
+def fixture_failure(case: str, data: dict[str, Any], profile: Path) -> bool:
+    settings = json.loads(data.get("config_before", "{}"))
+    gitobs = data.get("before", {}).get("upstream", [])
+    inventory = data.get("inventory_before", {})
+    if case == "F-lookalike":
+        return bool(gitobs) and gitobs[0] == "https://example.invalid/issue-23/superpowers.git"
+    if case == "F-versionless":
+        path = profile / "versionless"
+        package = json.loads((path / "package.json").read_text(encoding="utf-8"))
+        return not (path / ".git").exists() and "version" not in package
+    if case == "F-duplicate":
+        return sum(f"github.com/{native.REPO}.git#" in entry for entry in settings["plugins"]) == 2
+    if case == "F-dirty-update":
+        return bool(gitobs and gitobs[2] and data["config_before"] == data["config_after"])
+    if case == "F-collision":
+        return any(
+            entry.endswith("/occupied-superpowers") for entry in settings["plugins"]
+        ) and any("occupied-superpowers" in file for file in data["before"]["files"])
+    return entrypoint_failure(case, profile, gitobs, inventory)
+
+
+def positive_source(case, data, profile, first, last, results, bp):
+    upstream_skill = next(
+        (result for result in results if result["id"] == "using-superpowers"), None
+    )
+    host_sp = status_plugins(last, "superpowers")
+    upstream, revision = native.ORIGIN, native.SHA
+    checkout = data.get("before", {}).get("upstream", [])
+    if checkout:
+        upstream, revision = checkout[:2]
+        source_ok = bool(
+            upstream_skill
+            and upstream_skill["source_path"]
+            == str((profile / "upstream/skills/using-superpowers/SKILL.md").resolve())
+        )
+    elif case == "S-absent":
+        revision = SP_702
+        source_ok = (
+            len(host_sp) == 1
+            and host_sp[0]["source"]["version"] == revision
+            and not status_plugins(first, "superpowers")
+        )
+    else:
+        source_ok = (
+            len(host_sp) == 1
+            and host_sp[0]["source"]["version"] == revision
+            and host_sp[0]["source"]["target"] == f"{native.UPSTREAM}#v7.0.1"
+        )
+    source_ok = bool(
+        source_ok
+        and upstream_skill
+        and upstream_skill["git_blob"] == SP_SKILL
+        and len(bp) == 1
+        and bp[0]["source"]["version"] == BP_SHA
+    )
+    return source_ok, upstream, revision
+
+
+def positive_payload(case, data, profile, issue, first, last, setup, text):
+    native_commands = data.get("commands", [])
+    results = []
+    flags = {}
+    bp = status_plugins(last, "superpowers-backplane")
+    if len(native_commands) > 1:
+        results = discover(native_commands[-1], last)
+    bp_skill = next(
+        (
+            entry
+            for entry in last.get("skill", {}).get("data", [])
+            if entry["id"] == "managing-superpowers-backlog"
+        ),
+        None,
+    )
+    package_root = Path(bp_skill["path"]).resolve().parents[2] if bp_skill else None
+    files = package_files(package_root) if package_root else []
+    source_ok, upstream, revision = positive_source(case, data, profile, first, last, results, bp)
+    flags["native_github"] = github_ok(setup, issue)
+    flags["setup_report"] = (
+        bool(f"{native.UPSTREAM}#v7.0.2" in data["config_after"] and len(native_commands) == 2)
+        if case == "S-absent"
+        else bool(
+            re.search(
+                r"adopted|adoptable|use.*read.only|checks passed|no changes needed", text, re.I
+            )
+        )
+    )
+    flags["one_backplane"] = len(bp) == 1
+    flags["payload"] = {item["id"] for item in results} == set(acceptance.SKILLS) and len(
+        files
+    ) == 70
+    sentinel_before = status_plugins(first, "issue-23-sentinel")
+    sentinel_after = status_plugins(last, "issue-23-sentinel")
+    flags["unrelated_native_plugin"] = (
+        sentinel_before == sentinel_after
+        and len(sentinel_before) == 1
+        and sentinel_before[0]["state"]["status"] == "active"
+    )
+    return {
+        "checks": flags,
+        "results": results,
+        "files": files,
+        "package_root": package_root,
+        "source_ok": source_ok,
+        "upstream": upstream,
+        "revision": revision,
+    }
+
+
+def refusal_text(case, data, response):
+    if case == "F-below-floor":
+        observed = data["refusal"]["stderr"].splitlines()[-1]
+        if "Use V2 2.0.4 or later." in observed:
+            return observed, observed.rsplit(". ", 1)[-1], "native guard stderr"
+        return observed, "", "native guard stderr"
+    if case == "F-unauthenticated":
+        report = data.get("preflight_report", {})
+        return (
+            report.get("native_diagnostic", ""),
+            report.get("recovery", ""),
+            report.get("recovery_source", ""),
+        )
+    return observed_model_refusal(case, response)
+
+
+def observed_model_refusal(case, response):
+    lines = [
+        line.strip() for line in response.splitlines() if line.strip() and not SECRET.search(line)
+    ]
+    pattern = re.compile(PATTERNS[case], re.I)
+    matching = [line for line in lines if pattern.search(line)]
+    diagnostic = next(
+        (
+            line
+            for line in matching
+            if re.search(
+                r"\b(?:fail|failed|refus\w*|blocked|unknown|unavailable|absent|cannot|lacks|no)\b",
+                line,
+                re.I,
+            )
+        ),
+        matching[0] if matching else "",
+    )
+    for position, line in enumerate(lines):
+        heading = RECOVERY_HEADING.match(line)
+        if heading:
+            excerpt = heading.group(1).strip(" *:-")
+            if RECOVERY_ACTION.search(excerpt):
+                return diagnostic, line, "fresh native setup response"
+            following = lines[position + 1 : position + 4]
+            actions = [action for action in following if RECOVERY_ACTION.search(action)]
+            if actions:
+                return diagnostic, "\n".join(actions), "fresh native setup response"
+    if "|" in diagnostic:
+        table_cell = diagnostic.strip("|").split("|")[-1].strip()
+        if RECOVERY_ACTION.search(table_cell) and table_cell != diagnostic:
+            return diagnostic, table_cell, "fresh native setup response table"
+    return diagnostic, "", "fresh native setup response"
+
+
+def negative_payload(case, data, profile, response, path):
+    if case.startswith("F-gh-"):
+        seen = facade_failure(case, data.get("native_gh", []))
+    elif case in {"F-below-floor", "F-unauthenticated"}:
+        seen = host_failure(case, data)
+    else:
+        seen = fixture_failure(case, data, profile)
+    diagnostic, recovery, source = refusal_text(case, data, response)
+    report_ok = bool(diagnostic and recovery and not SECRET.search(diagnostic + recovery))
+    flags = {
+        "failure_fixture": seen,
+        "specific_refusal": True if report_ok else None,
+        "payload": True if report_ok else None,
+    }
+    upstream, revision = native.ORIGIN, native.SHA
+    if case in {"F-below-floor", "F-versionless"}:
+        upstream = revision = None
+        flags["upstream_identity_unavailable"] = seen
+    elif data.get("before", {}).get("upstream"):
+        upstream, revision = data["before"]["upstream"][:2]
+    after = data.get("installed_after")
+    source_ok = True if case == "F-below-floor" else bool(after) or None
+    results = []
+    if report_ok:
+        results.append(
+            {
+                "id": case,
+                "status": "refused",
+                "capture_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "diagnostic": diagnostic,
+                "observed_recovery": recovery,
+                "recovery_source": source,
+            }
+        )
+    return {
+        "checks": flags,
+        "results": results,
+        "files": [],
+        "package_root": None,
+        "source_ok": source_ok,
+        "upstream": upstream,
+        "revision": revision,
+        "recovery": recovery or None,
+    }
+
+
+def observable_files(snapshot):
+    return {
+        key: digest(value) if key in {"permissions", "instructions"} else value
+        for key, value in snapshot.items()
+    }
+
+
+def host_identity(data):
+    if "version" in data:
+        observed = data["version"]
+        raw = observed["stdout"].strip()
+        assert observed["exit"] == 0
+        digest = data["exe_sha256"]
+        executable = data["executable"]
+        measurement = "observed native version command"
+    else:
+        probe = json.loads((AREA / "final-native-preflight.json").read_text(encoding="utf-8"))
+        digest = data["executable_sha256"]
+        executable = data["executable"]
+        assert digest == probe["exe_sha256"]
+        raw = probe["host_version"]
+        measurement = "retained preflight tied to this run's independently checked binary SHA-256"
+    match = re.fullmatch(r"(?:opencode )?v?(\d+\.\d+\.\d+)", raw)
+    assert match is not None
+    return executable, match.group(1), digest, measurement
+
+
+def native_preservation(case, data, results):
+    if case == "F-below-floor":
+        return data["cache_has_no_files"]
+    before, after = (data.get(key) for key in ("installed_before", "installed_after"))
+    return acceptance.installed_preserved(case, before, after, results)
+
+
+def recorded_evidence(case, data, first, last, setup):
+    shell = shell_observations(setup)
+    gh_checks = {}
+    for argv in native.GH:
+        command = " ".join(argv)
+        event = shell.get(command)
+        if event:
+            gh_checks[command] = {
+                "status": event["status"],
+                "exit": event["exit"],
+                "output_sha256": hashlib.sha256(event["output"].encode()).hexdigest(),
+            }
+
+    def selected_plugins(inventory):
+        return {
+            name: status_plugins(inventory, name)
+            for name in ("superpowers", "superpowers-backplane", "issue-23-sentinel")
+        }
+
+    observed = {
+        "protected_before": observable_files(data["before"]),
+        "protected_after": observable_files(data["after"]),
+        "native_inventory_before": selected_plugins(first),
+        "native_inventory_after": selected_plugins(last) if "inventory_after" in data else None,
+        "model_gh_checks": gh_checks,
+        "direct_gh_checks": [
+            {**project(item), "output_sha256": digest([item["stdout"], item["stderr"]])}
+            for item in data.get("native_gh", [])
+        ],
+    }
+    observed["installed_before"] = data.get("installed_before")
+    observed["installed_after"] = data.get("installed_after")
+    if case in native.OLD_GH:
+        version = native.OLD_GH[case]
+        fixture = AREA / f"gh-{version}"
+        archive = fixture / f"gh_{version}_windows_amd64.zip"
+        checksums = fixture / f"gh_{version}_checksums.txt"
+        expected = next(
+            line.split()[0]
+            for line in checksums.read_text(encoding="utf-8").splitlines()
+            if line.endswith(archive.name)
+        )
+        with archive.open("rb") as content:
+            measured = hashlib.file_digest(content, "sha256").hexdigest()
+        assert measured == expected
+        observed["gh_archive"] = {"version": version, "sha256": measured}
+    if case == "F-below-floor":
+        observed["cache_has_no_files"] = data["cache_has_no_files"]
+        observed["distribution"] = data["distribution"]
+        observed["archive_integrity"] = data["archive_integrity"]
+        observed["reported_version"] = data["version"]["stdout"].strip()
+        observed["native_diagnostic"] = data["refusal"]["stderr"].splitlines()[-1]
+    if case == "F-unauthenticated":
+        observed["native_auth_summary"] = data["auth"]["stdout"].strip()
+        detail = (data["model"]["stderr"] or data["model"]["stdout"]).strip()
+        observed["native_model_diagnostic"] = (
+            detail[:720] if not SECRET.search(detail) else "[redacted]"
+        )
+    return observed
+
+
+def build(case: str, attempt: int) -> dict[str, Any]:
+    profile = AREA / f"{case}-{attempt:02}"
+    path = profile / "raw-evidence.json"
+    if not path.exists():
+        return {"id": case, "result": "UNKNOWN", "reason": "Native receipt unavailable"}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("probe_error"):
+        return {
+            "id": case,
+            "result": "UNKNOWN",
+            "reason": data["probe_error"],
+            "capture_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        }
+    positive = case.startswith("S-") or case == "F-dirty-adopt"
+    issue, same = same_issue(data)
+    if not issue:
+        return {"id": case, "result": "UNKNOWN", "reason": "Full native issue snapshot unavailable"}
+    before, after = protect(data, issue, same, case)
+    first = data.get("inventory_before", data.get("inventory", {}))
+    last = data.get("inventory_after", first)
+    native_commands = data.get("commands", [])
+    setup = native_commands[0] if native_commands else {}
+    text = last_text(setup)
+    config = profile / "config/opencode/opencode.json"
+    payload = (
+        positive_payload(case, data, profile, issue, first, last, setup, text)
+        if positive
+        else negative_payload(case, data, profile, text, path)
+    )
+    flags = payload["checks"]
+    package_root = payload["package_root"]
+    source_ok, upstream, revision = (payload[key] for key in ("source_ok", "upstream", "revision"))
+    results, files = payload["results"], payload["files"]
+    flags["source"] = source_ok
+    preservation = native_preservation(case, data, results)
+    flags["preservation"] = False if before != after else preservation
+    executable, version, binary_hash, source = host_identity(data)
+    row = {
+        "id": case,
+        "variant": "v2",
+        "kind": "native",
+        "host_executable": executable,
+        "host_version": version,
+        "executable_hash": binary_hash,
+        "host_identity_source": source,
+        "candidate_sha": BP_SHA,
+        "package_root": str(package_root) if package_root else None,
+        "cache_root": str(profile / "cache"),
+        "profile_root": str(profile),
+        "owned_root": str(AREA),
+        "upstream_origin": upstream,
+        "upstream_revision": revision,
+        "configuration_sources": [item["path"] for item in last.get("config", [])] or [str(config)],
+        "requires_auth": case not in {"F-below-floor", "F-unauthenticated"},
+        "auth_verified": data.get("auth", {}).get("openai", False),
+        "model": data.get("model") if isinstance(data.get("model"), str) else None,
+        "commands": commands(data, case),
+        "native_results": results,
+        "package_files": files,
+        "expected_status": "completed" if positive else "refused",
+        "checks": flags,
+        "before": before,
+        "after": after,
+        "recovery": payload.get("recovery"),
+        "connections": [issue[key] for key in ("subIssues", "blockedBy", "blocking")],
+        "fixture": profile.name,
+        "capture_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "report_excerpts": excerpts(text, case),
+        "observations": recorded_evidence(case, data, first, last, setup),
+    }
+    row["result"] = acceptance.classify(row)
+    return row
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--attempt",
+        action="append",
+        nargs=2,
+        default=[],
+        metavar=("CASE", "NUMBER"),
+        help="Select a recorded attempt for an individual case. Repeat for other cases.",
+    )
+    parser.add_argument("--output", type=Path, default=AREA / "task2-screened-receipt.json")
+    options = parser.parse_args()
+    attempts = {case: 3 if case.startswith("S-") else 4 for case in CASES}
+    attempts["F-unauthenticated"] = 5
+    overridden = set()
+    for case, number in options.attempt:
+        if case not in attempts or case in overridden or not re.fullmatch(r"[1-9][0-9]*", number):
+            parser.error(
+                f"Expected a distinct known case and a positive attempt number: {case} {number}"
+            )
+        attempts[case] = int(number)
+        overridden.add(case)
+    rows = [build(case, attempts[case]) for case in CASES]
+    probe = native.run(native.ISSUE)
+    assert probe["exit"] == 0
+    issue = json.loads(probe["stdout"])
+    assert not SECRET.search(json.dumps(rows))
+    result = {"issue": issue, "phase": "local native setup acceptance", "rows": rows}
+    native.dump(options.output, result, "w")
+    for row in rows:
+        problems = {key: value for key, value in row.get("checks", {}).items() if value is not True}
+        print(
+            row["id"],
+            row["result"],
+            row.get("reason", ""),
+            problems,
+            str(row.get("report_excerpts", [])[:1])[:260],
+        )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,504 @@
+"""Controls for V2 evidence scoring, native events and fixture isolation."""
+
+import io
+import json
+import unittest
+from contextlib import redirect_stdout
+from copy import deepcopy
+from pathlib import Path, PurePosixPath, PureWindowsPath
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
+
+import acceptance
+import task2_receipt
+
+AREA = Path(__file__).resolve().parent
+PROFILE = AREA / "profile"
+CACHE = PROFILE / "cache"
+PACKAGE = CACHE / "superpowers-backplane"
+UPSTREAM = CACHE / "superpowers"
+CANDIDATE = "b" * 40
+UPSTREAM_REVISION = "c" * 40
+CAPTURE = "d" * 64
+SKILLS = (
+    "using-superpowers",
+    "managing-superpowers-backlog",
+    "managing-superpowers-handoffs",
+)
+ORIGIN = "https://github.com/obra/superpowers.git"
+EXPECTED = {
+    "superpowers-backplane": (
+        "git+https://github.com/example/backplane.git#" + CANDIDATE,
+        CANDIDATE,
+    ),
+    "superpowers": ("superpowers@git+" + ORIGIN + "#" + UPSTREAM_REVISION, UPSTREAM_REVISION),
+}
+SKILL_ROOTS = {
+    name: (CACHE, "superpowers" if name == SKILLS[0] else "superpowers-backplane")
+    for name in SKILLS
+}
+CONFIG = PROFILE / "config/opencode/opencode.json"
+
+
+def native_event(name, *, key="id", status="completed", session="observed-session"):
+    return {
+        "type": "tool_use",
+        "sessionID": session,
+        "part": {
+            "tool": "skill",
+            "callID": f"call-{name}",
+            "state": {"input": {key: name}, "status": status, "output": "Observed skill output"},
+        },
+    }
+
+
+def positive(area=AREA):
+    profile = area / "profile"
+    cache = profile / "cache"
+    package = cache / "superpowers-backplane"
+    upstream = cache / "superpowers"
+    return {
+        "id": "S-native",
+        "variant": "v2",
+        "kind": "native",
+        "host_executable": str(area / "bin/opencode"),
+        "host_version": "2.1.4",
+        "executable_hash": "a" * 64,
+        "candidate_sha": CANDIDATE,
+        "package_root": str(package),
+        "cache_root": str(cache),
+        "profile_root": str(profile),
+        "owned_root": str(area),
+        "upstream_origin": ORIGIN,
+        "upstream_revision": UPSTREAM_REVISION,
+        "configuration_sources": [str(profile / "config/opencode/opencode.json")],
+        "requires_auth": True,
+        "auth_verified": True,
+        "model": "provider/verified-model",
+        "commands": [{"argv": ["opencode", "run"], "exit": 0, "timeout": False}],
+        "native_results": [
+            {
+                "id": name,
+                "call_id": f"call-{name}",
+                "session_id": "observed-session",
+                "status": "completed",
+                "capture_sha256": CAPTURE,
+                "source_path": str(
+                    (upstream if name == SKILLS[0] else package) / "skills" / name / "SKILL.md"
+                ),
+                "git_blob": CANDIDATE,
+            }
+            for name in SKILLS
+        ],
+        "package_files": [
+            {"path": path, "expected": CANDIDATE, "actual": CANDIDATE}
+            for path in (
+                "package.json",
+                "index.js",
+                "skills/managing-superpowers-backlog/SKILL.md",
+                "skills/managing-superpowers-handoffs/SKILL.md",
+            )
+        ],
+        "expected_status": "completed",
+        "checks": {"one_backplane": True, "source": True, "payload": True, "preservation": True},
+        "before": {"sentinel_file": "unchanged", "sentinel_plugin": "active"},
+        "after": {"sentinel_file": "unchanged", "sentinel_plugin": "active"},
+        "recovery": None,
+        "connections": [{"nodes": [], "totalCount": 0}],
+    }
+
+
+def ready_inventory():
+    return {
+        "config": [{"type": "document", "path": str(CONFIG)}],
+        "plugin": {
+            "data": [
+                {
+                    "id": name,
+                    "source": {"target": target, "version": revision},
+                    "state": {"status": "active"},
+                }
+                for name, (target, revision) in EXPECTED.items()
+            ]
+        },
+        "skill": {
+            "data": [
+                {
+                    "id": name,
+                    "path": str(root / "npm/node_modules" / package / "skills" / name / "SKILL.md"),
+                }
+                for name, (root, package) in SKILL_ROOTS.items()
+            ]
+        },
+    }
+
+
+def protected_snapshot():
+    return {"unrelated": ["unrelated-plugin"], "files": {"user-work.txt": CAPTURE}}
+
+
+def installed_setup_snapshot(*, upstream=True):
+    roots = [
+        (PROFILE / "unrelated-plugin", "issue-23-sentinel"),
+        (PACKAGE, "superpowers-backplane"),
+    ]
+    if upstream:
+        roots.append((UPSTREAM, "superpowers"))
+    return {
+        "manifests": {str(root): {"files": 3, "sha256": CAPTURE} for root, _ in roots},
+        "plugins": [
+            {"id": name, "source": {"type": "package"}, "status": "active"} for _, name in roots
+        ],
+    }
+
+
+class EvidenceTests(unittest.TestCase):
+    def test_complete_native_positive(self):
+        self.assertEqual(acceptance.classify(positive()), "PASS")
+
+    def test_archived_paths_use_capture_host_rules(self):
+        roots = (PurePosixPath("/archive/issue-23"), PureWindowsPath("R:/archive/issue-23"))
+        for root in roots:
+            with self.subTest(root=root):
+                row = positive(root)
+                self.assertEqual(acceptance.classify(row), "PASS")
+                row["configuration_sources"] = [str(root / "profile/../outside.json")]
+                self.assertEqual(acceptance.classify(row), "FAIL")
+
+    def test_success_requires_protected_snapshots_and_unchanged_packages(self):
+        row = positive()
+        row["host_identity_source"] = "native version"
+        snapshot = installed_setup_snapshot()
+        row["observations"] = {
+            "protected_before": protected_snapshot(),
+            "protected_after": protected_snapshot(),
+            "native_inventory_before": {"superpowers-backplane": []},
+            "native_inventory_after": {"superpowers-backplane": []},
+            "installed_before": snapshot,
+            "installed_after": deepcopy(snapshot),
+        }
+        self.assertTrue(acceptance.scoped_native_observation(row))
+        missing = deepcopy(row)
+        del missing["observations"]["protected_before"]
+        del missing["observations"]["protected_after"]
+        self.assertFalse(acceptance.scoped_native_observation(missing))
+        changed = deepcopy(row)
+        changed["observations"]["installed_after"]["manifests"][str(PACKAGE)]["sha256"] = "e" * 64
+        self.assertFalse(acceptance.scoped_native_observation(changed))
+        missing_manifest = deepcopy(row)
+        del missing_manifest["observations"]["installed_after"]
+        self.assertFalse(acceptance.scoped_native_observation(missing_manifest))
+        paired_omission = deepcopy(row)
+        for moment in ("installed_before", "installed_after"):
+            del paired_omission["observations"][moment]["manifests"][str(UPSTREAM)]
+        self.assertFalse(acceptance.scoped_native_observation(paired_omission))
+        aliased = deepcopy(paired_omission)
+        aliased["native_results"][0]["source_path"] = str(
+            PROFILE / "unrelated-plugin" / "skills" / SKILLS[0] / "SKILL.md"
+        )
+        self.assertFalse(acceptance.scoped_native_observation(aliased))
+        incomplete_files = deepcopy(row)
+        for moment in ("protected_before", "protected_after"):
+            del incomplete_files["observations"][moment]["files"]
+        self.assertFalse(acceptance.scoped_native_observation(incomplete_files))
+
+    def test_absent_setup_allows_only_attributed_new_upstream_package(self):
+        row = positive() | {"id": "S-absent", "host_identity_source": "native version"}
+        after = installed_setup_snapshot()
+        row["observations"] = {
+            "protected_before": protected_snapshot(),
+            "protected_after": protected_snapshot(),
+            "native_inventory_before": {"superpowers-backplane": []},
+            "native_inventory_after": {"superpowers-backplane": []},
+            "installed_before": installed_setup_snapshot(upstream=False),
+            "installed_after": after,
+        }
+        self.assertTrue(acceptance.scoped_native_observation(row))
+        after["manifests"][str(UPSTREAM)] = {}
+        self.assertFalse(acceptance.scoped_native_observation(row))
+
+    def test_receipt_builder_reads_the_explicit_case_attempt(self):
+        with TemporaryDirectory(dir=AREA) as temporary:
+            scratch = Path(temporary)
+            for attempt, marker in ((3, "old run"), (6, "requested run")):
+                profile = scratch / f"S-native-{attempt:02}"
+                profile.mkdir()
+                (profile / "raw-evidence.json").write_text(
+                    json.dumps({"probe_error": marker}), encoding="utf-8"
+                )
+            with (
+                patch.object(task2_receipt, "AREA", scratch),
+                patch.object(task2_receipt.native, "run", return_value={"exit": 0, "stdout": "{}"}),
+                patch("sys.argv", ["task2_receipt.py", "--attempt", "S-native", "6"]),
+                redirect_stdout(io.StringIO()),
+            ):
+                task2_receipt.main()
+            receipt = json.loads(
+                (scratch / "task2-screened-receipt.json").read_text(encoding="utf-8")
+            )
+            row = next(row for row in receipt["rows"] if row["id"] == "S-native")
+            self.assertEqual(row["reason"], "requested run")
+
+    def test_matrix_verifier_rejects_missing_and_duplicate_cases(self):
+        with TemporaryDirectory(dir=AREA) as temporary:
+            receipt = Path(temporary) / "matrix.json"
+            for rows in ([positive()], [positive() for _ in range(17)]):
+                with self.subTest(rows=len(rows)):
+                    receipt.write_text(json.dumps({"rows": rows}), encoding="utf-8")
+                    self.assertFalse(acceptance.verify(receipt)["valid"])
+
+    def test_native_skill_results_require_path_and_blob(self):
+        row = positive()
+        del row["native_results"][0]["source_path"]
+        del row["native_results"][1]["git_blob"]
+        self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_refusal_cannot_infer_after_inventory_or_recovery(self):
+        snapshot = {"manifests": {"fixture": {"files": 3}}, "plugins": ["sentinel"]}
+        row = {
+            "id": "F-duplicate",
+            "host_identity_source": "native version",
+            "expected_status": "refused",
+            "recovery": "Resolve only the identified duplicate.",
+            "observations": {
+                "protected_before": protected_snapshot(),
+                "protected_after": protected_snapshot(),
+                "native_inventory_before": {"sentinel": {}},
+                "native_inventory_after": {"sentinel": {}},
+                "installed_before": snapshot,
+                "installed_after": snapshot,
+            },
+            "native_results": [
+                {
+                    "diagnostic": "Two configured Backplane packages.",
+                    "observed_recovery": "Resolve only the identified duplicate.",
+                    "recovery_source": "fresh native setup response",
+                }
+            ],
+        }
+        self.assertTrue(acceptance.scoped_native_observation(row))
+        observations = row["observations"]
+        assert isinstance(observations, dict)
+        no_after = row | {"observations": observations | {"installed_after": None}}
+        self.assertFalse(acceptance.scoped_native_observation(no_after))
+        no_recovery = row | {
+            "native_results": [
+                {
+                    "diagnostic": "Two configured Backplane packages.",
+                    "recovery_source": "fresh native setup response",
+                }
+            ],
+        }
+        self.assertFalse(acceptance.scoped_native_observation(no_recovery))
+
+    def test_each_missing_required_field_is_unknown(self):
+        for field in positive():
+            with self.subTest(field=field):
+                row = positive()
+                del row[field]
+                self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_known_failures_win_over_missing_fields(self):
+        cases = [
+            {"checks": {"one_backplane": False}},
+            {"commands": [{"exit": 1}]},
+            {"commands": [{"timeout": True}]},
+            {"after": {"sentinel_file": "changed"}},
+            {"connections": [{"nodes": [], "totalCount": 1}]},
+            {"restored_sha": "1" * 40, "prior_sha": "2" * 40},
+            {"package_files": [{"path": "index.js", "expected": "1" * 40, "actual": "2" * 40}]},
+            {"native_results": [{"id": SKILLS[0], "status": "error"}]},
+        ]
+        for change in cases:
+            with self.subTest(fields=list(change)):
+                row = positive()
+                del row["model"]
+                row.update(change)
+                self.assertEqual(acceptance.classify(row), "FAIL")
+
+    def test_synthetic_and_incomplete_evidence_cannot_pass(self):
+        for change in (
+            {"kind": "synthetic"},
+            {"native_results": []},
+            {"native_results": positive()["native_results"][:-1]},
+            {"upstream_revision": None},
+            {"upstream_origin": None},
+            {"auth_verified": None},
+            {"checks": {"one_backplane": True}},
+        ):
+            with self.subTest(fields=list(change)):
+                self.assertEqual(acceptance.classify(positive() | change), "UNKNOWN")
+
+    def test_cache_and_configuration_need_owned_sources(self):
+        self.assertEqual(
+            acceptance.classify(positive() | {"package_root": str(AREA / "ancestor-source")}),
+            "FAIL",
+        )
+        self.assertEqual(
+            acceptance.classify(
+                positive() | {"configuration_sources": [str(AREA / "normal.json")]}
+            ),
+            "FAIL",
+        )
+
+    def test_below_floor_must_report_unsupported(self):
+        row = positive() | {"host_version": "2.0.3"}
+        self.assertEqual(acceptance.classify(row), "FAIL")
+        row.update(
+            id="F-below-floor",
+            expected_status="refused",
+            requires_auth=False,
+            recovery="Install V2 2.0.4 or later before setup.",
+            native_results=[{"id": "setup", "status": "refused", "capture_sha256": CAPTURE}],
+        )
+        row["checks"].update(failure_fixture=True, specific_refusal=True)
+        self.assertEqual(acceptance.classify(row), "PASS")
+        row["recovery"] = None
+        self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_refusal_can_prove_expected_missing_upstream_identity(self):
+        for case, host_version in (("F-versionless", "2.1.4"), ("F-below-floor", "2.0.3")):
+            with self.subTest(case=case):
+                row = positive() | {
+                    "id": case,
+                    "host_version": host_version,
+                    "upstream_origin": None,
+                    "upstream_revision": None,
+                    "expected_status": "refused",
+                    "requires_auth": False,
+                    "recovery": "Restore the required setup precondition.",
+                    "native_results": [
+                        {"id": "setup", "status": "refused", "capture_sha256": CAPTURE}
+                    ],
+                }
+                self.assertEqual(acceptance.classify(row), "UNKNOWN")
+                row["checks"].update(failure_fixture=True, specific_refusal=True)
+                row["checks"]["upstream_identity_unavailable"] = True
+                self.assertEqual(acceptance.classify(row), "PASS")
+                row["id"] = "F-dirty-update"
+                self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_different_sessions_cannot_combine_to_pass(self):
+        row = positive()
+        row["native_results"][0]["session_id"] = "different-session"
+        self.assertEqual(acceptance.classify(row), "FAIL")
+
+
+class EnvironmentTests(unittest.TestCase):
+    def test_child_replaces_inherited_roots_case_insensitively(self):
+        for inherited in (
+            {"Home": "normal", "AppData": "normal", "Opencode_Attach": "normal"},
+            {"HOME": "normal", "TMPDIR": "normal", "OPENCODE_CONFIG": "normal"},
+        ):
+            env = acceptance.child_environment(
+                PROFILE, inherited=inherited | {"PATH": "keep", "OPENAI_API_KEY": "private"}
+            )
+            self.assertEqual(env["PATH"], "keep")
+            self.assertNotIn("normal", env.values())
+            self.assertNotIn("private", env.values())
+            for key in (
+                "HOME",
+                "USERPROFILE",
+                "APPDATA",
+                "LOCALAPPDATA",
+                "PROGRAMDATA",
+                "XDG_CONFIG_HOME",
+                "XDG_DATA_HOME",
+                "XDG_CACHE_HOME",
+                "XDG_STATE_HOME",
+                "TMPDIR",
+                "TMP",
+                "TEMP",
+                "OPENCODE_CONFIG_DIR",
+            ):
+                with self.subTest(key=key):
+                    self.assertTrue(Path(env[key]).is_relative_to(PROFILE))
+
+    def test_explicit_auth_data_pointer_stays_child_scoped(self):
+        auth_data = AREA / "verified-auth"
+        source = {"XDG_DATA_HOME": "normal"}
+        env = acceptance.child_environment(PROFILE, auth_data=auth_data, inherited=source)
+        self.assertEqual(env["XDG_DATA_HOME"], str(auth_data))
+        self.assertEqual(source["XDG_DATA_HOME"], "normal")
+
+
+class NativeResultTests(unittest.TestCase):
+    def test_only_v2_native_skill_id_and_terminal_results_count(self):
+        events = [
+            native_event(SKILLS[0], key="name"),
+            native_event(SKILLS[1], status="running"),
+            native_event(SKILLS[2], status="error"),
+            native_event(SKILLS[0]),
+            {"type": "text", "part": {"text": json.dumps(native_event(SKILLS[1]))}},
+        ]
+        stream = "native diagnostic\n" + "\n".join(map(json.dumps, events))
+        results = acceptance.parse_skill_results(stream)
+        self.assertEqual(
+            [(result["id"], result["status"]) for result in results],
+            [(SKILLS[2], "error"), (SKILLS[0], "completed")],
+        )
+        self.assertEqual(results[1]["call_id"], "call-" + SKILLS[0])
+        self.assertEqual(len(results[1]["capture_sha256"]), 64)
+
+    def test_v2_native_call_id_is_distinct_from_message_part_id(self):
+        event = native_event(SKILLS[0])
+        del event["part"]["callID"]
+        event["part"]["partID"] = "prt_native_message_part"
+        event["part"]["id"] = "call_native_provider_tool_call"
+
+        results = acceptance.parse_skill_results(json.dumps(event))
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["call_id"], "call_native_provider_tool_call")
+
+    def test_malformed_or_unattributed_results_cannot_count(self):
+        event = native_event(SKILLS[0])
+        event["part"]["state"]["output"] = ""
+        no_session = native_event(SKILLS[1], session="")
+        no_call = native_event(SKILLS[2])
+        del no_call["part"]["callID"]
+        stream = "\n".join(map(json.dumps, [event, no_session, no_call]))
+        self.assertEqual(acceptance.parse_skill_results(stream), [])
+
+
+class InventoryTests(unittest.TestCase):
+    def test_waits_after_empty_inventory_until_expected_sources_are_ready(self):
+        ready = ready_inventory()
+        snapshots = iter(
+            [None, {"config": [], "plugin": {"data": []}, "skill": {"data": []}}, ready]
+        )
+        self.assertEqual(
+            acceptance.wait_for_inventory(
+                lambda: next(snapshots), EXPECTED, SKILL_ROOTS, CONFIG, timeout=1, interval=0
+            ),
+            ready,
+        )
+
+    def test_wrong_revision_or_ancestor_discovery_never_counts(self):
+        correct = ready_inventory()
+        for field in ("revision", "ancestor", "duplicate", "non_skill_file", "missing_config"):
+            inventory = deepcopy(correct)
+            if field == "revision":
+                inventory["plugin"]["data"][0]["source"]["version"] = "0" * 40
+            elif field == "ancestor":
+                inventory["skill"]["data"][0]["path"] = str(AREA / "ancestor/SKILL.md")
+            elif field == "duplicate":
+                inventory["plugin"]["data"].append(inventory["plugin"]["data"][0])
+            elif field == "non_skill_file":
+                inventory["skill"]["data"][0]["path"] = str(UPSTREAM / "README.md")
+            else:
+                inventory["config"].clear()
+            with self.subTest(field=field):
+                self.assertFalse(
+                    acceptance.inventory_ready(inventory, EXPECTED, SKILL_ROOTS, CONFIG)
+                )
+
+    def test_unavailable_inventory_times_out(self):
+        with self.assertRaises(TimeoutError):
+            acceptance.wait_for_inventory(
+                lambda: None, EXPECTED, SKILL_ROOTS, CONFIG, timeout=0, interval=0
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()

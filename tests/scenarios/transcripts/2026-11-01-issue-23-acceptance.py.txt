@@ -1,0 +1,867 @@
+"""Score V2 setup evidence and probe an owned OpenCode server."""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import hashlib
+import json
+import os
+import re
+import secrets
+import socket
+import subprocess
+import time
+from collections.abc import Callable, Mapping
+from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
+from typing import Any
+from urllib.error import URLError
+from urllib.request import ProxyHandler, Request, build_opener
+
+AREA = Path(__file__).resolve().parent
+FLOOR = (2, 0, 4)
+SETUP_CASES = (
+    "S-native",
+    "S-sibling",
+    "S-absent",
+    "F-lookalike",
+    "F-versionless",
+    "F-duplicate",
+    "F-dirty-adopt",
+    "F-dirty-update",
+    "F-collision",
+    "F-gh-auth",
+    "F-gh-intake",
+    "F-gh-label",
+    "F-gh-close",
+    "F-missing-skill",
+    "F-incompatible",
+    "F-below-floor",
+    "F-unauthenticated",
+)
+
+SKILLS = ("using-superpowers", "managing-superpowers-backlog", "managing-superpowers-handoffs")
+BACKPLANE_FILES = {"index.js", "package.json", *(f"skills/{name}/SKILL.md" for name in SKILLS[1:])}
+REQUIRED = {
+    "id",
+    "variant",
+    "kind",
+    "host_executable",
+    "host_version",
+    "executable_hash",
+    "candidate_sha",
+    "package_root",
+    "cache_root",
+    "profile_root",
+    "owned_root",
+    "upstream_origin",
+    "upstream_revision",
+    "configuration_sources",
+    "requires_auth",
+    "auth_verified",
+    "model",
+    "commands",
+    "native_results",
+    "package_files",
+    "expected_status",
+    "checks",
+    "before",
+    "after",
+    "recovery",
+    "connections",
+}
+ROOTS = {
+    "HOME": "home",
+    "USERPROFILE": "home",
+    "OPENCODE_TEST_HOME": "home",
+    "APPDATA": "roaming",
+    "LOCALAPPDATA": "local",
+    "PROGRAMDATA": "programdata",
+    "XDG_CONFIG_HOME": "config",
+    "XDG_DATA_HOME": "data",
+    "XDG_CACHE_HOME": "cache",
+    "XDG_STATE_HOME": "state",
+    "OPENCODE_CONFIG_DIR": "config/opencode",
+    "TMPDIR": "tmp",
+    "TMP": "tmp",
+    "TEMP": "tmp",
+}
+PROVIDER_PREFIXES = (
+    "OPENCODE_",
+    "OPENAI_",
+    "ANTHROPIC_",
+    "GOOGLE_",
+    "GEMINI_",
+    "AZURE_OPENAI_",
+    "AWS_",
+    "VERTEX_",
+)
+UPSTREAM_ORIGIN = re.compile(
+    r"(?:https://github\.com/|git@github\.com:|ssh://git@github\.com/)obra/superpowers(?:\.git)?/?"
+)
+
+
+def records(value: object) -> list[dict[str, Any]]:
+    """Read an array of JSON objects without dropping malformed entries."""
+    return (
+        value if isinstance(value, list) and all(isinstance(item, dict) for item in value) else []
+    )
+
+
+def sha(value: object, length: int) -> bool:
+    """Check the shape of a recorded Git or SHA-256 identity."""
+    return isinstance(value, str) and re.fullmatch(rf"[0-9a-f]{{{length}}}", value) is not None
+
+
+def different(record: dict[str, Any], expected: str, actual: str) -> bool:
+    """Compare two present observations without treating a missing one as a mismatch."""
+    first, second = record.get(expected), record.get(actual)
+    return bool(first and second and first != second)
+
+
+def known_failure(row: dict[str, Any]) -> bool:
+    """Keep an observed failure even when other evidence is incomplete."""
+    checks = row.get("checks")
+    if isinstance(checks, dict) and any(value is False for value in checks.values()):
+        return True
+    for command in records(row.get("commands")):
+        if command.get("timeout") is True or command.get("exit") not in (
+            None,
+            command.get("expected_exit", 0),
+        ):
+            return True
+    if different(row, "before", "after") or different(row, "prior_sha", "restored_sha"):
+        return True
+    for connection in records(row.get("connections")):
+        nodes = connection.get("nodes")
+        if (
+            isinstance(nodes, list)
+            and isinstance(connection.get("totalCount"), int)
+            and len(nodes) != connection["totalCount"]
+        ):
+            return True
+    if any(different(file, "expected", "actual") for file in records(row.get("package_files"))):
+        return True
+    expected_status = row.get("expected_status")
+    for result in records(row.get("native_results")):
+        status = result.get("status")
+        if status == "error" or (expected_status and status and status != expected_status):
+            return True
+    return False
+
+
+def classify(row: dict[str, object]) -> str:
+    """Grade one native receipt row using the shared Backplane rules."""
+    if known_failure(row):
+        return "FAIL"
+    if not REQUIRED.issubset(row) or row["kind"] != "native":
+        return "UNKNOWN"
+    status = row["expected_status"]
+    if row["variant"] != "v2" or status not in ("completed", "refused"):
+        return "FAIL"
+    for outcome in (classify_host, classify_sources):
+        result = outcome(row, status)
+        if result != "PASS":
+            return result
+    if not complete_observations(row):
+        return "UNKNOWN"
+    results = records(row["native_results"])
+    if status == "completed" and not attributed_skills(row, results):
+        return "UNKNOWN"
+    return classify_results(results, status, row["recovery"])
+
+
+def refused_without_upstream_identity(row: dict[str, object]) -> bool:
+    """Recognize verified refusals whose premise excludes an upstream identity."""
+    checks = row.get("checks")
+    return (
+        row.get("expected_status") == "refused"
+        and row.get("id") in ("F-versionless", "F-below-floor")
+        and row.get("upstream_origin") is None
+        and row.get("upstream_revision") is None
+        and isinstance(checks, dict)
+        and checks.get("upstream_identity_unavailable") is True
+    )
+
+
+def classify_host(row: dict[str, object], status: object) -> str:
+    """Check support, authoritative origin and the observed provider state."""
+    version = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)", str(row["host_version"]))
+    if version is None:
+        return "UNKNOWN"
+    if tuple(map(int, version.groups())) < FLOOR and status == "completed":
+        return "FAIL"
+    if row["id"] == "F-below-floor" and tuple(map(int, version.groups())) >= FLOOR:
+        return "FAIL"
+    if not row["upstream_origin"] and not refused_without_upstream_identity(row):
+        return "UNKNOWN"
+    if status == "completed" and not UPSTREAM_ORIGIN.fullmatch(str(row["upstream_origin"])):
+        return "FAIL"
+    if type(row["requires_auth"]) is not bool:
+        return "UNKNOWN"
+    if row["requires_auth"] is True:
+        if row["auth_verified"] is False:
+            return "FAIL"
+        if row["auth_verified"] is not True or not row["model"]:
+            return "UNKNOWN"
+    return "PASS"
+
+
+def complete_observations(row: dict[str, object]) -> bool:
+    """Check that the mandatory identities, native commands and connections were recorded."""
+    if not all(row[key] for key in ("id", "host_executable", "before", "after")):
+        return False
+    if not sha(row["candidate_sha"], 40) or not sha(row["executable_hash"], 64):
+        return False
+    if not sha(row["upstream_revision"], 40) and not refused_without_upstream_identity(row):
+        return False
+    checks = row["checks"]
+    required_checks = {"source", "payload", "preservation"}
+    if row["expected_status"] == "completed":
+        required_checks.add("one_backplane")
+    else:
+        required_checks.update({"failure_fixture", "specific_refusal"})
+    if (
+        not isinstance(checks, dict)
+        or not required_checks.issubset(checks)
+        or any(value is not True for value in checks.values())
+    ):
+        return False
+    commands = records(row["commands"])
+    if not commands or any(
+        not command.get("argv")
+        or type(command.get("exit")) is not int
+        or command.get("timeout") is not False
+        for command in commands
+    ):
+        return False
+    connections = records(row["connections"])
+    return bool(connections) and all(
+        isinstance(connection.get("nodes"), list) and type(connection.get("totalCount")) is int
+        for connection in connections
+    )
+
+
+def classify_sources(row: dict[str, object], status: object) -> str:
+    """Compare the recorded install, configuration and package identities."""
+    if not all(
+        isinstance(row[key], str) and row[key]
+        for key in (
+            "owned_root",
+            "profile_root",
+            "cache_root",
+        )
+    ):
+        return "UNKNOWN"
+    owned = archived_path(str(row["owned_root"]))
+    profile = type(owned)(str(row["profile_root"]))
+    cache = type(owned)(str(row["cache_root"]))
+    executable = type(owned)(str(row["host_executable"]))
+    if not all(absolute_archived_path(path) for path in (owned, profile, cache, executable)):
+        return "FAIL"
+    if profile == owned or not profile.is_relative_to(owned) or not cache.is_relative_to(profile):
+        return "FAIL"
+    sources = row["configuration_sources"]
+    if not isinstance(sources, list) or not sources:
+        return "UNKNOWN"
+    if not all(archived_child(source, profile) for source in sources):
+        return "FAIL"
+    if status == "refused" and not row["package_root"]:
+        return "PASS"
+    if not isinstance(row["package_root"], str) or not row["package_root"]:
+        return "UNKNOWN"
+    if not archived_child(row["package_root"], cache):
+        return "FAIL"
+    return classify_package_files(records(row["package_files"]))
+
+
+def classify_package_files(files: list[dict[str, Any]]) -> str:
+    """Verify the minimum package file inventory and unique comparable identities."""
+    paths = {str(file.get("path")) for file in files}
+    if len(paths) != len(files):
+        return "FAIL"
+    if not BACKPLANE_FILES.issubset(paths) or any(
+        not sha(file.get("expected"), 40) or not sha(file.get("actual"), 40) for file in files
+    ):
+        return "UNKNOWN"
+    return "PASS"
+
+
+def is_owned_path(path: object, root: Path) -> bool:
+    """Require an absolute path whose canonical target is inside its owner root."""
+    return (
+        isinstance(path, str)
+        and Path(path).is_absolute()
+        and Path(path).resolve().is_relative_to(root)
+    )
+
+
+def archived_path(value: str) -> PurePath:
+    """Interpret a stored path without consulting the receipt reader's filesystem."""
+    windows = PureWindowsPath(value)
+    return windows if windows.drive and not value.startswith("/") else PurePosixPath(value)
+
+
+def absolute_archived_path(path: PurePath) -> bool:
+    """Accept only already canonicalized absolute observations."""
+    return path.is_absolute() and ".." not in path.parts
+
+
+def archived_child(value: object, root: PurePath) -> bool:
+    if not isinstance(value, str):
+        return False
+    path = type(root)(value)
+    return absolute_archived_path(path) and path != root and path.is_relative_to(root)
+
+
+def attributed_skills(row: dict[str, object], results: list[dict[str, Any]]) -> bool:
+    """Tie native results to the corresponding package path and installed blob."""
+    profile = archived_path(str(row["profile_root"]))
+    package = type(profile)(str(row["package_root"]))
+    files = {file["path"]: file["actual"] for file in records(row["package_files"])}
+    for result in results:
+        name, path, blob = (result.get(key) for key in ("id", "source_path", "git_blob"))
+        if (
+            not isinstance(name, str)
+            or not isinstance(path, str)
+            or not archived_child(path, profile)
+            or not sha(blob, 40)
+        ):
+            return False
+        observed = type(profile)(path)
+        relative = f"skills/{name}/SKILL.md"
+        if name == SKILLS[0]:
+            if observed.is_relative_to(package) or observed.parts[-3:] != (
+                "skills",
+                name,
+                "SKILL.md",
+            ):
+                return False
+        elif observed != package / relative or files.get(relative) != blob:
+            return False
+    return True
+
+
+def classify_results(results: list[dict[str, Any]], status: object, recovery: object) -> str:
+    """Require attributable native tool results or a documented preflight refusal."""
+    if not results or any(
+        not result.get("id") or not sha(result.get("capture_sha256"), 64) for result in results
+    ):
+        return "UNKNOWN"
+    if any(result.get("status") != status for result in results):
+        return "FAIL"
+    if status == "refused":
+        return "PASS" if isinstance(recovery, str) and recovery.strip() else "UNKNOWN"
+    if any(not result.get("call_id") or not result.get("session_id") for result in results):
+        return "UNKNOWN"
+    if len({result["session_id"] for result in results}) != 1:
+        return "FAIL"
+    calls = {result["call_id"] for result in results}
+    if len(calls) != len(results):
+        return "FAIL"
+    return "PASS" if set(SKILLS) <= {result["id"] for result in results} else "UNKNOWN"
+
+
+def child_environment(
+    profile: Path,
+    *,
+    auth_data: Path | None = None,
+    inherited: dict[str, str] | None = None,
+) -> dict[str, str]:
+    """Build child-only roots, with an optional verified native data pointer."""
+    profile = profile.resolve()
+    source = os.environ if inherited is None else inherited
+    env = {
+        key: value
+        for key, value in source.items()
+        if key.upper() not in ROOTS and not key.upper().startswith(PROVIDER_PREFIXES)
+    }
+    for name, relative in ROOTS.items():
+        path = (profile / relative).resolve()
+        if not path.is_relative_to(profile):
+            raise ValueError(f"{name} escapes owned profile")
+        env[name] = str(path)
+    if auth_data is not None:
+        env["XDG_DATA_HOME"] = str(auth_data.resolve())
+    return env
+
+
+def parse_skill_results(stream: str) -> list[dict[str, str]]:
+    """Collect terminal Skill tool results from native V2 JSON lines."""
+    capture = hashlib.sha256(stream.encode("utf-8")).hexdigest()
+    results = []
+    for line in stream.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(event, dict) or event.get("type") != "tool_use":
+            continue
+        part = event.get("part")
+        if not isinstance(part, dict) or part.get("tool") != "skill":
+            continue
+        state = part.get("state")
+        if not isinstance(state, dict) or state.get("status") not in ("completed", "error"):
+            continue
+        skill_input = state.get("input")
+        if not isinstance(skill_input, dict) or skill_input.get("id") not in SKILLS:
+            continue
+        if state["status"] == "completed" and not state.get("output"):
+            continue
+        identifiers = (
+            skill_input["id"],
+            event.get("sessionID") or part.get("sessionID"),
+            part.get("callID") or part.get("id"),
+        )
+        if not all(isinstance(value, str) and value for value in identifiers):
+            continue
+        skill_id, session_id, call_id = identifiers
+        results.append(
+            {
+                "id": skill_id,
+                "session_id": session_id,
+                "call_id": call_id,
+                "status": state["status"],
+                "capture_sha256": capture,
+            }
+        )
+    return results
+
+
+def skill_matches(path: object, name: str, root: Path, package: str | None) -> bool:
+    """Match a skill entry point to its intended cache package or sibling checkout."""
+    if not isinstance(path, str) or not Path(path).is_absolute():
+        return False
+    observed = Path(path).resolve()
+    if package is None:
+        return observed == (root / "skills" / name / "SKILL.md").resolve()
+    if not observed.is_relative_to(root.resolve()):
+        return False
+    expected = ("node_modules", package, "skills", name, "SKILL.md")
+    return observed.parts[-len(expected) :] == expected
+
+
+def inventory_ready(
+    inventory: dict[str, Any],
+    expected: dict[str, tuple[str, str]],
+    skill_roots: Mapping[str, tuple[Path, str | None]],
+    configuration: Path,
+) -> bool:
+    """Check exact active revisions, skill origins and the owned config source."""
+    plugin_list = inventory.get("plugin")
+    skill_list = inventory.get("skill")
+    if not isinstance(plugin_list, dict) or not isinstance(skill_list, dict):
+        return False
+    plugins = records(plugin_list.get("data"))
+    skills = records(skill_list.get("data"))
+    configs = records(inventory.get("config"))
+    config_root = configuration.parent.resolve()
+    if not all(is_owned_path(entry.get("path"), config_root) for entry in configs):
+        return False
+    if configuration.resolve() not in {Path(entry["path"]).resolve() for entry in configs}:
+        return False
+    if not all(
+        plugin_matches(plugins, name, target, revision)
+        for name, (target, revision) in expected.items()
+    ):
+        return False
+    for name, (root, package) in skill_roots.items():
+        matches = [entry for entry in skills if entry.get("id") == name]
+        if len(matches) != 1 or not skill_matches(matches[0].get("path"), name, root, package):
+            return False
+    return True
+
+
+def plugin_matches(
+    plugins: list[dict[str, Any]],
+    name: str,
+    target: str,
+    revision: str,
+) -> bool:
+    """Require one active entry for an exact native package target."""
+    matches = [entry for entry in plugins if entry.get("id") == name]
+    if len(matches) != 1:
+        return False
+    state, source = matches[0].get("state"), matches[0].get("source")
+    return (
+        isinstance(state, dict)
+        and state.get("status") == "active"
+        and isinstance(source, dict)
+        and source.get("target") == target
+        and source.get("version") == revision
+    )
+
+
+def wait_for_inventory(
+    read: Callable[[], dict[str, Any] | None],
+    expected: dict[str, tuple[str, str]],
+    skill_roots: Mapping[str, tuple[Path, str | None]],
+    configuration: Path,
+    *,
+    timeout: float = 45,
+    interval: float = 0.25,
+) -> dict[str, Any]:
+    """Wait until all expected sources have activated on the same server."""
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        inventory = read()
+        if inventory is not None and inventory_ready(
+            inventory, expected, skill_roots, configuration
+        ):
+            return inventory
+        time.sleep(interval)
+    raise TimeoutError("Expected V2 package revisions and skill sources did not become ready")
+
+
+def private_inventory(
+    executable: Path,
+    profile: Path,
+    configuration: Path,
+    expected: dict[str, tuple[str, str]],
+    skill_roots: Mapping[str, tuple[Path, str | None]],
+) -> dict[str, Any]:
+    """Launch one owned server and read its private loopback inventory."""
+    profile = owned_profile(profile)
+    env = child_environment(profile)
+    directory = Path(env["OPENCODE_CONFIG_DIR"]).resolve()
+    if configuration.resolve(strict=True).parent != directory:
+        raise ValueError("Configuration must be inside the isolated global config directory")
+    for name in ROOTS:
+        Path(env[name]).mkdir(parents=True, exist_ok=True)
+    password = secrets.token_urlsafe(32)
+    env["OPENCODE_PASSWORD"] = password
+    with socket.socket() as listener:
+        listener.bind(("127.0.0.1", 0))
+        port = listener.getsockname()[1]
+    headers = {
+        "x-opencode-directory": str(directory),
+        "Authorization": "Basic " + base64.b64encode(f"opencode:{password}".encode()).decode(),
+    }
+    opener = build_opener(ProxyHandler({}))
+    command = [str(executable), "serve", "--hostname", "127.0.0.1", "--port", str(port)]
+
+    with (profile / "private-server.log").open("wb") as log:
+        process = subprocess.Popen(
+            command,
+            cwd=directory,
+            env=env,
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        )
+
+        def read() -> dict[str, Any] | None:
+            if process.poll() is not None:
+                raise RuntimeError(f"Private V2 server exited with status {process.returncode}")
+            inventory = {}
+            try:
+                for resource in ("config", "plugin", "skill"):
+                    request = Request(f"http://127.0.0.1:{port}/api/{resource}", headers=headers)
+                    with opener.open(request, timeout=2) as response:
+                        inventory[resource] = json.load(response)
+            except URLError, TimeoutError, json.JSONDecodeError:
+                return None
+            return inventory
+
+        try:
+            return wait_for_inventory(read, expected, skill_roots, configuration)
+        finally:
+            process.terminate()
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait()
+
+
+def installed_preserved(
+    case: str, before: object, after: object, results: list[dict[str, Any]]
+) -> bool | None:
+    """Compare installed evidence, allowing only the attributed S-absent addition."""
+    if not isinstance(before, dict) or not isinstance(after, dict):
+        return None
+    prior_files = before.get("manifests")
+    final_files = after.get("manifests")
+    prior_plugins = before.get("plugins")
+    final_plugins = after.get("plugins")
+    if not (
+        isinstance(prior_files, dict)
+        and prior_files
+        and isinstance(final_files, dict)
+        and final_files
+        and isinstance(prior_plugins, list)
+        and prior_plugins
+        and isinstance(final_plugins, list)
+        and final_plugins
+    ):
+        return None
+    if case != "S-absent":
+        return before == after
+    upstream_results = [
+        result.get("source_path") for result in results if result.get("id") == SKILLS[0]
+    ]
+    if len(upstream_results) != 1 or not isinstance(upstream_results[0], str):
+        return None
+    upstream_skill = archived_path(upstream_results[0])
+    if not absolute_archived_path(upstream_skill) or len(upstream_skill.parents) < 3:
+        return False
+    upstream_root = str(upstream_skill.parents[2])
+    if len(records(prior_plugins)) != len(prior_plugins) or len(records(final_plugins)) != len(
+        final_plugins
+    ):
+        return None
+    retained_plugins = [plugin for plugin in final_plugins if plugin.get("id") != "superpowers"]
+    return (
+        upstream_root not in prior_files
+        and upstream_root in final_files
+        and {path: manifest for path, manifest in final_files.items() if path != upstream_root}
+        == prior_files
+        and len(final_plugins) == len(retained_plugins) + 1
+        and retained_plugins == prior_plugins
+    )
+
+
+def complete_positive_installation(
+    row: dict[str, Any], snapshot: dict[str, Any], *, with_upstream: bool
+) -> bool:
+    profile = archived_path(row["profile_root"])
+    package = type(profile)(row["package_root"])
+    roots = {package, profile / "unrelated-plugin"}
+    names = {"superpowers-backplane", "issue-23-sentinel"}
+    if with_upstream:
+        upstream = next(
+            (
+                result.get("source_path")
+                for result in records(row["native_results"])
+                if result.get("id") == SKILLS[0]
+            ),
+            None,
+        )
+        if not isinstance(upstream, str) or not archived_child(upstream, profile):
+            return False
+        upstream_parents = type(profile)(upstream).parents
+        if len(upstream_parents) < 3 or upstream_parents[2] in roots:
+            return False
+        roots.add(upstream_parents[2])
+        names.add("superpowers")
+    manifests = snapshot["manifests"]
+    if {type(profile)(path) for path in manifests} != roots or len(manifests) != len(roots):
+        return False
+    if not all(
+        isinstance(manifest, dict)
+        and type(manifest.get("files")) is int
+        and manifest["files"] > 0
+        and sha(manifest.get("sha256"), 64)
+        for manifest in manifests.values()
+    ):
+        return False
+    plugins = records(snapshot["plugins"])
+    return (
+        len(plugins) == len(snapshot["plugins"]) == len(names)
+        and all(
+            isinstance(plugin.get("id"), str)
+            and plugin.get("status") == "active"
+            and isinstance(plugin.get("source"), dict)
+            and plugin["source"]
+            for plugin in plugins
+        )
+        and {plugin["id"] for plugin in plugins} == names
+    )
+
+
+def scoped_native_observation(row: dict[str, Any]) -> bool:
+    """Require the recorded evidence for the case instead of relying on summary flags."""
+    scoped = row.get("observations")
+    if not isinstance(scoped, dict) or not row.get("host_identity_source"):
+        return False
+    protected = scoped.get("protected_before")
+    if not isinstance(protected, dict) or protected != scoped.get("protected_after"):
+        return False
+    files, unrelated = protected.get("files"), protected.get("unrelated")
+    if not (
+        isinstance(files, dict)
+        and files
+        and all(sha(digest, 64) for digest in files.values())
+        and isinstance(unrelated, list)
+        and unrelated
+    ):
+        return False
+    case = str(row.get("id"))
+    if case == "F-below-floor":
+        diagnostic = scoped.get("native_diagnostic")
+        recovery = row.get("recovery")
+        return (
+            scoped.get("cache_has_no_files") is True
+            and isinstance(diagnostic, str)
+            and isinstance(recovery, str)
+            and "Unsupported OpenCode V2 host" in diagnostic
+            and recovery in diagnostic
+        )
+    if not scoped.get("native_inventory_before") or not scoped.get("native_inventory_after"):
+        return False
+    before, after = scoped.get("installed_before"), scoped.get("installed_after")
+    if (
+        installed_preserved(
+            case,
+            before,
+            after,
+            records(row.get("native_results")),
+        )
+        is not True
+    ):
+        return False
+    if row.get("expected_status") == "completed":
+        return complete_positive_installation(
+            row, before, with_upstream=case != "S-absent"
+        ) and complete_positive_installation(row, after, with_upstream=True)
+    return all(
+        result.get("diagnostic")
+        and result.get("observed_recovery") == row.get("recovery")
+        and result.get("recovery_source")
+        for result in records(row.get("native_results"))
+    )
+
+
+def verify(path: Path) -> dict[str, Any]:
+    """Validate all native receipt rows and report their separate dispositions."""
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    rows = records(receipt.get("rows")) if isinstance(receipt, dict) else []
+    results = []
+    for row in rows:
+        result = classify(row)
+        if result == "PASS" and not scoped_native_observation(row):
+            result = "UNKNOWN"
+        results.append({"id": row.get("id"), "result": result})
+    observed_ids = [row.get("id") for row in rows]
+    full_matrix = (
+        len(observed_ids) == len(SETUP_CASES)
+        and all(isinstance(case, str) for case in observed_ids)
+        and set(observed_ids) == set(SETUP_CASES)
+    )
+    statuses_match = all(
+        row.get("expected_status")
+        == (
+            "completed"
+            if str(row.get("id")).startswith("S-") or row.get("id") == "F-dirty-adopt"
+            else "refused"
+        )
+        for row in rows
+    )
+    return {
+        "valid": full_matrix
+        and statuses_match
+        and all(item["result"] == "PASS" for item in results),
+        "complete_matrix": full_matrix,
+        "rows": results,
+    }
+
+
+def preflight(
+    executable: Path,
+    profile: Path,
+    configuration: Path,
+    upstream: tuple[str, str],
+    backplane: tuple[str, str],
+) -> dict[str, Any]:
+    """Confirm exact package and skill inventory on a disposable profile."""
+    executable = executable.resolve(strict=True)
+    profile = owned_profile(profile)
+    environment = child_environment(profile)
+    for name in ROOTS:
+        Path(environment[name]).mkdir(parents=True, exist_ok=True)
+    version_result = subprocess.run(
+        [str(executable), "--version"],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=10,
+        env=environment,
+    )
+    version = version_result.stdout.strip()
+    match = re.fullmatch(r"(?:opencode )?v?(\d+)\.(\d+)\.(\d+)", version)
+    if match is None or tuple(map(int, match.groups())) < FLOOR:
+        raise ValueError(f"Unsupported OpenCode V2 host: {version!r}. Use V2 2.0.4 or later.")
+    expected = {"superpowers": upstream, "superpowers-backplane": backplane}
+    if any(not sha(revision, 40) for _, revision in expected.values()):
+        raise ValueError("Preflight requires full expected native revisions")
+    cache = profile.resolve() / "cache"
+    skill_roots = {
+        name: (cache, "superpowers" if name == SKILLS[0] else "superpowers-backplane")
+        for name in SKILLS
+    }
+    observed = private_inventory(executable, profile, configuration, expected, skill_roots)
+    with executable.open("rb") as binary:
+        digest = hashlib.file_digest(binary, "sha256").hexdigest()
+    return {
+        "executable": str(executable),
+        "host_version": version,
+        "exe_sha256": digest,
+        "configuration_sources": [item["path"] for item in observed["config"]],
+        "plugins": {
+            item["id"]: item["source"]
+            for item in observed["plugin"]["data"]
+            if item.get("id") in expected
+        },
+        "skills": {
+            item["id"]: item["path"]
+            for item in observed["skill"]["data"]
+            if item.get("id") in SKILLS
+        },
+    }
+
+
+def owned_profile(profile: Path) -> Path:
+    """Refuse profiles outside the issue's scratch area or without its owner marker."""
+    profile = profile.resolve(strict=True)
+    marker = profile / ".issue-23-owner"
+    if (
+        profile == AREA
+        or not profile.is_relative_to(AREA)
+        or not marker.is_file()
+        or marker.resolve().parent != profile
+        or marker.read_text(encoding="utf-8").strip() != "issue-23"
+    ):
+        raise ValueError("Refusing an unowned OpenCode profile")
+    return profile
+
+
+def main() -> int:
+    """Expose local receipt verification and the read-only V2 inventory preflight."""
+    parser = argparse.ArgumentParser()
+    operations = parser.add_subparsers(dest="operation", required=True)
+    scorer = operations.add_parser("verify")
+    scorer.add_argument("receipt", type=Path)
+    replay = operations.add_parser("run")
+    replay.add_argument("--case", required=True, choices=SETUP_CASES)
+    replay.add_argument("--attempt", type=int, default=1)
+    probe = operations.add_parser("preflight")
+    probe.add_argument("--executable", required=True, type=Path)
+    probe.add_argument("--profile", required=True, type=Path)
+    probe.add_argument("--configuration", required=True, type=Path)
+    probe.add_argument("--upstream", required=True, nargs=2, metavar=("TARGET", "REVISION"))
+    probe.add_argument("--backplane", required=True, nargs=2, metavar=("TARGET", "REVISION"))
+    args = parser.parse_args()
+    if args.operation == "verify":
+        result = verify(args.receipt)
+        print(json.dumps(result, indent=2))
+        return 0 if result["valid"] else 1
+    if args.operation == "run":
+        from v2_cases import case_run
+
+        case_run(args.case, args.attempt)
+        return 0
+    result = preflight(
+        args.executable,
+        args.profile,
+        args.configuration,
+        (args.upstream[0], args.upstream[1]),
+        (args.backplane[0], args.backplane[1]),
+    )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

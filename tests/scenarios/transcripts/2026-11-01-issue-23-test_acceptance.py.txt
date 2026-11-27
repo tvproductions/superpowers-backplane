@@ -1,0 +1,303 @@
+"""Controls for V2 evidence scoring, native events and fixture isolation."""
+
+import json
+import unittest
+from copy import deepcopy
+from pathlib import Path
+
+import acceptance
+
+AREA = Path(__file__).resolve().parent
+PROFILE = AREA / "profile"
+CACHE = PROFILE / "cache"
+PACKAGE = CACHE / "superpowers-backplane"
+UPSTREAM = CACHE / "superpowers"
+CANDIDATE = "b" * 40
+UPSTREAM_REVISION = "c" * 40
+CAPTURE = "d" * 64
+SKILLS = (
+    "using-superpowers",
+    "managing-superpowers-backlog",
+    "managing-superpowers-handoffs",
+)
+ORIGIN = "https://github.com/obra/superpowers.git"
+EXPECTED = {
+    "superpowers-backplane": (
+        "git+https://github.com/example/backplane.git#" + CANDIDATE,
+        CANDIDATE,
+    ),
+    "superpowers": ("superpowers@git+" + ORIGIN + "#" + UPSTREAM_REVISION, UPSTREAM_REVISION),
+}
+SKILL_ROOTS = {
+    name: (CACHE, "superpowers" if name == SKILLS[0] else "superpowers-backplane")
+    for name in SKILLS
+}
+CONFIG = PROFILE / "config/opencode/opencode.json"
+
+
+def native_event(name, *, key="id", status="completed", session="observed-session"):
+    return {
+        "type": "tool_use",
+        "sessionID": session,
+        "part": {
+            "tool": "skill",
+            "callID": f"call-{name}",
+            "state": {"input": {key: name}, "status": status, "output": "Observed skill output"},
+        },
+    }
+
+
+def positive():
+    return {
+        "id": "S-native",
+        "variant": "v2",
+        "kind": "native",
+        "host_executable": str(AREA / "bin/opencode"),
+        "host_version": "2.1.4",
+        "executable_hash": "a" * 64,
+        "candidate_sha": CANDIDATE,
+        "package_root": str(PACKAGE),
+        "cache_root": str(CACHE),
+        "profile_root": str(PROFILE),
+        "owned_root": str(AREA),
+        "upstream_origin": ORIGIN,
+        "upstream_revision": UPSTREAM_REVISION,
+        "configuration_sources": [str(PROFILE / "config/opencode/opencode.json")],
+        "requires_auth": True,
+        "auth_verified": True,
+        "model": "provider/verified-model",
+        "commands": [{"argv": ["opencode", "run"], "exit": 0, "timeout": False}],
+        "native_results": [
+            {
+                "id": name,
+                "call_id": f"call-{name}",
+                "session_id": "observed-session",
+                "status": "completed",
+                "capture_sha256": CAPTURE,
+            }
+            for name in SKILLS
+        ],
+        "package_files": [
+            {"path": path, "expected": CANDIDATE, "actual": CANDIDATE}
+            for path in (
+                "package.json",
+                "index.js",
+                "skills/managing-superpowers-backlog/SKILL.md",
+                "skills/managing-superpowers-handoffs/SKILL.md",
+            )
+        ],
+        "expected_status": "completed",
+        "checks": {"one_backplane": True, "source": True, "payload": True, "preservation": True},
+        "before": {"sentinel_file": "unchanged", "sentinel_plugin": "active"},
+        "after": {"sentinel_file": "unchanged", "sentinel_plugin": "active"},
+        "recovery": None,
+        "connections": [{"nodes": [], "totalCount": 0}],
+    }
+
+
+def ready_inventory():
+    return {
+        "config": [{"type": "document", "path": str(CONFIG)}],
+        "plugin": {
+            "data": [
+                {
+                    "id": name,
+                    "source": {"target": target, "version": revision},
+                    "state": {"status": "active"},
+                }
+                for name, (target, revision) in EXPECTED.items()
+            ]
+        },
+        "skill": {
+            "data": [
+                {
+                    "id": name,
+                    "path": str(root / "npm/node_modules" / package / "skills" / name / "SKILL.md"),
+                }
+                for name, (root, package) in SKILL_ROOTS.items()
+            ]
+        },
+    }
+
+
+class EvidenceTests(unittest.TestCase):
+    def test_complete_native_positive(self):
+        self.assertEqual(acceptance.classify(positive()), "PASS")
+
+    def test_each_missing_required_field_is_unknown(self):
+        for field in positive():
+            with self.subTest(field=field):
+                row = positive()
+                del row[field]
+                self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_known_failures_win_over_missing_fields(self):
+        cases = [
+            {"checks": {"one_backplane": False}},
+            {"commands": [{"exit": 1}]},
+            {"commands": [{"timeout": True}]},
+            {"after": {"sentinel_file": "changed"}},
+            {"connections": [{"nodes": [], "totalCount": 1}]},
+            {"restored_sha": "1" * 40, "prior_sha": "2" * 40},
+            {"package_files": [{"path": "index.js", "expected": "1" * 40, "actual": "2" * 40}]},
+            {"native_results": [{"id": SKILLS[0], "status": "error"}]},
+        ]
+        for change in cases:
+            with self.subTest(fields=list(change)):
+                row = positive()
+                del row["model"]
+                row.update(change)
+                self.assertEqual(acceptance.classify(row), "FAIL")
+
+    def test_synthetic_and_incomplete_evidence_cannot_pass(self):
+        for change in (
+            {"kind": "synthetic"},
+            {"native_results": []},
+            {"native_results": positive()["native_results"][:-1]},
+            {"upstream_revision": None},
+            {"upstream_origin": None},
+            {"auth_verified": None},
+            {"checks": {"one_backplane": True}},
+        ):
+            with self.subTest(fields=list(change)):
+                self.assertEqual(acceptance.classify(positive() | change), "UNKNOWN")
+
+    def test_cache_and_configuration_need_owned_sources(self):
+        self.assertEqual(
+            acceptance.classify(positive() | {"package_root": str(AREA / "ancestor-source")}),
+            "FAIL",
+        )
+        self.assertEqual(
+            acceptance.classify(
+                positive() | {"configuration_sources": [str(AREA / "normal.json")]}
+            ),
+            "FAIL",
+        )
+
+    def test_below_floor_must_report_unsupported(self):
+        row = positive() | {"host_version": "2.0.3"}
+        self.assertEqual(acceptance.classify(row), "FAIL")
+        row.update(
+            id="F-below-floor",
+            expected_status="refused",
+            requires_auth=False,
+            recovery="Install V2 2.0.4 or later before setup.",
+            native_results=[{"id": "setup", "status": "refused", "capture_sha256": CAPTURE}],
+        )
+        self.assertEqual(acceptance.classify(row), "PASS")
+        row["recovery"] = None
+        self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_different_sessions_cannot_combine_to_pass(self):
+        row = positive()
+        row["native_results"][0]["session_id"] = "different-session"
+        self.assertEqual(acceptance.classify(row), "FAIL")
+
+
+class EnvironmentTests(unittest.TestCase):
+    def test_child_replaces_inherited_roots_case_insensitively(self):
+        for inherited in (
+            {"Home": "normal", "AppData": "normal", "Opencode_Attach": "normal"},
+            {"HOME": "normal", "TMPDIR": "normal", "OPENCODE_CONFIG": "normal"},
+        ):
+            env = acceptance.child_environment(
+                PROFILE, inherited=inherited | {"PATH": "keep", "OPENAI_API_KEY": "private"}
+            )
+            self.assertEqual(env["PATH"], "keep")
+            self.assertNotIn("normal", env.values())
+            self.assertNotIn("private", env.values())
+            for key in (
+                "HOME",
+                "USERPROFILE",
+                "APPDATA",
+                "LOCALAPPDATA",
+                "PROGRAMDATA",
+                "XDG_CONFIG_HOME",
+                "XDG_DATA_HOME",
+                "XDG_CACHE_HOME",
+                "XDG_STATE_HOME",
+                "TMPDIR",
+                "TMP",
+                "TEMP",
+                "OPENCODE_CONFIG_DIR",
+            ):
+                with self.subTest(key=key):
+                    self.assertTrue(Path(env[key]).is_relative_to(PROFILE))
+
+    def test_explicit_auth_data_pointer_stays_child_scoped(self):
+        auth_data = AREA / "verified-auth"
+        source = {"XDG_DATA_HOME": "normal"}
+        env = acceptance.child_environment(PROFILE, auth_data=auth_data, inherited=source)
+        self.assertEqual(env["XDG_DATA_HOME"], str(auth_data))
+        self.assertEqual(source["XDG_DATA_HOME"], "normal")
+
+
+class NativeResultTests(unittest.TestCase):
+    def test_only_v2_native_skill_id_and_terminal_results_count(self):
+        events = [
+            native_event(SKILLS[0], key="name"),
+            native_event(SKILLS[1], status="running"),
+            native_event(SKILLS[2], status="error"),
+            native_event(SKILLS[0]),
+            {"type": "text", "part": {"text": json.dumps(native_event(SKILLS[1]))}},
+        ]
+        stream = "native diagnostic\n" + "\n".join(map(json.dumps, events))
+        results = acceptance.parse_skill_results(stream)
+        self.assertEqual(
+            [(result["id"], result["status"]) for result in results],
+            [(SKILLS[2], "error"), (SKILLS[0], "completed")],
+        )
+        self.assertEqual(results[1]["call_id"], "call-" + SKILLS[0])
+        self.assertEqual(len(results[1]["capture_sha256"]), 64)
+
+    def test_malformed_or_unattributed_results_cannot_count(self):
+        event = native_event(SKILLS[0])
+        event["part"]["state"]["output"] = ""
+        no_session = native_event(SKILLS[1], session="")
+        no_call = native_event(SKILLS[2])
+        del no_call["part"]["callID"]
+        stream = "\n".join(map(json.dumps, [event, no_session, no_call]))
+        self.assertEqual(acceptance.parse_skill_results(stream), [])
+
+
+class InventoryTests(unittest.TestCase):
+    def test_waits_after_empty_inventory_until_expected_sources_are_ready(self):
+        ready = ready_inventory()
+        snapshots = iter(
+            [None, {"config": [], "plugin": {"data": []}, "skill": {"data": []}}, ready]
+        )
+        self.assertEqual(
+            acceptance.wait_for_inventory(
+                lambda: next(snapshots), EXPECTED, SKILL_ROOTS, CONFIG, timeout=1, interval=0
+            ),
+            ready,
+        )
+
+    def test_wrong_revision_or_ancestor_discovery_never_counts(self):
+        correct = ready_inventory()
+        for field in ("revision", "ancestor", "duplicate", "non_skill_file", "missing_config"):
+            inventory = deepcopy(correct)
+            if field == "revision":
+                inventory["plugin"]["data"][0]["source"]["version"] = "0" * 40
+            elif field == "ancestor":
+                inventory["skill"]["data"][0]["path"] = str(AREA / "ancestor/SKILL.md")
+            elif field == "duplicate":
+                inventory["plugin"]["data"].append(inventory["plugin"]["data"][0])
+            elif field == "non_skill_file":
+                inventory["skill"]["data"][0]["path"] = str(UPSTREAM / "README.md")
+            else:
+                inventory["config"].clear()
+            with self.subTest(field=field):
+                self.assertFalse(
+                    acceptance.inventory_ready(inventory, EXPECTED, SKILL_ROOTS, CONFIG)
+                )
+
+    def test_unavailable_inventory_times_out(self):
+        with self.assertRaises(TimeoutError):
+            acceptance.wait_for_inventory(
+                lambda: None, EXPECTED, SKILL_ROOTS, CONFIG, timeout=0, interval=0
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()

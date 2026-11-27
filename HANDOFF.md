@@ -1,3 +1,7 @@
+# Issue #23 integrated delivery and companion side notes — November 27, 2026
+
+Read [the current handoff](docs/superpowers-backplane/handoffs/20261127T222652Z-issue-23-integrated-delivery-and-companion-notes.md) and invoke RESUME on that path. PR #38 merged and exact delivery passed. Issue #23 remains in review for closeout. The gzlite and gzkit policy notes are deferred while both projects are under construction.
+
 # Published Backplane 0.3.0 — latest checkpoint
 
 Owner #37 implementation, qualification, fresh review, immutable publication and exact-source CI are complete. See tests/scenarios/2026-11-15-adr-publication.md and its sanitized JSON. Historical observations below are superseded for this finite contribution only. No historical pilot/adoption obligation is closed.

@@ -107,15 +107,20 @@ def clone(profile, case):
     source = (SOURCE / ".agents/superpowers").resolve(strict=True)
     assert Path(git(source, "rev-parse", "--show-toplevel")).resolve() == source
     assert git(source, "remote", "get-url", "origin") == ORIGIN
-    assert git(source, "rev-parse", "HEAD") == SHA and not git(source, "status", "--porcelain")
+    assert not git(source, "status", "--porcelain")
+    assert git(source, "rev-parse", f"{SHA}^{{commit}}") == SHA
     target = profile / "upstream"
     assert target.parent.resolve(strict=True).is_relative_to(AREA)
     git(profile, "clone", "--no-hardlinks", "--quiet", str(source), str(target))
     assert Path(git(target, "rev-parse", "--show-toplevel")).resolve() == target
-    assert (
-        git(target, "rev-parse", "HEAD") == SHA
-        and not (target / ".git/objects/info/alternates").exists()
-    )
+    assert not (target / ".git/objects/info/alternates").exists()
+    with (AREA / "ledger.md").open("a", encoding="utf-8") as stream:
+        stream.write(
+            f"\n- Task 2 {case}: cloned {target} from {source}, initial revision "
+            f"{git(target, 'rev-parse', 'HEAD')}; independently owned sibling fixture.\n"
+        )
+    git(target, "checkout", "--detach", "--quiet", SHA)
+    assert git(target, "rev-parse", "HEAD") == SHA
     revision = SHA
     if case == "F-incompatible":
         expected = git(source, "rev-parse", "v5.1.0^{commit}")
@@ -566,9 +571,7 @@ def exercise_session(case, executable, profile, config, env, setup, discover, ev
     if case == "S-absent" and f"{UPSTREAM}#v7.0.2" in updated["plugins"]:
         with private(executable, profile, env) as (server, child, read, vector):
             evidence["restart"] = vector
-            evidence["inventory_after"] = ready(
-                read, config, base_names | {"superpowers"}, base_skills | set(acceptance.SKILLS)
-            )
+            ready(read, config, base_names | {"superpowers"}, base_skills | set(acceptance.SKILLS))
             argv = [
                 str(executable),
                 "run",
@@ -580,6 +583,10 @@ def exercise_session(case, executable, profile, config, env, setup, discover, ev
                 MODEL,
             ]
             evidence["commands"].append(run([*argv, discover], directory, child, 100))
+            evidence["inventory_after"] = ready(
+                read, config, base_names | {"superpowers"}, base_skills | set(acceptance.SKILLS)
+            )
+            evidence["installed_after"] = installed_snapshot(evidence["inventory_after"], profile)
 
 
 def qualified_gh_binary(version):

@@ -13,7 +13,7 @@ import socket
 import subprocess
 import time
 from collections.abc import Callable, Mapping
-from pathlib import Path
+from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
 from typing import Any
 from urllib.error import URLError
 from urllib.request import ProxyHandler, Request, build_opener
@@ -253,36 +253,24 @@ def classify_sources(row: dict[str, object], status: object) -> str:
         )
     ):
         return "UNKNOWN"
-    if not all(
-        Path(str(row[key])).is_absolute()
-        for key in (
-            "owned_root",
-            "profile_root",
-            "cache_root",
-            "host_executable",
-        )
-    ):
+    owned = archived_path(str(row["owned_root"]))
+    profile = type(owned)(str(row["profile_root"]))
+    cache = type(owned)(str(row["cache_root"]))
+    executable = type(owned)(str(row["host_executable"]))
+    if not all(absolute_archived_path(path) for path in (owned, profile, cache, executable)):
         return "FAIL"
-    owned = Path(str(row["owned_root"])).resolve()
-    profile = Path(str(row["profile_root"])).resolve()
-    cache = Path(str(row["cache_root"])).resolve()
     if profile == owned or not profile.is_relative_to(owned) or not cache.is_relative_to(profile):
         return "FAIL"
     sources = row["configuration_sources"]
     if not isinstance(sources, list) or not sources:
         return "UNKNOWN"
-    if not all(is_owned_path(source, profile) for source in sources):
+    if not all(archived_child(source, profile) for source in sources):
         return "FAIL"
     if status == "refused" and not row["package_root"]:
         return "PASS"
     if not isinstance(row["package_root"], str) or not row["package_root"]:
         return "UNKNOWN"
-    package = Path(row["package_root"])
-    if (
-        not package.is_absolute()
-        or package.resolve() == cache
-        or not package.resolve().is_relative_to(cache)
-    ):
+    if not archived_child(row["package_root"], cache):
         return "FAIL"
     return classify_package_files(records(row["package_files"]))
 
@@ -308,21 +296,39 @@ def is_owned_path(path: object, root: Path) -> bool:
     )
 
 
+def archived_path(value: str) -> PurePath:
+    """Interpret a stored path without consulting the receipt reader's filesystem."""
+    windows = PureWindowsPath(value)
+    return windows if windows.drive and not value.startswith("/") else PurePosixPath(value)
+
+
+def absolute_archived_path(path: PurePath) -> bool:
+    """Accept only already canonicalized absolute observations."""
+    return path.is_absolute() and ".." not in path.parts
+
+
+def archived_child(value: object, root: PurePath) -> bool:
+    if not isinstance(value, str):
+        return False
+    path = type(root)(value)
+    return absolute_archived_path(path) and path != root and path.is_relative_to(root)
+
+
 def attributed_skills(row: dict[str, object], results: list[dict[str, Any]]) -> bool:
     """Tie native results to the corresponding package path and installed blob."""
-    package = Path(str(row["package_root"])).resolve()
-    profile = Path(str(row["profile_root"])).resolve()
+    profile = archived_path(str(row["profile_root"]))
+    package = type(profile)(str(row["package_root"]))
     files = {file["path"]: file["actual"] for file in records(row["package_files"])}
     for result in results:
         name, path, blob = (result.get(key) for key in ("id", "source_path", "git_blob"))
         if (
             not isinstance(name, str)
             or not isinstance(path, str)
-            or not is_owned_path(path, profile)
+            or not archived_child(path, profile)
             or not sha(blob, 40)
         ):
             return False
-        observed = Path(path).resolve()
+        observed = type(profile)(path)
         relative = f"skills/{name}/SKILL.md"
         if name == SKILLS[0]:
             if observed.is_relative_to(package) or observed.parts[-3:] != (
@@ -331,7 +337,7 @@ def attributed_skills(row: dict[str, object], results: list[dict[str, Any]]) -> 
                 "SKILL.md",
             ):
                 return False
-        elif observed != (package / relative).resolve() or files.get(relative) != blob:
+        elif observed != package / relative or files.get(relative) != blob:
             return False
     return True
 
@@ -568,12 +574,117 @@ def private_inventory(
                 process.wait()
 
 
+def installed_preserved(
+    case: str, before: object, after: object, results: list[dict[str, Any]]
+) -> bool | None:
+    """Compare installed evidence, allowing only the attributed S-absent addition."""
+    if not isinstance(before, dict) or not isinstance(after, dict):
+        return None
+    prior_files = before.get("manifests")
+    final_files = after.get("manifests")
+    prior_plugins = before.get("plugins")
+    final_plugins = after.get("plugins")
+    if not (
+        isinstance(prior_files, dict)
+        and prior_files
+        and isinstance(final_files, dict)
+        and final_files
+        and isinstance(prior_plugins, list)
+        and prior_plugins
+        and isinstance(final_plugins, list)
+        and final_plugins
+    ):
+        return None
+    if case != "S-absent":
+        return before == after
+    upstream_results = [
+        result.get("source_path") for result in results if result.get("id") == SKILLS[0]
+    ]
+    if len(upstream_results) != 1 or not isinstance(upstream_results[0], str):
+        return None
+    upstream_skill = archived_path(upstream_results[0])
+    if not absolute_archived_path(upstream_skill) or len(upstream_skill.parents) < 3:
+        return False
+    upstream_root = str(upstream_skill.parents[2])
+    if len(records(prior_plugins)) != len(prior_plugins) or len(records(final_plugins)) != len(
+        final_plugins
+    ):
+        return None
+    retained_plugins = [plugin for plugin in final_plugins if plugin.get("id") != "superpowers"]
+    return (
+        upstream_root not in prior_files
+        and upstream_root in final_files
+        and {path: manifest for path, manifest in final_files.items() if path != upstream_root}
+        == prior_files
+        and len(final_plugins) == len(retained_plugins) + 1
+        and retained_plugins == prior_plugins
+    )
+
+
+def complete_positive_installation(
+    row: dict[str, Any], snapshot: dict[str, Any], *, with_upstream: bool
+) -> bool:
+    profile = archived_path(row["profile_root"])
+    package = type(profile)(row["package_root"])
+    roots = {package, profile / "unrelated-plugin"}
+    names = {"superpowers-backplane", "issue-23-sentinel"}
+    if with_upstream:
+        upstream = next(
+            (
+                result.get("source_path")
+                for result in records(row["native_results"])
+                if result.get("id") == SKILLS[0]
+            ),
+            None,
+        )
+        if not isinstance(upstream, str) or not archived_child(upstream, profile):
+            return False
+        upstream_parents = type(profile)(upstream).parents
+        if len(upstream_parents) < 3 or upstream_parents[2] in roots:
+            return False
+        roots.add(upstream_parents[2])
+        names.add("superpowers")
+    manifests = snapshot["manifests"]
+    if {type(profile)(path) for path in manifests} != roots or len(manifests) != len(roots):
+        return False
+    if not all(
+        isinstance(manifest, dict)
+        and type(manifest.get("files")) is int
+        and manifest["files"] > 0
+        and sha(manifest.get("sha256"), 64)
+        for manifest in manifests.values()
+    ):
+        return False
+    plugins = records(snapshot["plugins"])
+    return (
+        len(plugins) == len(snapshot["plugins"]) == len(names)
+        and all(
+            isinstance(plugin.get("id"), str)
+            and plugin.get("status") == "active"
+            and isinstance(plugin.get("source"), dict)
+            and plugin["source"]
+            for plugin in plugins
+        )
+        and {plugin["id"] for plugin in plugins} == names
+    )
+
+
 def scoped_native_observation(row: dict[str, Any]) -> bool:
     """Require the recorded evidence for the case instead of relying on summary flags."""
     scoped = row.get("observations")
     if not isinstance(scoped, dict) or not row.get("host_identity_source"):
         return False
-    if scoped.get("protected_before") != scoped.get("protected_after"):
+    protected = scoped.get("protected_before")
+    if not isinstance(protected, dict) or protected != scoped.get("protected_after"):
+        return False
+    files, unrelated = protected.get("files"), protected.get("unrelated")
+    if not (
+        isinstance(files, dict)
+        and files
+        and all(sha(digest, 64) for digest in files.values())
+        and isinstance(unrelated, list)
+        and unrelated
+    ):
         return False
     case = str(row.get("id"))
     if case == "F-below-floor":
@@ -588,13 +699,21 @@ def scoped_native_observation(row: dict[str, Any]) -> bool:
         )
     if not scoped.get("native_inventory_before") or not scoped.get("native_inventory_after"):
         return False
-    if not case.startswith("S-"):
-        before = scoped.get("installed_before")
-        after = scoped.get("installed_after")
-        if not isinstance(before, dict) or not before.get("manifests") or before != after:
-            return False
+    before, after = scoped.get("installed_before"), scoped.get("installed_after")
+    if (
+        installed_preserved(
+            case,
+            before,
+            after,
+            records(row.get("native_results")),
+        )
+        is not True
+    ):
+        return False
     if row.get("expected_status") == "completed":
-        return True
+        return complete_positive_installation(
+            row, before, with_upstream=case != "S-absent"
+        ) and complete_positive_installation(row, after, with_upstream=True)
     return all(
         result.get("diagnostic")
         and result.get("observed_recovery") == row.get("recovery")

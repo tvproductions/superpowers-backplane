@@ -29,10 +29,10 @@
     "issueType": null,
     "labels": [
       {
-        "id": "LA_kwDOT6l9aM8AAAACxwzkug",
-        "name": "backplane:active",
-        "description": "Superpowers execution is in progress",
-        "color": "1D76DB"
+        "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+        "name": "backplane:review",
+        "description": "Implementation is submitted and awaiting final review/integration",
+        "color": "5319E7"
       }
     ],
     "number": 23,
@@ -55,7 +55,7 @@
       "total": 0
     },
     "title": "Verify OpenCode V2 setup and compatibility failures",
-    "updatedAt": "2026-11-27T19:40:02Z",
+    "updatedAt": "2026-11-27T21:26:44Z",
     "url": "https://github.com/tvproductions/superpowers-backplane/issues/23"
   },
   "phase": "local native setup acceptance",
@@ -64,20 +64,20 @@
       "id": "S-native",
       "variant": "v2",
       "kind": "native",
-      "host_executable": "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+      "host_executable": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
       "host_version": "2.1.4",
       "executable_hash": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
       "host_identity_source": "retained preflight tied to this run's independently checked binary SHA-256",
       "candidate_sha": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
-      "package_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811691489\\node_modules\\superpowers-backplane",
-      "cache_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\cache",
-      "profile_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03",
+      "package_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815503787\\node_modules\\superpowers-backplane",
+      "cache_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache",
+      "profile_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11",
       "owned_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23",
       "upstream_origin": "https://github.com/obra/superpowers.git",
       "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
       "configuration_sources": [
-        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\config\\opencode\\opencode.json",
-        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\config\\opencode"
+        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\config\\opencode\\opencode.json",
+        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\config\\opencode"
       ],
       "requires_auth": true,
       "auth_verified": true,
@@ -85,10 +85,10 @@
       "commands": [
         {
           "argv": [
-            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
             "run",
             "--server",
-            "http://127.0.0.1:63220",
+            "http://127.0.0.1:58693",
             "--format",
             "json",
             "--model",
@@ -100,10 +100,10 @@
         },
         {
           "argv": [
-            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
             "run",
             "--server",
-            "http://127.0.0.1:63220",
+            "http://127.0.0.1:58693",
             "--format",
             "json",
             "--model",
@@ -117,29 +117,29 @@
       "native_results": [
         {
           "id": "using-superpowers",
-          "session_id": "ses_de14739f9ffeuxBWKZyxtZfrsV",
-          "call_id": "call_0b55e2f28aee4d2fb15847dde99625fe",
+          "session_id": "ses_de10cf1e2ffeqpg9YW8MQYVwBN",
+          "call_id": "call_96d99c1981bb4ff88e26ac437874c1d8",
           "status": "completed",
-          "capture_sha256": "3f9425e960feec955a96756cd55185fd46f7655706f81cf033b7acc27eaa6520",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795811694425\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "capture_sha256": "9265c084d9dc87020f49f9f1913e4dc275d8823939fdf2a6d012bdeb15f6f566",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795815506280\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
           "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
         },
         {
           "id": "managing-superpowers-backlog",
-          "session_id": "ses_de14739f9ffeuxBWKZyxtZfrsV",
-          "call_id": "call_51909fd8897d425588bdced6bef440fd",
+          "session_id": "ses_de10cf1e2ffeqpg9YW8MQYVwBN",
+          "call_id": "call_9e2d9d4f04fe45f6b3eb8a0e004db2df",
           "status": "completed",
-          "capture_sha256": "3f9425e960feec955a96756cd55185fd46f7655706f81cf033b7acc27eaa6520",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811691489\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "capture_sha256": "9265c084d9dc87020f49f9f1913e4dc275d8823939fdf2a6d012bdeb15f6f566",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815503787\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
           "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
         },
         {
           "id": "managing-superpowers-handoffs",
-          "session_id": "ses_de14739f9ffeuxBWKZyxtZfrsV",
-          "call_id": "call_c7509839a09540cdaace2050a3bcd832",
+          "session_id": "ses_de10cf1e2ffeqpg9YW8MQYVwBN",
+          "call_id": "call_4ff743f6fd73418293bd6a16f1e88780",
           "status": "completed",
-          "capture_sha256": "3f9425e960feec955a96756cd55185fd46f7655706f81cf033b7acc27eaa6520",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811691489\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "capture_sha256": "9265c084d9dc87020f49f9f1913e4dc275d8823939fdf2a6d012bdeb15f6f566",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815503787\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
           "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
         }
       ],
@@ -506,14 +506,14 @@
         "preservation": true
       },
       "before": {
-        "protected_files": "d5c689d556a18273df04cd074f7235c1ce6dd2025e2073338c73a315a13d6d48",
-        "configuration": "6a70d41757f26b4a2a6e331eb055ef6e71bcc8c6ff8cba2fe4fb89e4068a7d55",
-        "issue": "e63ff2ff9014f6b0772ee7a409c9ce17158227651fd07b7f9592094d4f079a14"
+        "protected_files": "5d2e3969dfa12ec5fe94568aae543ffe7c5f8cc4b6d02a2f61d9ca1e0713e70d",
+        "configuration": "e005cf699d5d6c0e8033f4dba9490855ac2511af88aebb3684c8b18b1ae11777",
+        "issue": "7915b97c8c40bb31c5a40e769b66b3ad6fbeb6a6680e52a02197991ca0361ef6"
       },
       "after": {
-        "protected_files": "d5c689d556a18273df04cd074f7235c1ce6dd2025e2073338c73a315a13d6d48",
-        "configuration": "6a70d41757f26b4a2a6e331eb055ef6e71bcc8c6ff8cba2fe4fb89e4068a7d55",
-        "issue": "e63ff2ff9014f6b0772ee7a409c9ce17158227651fd07b7f9592094d4f079a14"
+        "protected_files": "5d2e3969dfa12ec5fe94568aae543ffe7c5f8cc4b6d02a2f61d9ca1e0713e70d",
+        "configuration": "e005cf699d5d6c0e8033f4dba9490855ac2511af88aebb3684c8b18b1ae11777",
+        "issue": "7915b97c8c40bb31c5a40e769b66b3ad6fbeb6a6680e52a02197991ca0361ef6"
       },
       "recovery": null,
       "connections": [
@@ -546,39 +546,39 @@
           "totalCount": 1
         }
       ],
-      "fixture": "S-native-03",
-      "capture_sha256": "c7c5c1b36d02f36c44b227f41ac2c36cba4a8f224532bbc90526b06777316571",
+      "fixture": "S-native-11",
+      "capture_sha256": "e6e291b8d98e5d8becbc4b2de788c12ec25ca4848cdf62721cee53fa616e03f9",
       "report_excerpts": [
-        "**Existing native setup adopted in place; no changes needed.** Requested setup checks passed. Full conformance remains **UNKNOWN**, not certified.",
-        "| Skill discovery | **PASS** — upstream bootstrap present; both Backplane skills successfully loaded from their installed package; required upstream workflow skills discoverable |"
+        "Existing native setup adopted unchanged. **Requested setup checks passed; full conformance remains UNKNOWN.**",
+        "| Required upstream skills | **PASS** — brainstorming, writing-plans and writing-skills discoverable; installed files verified |"
       ],
       "observations": {
         "protected_before": {
           "unrelated": [
-            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-native-03/unrelated-plugin"
+            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-native-11/unrelated-plugin"
           ],
-          "permissions": "cf89d1a0d8bacbb7e8a6ebe2f714601d335fb74f66315c460f491a23c07a08d0",
+          "permissions": "69509d52a885960e58c29fab0a534340e0f9dbdc44d0342de463a37c5942ee5b",
           "instructions": "2aad78b40ceeeb7afcaedd933cb279cc5549ab815dfc8756434981c32fadbf7f",
           "files": {
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\config\\opencode\\case-context.md": "f3c53238e5333bcbc1c47098296ecbefc12809c7a3814d8074de56f62a63b4e6",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\config\\opencode\\case-context.md": "f3c53238e5333bcbc1c47098296ecbefc12809c7a3814d8074de56f62a63b4e6",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
           }
         },
         "protected_after": {
           "unrelated": [
-            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-native-03/unrelated-plugin"
+            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-native-11/unrelated-plugin"
           ],
-          "permissions": "cf89d1a0d8bacbb7e8a6ebe2f714601d335fb74f66315c460f491a23c07a08d0",
+          "permissions": "69509d52a885960e58c29fab0a534340e0f9dbdc44d0342de463a37c5942ee5b",
           "instructions": "2aad78b40ceeeb7afcaedd933cb279cc5549ab815dfc8756434981c32fadbf7f",
           "files": {
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\config\\opencode\\case-context.md": "f3c53238e5333bcbc1c47098296ecbefc12809c7a3814d8074de56f62a63b4e6",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\config\\opencode\\case-context.md": "f3c53238e5333bcbc1c47098296ecbefc12809c7a3814d8074de56f62a63b4e6",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
           }
         },
         "native_inventory_before": {
@@ -619,7 +619,7 @@
               "id": "issue-23-sentinel",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\index.js"
               },
               "features": {
                 "server": true
@@ -668,7 +668,7 @@
               "id": "issue-23-sentinel",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-03\\unrelated-plugin\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\index.js"
               },
               "features": {
                 "server": true
@@ -688,7 +688,7 @@
           "gh issue view 23 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
             "status": "completed",
             "exit": 0,
-            "output_sha256": "ea0225525ccedcf687a8b149b7c9025435321ff636a54006657cc7e49472284f"
+            "output_sha256": "8baa9b40528dd1111ae142658d9f609203460598b2820f5b2c7a7103c714b6d3"
           },
           "gh issue edit --help": {
             "status": "completed",
@@ -725,7 +725,7 @@
             ],
             "exit": 0,
             "timeout": false,
-            "output_sha256": "425535cf4b8916f55b16c26ce4c758a45709337c1be423707b1cadb7b169bc11"
+            "output_sha256": "96fd986934f846c1c6f4953a4c43556fe57543fea8ed298eb43d947bd25dd854"
           },
           {
             "argv": [
@@ -750,8 +750,94 @@
             "output_sha256": "8eaac7d8580aa7abe92862881a0587d12fe404b1f193cc6dc640a343bf26f96a"
           }
         ],
-        "installed_before": null,
-        "installed_after": null
+        "installed_before": {
+          "manifests": {
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795815506280\\node_modules\\superpowers": {
+              "files": 230,
+              "sha256": "87ae293f68b09bc9c397e54946156b7902db3da2edb68e2c9e0decc69e86139c"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815503787\\node_modules\\superpowers-backplane": {
+              "files": 70,
+              "sha256": "468b5abb537880a7c140212ecb2ce20838e004b61d8eb61910ad7fde3dd2c701"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin": {
+              "files": 3,
+              "sha256": "57343f96bd6465192cd210809845cc683093201c02cd4f23f191533bd79633d1"
+            }
+          },
+          "plugins": [
+            {
+              "id": "issue-23-sentinel",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\index.js"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers-backplane",
+              "source": {
+                "type": "package",
+                "target": "git+https://github.com/tvproductions/superpowers-backplane.git#386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "version": "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers",
+              "source": {
+                "type": "package",
+                "target": "superpowers@git+https://github.com/obra/superpowers.git#v7.0.1",
+                "version": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+              },
+              "status": "active"
+            }
+          ]
+        },
+        "installed_after": {
+          "manifests": {
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795815506280\\node_modules\\superpowers": {
+              "files": 230,
+              "sha256": "87ae293f68b09bc9c397e54946156b7902db3da2edb68e2c9e0decc69e86139c"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815503787\\node_modules\\superpowers-backplane": {
+              "files": 70,
+              "sha256": "468b5abb537880a7c140212ecb2ce20838e004b61d8eb61910ad7fde3dd2c701"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin": {
+              "files": 3,
+              "sha256": "57343f96bd6465192cd210809845cc683093201c02cd4f23f191533bd79633d1"
+            }
+          },
+          "plugins": [
+            {
+              "id": "issue-23-sentinel",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-native-11\\unrelated-plugin\\index.js"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers-backplane",
+              "source": {
+                "type": "package",
+                "target": "git+https://github.com/tvproductions/superpowers-backplane.git#386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "version": "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers",
+              "source": {
+                "type": "package",
+                "target": "superpowers@git+https://github.com/obra/superpowers.git#v7.0.1",
+                "version": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+              },
+              "status": "active"
+            }
+          ]
+        }
       },
       "result": "PASS"
     },
@@ -759,20 +845,20 @@
       "id": "S-sibling",
       "variant": "v2",
       "kind": "native",
-      "host_executable": "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+      "host_executable": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
       "host_version": "2.1.4",
       "executable_hash": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
       "host_identity_source": "retained preflight tied to this run's independently checked binary SHA-256",
       "candidate_sha": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
-      "package_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811775411\\node_modules\\superpowers-backplane",
-      "cache_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\cache",
-      "profile_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03",
+      "package_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815594562\\node_modules\\superpowers-backplane",
+      "cache_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\cache",
+      "profile_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11",
       "owned_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23",
       "upstream_origin": "https://github.com/obra/superpowers.git",
       "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
       "configuration_sources": [
-        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\config\\opencode\\opencode.json",
-        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\config\\opencode"
+        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\config\\opencode\\opencode.json",
+        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\config\\opencode"
       ],
       "requires_auth": true,
       "auth_verified": true,
@@ -780,10 +866,10 @@
       "commands": [
         {
           "argv": [
-            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
             "run",
             "--server",
-            "http://127.0.0.1:51414",
+            "http://127.0.0.1:64531",
             "--format",
             "json",
             "--model",
@@ -795,10 +881,10 @@
         },
         {
           "argv": [
-            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
             "run",
             "--server",
-            "http://127.0.0.1:51414",
+            "http://127.0.0.1:64531",
             "--format",
             "json",
             "--model",
@@ -812,29 +898,29 @@
       "native_results": [
         {
           "id": "using-superpowers",
-          "session_id": "ses_de145fae7ffelmkKaJJW9fzEXX",
-          "call_id": "call_bc8550e2c0374152ad512559283a91fc",
+          "session_id": "ses_de10b8e52ffeFU77qaSfr6BRpq",
+          "call_id": "call_d7e10729e4714a9d90e60a7633c3a6e8",
           "status": "completed",
-          "capture_sha256": "a82e8b6784f687041a1d4f790fb22938f954f885c718a5edfeef9778cd004ea3",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\upstream\\skills\\using-superpowers\\SKILL.md",
+          "capture_sha256": "4263ae3452641692b475e6f4bb014b8de70228651930e90fa37a230ec1b903ca",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream\\skills\\using-superpowers\\SKILL.md",
           "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
         },
         {
           "id": "managing-superpowers-backlog",
-          "session_id": "ses_de145fae7ffelmkKaJJW9fzEXX",
-          "call_id": "call_db6d8bceca9347a485a51fe3a1e8c5b4",
+          "session_id": "ses_de10b8e52ffeFU77qaSfr6BRpq",
+          "call_id": "call_0719754991c74a2ca427dbbcc71b4a80",
           "status": "completed",
-          "capture_sha256": "a82e8b6784f687041a1d4f790fb22938f954f885c718a5edfeef9778cd004ea3",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811775411\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "capture_sha256": "4263ae3452641692b475e6f4bb014b8de70228651930e90fa37a230ec1b903ca",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815594562\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
           "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
         },
         {
           "id": "managing-superpowers-handoffs",
-          "session_id": "ses_de145fae7ffelmkKaJJW9fzEXX",
-          "call_id": "call_9f201c71cd164e20af5e8510704ea78b",
+          "session_id": "ses_de10b8e52ffeFU77qaSfr6BRpq",
+          "call_id": "call_afd0e647656442a3ba8a177d7a3e4bcc",
           "status": "completed",
-          "capture_sha256": "a82e8b6784f687041a1d4f790fb22938f954f885c718a5edfeef9778cd004ea3",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811775411\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "capture_sha256": "4263ae3452641692b475e6f4bb014b8de70228651930e90fa37a230ec1b903ca",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815594562\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
           "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
         }
       ],
@@ -1201,14 +1287,14 @@
         "preservation": true
       },
       "before": {
-        "protected_files": "898dd6b8d2838f81a437e581ab609e32bfbecdc7dc8b8b223584e880bc121348",
-        "configuration": "7dfadb9f8af763b45ae20cc916866eac918c3f2a676aed8f5026ce54b1e3e8fc",
-        "issue": "e63ff2ff9014f6b0772ee7a409c9ce17158227651fd07b7f9592094d4f079a14"
+        "protected_files": "ec09a6324f6d901b3206cae0f11c731652b1bc09d1769528bcb83cdb998ee8ee",
+        "configuration": "e9475c807a0fb0c2a64ab534ff097e222ec8bcffaab0b11baa7fa2c4e171caec",
+        "issue": "7915b97c8c40bb31c5a40e769b66b3ad6fbeb6a6680e52a02197991ca0361ef6"
       },
       "after": {
-        "protected_files": "898dd6b8d2838f81a437e581ab609e32bfbecdc7dc8b8b223584e880bc121348",
-        "configuration": "7dfadb9f8af763b45ae20cc916866eac918c3f2a676aed8f5026ce54b1e3e8fc",
-        "issue": "e63ff2ff9014f6b0772ee7a409c9ce17158227651fd07b7f9592094d4f079a14"
+        "protected_files": "ec09a6324f6d901b3206cae0f11c731652b1bc09d1769528bcb83cdb998ee8ee",
+        "configuration": "e9475c807a0fb0c2a64ab534ff097e222ec8bcffaab0b11baa7fa2c4e171caec",
+        "issue": "7915b97c8c40bb31c5a40e769b66b3ad6fbeb6a6680e52a02197991ca0361ef6"
       },
       "recovery": null,
       "connections": [
@@ -1241,18 +1327,18 @@
           "totalCount": 1
         }
       ],
-      "fixture": "S-sibling-03",
-      "capture_sha256": "125d25fba7a3c902788120b0e2574899eeb81b25f174a43cf95e77e580863b5d",
+      "fixture": "S-sibling-11",
+      "capture_sha256": "1ce0f0513a3c2a9259c82113bf49ca6e60096e8c56f5b0a32bc6d883af83279a",
       "report_excerpts": [
         "**Existing setup adopted in place; no changes needed.** Requested read-only checks passed. Full conformance remains unknown.",
-        "| Setup skill discovery | **PASS** — upstream bootstrap supplied; both Backplane skills loaded from the installed package |"
+        "| Three setup skill identities | **PASS** — upstream `using-superpowers` supplied by bootstrap; both Backplane skills loaded natively from the installed package |"
       ],
       "observations": {
         "protected_before": {
           "unrelated": [
-            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-sibling-03/unrelated-plugin"
+            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-sibling-11/unrelated-plugin"
           ],
-          "permissions": "9663f18040df44798dfcee15632fafaf3648562b470e0ccf9f248e1803191a77",
+          "permissions": "1fc31c62409c56bb6b820fdb1321fedf46c3e2cfce5a789a21eb8633d4a20882",
           "instructions": "2aad78b40ceeeb7afcaedd933cb279cc5549ab815dfc8756434981c32fadbf7f",
           "upstream": [
             "https://github.com/obra/superpowers.git",
@@ -1260,18 +1346,18 @@
             ""
           ],
           "files": {
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\config\\opencode\\case-context.md": "7685a11e1275af787cc0832faf2625dadf35a34242320ffb1af0afcfcc7d1ff2",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\config\\opencode\\case-context.md": "92bd1ce66c314f4bad1dd62bb3cc78126694efde33a3484c60ccafc2aad89d3d",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
           }
         },
         "protected_after": {
           "unrelated": [
-            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-sibling-03/unrelated-plugin"
+            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-sibling-11/unrelated-plugin"
           ],
-          "permissions": "9663f18040df44798dfcee15632fafaf3648562b470e0ccf9f248e1803191a77",
+          "permissions": "1fc31c62409c56bb6b820fdb1321fedf46c3e2cfce5a789a21eb8633d4a20882",
           "instructions": "2aad78b40ceeeb7afcaedd933cb279cc5549ab815dfc8756434981c32fadbf7f",
           "upstream": [
             "https://github.com/obra/superpowers.git",
@@ -1279,11 +1365,11 @@
             ""
           ],
           "files": {
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\config\\opencode\\case-context.md": "7685a11e1275af787cc0832faf2625dadf35a34242320ffb1af0afcfcc7d1ff2",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\config\\opencode\\case-context.md": "92bd1ce66c314f4bad1dd62bb3cc78126694efde33a3484c60ccafc2aad89d3d",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
           }
         },
         "native_inventory_before": {
@@ -1292,7 +1378,7 @@
               "id": "superpowers",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\upstream\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream\\index.js"
               },
               "features": {
                 "server": true
@@ -1323,7 +1409,7 @@
               "id": "issue-23-sentinel",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\index.js"
               },
               "features": {
                 "server": true
@@ -1340,7 +1426,7 @@
               "id": "superpowers",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\upstream\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream\\index.js"
               },
               "features": {
                 "server": true
@@ -1371,7 +1457,7 @@
               "id": "issue-23-sentinel",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-03\\unrelated-plugin\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\index.js"
               },
               "features": {
                 "server": true
@@ -1391,7 +1477,7 @@
           "gh issue view 23 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
             "status": "completed",
             "exit": 0,
-            "output_sha256": "ea0225525ccedcf687a8b149b7c9025435321ff636a54006657cc7e49472284f"
+            "output_sha256": "8baa9b40528dd1111ae142658d9f609203460598b2820f5b2c7a7103c714b6d3"
           },
           "gh issue edit --help": {
             "status": "completed",
@@ -1428,7 +1514,7 @@
             ],
             "exit": 0,
             "timeout": false,
-            "output_sha256": "425535cf4b8916f55b16c26ce4c758a45709337c1be423707b1cadb7b169bc11"
+            "output_sha256": "96fd986934f846c1c6f4953a4c43556fe57543fea8ed298eb43d947bd25dd854"
           },
           {
             "argv": [
@@ -1453,8 +1539,92 @@
             "output_sha256": "8eaac7d8580aa7abe92862881a0587d12fe404b1f193cc6dc640a343bf26f96a"
           }
         ],
-        "installed_before": null,
-        "installed_after": null
+        "installed_before": {
+          "manifests": {
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815594562\\node_modules\\superpowers-backplane": {
+              "files": 70,
+              "sha256": "468b5abb537880a7c140212ecb2ce20838e004b61d8eb61910ad7fde3dd2c701"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin": {
+              "files": 3,
+              "sha256": "57343f96bd6465192cd210809845cc683093201c02cd4f23f191533bd79633d1"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream": {
+              "files": 231,
+              "sha256": "70dbbb5bacca823a716fd071205843bdcc3ef188f755723b84dcdbc3971ded47"
+            }
+          },
+          "plugins": [
+            {
+              "id": "issue-23-sentinel",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\index.js"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers-backplane",
+              "source": {
+                "type": "package",
+                "target": "git+https://github.com/tvproductions/superpowers-backplane.git#386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "version": "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream\\index.js"
+              },
+              "status": "active"
+            }
+          ]
+        },
+        "installed_after": {
+          "manifests": {
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815594562\\node_modules\\superpowers-backplane": {
+              "files": 70,
+              "sha256": "468b5abb537880a7c140212ecb2ce20838e004b61d8eb61910ad7fde3dd2c701"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin": {
+              "files": 3,
+              "sha256": "57343f96bd6465192cd210809845cc683093201c02cd4f23f191533bd79633d1"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream": {
+              "files": 231,
+              "sha256": "70dbbb5bacca823a716fd071205843bdcc3ef188f755723b84dcdbc3971ded47"
+            }
+          },
+          "plugins": [
+            {
+              "id": "issue-23-sentinel",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\unrelated-plugin\\index.js"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers-backplane",
+              "source": {
+                "type": "package",
+                "target": "git+https://github.com/tvproductions/superpowers-backplane.git#386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "version": "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-sibling-11\\upstream\\index.js"
+              },
+              "status": "active"
+            }
+          ]
+        }
       },
       "result": "PASS"
     },
@@ -1462,20 +1632,20 @@
       "id": "S-absent",
       "variant": "v2",
       "kind": "native",
-      "host_executable": "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+      "host_executable": "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
       "host_version": "2.1.4",
       "executable_hash": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
       "host_identity_source": "retained preflight tied to this run's independently checked binary SHA-256",
       "candidate_sha": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
-      "package_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811857258\\node_modules\\superpowers-backplane",
-      "cache_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\cache",
-      "profile_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03",
+      "package_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815772630\\node_modules\\superpowers-backplane",
+      "cache_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache",
+      "profile_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12",
       "owned_root": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23",
       "upstream_origin": "https://github.com/obra/superpowers.git",
       "upstream_revision": "22f0b463e7a5e579904dd6211a520321035526f7",
       "configuration_sources": [
-        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\config\\opencode\\opencode.json",
-        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\config\\opencode"
+        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\config\\opencode\\opencode.json",
+        "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\config\\opencode"
       ],
       "requires_auth": true,
       "auth_verified": true,
@@ -1483,10 +1653,10 @@
       "commands": [
         {
           "argv": [
-            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
             "run",
             "--server",
-            "http://127.0.0.1:51560",
+            "http://127.0.0.1:53165",
             "--format",
             "json",
             "--model",
@@ -1498,10 +1668,10 @@
         },
         {
           "argv": [
-            "C:\\Users\\Jeff\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+            "U:\\repos\\agents\\superpowers-backplane\\.sp-bp\\work\\issue-23-v2-freshness\\official-2.1.4\\package\\bin\\opencode.exe",
             "run",
             "--server",
-            "http://127.0.0.1:52485",
+            "http://127.0.0.1:51213",
             "--format",
             "json",
             "--model",
@@ -1515,29 +1685,29 @@
       "native_results": [
         {
           "id": "using-superpowers",
-          "session_id": "ses_de144ba7effelXr3OKX84O4TLw",
-          "call_id": "call_df25031cde4d4821b3d07b2cb7ee7f17",
+          "session_id": "ses_de109028cffezVY0ReiXY81up6",
+          "call_id": "call_347137098c2046438f50ee1273137edb",
           "status": "completed",
-          "capture_sha256": "0a3c0028ef3b25499aa7458c1095bf217947c755368708b893fff89418729e7a",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\cache\\opencode\\npm\\git-superpowers-4f58c7678957\\1795811889223\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "capture_sha256": "972df2b13b1f47f096a68e2eb25dae54fcced0d81f8718e42f8e06e8ddcf2b82",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-4f58c7678957\\1795815811270\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
           "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
         },
         {
           "id": "managing-superpowers-backlog",
-          "session_id": "ses_de144ba7effelXr3OKX84O4TLw",
-          "call_id": "call_fa99cbd12a1b4af3b059f8b6376234e2",
+          "session_id": "ses_de109028cffezVY0ReiXY81up6",
+          "call_id": "call_e5541838dc4f438592506382a6f5c436",
           "status": "completed",
-          "capture_sha256": "0a3c0028ef3b25499aa7458c1095bf217947c755368708b893fff89418729e7a",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811857258\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "capture_sha256": "972df2b13b1f47f096a68e2eb25dae54fcced0d81f8718e42f8e06e8ddcf2b82",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815772630\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
           "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
         },
         {
           "id": "managing-superpowers-handoffs",
-          "session_id": "ses_de144ba7effelXr3OKX84O4TLw",
-          "call_id": "call_fb72f281848b4227a73279e9b5f9710d",
+          "session_id": "ses_de109028cffezVY0ReiXY81up6",
+          "call_id": "call_4ff79beb31ec4725b8ffa4b313c32138",
           "status": "completed",
-          "capture_sha256": "0a3c0028ef3b25499aa7458c1095bf217947c755368708b893fff89418729e7a",
-          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795811857258\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "capture_sha256": "972df2b13b1f47f096a68e2eb25dae54fcced0d81f8718e42f8e06e8ddcf2b82",
+          "source_path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815772630\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
           "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
         }
       ],
@@ -1904,14 +2074,14 @@
         "preservation": true
       },
       "before": {
-        "protected_files": "b5340c4fd7baa90f09f9a259de9710da34d32128c4e8296a15183425b5b25e54",
-        "configuration": "d8d80878a6bd517bc8374cc859c7982f73e67d230d8513f2beffd8d245b8f905",
-        "issue": "e63ff2ff9014f6b0772ee7a409c9ce17158227651fd07b7f9592094d4f079a14"
+        "protected_files": "720ffc8bd6c408b2bc10f6bd0c49506193a9c43fe3ea8997025b3d10b0c9cb24",
+        "configuration": "11b0fdbce2a21cf35dfdb591a1b0f4bc2aedfde29805df65f59001b3aa281034",
+        "issue": "7915b97c8c40bb31c5a40e769b66b3ad6fbeb6a6680e52a02197991ca0361ef6"
       },
       "after": {
-        "protected_files": "b5340c4fd7baa90f09f9a259de9710da34d32128c4e8296a15183425b5b25e54",
-        "configuration": "d8d80878a6bd517bc8374cc859c7982f73e67d230d8513f2beffd8d245b8f905",
-        "issue": "e63ff2ff9014f6b0772ee7a409c9ce17158227651fd07b7f9592094d4f079a14"
+        "protected_files": "720ffc8bd6c408b2bc10f6bd0c49506193a9c43fe3ea8997025b3d10b0c9cb24",
+        "configuration": "11b0fdbce2a21cf35dfdb591a1b0f4bc2aedfde29805df65f59001b3aa281034",
+        "issue": "7915b97c8c40bb31c5a40e769b66b3ad6fbeb6a6680e52a02197991ca0361ef6"
       },
       "recovery": null,
       "connections": [
@@ -1944,39 +2114,39 @@
           "totalCount": 1
         }
       ],
-      "fixture": "S-absent-03",
-      "capture_sha256": "adc4e9f1d6d2aed8905b2a7b68e5087d97894f9557fff6b082e9f4558b036be8",
+      "fixture": "S-absent-12",
+      "capture_sha256": "f9654f0cf91c4e567e1291f826fec89a36d4e3f9abac47343d75758488427a9d",
       "report_excerpts": [
-        "Configured `opencode.json` with independent upstream Superpowers, preserving existing settings and plugins.",
-        "| Independent upstream | **PASS** — separate native package from `obra/superpowers`, documented stable tag **v7.0.2**; installed version **7.0.2** |"
+        "Configured `opencode.json` by appending upstream Superpowers; preserved Backplane, unrelated plugins, permissions, and user files. GitHub remained read-only.",
+        "| Independent upstream source/version | **PASS** — documented `obra/superpowers` channel, pinned **v7.0.2**; installed package reports **7.0.2**, and an upstream skill loaded from its separate native cache |"
       ],
       "observations": {
         "protected_before": {
           "unrelated": [
-            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-absent-03/unrelated-plugin"
+            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-absent-12/unrelated-plugin"
           ],
-          "permissions": "35d05911f88765b26027c2497f0bd92f64e3c89908cafb66969c3d9a8a78a3fc",
+          "permissions": "1e295689d14286e2fafd2fbc65ab49b8fafc83671997ffa74eac443854084c60",
           "instructions": "2aad78b40ceeeb7afcaedd933cb279cc5549ab815dfc8756434981c32fadbf7f",
           "files": {
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\config\\opencode\\case-context.md": "7f6ebfc2931f63568b23d49f79e726192ad1eb813767bb9646fcfe574b906f56",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\config\\opencode\\case-context.md": "7f6ebfc2931f63568b23d49f79e726192ad1eb813767bb9646fcfe574b906f56",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
           }
         },
         "protected_after": {
           "unrelated": [
-            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-absent-03/unrelated-plugin"
+            "C:/Users/Jeff/.codex/worktrees/c191/superpowers-backplane/.sp-bp/work/issue-23/S-absent-12/unrelated-plugin"
           ],
-          "permissions": "35d05911f88765b26027c2497f0bd92f64e3c89908cafb66969c3d9a8a78a3fc",
+          "permissions": "1e295689d14286e2fafd2fbc65ab49b8fafc83671997ffa74eac443854084c60",
           "instructions": "2aad78b40ceeeb7afcaedd933cb279cc5549ab815dfc8756434981c32fadbf7f",
           "files": {
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\config\\opencode\\case-context.md": "7f6ebfc2931f63568b23d49f79e726192ad1eb813767bb9646fcfe574b906f56",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
-            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\config\\opencode\\user-work.txt": "e25bacb4fbf012cc144aa9e33ccee015f98581aec546197ca9e97fd2513f44c0",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\config\\opencode\\case-context.md": "7f6ebfc2931f63568b23d49f79e726192ad1eb813767bb9646fcfe574b906f56",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\index.js": "d63f15e98c2210655b789ee4e0d3b6cef5435d09d2bba123d540f832b9c8d7f1",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\package.json": "83089b83662d613fa9e4f59712fc1a27cb8a0d2e00c85d88a1b81fb9e8750135",
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\SKILL.md": "9d9c8c55ad04b1aabe0428e3b95b8699811666bd3612373104876851401e36fb"
           }
         },
         "native_inventory_before": {
@@ -2002,7 +2172,7 @@
               "id": "issue-23-sentinel",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\index.js"
               },
               "features": {
                 "server": true
@@ -2051,7 +2221,7 @@
               "id": "issue-23-sentinel",
               "source": {
                 "type": "local",
-                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-03\\unrelated-plugin\\index.js"
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\index.js"
               },
               "features": {
                 "server": true
@@ -2071,7 +2241,7 @@
           "gh issue view 23 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
             "status": "completed",
             "exit": 0,
-            "output_sha256": "ea0225525ccedcf687a8b149b7c9025435321ff636a54006657cc7e49472284f"
+            "output_sha256": "8baa9b40528dd1111ae142658d9f609203460598b2820f5b2c7a7103c714b6d3"
           },
           "gh issue edit --help": {
             "status": "completed",
@@ -2108,7 +2278,7 @@
             ],
             "exit": 0,
             "timeout": false,
-            "output_sha256": "425535cf4b8916f55b16c26ce4c758a45709337c1be423707b1cadb7b169bc11"
+            "output_sha256": "96fd986934f846c1c6f4953a4c43556fe57543fea8ed298eb43d947bd25dd854"
           },
           {
             "argv": [
@@ -2133,8 +2303,81 @@
             "output_sha256": "8eaac7d8580aa7abe92862881a0587d12fe404b1f193cc6dc640a343bf26f96a"
           }
         ],
-        "installed_before": null,
-        "installed_after": null
+        "installed_before": {
+          "manifests": {
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815772630\\node_modules\\superpowers-backplane": {
+              "files": 70,
+              "sha256": "468b5abb537880a7c140212ecb2ce20838e004b61d8eb61910ad7fde3dd2c701"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin": {
+              "files": 3,
+              "sha256": "57343f96bd6465192cd210809845cc683093201c02cd4f23f191533bd79633d1"
+            }
+          },
+          "plugins": [
+            {
+              "id": "issue-23-sentinel",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\index.js"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers-backplane",
+              "source": {
+                "type": "package",
+                "target": "git+https://github.com/tvproductions/superpowers-backplane.git#386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "version": "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+              },
+              "status": "active"
+            }
+          ]
+        },
+        "installed_after": {
+          "manifests": {
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-4f58c7678957\\1795815811270\\node_modules\\superpowers": {
+              "files": 235,
+              "sha256": "7f51dcb66ca66f61a620cd87b22dea1f1c8ba25acc1d499c2f432ecd94d1d0ea"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\cache\\opencode\\npm\\git-superpowers-backplane-aab25eb8e4a5\\1795815772630\\node_modules\\superpowers-backplane": {
+              "files": 70,
+              "sha256": "468b5abb537880a7c140212ecb2ce20838e004b61d8eb61910ad7fde3dd2c701"
+            },
+            "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin": {
+              "files": 3,
+              "sha256": "57343f96bd6465192cd210809845cc683093201c02cd4f23f191533bd79633d1"
+            }
+          },
+          "plugins": [
+            {
+              "id": "issue-23-sentinel",
+              "source": {
+                "type": "local",
+                "path": "C:\\Users\\Jeff\\.codex\\worktrees\\c191\\superpowers-backplane\\.sp-bp\\work\\issue-23\\S-absent-12\\unrelated-plugin\\index.js"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers-backplane",
+              "source": {
+                "type": "package",
+                "target": "git+https://github.com/tvproductions/superpowers-backplane.git#386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "version": "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+              },
+              "status": "active"
+            },
+            {
+              "id": "superpowers",
+              "source": {
+                "type": "package",
+                "target": "superpowers@git+https://github.com/obra/superpowers.git#v7.0.2",
+                "version": "22f0b463e7a5e579904dd6211a520321035526f7"
+              },
+              "status": "active"
+            }
+          ]
+        }
       },
       "result": "PASS"
     },

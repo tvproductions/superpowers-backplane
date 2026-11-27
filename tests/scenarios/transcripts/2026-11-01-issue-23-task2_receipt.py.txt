@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -497,7 +498,7 @@ def host_identity(data):
         probe = json.loads((AREA / "final-native-preflight.json").read_text(encoding="utf-8"))
         digest = data["executable_sha256"]
         executable = data["executable"]
-        assert digest == probe["exe_sha256"] and executable == probe["executable"]
+        assert digest == probe["exe_sha256"]
         raw = probe["host_version"]
         measurement = "retained preflight tied to this run's independently checked binary SHA-256"
     match = re.fullmatch(r"(?:opencode )?v?(\d+\.\d+\.\d+)", raw)
@@ -505,13 +506,11 @@ def host_identity(data):
     return executable, match.group(1), digest, measurement
 
 
-def native_preservation(case, data):
-    if case.startswith("S-"):
-        return True
+def native_preservation(case, data, results):
     if case == "F-below-floor":
         return data["cache_has_no_files"]
     before, after = (data.get(key) for key in ("installed_before", "installed_after"))
-    return before == after if before and after else None
+    return acceptance.installed_preserved(case, before, after, results)
 
 
 def recorded_evidence(case, data, first, last, setup):
@@ -609,7 +608,7 @@ def build(case: str, attempt: int) -> dict[str, Any]:
     source_ok, upstream, revision = (payload[key] for key in ("source_ok", "upstream", "revision"))
     results, files = payload["results"], payload["files"]
     flags["source"] = source_ok
-    preservation = native_preservation(case, data)
+    preservation = native_preservation(case, data, results)
     flags["preservation"] = False if before != after else preservation
     executable, version, binary_hash, source = host_identity(data)
     row = {
@@ -650,15 +649,34 @@ def build(case: str, attempt: int) -> dict[str, Any]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--attempt",
+        action="append",
+        nargs=2,
+        default=[],
+        metavar=("CASE", "NUMBER"),
+        help="Select a recorded attempt for an individual case. Repeat for other cases.",
+    )
+    parser.add_argument("--output", type=Path, default=AREA / "task2-screened-receipt.json")
+    options = parser.parse_args()
     attempts = {case: 3 if case.startswith("S-") else 4 for case in CASES}
     attempts["F-unauthenticated"] = 5
+    overridden = set()
+    for case, number in options.attempt:
+        if case not in attempts or case in overridden or not re.fullmatch(r"[1-9][0-9]*", number):
+            parser.error(
+                f"Expected a distinct known case and a positive attempt number: {case} {number}"
+            )
+        attempts[case] = int(number)
+        overridden.add(case)
     rows = [build(case, attempts[case]) for case in CASES]
     probe = native.run(native.ISSUE)
     assert probe["exit"] == 0
     issue = json.loads(probe["stdout"])
     assert not SECRET.search(json.dumps(rows))
     result = {"issue": issue, "phase": "local native setup acceptance", "rows": rows}
-    native.dump(AREA / "task2-screened-receipt.json", result, "w")
+    native.dump(options.output, result, "w")
     for row in rows:
         problems = {key: value for key, value in row.get("checks", {}).items() if value is not True}
         print(

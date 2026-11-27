@@ -20,6 +20,26 @@ from urllib.request import ProxyHandler, Request, build_opener
 
 AREA = Path(__file__).resolve().parent
 FLOOR = (2, 0, 4)
+SETUP_CASES = (
+    "S-native",
+    "S-sibling",
+    "S-absent",
+    "F-lookalike",
+    "F-versionless",
+    "F-duplicate",
+    "F-dirty-adopt",
+    "F-dirty-update",
+    "F-collision",
+    "F-gh-auth",
+    "F-gh-intake",
+    "F-gh-label",
+    "F-gh-close",
+    "F-missing-skill",
+    "F-incompatible",
+    "F-below-floor",
+    "F-unauthenticated",
+)
+
 SKILLS = ("using-superpowers", "managing-superpowers-backlog", "managing-superpowers-handoffs")
 BACKPLANE_FILES = {"index.js", "package.json", *(f"skills/{name}/SKILL.md" for name in SKILLS[1:])}
 REQUIRED = {
@@ -145,7 +165,23 @@ def classify(row: dict[str, object]) -> str:
             return result
     if not complete_observations(row):
         return "UNKNOWN"
-    return classify_results(records(row["native_results"]), status, row["recovery"])
+    results = records(row["native_results"])
+    if status == "completed" and not attributed_skills(row, results):
+        return "UNKNOWN"
+    return classify_results(results, status, row["recovery"])
+
+
+def refused_without_upstream_identity(row: dict[str, object]) -> bool:
+    """Recognize verified refusals whose premise excludes an upstream identity."""
+    checks = row.get("checks")
+    return (
+        row.get("expected_status") == "refused"
+        and row.get("id") in ("F-versionless", "F-below-floor")
+        and row.get("upstream_origin") is None
+        and row.get("upstream_revision") is None
+        and isinstance(checks, dict)
+        and checks.get("upstream_identity_unavailable") is True
+    )
 
 
 def classify_host(row: dict[str, object], status: object) -> str:
@@ -157,7 +193,7 @@ def classify_host(row: dict[str, object], status: object) -> str:
         return "FAIL"
     if row["id"] == "F-below-floor" and tuple(map(int, version.groups())) >= FLOOR:
         return "FAIL"
-    if not row["upstream_origin"]:
+    if not row["upstream_origin"] and not refused_without_upstream_identity(row):
         return "UNKNOWN"
     if status == "completed" and not UPSTREAM_ORIGIN.fullmatch(str(row["upstream_origin"])):
         return "FAIL"
@@ -175,12 +211,16 @@ def complete_observations(row: dict[str, object]) -> bool:
     """Check that the mandatory identities, native commands and connections were recorded."""
     if not all(row[key] for key in ("id", "host_executable", "before", "after")):
         return False
-    if not all(sha(row[key], 40) for key in ("candidate_sha", "upstream_revision")) or not sha(
-        row["executable_hash"], 64
-    ):
+    if not sha(row["candidate_sha"], 40) or not sha(row["executable_hash"], 64):
+        return False
+    if not sha(row["upstream_revision"], 40) and not refused_without_upstream_identity(row):
         return False
     checks = row["checks"]
-    required_checks = {"one_backplane", "source", "payload", "preservation"}
+    required_checks = {"source", "payload", "preservation"}
+    if row["expected_status"] == "completed":
+        required_checks.add("one_backplane")
+    else:
+        required_checks.update({"failure_fixture", "specific_refusal"})
     if (
         not isinstance(checks, dict)
         or not required_checks.issubset(checks)
@@ -268,6 +308,34 @@ def is_owned_path(path: object, root: Path) -> bool:
     )
 
 
+def attributed_skills(row: dict[str, object], results: list[dict[str, Any]]) -> bool:
+    """Tie native results to the corresponding package path and installed blob."""
+    package = Path(str(row["package_root"])).resolve()
+    profile = Path(str(row["profile_root"])).resolve()
+    files = {file["path"]: file["actual"] for file in records(row["package_files"])}
+    for result in results:
+        name, path, blob = (result.get(key) for key in ("id", "source_path", "git_blob"))
+        if (
+            not isinstance(name, str)
+            or not isinstance(path, str)
+            or not is_owned_path(path, profile)
+            or not sha(blob, 40)
+        ):
+            return False
+        observed = Path(path).resolve()
+        relative = f"skills/{name}/SKILL.md"
+        if name == SKILLS[0]:
+            if observed.is_relative_to(package) or observed.parts[-3:] != (
+                "skills",
+                name,
+                "SKILL.md",
+            ):
+                return False
+        elif observed != (package / relative).resolve() or files.get(relative) != blob:
+            return False
+    return True
+
+
 def classify_results(results: list[dict[str, Any]], status: object, recovery: object) -> str:
     """Require attributable native tool results or a documented preflight refusal."""
     if not results or any(
@@ -337,7 +405,7 @@ def parse_skill_results(stream: str) -> list[dict[str, str]]:
         identifiers = (
             skill_input["id"],
             event.get("sessionID") or part.get("sessionID"),
-            part.get("callID"),
+            part.get("callID") or part.get("id"),
         )
         if not all(isinstance(value, str) and value for value in identifiers):
             continue
@@ -500,13 +568,71 @@ def private_inventory(
                 process.wait()
 
 
+def scoped_native_observation(row: dict[str, Any]) -> bool:
+    """Require the recorded evidence for the case instead of relying on summary flags."""
+    scoped = row.get("observations")
+    if not isinstance(scoped, dict) or not row.get("host_identity_source"):
+        return False
+    if scoped.get("protected_before") != scoped.get("protected_after"):
+        return False
+    case = str(row.get("id"))
+    if case == "F-below-floor":
+        diagnostic = scoped.get("native_diagnostic")
+        recovery = row.get("recovery")
+        return (
+            scoped.get("cache_has_no_files") is True
+            and isinstance(diagnostic, str)
+            and isinstance(recovery, str)
+            and "Unsupported OpenCode V2 host" in diagnostic
+            and recovery in diagnostic
+        )
+    if not scoped.get("native_inventory_before") or not scoped.get("native_inventory_after"):
+        return False
+    if not case.startswith("S-"):
+        before = scoped.get("installed_before")
+        after = scoped.get("installed_after")
+        if not isinstance(before, dict) or not before.get("manifests") or before != after:
+            return False
+    if row.get("expected_status") == "completed":
+        return True
+    return all(
+        result.get("diagnostic")
+        and result.get("observed_recovery") == row.get("recovery")
+        and result.get("recovery_source")
+        for result in records(row.get("native_results"))
+    )
+
+
 def verify(path: Path) -> dict[str, Any]:
     """Validate all native receipt rows and report their separate dispositions."""
     receipt = json.loads(path.read_text(encoding="utf-8"))
     rows = records(receipt.get("rows")) if isinstance(receipt, dict) else []
-    results = [{"id": row.get("id"), "result": classify(row)} for row in rows]
+    results = []
+    for row in rows:
+        result = classify(row)
+        if result == "PASS" and not scoped_native_observation(row):
+            result = "UNKNOWN"
+        results.append({"id": row.get("id"), "result": result})
+    observed_ids = [row.get("id") for row in rows]
+    full_matrix = (
+        len(observed_ids) == len(SETUP_CASES)
+        and all(isinstance(case, str) for case in observed_ids)
+        and set(observed_ids) == set(SETUP_CASES)
+    )
+    statuses_match = all(
+        row.get("expected_status")
+        == (
+            "completed"
+            if str(row.get("id")).startswith("S-") or row.get("id") == "F-dirty-adopt"
+            else "refused"
+        )
+        for row in rows
+    )
     return {
-        "valid": bool(rows) and all(item["result"] == "PASS" for item in results),
+        "valid": full_matrix
+        and statuses_match
+        and all(item["result"] == "PASS" for item in results),
+        "complete_matrix": full_matrix,
         "rows": results,
     }
 
@@ -588,6 +714,9 @@ def main() -> int:
     operations = parser.add_subparsers(dest="operation", required=True)
     scorer = operations.add_parser("verify")
     scorer.add_argument("receipt", type=Path)
+    replay = operations.add_parser("run")
+    replay.add_argument("--case", required=True, choices=SETUP_CASES)
+    replay.add_argument("--attempt", type=int, default=1)
     probe = operations.add_parser("preflight")
     probe.add_argument("--executable", required=True, type=Path)
     probe.add_argument("--profile", required=True, type=Path)
@@ -599,6 +728,11 @@ def main() -> int:
         result = verify(args.receipt)
         print(json.dumps(result, indent=2))
         return 0 if result["valid"] else 1
+    if args.operation == "run":
+        from v2_cases import case_run
+
+        case_run(args.case, args.attempt)
+        return 0
     result = preflight(
         args.executable,
         args.profile,

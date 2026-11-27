@@ -4,6 +4,7 @@ import json
 import unittest
 from copy import deepcopy
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import acceptance
 
@@ -74,6 +75,10 @@ def positive():
                 "session_id": "observed-session",
                 "status": "completed",
                 "capture_sha256": CAPTURE,
+                "source_path": str(
+                    (UPSTREAM if name == SKILLS[0] else PACKAGE) / "skills" / name / "SKILL.md"
+                ),
+                "git_blob": CANDIDATE,
             }
             for name in SKILLS
         ],
@@ -123,6 +128,58 @@ def ready_inventory():
 class EvidenceTests(unittest.TestCase):
     def test_complete_native_positive(self):
         self.assertEqual(acceptance.classify(positive()), "PASS")
+
+    def test_matrix_verifier_rejects_missing_and_duplicate_cases(self):
+        with TemporaryDirectory(dir=AREA) as temporary:
+            receipt = Path(temporary) / "matrix.json"
+            for rows in ([positive()], [positive() for _ in range(17)]):
+                with self.subTest(rows=len(rows)):
+                    receipt.write_text(json.dumps({"rows": rows}), encoding="utf-8")
+                    self.assertFalse(acceptance.verify(receipt)["valid"])
+
+    def test_native_skill_results_require_path_and_blob(self):
+        row = positive()
+        del row["native_results"][0]["source_path"]
+        del row["native_results"][1]["git_blob"]
+        self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_refusal_cannot_infer_after_inventory_or_recovery(self):
+        snapshot = {"manifests": {"fixture": {"files": 3}}, "plugins": ["sentinel"]}
+        row = {
+            "id": "F-duplicate",
+            "host_identity_source": "native version",
+            "expected_status": "refused",
+            "recovery": "Resolve only the identified duplicate.",
+            "observations": {
+                "protected_before": {"sentinel": "unchanged"},
+                "protected_after": {"sentinel": "unchanged"},
+                "native_inventory_before": {"sentinel": {}},
+                "native_inventory_after": {"sentinel": {}},
+                "installed_before": snapshot,
+                "installed_after": snapshot,
+            },
+            "native_results": [
+                {
+                    "diagnostic": "Two configured Backplane packages.",
+                    "observed_recovery": "Resolve only the identified duplicate.",
+                    "recovery_source": "fresh native setup response",
+                }
+            ],
+        }
+        self.assertTrue(acceptance.scoped_native_observation(row))
+        observations = row["observations"]
+        assert isinstance(observations, dict)
+        no_after = row | {"observations": observations | {"installed_after": None}}
+        self.assertFalse(acceptance.scoped_native_observation(no_after))
+        no_recovery = row | {
+            "native_results": [
+                {
+                    "diagnostic": "Two configured Backplane packages.",
+                    "recovery_source": "fresh native setup response",
+                }
+            ],
+        }
+        self.assertFalse(acceptance.scoped_native_observation(no_recovery))
 
     def test_each_missing_required_field_is_unknown(self):
         for field in positive():
@@ -184,9 +241,32 @@ class EvidenceTests(unittest.TestCase):
             recovery="Install V2 2.0.4 or later before setup.",
             native_results=[{"id": "setup", "status": "refused", "capture_sha256": CAPTURE}],
         )
+        row["checks"].update(failure_fixture=True, specific_refusal=True)
         self.assertEqual(acceptance.classify(row), "PASS")
         row["recovery"] = None
         self.assertEqual(acceptance.classify(row), "UNKNOWN")
+
+    def test_refusal_can_prove_expected_missing_upstream_identity(self):
+        for case, host_version in (("F-versionless", "2.1.4"), ("F-below-floor", "2.0.3")):
+            with self.subTest(case=case):
+                row = positive() | {
+                    "id": case,
+                    "host_version": host_version,
+                    "upstream_origin": None,
+                    "upstream_revision": None,
+                    "expected_status": "refused",
+                    "requires_auth": False,
+                    "recovery": "Restore the required setup precondition.",
+                    "native_results": [
+                        {"id": "setup", "status": "refused", "capture_sha256": CAPTURE}
+                    ],
+                }
+                self.assertEqual(acceptance.classify(row), "UNKNOWN")
+                row["checks"].update(failure_fixture=True, specific_refusal=True)
+                row["checks"]["upstream_identity_unavailable"] = True
+                self.assertEqual(acceptance.classify(row), "PASS")
+                row["id"] = "F-dirty-update"
+                self.assertEqual(acceptance.classify(row), "UNKNOWN")
 
     def test_different_sessions_cannot_combine_to_pass(self):
         row = positive()
@@ -249,6 +329,17 @@ class NativeResultTests(unittest.TestCase):
         )
         self.assertEqual(results[1]["call_id"], "call-" + SKILLS[0])
         self.assertEqual(len(results[1]["capture_sha256"]), 64)
+
+    def test_v2_native_call_id_is_distinct_from_message_part_id(self):
+        event = native_event(SKILLS[0])
+        del event["part"]["callID"]
+        event["part"]["partID"] = "prt_native_message_part"
+        event["part"]["id"] = "call_native_provider_tool_call"
+
+        results = acceptance.parse_skill_results(json.dumps(event))
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["call_id"], "call_native_provider_tool_call")
 
     def test_malformed_or_unattributed_results_cannot_count(self):
         event = native_event(SKILLS[0])

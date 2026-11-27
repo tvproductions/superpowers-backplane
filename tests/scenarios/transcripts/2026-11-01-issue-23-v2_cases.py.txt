@@ -1,0 +1,903 @@
+"""Exercise native OpenCode V2 setup in separately owned fixtures."""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import contextlib
+import hashlib
+import json
+import os
+import secrets
+import shutil
+import socket
+import subprocess
+import sys
+import tarfile
+import time
+import zipfile
+from pathlib import Path
+from urllib.error import URLError
+from urllib.request import ProxyHandler, Request, build_opener, urlopen
+
+import acceptance
+
+AREA = acceptance.AREA
+ROOT = AREA.parents[2]
+GIT_COMMON = subprocess.check_output(
+    ["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+    cwd=ROOT,
+    encoding="utf-8",
+    timeout=15,
+).strip()
+SOURCE = Path(GIT_COMMON).resolve(strict=True).parent
+AUTH = Path(
+    os.environ.get("SP_BP_ISSUE23_AUTH_PROFILE", SOURCE / ".sp-bp/work/issue-20/profiles/v2")
+).resolve()
+REPO = "tvproductions/superpowers-backplane"
+FIELDS = (
+    "number,title,body,state,stateReason,issueType,labels,parent,subIssues,"
+    "subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+)
+ISSUE = ["gh", "issue", "view", "23", "--repo", REPO, "--json", FIELDS]
+GH = [
+    ["gh", "auth", "status"],
+    ISSUE,
+    ["gh", "issue", "edit", "--help"],
+    ["gh", "issue", "close", "--help"],
+]
+MODEL = "openai/gpt-6.1-sol"
+ORIGIN = "https://github.com/obra/superpowers.git"
+UPSTREAM = f"superpowers@git+{ORIGIN}"
+SHA = "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+BP = f"git+https://github.com/{REPO}.git#386bdb5a8570360f5d34359c68f68947eb7a90fc"
+CHECKOUT_CASES = {
+    "S-sibling",
+    "F-lookalike",
+    "F-dirty-adopt",
+    "F-dirty-update",
+    "F-versionless",
+    "F-missing-skill",
+    "F-incompatible",
+}
+OLD_GH = {"F-gh-intake": "2.40.1", "F-gh-label": "1.0.0", "F-gh-close": "1.14.0"}
+CASES = acceptance.SETUP_CASES
+
+
+def run(argv, cwd=ROOT, env=None, timeout=40):
+    try:
+        r = subprocess.run(
+            argv,
+            cwd=cwd,
+            env=env,
+            capture_output=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+            check=False,
+        )
+        return {
+            "argv": argv,
+            "exit": r.returncode,
+            "timeout": False,
+            "stdout": r.stdout,
+            "stderr": r.stderr,
+        }
+    except subprocess.TimeoutExpired as err:
+        return {
+            "argv": argv,
+            "exit": None,
+            "timeout": True,
+            "stdout": (err.stdout or b"").decode("utf-8", "replace"),
+            "stderr": (err.stderr or b"").decode("utf-8", "replace"),
+        }
+
+
+def git(cwd, *args):
+    return subprocess.check_output(["git", *args], cwd=cwd, encoding="utf-8", timeout=40).strip()
+
+
+def dump(path, data, mode="x"):
+    with path.open(mode, encoding="utf-8", newline="\n") as stream:
+        json.dump(data, stream, ensure_ascii=False, indent=2)
+        stream.write("\n")
+
+
+def clone(profile, case):
+    source = (SOURCE / ".agents/superpowers").resolve(strict=True)
+    assert Path(git(source, "rev-parse", "--show-toplevel")).resolve() == source
+    assert git(source, "remote", "get-url", "origin") == ORIGIN
+    assert git(source, "rev-parse", "HEAD") == SHA and not git(source, "status", "--porcelain")
+    target = profile / "upstream"
+    assert target.parent.resolve(strict=True).is_relative_to(AREA)
+    git(profile, "clone", "--no-hardlinks", "--quiet", str(source), str(target))
+    assert Path(git(target, "rev-parse", "--show-toplevel")).resolve() == target
+    assert (
+        git(target, "rev-parse", "HEAD") == SHA
+        and not (target / ".git/objects/info/alternates").exists()
+    )
+    revision = SHA
+    if case == "F-incompatible":
+        expected = git(source, "rev-parse", "v5.1.0^{commit}")
+        git(target, "checkout", "--detach", "--quiet", expected)
+        revision = git(target, "rev-parse", "HEAD")
+        assert revision == expected and not (target / "index.js").exists()
+    origin = "https://example.invalid/issue-23/superpowers.git" if case == "F-lookalike" else ORIGIN
+    git(target, "remote", "set-url", "origin", origin)
+    with (AREA / "ledger.md").open("a", encoding="utf-8") as stream:
+        stream.write(
+            f"\n- Task 2 {case}: {target}, origin {origin}, base {revision}; independently owned sibling fixture.\n"
+        )
+    if case.startswith("F-dirty"):
+        (target / "uncommitted.txt").write_text(
+            "Protected disposable user work.\n", encoding="utf-8"
+        )
+    if case == "F-missing-skill":
+        leaf = "skills/using-superpowers/SKILL.md"
+        skill = (target / leaf).resolve(strict=True)
+        assert skill.is_relative_to(target)
+        git(target, "update-index", "--skip-worktree", leaf)
+        skill.unlink()
+        assert not skill.exists() and not git(target, "status", "--porcelain")
+        with (AREA / "ledger.md").open("a", encoding="utf-8") as stream:
+            stream.write(
+                f"- Task 2 F-missing-skill removes only {leaf} from its disposable checkout.\n"
+            )
+    return target
+
+
+def sentinel(profile):
+    directory = profile / "unrelated-plugin"
+    directory.mkdir()
+    dump(
+        directory / "package.json",
+        {"name": "issue-23-sentinel", "version": "1.0.0", "type": "module", "main": "index.js"},
+    )
+    source = (
+        'import { fileURLToPath } from "node:url";\n'
+        'export default { id: "issue-23-sentinel", async setup(ctx) {\n'
+        '  const entry = fileURLToPath(new URL("./SKILL.md", import.meta.url));\n'
+        '  await ctx.skill.transform((editor) => editor.add({id: "issue-23-sentinel",\n'
+        '    name: "issue-23-sentinel", path: entry, description: "Unrelated native plugin control",\n'
+        '    content: "This disposable unrelated plugin must be preserved."}));\n'
+        "}};\n"
+    )
+    (directory / "index.js").write_text(source, encoding="utf-8")
+    (directory / "SKILL.md").write_text(
+        "---\nname: issue-23-sentinel\ndescription: Unrelated native plugin control\n---\n"
+        "This disposable unrelated plugin must be preserved.\n",
+        encoding="utf-8",
+    )
+    return directory
+
+
+def snapshot(config, keep, checkout):
+    settings = json.loads(config.read_text(encoding="utf-8"))
+    files = [
+        config.parent / "user-work.txt",
+        config.parent / "case-context.md",
+        keep / "index.js",
+        keep / "package.json",
+        keep / "SKILL.md",
+    ]
+    observation = {
+        "unrelated": [p for p in settings["plugins"] if p == keep.as_posix()],
+        "permissions": settings["permissions"],
+        "instructions": settings["instructions"],
+    }
+    if checkout:
+        observation["upstream"] = [
+            git(checkout, "remote", "get-url", "origin"),
+            git(checkout, "rev-parse", "HEAD"),
+            git(checkout, "status", "--porcelain"),
+        ]
+        if (checkout / "uncommitted.txt").is_file():
+            files.append(checkout / "uncommitted.txt")
+    files.extend(config.parent.glob("occupied-superpowers/*"))
+    versionless = config.parent.parent.parent / "versionless/package.json"
+    if versionless.is_file():
+        files.append(versionless)
+    observation["files"] = {
+        str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in files
+    }
+    return observation
+
+
+def environment(profile):
+    assert AUTH.resolve(strict=True) == AUTH
+    assert (AUTH / ".issue-20-owner").read_text(encoding="utf-8").strip() == "issue-20"
+    auth_data = (AUTH / "data").resolve(strict=True)
+    assert auth_data.is_relative_to(AUTH)
+    env = acceptance.child_environment(profile, auth_data=auth_data)
+    gh_config = Path(
+        os.environ.get("GH_CONFIG_DIR") or (Path(os.environ["APPDATA"]) / "GitHub CLI")
+    )
+    env["GH_CONFIG_DIR"] = str(gh_config.resolve(strict=True))
+    env["GH_PROMPT_DISABLED"] = "1"
+    for name in acceptance.ROOTS:
+        path = Path(env[name])
+        if path != auth_data:
+            path.mkdir(parents=True, exist_ok=True)
+    return env
+
+
+@contextlib.contextmanager
+def private(executable, profile, env):
+    directory = Path(env["OPENCODE_CONFIG_DIR"])
+    with socket.socket() as listener:
+        listener.bind(("127.0.0.1", 0))
+        port = listener.getsockname()[1]
+    address = f"http://127.0.0.1:{port}"
+    env = {**env, "OPENCODE_PASSWORD": secrets.token_urlsafe(32)}
+    auth = base64.b64encode(f"opencode:{env['OPENCODE_PASSWORD']}".encode()).decode()
+    headers = {"x-opencode-directory": str(directory), "Authorization": f"Basic {auth}"}
+    opener = build_opener(ProxyHandler({}))
+    command = [str(executable), "serve", "--hostname", "127.0.0.1", "--port", str(port)]
+    with (profile / "server.log").open("ab") as log:
+        process = subprocess.Popen(
+            command,
+            cwd=directory,
+            env=env,
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+        )
+
+        def read():
+            if process.poll() is not None:
+                raise RuntimeError(f"Private V2 server exited with {process.returncode}")
+            try:
+                data = {}
+                for resource in ("config", "plugin", "skill"):
+                    query = Request(f"{address}/api/{resource}", headers=headers)
+                    with opener.open(query, timeout=2) as response:
+                        data[resource] = json.load(response)
+                return data
+            except URLError, TimeoutError, json.JSONDecodeError:
+                return None
+
+        try:
+            yield address, env, read, command
+        finally:
+            process.terminate()
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait()
+
+
+def ready(read, config, names, skills):
+    deadline = time.monotonic() + 65
+    data = None
+    while time.monotonic() < deadline:
+        data = read()
+        if data:
+            sources = {Path(row["path"]).resolve() for row in data["config"] if "path" in row}
+            active = {
+                row["id"] for row in data["plugin"]["data"] if row["state"]["status"] == "active"
+            }
+            found_skills = {item["id"] for item in data["skill"]["data"]}
+            if not all(source.is_relative_to(config.parent) for source in sources):
+                raise ValueError(f"Unexpected effective configuration source {sources}")
+            if config in sources and names <= active and skills <= found_skills:
+                return data
+        time.sleep(0.3)
+    dump(config.parent.parent.parent / "last-inventory.json", data, "w")
+    raise TimeoutError(f"Private inventory did not activate {sorted(names)}")
+
+
+def write_case_context(directory, checkout, case):
+    native = [*GH, ["opencode", "--version"], ["gh", "--version"]]
+    if case.startswith("S-"):
+        native += [["git", "status", "--short"]]
+    if checkout:
+        native += [
+            ["git", "-C", checkout.as_posix(), *args]
+            for args in (
+                ["rev-parse", "HEAD"],
+                ["remote", "get-url", "origin"],
+                ["status", "--porcelain"],
+            )
+        ]
+    if case == "F-incompatible":
+        assert checkout is not None
+        native.extend(
+            [
+                [
+                    "git",
+                    "-C",
+                    checkout.as_posix(),
+                    "ls-tree",
+                    "--name-only",
+                    "HEAD",
+                    "index.js",
+                    "package.json",
+                    ".opencode",
+                ],
+                ["git", "-C", checkout.as_posix(), "describe", "--tags", "--exact-match"],
+            ]
+        )
+    instructions = [
+        "Use the actual V2 skills and current opencode.json to verify the fixture.",
+        "The only shell commands allowed, one per call, are:",
+        *(" ".join(argv) for argv in native),
+    ]
+    if checkout and case != "F-versionless":
+        instructions.append(f"The existing sibling checkout is at {checkout.as_posix()}.")
+    if case == "F-versionless":
+        instructions.append(
+            "The configured local plugin candidate has no separately observable release or Git revision. Verify provenance before continuing."
+        )
+    if case == "F-collision":
+        instructions.append(
+            "Verify ownership of the configured occupied local plugin path before any reuse. Read occupied-superpowers/user-work.txt for the pre-existing file."
+        )
+    if case == "F-gh-label":
+        instructions.append(
+            "Verify the separate issue edit label support even if another GitHub operation fails."
+        )
+    if case == "F-gh-close":
+        instructions.append(
+            "Verify the separate issue close reason support even if another GitHub operation fails."
+        )
+    if case == "F-dirty-adopt":
+        instructions.append(
+            "The requested operation is read-only adoption. Keep the sibling checkout unchanged."
+        )
+    if case == "F-incompatible":
+        instructions.append(
+            "Check the configured sibling's exact release tag and V2 entry point before adopting it."
+        )
+    if case == "F-dirty-update":
+        instructions.append(
+            "The operator also asks to update the existing sibling only if safely possible. Check dirty state before changing anything."
+        )
+    if case == "S-absent":
+        instructions += [
+            "If upstream is absent, the documented stable installation is to append this exact plugin entry to the owned opencode.json:",
+            f"{UPSTREAM}#v7.0.2",
+            "Source: https://github.com/obra/superpowers/blob/v7.0.2/.opencode/INSTALL.md",
+            "A separate driver performs the restart. Do not run a server yourself.",
+        ]
+    (directory / "case-context.md").write_text("\n".join(instructions) + "\n", encoding="utf-8")
+    return native
+
+
+def permissions(directory, config, checkout, case, native):
+    def rule(action, resource, effect):
+        return {"action": action, "resource": resource, "effect": effect}
+
+    policy = [
+        rule(action, "*", "deny")
+        for action in (
+            "shell",
+            "read",
+            "edit",
+            "glob",
+            "grep",
+            "subagent",
+            "webfetch",
+            "websearch",
+            "question",
+            "execute",
+        )
+    ]
+    policy += [rule("shell", " ".join(argv), "allow") for argv in native]
+    for name in (
+        "opencode.json",
+        "case-context.md",
+        "AGENTS.md",
+        "setup-observations.json",
+        "occupied-superpowers/user-work.txt",
+    ):
+        policy += [
+            rule("read", name, "allow"),
+            rule("read", (directory / name).as_posix(), "allow"),
+        ]
+    owned_cache = (directory.parent.parent / "cache").as_posix()
+    for package in ("superpowers", "superpowers-backplane"):
+        public_root = f"{owned_cache}/opencode/npm/*/*/node_modules/{package}"
+        for leaf in (
+            "package.json",
+            "index.js",
+            "README.md",
+            "SUPERPOWERS.md",
+            "docs/*",
+            "skills/*",
+        ):
+            policy.append(rule("read", f"{public_root}/{leaf}", "allow"))
+    for public_url in (
+        "https://github.com/obra/superpowers/blob/v7.0.2/.opencode/INSTALL.md",
+        "https://opencode.ai/v2/docs/config",
+        "https://opencode.ai/v2/docs/build/plugins",
+        "https://opencode.ai/docs/plugins/",
+    ):
+        policy.append(rule("webfetch", public_url, "allow"))
+    if checkout:
+        for leaf in ("package.json", "README.md", "skills/*"):
+            policy.append(rule("read", f"{checkout.as_posix()}/{leaf}", "allow"))
+    if case == "S-absent":
+        policy += [rule("edit", "opencode.json", "allow"), rule("edit", config.as_posix(), "allow")]
+    return policy
+
+
+def prepare_config(directory, keep, checkout, case):
+    config = directory / "opencode.json"
+    (directory / "user-work.txt").write_text("Keep these unrelated user bytes.\n", encoding="utf-8")
+    native = write_case_context(directory, checkout, case)
+    plugins = [keep.as_posix(), BP]
+    if case == "F-versionless":
+        assert checkout
+        local = checkout.parent / "versionless"
+        shutil.copytree(checkout, local, ignore=shutil.ignore_patterns(".git"))
+        package = local / "package.json"
+        manifest = json.loads(package.read_text(encoding="utf-8"))
+        del manifest["version"]
+        dump(package, manifest, "w")
+        plugins.append(local.as_posix())
+    elif checkout:
+        plugins.append(checkout.as_posix())
+    elif case != "S-absent":
+        plugins.append(f"{UPSTREAM}#v7.0.1")
+    if case == "F-duplicate":
+        plugins.append(
+            f"git+https://github.com/{REPO}.git#39fbe3065c16ac119c4c10a3c2428fda39d57e61"
+        )
+    if case == "F-collision":
+        occupied = directory / "occupied-superpowers"
+        occupied.mkdir()
+        (occupied / "user-work.txt").write_text(
+            "Preserve occupied unrelated data.\n", encoding="utf-8"
+        )
+        plugins.append(occupied.as_posix())
+
+    policy = permissions(directory, config, checkout, case, native)
+    dump(config, {"plugins": plugins, "instructions": ["case-context.md"], "permissions": policy})
+    return config
+
+
+def case_environment(profile, case):
+    env = environment(profile)
+    alternate_gh = None
+    if case in OLD_GH:
+        version = OLD_GH[case]
+        alternate_gh = qualified_gh_binary(version)
+        env["PATH"] = str(alternate_gh.parent) + os.pathsep + env["PATH"]
+    if case == "F-gh-auth":
+        empty_gh = profile / "gh-no-auth"
+        empty_gh.mkdir()
+        env["GH_CONFIG_DIR"] = str(empty_gh)
+        env = {
+            key: value
+            for key, value in env.items()
+            if key.upper()
+            not in {"GH_TOKEN", "GITHUB_TOKEN", "GH_ENTERPRISE_TOKEN", "GITHUB_ENTERPRISE_TOKEN"}
+        }
+    return env, alternate_gh
+
+
+def installed_snapshot(inventory, profile):
+    """Hash the observed package trees and record native identities for this profile."""
+    tracked_skills = set(acceptance.SKILLS) | {"issue-23-sentinel"}
+    roots = {
+        Path(item["path"]).resolve(strict=True).parents[2]
+        for item in inventory["skill"]["data"]
+        if item["id"] in tracked_skills and item["id"] != "issue-23-sentinel"
+    }
+    roots.add((profile / "unrelated-plugin").resolve(strict=True))
+    checkout = profile / "upstream"
+    if checkout.is_dir():
+        roots.add(checkout.resolve(strict=True))
+    manifests = {}
+    for root in sorted(roots):
+        if not root.is_relative_to(profile):
+            raise ValueError(f"Observed package escapes its case profile: {root}")
+        files = {}
+        for path in sorted(root.rglob("*")):
+            relative = path.relative_to(root)
+            if ".git" not in relative.parts and path.is_file():
+                files[relative.as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+        digest = hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
+        manifests[str(root)] = {"files": len(files), "sha256": digest}
+    identities = [
+        {"id": plugin["id"], "source": plugin.get("source"), "status": plugin["state"]["status"]}
+        for plugin in inventory["plugin"]["data"]
+        if not plugin["id"].startswith("opencode.")
+    ]
+    return {"manifests": manifests, "plugins": identities}
+
+
+def exercise_session(case, executable, profile, config, env, setup, discover, evidence):
+    directory = config.parent
+    base_names = {"superpowers-backplane", "issue-23-sentinel"}
+    base_skills = set(acceptance.SKILLS[1:]) | {"issue-23-sentinel"}
+    with private(executable, profile, env) as (server, child, read, vector):
+        evidence["server"] = vector
+        expect_upstream = case not in {
+            "S-absent",
+            "F-missing-skill",
+            "F-incompatible",
+            "F-versionless",
+        }
+        extra_names = {"superpowers"} if expect_upstream else set()
+        extra_skills = {acceptance.SKILLS[0]} if expect_upstream else set()
+        evidence["inventory_before"] = ready(
+            read, config, base_names | extra_names, base_skills | extra_skills
+        )
+        inventory = evidence["inventory_before"]
+        evidence["installed_before"] = installed_snapshot(inventory, profile)
+        public_view = {
+            "configuration_sources": [entry["path"] for entry in inventory["config"]],
+            "plugins": [
+                entry
+                for entry in inventory["plugin"]["data"]
+                if not entry["id"].startswith("opencode.")
+            ],
+            "skills": [
+                entry
+                for entry in inventory["skill"]["data"]
+                if entry["id"] in (*acceptance.SKILLS, "issue-23-sentinel")
+            ],
+        }
+        dump(directory / "setup-observations.json", public_view)
+        auth = run([str(executable), "auth", "list", "--server", server], directory, child)
+        evidence["auth"] = {key: auth[key] for key in ("argv", "exit", "timeout")}
+        evidence["auth"]["openai"] = "openai" in (auth["stdout"] + auth["stderr"]).lower()
+        argv = [
+            str(executable),
+            "run",
+            "--server",
+            server,
+            "--format",
+            "json",
+            "--model",
+            MODEL,
+        ]
+        evidence["commands"].append(run([*argv, setup], directory, child, 135))
+        if case in {"S-native", "S-sibling", "F-dirty-adopt"}:
+            evidence["commands"].append(run([*argv, discover], directory, child, 100))
+        if case != "S-absent":
+            evidence["inventory_after"] = ready(
+                read, config, base_names | extra_names, base_skills | extra_skills
+            )
+            evidence["installed_after"] = installed_snapshot(evidence["inventory_after"], profile)
+    updated = json.loads(config.read_text(encoding="utf-8"))
+    if case == "S-absent" and f"{UPSTREAM}#v7.0.2" in updated["plugins"]:
+        with private(executable, profile, env) as (server, child, read, vector):
+            evidence["restart"] = vector
+            evidence["inventory_after"] = ready(
+                read, config, base_names | {"superpowers"}, base_skills | set(acceptance.SKILLS)
+            )
+            argv = [
+                str(executable),
+                "run",
+                "--server",
+                server,
+                "--format",
+                "json",
+                "--model",
+                MODEL,
+            ]
+            evidence["commands"].append(run([*argv, discover], directory, child, 100))
+
+
+def qualified_gh_binary(version):
+    """Reuse or obtain an official gh archive with a verified release checksum."""
+    fixture = AREA / f"gh-{version}"
+    fixture.mkdir(exist_ok=True)
+    assert fixture.resolve(strict=True).parent == AREA
+    archive = fixture / f"gh_{version}_windows_amd64.zip"
+    checksums = fixture / f"gh_{version}_checksums.txt"
+    if not archive.is_file() and not checksums.is_file():
+        subprocess.run(
+            [
+                "gh",
+                "release",
+                "download",
+                f"v{version}",
+                "--repo",
+                "cli/cli",
+                "--pattern",
+                archive.name,
+                "--pattern",
+                checksums.name,
+                "--dir",
+                str(fixture),
+            ],
+            cwd=ROOT,
+            timeout=90,
+            check=True,
+        )
+    expected = next(
+        line.split()[0]
+        for line in checksums.read_text(encoding="utf-8").splitlines()
+        if line.endswith(archive.name)
+    )
+    with archive.open("rb") as stream:
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == expected
+    target = fixture / "gh.exe"
+    with zipfile.ZipFile(archive) as package:
+        (member,) = [
+            name
+            for name in package.namelist()
+            if name == "bin/gh.exe" or name.endswith("/bin/gh.exe")
+        ]
+        content = package.read(member)
+    if target.exists():
+        assert target.read_bytes() == content
+    else:
+        with target.open("xb") as output:
+            output.write(content)
+    return target.resolve(strict=True)
+
+
+def setup_owner(case, attempt):
+    profile = AREA / f"{case}-{attempt:02}"
+    profile.mkdir()
+    (profile / ".issue-23-owner").write_text("issue-23\n", encoding="utf-8")
+    return acceptance.owned_profile(profile)
+
+
+def binary_version(executable, directory, env):
+    with executable.open("rb") as stream:
+        digest = hashlib.file_digest(stream, "sha256").hexdigest()
+    invocation = run([str(executable), "--version"], directory, env, 25)
+    assert invocation["exit"] == 0
+    return digest, invocation
+
+
+def older_opencode(profile):
+    """Obtain the genuine Windows v2.0.3 release, extracting only its executable."""
+    metadata_url = "https://registry.npmjs.org/@opencode%2fcli-windows-x64/2.0.3"
+    with urlopen(metadata_url, timeout=20) as stream:
+        metadata = json.load(stream)
+    assert metadata["name"] == "@opencode/cli-windows-x64" and metadata["version"] == "2.0.3"
+    archive_url = "https://registry.npmjs.org/@opencode/cli-windows-x64/-/cli-windows-x64-2.0.3.tgz"
+    assert metadata["dist"]["tarball"] == archive_url
+    archive = profile / "original.tgz"
+    with urlopen(archive_url, timeout=80) as stream, archive.open("xb") as target:
+        shutil.copyfileobj(stream, target)
+    with archive.open("rb") as stream:
+        integrity = (
+            "sha512-" + base64.b64encode(hashlib.file_digest(stream, "sha512").digest()).decode()
+        )
+    assert integrity == metadata["dist"]["integrity"]
+    executable = profile / "opencode.exe"
+    with tarfile.open(archive, mode="r:gz") as package:
+        (member,) = [
+            entry
+            for entry in package.getmembers()
+            if entry.isfile() and entry.name in {"package/bin/opencode.exe", "package/opencode.exe"}
+        ]
+        stream = package.extractfile(member)
+        assert stream is not None
+        with stream as content, executable.open("xb") as target:
+            shutil.copyfileobj(content, target)
+    return executable, metadata_url, integrity
+
+
+def run_special_case(case, attempt):
+    profile = setup_owner(case, attempt)
+    env = acceptance.child_environment(profile)
+    for name in acceptance.ROOTS:
+        Path(env[name]).mkdir(parents=True, exist_ok=True)
+    directory = Path(env["OPENCODE_CONFIG_DIR"])
+    keep = sentinel(profile)
+    config = prepare_config(directory, keep, None, "S-native")
+    if case == "F-below-floor":
+        settings = json.loads(config.read_text(encoding="utf-8"))
+        settings["plugins"] = [keep.as_posix()]
+        dump(config, settings, "w")
+    evidence = {
+        "before": snapshot(config, keep, None),
+        "config_before_sha256": hashlib.sha256(config.read_bytes()).hexdigest(),
+        "issue_before": run(ISSUE),
+    }
+    if case == "F-below-floor":
+        exercise_floor(profile, config, env, evidence)
+    else:
+        exercise_unauthenticated(profile, config, env, evidence)
+    evidence["after"] = snapshot(config, keep, None)
+    evidence["config_after_sha256"] = hashlib.sha256(config.read_bytes()).hexdigest()
+    evidence["configuration_equal"] = (
+        evidence["config_before_sha256"] == evidence["config_after_sha256"]
+    )
+    evidence["issue_after"] = run(ISSUE)
+    dump(profile / "raw-evidence.json", evidence)
+    print(
+        json.dumps(
+            {
+                "case": case,
+                "profile": profile.name,
+                "preservation": evidence["before"] == evidence["after"],
+            }
+        ),
+        flush=True,
+    )
+
+
+def exercise_floor(profile, config, env, evidence):
+    executable, distribution, integrity = older_opencode(profile)
+    digest, reported_version = binary_version(executable, config.parent, env)
+    assert reported_version["stdout"].strip() == "opencode v2.0.3"
+    vector = [
+        sys.executable,
+        str(AREA / "acceptance.py"),
+        "preflight",
+        "--executable",
+        str(executable),
+        "--profile",
+        str(profile),
+        "--configuration",
+        str(config),
+        "--upstream",
+        f"{UPSTREAM}#v7.0.1",
+        SHA,
+        "--backplane",
+        BP,
+        BP.rsplit("#", 1)[1],
+    ]
+    evidence.update(
+        executable=str(executable),
+        distribution=distribution,
+        archive_integrity=integrity,
+        exe_sha256=digest,
+        version=reported_version,
+        refusal=run(vector, config.parent, env, 25),
+        cache_has_no_files=not any(path.is_file() for path in (profile / "cache").rglob("*")),
+    )
+
+
+def exercise_unauthenticated(profile, config, env, evidence):
+    preflight = json.loads((AREA / "final-native-preflight.json").read_text(encoding="utf-8"))
+    executable = Path(preflight["executable"]).resolve(strict=True)
+    digest, version = binary_version(executable, config.parent, env)
+    assert digest == preflight["exe_sha256"]
+    evidence.update(executable=str(executable), exe_sha256=digest, version=version)
+    names = {"superpowers", "superpowers-backplane", "issue-23-sentinel"}
+    skills = {*acceptance.SKILLS, "issue-23-sentinel"}
+    with private(executable, profile, env) as (server, child, read, vector):
+        evidence["server"] = vector
+        evidence["inventory_before"] = ready(read, config, names, skills)
+        evidence["installed_before"] = installed_snapshot(evidence["inventory_before"], profile)
+        evidence["auth"] = run(
+            [str(executable), "auth", "list", "--server", server], config.parent, child
+        )
+        evidence["model"] = run(
+            [
+                str(executable),
+                "run",
+                "--server",
+                server,
+                "--model",
+                MODEL,
+                "--format",
+                "json",
+                "Report when native model authentication is unavailable. Do not run setup or change anything.",
+            ],
+            config.parent,
+            child,
+            35,
+        )
+        evidence["inventory_after"] = ready(read, config, names, skills)
+        evidence["installed_after"] = installed_snapshot(evidence["inventory_after"], profile)
+        report_unavailable_model(evidence)
+
+
+def report_unavailable_model(evidence):
+    auth, model = evidence["auth"], evidence["model"]
+    diagnostic = (model["stderr"] or model["stdout"]).strip()
+    if auth["exit"] != 0 or "openai" in (auth["stdout"] + auth["stderr"]).lower():
+        return
+    if model["exit"] != 1 or "model unavailable" not in diagnostic.lower():
+        return
+    guide = ROOT / "docs/installing-opencode.md"
+    row = next(
+        line
+        for line in guide.read_text(encoding="utf-8").splitlines()
+        if line.startswith("| OpenCode model authentication is unavailable")
+    )
+    evidence["preflight_report"] = {
+        "failed_check": "The intended isolated OpenCode profile has no OpenAI sign-in for the requested model.",
+        "native_diagnostic": diagnostic,
+        "recovery": row.split("|")[2].strip(),
+        "recovery_source": "docs/installing-opencode.md",
+    }
+    print(json.dumps(evidence["preflight_report"]), flush=True)
+
+
+def case_run(case, attempt):
+    if case in {"F-below-floor", "F-unauthenticated"}:
+        run_special_case(case, attempt)
+        return
+    profile = setup_owner(case, attempt)
+    keep = sentinel(profile)
+    checkout = clone(profile, case) if case in CHECKOUT_CASES else None
+    env, alternate_gh = case_environment(profile, case)
+    directory = Path(env["OPENCODE_CONFIG_DIR"])
+    config = prepare_config(directory, keep, checkout, case)
+    if case.startswith("S-") or case in {"F-dirty-adopt", "F-dirty-update", "F-incompatible"}:
+        assert (
+            directory.resolve(strict=True).is_relative_to(profile)
+            and not (directory / ".git").exists()
+        )
+        assert git(ROOT, "check-ignore", str(directory / "AGENTS.md"))
+        git(directory, "init", "--quiet", "--initial-branch=fixture")
+        assert Path(git(directory, "rev-parse", "--show-toplevel")).resolve() == directory
+        (directory / "AGENTS.md").write_text(
+            "This is an isolated consumer fixture. Follow the requested setup scope. "
+            "Use the existing installed package contracts and the same private server's "
+            "observations in setup-observations.json to verify effective paths. "
+            "Keep GitHub read-only and preserve the unrelated fixture files.\n",
+            encoding="utf-8",
+        )
+        with (AREA / "ledger.md").open("a", encoding="utf-8") as stream:
+            stream.write(
+                f"\n- Task 2 {case} isolated consumer repository: {directory}, unborn fixture branch, no remote; prevents ancestor project instructions contaminating the setup test.\n"
+            )
+    observed = json.loads((AREA / "final-native-preflight.json").read_text(encoding="utf-8"))
+    executable = Path(observed["executable"]).resolve(strict=True)
+    with executable.open("rb") as binary:
+        assert hashlib.file_digest(binary, "sha256").hexdigest() == observed["exe_sha256"]
+    guide = (ROOT / "docs/installing-opencode.md").read_text(encoding="utf-8").splitlines()
+    setup = next(
+        line for line in guide if line.startswith("Set up Backplane in OpenCode V2.")
+    ).replace("OWNER/REPO#ISSUE", f"{REPO}#23")
+    discover = next(line for line in guide if line.startswith("Use the native skill tool to load "))
+    evidence = {
+        "case": case,
+        "profile": str(profile),
+        "executable": str(executable),
+        "executable_sha256": observed["exe_sha256"],
+        "model": MODEL,
+        "before": snapshot(config, keep, checkout),
+        "commands": [],
+        "config_before": config.read_text(encoding="utf-8"),
+        "issue_before": run(ISSUE),
+    }
+    evidence["native_gh"] = [
+        run([str(alternate_gh) if alternate_gh else argv[0], *argv[1:]], directory, env)
+        for argv in GH
+    ]
+    try:
+        exercise_session(case, executable, profile, config, env, setup, discover, evidence)
+    except (TimeoutError, RuntimeError, ValueError) as error:
+        evidence["probe_error"] = str(error)
+    finally:
+        evidence["after"] = snapshot(config, keep, checkout)
+        evidence["config_after"] = config.read_text(encoding="utf-8")
+        evidence["issue_after"] = run(ISSUE)
+        dump(profile / "raw-evidence.json", evidence)
+    print(
+        json.dumps(
+            {
+                "case": case,
+                "profile": profile.name,
+                "error": evidence.get("probe_error"),
+                "protected_equal": evidence["before"] == evidence["after"],
+                "config_equal": evidence["config_before"] == evidence["config_after"],
+                "issue_equal": evidence["issue_before"]["stdout"]
+                == evidence["issue_after"]["stdout"],
+                "auth": evidence.get("auth"),
+                "commands": [
+                    {
+                        "exit": item["exit"],
+                        "timeout": item["timeout"],
+                        "skills": [r["id"] for r in acceptance.parse_skill_results(item["stdout"])],
+                    }
+                    for item in evidence["commands"]
+                ],
+            }
+        ),
+        flush=True,
+    )
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("cases", nargs="+", choices=CASES)
+    parser.add_argument("--attempt", type=int, default=1)
+    options = parser.parse_args()
+    for selected in options.cases:
+        case_run(selected, options.attempt)

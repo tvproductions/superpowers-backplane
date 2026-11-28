@@ -31,8 +31,8 @@ This Task 1 record establishes the package operation rows. The five named checks
 
 All five named checks passed on the exact hosted #23 package at
 8e1e2005025890776eb99bd4b9161996fbbe68ed. The skill-structure check confirmed
-both Backplane entry-point names, metadata, Git blobs, and ten directly linked
-references. The four behavioral prompts ran in separate fresh authenticated
+both Backplane entry-point names, metadata, Git blobs, and ten direct links to
+nine distinct references. The four behavioral prompts ran in separate fresh authenticated
 OpenCode V2 2.1.4 sessions. Each completed a native backlog Skill call, and all
 23 rubric expectations passed. Native #24 intake and protected files matched
 before and after the suite.
@@ -103,6 +103,37 @@ preflight and removal of the same path from both manifest maps.
 The [reviewed replay builder](transcripts/2026-11-01-issue-24-archive_reviewed_operations.py.txt)
 and [preflight probe](transcripts/2026-11-01-issue-24-native_preflight.py.txt)
 bind these results to the screened operation receipt.
+
+### Corrected-candidate review and capability replay
+
+Independent review of `29ac21a553596efac73c11236fa64f5fc153f5d7` matched the
+eight native operation receipts, the full Git manifests and separate Skill
+blobs, five conformance checks, and eleven native fixture stages. It found two
+material gaps. The standalone verifier accepted altered command, source,
+failure, and preservation fields, despite the original capture containing
+the required evidence. The guide also omitted compatibility preflight and
+explicit `gh` capability rechecks for update and rollback.
+
+Eight assertion failures reproduced the receipt gaps before correction. The
+verifier now binds the exact guide request and its digest, installed Skill
+blobs, both preflight commands, unrelated plugins, and failed-candidate
+observations. All 23 helper tests passed after correction, and the original
+eight native rows and before-apply refusal still pass verification. The
+[negative controls](transcripts/2026-11-01-issue-24-test_lifecycle_receipt.py.txt)
+operate on copies of the screened historical receipt.
+
+The corrected guide at blob `4d3e5597e5961c417c34666e5eff43a53995b1b4`
+reuses the compatibility preflight and read-only V2 setup checks. A fresh
+Windows V2 2.1.4 profile replayed update and rollback with the recorded
+Superpowers v7.0.1 installation. On both sides of both changes, gh 2.106.0
+resolved the exact target, authenticated successfully, and exposed the add,
+remove, and completed-close flags. Full #24 intake and protected snapshots
+matched across both operations. The candidate matched 105 Git blobs and the
+restored prior package matched 70. Each loaded all three Skills in a fresh
+session. The [screened capability replay](2026-11-28-issue-24-capability-replay.json)
+and [driver](transcripts/2026-11-28-issue-24-verify_update_rollback.py.txt) bind
+these observations. The earlier separate recovery replays retain the actual
+failed stages and before-repair snapshots.
 
 
 ## Criterion mapping

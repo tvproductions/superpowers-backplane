@@ -160,6 +160,14 @@ editing `plugins`. Keep the prior source available until the candidate passes
 a fresh discovery check. Keep the independent Superpowers entry, unrelated
 plugins and other settings in place.
 
+Before changing the pin, run the
+[compatibility preflight](../skills/managing-superpowers-backlog/references/installing-superpowers.md#compatibility-preflight)
+for the current installation and intended candidate. Reuse the read-only
+checks under [Verify V2 setup](#verify-v2-setup) to confirm host support,
+independent Superpowers provenance and compatibility, and `gh` authentication,
+full issue intake, label flags, and close-reason support. After update or
+restoration, repeat discovery and the capability checks before scoring success.
+
 Before applying a new pin, check that GitHub resolves the exact candidate commit:
 
 ```text
@@ -173,9 +181,9 @@ preflight failure.
 | Operation | Edit and verify |
 | --- | --- |
 | Install or repeat install | Extend `plugins` with one Backplane Git entry pinned to its full commit. If that entry is already configured, reuse it. Wait for one effective Backplane package and run the fresh-session discovery request above. |
-| Update | Confirm the candidate commit is available from the same trusted repository. Replace only the Backplane pin with the candidate's full commit. Restart in the intended configuration, confirm the resolved revision, and load all three skills from their installed sources. |
-| Roll back | Replace the Backplane pin with the recorded verified prior commit and restart. Confirm the restored revision and repeat fresh discovery. |
-| Recover from an unavailable source or failed verification | Record the failed source or discovery check before any repair. Keep the verified prior pin when the candidate is unavailable at preflight. If a candidate was already applied, restore the previous Backplane pin and prove the prior revision and all three skill loads again. Report recovery as unverified if the previous source or its loads cannot be confirmed. |
+| Update | Pass preflight and confirm the candidate commit is available from the same trusted repository. Replace only the Backplane pin with the candidate's full commit. Restart, confirm the resolved revision, load all three skills, and recheck Superpowers compatibility and `gh` capabilities. |
+| Roll back | Run preflight against the recorded prior source, restore that Backplane pin, and restart. Confirm the restored revision and repeat fresh discovery and the `gh` capability checks. |
+| Recover from an unavailable source or failed verification | Record the failed check before any repair. Keep the verified prior pin when the candidate fails preflight. If a candidate was already applied, follow the rollback row. Report recovery as unverified if the prior source, discovery, or required capabilities cannot be confirmed. |
 | Remove Backplane | Remove only the Backplane entry and restart. Confirm that both Backplane skills are absent and that the independently installed Superpowers skill still loads. |
 | Restore a disposable test profile | Restore its original Backplane entry and verify its revision and all three skill loads again. |
 
@@ -197,5 +205,6 @@ state.
 
 ### V2 lifecycle verification evidence
 
-See the [V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/203c5730c15617b9780e7767c6b201b8642b02fd/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md#task-1--native-package-operations)
-for the tested revisions and observed results.
+See the [initial V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/203c5730c15617b9780e7767c6b201b8642b02fd/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md#task-1--native-package-operations)
+for the revisions in the initial replay. [Issue #24](https://github.com/tvproductions/superpowers-backplane/issues/24)
+tracks the full lifecycle and integrated verification.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -22,6 +23,16 @@ CASES = (
 UPSTREAM_SKILL = "using-superpowers"
 BACKPLANE_SKILLS = ("managing-superpowers-backlog", "managing-superpowers-handoffs")
 FAILURE_CASES = {"L-unavailable-source", "L-failed-verification-recovery"}
+REPO = "tvproductions/superpowers-backplane"
+REPLAY_CANDIDATE = "8e1e2005025890776eb99bd4b9161996fbbe68ed"
+UNAVAILABLE = "0" * 40
+UPSTREAM_TARGET = "superpowers@git+https://github.com/obra/superpowers.git#v7.0.1"
+UPSTREAM_REVISION = "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+UPSTREAM_SKILL_BLOB = "069d578445805a28b8dacbf70cdf045e1673def0"
+UPSTREAM_ONLY_REQUEST = (
+    "Use the native skill tool to load using-superpowers. Report the tool result and its source path. "
+    "Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery."
+)
 
 
 def record(value: object) -> dict[str, Any]:
@@ -259,6 +270,10 @@ def verified_preflight(value: object) -> bool:
     config_hash = observed.get("config_sha256_before")
     return (
         observed.get("passed") is True
+        and observed.get("positive_lookup")
+        == f"gh api repos/{REPO}/commits/{REPLAY_CANDIDATE} --jq .sha"
+        and observed.get("unavailable_lookup")
+        == f"gh api repos/{REPO}/commits/{UNAVAILABLE} --jq .sha"
         and observed.get("positive_exit") == 0
         and observed.get("unavailable_exit") == 1
         and observed.get("reported_absent_commit") is True
@@ -274,20 +289,98 @@ def verified_preflight(value: object) -> bool:
     )
 
 
+def discovery_request() -> str:
+    """Read the exact request from the current verified adopter guide."""
+    guide = Path("docs/installing-opencode.md")
+    return next(
+        line
+        for line in guide.read_text(encoding="utf-8").splitlines()
+        if line.startswith("Use the native skill tool to load ")
+    )
+
+
+def matches_discovery(observed: dict[str, Any], prompt: str) -> bool:
+    """Bind the recorded request and its digest to independently read instructions."""
+    command = observed.get("command")
+    return (
+        isinstance(command, list)
+        and bool(command)
+        and command[-1] == prompt
+        and observed.get("discovery_prompt_sha256") == hashlib.sha256(prompt.encode()).hexdigest()
+    )
+
+
+def matches_recovery_failure(row: dict[str, Any], prompt: str) -> bool:
+    """Require the actual failed resolver target or the active candidate's denied native load."""
+    failure = record(row.get("failure"))
+    if not sha(failure.get("config_sha256"), 64):
+        return False
+    if row["id"] == "L-unavailable-source":
+        return failure.get("failed_target") == f"git+https://github.com/{REPO}.git#{UNAVAILABLE}"
+
+    raw_results = failure.get("native_results")
+    if not isinstance(raw_results, list) or len(raw_results) != 3:
+        return False
+    results = [record(item) for item in raw_results]
+    captures = {item.get("capture_sha256") for item in results}
+    return (
+        failure.get("revision") == REPLAY_CANDIDATE
+        and matches_discovery(failure, prompt)
+        and bool(failure.get("session_id"))
+        and all(item.get("session_id") == failure["session_id"] for item in results)
+        and len(captures) == 1
+        and sha(next(iter(captures)), 64)
+        and {(item.get("id"), item.get("status")) for item in results}
+        == {
+            (UPSTREAM_SKILL, "completed"),
+            (BACKPLANE_SKILLS[0], "completed"),
+            (BACKPLANE_SKILLS[1], "error"),
+        }
+    )
+
+
+def matches_archived_evidence(row: dict[str, Any], prompt: str, manifest: dict[str, str]) -> bool:
+    """Reconcile the archived operation with its actual fixture and source identities."""
+    after = record(row.get("after"))
+    profile = owned_path(after.get("profile_root"))
+    if profile is None or after.get("upstream_revision") != UPSTREAM_REVISION:
+        return False
+    plugins = record(after.get("protected")).get("unrelated_plugins")
+    if plugins != [(profile / "unrelated-plugin").as_posix(), UPSTREAM_TARGET]:
+        return False
+
+    revision = after.get("revision")
+    if not matches_discovery(after, prompt if revision else UPSTREAM_ONLY_REQUEST):
+        return False
+    skill_files = record(after.get("skill_files"))
+    if record(skill_files.get(UPSTREAM_SKILL)).get("blob") != UPSTREAM_SKILL_BLOB:
+        return False
+    if revision and any(
+        record(skill_files.get(name)).get("blob") != manifest[f"skills/{name}/SKILL.md"]
+        for name in BACKPLANE_SKILLS
+    ):
+        return False
+    return row["id"] not in FAILURE_CASES or matches_recovery_failure(row, prompt)
+
+
 def verify(path: Path) -> dict[str, object]:
     """Require each lifecycle row exactly once and all results to pass."""
     receipt = json.loads(path.read_text(encoding="utf-8"))
     rows = [record(row) for row in receipt["rows"]]
     manifests = {}
     results = []
+    prompt = discovery_request()
     for row in rows:
         result = classify(row)
         after = record(row.get("after"))
         revision = after.get("revision")
-        if result == "PASS" and revision:
-            if revision not in manifests:
+        if result == "PASS":
+            if revision and revision not in manifests:
                 manifests[revision] = expected_package_files(revision, Path.cwd())
-            if after["installed_manifest"] != manifests[revision]:
+            manifest = manifests.get(revision, {})
+            if after["installed_manifest"] != manifest or not matches_archived_evidence(
+                row, prompt, manifest
+            ):
                 result = "FAIL"
         results.append({"id": row.get("id"), "result": result})
     identifiers = [row["id"] for row in results]

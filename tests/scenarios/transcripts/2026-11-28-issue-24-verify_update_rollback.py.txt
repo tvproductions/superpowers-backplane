@@ -1,0 +1,85 @@
+"""Replay V2 update and rollback with the adopter guide's capability checks."""
+
+import argparse
+from pathlib import Path
+
+import archive_reviewed_operations
+import native_lifecycle as native
+import v2_cases
+
+
+def capability(fixture: dict, revision: str) -> dict:
+    """Verify the planned pin and installed gh capabilities without issue mutation."""
+    workdir = fixture["config"].parent
+    vectors = {
+        "version": ["gh", "--version"],
+        "auth": ["gh", "auth", "status"],
+        "lookup": ["gh", "api", f"repos/{native.REPO}/commits/{revision}", "--jq", ".sha"],
+        "labels": ["gh", "issue", "edit", "--help"],
+        "closure": ["gh", "issue", "close", "--help"],
+    }
+    results = {
+        name: v2_cases.run(vector, workdir, fixture["env"], 25) for name, vector in vectors.items()
+    }
+    observed = {
+        "gh_version": results["version"]["stdout"].splitlines()[0],
+        "resolved_revision": results["lookup"]["stdout"].strip(),
+        "auth_exit": results["auth"]["exit"],
+        "label_flags": all(
+            flag in results["labels"]["stdout"] for flag in ("--add-label", "--remove-label")
+        ),
+        "completed_reason": all(
+            flag in results["closure"]["stdout"] for flag in ("--reason", "completed")
+        ),
+        "commands": vectors,
+    }
+    if (
+        any(item["exit"] != 0 or item["timeout"] for item in results.values())
+        or observed["resolved_revision"] != revision
+        or not observed["label_flags"]
+        or not observed["completed_reason"]
+    ):
+        raise RuntimeError(f"Pinned source or gh capability failed for {revision}")
+    return observed
+
+
+def main() -> int:
+    """Keep the initial, updated, and restored native package observations distinct."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--attempt", type=int, required=True)
+    args = parser.parse_args()
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("OpenCode executable digest differs")
+
+    fixture = native.make_fixture(args.attempt)
+    profile = fixture["profile"]
+    rows = []
+    installed = native.observe(fixture, "initial", native.PRIOR)
+    update_before = capability(fixture, native.CANDIDATE)
+    updated = native.observe(fixture, "update", native.CANDIDATE)
+    update_after = capability(fixture, native.CANDIDATE)
+    native.record_row(rows, profile, "L-update", installed, updated)
+    rollback_before = capability(fixture, native.PRIOR)
+    restored = native.observe(fixture, "rollback", native.PRIOR)
+    rollback_after = capability(fixture, native.PRIOR)
+    native.record_row(rows, profile, "L-rollback", updated, restored)
+
+    captures = {
+        name: native.digest(profile / f"{name}-raw.json")
+        for name in ("initial", "update", "rollback")
+    }
+    result = {
+        "guide_blob": v2_cases.git(Path.cwd(), "hash-object", "docs/installing-opencode.md"),
+        "capture_hashes": captures,
+        "checks": {
+            "L-update": {"before": update_before, "after": update_after},
+            "L-rollback": {"before": rollback_before, "after": rollback_after},
+        },
+        "rows": archive_reviewed_operations.screened(rows),
+    }
+    v2_cases.dump(profile / "capability-replay.json", result)
+    return 0 if all(row["result"] == "PASS" for row in rows) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

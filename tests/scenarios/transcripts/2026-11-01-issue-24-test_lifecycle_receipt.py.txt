@@ -1,0 +1,66 @@
+"""Verify archived OpenCode V2 evidence against independent inputs."""
+
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from lifecycle import verify
+
+
+class LifecycleReceiptTests(unittest.TestCase):
+    """Exercise the same receipt verifier used for acceptance."""
+
+    def setUp(self):
+        self.receipt_path = Path("tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json")
+        self.receipt = json.loads(self.receipt_path.read_text(encoding="utf-8"))
+
+    def check_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "changed.json"
+            path.write_text(json.dumps(self.receipt), encoding="utf-8")
+            self.assertFalse(verify(path)["valid"])
+
+    def test_exact_receipt_passes(self):
+        self.assertTrue(verify(self.receipt_path)["valid"])
+
+    def test_changed_guide_command_is_rejected(self):
+        self.receipt["rows"][0]["after"]["command"][-1] = "Use a different request."
+        self.check_rejected()
+
+    def test_changed_guide_prompt_digest_is_rejected(self):
+        self.receipt["rows"][0]["after"]["discovery_prompt_sha256"] = "a" * 64
+        self.check_rejected()
+
+    def test_wrong_attributed_skill_blob_is_rejected(self):
+        self.receipt["rows"][0]["after"]["skill_files"]["managing-superpowers-handoffs"]["blob"] = (
+            "a" * 40
+        )
+        self.check_rejected()
+
+    def test_missing_unrelated_plugin_snapshots_are_rejected(self):
+        for state in ("before", "after"):
+            del self.receipt["rows"][0][state]["protected"]["unrelated_plugins"]
+        self.check_rejected()
+
+    def test_missing_unavailable_candidate_identity_is_rejected(self):
+        row = next(row for row in self.receipt["rows"] if row["id"] == "L-unavailable-source")
+        del row["failure"]["failed_target"]
+        self.check_rejected()
+
+    def test_missing_failed_candidate_loads_and_identity_are_rejected(self):
+        row = next(
+            row for row in self.receipt["rows"] if row["id"] == "L-failed-verification-recovery"
+        )
+        for field in ("native_results", "revision"):
+            del row["failure"][field]
+        self.check_rejected()
+
+    def test_missing_preflight_command_is_rejected(self):
+        for field in ("positive_lookup", "unavailable_lookup"):
+            with self.subTest(field=field):
+                original = self.receipt["preflight_before_apply"].pop(field)
+                try:
+                    self.check_rejected()
+                finally:
+                    self.receipt["preflight_before_apply"][field] = original

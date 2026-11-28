@@ -1,3 +1,7 @@
+# OpenCode V2 release accounting and issue #24 checkpoint — 2026-11-28
+
+Read [the current handoff](docs/superpowers-backplane/handoffs/20261128T005952Z-opencode-v2-release-accounting.md) and invoke RESUME on that path. Issue #23 and fixture #39 are complete. The exact #24 candidate is synced on its own branch. Reconcile release scope first, then revalidate the integration and closeout gates for #24 and #12.
+
 # Issue #23 integrated delivery and companion side notes — November 27, 2026
 
 Read [the current handoff](docs/superpowers-backplane/handoffs/20261127T222652Z-issue-23-integrated-delivery-and-companion-notes.md) and invoke RESUME on that path. PR #38 merged and exact delivery passed. Issue #23 remains in review for closeout. The gzlite and gzkit policy notes are deferred while both projects are under construction.

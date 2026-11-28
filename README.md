@@ -42,14 +42,20 @@ verified support limits, recovery and authorization guidance.
 
 For Codex, follow the [installation and setup guide](docs/installing-codex.md).
 For Claude Code, follow the [installation and setup guide](docs/installing-claude-code.md).
-For OpenCode V1/V2, see the [initial installation guide](docs/installing-opencode.md);
-setup, lifecycle and final integrated acceptance remain pending.
+For OpenCode V2 2.0.4 or later, follow the
+[installation and maintenance guide](docs/installing-opencode.md).
 
 Codex and Claude Code have native acceptance at the exact versions, platforms
-and source revisions linked in the operations guide. OpenCode has initial
-installation smoke evidence only; update, rollback and removal are not yet
-verified. Other harnesses are outside the approved v0.1 scope. GitHub Projects
-are optional; IssueOps is not required, and no consuming-project runtime is imposed.
+and source revisions linked in the operations guide. OpenCode V2 setup and
+maintenance were verified on Windows with OpenCode V2 2.1.4. See the
+[setup evidence](https://github.com/tvproductions/superpowers-backplane/blob/71a75066d2626a7f91025428cf1077a46f6a7be3/tests/scenarios/2026-11-27-issue-23-satisfaction.md)
+and [lifecycle evidence](https://github.com/tvproductions/superpowers-backplane/blob/eba4874ab869f19f563234415698aec66f7c8001/tests/scenarios/2026-11-28-issue-24-satisfaction.md)
+for the tested upstream versions and source revisions.
+[Issue #12](https://github.com/tvproductions/superpowers-backplane/issues/12)
+tracks integrated acceptance.
+
+Other harnesses are outside the approved v0.1 scope. GitHub Projects are
+optional; IssueOps is not required, and no consuming-project runtime is imposed.
 
 Upstream Superpowers supplies the development workflow; this Backplane adds
 native GitHub backlog and product continuity around that workflow. gz-skills

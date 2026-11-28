@@ -1,4 +1,4 @@
-# Initial Backplane installation in OpenCode
+# Install and maintain Backplane in OpenCode V2
 
 This guide covers the native package and setup checks for OpenCode V2.
 Backplane is a companion to independently installed
@@ -6,10 +6,12 @@ Backplane is a companion to independently installed
 in this package's root `skills/` tree; the adapter registers that tree through
 the active host's native API.
 
-Issue #20 verified the shared adapter's initial package and discovery. V2
-setup and failure verification belongs to #23, lifecycle verification to #24,
-and integrated OpenCode acceptance to #12. The V1 configuration example records
-the earlier #20 smoke scope. Current Backplane support is V2 only.
+Issue #20 verified the shared adapter's initial package and discovery. See the
+[V2 setup evidence](https://github.com/tvproductions/superpowers-backplane/blob/71a75066d2626a7f91025428cf1077a46f6a7be3/tests/scenarios/2026-11-27-issue-23-satisfaction.md)
+and [V2 lifecycle evidence](https://github.com/tvproductions/superpowers-backplane/blob/eba4874ab869f19f563234415698aec66f7c8001/tests/scenarios/2026-11-28-issue-24-satisfaction.md)
+for exact tested versions and package revisions. [Issue #12](https://github.com/tvproductions/superpowers-backplane/issues/12)
+tracks integrated V2 acceptance. The historical V1 example records the earlier
+#20 smoke check. Current Backplane support is V2 only.
 
 ## Prerequisites
 

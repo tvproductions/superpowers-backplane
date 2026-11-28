@@ -1,0 +1,4491 @@
+{
+  "issue": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+  "issue_revision": "2026-11-27T08:47:30Z",
+  "phase": "Task 2 candidate verification",
+  "plan": {
+    "path": "docs/superpowers-backplane/plans/2026-11-28-issue-12-opencode-v2-integrated-acceptance.md",
+    "sha256": "81923b92381bac0e17f12a2ac040d34db641c6ea6f4121cceaa04645122417e3",
+    "operator_response": "approved",
+    "source": "Direct response to the linked draft approval request in this session"
+  },
+  "baseline": {
+    "revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+    "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+    "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+    "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+    "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+  },
+  "scored_result": "UNKNOWN",
+  "prerequisites": {
+    "2": "CLOSED/COMPLETED",
+    "20": "CLOSED/COMPLETED",
+    "23": "CLOSED/COMPLETED",
+    "24": "CLOSED/COMPLETED"
+  },
+  "issue_state": {
+    "state": "OPEN",
+    "label": "backplane:backlog",
+    "parent": 1,
+    "children": [],
+    "blocked_by": [
+      24,
+      2
+    ],
+    "blocking": [
+      6
+    ]
+  },
+  "fixture_39": {
+    "state": "CLOSED/COMPLETED",
+    "labels": [
+      "documentation"
+    ],
+    "pr": 40,
+    "merged_at": "2026-11-28T00:29:31Z",
+    "closed_at": "2026-11-28T00:30:38Z"
+  },
+  "rows": [
+    {
+      "id": "S-native",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The exact #23 hosted receipt observes native setup with the current adapter, skills and unchanged setup procedure. The later guide change adds maintenance.",
+      "expected": "Setup, preservation, and three fresh Skills",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": false,
+        "package_files": 105
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=S-native]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        },
+        {
+          "path": "tests/scenarios/2026-11-27-issue-23-integrated-delivery.json",
+          "selector": "native_windows_v2_2_1_4",
+          "git_blob": "d4b781cba9f3e54634b596ef5024e48a5fa886de",
+          "sha256": "46136775ac52f9418cbece6a979f9eb9adb3578beb78ca891b1fa7577da8741e"
+        }
+      ]
+    },
+    {
+      "id": "S-sibling",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Setup, preservation, and three fresh Skills",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": false,
+        "package_files": 70
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=S-sibling]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "capture_sha256": "4e65a9899fe74b40b4ed16e3f115765c844d1b62c247fbf78c5e8a690b4151f2"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "capture_sha256": "4e65a9899fe74b40b4ed16e3f115765c844d1b62c247fbf78c5e8a690b4151f2"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+            "capture_sha256": "4e65a9899fe74b40b4ed16e3f115765c844d1b62c247fbf78c5e8a690b4151f2"
+          }
+        ],
+        "diagnostic": null,
+        "recovery": null,
+        "package_files": 109,
+        "exact_package_manifest": true,
+        "installed_before_sha256": "177cddc4361a99748dcd5d2541b521eb4e7fb3d764f6f6cf3dd7d08f155d2cff",
+        "installed_after_sha256": "177cddc4361a99748dcd5d2541b521eb4e7fb3d764f6f6cf3dd7d08f155d2cff",
+        "protected_before_sha256": "73bc2e9d289cf65ff0116cfd25479e96977db7b054d9ba35844bc9438580a8ca",
+        "protected_after_sha256": "73bc2e9d289cf65ff0116cfd25479e96977db7b054d9ba35844bc9438580a8ca",
+        "capture_sha256": "416f93fce40b6e53873728f4840132ceaf631174c2211318b72eda1a48c4e560",
+        "scored_receipt_sha256": "8f35d247af7047e2299add53b22ca65c0e07d910bfa71c9625711e8b4c6febcb"
+      }
+    },
+    {
+      "id": "S-absent",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Setup, preservation, and three fresh Skills",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": false,
+        "package_files": 70
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+        "skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=S-absent]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "capture_sha256": "20a318a0f3b6ab6b06b91d0fb425b93ead686b6b73a703c594461ec0de4275fb"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "capture_sha256": "20a318a0f3b6ab6b06b91d0fb425b93ead686b6b73a703c594461ec0de4275fb"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+            "capture_sha256": "20a318a0f3b6ab6b06b91d0fb425b93ead686b6b73a703c594461ec0de4275fb"
+          }
+        ],
+        "diagnostic": null,
+        "recovery": null,
+        "package_files": 109,
+        "exact_package_manifest": true,
+        "installed_before_sha256": "f8acfec992d61dcc4f429205e2a8029812aa1dc2fdde1404dfd14b3c39377fcf",
+        "installed_after_sha256": "c296ed48b4fd4b0209af7f2e4a4e2c9a05f1d57cd1ddbc568e339838c5833790",
+        "protected_before_sha256": "fb7430d39aebc3610de2938038174f5b651cf89fe811a1b58b4b47bb82ebe127",
+        "protected_after_sha256": "fb7430d39aebc3610de2938038174f5b651cf89fe811a1b58b4b47bb82ebe127",
+        "capture_sha256": "70038d7527a291f6afd42d09d30ca6011baa064011eafd2981194742acc4f3ec",
+        "scored_receipt_sha256": "69f63e569d96afa447efb287841ac76126057a96945d75c890fc8c27daecfa4a"
+      }
+    },
+    {
+      "id": "F-lookalike",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://example.invalid/issue-23/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-lookalike",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-lookalike]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://example.invalid/issue-23/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-lookalike",
+            "status": "refused",
+            "capture_sha256": "5c44fc3614831ef424b159639205941596e7d84b58eeacb14aaf92768f68f275"
+          }
+        ],
+        "diagnostic": "| Upstream provenance | **FAIL:** origin is `https://example.invalid/issue-23/superpowers.git`; authenticity is not established. |",
+        "recovery": "**Recovery:** preserve the existing sibling checkout. Obtain verifiable provenance or configure a separate authentic upstream installation using the documented V2 stable package channel, pinned to `v7.0.2`:",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "df4fe52beaaea7dcac0a84c9b49a1a7ce9b21706a2328691169b0c6dc2b9df15",
+        "installed_after_sha256": "df4fe52beaaea7dcac0a84c9b49a1a7ce9b21706a2328691169b0c6dc2b9df15",
+        "protected_before_sha256": "ba78efbf404be1dd0cbac7489a832f0e4638abf325b26d82f535cb9ba9ec82f0",
+        "protected_after_sha256": "ba78efbf404be1dd0cbac7489a832f0e4638abf325b26d82f535cb9ba9ec82f0",
+        "capture_sha256": "5c44fc3614831ef424b159639205941596e7d84b58eeacb14aaf92768f68f275",
+        "scored_receipt_sha256": "868da7bf797aacd490960f80b5e744758d2a2d8ca130d7fe650195fa732a3f77"
+      }
+    },
+    {
+      "id": "F-versionless",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "upstream_identity_unavailable": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": null,
+        "upstream_revision": null,
+        "skill_results": [
+          {
+            "id": "F-versionless",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-versionless]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": null,
+        "upstream_revision": null,
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "upstream_identity_unavailable": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-versionless",
+            "status": "refused",
+            "capture_sha256": "854adb0e6fbb3de21f7922212fd49f24b7efc2cbd35b5fd94b086d55f73ecfab"
+          }
+        ],
+        "diagnostic": "| Active upstream provenance/version | **FAIL** — no independently observable release or Git revision. Its identity cannot be established from discovered skills alone. |",
+        "recovery": "**Recovery:** allow required contract/package reads, then establish the active local plugin’s provenance or verify and adopt the existing sibling checkout. If no compatible upstream is available, use upstream’s documented V2 stable package channel. Preserve unrelated configuration and avoid adding a duplicate upstream.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "4e5194b4759a8cbe872dd2f4df5902080d04434badeefda280e0322d81a48dc5",
+        "installed_after_sha256": "4e5194b4759a8cbe872dd2f4df5902080d04434badeefda280e0322d81a48dc5",
+        "protected_before_sha256": "cea1785cf9ecd4fb454ed86b3a646cb33a5f1fb18d1deabd380b62f3e427c0f4",
+        "protected_after_sha256": "cea1785cf9ecd4fb454ed86b3a646cb33a5f1fb18d1deabd380b62f3e427c0f4",
+        "capture_sha256": "854adb0e6fbb3de21f7922212fd49f24b7efc2cbd35b5fd94b086d55f73ecfab",
+        "scored_receipt_sha256": "59dda08333ab524c2bbabba4eced837e541b3905a58ec563a4adcb57982c89a7"
+      }
+    },
+    {
+      "id": "F-duplicate",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-duplicate",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-duplicate]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-duplicate",
+            "status": "refused",
+            "capture_sha256": "ad197bb53fd2d8d798a612e624b11e2e3d2690f6d302afb6092776718c929ada"
+          }
+        ],
+        "diagnostic": "**Setup verification failed: duplicate Backplane packages are configured.** No files, plugins, upstream installations, or GitHub state were changed.",
+        "recovery": "**Recovery:** retain the intended Backplane revision and remove only the redundant entry from `opencode.json`; then recheck native plugin status and skill discovery. Preserve the unrelated plugin and existing Superpowers entry. Allow access to the required contract files to resolve the remaining unknown checks.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "a32529169db9ac887844e6b331a0a3f8000e6003d2f3bb5165ba4c7167c3737b",
+        "installed_after_sha256": "a32529169db9ac887844e6b331a0a3f8000e6003d2f3bb5165ba4c7167c3737b",
+        "protected_before_sha256": "50ef2789a96ed355ae227400562be2467f173d27bbbaa01ce3fbbd18246a4363",
+        "protected_after_sha256": "50ef2789a96ed355ae227400562be2467f173d27bbbaa01ce3fbbd18246a4363",
+        "capture_sha256": "ad197bb53fd2d8d798a612e624b11e2e3d2690f6d302afb6092776718c929ada",
+        "scored_receipt_sha256": "401484fffc1dcc082a6d516985fad18feea01d6b04dad8611d6f1a486438f88c"
+      }
+    },
+    {
+      "id": "F-dirty-adopt",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Setup, preservation, and three fresh Skills",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": false,
+        "package_files": 70
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "280b7fe143187712b974732603f4c3e8cca8ca7b"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-dirty-adopt]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "native_github": true,
+          "setup_report": true,
+          "one_backplane": true,
+          "payload": true,
+          "unrelated_native_plugin": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "using-superpowers",
+            "status": "completed",
+            "git_blob": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "capture_sha256": "679244bd32c1cd37ed22098d4883c6c5be80e5f6a4e16ef30fc39815ba93ec66"
+          },
+          {
+            "id": "managing-superpowers-backlog",
+            "status": "completed",
+            "git_blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "capture_sha256": "679244bd32c1cd37ed22098d4883c6c5be80e5f6a4e16ef30fc39815ba93ec66"
+          },
+          {
+            "id": "managing-superpowers-handoffs",
+            "status": "completed",
+            "git_blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+            "capture_sha256": "679244bd32c1cd37ed22098d4883c6c5be80e5f6a4e16ef30fc39815ba93ec66"
+          }
+        ],
+        "diagnostic": null,
+        "recovery": null,
+        "package_files": 109,
+        "exact_package_manifest": true,
+        "installed_before_sha256": "ea6c2487af6ef501cb1d1541f07ed5223ee5d66d8e9c1d0559193ba5c1a4bc5b",
+        "installed_after_sha256": "ea6c2487af6ef501cb1d1541f07ed5223ee5d66d8e9c1d0559193ba5c1a4bc5b",
+        "protected_before_sha256": "9a8b9a427f74cd7ffed2b2ef35ddf4ce2f4a47d02bf40eca014834e55533e7dc",
+        "protected_after_sha256": "9a8b9a427f74cd7ffed2b2ef35ddf4ce2f4a47d02bf40eca014834e55533e7dc",
+        "capture_sha256": "32887f3ecd2de88a2f4222bbed1af50657b45d03675580b6e813bf1252360a90",
+        "scored_receipt_sha256": "15373520c0a56b6ad8b6377300c7dfebf654b41b65d9b658cca7d22d2d24f1c5"
+      }
+    },
+    {
+      "id": "F-dirty-update",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-dirty-update",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-dirty-update]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-dirty-update",
+            "status": "refused",
+            "capture_sha256": "37500ff5589da4bcf090bb4089a9df2020d39543231055c1209c3a443e293a07"
+          }
+        ],
+        "diagnostic": "| Requested upstream update | **BLOCKED** — dirty checkout contains untracked `uncommitted.txt`. Recovery: owner resolves local changes before a separately authorized revision change |",
+        "recovery": "**BLOCKED** — dirty checkout contains untracked `uncommitted.txt`. Recovery: owner resolves local changes before a separately authorized revision change",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "0e17ed1c2c55a604ec51c3b928f23ceda028b87a47056e88b1479647a018b4f6",
+        "installed_after_sha256": "0e17ed1c2c55a604ec51c3b928f23ceda028b87a47056e88b1479647a018b4f6",
+        "protected_before_sha256": "72f8a1936bc25605db43744989ec129ba3ab207a5cae79f616bce6ed0214fcf2",
+        "protected_after_sha256": "72f8a1936bc25605db43744989ec129ba3ab207a5cae79f616bce6ed0214fcf2",
+        "capture_sha256": "37500ff5589da4bcf090bb4089a9df2020d39543231055c1209c3a443e293a07",
+        "scored_receipt_sha256": "da7f781cdd24f330531a85acedfbf9bfac0798eac2e7daa9d9d19edd9f8a9e5d"
+      }
+    },
+    {
+      "id": "F-collision",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-collision",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-collision]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-collision",
+            "status": "refused",
+            "capture_sha256": "7f0dbb9e7895cf1f48a4071ce1d0eb41bdf81e518705a4bb5e46170c5afdbfc7"
+          }
+        ],
+        "diagnostic": "| Occupied local plugin path | **FAIL** — `occupied-superpowers/user-work.txt` contains unrelated user data. This path is not verified as an owned Superpowers installation and was not reused. |",
+        "recovery": "**Recovery:** preserve the occupied directory; after ownership review, remove only its erroneous plugin registration—not its contents—and retain the existing native upstream package. Permit read-only access to installed package metadata and the issue contract to resolve remaining unknowns. Unrelated plugin configuration was preserved.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "d84b75911c4a378456a40c3453154650771c667b0fb0ec9f93b923525bb276a1",
+        "installed_after_sha256": "d84b75911c4a378456a40c3453154650771c667b0fb0ec9f93b923525bb276a1",
+        "protected_before_sha256": "4c80e443a81b95c5ce031758c8364bb0ba316fec67bce2856b45fda8191c5dc5",
+        "protected_after_sha256": "4c80e443a81b95c5ce031758c8364bb0ba316fec67bce2856b45fda8191c5dc5",
+        "capture_sha256": "7f0dbb9e7895cf1f48a4071ce1d0eb41bdf81e518705a4bb5e46170c5afdbfc7",
+        "scored_receipt_sha256": "8c9d5295080578b7595a24dfdfbd54496f061e7bbf31fa91c03a5bdfea75858b"
+      }
+    },
+    {
+      "id": "F-gh-auth",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-gh-auth",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-gh-auth]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "bd1d077c035f0e52aea05874fee7f7c74a161c2a06efaa1bd7174ca1e94b9afe"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "69f5519080eaf4c3a8900ff6c94fe8295d61829c17161fb23806005b55bc84b9"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          1,
+          4,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-gh-auth",
+            "status": "refused",
+            "capture_sha256": "40beee86140f44261c3d79bfce8b4acdef93c1d0ccaefeee8a7757de3ff4b6aa"
+          }
+        ],
+        "diagnostic": "| `gh auth status` | **Failed:** not logged into any GitHub host. |",
+        "recovery": "**Recovery:** authenticate the intended isolated host using `gh auth login` or authorized `GH_TOKEN`, then repeat authentication and complete issue intake. Permit read-only access to installed package metadata and Backplane references to resolve the remaining verification unknowns. Stopped as requested.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "b1b4541ed595e1ff05d8de276cf800fd7462637792b5132c99711454733ce339",
+        "installed_after_sha256": "b1b4541ed595e1ff05d8de276cf800fd7462637792b5132c99711454733ce339",
+        "protected_before_sha256": "8f1ab0fc2cc3e96f10b4014e531e9e113ec96f29a8959e0ed084e56c79da0a6a",
+        "protected_after_sha256": "8f1ab0fc2cc3e96f10b4014e531e9e113ec96f29a8959e0ed084e56c79da0a6a",
+        "capture_sha256": "40beee86140f44261c3d79bfce8b4acdef93c1d0ccaefeee8a7757de3ff4b6aa",
+        "scored_receipt_sha256": "202c3e6b4051f11ec0ecfeeac9f627b59efe62d61f5c2acdb916305c90e8dd17"
+      }
+    },
+    {
+      "id": "F-gh-intake",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-gh-intake",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-gh-intake]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "027aeb08ebba261120ff19d43c207ef67b070f2bb7b3fdc807c83af4dabce5a5"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "78ceace7cdf37a2cc21c69b404e62089325801760128936b71243fbae559ab39"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "14bb5dfdc5900245ad1b3b3a0c246a211a9901f8c1d8c99f4c6286dcbd8019a7"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": "2.40.1",
+        "installed_skill_results": [
+          {
+            "id": "F-gh-intake",
+            "status": "refused",
+            "capture_sha256": "9d5ea651239f3fe98d0a8ee1448af6652d85bad80b031fbd24bad73ef22700e9"
+          }
+        ],
+        "diagnostic": "| Complete issue #12 intake | **Failed:** gh `2.40.1` rejects `stateReason`; no issue data returned. Upgrade gh to a version supporting the complete contract, then rerun the exact intake. |",
+        "recovery": "**Failed:** gh `2.40.1` rejects `stateReason`; no issue data returned. Upgrade gh to a version supporting the complete contract, then rerun the exact intake.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "2b2a8b0b9ca180d1cbb4516868440d316ec841e3b95b27c383695776e68944cf",
+        "installed_after_sha256": "2b2a8b0b9ca180d1cbb4516868440d316ec841e3b95b27c383695776e68944cf",
+        "protected_before_sha256": "2ab135b689f284ee0580f12cd5f3baf022824ec313bc189f42678f6963e77d8c",
+        "protected_after_sha256": "2ab135b689f284ee0580f12cd5f3baf022824ec313bc189f42678f6963e77d8c",
+        "capture_sha256": "9d5ea651239f3fe98d0a8ee1448af6652d85bad80b031fbd24bad73ef22700e9",
+        "scored_receipt_sha256": "36c24e6b2dfa8b24272a98d13ffc0679b0905b3cc4008fe1614b0af06db97da6"
+      }
+    },
+    {
+      "id": "F-gh-label",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-gh-label",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-gh-label]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "f80248fffbd0165d1fb7de149e14ba4ca0fd2dd6d80c1fbe5f3c604769f9f10d"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "39273e3a569c776af7b8db85c8145eb10f03af4ea95d89a9c9a43884cdfe13a7"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "598796a14d2967b187f290834a400b7b77677dcc6ed5edf0aa25160bb647541f"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "39273e3a569c776af7b8db85c8145eb10f03af4ea95d89a9c9a43884cdfe13a7"
+          }
+        },
+        "direct_gh_exits": [
+          1,
+          4,
+          1,
+          4
+        ],
+        "gh_failure_fixture_version": "1.0.0",
+        "installed_skill_results": [
+          {
+            "id": "F-gh-label",
+            "status": "refused",
+            "capture_sha256": "412e87829f3212e4c20c34bbe1e1670ce5ae38bc60ea3ef2cb8f0ad8438a2832"
+          }
+        ],
+        "diagnostic": "| Issue label editing | **Failed independently:** `gh issue edit --help` reports unknown command `edit`; label flags are unavailable. Recovery: upgrade `gh`, then verify `--add-label` and `--remove-label`. |",
+        "recovery": "**Failed independently:** `gh issue edit --help` reports unknown command `edit`; label flags are unavailable. Recovery: upgrade `gh`, then verify `--add-label` and `--remove-label`.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "95fa049d8ef0472d455652bf24628a4a67dc81b9ea4ba810bea770a37c528339",
+        "installed_after_sha256": "95fa049d8ef0472d455652bf24628a4a67dc81b9ea4ba810bea770a37c528339",
+        "protected_before_sha256": "40907f28261f07ca83f10ee7c542e8f17fbd83a354f98f7eb722c8795942f83b",
+        "protected_after_sha256": "40907f28261f07ca83f10ee7c542e8f17fbd83a354f98f7eb722c8795942f83b",
+        "capture_sha256": "412e87829f3212e4c20c34bbe1e1670ce5ae38bc60ea3ef2cb8f0ad8438a2832",
+        "scored_receipt_sha256": "02ec84e734ba8a61b25b6426f55ce70f4b14af79d32403560ee47b4810663879"
+      }
+    },
+    {
+      "id": "F-gh-close",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-gh-close",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-gh-close]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "fbd8b5c35a5719657c868732af1b86a22f16713cb60676333fd7c3d02d62f51b"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 1,
+            "output_sha256": "ed0410a1b29d838aed465b59cfa69afd20b1a231261d8eb48645792b56422c50"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "6a91181d22f5361206d2aa8330a4350346539a9baf47e17e737c312692d99386"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "ae87678acf2aad2e2131e4f9ed4f8f0aa45ceab3232e7df66893835732824d3c"
+          }
+        },
+        "direct_gh_exits": [
+          1,
+          4,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": "1.14.0",
+        "installed_skill_results": [
+          {
+            "id": "F-gh-close",
+            "status": "refused",
+            "capture_sha256": "1f0f75a0dc30ff6e189ec8d6ea9af3fa91734fc07e1a64b6a3ffc8a8ff8269e7"
+          }
+        ],
+        "diagnostic": "| Close-reason flag | **Fail:** checked separately; help exposes no `--reason`. Upgrade GitHub CLI and recheck for `completed` / `not planned` support. |",
+        "recovery": "**Fail:** checked separately; help exposes no `--reason`. Upgrade GitHub CLI and recheck for `completed` / `not planned` support.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "b767b9e4351ef6c3daceb211f15eb31e68a72557c065f25d640ed960347624d9",
+        "installed_after_sha256": "b767b9e4351ef6c3daceb211f15eb31e68a72557c065f25d640ed960347624d9",
+        "protected_before_sha256": "c3d76ecbda8935405b12702ce2427e9fb281dcea694faa755fcca1785dd8a591",
+        "protected_after_sha256": "c3d76ecbda8935405b12702ce2427e9fb281dcea694faa755fcca1785dd8a591",
+        "capture_sha256": "1f0f75a0dc30ff6e189ec8d6ea9af3fa91734fc07e1a64b6a3ffc8a8ff8269e7",
+        "scored_receipt_sha256": "5de3aac42a49260e44d89c07a85acb23597efe91ae156cc3202726a7d5c9f979"
+      }
+    },
+    {
+      "id": "F-missing-skill",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-missing-skill",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-missing-skill]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-missing-skill",
+            "status": "refused",
+            "capture_sha256": "1a2f305492790820afa9e937c2a8b40a1928e96dbc6e4b39354c7332dfc89097"
+          }
+        ],
+        "diagnostic": "| Upstream operational discovery | **FAIL** — required `using-superpowers` is absent from the live skill list despite the plugin being reported active. |",
+        "recovery": "**Recovery:** diagnose upstream skill registration, reload discovery, and verify `using-superpowers` alongside both Backplane skills. Permit reads of required references before certifying contract compliance. Upstream exists, so no replacement installation was attempted.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "c30731a5914cfce6fbcb4bb8b2adf143b23438015020c9f51807d068633a9177",
+        "installed_after_sha256": "c30731a5914cfce6fbcb4bb8b2adf143b23438015020c9f51807d068633a9177",
+        "protected_before_sha256": "c0b377fef6feceda6839f8214edf577f4daf4aaea747d1c9437ab59164acee5d",
+        "protected_after_sha256": "c0b377fef6feceda6839f8214edf577f4daf4aaea747d1c9437ab59164acee5d",
+        "capture_sha256": "1a2f305492790820afa9e937c2a8b40a1928e96dbc6e4b39354c7332dfc89097",
+        "scored_receipt_sha256": "f53b1611fd7ac7f5100e58945e839c2c334a22237a94be218a50b5cc78766396"
+      }
+    },
+    {
+      "id": "F-incompatible",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7",
+        "skill_results": [
+          {
+            "id": "F-incompatible",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-incompatible]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {
+          "gh auth status": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "376257285aa1fdf0513a6f40c0645247e87a9cd9f5583e002b5b109e786b1a72"
+          },
+          "gh issue view 12 --repo tvproductions/superpowers-backplane --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "1cb31627e8be1e5ba7700ab1b7d7a1ed4e8fd7c0ac8a7abf843f5243f557f5c0"
+          },
+          "gh issue edit --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "41b8f14690f3e0a79ed48d182a4c01a94e3dde5b5071b2a763ce22727cdc845d"
+          },
+          "gh issue close --help": {
+            "status": "completed",
+            "exit": 0,
+            "output_sha256": "a2d6c18577482e2352d45951992b4f9a019514086789a94afcd430be09b30470"
+          }
+        },
+        "direct_gh_exits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-incompatible",
+            "status": "refused",
+            "capture_sha256": "d1408e608980464c1b2606e82b8b852763467fe5a62e13682cb4e398edb86255"
+          }
+        ],
+        "diagnostic": "| Upstream V2 compatibility | **FAIL** — exact tag **v5.1.0** uses `.opencode/plugins/superpowers.js` and lacks root `index.js`. Upstream documents **v6.4.1+** for V2. |",
+        "recovery": "**Recovery:** Preserve the existing checkout. Separately authorize a compatible stable upstream installation or revision change using its documented V2 channel, then verify active plugin and required skill discovery. Upstream is present but incompatible—not absent—so I did not silently replace or update it.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "d37d6de6746b5a7c1cd59975d9dfbb8e56109d425955349d2d60a36ce1bf9122",
+        "installed_after_sha256": "d37d6de6746b5a7c1cd59975d9dfbb8e56109d425955349d2d60a36ce1bf9122",
+        "protected_before_sha256": "7f386bf5d89cfe6a0e511ef1e5ce79ff502e22bdf60263561b64382a88a18186",
+        "protected_after_sha256": "7f386bf5d89cfe6a0e511ef1e5ce79ff502e22bdf60263561b64382a88a18186",
+        "capture_sha256": "d1408e608980464c1b2606e82b8b852763467fe5a62e13682cb4e398edb86255",
+        "scored_receipt_sha256": "819e5d864b9d5d7df08e0a1fbfa72631e0a5454dbcb7afc7b6759440c1d3c864"
+      }
+    },
+    {
+      "id": "F-below-floor",
+      "criterion": 4,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "Actual V2 2.0.3 refused before loading any package. The 2.0.4 floor and pre-configuration stop condition are unchanged.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "upstream_identity_unavailable": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.0.3",
+        "host_sha256": "0fee2086f2ddfa32480044ff2435b6deae81608f007d6a8c9fbcf4facb01058e",
+        "upstream_origin": null,
+        "upstream_revision": null,
+        "skill_results": [
+          {
+            "id": "F-below-floor",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-below-floor]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ]
+    },
+    {
+      "id": "F-unauthenticated",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The owning matrix uses the earlier package; the setup guide and backlog skill inputs changed. The later hosted setup receipt covers native setup only.",
+      "expected": "Specific refusal and recovery with preserved state",
+      "observed": {
+        "historical_result": "PASS",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "preservation": true,
+        "recovery_recorded": true,
+        "package_files": 0
+      },
+      "inputs": {
+        "source": {
+          "revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "8dee01426faf0e8d780cce540155435d2969b0da",
+          "skills": "56c022e2054df4ded379666988b8eddeee095307",
+          "package_json": "d1652036b9f758c4ec20888a551872c35b0f54b0"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skill_results": [
+          {
+            "id": "F-unauthenticated",
+            "status": "refused"
+          }
+        ],
+        "gh": "See original receipt commands, per-case facades/archives, and model/direct checks."
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-23-opencode-acceptance.json",
+          "selector": "rows[id=F-unauthenticated]",
+          "git_blob": "985dcc38112edfea055ce4f6c892e610640f3381",
+          "sha256": "28c5ad63ce3ad36f5d9b5d2502c9b999d27a3dbf4ee1a4ec5435e6c58f5373dc"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "backplane_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "checks": {
+          "failure_fixture": true,
+          "specific_refusal": true,
+          "payload": true,
+          "source": true,
+          "preservation": true
+        },
+        "model_gh_checks": {},
+        "direct_gh_exits": [],
+        "gh_failure_fixture_version": null,
+        "installed_skill_results": [
+          {
+            "id": "F-unauthenticated",
+            "status": "refused",
+            "capture_sha256": "c5e30d967b30832cda5178bfab8023a5752af6ec0690925e3f2e2dcb8f7dbea6"
+          }
+        ],
+        "diagnostic": "provider.no-route: Model unavailable: openai/gpt-6.1-sol",
+        "recovery": "Verify authentication in the intended profile or wait for readiness there, then retry the fresh-session discovery check.",
+        "package_files": 0,
+        "exact_package_manifest": false,
+        "installed_before_sha256": "e80de334e0ffa992541e08ae9725c091092528188353e02f30129d68c95d0e0b",
+        "installed_after_sha256": "e80de334e0ffa992541e08ae9725c091092528188353e02f30129d68c95d0e0b",
+        "protected_before_sha256": "6e979c20537d53b0f2974b14ca9e74dd596affd123c5c3e709c2d3ea2241b569",
+        "protected_after_sha256": "6e979c20537d53b0f2974b14ca9e74dd596affd123c5c3e709c2d3ea2241b569",
+        "capture_sha256": "c5e30d967b30832cda5178bfab8023a5752af6ec0690925e3f2e2dcb8f7dbea6",
+        "scored_receipt_sha256": "788fc26a8e982160560b4e58db3e48a53e24d064c8073847d3ec040f616d18d2"
+      }
+    },
+    {
+      "id": "L-install",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 70,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": null,
+        "revision_after": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-install] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": null,
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "6835af0fd3e2dd23f5ed44c81144043ba5be77aa246fdc5d07e0d68915f52866",
+          "loaded_skills": [
+            "using-superpowers"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "4940b6c00997595fd5cd1ab56df8a5e5a3fdd41cc7b68e1fd9923ae1c33f48e0",
+          "protected_sha256": "8b0ce73eb18ba80afa381ffef93702244e2d5c5f3642aded731b2890bda4cc7d",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed"
+          },
+          "package_files": 0,
+          "package_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "after": {
+          "revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "2c0a72ca94407ffe0a56531520db5deaafa6e492bad829e9aaea92588e62a07d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "8b0ce73eb18ba80afa381ffef93702244e2d5c5f3642aded731b2890bda4cc7d",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 109,
+          "package_manifest_sha256": "9cbb52b1bcd386d6cc4ff73b1233e2938cadfb42e413ce5471b6ea17194ba537"
+        },
+        "failure": null,
+        "checks": {},
+        "scored_receipt_sha256": "06ca6c739439604fc60d1551dbfbf7757b58b0d2300db2253fe4d93ce7b920f2"
+      }
+    },
+    {
+      "id": "L-repeat",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 70,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "revision_after": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-repeat] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "after": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "failure": null,
+        "checks": {},
+        "scored_receipt_sha256": "ba6137dbeada66b51854335f3eaaeaf87deed0109637e76aed21385648711f8d"
+      }
+    },
+    {
+      "id": "L-update",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 105,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "revision_after": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "before": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/8e1e2005025890776eb99bd4b9161996fbbe68ed",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "after": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/8e1e2005025890776eb99bd4b9161996fbbe68ed",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          }
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-update] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        },
+        {
+          "path": "tests/scenarios/2026-11-28-issue-24-capability-replay.json",
+          "selector": "rows[id=L-update] and checks.L-update",
+          "git_blob": "f1a80c7ed4fd52845d44b18e5aefb007f6da0256",
+          "sha256": "3060183094f85c7ef53731a0752c401f0a6d16eab7ab3eb0a31bb21a9eaaa01a"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "after": {
+          "revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "578b3eeb665d42764ee129676c04a8d11f365e52ddc8586b6c437dc03dc74d50",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 109,
+          "package_manifest_sha256": "9cbb52b1bcd386d6cc4ff73b1233e2938cadfb42e413ce5471b6ea17194ba537"
+        },
+        "failure": null,
+        "checks": {
+          "update_before": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "update_after": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          }
+        },
+        "scored_receipt_sha256": "ba6137dbeada66b51854335f3eaaeaf87deed0109637e76aed21385648711f8d"
+      }
+    },
+    {
+      "id": "L-rollback",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 70,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+        "revision_after": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "before": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "after": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/386bdb5a8570360f5d34359c68f68947eb7a90fc",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          }
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-rollback] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        },
+        {
+          "path": "tests/scenarios/2026-11-28-issue-24-capability-replay.json",
+          "selector": "rows[id=L-rollback] and checks.L-rollback",
+          "git_blob": "f1a80c7ed4fd52845d44b18e5aefb007f6da0256",
+          "sha256": "3060183094f85c7ef53731a0752c401f0a6d16eab7ab3eb0a31bb21a9eaaa01a"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "578b3eeb665d42764ee129676c04a8d11f365e52ddc8586b6c437dc03dc74d50",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 109,
+          "package_manifest_sha256": "9cbb52b1bcd386d6cc4ff73b1233e2938cadfb42e413ce5471b6ea17194ba537"
+        },
+        "after": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "failure": null,
+        "checks": {
+          "rollback_before": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "rollback_after": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          }
+        },
+        "scored_receipt_sha256": "ba6137dbeada66b51854335f3eaaeaf87deed0109637e76aed21385648711f8d"
+      }
+    },
+    {
+      "id": "L-unavailable-source",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The published guide preflight, the unavailable exact SHA and gh capability are unchanged.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 70,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "revision_after": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-unavailable-source] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "5f6c1cfc26682ab4f34e97ea7a8926dcbf20296e75cb13a543e759a4adc494f3",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "b8447aa5b950e01b673588c69a8e3f317deac3120488763fff05bb301aed1a80",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "after": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "5f6c1cfc26682ab4f34e97ea7a8926dcbf20296e75cb13a543e759a4adc494f3",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "b8447aa5b950e01b673588c69a8e3f317deac3120488763fff05bb301aed1a80",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "failure": {
+          "config_sha256": "0e62e600be6505b286994fab910dd324991d9af9810cd0f38d153c3e00ed06a5",
+          "protected_sha256": "b8447aa5b950e01b673588c69a8e3f317deac3120488763fff05bb301aed1a80",
+          "skill_blobs": {},
+          "native_result_status": {},
+          "diagnostic": "OpenCode's plugin inventory reported a failed fetch for the absent pinned commit."
+        },
+        "checks": {
+          "unavailable_before": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "unavailable_after": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          }
+        },
+        "scored_receipt_sha256": "8ba573ff06d81d82cc746a449988ce5f25f9a6b0880d2dbc34eba340c1156f49"
+      }
+    },
+    {
+      "id": "L-failed-verification-recovery",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 70,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "revision_after": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-failed-verification-recovery] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "5f6c1cfc26682ab4f34e97ea7a8926dcbf20296e75cb13a543e759a4adc494f3",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "b8447aa5b950e01b673588c69a8e3f317deac3120488763fff05bb301aed1a80",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "after": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "5f6c1cfc26682ab4f34e97ea7a8926dcbf20296e75cb13a543e759a4adc494f3",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "b8447aa5b950e01b673588c69a8e3f317deac3120488763fff05bb301aed1a80",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "failure": {
+          "revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "b81d74d83ceba5327b6040d2371b93928673e5610f1c8ce16e50629ae5f1e522",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "b8447aa5b950e01b673588c69a8e3f317deac3120488763fff05bb301aed1a80",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "error"
+          },
+          "package_files": 109,
+          "package_manifest_sha256": "9cbb52b1bcd386d6cc4ff73b1233e2938cadfb42e413ce5471b6ea17194ba537",
+          "diagnostic": "Candidate loaded but the owned fixture denied the required handoff Skill call"
+        },
+        "checks": {
+          "recovery_before": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "recovery_after": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          },
+          "denied_candidate_preflight": {
+            "gh_version": "gh version 2.106.0 (2026-11-25)",
+            "resolved_revision": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+            "auth_exit": 0,
+            "label_flags": true,
+            "completed_reason": true,
+            "commands": {
+              "version": [
+                "gh",
+                "--version"
+              ],
+              "auth": [
+                "gh",
+                "auth",
+                "status"
+              ],
+              "lookup": [
+                "gh",
+                "api",
+                "repos/tvproductions/superpowers-backplane/commits/9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+                "--jq",
+                ".sha"
+              ],
+              "labels": [
+                "gh",
+                "issue",
+                "edit",
+                "--help"
+              ],
+              "closure": [
+                "gh",
+                "issue",
+                "close",
+                "--help"
+              ]
+            }
+          }
+        },
+        "scored_receipt_sha256": "8ba573ff06d81d82cc746a449988ce5f25f9a6b0880d2dbc34eba340c1156f49"
+      }
+    },
+    {
+      "id": "L-uninstall",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 0,
+        "loaded_skills": [
+          "using-superpowers"
+        ]
+      },
+      "inputs": {
+        "revision_before": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "revision_after": null,
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-uninstall] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "after": {
+          "revision": null,
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "1f650f2aecf5091777c59d2b6a8f0291467971613b411236f4ffe6f10fe259d7",
+          "loaded_skills": [
+            "using-superpowers"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "4940b6c00997595fd5cd1ab56df8a5e5a3fdd41cc7b68e1fd9923ae1c33f48e0",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed"
+          },
+          "package_files": 0,
+          "package_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "failure": null,
+        "checks": {},
+        "scored_receipt_sha256": "ba6137dbeada66b51854335f3eaaeaf87deed0109637e76aed21385648711f8d"
+      }
+    },
+    {
+      "id": "L-test-restore",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "replayed",
+      "reason": "The native package revisions in this operation differ from the integrated input.",
+      "expected": "Exact selected operation, fresh applicable discovery, and preservation",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true,
+        "package_files": 70,
+        "loaded_skills": [
+          "using-superpowers",
+          "managing-superpowers-backlog",
+          "managing-superpowers-handoffs"
+        ]
+      },
+      "inputs": {
+        "revision_before": null,
+        "revision_after": "386bdb5a8570360f5d34359c68f68947eb7a90fc",
+        "guide": "4d3e5597e5961c417c34666e5eff43a53995b1b4",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "280b7fe143187712b974732603f4c3e8cca8ca7b",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.json",
+          "selector": "rows[id=L-test-restore] and preflight_before_apply",
+          "git_blob": "dbd5173cb7177d26d0899bf267a6d03832a5fb90",
+          "sha256": "ff65498e6ace121912897dab2b38c32db6e18549c46b5cefc461413c5f93d1c9"
+        }
+      ],
+      "replay": {
+        "result": "PASS",
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "before": {
+          "revision": null,
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "1f650f2aecf5091777c59d2b6a8f0291467971613b411236f4ffe6f10fe259d7",
+          "loaded_skills": [
+            "using-superpowers"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "4940b6c00997595fd5cd1ab56df8a5e5a3fdd41cc7b68e1fd9923ae1c33f48e0",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed"
+          },
+          "package_files": 0,
+          "package_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "after": {
+          "revision": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d",
+          "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "config_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+          "loaded_skills": [
+            "using-superpowers",
+            "managing-superpowers-backlog",
+            "managing-superpowers-handoffs"
+          ],
+          "load_exit": 0,
+          "discovery_prompt_sha256": "3a7af43929c7b4854e4d91c4a061944fce06d967d7952d177f86b6eb0c66cd17",
+          "protected_sha256": "7799668a85293d2513d1890d6178bfb7257c59fac2eee9b7a464658610172217",
+          "skill_blobs": {
+            "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+            "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+            "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+          },
+          "native_result_status": {
+            "using-superpowers": "completed",
+            "managing-superpowers-backlog": "completed",
+            "managing-superpowers-handoffs": "completed"
+          },
+          "package_files": 107,
+          "package_manifest_sha256": "e98a0f08bf72fb6656e8034d9c005f3d9c37772be5484e7d7be585217f96a075"
+        },
+        "failure": null,
+        "checks": {},
+        "scored_receipt_sha256": "ba6137dbeada66b51854335f3eaaeaf87deed0109637e76aed21385648711f8d"
+      }
+    },
+    {
+      "id": "skill-structure",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The current skill tree and adapter match the conformance source. The later maintenance text does not change the rubrics.",
+      "expected": "Pass the named conformance check and its verification rubric",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-conformance.json",
+          "selector": "skill-structure",
+          "git_blob": "cd6515f0cd1cf903bb0d4d67552027636c9b9c30",
+          "sha256": "a8a9adc06a0369778ba8ad212c8d5575e2901e7183bc96ac74f89ac473a20efe"
+        }
+      ]
+    },
+    {
+      "id": "native-issue-intake",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The current skill tree and adapter match the conformance source. The later maintenance text does not change the rubrics.",
+      "expected": "Pass the named conformance check and its verification rubric",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-conformance.json",
+          "selector": "native-issue-intake",
+          "git_blob": "cd6515f0cd1cf903bb0d4d67552027636c9b9c30",
+          "sha256": "a8a9adc06a0369778ba8ad212c8d5575e2901e7183bc96ac74f89ac473a20efe"
+        }
+      ]
+    },
+    {
+      "id": "language-neutral-verification",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The current skill tree and adapter match the conformance source. The later maintenance text does not change the rubrics.",
+      "expected": "Pass the named conformance check and its verification rubric",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-conformance.json",
+          "selector": "language-neutral-verification",
+          "git_blob": "cd6515f0cd1cf903bb0d4d67552027636c9b9c30",
+          "sha256": "a8a9adc06a0369778ba8ad212c8d5575e2901e7183bc96ac74f89ac473a20efe"
+        }
+      ]
+    },
+    {
+      "id": "lifecycle-transitions",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The current skill tree and adapter match the conformance source. The later maintenance text does not change the rubrics.",
+      "expected": "Pass the named conformance check and its verification rubric",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-conformance.json",
+          "selector": "lifecycle-transitions",
+          "git_blob": "cd6515f0cd1cf903bb0d4d67552027636c9b9c30",
+          "sha256": "a8a9adc06a0369778ba8ad212c8d5575e2901e7183bc96ac74f89ac473a20efe"
+        }
+      ]
+    },
+    {
+      "id": "superpowers-installation",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The current skill tree and adapter match the conformance source. The later maintenance text does not change the rubrics.",
+      "expected": "Pass the named conformance check and its verification rubric",
+      "observed": {
+        "historical_result": "PASS",
+        "preservation": true
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-conformance.json",
+          "selector": "superpowers-installation",
+          "git_blob": "cd6515f0cd1cf903bb0d4d67552027636c9b9c30",
+          "sha256": "a8a9adc06a0369778ba8ad212c8d5575e2901e7183bc96ac74f89ac473a20efe"
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:14:43Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+              "name": "backplane:backlog",
+              "description": "Captured but not ready for execution",
+              "color": "D4C5F9"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:14:43Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+              "name": "backplane:backlog",
+              "description": "Captured but not ready for execution",
+              "color": "D4C5F9"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=status] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:14:43Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+              "name": "backplane:backlog",
+              "description": "Captured but not ready for execution",
+              "color": "D4C5F9"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:20:04Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkDQ",
+              "name": "backplane:designing",
+              "description": "Issue, specification, or plan is being brought to approval",
+              "color": "FBCA04"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=design] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "ready",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:20:04Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkDQ",
+              "name": "backplane:designing",
+              "description": "Issue, specification, or plan is being brought to approval",
+              "color": "FBCA04"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:20:36Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+              "name": "backplane:ready",
+              "description": "Approved and dependency-ready for execution",
+              "color": "0E8A16"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=ready] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "selection",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:20:36Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+              "name": "backplane:ready",
+              "description": "Approved and dependency-ready for execution",
+              "color": "0E8A16"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:20:36Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+              "name": "backplane:ready",
+              "description": "Approved and dependency-ready for execution",
+              "color": "0E8A16"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=selection] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:20:36Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+              "name": "backplane:ready",
+              "description": "Approved and dependency-ready for execution",
+              "color": "0E8A16"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:21:23Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+              "name": "backplane:active",
+              "description": "Superpowers execution is in progress",
+              "color": "1D76DB"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=start] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "block",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:21:23Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+              "name": "backplane:active",
+              "description": "Superpowers execution is in progress",
+              "color": "1D76DB"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:23:14Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzk8w",
+              "name": "backplane:blocked",
+              "description": "Work cannot advance; the reason is recorded in the issue",
+              "color": "B60205"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=block] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "resume",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:23:14Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzk8w",
+              "name": "backplane:blocked",
+              "description": "Work cannot advance; the reason is recorded in the issue",
+              "color": "B60205"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:24:31Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+              "name": "backplane:active",
+              "description": "Superpowers execution is in progress",
+              "color": "1D76DB"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=resume] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "submit",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:24:31Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+              "name": "backplane:active",
+              "description": "Superpowers execution is in progress",
+              "color": "1D76DB"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:25:03Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+              "name": "backplane:review",
+              "description": "Implementation is submitted and awaiting final review/integration",
+              "color": "5319E7"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=submit] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "rework",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:25:03Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+              "name": "backplane:review",
+              "description": "Implementation is submitted and awaiting final review/integration",
+              "color": "5319E7"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:25:36Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+              "name": "backplane:active",
+              "description": "Superpowers execution is in progress",
+              "color": "1D76DB"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=rework] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "resubmit",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:25:36Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+              "name": "backplane:active",
+              "description": "Superpowers execution is in progress",
+              "color": "1D76DB"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:27:14Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+              "name": "backplane:review",
+              "description": "Implementation is submitted and awaiting final review/integration",
+              "color": "5319E7"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=resubmit] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "criterion": 3,
+      "result": "PASS",
+      "disposition": "retain",
+      "reason": "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+      "expected": "Pass the approved stage with correct issue state, ordering, and label preservation",
+      "observed": {
+        "historical_passed": true,
+        "protected_equal": true,
+        "before": {
+          "number": 39,
+          "state": "OPEN",
+          "stateReason": "",
+          "updatedAt": "2026-11-28T00:27:14Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            },
+            {
+              "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+              "name": "backplane:review",
+              "description": "Implementation is submitted and awaiting final review/integration",
+              "color": "5319E7"
+            }
+          ]
+        },
+        "after": {
+          "number": 39,
+          "state": "CLOSED",
+          "stateReason": "COMPLETED",
+          "updatedAt": "2026-11-28T00:30:46Z",
+          "labels": [
+            {
+              "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+              "name": "documentation",
+              "description": "Improvements or additions to documentation",
+              "color": "0075ca"
+            }
+          ]
+        }
+      },
+      "inputs": {
+        "source": {
+          "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+          "adapter": "c96a668ce427f1f8017894f58e291882c82e171a",
+          "guide": "08a6348ecb3a83eaa91ce65d07e02b0032fd683d",
+          "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
+          "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
+        },
+        "host_version": "2.1.4",
+        "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+        "upstream_origin": "https://github.com/obra/superpowers.git",
+        "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "skills": {
+          "using-superpowers": "069d578445805a28b8dacbf70cdf045e1673def0",
+          "managing-superpowers-backlog": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+          "managing-superpowers-handoffs": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        },
+        "gh": {
+          "version": "gh version 2.106.0 (2026-11-25)",
+          "full_native_intake": true,
+          "label_edit_flags": true,
+          "completed_close_flag": true
+        }
+      },
+      "evidence": [
+        {
+          "path": "tests/scenarios/2026-11-01-issue-24-opencode-native-fixture.json",
+          "selector": "cases[stage=close] and fixture_publication",
+          "git_blob": "9499ac1e77d316f9bedc150cab38f0f05f214c1b",
+          "sha256": "c7c3d46ff20e6ee41c1e5312dfbb948806d33074af9f983bdd8771bd444dc1e5"
+        }
+      ]
+    }
+  ],
+  "replayed_baseline": "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c",
+  "before_apply_preflight": {
+    "observed_at": "2026-11-28T16:57:36.0332811Z",
+    "command": [
+      "gh",
+      "api",
+      "repos/tvproductions/superpowers-backplane/commits/0000000000000000000000000000000000000000",
+      "--jq",
+      ".sha"
+    ],
+    "exit": 1,
+    "http_status": 422,
+    "reason": "The requested commit was unavailable",
+    "gh_version": "gh version 2.106.0 (2026-11-25)",
+    "configuration_before_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+    "configuration_after_sha256": "12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d",
+    "full_issue_intake_equal": true,
+    "issue_snapshot_sha256": "cab506e4e027aaf389ca14f48f9fc0d3e600550ab91eafa1b4e05277d617ee9f",
+    "prior_pin": "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d"
+  },
+  "expected_candidate_package": {
+    "revision": "622bce7df4ba84c83cf75a67e0b1dcd2655d10f2",
+    "files": 110,
+    "manifest_sha256": "baccd81c382ac4e3c5eef9563a562fc570a2b50f1c949fde0357a5e07dc35036",
+    "manifest": {
+      "LICENSE": "a87a7d852be1ddbc40ef23d1639b802bf09a90f0",
+      "README.md": "64bfe6d603466e87648611c2ea4a053ebd192737",
+      "SUPERPOWERS.md": "61a531964bbb9fe7e29fb7364ed1ad413ec4ab10",
+      "docs/adopter-operations.md": "d1dfaa3cdc95fde0cfda918fe366cb0df191f6af",
+      "docs/decisions/ADR-0001-001-reference-decisions-through-existing-checkpoints.md": "0ec24219039c688f60b11b2dbef5002428ff872f",
+      "docs/decisions/approvals/ADR-0001-001-approval.md": "7b891633b5207b9bb4e4c799c7f27d988b0507dc",
+      "docs/decisions/approvals/ADR-0001-001-reviewed.txt": "1f2aaab2efdd855694220f809b433ad8053cf620",
+      "docs/engineering/architectural-decisions.md": "043e10ff9d42b12bc85b7873123c05fcf07aa984",
+      "docs/engineering/python.md": "7ed7fe1330a939e0fc2211826555da40befaeb3f",
+      "docs/installing-claude-code.md": "6ef0701d979ae859428b54c55ecc16b875f5dca9",
+      "docs/installing-codex.md": "23e0adabe3d919598d12fc034cd41dc9ef9bf09d",
+      "docs/installing-opencode.md": "f9249e18a8d5701c14f5f2b2eba069cb80d7da9a",
+      "docs/release-policy.md": "e63d33764c763bef374c9d568434bdb76bd6acfb",
+      "docs/superpowers-backplane/governance.md": "9316961e5580484520e39377ed916ae1afdc28d7",
+      "docs/superpowers-backplane/handoffs/20261014T080251Z-issue-31-remote-satisfaction.md": "3487cf644f8f827278957f8bf4fd139cb24979f0",
+      "docs/superpowers-backplane/handoffs/20261014T084025Z-issue-31-assessment-and-prompt-preference.md": "834d9d6876f2cc6a6ebd81859c3ebf6ea553249d",
+      "docs/superpowers-backplane/handoffs/20261024T225444Z-adoption-readiness-after-issue-31.md": "d7e248e9eb87530fa7d64be40d846541daeaf2b7",
+      "docs/superpowers-backplane/handoffs/20261025T174840Z-issue-19-publication-gate.md": "d43c1f4ca83d6ac52d2c92be7b8a114f3eb4712f",
+      "docs/superpowers-backplane/handoffs/20261025T182310Z-issue-19-complete-next-planning.md": "63509298bd2fa69d0689d60538d335b9fdb738a8",
+      "docs/superpowers-backplane/handoffs/20261101T155220Z-issue-20-terminal-auth-and-git-sync.md": "ccc2d78d8b430f47db3e6e19b7878ac4a7d13015",
+      "docs/superpowers-backplane/handoffs/20261101T171725Z-issue-20-completed-and-synced.md": "5fa5b83b5450a19352081ec16340210ecaeaae03",
+      "docs/superpowers-backplane/handoffs/20261101T220725Z-issues-4-5-partial-main-and-next-checks.md": "3a0584e5c9d395dd97973d48cedc4413a5e7ead7",
+      "docs/superpowers-backplane/handoffs/20261101T220814Z-issues-4-5-partial-main-and-next-checks.md": "c4aec7abdf13674a2f3ee769ec4176881f1b9dc8",
+      "docs/superpowers-backplane/handoffs/20261101T225245Z-issue-5-completed-and-synced.md": "4a2d2f489d0bdf1cc3169121a2071844b72a1325",
+      "docs/superpowers-backplane/handoffs/20261101T232037Z-opencode-wrap-inline-checkpoint.md": "ce5efb1f042cc9c6739f22b0dcf6d38ae883e9f4",
+      "docs/superpowers-backplane/handoffs/20261101T233052Z-opencode-preflight-and-release-accounting.md": "75def8ba9c5acb810472121f1ca2122ca7987e13",
+      "docs/superpowers-backplane/handoffs/20261127T121311Z-opencode-v2-only-issue-23-ready.md": "0741e83cb462ff5e5680479e3940550c1f23df2a",
+      "docs/superpowers-backplane/handoffs/20261127T200319Z-issue-23-task-1-checkpoint.md": "e632c682d444ad139620d18c9b53e13845bfa49a",
+      "docs/superpowers-backplane/handoffs/20261127T211111Z-issue-23-task-2-and-opencode-freshness.md": "c613dd2cd327966a9d01c1327d09cdac57d61591",
+      "docs/superpowers-backplane/handoffs/20261127T222652Z-issue-23-integrated-delivery-and-companion-notes.md": "59cca4813f6bdd61b56181dba948520e45500f6f",
+      "docs/superpowers-backplane/handoffs/20261128T005952Z-opencode-v2-release-accounting.md": "5bf2eaebd3411c75d7652cb2479178e7082e4d39",
+      "docs/superpowers-backplane/handoffs/20261128T015158Z-issue-12-opencode-v2-integrated-acceptance.md": "6f2d17ea18f5ff6164c4ad54ef3d0474ceaef440",
+      "docs/superpowers-backplane/modes.md": "6c3dbbb3f9b2a0e964ac232513f19f9a65ed619f",
+      "docs/superpowers-backplane/plans/2026-10-11-fdau-github-governance-design.md": "23949df473fe23ce89c5aa4128af292771a55fe3",
+      "docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-implementation.md": "738fd8f43c1d02a9843dab743a211787c429e610",
+      "docs/superpowers-backplane/plans/2026-10-11-github-governance-bridges-work-item.md": "3f59da91b1cff975587ed5b47e4851f4f0e47fb1",
+      "docs/superpowers-backplane/plans/2026-10-11-governance-plan-corrections-verification.json": "e7db98aa796f2aa050f29d8916e96e5ff4e68c8b",
+      "docs/superpowers-backplane/plans/2026-10-11-governance-probe-contract.md": "9472b0f36020e4ff7935bb05bac5ac434001c61e",
+      "docs/superpowers-backplane/plans/2026-10-12-governance-freshness-probe-contract.md": "b0ba95036f6ddfcc91767eec62280995ec0e7c75",
+      "docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-execution-checkpoint.md": "06a9db7a5861576c99150330a6a1a04ff1c13fda",
+      "docs/superpowers-backplane/plans/2026-10-12-issue-31-mac-recovery-assessment.md": "f29a4a5b615a2e7b1138d046a9a80255272e43b1",
+      "docs/superpowers-backplane/plans/2026-10-13-issue-31-pr-handoff.md": "e90f583c19f8a24eb264abcd831e8864858ae8b7",
+      "docs/superpowers-backplane/plans/2026-10-13-issue-31-pr-publication.md": "8b0715ae02ad0296030327e1c7b7d0a574f57e3e",
+      "docs/superpowers-backplane/plans/2026-10-24-issue-19-claude-lifecycle-recovery.md": "9f8d251b13067da3ed9ae3d893fbc7a7bad5a850",
+      "docs/superpowers-backplane/plans/2026-10-25-issue-19-lifecycle-fixture.md": "6b33d68ad02066e2a1dfd576235b890e3a5267cf",
+      "docs/superpowers-backplane/plans/2026-10-26-issue-11-claude-integrated-acceptance.md": "83f75f1b5764c443c262a867b855138e480b525a",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-12-opencode-final-acceptance.md": "60a8904e0d2286c03d898a10aedfe575440c3468",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-20-opencode-adapter.md": "e8b35178b048c618801513d57bb14d51164672c8",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-21-opencode-v1-setup.md": "9c83ebb065dca67041d1cfac9528adf7e6a5d549",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-22-opencode-v1-lifecycle.md": "9718bd77eac6520a52b01563ab2997728af03398",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-23-opencode-v2-setup.md": "8e1a6e35765410b0ea917eaee586aad8fa08af02",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-24-opencode-v2-lifecycle.md": "882b389bf49ced3e7de517a4146cfd822e9c29e5",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-4-license-and-operations.md": "949e561175ab0bbde3ac72416dc0a3e6324239e7",
+      "docs/superpowers-backplane/plans/2026-11-01-issue-5-self-hosting-validation.md": "82ec8e3feee1d443859501dbbb98096a927700b7",
+      "docs/superpowers-backplane/plans/2026-11-01-issues-4-5-execution-checkpoint.md": "9714905f54f822b76591616ff5ba58027e726123",
+      "docs/superpowers-backplane/plans/2026-11-01-opencode-remaining-acceptance-probe-contract.md": "1b856ff783c9cfd88d0e06184be894f16651898b",
+      "docs/superpowers-backplane/plans/2026-11-01-opencode-wrap-approval.json": "351746621c2dccf28ab9a7840dd587f5a64821dd",
+      "docs/superpowers-backplane/plans/2026-11-07-strict-astral-reconciliation.md": "ba0f55476045152f8a7b246f4845b27b636ea639",
+      "docs/superpowers-backplane/plans/2026-11-15-architectural-decision-integration.md": "549c5efa79117e0f32d4f6a391c73a5d62eb6e73",
+      "docs/superpowers-backplane/plans/2026-11-28-issue-12-opencode-v2-integrated-acceptance.md": "9108806d19027b636c71c74399a78a46800a61d7",
+      "docs/superpowers-backplane/releases/2026-11-07-v0.2.0.md": "53d19d03e5a6408893fa3661ef2349d352ffb10a",
+      "docs/superpowers-backplane/releases/2026-11-15-v0.3.0.md": "3153a8e3452ff52df93e0d0ee17e4543c0ea29ae",
+      "docs/superpowers-backplane/releases/2026-11-28-v0.4.0.md": "6093bfaa3aab81996eda3b966ac0582972bcdd50",
+      "docs/superpowers-backplane/specs/2026-10-11-fdau-github-governance-design.md": "52998773470537fc0e921132d610c7687911ff3a",
+      "docs/superpowers-backplane/specs/2026-11-07-release-doctrine-alignment-design.md": "19ac1fb5b94c566f112979e4c0cb79c8444a0ca2",
+      "docs/superpowers-backplane/specs/2026-11-07-release-scope-review.md": "3d0e98d4c662c239ceb8a63ca0499c77f9e05c71",
+      "docs/superpowers-backplane/specs/2026-11-14-lite-record-and-commit-alignment-design.md": "926b0faf2da783f540af79fb79df1866adc3fb07",
+      "docs/superpowers-backplane/specs/2026-11-15-architectural-decision-integration-design.md": "aca6e68128caf24c662b19f56d511d52793bdabc",
+      "docs/superpowers-backplane/specs/2026-11-15-architectural-decision-integration-intake.md": "2a93000a39404a188f3274fdcc9cb0398d13ba83",
+      "docs/superpowers-backplane/specs/proposals/ADR-0001-001-reference-decisions-through-existing-checkpoints.md": "5340140f8f1bfcaea0316f54cfc471e4f28f049d",
+      "docs/superpowers/handoffs/20260824T003834Z-issue-2-three-harness-adoption-design.md": "f0f7e6a48421fdbfe8892c2762fd468f63aca893",
+      "docs/superpowers/handoffs/20260919T145241Z-issue-2-post-sync-continuation.md": "df1cc47084302f9e5a37cab68d2820659a885b43",
+      "docs/superpowers/handoffs/20260920T015816Z-remaining-host-installation-leaves.md": "3049d51a94992525b2c673ccae2a600e20a8ceca",
+      "docs/superpowers/handoffs/20260920T160331Z-post-issue-17-host-continuation.md": "af51bb57f615b23192a9585adf70856459d53256",
+      "docs/superpowers/handoffs/20260920T202021Z-post-issue-18-claude-setup-continuation.md": "1afb451b46229d80703f4a6ffb73110c7da8fe03",
+      "docs/superpowers/handoffs/20260927T165620Z-issue-19-claude-lifecycle-plan-review.md": "77dabefdcb24c654954418ff3a180e42e4c3ce93",
+      "docs/superpowers/handoffs/20261011T172308Z-github-fdau-scope-discussion.md": "0314a22cb19418c1312c4e0029883dc58ea0dc0e",
+      "docs/superpowers/plans/2026-08-16-superpowers-backplane-bootstrap.md": "ccedeba886d76462a74339fa7d077e65a61104c4",
+      "docs/superpowers/plans/2026-08-23-superpowers-session-handoffs.md": "9830ec3e6f9e1e8ef422852b89b54815d703358d",
+      "docs/superpowers/plans/2026-09-19-codex-installation-surface.md": "b7b448ef90595fda2cee9dc02a8fec3fec182878",
+      "docs/superpowers/plans/2026-09-19-host-installation-leaf-rescoping.md": "08aaff3c2bc439aa6211f15f67930308552298a1",
+      "docs/superpowers/plans/2026-09-19-v0.1-adoption-contract-completion.md": "3ffdf9df5377e0616c59731b25922783e3ceacf5",
+      "docs/superpowers/plans/2026-09-20-claude-code-package-and-installation.md": "9cd83066f5fcdf8a01c2fca0a0b296a6a2e2f7d7",
+      "docs/superpowers/plans/2026-09-20-claude-code-setup-and-upstream-adoption.md": "e77d53b3261f7b499fadcd6f51f197c6dda9e15a",
+      "docs/superpowers/plans/2026-09-27-claude-code-lifecycle-and-conformance.md": "a98238588e8bea8f4017edabeeaa8e31297aa8d5",
+      "docs/superpowers/plans/2026-10-24-claude-code-lifecycle-conformance.md": "ee9946e9f09723dd9375e2bb0281ea50d271a7f1",
+      "docs/superpowers/specs/2026-08-16-superpowers-backplane-bootstrap-design.md": "6eca807ada7e356c643ad6700715820a61609f69",
+      "docs/superpowers/specs/2026-08-23-superpowers-session-handoffs-design.md": "d0423f20aedb1b534ab437176ad628b5896a1f27",
+      "docs/superpowers/specs/2026-09-19-host-installation-leaf-rescoping-design.md": "e1e42d0b89bf950b988b05097dd011c6490aefe6",
+      "docs/superpowers/specs/2026-09-19-v0.1-adoption-installation-contract-design.md": "a790d953691d178f711757e9164afb60932eb65a",
+      "index.js": "c96a668ce427f1f8017894f58e291882c82e171a",
+      "package.json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3",
+      "skills/managing-superpowers-backlog/SKILL.md": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+      "skills/managing-superpowers-backlog/agents/openai.yaml": "d9c7ebe5f4b006f5eea8a80e59234bc06de6cb45",
+      "skills/managing-superpowers-backlog/references/architectural-decisions.md": "ece6386cb375bcea4e63409555b8e07c3810cbec",
+      "skills/managing-superpowers-backlog/references/checkpoint-complete-example.json": "8dc749345cc79561deb1b63384e8db11c547bada",
+      "skills/managing-superpowers-backlog/references/checkpoint-format.md": "ed2d5a4b480ed1ff5744155be4a84b818e2d40ad",
+      "skills/managing-superpowers-backlog/references/checkpoint-partial-example.json": "8ba31c89d9ecd351fe9772dec3dd9f60c6a188a6",
+      "skills/managing-superpowers-backlog/references/checkpoint-stale-example.json": "ffc5909d66f519fa1704482171ed90ac7d09b8b3",
+      "skills/managing-superpowers-backlog/references/checkpoint-state-template.md": "bef3e453eeda9a4f67cfdb3a1563bf35a34be3f9",
+      "skills/managing-superpowers-backlog/references/github-issue-contract.md": "dce137bab2ad8cc1f489c93ee59bcc3e7145261a",
+      "skills/managing-superpowers-backlog/references/installing-superpowers.md": "f80951f3a0d3aaca5e7040731e669c374ec0ad96",
+      "skills/managing-superpowers-backlog/references/pr-completion.md": "b506693f6ec5ef326d277622e367da376ab715ea",
+      "skills/managing-superpowers-backlog/references/product-decomposition.md": "4d917436e16bca9d39abf5e040680673afa68e16",
+      "skills/managing-superpowers-backlog/references/repository-checkpoint.md": "df327da8ea7bf347a7e1efad5bb8f3e44c487939",
+      "skills/managing-superpowers-backlog/references/superpowers-binding.md": "265e4d56521d898517d7c14772d6c5596c7abe22",
+      "skills/managing-superpowers-handoffs/SKILL.md": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+      "skills/managing-superpowers-handoffs/agents/openai.yaml": "3c9aa25e93e58e7ae3a8b5bc4b7dedbb64633af6",
+      "skills/managing-superpowers-handoffs/references/handoff-contract.md": "1c18c4f5e2a2e07d25f76d6efe6bc486f1f22902",
+      "skills/managing-superpowers-handoffs/references/resume-assessment.md": "3ac6ecac93a5997a97811ab0fc5945009a874e59"
+    }
+  },
+  "totals": {
+    "PASS": 41,
+    "FAIL": 0,
+    "UNKNOWN": 0
+  },
+  "candidate_local_rows_pass": true,
+  "exact_hosted_candidate_result": "UNKNOWN"
+}

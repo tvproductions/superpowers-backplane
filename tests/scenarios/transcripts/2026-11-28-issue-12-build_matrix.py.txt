@@ -1,0 +1,313 @@
+"""Project the owning receipts into the approved issue #12 Task 1 matrix."""
+
+import argparse
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+from typing import Any
+
+ROOT = Path.cwd()
+SCENARIOS = ROOT / "tests/scenarios"
+TARGET = "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c"
+PLAN = "docs/superpowers-backplane/plans/2026-11-28-issue-12-opencode-v2-integrated-acceptance.md"
+PLAN_SHA = "81923b92381bac0e17f12a2ac040d34db641c6ea6f4121cceaa04645122417e3"
+SETUP = "2026-11-01-issue-23-opencode-acceptance.json"
+SETUP_DELIVERY = "2026-11-27-issue-23-integrated-delivery.json"
+LIFECYCLE = "2026-11-01-issue-24-opencode-acceptance.json"
+CAPABILITY = "2026-11-28-issue-24-capability-replay.json"
+CONFORMANCE = "2026-11-01-issue-24-opencode-conformance.json"
+FIXTURE = "2026-11-01-issue-24-opencode-native-fixture.json"
+UPSTREAM = "https://github.com/obra/superpowers.git"
+GUIDE = "docs/installing-opencode.md"
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def git(*args: str) -> str:
+    return subprocess.check_output(["git", *args], encoding="utf-8").strip()
+
+
+def read(name: str) -> dict[str, Any]:
+    return json.loads((SCENARIOS / name).read_text(encoding="utf-8"))
+
+
+def ref(name: str, selector: str) -> dict[str, str]:
+    return {
+        "path": "tests/scenarios/" + name,
+        "selector": selector,
+        "git_blob": git("rev-parse", f"{TARGET}:tests/scenarios/{name}"),
+        "sha256": sha((SCENARIOS / name).read_bytes()),
+    }
+
+
+def skill_identities(items: dict[str, Any]) -> dict[str, str]:
+    return {name: record["blob"] for name, record in items.items()}
+
+
+def issue_state(snapshot: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: snapshot[key]
+        for key in ("number", "state", "stateReason", "updatedAt", "labels")
+        if key in snapshot
+    }
+
+
+def compare(revision: str) -> dict[str, str]:
+    return {
+        "revision": revision,
+        "adapter": git("rev-parse", f"{revision}:index.js"),
+        "guide": git("rev-parse", f"{revision}:{GUIDE}"),
+        "skills": git("rev-parse", f"{revision}:skills"),
+        "package_json": git("rev-parse", f"{revision}:package.json"),
+    }
+
+
+def entry(
+    case: str,
+    criterion: int,
+    expected: str,
+    actual: dict[str, Any],
+    inputs: dict[str, Any],
+    evidence: list[dict[str, str]],
+    decision: str,
+    reason: str,
+) -> dict[str, Any]:
+    return {
+        "id": case,
+        "criterion": criterion,
+        "result": "PASS" if decision == "retain" else "UNKNOWN",
+        "disposition": decision,
+        "reason": reason,
+        "expected": expected,
+        "observed": actual,
+        "inputs": inputs,
+        "evidence": evidence,
+    }
+
+
+def setup_rows() -> list[dict[str, Any]]:
+    rows = []
+    hosted = read(SETUP_DELIVERY)
+    delivery = hosted["native_windows_v2_2_1_4"]
+    for row in read(SETUP)["rows"]:
+        case = row["id"]
+        completed = row["expected_status"] == "completed"
+        checks = row["checks"]
+        revision = row["candidate_sha"]
+        input_skills = [
+            {key: result[key] for key in ("id", "status", "git_blob") if key in result}
+            for result in row["native_results"]
+        ]
+        evidence = [ref(SETUP, f"rows[id={case}]")]
+        decision = "rerun"
+        reason = (
+            "The owning matrix uses the earlier package; the setup guide and backlog skill "
+            "inputs changed. The later hosted setup receipt covers native setup only."
+        )
+        if case == "S-native":
+            revision = hosted["delivery"]
+            checks = delivery["checks"]
+            input_skills = [
+                {key: result[key] for key in ("id", "status", "git_blob")}
+                for result in delivery["skills"]
+            ]
+            evidence.append(ref(SETUP_DELIVERY, "native_windows_v2_2_1_4"))
+            decision = "retain"
+            reason = (
+                "The exact #23 hosted receipt observes native setup with the current adapter, "
+                "skills and unchanged setup procedure. The later guide change adds maintenance."
+            )
+        if case == "F-below-floor":
+            decision = "retain"
+            reason = (
+                "Actual V2 2.0.3 refused before loading any package. The 2.0.4 floor and "
+                "pre-configuration stop condition are unchanged."
+            )
+        rows.append(
+            entry(
+                case,
+                4 if case == "F-below-floor" else 3,
+                "Setup, preservation, and three fresh Skills"
+                if completed
+                else "Specific refusal and recovery with preserved state",
+                {
+                    "historical_result": row["result"],
+                    "checks": checks,
+                    "preservation": checks.get("preservation"),
+                    "recovery_recorded": row["recovery"] is not None,
+                    "package_files": len(delivery["installed_package_files"])
+                    if case == "S-native"
+                    else len(row["package_files"]),
+                },
+                {
+                    "source": compare(revision),
+                    "host_version": row["host_version"],
+                    "host_sha256": row["executable_hash"],
+                    "upstream_origin": row["upstream_origin"],
+                    "upstream_revision": row["upstream_revision"],
+                    "skill_results": input_skills,
+                    "gh": "See original receipt commands, per-case facades/archives, and model/direct checks.",
+                },
+                evidence,
+                decision,
+                reason,
+            )
+        )
+    return rows
+
+
+def lifecycle_rows() -> list[dict[str, Any]]:
+    receipt = read(LIFECYCLE)
+    replay = read(CAPABILITY)
+    replay_by_id = {row["id"]: row for row in replay["rows"]}
+    rows = []
+    for original in receipt["rows"]:
+        case = original["id"]
+        row = replay_by_id.get(case, original)
+        before, after = row["before"], row["after"]
+        evidence = [ref(LIFECYCLE, f"rows[id={case}] and preflight_before_apply")]
+        if case in replay_by_id:
+            evidence.append(ref(CAPABILITY, f"rows[id={case}] and checks.{case}"))
+        keep = case == "L-unavailable-source"
+        rows.append(
+            entry(
+                case,
+                3,
+                "Exact selected operation, fresh applicable discovery, and preservation",
+                {
+                    "historical_result": row["result"],
+                    "preservation": before["protected"] == after["protected"],
+                    "package_files": len(after["installed_manifest"]),
+                    "loaded_skills": after["loaded_skills"],
+                },
+                {
+                    "revision_before": before["revision"],
+                    "revision_after": after["revision"],
+                    "guide": compare(TARGET)["guide"],
+                    "host_version": row["host_version"],
+                    "host_sha256": row["host_sha256"],
+                    "upstream_origin": UPSTREAM,
+                    "upstream_revision": after["upstream_revision"],
+                    "skills": skill_identities(after["skill_files"]),
+                    "gh": replay["checks"].get(case, receipt["gh_capability"]),
+                },
+                evidence,
+                "retain" if keep else "rerun",
+                "The published guide preflight, the unavailable exact SHA and gh capability are unchanged."
+                if keep
+                else "The native package revisions in this operation differ from the integrated input.",
+            )
+        )
+    return rows
+
+
+def conformance_rows() -> list[dict[str, Any]]:
+    receipt = read(CONFORMANCE)
+    checks = {"skill-structure": receipt["skill_structure"], **receipt["scenarios"]}
+    return [
+        entry(
+            name,
+            3,
+            "Pass the named conformance check and its verification rubric",
+            {"historical_result": check["result"], "preservation": receipt["protected_equal"]},
+            {
+                "source": compare(receipt["source"]),
+                "host_version": "2.1.4",
+                "upstream_origin": UPSTREAM,
+                "upstream_revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+                "skills": skill_identities(receipt["skill_sources"]),
+                "gh": read(LIFECYCLE)["gh_capability"],
+            },
+            [ref(CONFORMANCE, name)],
+            "retain",
+            "The current skill tree and adapter match the conformance source. The later maintenance text does not change the rubrics.",
+        )
+        for name, check in checks.items()
+    ]
+
+
+def fixture_rows() -> list[dict[str, Any]]:
+    receipt = read(FIXTURE)
+    return [
+        entry(
+            row["stage"],
+            3,
+            "Pass the approved stage with correct issue state, ordering, and label preservation",
+            {
+                "historical_passed": row["passed"],
+                "protected_equal": row["protected_equal"],
+                "before": issue_state(row["before"]),
+                "after": issue_state(row["after"]),
+            },
+            {
+                "source": compare(row["package_sha"]),
+                "host_version": "2.1.4",
+                "host_sha256": row["host_sha256"],
+                "upstream_origin": UPSTREAM,
+                "upstream_revision": row["upstream_sha"],
+                "skills": skill_identities(row["skill_sources"]),
+                "gh": read(LIFECYCLE)["gh_capability"],
+            },
+            [ref(FIXTURE, f"cases[stage={row['stage']}] and fixture_publication")],
+            "retain",
+            "The native fixture stays completed after exact PR #40 integration; the consumed adapter and skills match.",
+        )
+        for row in receipt["cases"]
+    ]
+
+
+def main() -> None:
+    """Write the Task 1 evidence projection from the verified worktree."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("output", type=Path)
+    args = parser.parse_args()
+    if git("rev-parse", "HEAD") != TARGET or sha((ROOT / PLAN).read_bytes()) != PLAN_SHA:
+        raise SystemExit("Unexpected execution base or approved plan bytes")
+    rows = [*setup_rows(), *lifecycle_rows(), *conformance_rows(), *fixture_rows()]
+    if len(rows) != 41 or len({row["id"] for row in rows}) != 41:
+        raise SystemExit("Expected 41 unique approved IDs")
+    result = {
+        "issue": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+        "issue_revision": "2026-11-27T08:47:30Z",
+        "phase": "Task 1 input reconciliation",
+        "plan": {
+            "path": PLAN,
+            "sha256": PLAN_SHA,
+            "operator_response": "approved",
+            "source": "Direct response to the linked draft approval request in this session",
+        },
+        "baseline": compare(TARGET),
+        "scored_result": "UNKNOWN",
+        "prerequisites": {
+            "2": "CLOSED/COMPLETED",
+            "20": "CLOSED/COMPLETED",
+            "23": "CLOSED/COMPLETED",
+            "24": "CLOSED/COMPLETED",
+        },
+        "issue_state": {
+            "state": "OPEN",
+            "label": "backplane:backlog",
+            "parent": 1,
+            "children": [],
+            "blocked_by": [24, 2],
+            "blocking": [6],
+        },
+        "fixture_39": {
+            "state": "CLOSED/COMPLETED",
+            "labels": ["documentation"],
+            "pr": 40,
+            "merged_at": "2026-11-28T00:29:31Z",
+            "closed_at": "2026-11-28T00:30:38Z",
+        },
+        "rows": rows,
+    }
+    with args.output.open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(result, stream, ensure_ascii=False, indent=2)
+        stream.write("\n")
+
+
+if __name__ == "__main__":
+    main()

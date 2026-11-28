@@ -1,0 +1,56 @@
+"""Negative controls for the #12 integrated evidence gates."""
+
+import json
+import unittest
+from copy import deepcopy
+from pathlib import Path
+
+import record_replays
+
+AREA = Path(__file__).resolve().parent
+
+
+class ReplayEvidenceTests(unittest.TestCase):
+    def test_wrong_attributed_skill_blob_rejected(self):
+        receipt = record_replays.recorded(AREA / "native-02/lifecycle-receipt.json")
+        after = deepcopy(receipt["rows"][0]["after"])
+        after["skill_files"]["using-superpowers"]["blob"] = "a" * 40
+        with self.assertRaisesRegex(ValueError, "attributed Skill blob"):
+            record_replays.observed_lifecycle(after)
+
+    def test_complete_native_manifest_observation(self):
+        receipt = record_replays.recorded(AREA / "native-02/lifecycle-receipt.json")
+        after = receipt["rows"][0]["after"]
+        result = record_replays.observed_lifecycle(after)
+        self.assertEqual(result["package_files"], 109)
+        self.assertEqual(set(result["skill_blobs"]), set(record_replays.acceptance.SKILLS))
+
+    def test_missing_plan_approval_rejected(self):
+        matrix, fixture = task_one_inputs()
+        del matrix["plan"]["operator_response"]
+        with self.assertRaisesRegex(ValueError, "Exact plan approval"):
+            record_replays.verify_authority(matrix, fixture)
+
+    def test_completion_before_integration_rejected(self):
+        matrix, fixture = task_one_inputs()
+        matrix["fixture_39"]["closed_at"] = "2026-11-28T00:28:00Z"
+        with self.assertRaisesRegex(ValueError, "without verified prior integration"):
+            record_replays.verify_authority(matrix, fixture)
+
+    def test_existing_authority_and_delivery_order_pass(self):
+        matrix, fixture = task_one_inputs()
+        record_replays.verify_authority(matrix, fixture)
+
+    def test_missing_maintenance_capability_rejected(self):
+        receipts = record_replays.recorded(AREA / "native-03/lifecycle-receipt.json")
+        row = next(item for item in receipts["rows"] if item["id"] == "L-update")
+        checks = record_replays.recorded(AREA / "native-03/capability-checks.json")
+        del checks["update_before"]
+        with self.assertRaisesRegex(ValueError, "maintenance check update_before"):
+            record_replays.maintenance_checks(row, checks)
+
+
+def task_one_inputs():
+    matrix = json.loads((AREA / "matrix-task1.json").read_text(encoding="utf-8"))
+    fixture = json.loads(Path(record_replays.NATIVE_FIXTURE).read_text(encoding="utf-8"))
+    return matrix, fixture

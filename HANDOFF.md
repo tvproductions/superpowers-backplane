@@ -1,3 +1,7 @@
+# OpenCode V2 integrated acceptance for issue #12 — 2026-11-28
+
+Read [the current handoff](docs/superpowers-backplane/handoffs/20261128T015158Z-issue-12-opencode-v2-integrated-acceptance.md) and invoke RESUME on that path. Issue #24 is closed completed. Both tracked blockers for #12 are closed. Reconcile the current V2-only issue with the November 1 plan before execution. Issue #12 gates the selected 0.4.0 scope.
+
 # OpenCode V2 release accounting and issue #24 checkpoint — 2026-11-28
 
 Read [the current handoff](docs/superpowers-backplane/handoffs/20261128T005952Z-opencode-v2-release-accounting.md) and invoke RESUME on that path. Issue #23 and fixture #39 are complete. The exact #24 candidate is synced on its own branch. Reconcile release scope first, then revalidate the integration and closeout gates for #24 and #12.

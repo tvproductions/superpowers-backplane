@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+The [selected 0.4.0 scope](docs/superpowers-backplane/releases/2026-11-28-v0.4.0.md)
+covers OpenCode V2 setup, lifecycle, and integrated acceptance. The acceptance
+record will identify the exact verified host and upstream combinations.
+
 ## 0.3.0 — November 15, 2026
 
 Published baseline 0.2.0 -> minor 0.3.0 delivers the approved ADR integration

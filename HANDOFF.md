@@ -1,3 +1,7 @@
+# Issue #12 completed and OpenCode V2 release handoff — 2026-11-28
+
+Read [the current handoff](docs/superpowers-backplane/handoffs/20261128T204014Z-issue-12-closed-v040-continuation.md) and invoke RESUME on that path. Issue #12 is closed completed. PR #42 delivered verified OpenCode V2 acceptance with all 41 rows passing. The selected 0.4.0 bundle still requires candidate-specific verification and release direction.
+
 # OpenCode V2 integrated acceptance for issue #12 — 2026-11-28
 
 Read [the current handoff](docs/superpowers-backplane/handoffs/20261128T015158Z-issue-12-opencode-v2-integrated-acceptance.md) and invoke RESUME on that path. Issue #24 is closed completed. Both tracked blockers for #12 are closed. Reconcile the current V2-only issue with the November 1 plan before execution. Issue #12 gates the selected 0.4.0 scope.

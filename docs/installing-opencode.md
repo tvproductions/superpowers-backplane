@@ -161,5 +161,5 @@ Backplane.
 
 ### V2 lifecycle verification evidence
 
-The [V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/main/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md)
+The [V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/203c5730c15617b9780e7767c6b201b8642b02fd/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md#task-1--native-package-operations)
 identifies the pinned package revisions, host and observed lifecycle results.

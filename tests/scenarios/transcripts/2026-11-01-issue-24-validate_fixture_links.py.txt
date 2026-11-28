@@ -1,0 +1,72 @@
+"""Verify both documentation fixture links at one explicit Git tree."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import posixpath
+import re
+import subprocess
+
+GUIDE = "docs/installing-opencode.md"
+RECORD = "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md"
+REMOTE = "https://github.com/tvproductions/superpowers-backplane/blob/"
+GUIDE_ANCHOR = "v2-lifecycle-verification-evidence"
+RECORD_ANCHOR = "task-1--native-package-operations"
+
+
+def git(*args: str) -> str:
+    """Retrieve text or object identities from the verified fixture repository."""
+    return subprocess.check_output(["git", *args], encoding="utf-8", timeout=20).strip()
+
+
+def headings(document: str) -> set[str]:
+    """Resolve the two literal Markdown headings using their GitHub slug form."""
+    return {
+        re.sub(r"[^a-z0-9_ -]", "", text.lower()).replace(" ", "-")
+        for text in re.findall(r"^#{1,6} (.+)$", document, re.MULTILINE)
+    }
+
+
+def main() -> int:
+    """Validate both directions and emit their immutable source identities."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("revision")
+    parser.add_argument("--record-revision")
+    args = parser.parse_args()
+    revision = git("rev-parse", f"{args.revision}^{{commit}}")
+    guide = git("show", f"{revision}:{GUIDE}")
+    record = git("show", f"{revision}:{RECORD}")
+    record_revision = "main"
+    if args.record_revision is not None:
+        record_revision = git("rev-parse", f"{args.record_revision}^{{commit}}")
+        assert git("show", f"{record_revision}:{RECORD}") == record
+        pinned_guide = git("show", f"{record_revision}:{GUIDE}")
+        assert GUIDE_ANCHOR in headings(pinned_guide)
+    guide_target = f"{REMOTE}{record_revision}/{RECORD}"
+    if args.record_revision is not None:
+        guide_target += "#" + RECORD_ANCHOR
+    assert f"]({guide_target})" in guide
+    assert GUIDE_ANCHOR in headings(guide) and RECORD_ANCHOR in headings(record)
+    backlink = posixpath.relpath(GUIDE, posixpath.dirname(RECORD)) + "#" + GUIDE_ANCHOR
+    assert f"]({backlink})" in record
+    result = {
+        "revision": revision,
+        "tree": git("rev-parse", f"{revision}^{{tree}}"),
+        "guide": {
+            "path": GUIDE,
+            "blob": git("rev-parse", f"{revision}:{GUIDE}"),
+            "link": guide_target,
+        },
+        "record": {
+            "path": RECORD,
+            "blob": git("rev-parse", f"{revision}:{RECORD}"),
+            "link": backlink,
+        },
+    }
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

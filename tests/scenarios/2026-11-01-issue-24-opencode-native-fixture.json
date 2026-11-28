@@ -1,0 +1,1925 @@
+{
+  "scope": "Approved OpenCode V2 real issue lifecycle fixture #39 for Backplane issue #24",
+  "approved_initial_issue": {
+    "blockedBy": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "blocking": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+    "closedByPullRequestsReferences": [],
+    "issueType": null,
+    "labels": [
+      {
+        "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+        "name": "documentation",
+        "description": "Improvements or additions to documentation",
+        "color": "0075ca"
+      },
+      {
+        "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+        "name": "backplane:backlog",
+        "description": "Captured but not ready for execution",
+        "color": "D4C5F9"
+      }
+    ],
+    "number": 39,
+    "parent": null,
+    "state": "OPEN",
+    "stateReason": "",
+    "subIssues": {
+      "nodes": [],
+      "totalCount": 0
+    },
+    "subIssuesSummary": {
+      "completed": 0,
+      "percentCompleted": 0,
+      "total": 0
+    },
+    "title": "Verify OpenCode V2 adopter operation evidence links",
+    "updatedAt": "2026-11-28T00:14:43Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+  },
+  "fixture_publication": {
+    "pull_request": 40,
+    "pr_url": "https://github.com/tvproductions/superpowers-backplane/pull/40",
+    "reviewed_head": "164381047d335f82d1c1280600947dd6502fd5fe",
+    "pinned_record": "203c5730c15617b9780e7767c6b201b8642b02fd",
+    "delivery": {
+      "revision": "6f0c295d6e34d86dd516140092d91e628f52e8ec",
+      "tree": "2316fafb0f12830531229f8a129ffa5c1996c42d",
+      "guide": {
+        "path": "docs/installing-opencode.md",
+        "blob": "e704b08e596ac805f5eb512d768b96e6b7e9a9d1",
+        "link": "https://github.com/tvproductions/superpowers-backplane/blob/203c5730c15617b9780e7767c6b201b8642b02fd/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md#task-1--native-package-operations"
+      },
+      "record": {
+        "path": "tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md",
+        "blob": "5e4c788cc3e60dcc39fe3e37f86dbcef78b3af14",
+        "link": "../../docs/installing-opencode.md#v2-lifecycle-verification-evidence"
+      }
+    },
+    "checks": {
+      "conclusion": "success",
+      "headSha": "6f0c295d6e34d86dd516140092d91e628f52e8ec",
+      "jobs": [
+        {
+          "name": "checks (windows-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "checks (macos-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "checks (ubuntu-latest)",
+          "conclusion": "success"
+        }
+      ],
+      "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/46088154550"
+    }
+  },
+  "cases": [
+    {
+      "stage": "status",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:14:43Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:14:43Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "73479f175c7c04d932ba93a8bbb9d928ac765aae67deed3eeb31da7d98d7c7b7",
+          "call_id": "0a3350ca8732c5eb006ee494a7c63e2acdcdff15506bd4eb6898dffaacfc2b98"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "74b74dc1ff418140f30e328eb6a32d190350ea707da8fb4480ec30adad26ad6f",
+          "call_id": "afb766295d00c554dafae6dd0ce098246564aaad9015ebd7d1a649b113c02a81",
+          "status": "completed",
+          "capture_sha256": "cb7c0a89bb29f6d8235f00ee77249246c8aee6de5f0ccacd1bb97e3452ddf2a2"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "340daadd91eb9063b8529c471bb18b457ee3accc27391976302b03fccf99c149",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 1
+    },
+    {
+      "stage": "design",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzjsw",
+            "name": "backplane:backlog",
+            "description": "Captured but not ready for execution",
+            "color": "D4C5F9"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:14:43Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkDQ",
+            "name": "backplane:designing",
+            "description": "Issue, specification, or plan is being brought to approval",
+            "color": "FBCA04"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:20:04Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "73479f175c7c04d932ba93a8bbb9d928ac765aae67deed3eeb31da7d98d7c7b7",
+          "call_id": "86371bc722d7ab2688aa8f266e228daddfbe407be2988d0ecd696c6ae4f33cd7"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:backlog",
+            "--add-label",
+            "backplane:designing"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "dfdda2165b6c0c9ba8fb2f91474f5ce9e4faf952f079d0a4fdd957ac8134068f"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "ea1e539626c0bb3f1e26fd405f3b73c9d094c78ecf3733efe1c4d6cd64a661f3",
+          "call_id": "8e702038217066c2fb0b01018c4d45d4995c288b18f7d1b87470e1686d4f3697"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "7b95eb99a066fa8643308be7c0f511a5b3bbd6fd9f72d73ab7d6355e23e27652",
+          "call_id": "8f4abfdddd2284c59130a1ad921430003bba3440258db38c796633bc2e5dc3e8",
+          "status": "completed",
+          "capture_sha256": "37f8ebd8dbe851401362ab88828b3423b4db6c571c81dc0c843648ed993b8599"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "a97f1eb3ad61dfc1db62ccc538d9ed7ffd2563d8369ced53fd29201a08eca236",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 2
+    },
+    {
+      "stage": "ready",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkDQ",
+            "name": "backplane:designing",
+            "description": "Issue, specification, or plan is being brought to approval",
+            "color": "FBCA04"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:20:04Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+            "name": "backplane:ready",
+            "description": "Approved and dependency-ready for execution",
+            "color": "0E8A16"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:20:36Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "ea1e539626c0bb3f1e26fd405f3b73c9d094c78ecf3733efe1c4d6cd64a661f3",
+          "call_id": "62e29d694740e85aac8eb3dae8696e212ad6bd0c875c21ad142d469339b4992c"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:designing",
+            "--add-label",
+            "backplane:ready"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "c13fd3e13772d36b3b93980f6fe8678e9b8ddffe4340ede19cbd16d4fc3a5c4e"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "5244736ef2a13e8997d30b963964f5abe32a59feb062f7b35e4e1871823cfcd5",
+          "call_id": "c2a7de8392da417a4bbaf8fb5507d448ec6be1f4a582deb5430a8be5890567f7"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "aaca63ddbf2ec93c7bb4e7572216d0d94573f5c1acc996acab1a0a0813761694",
+          "call_id": "7d27056246f3e9179cb4e09439d573872637fe99d25b58ac9e74a96adfe85a86",
+          "status": "completed",
+          "capture_sha256": "c90a001c5328f83be10bb992479081005d9f45ed6e16d6a70d47b8815f53f690"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "71e45bd70357bea69620d983b4d8c235ff0d686f99b36eada45465fc166a601f",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 2
+    },
+    {
+      "stage": "selection",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+            "name": "backplane:ready",
+            "description": "Approved and dependency-ready for execution",
+            "color": "0E8A16"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:20:36Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+            "name": "backplane:ready",
+            "description": "Approved and dependency-ready for execution",
+            "color": "0E8A16"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:20:36Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "5244736ef2a13e8997d30b963964f5abe32a59feb062f7b35e4e1871823cfcd5",
+          "call_id": "0b2443dd3a244c4e1886cb11b2c5d9d354fa8e646ae8345ad89e04afb306ffb5"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "a5f9dc832798316294cbf98c68b9a28e128a64f4f85fdfbb132ec169ca08831c",
+          "call_id": "b98961d1928aa6ed9f544d1e810c0082a2450a3b0bf38d69670822b8039dfa88",
+          "status": "completed",
+          "capture_sha256": "33217db61520c5a4e793b085073b0bf90cb3e5779d58da5faedfc72c4b045b5e"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "285aa3c44776170e3e6e8652fb58c4868c8f1a8720a78e2003c8650fd14e7af6",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 2
+    },
+    {
+      "stage": "start",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkZQ",
+            "name": "backplane:ready",
+            "description": "Approved and dependency-ready for execution",
+            "color": "0E8A16"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:20:36Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:21:23Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "5244736ef2a13e8997d30b963964f5abe32a59feb062f7b35e4e1871823cfcd5",
+          "call_id": "cccc8c46c94aab856cb48cf9a01eb295b3cb5046e28d40eea197e1c60afca0e9"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:ready",
+            "--add-label",
+            "backplane:active"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "7079b5bbe2629f257c038cb28f994ef3f071ca515dd3c5abd2f6d83808e48919"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "7b63c3b48c7a627408bfb569d842c3e4f2b356a32070199ba0017f7def4064a3",
+          "call_id": "dc7c588acdfd6adbf2279389646970659109791638ca772e7fcac297552dc045"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "83d6ea42697198babe3b576006023b61f028a6e580026b1a614b30d2132273dd",
+          "call_id": "3552812f713d17ed9f2bb7ba7782c24c5fca2a0b933e38fe278dbea4954151f9",
+          "status": "completed",
+          "capture_sha256": "346615186a10541e1e688855b2607f76d9037c78c6f1f1273df46238f87ba0ba"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "8856add0f93fb6506b1cf1915e71b4cc8ae1244ee19a68b50f230de61c29f595",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 2
+    },
+    {
+      "stage": "block",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:21:23Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzk8w",
+            "name": "backplane:blocked",
+            "description": "Work cannot advance; the reason is recorded in the issue",
+            "color": "B60205"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:23:14Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "7b63c3b48c7a627408bfb569d842c3e4f2b356a32070199ba0017f7def4064a3",
+          "call_id": "73a186275d5fe5e93e954fac7ab99737536724c383004b711e1a350cbb8a79fd"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "comment",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--body-file",
+            "fixture-blocker.md"
+          ],
+          "output_sha256": "e45ad1251122f4d7593879391fc1608de524e7fac7f390a62d64fc3987812c08",
+          "call_id": "074d6809654f558c30a1cba728b976cf4bcade020e8c5eb5cfb64f336bc4fbb5"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "b095244e686ae4cc2209fbf7d24c17123e1f51d2c2544c050e94bb38b7226078",
+          "call_id": "107e79cea7bd75eba7e5a00b3bb6aa98bee27454089ad916642c0573fde21cba"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:active",
+            "--add-label",
+            "backplane:blocked"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "730cef6fc1823a66eabeca880380fb9b5aa12d9d85648681225e5295f400ee6c"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "2a11406e18dfdaf305c773792187eadd071ebcd744ff8b78326ac48f9285a070",
+          "call_id": "7d5d9608d225fc4fa5c291945769163964b483ff4f9dbe3c34387496e7b2d98b"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "503dff1ddf8e865772635b2bdc1e19c0fcc2da8ed1e38d235f738d46c9ca7f9d",
+          "call_id": "3f57646243e45530f68d02cc24997aeff0ca1f35d59ec9bf89225073f1f1021f",
+          "status": "completed",
+          "capture_sha256": "c585fd6d8de12d9cb563748ae27c802f91075847c546279966cd8b4871bdc538"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "983f5baf9c03abf37cff7fa430cae45a580eca6c7acd3ce59326fee4c390fa85",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 3
+    },
+    {
+      "stage": "resume",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzk8w",
+            "name": "backplane:blocked",
+            "description": "Work cannot advance; the reason is recorded in the issue",
+            "color": "B60205"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:23:14Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:24:31Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "Exact candidate 203c5730c15617b9780e7767c6b201b8642b02fd has both documentation file blobs and both scoped link targets; the relative backlink resolves the candidate guide heading. The closure gate still requires actual reviewed hosted integration.",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "2a11406e18dfdaf305c773792187eadd071ebcd744ff8b78326ac48f9285a070",
+          "call_id": "46c9df46a5e13d2c8312fb6a385c11b6d2f9cee27bbf1dd439e765ecc1728588"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:blocked",
+            "--add-label",
+            "backplane:active"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "7955e142f561f51e654eee3a0a2498222b68ec3d950a746a0b1e01c5ab06605a"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "f7ddcc9bb37c1441e6307c2971f5ace4b79af3d7efbfb0439b9e93d4e35b33ef",
+          "call_id": "d2f264415cbf934f65c01bbfa6050953c1211d889a4b3f2a893e385cad28f072"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "9f62c71eb696be7acbeba2d6a063136ab8433c60bc881d5296b707806a76f812",
+          "call_id": "921b6cb8c7eeaf86ca8480d1c9b51e64d598d0f624dc4fa4d067107344916269",
+          "status": "completed",
+          "capture_sha256": "817f50c639a59cb41a235ca211b4ea8e4713098fe473ac224f8dddaeabbae96e"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "b383a5cb4a91b10a3a738b9615dff2085b6d88c4e824167b240f75237e0d820f",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 1
+    },
+    {
+      "stage": "submit",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:24:31Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+            "name": "backplane:review",
+            "description": "Implementation is submitted and awaiting final review/integration",
+            "color": "5319E7"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:25:03Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "The documentation-only candidate 203c5730c15617b9780e7767c6b201b8642b02fd passed local normal hooks, and its two-path link check is recorded. Enter review for the candidate.",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "f7ddcc9bb37c1441e6307c2971f5ace4b79af3d7efbfb0439b9e93d4e35b33ef",
+          "call_id": "5466f668891eb8067b2f39fdd5649011880fb164e743a53fd2d2d39d1800e05f"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:active",
+            "--add-label",
+            "backplane:review"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "6ffa29a8432fcf262f00868f3e2ee8a058d0167d1d6d47a3c071afb46d5f7ff3"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "363af57b9c8ee477f683320c0d50770417361e86f49f1df698e81a56839a4553",
+          "call_id": "bc8398dddeb5b640284452d2966811cbbd546db0de066197d02af8104aefd2fa"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "3cccb580393f80304e7ca513cad901c33419955576c50f504ea69d7df8ecb3de",
+          "call_id": "a2037294e0b32f67f334d9aab10a087b12166d4c5ae78fe7c8129448f3f4ce7f",
+          "status": "completed",
+          "capture_sha256": "dcc7a06345bc25f9ec4cc0c9e5402c5d5dff4479a5ecaeb9dfeac402eede4c42"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "59a1d01b79de4036fc34e1f263d79f8da2f8852a663359d95d5c6ec008c532c6",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 1
+    },
+    {
+      "stage": "rework",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+            "name": "backplane:review",
+            "description": "Implementation is submitted and awaiting final review/integration",
+            "color": "5319E7"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:25:03Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:25:36Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "Fresh independent review of exact candidate 203c5730c15617b9780e7767c6b201b8642b02fd requests a change to the guide link: target a published full commit that contains the evidence and send readers directly to the Task 1 native operations heading. The relative evidence backlink has been verified.",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "363af57b9c8ee477f683320c0d50770417361e86f49f1df698e81a56839a4553",
+          "call_id": "85bd8b685503f5dd5b6e57f0e339f1aaff5cc93a9d0ac7c782db64cea6033d2c"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:review",
+            "--add-label",
+            "backplane:active"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "68044e58390e6e9aa51042ab7124f7ead8c96e1d7eb951e11e97b8786d1f8e3b"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "8c359f995c37ced6b9b9663bdccee6619d64563ecc556bd793a82a4becfc4d68",
+          "call_id": "226cae8f46c11ee2282bdb76e9572af719d8e2593b44cd89ba067b6eff0623ea"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "7aa4a01f19b00f7f17396f3aaf99e9c80b450d7acdd4addc168df23581e1d980",
+          "call_id": "bb922d869f36270cf691f5da02fea6a09f48831ab79cc112ded768b7c3e7cde0",
+          "status": "completed",
+          "capture_sha256": "88f5ac2b2fd34ae192b418a756b75ab8f42b276a241593209a779217336c872a"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "2c412e7aad18bbc481eff9a17591fbc8cf30c60a9903a6e57f6281c53c776ae4",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 1
+    },
+    {
+      "stage": "resubmit",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzkug",
+            "name": "backplane:active",
+            "description": "Superpowers execution is in progress",
+            "color": "1D76DB"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:25:36Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+            "name": "backplane:review",
+            "description": "Implementation is submitted and awaiting final review/integration",
+            "color": "5319E7"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:27:14Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "The genuine review correction is in exact documentation candidate 164381047d335f82d1c1280600947dd6502fd5fe. Its immutable evidence pin, explicit section and reciprocal link passed validation. All four normal hooks, lock check, and nine adapter tests passed.",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "8c359f995c37ced6b9b9663bdccee6619d64563ecc556bd793a82a4becfc4d68",
+          "call_id": "269ef581632e1aadccfd2a2aba3476f56874c2380b59e33ab1f07f25a44c1938"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:active",
+            "--add-label",
+            "backplane:review"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "83dd920a3d910d3d9ceaf3432349d22071f06a097ddb4d5f0c15e502e18b9fc8"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "869b3522293a5b595c9185173d7d54085df7144f80f3ebb1eb46a68ee5f2bdac",
+          "call_id": "605d04fd73fb5e714715cf85521456f452ec50b635cf62d0abd3d9232f8d7837"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "84f459cc8fb351910bc0e59c41f7188725df6e39e4d59f7aa8208e37f20bddc7",
+          "call_id": "dc77d051a9c815a42a6eb5ea7913b46b65a13092db6ced41e9f237f1eac871c5",
+          "status": "completed",
+          "capture_sha256": "f38df50e7d70c04d690f184883b647076e398eb6592ee0646054da2915080c57"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "83b72619729ae3e6556468b253245e5bbd94a55f44c8854f1fcebd6d1b1f1abe",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 1
+    },
+    {
+      "stage": "close",
+      "passed": true,
+      "before": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          },
+          {
+            "id": "LA_kwDOT6l9aM8AAAACxwzlMw",
+            "name": "backplane:review",
+            "description": "Implementation is submitted and awaiting final review/integration",
+            "color": "5319E7"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "OPEN",
+        "stateReason": "",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:27:14Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "after": {
+        "blockedBy": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "blocking": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "body_sha256": "ce341448c610b1423d023b4465f62361ac409138dc6de7345f3426bbd48984fb",
+        "closedByPullRequestsReferences": [],
+        "issueType": null,
+        "labels": [
+          {
+            "id": "LA_kwDOT6l9aM8AAAACwqqHsw",
+            "name": "documentation",
+            "description": "Improvements or additions to documentation",
+            "color": "0075ca"
+          }
+        ],
+        "number": 39,
+        "parent": null,
+        "state": "CLOSED",
+        "stateReason": "COMPLETED",
+        "subIssues": {
+          "nodes": [],
+          "totalCount": 0
+        },
+        "subIssuesSummary": {
+          "completed": 0,
+          "percentCompleted": 0,
+          "total": 0
+        },
+        "title": "Verify OpenCode V2 adopter operation evidence links",
+        "updatedAt": "2026-11-28T00:30:46Z",
+        "url": "https://github.com/tvproductions/superpowers-backplane/issues/39"
+      },
+      "probe": "Actual PR #40 merged as 6f0c295d6e34d86dd516140092d91e628f52e8ec. Both exact published blobs and both GitHub-rendered heading anchors were checked. Exact-main CI https://github.com/tvproductions/superpowers-backplane/actions/runs/46088154550 passed all three platform jobs, and the operator authorized this exact fixture to close completed after those gates.",
+      "command_events": [
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "869b3522293a5b595c9185173d7d54085df7144f80f3ebb1eb46a68ee5f2bdac",
+          "call_id": "7dbbbd118308810fc37d3c895acc668cac639c3b20f90cd20bcb278227db247a"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "close",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--reason",
+            "completed"
+          ],
+          "output_sha256": "0574c0cacec228aae7021626489839d124cf9a6287490bab68c12db9ce17cfc3",
+          "call_id": "5a9ff25f81c904158c62cf800566955efa53a550052e4034f8ae2ce6d63450dd"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "125f6d0e9d92ed56df3cc0fbb8aa9cb5ee7954b8cfc0f8ab44553809e16ba6aa",
+          "call_id": "c53c794459877641ca672b386a7c01c624d06cdfc48a6c42b9e88650f597ca37"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "edit",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--remove-label",
+            "backplane:review"
+          ],
+          "output_sha256": "abdedc6d844e9116e056bd77899d422c6d60712c142daa7ba43c4e62e7ee1d3f",
+          "call_id": "37e5bbe2363607e7ed2d517916b0f5a37eaee30605de5170b2c411a2124fd172"
+        },
+        {
+          "command": [
+            "gh",
+            "issue",
+            "view",
+            "39",
+            "--repo",
+            "tvproductions/superpowers-backplane",
+            "--json",
+            "number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url"
+          ],
+          "output_sha256": "54705f00f9ea6396930663759c7842b96773bb5c947f8f355ecad8c39935beba",
+          "call_id": "caec7957ce30090bda428b22712cc43bff2ed415fa098e31bd12ed6d12642026"
+        }
+      ],
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "644c642d47efea60d59022f72e43bb951444348a431f027246a2250b7a3809dd",
+          "call_id": "04cc130e700f372e8df73f33b8715644908350687f34cd1e7c2b58e08e0fea05",
+          "status": "completed",
+          "capture_sha256": "b8c60b64284924a00f1ff1158434292dcb4b985968968d565903516178c358fd"
+        }
+      ],
+      "skill_sources": {
+        "using-superpowers": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795825002928\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+          "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+        },
+        "managing-superpowers-backlog": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+          "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+        },
+        "managing-superpowers-handoffs": {
+          "path": ".sp-bp/work/issue-24\\native-05\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795825005472\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+          "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+        }
+      },
+      "protected_equal": true,
+      "native_exit": 0,
+      "raw_capture_sha256": "28e0cafe499cfd336544c682040cbd44311523db5169a20e7e5122d4232a8d18",
+      "host_sha256": "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399",
+      "package_sha": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+      "upstream_sha": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "attempt": 1
+    }
+  ],
+  "initial_refusals": [
+    {
+      "stage": "design-01",
+      "state_preserved": true,
+      "raw_capture_sha256": "3e268569c2c76eaf330abee082716d26aef62a68bff3083b1752138ad9c916ae"
+    },
+    {
+      "stage": "block-02",
+      "state_preserved": true,
+      "raw_capture_sha256": "738f25ff048840604e9dce9ee1f2a8c6181fa480885655eb1468193775847cdd"
+    }
+  ],
+  "screening": "Public issue outcomes and exact commands retained. Issue body contents, native session IDs, and native call IDs use digests. Fixture source paths are project-relative. Raw capture hashes establish provenance."
+}

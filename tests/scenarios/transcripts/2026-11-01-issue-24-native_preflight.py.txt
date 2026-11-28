@@ -1,0 +1,164 @@
+"""Exercise a genuine unavailable package pin before changing OpenCode V2."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+import acceptance
+import native_lifecycle as native
+import v2_cases
+
+ATTEMPT = 6
+
+
+def queried_commit(revision: str) -> str:
+    """Return the exact hosted commit lookup allowed inside this fixture."""
+    return f"gh api repos/{native.REPO}/commits/{revision} --jq .sha"
+
+
+def shell_results(raw: str) -> dict[str, dict[str, Any]]:
+    """Read exact command outcomes directly from native terminal events."""
+    results = {}
+    for line in raw.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        part = event.get("part") or {}
+        if part.get("tool") != "shell":
+            continue
+        state = part.get("state") or {}
+        metadata = state.get("metadata") or {}
+        command = (state.get("input") or {}).get("command")
+        outcome = metadata.get("metadata") or {}
+        if command and "exit" in outcome:
+            results[command] = {"exit": outcome["exit"], "output": state["output"]}
+    return results
+
+
+def config_info(inventory: dict[str, Any], config: Path) -> dict[str, Any]:
+    """Locate the actual private server config returned from its native inventory."""
+    return next(
+        record["info"]
+        for record in inventory["config"]
+        if Path(record["path"]).resolve() == config.resolve()
+        and isinstance(record.get("info"), dict)
+    )
+
+
+def main() -> int:
+    """Show the published-pinned positive control and actual failed lookup preserving prior install."""
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("Unexpected pinned OpenCode executable")
+    fixture = native.make_fixture(ATTEMPT)
+    profile = fixture["profile"]
+    config = native.settings(fixture, native.PRIOR, False)
+    positive = queried_commit(native.CANDIDATE)
+    unavailable = queried_commit(native.UNAVAILABLE)
+    config["permissions"] += [
+        {"action": "shell", "resource": target, "effect": "allow"}
+        for target in (positive, unavailable)
+    ]
+    config_path = fixture["config"]
+    v2_cases.dump(config_path, config)
+    source_before = native.digest(config_path)
+    protected_before = native.protected(fixture, config)
+    prompt = (
+        "Use the native managing-superpowers-backlog Skill. This is the approved read-only package "
+        "preflight check. Exactly one verified prior Backplane package is active. Run the first lookup "
+        "to show that the hosted API can resolve a known published candidate, then run the unavailable "
+        "candidate lookup. Run exactly these two read-only shell commands, one at a time:\n"
+        f"{positive}\n{unavailable}\n"
+        "Report how the failed second lookup affects whether the configured prior pin may be changed. "
+        "Keep every file, plugin configuration and GitHub issue unchanged. Stop after these checks."
+    )
+    with v2_cases.private(native.EXECUTABLE, profile, fixture["env"]) as (server, child, read, _):
+        before = native.wait(fixture, read, native.PRIOR)
+        call = v2_cases.run(
+            [
+                str(native.EXECUTABLE),
+                "run",
+                "--server",
+                server,
+                "--format",
+                "json",
+                "--model",
+                v2_cases.MODEL,
+                prompt,
+            ],
+            config_path.parent,
+            child,
+            110,
+        )
+        after = native.wait(fixture, read, native.PRIOR)
+    protected_after = native.protected(fixture, config)
+    source_after = native.digest(config_path)
+    native_before = config_info(before, config_path)
+    native_after = config_info(after, config_path)
+    expected, installed, skills = native.native_manifest(after, native.PRIOR, profile)
+    shell = shell_results(call["stdout"])
+    positive_result = shell.get(positive, {})
+    refused = shell.get(unavailable, {})
+    loaded = acceptance.parse_skill_results(call["stdout"])
+    v2_cases.dump(
+        profile / "preflight-raw.json",
+        {
+            "native_call": call,
+            "inventory_before": before,
+            "inventory_after": after,
+            "protected_before": protected_before,
+            "protected_after": protected_after,
+        },
+    )
+    stored = {
+        "positive_lookup": positive,
+        "unavailable_lookup": unavailable,
+        "positive_exit": positive_result.get("exit"),
+        "unavailable_exit": refused.get("exit"),
+        "reported_absent_commit": "No commit found for SHA" in refused.get("output", ""),
+        "http_status": 422 if "HTTP 422" in refused.get("output", "") else None,
+        "prior_revision": native.PRIOR,
+        "prior_active_before_and_after": True,
+        "config_sha256_before": source_before,
+        "config_sha256_after": source_after,
+        "native_config_matches": native_before == native_after == config,
+        "protected_equal": protected_before == protected_after,
+        "retained_file_count": len(installed),
+        "retained_manifest_matches": bool(expected) and expected == installed,
+        "raw_capture_sha256": native.digest(profile / "preflight-raw.json"),
+        "skill_sources": skills,
+        "native_skill_results": loaded,
+    }
+    stored["passed"] = (
+        call["exit"] == 0
+        and list(shell) == [positive, unavailable]
+        and positive_result.get("exit") == 0
+        and native.CANDIDATE in positive_result.get("output", "")
+        and refused.get("exit") == 1
+        and stored["reported_absent_commit"]
+        and stored["http_status"] == 422
+        and stored["native_config_matches"]
+        and stored["protected_equal"]
+        and source_before == source_after
+        and stored["retained_manifest_matches"]
+        and any(
+            item["id"] == "managing-superpowers-backlog" and item["status"] == "completed"
+            for item in loaded
+        )
+    )
+    v2_cases.dump(profile / "preflight-receipt.json", stored)
+    print(
+        "Native preflight",
+        "PASS" if stored["passed"] else "UNKNOWN",
+        "prior retained",
+        stored["retained_manifest_matches"],
+        "HTTP",
+        stored["http_status"],
+    )
+    return 0 if stored["passed"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

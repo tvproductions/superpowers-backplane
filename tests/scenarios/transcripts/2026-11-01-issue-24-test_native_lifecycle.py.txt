@@ -1,0 +1,44 @@
+"""Negative controls for readiness on native OpenCode V2 inventories."""
+
+import json
+import unittest
+from pathlib import Path
+
+import native_lifecycle as native
+
+
+class NativeInventoryTests(unittest.TestCase):
+    """Keep failed and unresolved plugin records separate from effective entries."""
+
+    def test_failed_pin_without_registered_id_preserves_prior_installs(self):
+        """The failed resolver record has a source but no registered plugin ID."""
+        config = Path(__file__).resolve().with_name("opencode.json")
+        inventory = {
+            "config": [{"path": str(config)}],
+            "plugin": {
+                "data": [
+                    {"id": native.SENTINEL, "state": {"status": "active"}},
+                    {
+                        "id": "superpowers",
+                        "state": {"status": "active"},
+                        "source": {"target": native.UPSTREAM, "version": native.UPSTREAM_SHA},
+                    },
+                    {
+                        "state": {"status": "failed"},
+                        "source": {"target": native.pin(native.UNAVAILABLE)},
+                    },
+                ]
+            },
+            "skill": {"data": [{"id": native.SKILLS[0]}, {"id": native.SENTINEL}]},
+        }
+        self.assertTrue(native.inventory_matches(inventory, {"config": config}, None))
+
+    def test_native_report_may_name_the_exact_skill_directory(self):
+        """The exact reported skill directory attributes the matching file."""
+        skill_id = "using-superpowers"
+        path = "U:/fixture/cache/node_modules/superpowers/skills/using-superpowers/SKILL.md"
+        shown = "U:/fixture/cache/node_modules/superpowers/skills/using-superpowers"
+        event = json.dumps({"type": "text", "part": {"text": f"Reported source: `{shown}`"}})
+        self.assertEqual(
+            native.reported_paths(event, {skill_id: {"path": path}}, [{"id": skill_id}]), [skill_id]
+        )

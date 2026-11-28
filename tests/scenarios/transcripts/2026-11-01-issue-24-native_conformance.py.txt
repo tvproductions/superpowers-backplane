@@ -1,0 +1,131 @@
+"""Run the four read-only Backplane prompts in exact native OpenCode V2."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+from pathlib import Path
+
+import acceptance
+import native_lifecycle as native
+import v2_cases
+
+PROMPTS = (
+    ("native-issue-intake", "2026-08-16-native-issue-intake-green.md", 0),
+    ("language-neutral-verification", "2026-08-16-native-issue-intake-green.md", 1),
+    ("lifecycle-transitions", "2026-08-16-lifecycle-transition-refactor.md", 0),
+    ("superpowers-installation", "2026-08-16-superpowers-installation-refactor.md", 0),
+)
+SECRET = re.compile(
+    r"github_pat_|gh[pousr]_[A-Za-z0-9]{25,}|sk-[A-Za-z0-9_-]{25,}|Authorization: (Basic|Bearer)"
+)
+
+
+def responses(stdout: str) -> str:
+    """Retain visible native text parts separately from tool event payloads."""
+    visible = []
+    for line in stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("type") == "text":
+            part = event.get("part") or {}
+            if isinstance(part.get("text"), str):
+                visible.append(part["text"])
+    return "\n".join(visible)
+
+
+def main() -> int:
+    """Replay exact historical behavioral prompts against the installed hosted package."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--attempt", required=True, type=int)
+    args = parser.parse_args()
+    fixture = native.make_fixture(args.attempt)
+    profile = fixture["profile"]
+    config = native.settings(fixture, native.CANDIDATE, False)
+    cache = profile.as_posix() + "/cache/opencode/npm"
+    for name in ("superpowers", "superpowers-backplane"):
+        root = f"{cache}/*/*/node_modules/{name}"
+        for suffix in ("skills/*", "docs/*", "README.md", "SUPERPOWERS.md"):
+            config["permissions"].append(
+                {"action": "read", "resource": f"{root}/{suffix}", "effect": "allow"}
+            )
+    v2_cases.dump(fixture["config"], config, "w")
+    before = native.protected(fixture, config)
+    outcome = {}
+    with v2_cases.private(native.EXECUTABLE, profile, fixture["env"]) as (server, child, read, _):
+        inventory = native.wait(fixture, read, native.CANDIDATE)
+        expected, observed, skills = native.native_manifest(inventory, native.CANDIDATE, profile)
+        if expected != observed or not expected:
+            raise RuntimeError("Conformance package differs from the hosted pin")
+        for name, filename, index in PROMPTS:
+            scenario = Path("tests/scenarios") / filename
+            prompts = re.findall(
+                r"```text\r?\n([\s\S]*?)\r?\n```", scenario.read_text(encoding="utf-8")
+            )
+            prompt = prompts[index]
+            command = [
+                str(native.EXECUTABLE),
+                "run",
+                "--server",
+                server,
+                "--format",
+                "json",
+                "--model",
+                v2_cases.MODEL,
+                prompt,
+            ]
+            call = v2_cases.run(command, fixture["config"].parent, child, 125)
+            v2_cases.dump(profile / f"{name}-raw.json", call)
+            results = acceptance.parse_skill_results(call["stdout"])
+            output = responses(call["stdout"])
+            if SECRET.search(output):
+                raise RuntimeError(f"{name}: visible response failed screening")
+            outcome[name] = {
+                "scenario": scenario.as_posix(),
+                "prompt": prompt,
+                "response": output,
+                "native_skill_results": results,
+                "exit": call["exit"],
+                "timeout": call["timeout"],
+                "sha256": hashlib.sha256(call["stdout"].encode()).hexdigest(),
+            }
+            completed = [result["id"] for result in results if result["status"] == "completed"]
+            print(
+                name,
+                "exit",
+                call["exit"],
+                "skill",
+                completed,
+                "visible characters",
+                len(output),
+                flush=True,
+            )
+    after = native.protected(fixture, config)
+    v2_cases.dump(
+        profile / "conformance-observations.json",
+        {
+            "source": native.CANDIDATE,
+            "skill_sources": skills,
+            "package_files": len(expected),
+            "protected_equal": before == after,
+            "scenarios": outcome,
+        },
+    )
+    if before != after:
+        return 1
+    return (
+        0
+        if all(
+            result["exit"] == 0 and result["response"] and result["native_skill_results"]
+            for result in outcome.values()
+        )
+        else 1
+    )
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,180 @@
+{
+  "operator_authority": "The operator replied 'approve' to publication, CI-gated integration, evidence publication and verified completed closure.",
+  "verdict": "SATISFIED",
+  "pull_request": {
+    "baseRefName": "main",
+    "closingIssuesReferences": [],
+    "headRefOid": "73be83a6ecf7ee097c187e87f0758edc86165299",
+    "mergeCommit": {
+      "oid": "3b03a49db79b6a276314d1477dfb3c68e1a4bac9"
+    },
+    "mergedAt": "2026-11-28T20:22:56Z",
+    "number": 42,
+    "state": "MERGED",
+    "url": "https://github.com/tvproductions/superpowers-backplane/pull/42"
+  },
+  "approved_plan_path": "docs/superpowers-backplane/plans/2026-11-28-issue-12-opencode-v2-integrated-acceptance.md",
+  "approved_plan_sha256": "81923b92381bac0e17f12a2ac040d34db641c6ea6f4121cceaa04645122417e3",
+  "evidence_storage": {
+    "revision": "650cb09606f94c1f3a29dcea6389055bbabd7462",
+    "delivery": "3b03a49db79b6a276314d1477dfb3c68e1a4bac9",
+    "blobs": {
+      "tests/scenarios/2026-11-28-issue-12-opencode-v2-acceptance.md": "71abaf1d930051ac665a00a17d873adaf93f8648",
+      "tests/scenarios/2026-11-28-issue-12-opencode-v2-acceptance.json": "7101ccadc48117586642af7212c812e9d57a216a",
+      "tests/scenarios/2026-11-28-issue-12-opencode-v2-integrated-delivery.json": "dbcc4224e4c5eda639b51e22048eef5b7e47ce65",
+      "tests/scenarios/transcripts/2026-11-28-issue-12-verify_hosted.py.txt": "3f804e8f836e46229ffc095877db81cab6985455"
+    }
+  },
+  "delivery_ci": {
+    "conclusion": "success",
+    "headSha": "3b03a49db79b6a276314d1477dfb3c68e1a4bac9",
+    "jobs": [
+      {
+        "conclusion": "success",
+        "name": "checks (ubuntu-latest)"
+      },
+      {
+        "conclusion": "success",
+        "name": "checks (macos-latest)"
+      },
+      {
+        "conclusion": "success",
+        "name": "checks (windows-latest)"
+      }
+    ],
+    "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/46186109415"
+  },
+  "acceptance_storage_ci": {
+    "conclusion": "success",
+    "headSha": "650cb09606f94c1f3a29dcea6389055bbabd7462",
+    "jobs": [
+      {
+        "conclusion": "success",
+        "name": "checks (windows-latest)"
+      },
+      {
+        "conclusion": "success",
+        "name": "checks (macos-latest)"
+      },
+      {
+        "conclusion": "success",
+        "name": "checks (ubuntu-latest)"
+      }
+    ],
+    "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/46186480769"
+  },
+  "actual_closure": {
+    "closedAt": "2026-11-28T20:28:41Z",
+    "number": 12,
+    "state": "CLOSED",
+    "stateReason": "COMPLETED",
+    "updatedAt": "2026-11-28T20:28:44Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/12"
+  },
+  "native_issue": {
+    "initial": {
+      "number": 12,
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+      "updated_at": "2026-11-27T08:47:30Z",
+      "state": "OPEN",
+      "state_reason": "",
+      "labels": [
+        "backplane:backlog"
+      ],
+      "body_sha256": "285d4feaddc889f9fd4ca8af7c6f610f5eed864e108393f83b39a7114a9f126c",
+      "native_snapshot_sha256": "03e60785c810eddac5da5774e7c59ee9f3e36b722d2587987e29309b81a493da"
+    },
+    "active": {
+      "number": 12,
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+      "updated_at": "2026-11-28T20:21:13Z",
+      "state": "OPEN",
+      "state_reason": "",
+      "labels": [
+        "backplane:active"
+      ],
+      "body_sha256": "916931a8488ec9e63e48b27a257c56450ca4e95de1b9265075bc2622bc1645dc",
+      "native_snapshot_sha256": "20f4d02dbf460af786c60df59073e9cf1db031ad54ab7674cd5224cdcfe9bc27"
+    },
+    "evaluated_in_review": {
+      "number": 12,
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+      "updated_at": "2026-11-28T20:22:14Z",
+      "state": "OPEN",
+      "state_reason": "",
+      "labels": [
+        "backplane:review"
+      ],
+      "body_sha256": "916931a8488ec9e63e48b27a257c56450ca4e95de1b9265075bc2622bc1645dc",
+      "native_snapshot_sha256": "432002fe9b3abe12c1b59e34751ef36aa1ff86647e46b22d38608c3cf0b6bc1b"
+    },
+    "immediately_before_close": {
+      "number": 12,
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+      "updated_at": "2026-11-28T20:28:39Z",
+      "state": "OPEN",
+      "state_reason": "",
+      "labels": [
+        "backplane:review"
+      ],
+      "body_sha256": "49354d66f550708f46ba617bccafe9103ad4fb3c3f45427de5d84da7b5733c4b",
+      "native_snapshot_sha256": "25b3bea99514b52ade79dc3da37f0e6882ff985ef0a1d11851fd38235b49cd4c"
+    },
+    "closed_before_label_cleanup": {
+      "number": 12,
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+      "updated_at": "2026-11-28T20:28:41Z",
+      "state": "CLOSED",
+      "state_reason": "COMPLETED",
+      "labels": [
+        "backplane:review"
+      ],
+      "body_sha256": "49354d66f550708f46ba617bccafe9103ad4fb3c3f45427de5d84da7b5733c4b",
+      "native_snapshot_sha256": "6f4421351842f149ef8a09de1c7ca289ab16b10130c2431dedb3cad82739f68f"
+    },
+    "final": {
+      "number": 12,
+      "url": "https://github.com/tvproductions/superpowers-backplane/issues/12",
+      "updated_at": "2026-11-28T20:28:44Z",
+      "state": "CLOSED",
+      "state_reason": "COMPLETED",
+      "labels": [],
+      "body_sha256": "49354d66f550708f46ba617bccafe9103ad4fb3c3f45427de5d84da7b5733c4b",
+      "native_snapshot_sha256": "0866461ae7c1fb5763ec44678d732c269bb02c1ed875017d3f1709636b9a0167"
+    },
+    "parent": 1,
+    "blockers": {
+      "24": "CLOSED",
+      "2": "CLOSED"
+    },
+    "blocking": [
+      6
+    ],
+    "native_closing_pull_requests": []
+  },
+  "parent_readback": {
+    "number": 1,
+    "state": "OPEN",
+    "before": {
+      "completed": 13,
+      "percentCompleted": 76,
+      "total": 17
+    },
+    "after": {
+      "completed": 14,
+      "percentCompleted": 82,
+      "total": 17
+    }
+  },
+  "pilot_readback": {
+    "number": 6,
+    "state": "OPEN",
+    "blocked_by": {
+      "12": "CLOSED",
+      "11": "CLOSED",
+      "3": "CLOSED",
+      "4": "OPEN",
+      "5": "CLOSED"
+    }
+  }
+}

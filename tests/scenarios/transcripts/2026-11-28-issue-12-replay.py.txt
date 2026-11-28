@@ -1,0 +1,168 @@
+"""Run archived OpenCode V2 procedures against the published #12 baseline."""
+
+import argparse
+import json
+import os
+from pathlib import Path
+
+import acceptance
+import lifecycle
+import native_failures
+import native_lifecycle as native
+import task2_receipt
+import v2_cases as setup
+from verify_update_rollback import capability
+
+BASELINE = "9bf8cba0cf21a7e86b4979f1f6b416dd9e328b5c"
+PRIOR = "d6f0f6a378b4b91e2fab2c2987f8f18dd357f23d"
+AREA = Path(__file__).resolve().parent
+
+
+def configure() -> None:
+    """Bind original procedures to the current issue, source and verified binary."""
+    if Path.cwd().resolve() != AREA / "publication":
+        raise SystemExit("Run from the verified #12 worktree")
+    if setup.git(Path.cwd(), "rev-parse", "origin/main") != BASELINE:
+        raise SystemExit("The recorded hosted baseline drifted")
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("The recorded OpenCode binary changed")
+    if setup.git(setup.ROOT, "hash-object", "docs/installing-opencode.md") != setup.git(
+        Path.cwd(), "rev-parse", f"{BASELINE}:docs/installing-opencode.md"
+    ):
+        raise SystemExit("The guide used by the replay differs from the hosted baseline")
+    if not setup.git(setup.ROOT, "check-ignore", str(AREA / "native-01")):
+        raise SystemExit("Replay profile is outside ignored scratch")
+    native.ISSUE[3] = "12"
+    setup.ISSUE[3] = "12"
+    setup.BP = native.pin(BASELINE)
+    task2_receipt.BP_SHA = BASELINE
+    os.environ["PATH"] = str(native.EXECUTABLE.parent) + os.pathsep + os.environ["PATH"]
+
+
+def qualify(attempt: int) -> None:
+    """Tie the setup scorer to an actual version response from the replay binary."""
+    profile = AREA / f"native-{attempt:02}"
+    if profile.resolve(strict=True).parent != AREA:
+        raise SystemExit("Version probe profile escapes the owned work area")
+    environment = setup.environment(profile)
+    directory = Path(environment["OPENCODE_CONFIG_DIR"]).resolve(strict=True)
+    if not directory.is_relative_to(profile):
+        raise SystemExit("Version probe configuration escapes the profile")
+    digest, version = setup.binary_version(native.EXECUTABLE, directory, environment)
+    value = version["stdout"].strip()
+    if digest != native.HOST_SHA or value != "opencode v2.1.4":
+        raise SystemExit("Unexpected native replay binary identity")
+    record = {
+        "executable": str(native.EXECUTABLE),
+        "exe_sha256": digest,
+        "host_version": value,
+    }
+    setup.dump(AREA / "final-native-preflight.json", record, "w")
+    print(json.dumps({"host_version": value, "sha256": digest}))
+
+
+def replay_lifecycle(attempt: int) -> None:
+    """Apply the current guide checks to the prior and current hosted pins."""
+    fixture = native.make_fixture(attempt)
+    profile = fixture["profile"]
+    rows = []
+    native.EXPECTED_REVISIONS.update(
+        {
+            "L-install": PRIOR,
+            "L-repeat": PRIOR,
+            "L-update": BASELINE,
+            "L-rollback": PRIOR,
+            "L-test-restore": PRIOR,
+            "L-failed-verification-recovery": PRIOR,
+        }
+    )
+    baseline = native.observe(fixture, "baseline", None)
+    installed = native.observe(fixture, "install", PRIOR)
+    native.record_row(rows, profile, "L-install", baseline, installed)
+    repeated = native.observe(fixture, "repeat", PRIOR)
+    native.record_row(rows, profile, "L-repeat", installed, repeated)
+    checks = {"update_before": capability(fixture, BASELINE)}
+    updated = native.observe(fixture, "update", BASELINE)
+    checks["update_after"] = capability(fixture, BASELINE)
+    native.record_row(rows, profile, "L-update", repeated, updated)
+    checks["rollback_before"] = capability(fixture, PRIOR)
+    rolled_back = native.observe(fixture, "rollback", PRIOR)
+    checks["rollback_after"] = capability(fixture, PRIOR)
+    native.record_row(rows, profile, "L-rollback", updated, rolled_back)
+    removed = native.observe(fixture, "uninstall", None)
+    native.record_row(rows, profile, "L-uninstall", rolled_back, removed)
+    restored = native.observe(fixture, "restore", PRIOR)
+    native.record_row(rows, profile, "L-test-restore", removed, restored)
+
+    unavailable = native_failures.unavailable_source(fixture)
+    recovered = native.observe(fixture, "recover-unavailable", PRIOR)
+    if recovered["config_sha256"] != restored["config_sha256"]:
+        raise SystemExit("Recovery did not restore the exact prior configuration")
+    native.EXPECTED_REVISIONS["L-unavailable-source"] = PRIOR
+    native.record_row(rows, profile, "L-unavailable-source", restored, recovered, unavailable)
+    checks["recovery_before"] = capability(fixture, BASELINE)
+    denied = native.observe(fixture, "failed-verification", BASELINE, denied=True)
+    observed = denied["load_exit"] == 0 and set(denied["loaded_skills"]) == set(native.SKILLS[:-1])
+    denied.update(
+        result="observed" if observed else "unknown",
+        diagnostic="Candidate loaded but the owned fixture denied the required handoff Skill call",
+    )
+    final = native.observe(fixture, "recover-denied", PRIOR)
+    checks["recovery_after"] = capability(fixture, PRIOR)
+    if final["config_sha256"] != restored["config_sha256"]:
+        raise SystemExit("Failed verification did not restore the exact prior configuration")
+    native.record_row(rows, profile, "L-failed-verification-recovery", recovered, final, denied)
+    setup.dump(profile / "capability-checks.json", checks)
+    if any(row["result"] != "PASS" for row in rows):
+        raise SystemExit(1)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "case", choices=("qualify", "native-baseline", "lifecycle", *acceptance.SETUP_CASES)
+    )
+    parser.add_argument("--attempt", type=int, required=True)
+    parser.add_argument("--score-only", action="store_true")
+    args = parser.parse_args()
+    configure()
+    if args.case == "qualify":
+        qualify(args.attempt)
+        return
+    if args.case == "lifecycle":
+        replay_lifecycle(args.attempt)
+        return
+    if args.case == "native-baseline":
+        fixture = native.make_fixture(args.attempt)
+        baseline = native.observe(fixture, "baseline", None)
+        installed = native.observe(fixture, "current-main", BASELINE)
+        rows = []
+        native.EXPECTED_REVISIONS["L-install"] = BASELINE
+        native.record_row(rows, fixture["profile"], "L-install", baseline, installed)
+        manifest = lifecycle.expected_package_files(BASELINE, Path.cwd())
+        result = {
+            "result": rows[0]["result"],
+            "manifest_file_count": len(manifest),
+            "manifest_equal": installed["installed_manifest"] == manifest,
+            "skill_loads": installed["loaded_skills"],
+        }
+        print(json.dumps(result, indent=2))
+        if rows[0]["result"] != "PASS" or not result["manifest_equal"]:
+            raise SystemExit(1)
+        return
+    if not args.score_only:
+        setup.case_run(args.case, args.attempt)
+    row = task2_receipt.build(args.case, args.attempt)
+    result_name = "rescored.json" if args.score_only else "scored.json"
+    setup.dump(AREA / f"{args.case}-{args.attempt:02}/{result_name}", row)
+    print(
+        json.dumps(
+            {"case": args.case, "result": acceptance.classify(row), "checks": row.get("checks")}
+        )
+    )
+    if acceptance.classify(row) != "PASS":
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()

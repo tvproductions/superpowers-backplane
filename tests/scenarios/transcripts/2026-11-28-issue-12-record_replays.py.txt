@@ -1,0 +1,238 @@
+"""Bind screened OpenCode V2 replays to the fixed #12 acceptance matrix."""
+
+import argparse
+import hashlib
+import json
+import re
+import subprocess
+from pathlib import Path
+from typing import Any
+
+import acceptance
+import lifecycle
+
+AREA = Path(__file__).resolve().parent
+ROOT = Path.cwd()
+MATRIX = "tests/scenarios/2026-11-28-issue-12-opencode-v2-acceptance.json"
+TASK_ONE = "57cd2badd4f49a6100ba042efd89b13567790205"
+SETUP_IDS = set(acceptance.SETUP_CASES)
+LIFECYCLE_IDS = set(lifecycle.CASES)
+CONFORMANCE_IDS = {
+    "skill-structure",
+    "native-issue-intake",
+    "language-neutral-verification",
+    "lifecycle-transitions",
+    "superpowers-installation",
+}
+ISSUE_IDS = {
+    "status",
+    "design",
+    "ready",
+    "selection",
+    "start",
+    "block",
+    "resume",
+    "submit",
+    "rework",
+    "resubmit",
+    "close",
+}
+PRIVATE = re.compile(
+    r"github_pat_|gh[pousr]_[A-Za-z0-9]{25,}|\bsk-[A-Za-z0-9_-]{25,}"
+    r"|Authorization: (?:Basic|Bearer)|[A-Za-z]:[\\/]Users[\\/]",
+    re.IGNORECASE,
+)
+
+
+def digest(value: Any) -> str:
+    return hashlib.sha256(json.dumps(value, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def recorded(source: Path) -> Any:
+    source = source.resolve(strict=True)
+    if not source.is_relative_to(AREA):
+        raise ValueError(f"Replay receipt escaped its fixture: {source.name}")
+    return json.loads(source.read_text(encoding="utf-8"))
+
+
+def capture_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def short_text(text: Any) -> str | None:
+    if not isinstance(text, str):
+        return None
+    if text.startswith('{"type":"error"'):
+        error = json.loads(text)["error"]
+        return f"{error['type']}: {error['message']}"
+    text = text.replace(str(AREA), ".sp-bp/work/issue-12")
+    text = text.replace(AREA.as_posix(), ".sp-bp/work/issue-12")
+    if PRIVATE.search(text):
+        raise ValueError("Replay description needs manual screening")
+    return text
+
+
+def setup_replay(source: Path) -> dict[str, Any]:
+    row = recorded(source)
+    if not row.get("checks"):
+        return {"result": "UNKNOWN", "observed_error": short_text(row.get("reason"))}
+    score = acceptance.classify(row)
+    if score != row["result"]:
+        raise ValueError(f"Archived setup scorer differs for {row['id']}")
+    results = [
+        {key: item[key] for key in ("id", "status", "git_blob", "capture_sha256") if key in item}
+        for item in row["native_results"]
+    ]
+    observations = row["observations"]
+    native_before = observations["installed_before"]
+    native_after = observations["installed_after"]
+    package = {item["path"]: item["actual"] for item in row["package_files"]}
+    exact_manifest = bool(package) and package == lifecycle.expected_package_files(
+        row["candidate_sha"], ROOT
+    )
+    if row["expected_status"] == "completed" and score == "PASS" and not exact_manifest:
+        raise ValueError(f"Positive setup package manifest differs for {row['id']}")
+    return {
+        "result": score,
+        "host_version": row["host_version"],
+        "host_sha256": row["executable_hash"],
+        "backplane_revision": row["candidate_sha"],
+        "upstream_origin": row["upstream_origin"],
+        "upstream_revision": row["upstream_revision"],
+        "checks": row["checks"],
+        "model_gh_checks": observations["model_gh_checks"],
+        "direct_gh_exits": [item["exit"] for item in observations["direct_gh_checks"]],
+        "gh_failure_fixture_version": {
+            "F-gh-intake": "2.40.1",
+            "F-gh-label": "1.0.0",
+            "F-gh-close": "1.14.0",
+        }.get(row["id"]),
+        "installed_skill_results": results,
+        "diagnostic": short_text(row["native_results"][0].get("diagnostic"))
+        if row["native_results"]
+        else None,
+        "recovery": short_text(row["recovery"]),
+        "package_files": len(package),
+        "exact_package_manifest": exact_manifest,
+        "installed_before_sha256": digest(native_before),
+        "installed_after_sha256": digest(native_after),
+        "protected_before_sha256": digest(row["before"]),
+        "protected_after_sha256": digest(row["after"]),
+        "capture_sha256": row["capture_sha256"],
+        "scored_receipt_sha256": capture_hash(source),
+    }
+
+
+def observed_lifecycle(item: dict[str, Any]) -> dict[str, Any]:
+    observation = {
+        key: item[key]
+        for key in (
+            "revision",
+            "upstream_revision",
+            "config_sha256",
+            "loaded_skills",
+            "load_exit",
+            "discovery_prompt_sha256",
+        )
+        if key in item
+    }
+    observation.update(
+        protected_sha256=digest(item["protected"]),
+        skill_blobs={name: value["blob"] for name, value in item.get("skill_files", {}).items()},
+        native_result_status={
+            result["id"]: result["status"] for result in item.get("native_results", ())
+        },
+    )
+    if "installed_manifest" in item:
+        installed = item["installed_manifest"]
+        expected = (
+            lifecycle.expected_package_files(item["revision"], ROOT) if item["revision"] else {}
+        )
+        if installed != expected:
+            raise ValueError("Native lifecycle package manifest differs from its Git tree")
+        observation.update(package_files=len(installed), package_manifest_sha256=digest(installed))
+    if "diagnostic" in item:
+        observation["diagnostic"] = short_text(item["diagnostic"])
+    return observation
+
+
+def lifecycle_replays() -> dict[str, dict[str, Any]]:
+    path = AREA / "native-03/lifecycle-receipt.json"
+    rows = recorded(path)["rows"]
+    checks = recorded(AREA / "native-03/capability-checks.json")
+    install_path = AREA / "native-02/lifecycle-receipt.json"
+    install = recorded(install_path)["rows"][0]
+    rows = [install if item["id"] == install["id"] else item for item in rows]
+    return {
+        row["id"]: {
+            "result": lifecycle.classify(row),
+            "host_version": row["host_version"],
+            "host_sha256": row["host_sha256"],
+            "upstream_origin": "https://github.com/obra/superpowers.git",
+            "before": observed_lifecycle(row["before"]),
+            "after": observed_lifecycle(row["after"]),
+            "failure": observed_lifecycle(row["failure"]) if "failure" in row else None,
+            "checks": {
+                key: value
+                for key, value in checks.items()
+                if key.startswith(
+                    {
+                        "L-update": "update_",
+                        "L-rollback": "rollback_",
+                        "L-failed-verification-recovery": "recovery_",
+                    }.get(row["id"], "!")
+                )
+            },
+            "scored_receipt_sha256": capture_hash(
+                install_path if row["id"] == "L-install" else path
+            ),
+        }
+        for row in rows
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("output", type=Path)
+    parser.add_argument("--setup", nargs="*", type=Path, default=[])
+    args = parser.parse_args()
+    original = subprocess.check_output(
+        ["git", "show", f"{TASK_ONE}:{MATRIX}"], cwd=ROOT, encoding="utf-8"
+    )
+    matrix = json.loads(original)
+    ids = [row["id"] for row in matrix["rows"]]
+    if len(ids) != 41 or set(ids) != SETUP_IDS | LIFECYCLE_IDS | CONFORMANCE_IDS | ISSUE_IDS:
+        raise SystemExit("Task 1 row IDs differ from the approved matrix")
+    replays = lifecycle_replays()
+    seen = set()
+    for source in args.setup:
+        case = recorded(source)["id"]
+        if case not in SETUP_IDS or case in seen:
+            raise SystemExit(f"Invalid or duplicate setup replay: {case}")
+        replays[case] = setup_replay(source)
+        seen.add(case)
+    for row in matrix["rows"]:
+        if row["id"] in replays:
+            replay = replays[row["id"]]
+            row.update(result=replay["result"], disposition="replayed", replay=replay)
+    totals = {
+        result: sum(row["result"] == result for row in matrix["rows"])
+        for result in ("PASS", "FAIL", "UNKNOWN")
+    }
+    matrix.update(
+        phase="Task 2 candidate verification",
+        replayed_baseline=matrix["baseline"]["revision"],
+        totals=totals,
+        candidate_local_rows_pass=totals["PASS"] == 41,
+        exact_hosted_candidate_result="UNKNOWN",
+    )
+    text = json.dumps(matrix, indent=2, ensure_ascii=False) + "\n"
+    if PRIVATE.search(text):
+        raise SystemExit("Output still contains an unscreened local or credential marker")
+    with args.output.open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(text)
+    print(json.dumps(totals))
+
+
+if __name__ == "__main__":
+    main()

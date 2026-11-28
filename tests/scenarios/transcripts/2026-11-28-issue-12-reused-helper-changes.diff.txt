@@ -1,0 +1,45 @@
+diff --git a/tests/scenarios/transcripts/2026-11-01-issue-23-v2_cases.py.txt b/../v2_cases.py
+index 95bc94b..0ffce39 100644
+--- a/tests/scenarios/transcripts/2026-11-01-issue-23-v2_cases.py.txt
++++ b/../v2_cases.py
+@@ -53 +53 @@ SHA = "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+-BP = f"git+https://github.com/{REPO}.git#386bdb5a8570360f5d34359c68f68947eb7a90fc"
++BP: str = f"git+https://github.com/{REPO}.git#386bdb5a8570360f5d34359c68f68947eb7a90fc"
+@@ -853 +853 @@ def case_run(case, attempt):
+-    ).replace("OWNER/REPO#ISSUE", f"{REPO}#23")
++    ).replace("OWNER/REPO#ISSUE", f"{REPO}#{ISSUE[3]}")
+diff --git a/tests/scenarios/transcripts/2026-11-01-issue-24-native_lifecycle.py.txt b/../native_lifecycle.py
+index 5e4ab37..948a575 100644
+--- a/tests/scenarios/transcripts/2026-11-01-issue-24-native_lifecycle.py.txt
++++ b/../native_lifecycle.py
+@@ -70 +70 @@ def protected(fixture: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]
+-    if set(issue) != set(v2_cases.FIELDS.split(",")) or issue["number"] != 24:
++    if set(issue) != set(v2_cases.FIELDS.split(",")) or issue["number"] != int(ISSUE[3]):
+diff --git a/tests/scenarios/transcripts/2026-11-01-issue-23-task2_receipt.py.txt b/../task2_receipt.py
+index ed45a01..b150ca0 100644
+--- a/tests/scenarios/transcripts/2026-11-01-issue-23-task2_receipt.py.txt
++++ b/../task2_receipt.py
+@@ -13,0 +14 @@ import acceptance
++import lifecycle
+@@ -364,3 +365,7 @@ def positive_payload(case, data, profile, issue, first, last, setup, text):
+-    flags["payload"] = {item["id"] for item in results} == set(acceptance.SKILLS) and len(
+-        files
+-    ) == 70
++    manifest = lifecycle.expected_package_files(BP_SHA, ROOT)
++    installed = {item["path"]: item["actual"] for item in files}
++    flags["payload"] = (
++        {item["id"] for item in results} == set(acceptance.SKILLS)
++        and installed == manifest
++        and len(installed) == len(files)
++    )
+@@ -429,4 +434,6 @@ def observed_model_refusal(case, response):
+-    if "|" in diagnostic:
+-        table_cell = diagnostic.strip("|").split("|")[-1].strip()
+-        if RECOVERY_ACTION.search(table_cell) and table_cell != diagnostic:
+-            return diagnostic, table_cell, "fresh native setup response table"
++    for line in matching:
++        if "|" not in line:
++            continue
++        table_cell = line.strip("|").split("|")[-1].strip()
++        if RECOVERY_ACTION.search(table_cell) and table_cell != line:
++            return line, table_cell, "fresh native setup response table"

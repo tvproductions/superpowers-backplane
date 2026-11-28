@@ -1,0 +1,27 @@
+"""Check recovery attribution from archived native V2 setup output."""
+
+import unittest
+
+from task2_receipt import observed_model_refusal
+
+
+class RefusalReceiptTests(unittest.TestCase):
+    def test_diagnostic_table_keeps_recovery_after_summary(self):
+        response = (
+            "Full GitHub intake failed.\n"
+            "| Complete issue intake | **Failed:** gh rejects stateReason. "
+            "Upgrade gh and rerun the exact intake. |"
+        )
+        diagnostic, recovery, source = observed_model_refusal("F-gh-intake", response)
+        self.assertIn("rejects stateReason", diagnostic)
+        self.assertIn("Upgrade gh", recovery)
+        self.assertEqual(source, "fresh native setup response table")
+
+    def test_unrelated_table_recovery_does_not_resolve_missing_intake_action(self):
+        response = (
+            "Full GitHub intake failed.\n"
+            "| Unrelated provider | Verify authentication for the model. |"
+        )
+        diagnostic, recovery, _ = observed_model_refusal("F-gh-intake", response)
+        self.assertIn("intake failed", diagnostic)
+        self.assertEqual(recovery, "")

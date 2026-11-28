@@ -1,0 +1,144 @@
+"""Screen and assemble the observed native issue fixture lifecycle."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+AREA = Path(__file__).resolve().parent
+PROFILE = AREA / "native-05"
+CASES = (
+    ("status", 1, "backlog", "backlog"),
+    ("design", 2, "backlog", "designing"),
+    ("ready", 2, "designing", "ready"),
+    ("selection", 2, "ready", "ready"),
+    ("start", 2, "ready", "active"),
+    ("block", 3, "active", "blocked"),
+    ("resume", 1, "blocked", "active"),
+    ("submit", 1, "active", "review"),
+    ("rework", 1, "review", "active"),
+    ("resubmit", 1, "active", "review"),
+    ("close", 1, "review", "closed"),
+)
+
+
+def load(path: Path) -> Any:
+    """Read native JSON using its recorded encoding."""
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def digest(text: str) -> str:
+    """Screen an identifier into a reproducible comparison digest."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def issue_labels(issue: dict[str, Any]) -> set[str]:
+    """Read native label names independent of ordering."""
+    return {label["name"] for label in issue["labels"]}
+
+
+def screened(value: Any, key: str = "") -> Any:
+    """Keep public issue facts and hash local session and action identifiers."""
+    if isinstance(value, dict):
+        result = {}
+        for name, content in value.items():
+            if name == "body":
+                result["body_sha256"] = digest(content)
+            else:
+                result[name] = screened(content, name)
+        return result
+    if isinstance(value, list):
+        return [screened(item, key) for item in value]
+    if isinstance(value, str):
+        if key in {"session_id", "call_id"}:
+            return digest(value)
+        return value.replace(str(AREA), ".sp-bp/work/issue-24").replace(
+            AREA.as_posix(), ".sp-bp/work/issue-24"
+        )
+    return value
+
+
+def main() -> int:
+    """Require all eleven observed native stages before producing receipt."""
+    created = load(AREA / "remote-fixture-created.json")
+    integration = load(AREA / "fixture-39-integrated.json")
+    assert created["number"] == 39 and integration["pull_request"] == 40
+    assert integration["checks"]["headSha"] == integration["delivery"]["revision"]
+    assert integration["checks"]["conclusion"] == "success"
+    compact_jobs = [
+        {"name": job["name"], "conclusion": job["conclusion"]}
+        for job in integration["checks"]["jobs"]
+    ]
+    assert len(compact_jobs) == 3 and all(job["conclusion"] == "success" for job in compact_jobs)
+    integration["checks"]["jobs"] = compact_jobs
+
+    result = []
+    prior = created
+    observed_sessions = set()
+    for stage, attempt, before_label, after_label in CASES:
+        stem = f"{stage}-{attempt:02d}"
+        row = load(PROFILE / f"{stem}.json")
+        raw = PROFILE / f"{stem}-raw.json"
+        assert row["stage"] == stage and row["passed"] and row["protected_equal"]
+        assert hashlib.sha256(raw.read_bytes()).hexdigest() == row["raw_capture_sha256"]
+        before, after = row["before"], row["after"]
+        assert before["number"] == after["number"] == 39
+        assert before["body"] == after["body"] == created["body"]
+        assert issue_labels(before) == {"documentation", f"backplane:{before_label}"}
+        assert before["state"] == "OPEN"
+        if after_label == "closed":
+            assert after["state"] == "CLOSED" and after["stateReason"] == "COMPLETED"
+            assert issue_labels(after) == {"documentation"}
+        else:
+            assert after["state"] == "OPEN"
+            assert issue_labels(after) == {"documentation", f"backplane:{after_label}"}
+        if stage in {"status", "selection"}:
+            assert before == after and len(row["command_events"]) == 1
+        assert issue_labels(prior) == issue_labels(before), stage
+        sessions = {
+            item["session_id"]
+            for item in row["native_skill_results"]
+            if item["id"] == "managing-superpowers-backlog" and item["status"] == "completed"
+        }
+        assert len(sessions) == 1 and not (sessions & observed_sessions)
+        observed_sessions.update(sessions)
+        prior = after
+        row["attempt"] = attempt
+        result.append(screened(row))
+    failed = []
+    for stem in ("design-01", "block-02"):
+        row = load(PROFILE / f"{stem}.json")
+        assert not row["passed"] and row["before"] == row["after"]
+        failed.append(
+            {
+                "stage": stem,
+                "state_preserved": True,
+                "raw_capture_sha256": row["raw_capture_sha256"],
+            }
+        )
+    receipt = {
+        "scope": "Approved OpenCode V2 real issue lifecycle fixture #39 for Backplane issue #24",
+        "approved_initial_issue": screened(created),
+        "fixture_publication": integration,
+        "cases": result,
+        "initial_refusals": failed,
+        "screening": "Public issue outcomes and exact commands retained. Issue body contents, native session IDs, and native call IDs use digests. Fixture source paths are project-relative. Raw capture hashes establish provenance.",
+    }
+    encoded = json.dumps(receipt, ensure_ascii=False, indent=2) + "\n"
+    assert not re.search(
+        r"github_pat_|gh[pousr]_[A-Za-z0-9]{25,}|\bsk-[A-Za-z0-9_-]{25,}|Authorization: (Basic|Bearer)|[A-Za-z]:[\\/]Users[\\/]",
+        encoded,
+    )
+    with (AREA / "fixture-39-screened.json").open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(encoded)
+    print(
+        "Native fixture: 11 distinct fresh sessions passed; approved body, protected owner, and documentation label verified."
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

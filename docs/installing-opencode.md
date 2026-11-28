@@ -183,5 +183,9 @@ This shows the single entry to change inside the existing V2 configuration:
 Use a new session at each stage. Verify the actual package and skill sources in
 the same OpenCode server and working directory after the expected inventory is
 ready. Preserve unrelated files, plugin entries, upstream and GitHub issue
-state. See the [V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/main/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md)
+state.
+
+### V2 lifecycle verification evidence
+
+See the [V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/203c5730c15617b9780e7767c6b201b8642b02fd/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md#task-1--native-package-operations)
 for the tested revisions and observed results.

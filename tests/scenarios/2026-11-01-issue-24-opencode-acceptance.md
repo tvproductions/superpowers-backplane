@@ -42,5 +42,44 @@ the exact prompts, responses, screened native events and scores. Its installatio
 scenario notes that the historical test sources are outside the installed
 package. The verifier supplied the exact repository prompts and evaluated the
 rubrics. The adopter guide links to the hosted evidence record so the installed
-guide can reach it. The actual authorized fixture lifecycle and exact #24
-integrated package verification remain pending.
+guide can reach it. The authorized fixture lifecycle is recorded below.
+
+### Native issue-state fixture
+
+The operator approved [fixture #39](https://github.com/tvproductions/superpowers-backplane/issues/39)
+for the guide and evidence links. Eleven fresh authenticated OpenCode V2 2.1.4
+sessions used the native backlog Skill from the exact hosted package at
+`8e1e2005025890776eb99bd4b9161996fbbe68ed`. Each phase retained a complete
+native GitHub read before and after its permitted actions. The protected owner
+issue #24 and unrelated fixture files matched throughout.
+
+| Operation | Observed result |
+| --- | --- |
+| Status and selection | Identical before and after native issue snapshots. |
+| Design and readiness | Backlog to designing to ready with the approved issue-bound fixture plan and clear dependencies. |
+| Start, block and resume | Ready to active, then blocked with a concrete release condition and the active resume target. Active resumed after the exact local link check. |
+| Submission and rework | Active to review, review to active after independent feedback, then review after the immutable section link passed verification. |
+| Completed closure | Native review-to-completed closure after the exact fixture delivery passed all three hosted checks. The final issue retained only its unrelated `documentation` label. |
+
+[PR #40](https://github.com/tvproductions/superpowers-backplane/pull/40) merged
+the two scoped fixture documents as `6f0c295d6e34d86dd516140092d91e628f52e8ec`.
+GitHub served both matching file blobs and rendered the two linked headings.
+[Exact-main CI](https://github.com/tvproductions/superpowers-backplane/actions/runs/46088154550)
+passed on Ubuntu, macOS, and Windows. The fixture's first design and blocked
+probes refused to write under insufficient fixture read permissions. Both
+preserved native issue state and passed on a fresh, narrowly scoped retry.
+
+The [screened native fixture receipt](2026-11-01-issue-24-opencode-native-fixture.json)
+retains all eleven stage results, the actual command evidence, and hashes of
+the separately retained raw captures.
+
+## Criterion mapping
+
+| Issue #24 criterion | Evidence | Current result |
+| --- | --- | --- |
+| Repeat install leaves one effective package. Pinned update, rollback, and Backplane-only uninstall prove the actual revisions and preserve upstream. | `L-repeat`, `L-update`, `L-rollback`, `L-uninstall`, and `L-test-restore` record exact active inventory, Git package blobs, restored prior pin, and final upstream load. | PASS in the approved native operation replay |
+| Exact guide operations and fresh discovery pass. Failed preflight or verification identifies recovery and retains the last verified installation when restorable. | The eight operation rows include authenticated fresh loads, failed-candidate observations before recovery, and byte-identical prior configuration after both recoveries. | PASS in the approved native operation replay |
+| Five conformance checks and authorized native issue-state scenarios are scored for V2. | Exact read-only conformance transcript and all eleven approved #39 native stages, including completion after merged scope and fresh checks. | PASS in the approved native fixture |
+
+The full #24 candidate still requires its own accepted review, exact integrated
+package verification, and satisfaction closeout.

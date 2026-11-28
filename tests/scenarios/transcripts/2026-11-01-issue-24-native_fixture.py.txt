@@ -1,0 +1,354 @@
+"""Observe narrowly authorized native OpenCode transitions on the #24 fixture."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import shlex
+from pathlib import Path
+from typing import Any
+
+import acceptance
+import native_lifecycle as native
+import v2_cases
+
+PROFILE = native.AREA / "native-05"
+BINDING = "fixture-binding.md"
+BLOCKER = "fixture-blocker.md"
+STAGES = {
+    "status": ("backlog", "backlog"),
+    "design": ("backlog", "designing"),
+    "ready": ("designing", "ready"),
+    "selection": ("ready", "ready"),
+    "start": ("ready", "active"),
+    "block": ("active", "blocked"),
+    "resume": ("blocked", "active"),
+    "submit": ("active", "review"),
+    "rework": ("review", "active"),
+    "resubmit": ("active", "review"),
+    "close": ("review", "closed"),
+}
+
+
+def read_issue(command: list[str]) -> dict[str, Any]:
+    """Fetch the complete native issue and reject truncated or changed fixture anchors."""
+    captured = v2_cases.run(command)
+    if captured["exit"] != 0 or captured["timeout"]:
+        raise RuntimeError("Live fixture intake failed")
+    issue = json.loads(captured["stdout"])
+    for field in ("subIssues", "blockedBy", "blocking"):
+        if issue[field]["totalCount"] != 0 or issue[field]["nodes"]:
+            raise RuntimeError(f"Unexpected fixture relationship: {field}")
+    if set(issue) != set(v2_cases.FIELDS.split(",")) or issue["parent"]:
+        raise RuntimeError("Unexpected fixture intake or parent")
+    return issue
+
+
+def labels(issue: dict[str, Any]) -> set[str]:
+    """Return the observed labels without depending on GitHub order."""
+    return {label["name"] for label in issue["labels"]}
+
+
+def fixture_profile(created: dict[str, Any]) -> dict[str, Any]:
+    """Configure one owned profile with no inherited consumer instructions."""
+    owner_text = f"approved-gh-fixture:{created['number']}"
+    marker = PROFILE / ".approved-fixture"
+    if not PROFILE.exists():
+        fixture = native.make_fixture(5)
+        marker.write_text(owner_text, encoding="utf-8")
+        directory = fixture["config"].parent
+        (directory / BINDING).write_text(
+            (native.AREA / BINDING).read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        (directory / BLOCKER).write_text(
+            (native.AREA / BLOCKER).read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        return fixture
+    if (
+        PROFILE.resolve(strict=True).parent != native.AREA
+        or marker.read_text(encoding="utf-8") != owner_text
+    ):
+        raise RuntimeError("Unexpected fixture profile")
+    env = v2_cases.environment(PROFILE)
+    config = Path(env["OPENCODE_CONFIG_DIR"]) / "opencode.json"
+    if Path(v2_cases.git(config.parent, "rev-parse", "--show-toplevel")).resolve() != config.parent:
+        raise RuntimeError("Issue fixture consumer repository changed")
+    keep = (PROFILE / "unrelated-plugin").resolve(strict=True)
+    return {
+        "profile": PROFILE,
+        "env": env,
+        "config": config,
+        "sentinel": keep.as_posix(),
+        "files": (
+            config.parent / "user-work.txt",
+            config.parent / "AGENTS.md",
+            *(keep / name for name in ("index.js", "package.json", "SKILL.md")),
+        ),
+    }
+
+
+def completed_shell(stdout: str) -> list[dict[str, Any]]:
+    """Collect actual terminal native shell events and retain command identity."""
+    output = []
+    for line in stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        part = event.get("part") or {}
+        state = part.get("state") or {}
+        if part.get("tool") != "shell" or state.get("status") != "completed":
+            continue
+        command = state.get("input", {}).get("command")
+        if not isinstance(command, str):
+            continue
+        output.append(
+            {
+                "command": shlex.split(command),
+                "output_sha256": hashlib.sha256(str(state.get("output", "")).encode()).hexdigest(),
+                "call_id": part.get("callID") or part.get("id"),
+            }
+        )
+    return output
+
+
+def operation(stage: str, number: int) -> tuple[list[str], list[list[str]], str]:
+    """Bind one approved phase to the exact fixture and command vectors."""
+    before, after = STAGES[stage]
+    tail = [str(number), "--repo", native.REPO]
+    view = ["gh", "issue", "view", *tail, "--json", v2_cases.FIELDS]
+    edit = [
+        "gh",
+        "issue",
+        "edit",
+        *tail,
+        "--remove-label",
+        f"backplane:{before}",
+        "--add-label",
+        f"backplane:{after}",
+    ]
+    if stage == "close":
+        actions = [
+            ["gh", "issue", "close", *tail, "--reason", "completed"],
+            ["gh", "issue", "edit", *tail, "--remove-label", "backplane:review"],
+        ]
+        advice = (
+            "Accepted integration and fresh exact-merge verification authorize completed closure."
+        )
+        return view, actions, advice
+    actions = [] if before == after else [edit]
+    if stage == "block":
+        actions.insert(0, ["gh", "issue", "comment", *tail, "--body-file", BLOCKER])
+    context = {
+        "status": "Give read-only status and identify that this captured fixture is in backlog.",
+        "design": "Begin the explicit fixture documentation-scope and plan reconciliation.",
+        "ready": "The local binding records the approved exact issue revision, scope and plan. All native dependencies are clear.",
+        "selection": "Select the already approved ready fixture for the operator. Selection changes no issue state.",
+        "start": "The ready fixture is selected and the first scoped documentation source check is starting.",
+        "block": "The required exact-source two-link verification record is still unavailable. Record the real release condition and active resume target from the supplied blocked comment.",
+        "resume": "The exact-source link check listed in the fixture ledger was verified, resolving the recorded blocker. Revalidate the active entry conditions.",
+        "submit": "The reviewed documentation-only candidate, link verification and quality evidence named by the controller are present. Submit for review.",
+        "rework": "The actual review requested the exact documentation change supplied by the controller. Resume this fixture for rework.",
+        "resubmit": "The actual review finding has been corrected and verified. Resubmit this restricted fixture for review.",
+    }
+    return view, actions, context[stage]
+
+
+def main() -> int:
+    """Execute one narrowly scoped phase and independently verify its GitHub result."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("stage", choices=tuple(STAGES))
+    parser.add_argument("--attempt", type=int, default=1)
+    parser.add_argument("--evidence", default="")
+    args = parser.parse_args()
+    if args.stage in {"resume", "submit", "rework", "resubmit", "close"} and not args.evidence:
+        raise SystemExit("Current operation evidence is required")
+    created = json.loads(
+        (native.AREA / "remote-fixture-created.json").read_text(encoding="utf-8-sig")
+    )
+    number = created["number"]
+    if created["url"] != f"https://github.com/{native.REPO}/issues/{number}":
+        raise SystemExit("Fixture repository identity changed")
+    before_stage, after_stage = STAGES[args.stage]
+    view, actions, advice = operation(args.stage, number)
+    if args.stage == "close":
+        evidence = json.loads(
+            (native.AREA / "fixture-39-integrated.json").read_text(encoding="utf-8-sig")
+        )
+        checks = evidence["checks"]
+        if (
+            checks["conclusion"] != "success"
+            or checks["headSha"] != evidence["delivery"]["revision"]
+        ):
+            raise SystemExit("Exact integrated verification is unavailable")
+        pr_read = v2_cases.run(
+            [
+                "gh",
+                "pr",
+                "view",
+                str(evidence["pull_request"]),
+                "--repo",
+                native.REPO,
+                "--json",
+                "state,baseRefName,mergeCommit,closingIssuesReferences",
+            ]
+        )
+        if pr_read["exit"] != 0 or pr_read["timeout"]:
+            raise SystemExit("Live fixture PR could not be verified")
+        pr = json.loads(pr_read["stdout"])
+        if (
+            pr["state"] != "MERGED"
+            or pr["baseRefName"] != "main"
+            or pr["mergeCommit"]["oid"] != evidence["delivery"]["revision"]
+            or pr["closingIssuesReferences"]
+        ):
+            raise SystemExit("Fixture PR identity or closure relationship changed")
+    before = read_issue(view)
+    if (
+        before["state"] != "OPEN"
+        or before["body"] != created["body"]
+        or labels(before) != {"documentation", f"backplane:{before_stage}"}
+    ):
+        raise SystemExit("Fixture stage, body, or protected label changed")
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("OpenCode executable digest changed")
+    fixture = fixture_profile(created)
+    captured = PROFILE / f"{args.stage}-{args.attempt:02d}.json"
+    raw_path = PROFILE / f"{args.stage}-{args.attempt:02d}-raw.json"
+    if captured.exists() or raw_path.exists():
+        raise SystemExit("Reuse of an existing native capture is prohibited")
+    directory = fixture["config"].parent
+    config = native.settings(fixture, native.CANDIDATE, False)
+    plan = directory / BINDING
+    package_cache = PROFILE.as_posix() + "/cache/opencode/npm"
+    for package in ("superpowers", "superpowers-backplane"):
+        for suffix in ("skills/*", "docs/*", "README.md", "SUPERPOWERS.md"):
+            config["permissions"].append(
+                {
+                    "action": "read",
+                    "resource": f"{package_cache}/*/*/node_modules/{package}/{suffix}",
+                    "effect": "allow",
+                }
+            )
+    config["permissions"] += [
+        {"action": "read", "resource": path, "effect": "allow"}
+        for path in (BINDING, plan.as_posix(), BLOCKER, (directory / BLOCKER).as_posix())
+    ]
+    config["permissions"] += [
+        {"action": "shell", "resource": " ".join(command), "effect": "allow"}
+        for command in [view, *actions]
+    ]
+    v2_cases.dump(fixture["config"], config, "w")
+    protected_before = native.protected(fixture, config)
+    prompt = (
+        f"Use the native managing-superpowers-backlog skill. This is the maintainer-approved actual "
+        f"fixture {created['url']}, scoped only to stage {args.stage}. {advice}\n"
+        f"Read the local {BINDING} for exact scope, approval and plan binding. Use this exact shell command "
+        f"to read current state first: {' '.join(view)}\n"
+        f"Expected state is OPEN with exactly the documentation and backplane:{before_stage} labels. "
+        f"The fixture body must match the approved title/scope and the fixture has no edges. "
+        f"If the current state or authority differs, stop. {args.evidence}\n"
+    )
+    if args.stage == "block":
+        actions_for_prompt = [actions[0], view, actions[1]]
+        prompt += "Reconcile the timestamp after recording the blocker comment. "
+    elif args.stage == "close":
+        actions_for_prompt = [actions[0], view, actions[1]]
+        prompt += "After the first write, verify CLOSED and COMPLETED before removing the lifecycle label. "
+    else:
+        actions_for_prompt = actions
+    if actions:
+        prompt += (
+            "With those gates met, execute exactly these shell commands in order:\n"
+            + "\n".join(" ".join(command) for command in actions_for_prompt)
+        )
+        final = (
+            "CLOSED with reason COMPLETED and only documentation"
+            if args.stage == "close"
+            else f"OPEN with documentation plus backplane:{after_stage}"
+        )
+        prompt += f"\nThen re-read with the exact view command above. Verify {final}. "
+    else:
+        prompt += "No write is authorized in this step. Report the status or selection."
+    prompt += "\nNo other issue or file actions are authorized. Do not delegate. Respond briefly with actual results."
+    with v2_cases.private(native.EXECUTABLE, PROFILE, fixture["env"]) as (server, child, read, _):
+        inventory = native.wait(fixture, read, native.CANDIDATE)
+        expected, installed, sources = native.native_manifest(inventory, native.CANDIDATE, PROFILE)
+        if not expected or installed != expected:
+            raise RuntimeError("Native package does not match the approved hosted pin")
+        command = [
+            str(native.EXECUTABLE),
+            "run",
+            "--server",
+            server,
+            "--format",
+            "json",
+            "--model",
+            v2_cases.MODEL,
+            prompt,
+        ]
+        call = v2_cases.run(command, directory, child, 145)
+    v2_cases.dump(raw_path, call)
+    after = read_issue(view)
+    protected_after = native.protected(fixture, config)
+    if args.stage == "close":
+        expected_state = (
+            after["state"] == "CLOSED"
+            and after["stateReason"] == "COMPLETED"
+            and labels(after) == {"documentation"}
+        )
+    else:
+        expected_state = after["state"] == "OPEN" and labels(after) == {
+            "documentation",
+            f"backplane:{after_stage}",
+        }
+    shell = completed_shell(call["stdout"])
+    commands = [event["command"] for event in shell]
+    expected_commands = [view, *actions_for_prompt, view] if actions else [view]
+    skills = acceptance.parse_skill_results(call["stdout"])
+    success = (
+        call["exit"] == 0
+        and expected_state
+        and protected_before == protected_after
+        and after["body"] == before["body"]
+        and (bool(actions) or before == after)
+        and commands == expected_commands
+        and any(
+            result["id"] == "managing-superpowers-backlog" and result["status"] == "completed"
+            for result in skills
+        )
+    )
+    v2_cases.dump(
+        captured,
+        {
+            "stage": args.stage,
+            "passed": success,
+            "before": before,
+            "after": after,
+            "probe": args.evidence,
+            "command_events": shell,
+            "native_skill_results": skills,
+            "skill_sources": sources,
+            "protected_equal": protected_before == protected_after,
+            "native_exit": call["exit"],
+            "raw_capture_sha256": native.digest(raw_path),
+            "host_sha256": native.HOST_SHA,
+            "package_sha": native.CANDIDATE,
+            "upstream_sha": native.UPSTREAM_SHA,
+        },
+    )
+    print(
+        args.stage,
+        "PASS" if success else "UNKNOWN",
+        "observed labels",
+        sorted(labels(after)),
+        "native shell calls",
+        len(commands),
+        flush=True,
+    )
+    return 0 if success else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

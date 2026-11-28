@@ -1,7 +1,7 @@
 {
   "issue": "https://github.com/tvproductions/superpowers-backplane/issues/12",
   "issue_revision": "2026-11-27T08:47:30Z",
-  "phase": "Task 2 candidate verification",
+  "phase": "Task 3 exact integrated verification",
   "plan": {
     "path": "docs/superpowers-backplane/plans/2026-11-28-issue-12-opencode-v2-integrated-acceptance.md",
     "sha256": "81923b92381bac0e17f12a2ac040d34db641c6ea6f4121cceaa04645122417e3",
@@ -15,7 +15,7 @@
     "skills": "a20788fd467af8c6fb22a7cc00fe9c396e3c1154",
     "package_json": "59a99c002689023f6b4d7d86804c42ba14bb5fe3"
   },
-  "scored_result": "UNKNOWN",
+  "scored_result": "SATISFIED",
   "prerequisites": {
     "2": "CLOSED/COMPLETED",
     "20": "CLOSED/COMPLETED",
@@ -4487,5 +4487,33 @@
     "UNKNOWN": 0
   },
   "candidate_local_rows_pass": true,
-  "exact_hosted_candidate_result": "UNKNOWN"
+  "exact_hosted_candidate_result": "PASS",
+  "evaluated_issue_revision": "2026-11-28T20:22:14Z",
+  "integrated_delivery": {
+    "revision": "3b03a49db79b6a276314d1477dfb3c68e1a4bac9",
+    "reviewed_revision": "73be83a6ecf7ee097c187e87f0758edc86165299",
+    "tree": "0d064bcf719725d9e10bcccafc43e77970bc6d36",
+    "pr": 42,
+    "exact_ci": {
+      "conclusion": "success",
+      "headSha": "3b03a49db79b6a276314d1477dfb3c68e1a4bac9",
+      "jobs": [
+        {
+          "conclusion": "success",
+          "name": "checks (ubuntu-latest)"
+        },
+        {
+          "conclusion": "success",
+          "name": "checks (macos-latest)"
+        },
+        {
+          "conclusion": "success",
+          "name": "checks (windows-latest)"
+        }
+      ],
+      "url": "https://github.com/tvproductions/superpowers-backplane/actions/runs/46186109415"
+    },
+    "receipt": "tests/scenarios/2026-11-28-issue-12-opencode-v2-integrated-delivery.json",
+    "receipt_sha256": "82568b7435f1af62ec0b26530d9d2265dc17cc59415d1081260bd1c1d86ccfaa"
+  }
 }

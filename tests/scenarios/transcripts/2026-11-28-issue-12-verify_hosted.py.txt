@@ -1,0 +1,136 @@
+"""Verify the exact merged #12 Git package in a fresh native OpenCode V2 profile."""
+
+import argparse
+import json
+from pathlib import Path
+
+import lifecycle
+import native_lifecycle as native
+import record_replays
+import v2_cases as setup
+from verify_update_rollback import capability
+
+AREA = Path(__file__).resolve().parent
+WORKTREE = AREA / "publication"
+REVIEWED = "73be83a6ecf7ee097c187e87f0758edc86165299"
+GUIDE = "docs/installing-opencode.md"
+
+
+def repository_state() -> dict[str, str]:
+    """Capture the exact project identity and unchanged workspace or ref state."""
+    return {
+        "head": setup.git(WORKTREE, "rev-parse", "HEAD"),
+        "origin_main": setup.git(WORKTREE, "rev-parse", "origin/main"),
+        "refs_sha256": record_replays.digest(setup.git(WORKTREE, "show-ref")),
+        "worktree_status_sha256": record_replays.digest(
+            setup.git(WORKTREE, "--no-optional-locks", "status", "--porcelain")
+        ),
+        "standalone_status_sha256": record_replays.digest(
+            setup.git(setup.ROOT, "--no-optional-locks", "status", "--porcelain")
+        ),
+        "upstream_sha256": record_replays.digest(
+            setup.git(setup.ROOT / ".agents/superpowers", "rev-parse", "HEAD")
+        ),
+    }
+
+
+def main() -> None:
+    """Prove product delivery, fresh independent Skills, and preservation."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("delivery")
+    parser.add_argument("--attempt", type=int, required=True)
+    args = parser.parse_args()
+    delivery = args.delivery
+    before_repo = repository_state()
+    if (
+        Path.cwd().resolve() != WORKTREE
+        or not lifecycle.sha(delivery, 40)
+        or before_repo["head"] != delivery
+        or before_repo["origin_main"] != delivery
+        or setup.git(WORKTREE, "rev-parse", f"{delivery}^2") != REVIEWED
+        or setup.git(WORKTREE, "--no-optional-locks", "status", "--porcelain")
+    ):
+        raise SystemExit("Git workspace does not match the accepted merge")
+    if not setup.git(setup.ROOT, "check-ignore", str(AREA / f"native-{args.attempt:02}")):
+        raise SystemExit("Native profile escapes ignored verification work")
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("The recorded OpenCode V2 executable changed")
+
+    # The archived runner reads selected paths through its bound ROOT.
+    # Its fixture and standalone repository checks retain the original root.
+    if native.discovery_request() != lifecycle.discovery_request():
+        raise SystemExit("The approved and merged discovery requests differ")
+    native.ISSUE[3] = "12"
+    setup.ISSUE[3] = "12"
+    matrix = json.loads((WORKTREE / record_replays.MATRIX).read_text(encoding="utf-8"))
+    reviewed_manifest = matrix["expected_candidate_package"]["manifest"]
+    expected = lifecycle.expected_package_files(delivery, WORKTREE)
+    if len(expected) != 110 or reviewed_manifest != expected or matrix["totals"]["PASS"] != 41:
+        raise SystemExit("Integrated package or acceptance matrix drifted")
+
+    fixture = native.make_fixture(args.attempt)
+    profile = fixture["profile"]
+    before = native.observe(fixture, "hosted-baseline", None)
+    gh_before = capability(fixture, delivery)
+    after = native.observe(fixture, "hosted-exact", delivery)
+    gh_after = capability(fixture, delivery)
+    row = {
+        "id": "L-install",
+        "kind": "native",
+        "variant": "V2",
+        "host_version": "2.1.4",
+        "host_sha256": native.HOST_SHA,
+        "expected_revision": delivery,
+        "before": before,
+        "after": after,
+    }
+    repo_equal = before_repo == repository_state()
+    if (
+        lifecycle.classify(row) != "PASS"
+        or not lifecycle.matches_archived_evidence(row, lifecycle.discovery_request(), expected)
+        or after["installed_manifest"] != expected
+        or before["protected"] != after["protected"]
+        or not repo_equal
+    ):
+        raise SystemExit("Exact hosted package, attribution, or preservation did not pass")
+    receipt = {
+        "pr": 42,
+        "reviewed_revision": REVIEWED,
+        "revision": delivery,
+        "tree": setup.git(WORKTREE, "rev-parse", f"{delivery}^{{tree}}"),
+        "guide_blob": setup.git(WORKTREE, "rev-parse", f"{delivery}:{GUIDE}"),
+        "host": {"version": row["host_version"], "executable_sha256": native.HOST_SHA},
+        "upstream_origin": setup.ORIGIN,
+        "before": record_replays.observed_lifecycle(before),
+        "after": record_replays.observed_lifecycle(after),
+        "installed_skill_sources": {
+            name: Path(value["path"]).relative_to(profile).as_posix()
+            for name, value in after["skill_files"].items()
+        },
+        "gh_before": gh_before,
+        "gh_after": gh_after,
+        "repository": before_repo,
+        "repository_equal": repo_equal,
+        "protected_equal": True,
+        "issue_revision": after["protected"]["issue"]["updatedAt"],
+        "baseline_capture_sha256": native.digest(profile / "hosted-baseline-raw.json"),
+        "delivery_capture_sha256": native.digest(profile / "hosted-exact-raw.json"),
+        "verified_package_files": len(expected),
+        "installed_manifest": after["installed_manifest"],
+        "result": "PASS",
+    }
+    setup.dump(profile / "exact-hosted-receipt.json", receipt)
+    print(
+        json.dumps(
+            {
+                "revision": delivery,
+                "files": len(expected),
+                "skills": after["loaded_skills"],
+                "result": "PASS",
+            }
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

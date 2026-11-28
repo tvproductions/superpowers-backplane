@@ -1,7 +1,8 @@
 # Issue #12 OpenCode V2 integrated acceptance
 
-**Result** — The V2 matrix has 41 PASS results and zero FAIL or UNKNOWN.
-Integrated acceptance remains UNKNOWN until exact hosted candidate verification.
+**Result** — SATISFIED for issue #12. All 41 V2 matrix rows passed. The fresh
+OpenCode V2 install matched all 110 files in the exact merged package and
+completed three attributed native Skill calls.
 
 ## Approved inputs
 
@@ -138,6 +139,50 @@ treated as errors.
 | --- | --- |
 | A01, A04, A05 | Verified registered workspace and locked project configuration. Actual managed Python and tool selections are identified above. |
 | A06, A07, A08, A10, A17 | Retained the unchanged [accepted engineering baseline](2026-11-07-strict-astral-full-verification.md). Exact all-group sync, lock check, lint, format, type checking and test commands passed in this worktree. |
-| A09 | All four local hooks passed. Exact candidate CI requires hosted delivery. |
+| A09 | All four local hooks passed. Exact merged CI passed on Windows, macOS, and Ubuntu. |
 | A18 | Scoped deprecation check, Lizard, 54 receipt controls and guide verification passed. The whole-change review identified four evidence gaps and the corrected replay and verifier addressed them. |
 | A02, A03, A11–A16 | N/A for the shipped Node adapter and Markdown skills. This non-package Python development scope delivers fixture and receipt tools, with no wheel, runtime API, private resolution, workspace or deployment target. |
+
+## Integrated delivery and satisfaction
+
+[PR #42](https://github.com/tvproductions/superpowers-backplane/pull/42) merged
+reviewed head `73be83a6ecf7ee097c187e87f0758edc86165299` as
+`3b03a49db79b6a276314d1477dfb3c68e1a4bac9` at
+`2026-11-28T20:22:56Z`. The merged tree
+`0d064bcf719725d9e10bcccafc43e77970bc6d36` exactly matches the reviewed tree.
+[Exact merged CI](https://github.com/tvproductions/superpowers-backplane/actions/runs/46186109415)
+passed on Windows, macOS, and Ubuntu. The complete locked local gate also
+passed from a clean worktree at the merge commit. A09 includes exact-delivery
+hosted verification.
+
+The [fresh installed-package receipt](2026-11-28-issue-12-opencode-v2-integrated-delivery.json)
+records Windows OpenCode V2 2.1.4 and separately resolved Superpowers v7.0.1.
+All 110 installed package blobs matched the exact merged Git tree and the
+reviewed package manifest. Native Skill calls completed for
+`using-superpowers`, `managing-superpowers-backlog`, and
+`managing-superpowers-handoffs`, with attributable sources in the independent
+upstream and Backplane installations. The existing unrelated plugin and
+fixture user files matched across the installation. Complete native issue
+intake, the repository ref set, both project workspace statuses, and the
+upstream checkout identity also matched. GitHub CLI 2.106.0 verified
+authentication, the exact hosted revision, label edit flags, and completed
+closure support before and after installation.
+
+The evaluated issue revision was `2026-11-28T20:22:14Z`, with
+`backplane:review`. The approved plan pointer and lifecycle transitions
+changed the revision. Its original objective, scope, criteria, verification
+seams, and native graph still govern the evaluation.
+
+| Issue #12 criterion | Accepted evidence |
+| --- | --- |
+| Completed prerequisites and canonical V2 configuration | Fresh reads show #20, #23, and #24 closed completed. The reviewed adapter and exact hosted installation use V2 `plugins`. |
+| Every mandatory supported-host row passes | The matrix records all 41 results, exact inputs and scoped native observations, with explicit applicability for refusal and removal cases. |
+| Integrated setup, lifecycle, conformance, and authorized native issue-state checks | The product tree is identical to the reviewed candidate. The exact hosted installation passed. Changed setup and lifecycle seams were replayed, the five conformance checks passed, and the eleven authorized #39 states preserve their native evidence and verified completion ordering. |
+| Actual below-floor refusal, fresh independent discovery, and preservation | The recorded V2 2.0.3 executable refused before package load. The merged package proved three source-attributed native Skill results, complete exact-manifest equality, and preservation. |
+
+These observations cover the issue's comparison, fresh native behavior and
+preservation, and platform/source identification verification seams. The
+[hosted verification driver](transcripts/2026-11-28-issue-12-verify_hosted.py.txt)
+and the receipt identify the tested merge independently of the later evidence
+storage revision. Receipt SHA-256 is
+`82568b7435f1af62ec0b26530d9d2265dc17cc59415d1081260bd1c1d86ccfaa`.

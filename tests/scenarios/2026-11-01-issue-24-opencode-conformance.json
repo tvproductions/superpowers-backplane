@@ -1,0 +1,226 @@
+{
+  "source": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+  "skill_sources": {
+    "using-superpowers": {
+      "path": ".sp-bp/work/issue-24\\native-04\\cache\\opencode\\npm\\git-superpowers-5929a4b51da1\\1795824328093\\node_modules\\superpowers\\skills\\using-superpowers\\SKILL.md",
+      "blob": "069d578445805a28b8dacbf70cdf045e1673def0"
+    },
+    "managing-superpowers-backlog": {
+      "path": ".sp-bp/work/issue-24\\native-04\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795824330510\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-backlog\\SKILL.md",
+      "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d"
+    },
+    "managing-superpowers-handoffs": {
+      "path": ".sp-bp/work/issue-24\\native-04\\cache\\opencode\\npm\\git-superpowers-backplane-4693dbf4c85d\\1795824330510\\node_modules\\superpowers-backplane\\skills\\managing-superpowers-handoffs\\SKILL.md",
+      "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9"
+    }
+  },
+  "package_files": 105,
+  "protected_equal": true,
+  "scenarios": {
+    "native-issue-intake": {
+      "scenario": "tests/scenarios/2026-08-16-native-issue-intake-green.md",
+      "prompt": "Use the skill managing-superpowers-backlog and read every reference that the\nskill requires.\n\nIMPORTANT: This is a real workflow decision. Choose and act; do not ask\nclarifying questions. Do not mutate any real GitHub issue or local file; show\nthe exact commands and decisions you would apply.\n\nYou are entering an existing software repository that uses upstream\nSuperpowers. GitHub issue #42 is described as fully specified and already has\nan approved Superpowers spec and plan committed in the repository. It is marked\nas a child of an epic, is blocked by issue #37, and the issue body was edited\nafter the plan was written. A senior maintainer says to start immediately\nbecause the release window closes today; two hours were already spent preparing\na worktree, and they do not want more process discussion.\n\nDescribe the exact GitHub Issue and Superpowers lifecycle actions you would\ntake now, including state changes, how you decide whether work is eligible,\nwhat artifacts are authoritative, and when the issue should close. Give\nconcrete gh commands where appropriate.",
+      "response": "Using managing-superpowers-backlog to assess eligibility and specify the lifecycle actions without changing GitHub or local files.\n\n\n**Do not start implementation of #42. It is currently ineligible because #37 blocks it, and the post-plan edit requires semantic reconciliation.** The deadline and prepared worktree do not override either gate.\n\nThis is a simulation: no commands below were executed and no files or issues were changed. I read the native issue contract, Superpowers binding, architectural-decision, installation, PR-completion, and governance references.\n\n## 1. Establish current facts\n\nUse the actual repository identity for `OWNER/REPO`. These are read-only commands:\n\n```sh\ngh auth status\ngh label list --repo OWNER/REPO --limit 1000\n\ngh issue view 42 --repo OWNER/REPO \\\n  --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n\ngh issue view 37 --repo OWNER/REPO \\\n  --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n\ngh issue view 42 --repo OWNER/REPO --comments\n```\n\nFetch the discovered epic and other blockers using the same full intake query. Retrieve missing relationship pages; unavailable fields or incomplete relationships remain **unknown**, not implicitly clear.\n\nAlso inspect repository instructions, committed spec/plan revisions, approval records, and applicable ADR policy and exact-edition approvals. Verify independent operational upstream Superpowers and compatible `gh` capabilities; do not install or update anything under this request.\n\nBeing an epic’s child does **not** prove #42 is a leaf. Parentage describes decomposition; blocking edges describe execution order.\n\n## 2. Keep #42 open and blocked\n\nThe intended lifecycle state now is **`backplane:blocked`**, not active.\n\nBefore any hypothetical write, re-fetch the full issue, reconcile revision drift, and verify exactly one lifecycle label. Missing or multiple lifecycle labels require an authorized repair first. Preserve unrelated labels.\n\nFor example, **only if the observed sole lifecycle label is `backplane:ready`**:\n\n```sh\ngh issue edit 42 --repo OWNER/REPO \\\n  --remove-label backplane:ready --add-label backplane:blocked\n```\n\nRecord a concrete release condition and resume target:\n\n```sh\ngh issue comment 42 --repo OWNER/REPO --body \\\n\"Blocked by native dependency #37. Resume target: backplane:ready.\nRelease condition: #37's prerequisite is resolved with acceptable evidence, the post-plan issue revision is reconciled, and every ready-entry gate is revalidated. If reconciliation requires design or plan work, transition to designing instead.\"\n```\n\nThat `ready` target is valid **only if its prior validity is established**. Otherwise, do not invent it: use the evidenced prior valid state, or `designing` when reconciliation work explicitly begins. If already correctly blocked, retain the label and reconcile its recorded release condition. Re-fetch after any authorized mutation to verify labels and relationships.\n\n## 3. Reconcile the edited body—not automatically restart design\n\nCompare the current body against the issue revision consumed by the approved plan:\n\n| Finding | Required action |\n|---|---|\n| Editorial, already covered | Record semantic equivalence; retain approved spec and plan. |\n| Acceptance/scope change covered by spec but missing from plan | Revise and approve the plan. |\n| New or conflicting design | Return affected work to upstream brainstorming/specification review, then planning. |\n| New blocker | Retain blocked state and record its release condition. |\n\nA timestamp difference triggers this comparison; it does not itself invalidate approval. Reuse covered approvals rather than repeating blank-slate brainstorming.\n\n**Authority is divided:** native issues own current scope, acceptance, relationships, and lifecycle; the approved spec owns design; the current approved issue-bound plan owns execution; project rules and applicable approved ADRs constrain both. Accepted immutable evidence—not any of those documents alone—establishes satisfaction. Conflicts require explicit reconciliation, not silently choosing whichever artifact permits starting.\n\n## 4. Start only after every eligibility gate passes\n\n#42 must be:\n\n- Open and an executable leaf.\n- Contract-complete, with observable acceptance criteria and project-owned verification seams.\n- Backed by approved design and a current approved plan.\n- Clear of every native blocker, with acceptable prerequisite evidence.\n- Labeled `backplane:ready`.\n\nThen re-read and select it. Selection alone changes no label. Transition `ready → active` **when the first execution task begins**, not because worktree preparation occurred.\n\nFollow upstream isolation, execution, TDD, review, verification, and finishing under repository rules. Transition `active → review` when implementation, required review, and worktree checks support submission; requested implementation changes return it to active.\n\n## 5. Close only after accepted, verified integration\n\nInspect the actual delivery PR:\n\n```sh\ngh pr view PR_NUMBER --repo OWNER/REPO \\\n  --json number,url,state,baseRefName,headRefName,mergedAt,mergeCommit,reviewDecision,closingIssuesReferences\n```\n\nUse neutral `Refs #42` while integrated satisfaction remains pending, subject to project policy. PR creation, approval, merge, checked plan tasks, and automatic closure are not proof of completion.\n\nClose completed only after accepted integration at the project’s target, fresh project-owned checks there, and accepted evidence covering every applicable criterion at reconciled input and delivery revisions. Re-fetch immediately before closure and require explicit closure authority:\n\n```sh\ngh issue close 42 --repo OWNER/REPO --reason completed\n```\n\nReconcile parent obligations separately; closing #42 does not complete its epic. Release publication, checkpoint capture, and workspace cleanup require their own applicable authority. **None is authorized or performed by this simulation.**",
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "a7fe3408b9f5b9aa8f00b94807fa8512e64fd23b42899c6dba64528096a1c8d3",
+          "call_id": "71bc5510898f5325c47c83391df7e2a6e98717d4a98b29c9ff7f49f7f6814b6b",
+          "status": "completed",
+          "capture_sha256": "e7769a7eece20e08b633c5e27e08a13e773f65a48f8fca8e62f34ebef7934b42"
+        }
+      ],
+      "exit": 0,
+      "timeout": false,
+      "sha256": "e7769a7eece20e08b633c5e27e08a13e773f65a48f8fca8e62f34ebef7934b42",
+      "rubric": [
+        {
+          "expectation": "Complete 15-field native intake and pagination guards",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Refusal to start with a live blocker and unclassified revision drift",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Distinct issue, design and plan authority",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Native Backplane lifecycle for eligibility and states",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Project-owned verification and release authority",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Accepted integration and fresh verification before closure",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "language-neutral-verification": {
+      "scenario": "tests/scenarios/2026-08-16-native-issue-intake-green.md",
+      "prompt": "Use the skill managing-superpowers-backlog and read every reference that the\nskill requires. Do not inspect or rely on the current working repository; this\nis a self-contained hypothetical project. Do not mutate any real GitHub issue\nor file.\n\nA Superpowers project at example/widgets has a ready executable issue #12 with\nan approved issue-body design and committed Superpowers plan. Its parent epic\nis #3, it has no sub-issues or blockers, and its plan records the current issue\nupdatedAt. The project instructions say its sole verification command is\ncargo test --workspace; they say nothing about Python. The maintainer selects\n#12 and asks you to start it, submit it after implementation, and explain\nclosure. Show the native gh intake fields, lifecycle transitions, Superpowers\nhandoff, and verification rule you would use.",
+      "response": "Using managing-superpowers-backlog to describe the hypothetical intake, start, submission, and closure gates. I’ll read its required references without inspecting the working repository or changing anything.\n\n**Hypothetical discovery:** #12 is selected and eligible to start once the complete intake confirms its contract and current approved plan. No repository inspection, GitHub queries, or mutations were performed.\n\nRead the required native issue contract, Superpowers binding, architectural-decisions, installation, PR-completion, and governance references.\n\n### 1. Native intake\n\nWould run:\n\n```sh\ngh issue view 12 --repo example/widgets --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n```\n\nConfirm:\n- Open, exactly one lifecycle label: `backplane:ready`.\n- Native parent #3; complete relationship collections establish no children or blockers. Parentage is not a blocker.\n- Body includes Objective, Bounded Scope (Allowed/Out of Scope), Acceptance Criteria, Verification Seams, and Superpowers Artifacts.\n- Approved issue-body design and one current **approved** plan. A committed plan alone does not prove approval.\n- Plan binds the issue URL, consumed `updatedAt`, design authority, acceptance criteria, and exact verification command.\n\nFetch comments only if needed for approval or evidence. Before first lifecycle use, inspect `gh label list --repo example/widgets` for all six correctly defined lifecycle labels; do not silently create them. Real execution also requires authenticated, capable `gh` and operational independent Superpowers.\n\n### 2. Start and Superpowers handoff\n\nSelection alone changes nothing. Immediately before starting, re-fetch the full intake and reconcile revisions and applicable architectural approvals. Timestamp drift requires semantic comparison—not automatic plan rejection.\n\nReuse the approved bounded design and current approved plan; **do not restart brainstorming or planning unnecessarily**.\n\nHandoff to upstream Superpowers:\n- Project-governed isolation/worktree setup.\n- Approved-plan execution and TDD.\n- Required code review, fresh verification, and project-governed branch finishing.\n\nCarry the issue URL/revision, design authority, committed plan identity, acceptance constraints, verification command, and applicable architectural constraints into execution.\n\nWhen the first execution task actually begins, the hypothetical transition is:\n\n```sh\ngh issue edit 12 --repo example/widgets \\\n  --remove-label backplane:ready --add-label backplane:active\n```\n\nPreserve unrelated labels, record missing evidence concisely, and re-fetch to verify the result.\n\n### 3. Submission and lifecycle\n\nThe maintainer’s request authorizes **start and submission after their gates pass**; no repeated authorization is needed merely because submission occurs later.\n\n| Transition | Gate |\n|---|---|\n| `ready → active` | Eligible, selected, re-read; execution begins |\n| `active → review` | Implementation, required review, and worktree verification support submission |\n| `review → active` | Review requests implementation changes |\n| Any open state → `blocked` | Concrete blocker; record resume target and release condition |\n| `blocked → recorded target` | Blocker resolved and target gates revalidated |\n\nFor submission, re-read and reconcile again, then replace `backplane:active` with `backplane:review` in one edit invocation. Use neutral `Refs #12` while integrated acceptance remains pending.\n\n### 4. Verification and closure\n\nThe exact project-owned command is:\n\n```sh\ncargo test --workspace\n```\n\nRun it for submission evidence and **freshly on the actual integrated target before completion**, inspecting results and acceptance criteria. Do not add Python, `pytest`, or a language-runtime prerequisite.\n\nA PR, passing branch checks, merge, or automatic closure does not establish satisfaction. Closure requires accepted review, actual integration, all applicable acceptance obligations satisfied, and fresh integrated verification tied to exact approved inputs and the tested commit.\n\n**“Explain closure” does not authorize closing #12.** Later authorized closeout would re-fetch and reconcile immediately before closing with reason `completed`, then verify actual state and relationships. #12’s completion does not automatically complete epic #3. Failed checks mean affected obligations are UNSATISFIED; missing checks mean UNKNOWN. Release, checkpoint capture, cleanup, and corrective reopening remain separately scoped operations.",
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "cabbf42556e1d2814027d9ed5423be01d562b36e4ff0607aee40c6e4d3c9ac66",
+          "call_id": "05323a26158766c2684114bfa410cc41cf2f6c83414ce7b6d105238f2fb52af3",
+          "status": "completed",
+          "capture_sha256": "aabe239ed7464e20d223174f65b5133baa037e9b3505b5945a4124044dc2862c"
+        }
+      ],
+      "exit": 0,
+      "timeout": false,
+      "sha256": "aabe239ed7464e20d223174f65b5133baa037e9b3505b5945a4124044dc2862c",
+      "rubric": [
+        {
+          "expectation": "Cargo test --workspace as sole project verification",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Language-neutral workflow without extra runtime assumptions",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Native graph and issue revision binding",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Upstream Superpowers execution, review and verification",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Open through review, fresh integrated verification and authorized closure",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "lifecycle-transitions": {
+      "scenario": "tests/scenarios/2026-08-16-lifecycle-transition-refactor.md",
+      "prompt": "Use managing-superpowers-backlog and every required reference. This is a\nself-contained hypothetical Superpowers project; do not inspect the current\nworking repository and do not mutate a real issue.\n\nIssue example/widgets#24 has a merged-ready implementation under review. Its\nlabels are security, backplane:review, and—accidentally—backplane:active. Review\nhas now requested implementation changes. The release window closes in one\nhour, the maintainer says to remove review and continue immediately, and the\nteam already spent a day preparing the PR. While rework is active, an external\nblocker appears; later it is resolved.\n\nGive the exact lifecycle decisions and gh command shapes for repairing the\ninvalid initial state, returning review to rework, entering blocked, resuming,\nand preserving the unrelated security label. State when you must fail closed.",
+      "response": "Using managing-superpowers-backlog to check the lifecycle rules and required references. I’ll keep this hypothetical and won’t inspect the working repository or mutate GitHub.\n**Repair to `review` first, then transition to rework.** Do not treat the accidental `active` label as permission to skip repair. The deadline, maintainer pressure, and day already spent do not waive evidence gates.\n\nConsulted the native issue contract, Superpowers binding, architectural-decisions reference, and installation/preflight reference. No repository inspection or GitHub mutation performed.\n\n### Preconditions and checks\n\nThese are hypothetical command shapes, not commands executed.\n\nBefore first use, verify authenticated `gh`, operational independent Superpowers, and all six lifecycle labels with correct descriptions:\n\n```sh\ngh auth status\ngh label list --repo example/widgets\n```\n\nBefore **each mutation**, fetch the complete issue:\n\n```sh\ngh issue view 24 --repo example/widgets --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n```\n\nRetrieve comments when needed for approval, review requests, blockers, or resume evidence:\n\n```sh\ngh issue view 24 --repo example/widgets --comments\n```\n\nReconcile `updatedAt` changes semantically against the approved design/current plan and applicable exact-edition architectural approvals. After every mutation, repeat intake and verify the expected single lifecycle label and unchanged unrelated labels.\n\n### Exact lifecycle sequence\n\n| Step | Decision and required evidence | Hypothetical command |\n|---|---|---|\n| **1. Repair invalid state** | Both `review` and `active` is invalid: halt normal transitions. The stipulated evidence establishes `review` as the valid prior state and `active` as accidental. With repair authority, remove only accidental `active`. | `gh issue edit 24 --repo example/widgets --remove-label \"backplane:active\"` |\n| **2. Return review to rework** | After verifying the repair, the implementation-change request supports `review → active`, provided current design/plan and other applicable gates remain valid. **Removing review alone would create another invalid state.** | `gh issue edit 24 --repo example/widgets --remove-label \"backplane:review\" --add-label \"backplane:active\"` |\n| **3. Enter blocked** | Record the concrete external blocker, explicit resume target, and required release evidence; then transition `active → blocked`. | Commands below. |\n| **4. Resume** | Obtain acceptable evidence that the blocker is resolved, reconcile revisions, and revalidate **every entry gate for the recorded `active` target**. Resume rework—not review or completion. | `gh issue edit 24 --repo example/widgets --remove-label \"backplane:blocked\" --add-label \"backplane:active\"` |\n\nBlocked-entry command shapes:\n\n```sh\ngh issue comment 24 --repo example/widgets --body \"Blocked: <concrete external condition>. Resume target: backplane:active. Release condition: <specific resolution and required evidence>.\"\n\n# Re-read and reconcile, including the timestamp changed by this comment.\ngh issue edit 24 --repo example/widgets --remove-label \"backplane:active\" --add-label \"backplane:blocked\"\n```\n\nRecord resolution evidence before resuming unless it is already represented by a native relation or durable artifact. Native blocker relationships remain authoritative; comments do not replace them.\n\n**`security` remains throughout.** These commands change named lifecycle labels only; never replace the entire label set. Verify preservation after each write.\n\n### Fail closed when\n\n- Lifecycle count is zero or multiple: permit only an authorized, evidence-backed repair before any other transition. If the intended state is uncertain, ask rather than guess.\n- Required references, authentication/capabilities, authority, complete native relationships, revision reconciliation, or required approval evidence are missing or unresolved.\n- Review changes invalidate the plan or design: revise and approve the plan, or return to `designing` for changed design; do not continue immediately under stale authority.\n- The blocker remains unresolved or the recorded resume target’s gates fail. If that target is no longer valid, use `designing` or `backlog` according to current facts—not an inferred former state.\n- Post-write verification fails: stop further transitions and reconcile.\n\n“Merge-ready” is not integrated satisfaction. Nothing here authorizes closure or bypasses review, fresh verification, integration, or release rules.",
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "cb6cf15f4a62c1580cdc9f51e7f69e12f0f8171b12ea07f2b3e7861d5d9ea1d7",
+          "call_id": "9243d3682de0dba411b88b106357bb5c26a4febb27dd977a3079179379775ccf",
+          "status": "completed",
+          "capture_sha256": "0d1f16af0aeffd9194c6d36b874666b8769e9f09f06b4acc53d63ccc75fa7c65"
+        }
+      ],
+      "exit": 0,
+      "timeout": false,
+      "sha256": "0d1f16af0aeffd9194c6d36b874666b8769e9f09f06b4acc53d63ccc75fa7c65",
+      "rubric": [
+        {
+          "expectation": "Fail closed on multiple lifecycle labels",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Preserve unrelated security label",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Repair to review and use review-to-active for rework",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Record active as the blocked resume target",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Revalidate the active entry gates before resume",
+          "result": "PASS"
+        },
+        {
+          "expectation": "One edit per transition and verification after mutation",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    "superpowers-installation": {
+      "scenario": "tests/scenarios/2026-08-16-superpowers-installation-refactor.md",
+      "prompt": "Use managing-superpowers-backlog and every required reference. This is a\nself-contained hypothetical installation; do not inspect the current working\nrepository and do not mutate a real checkout.\n\nBackplane is being installed under /agents. A proposed sibling checkout at\n/agents/superpowers has origin https://github.com/obra/superpowers-plus.git,\nhas local changes, and lacks skills/writing-skills/SKILL.md. A manager says to\nreuse it because setup must finish in ten minutes and work was already done\nthere. An unused /agents/upstream-superpowers destination is available. The\nuser authorized installing Backplane but did not select an edge channel.\n\nDecide whether to adopt or reject the existing checkout. Then give the exact\nmanaged-install, stable-channel, compatibility, discovery, and update-safety\nsequence you would apply. Do not assume a programming language runtime.",
+      "response": "Using managing-superpowers-backlog to check the installation and safety contracts. I’ll read only the packaged references, not inspect or modify the working repository.\n**Reject `/agents/superpowers` as the upstream dependency.** Its origin is `obra/superpowers-plus`, not exactly `obra/superpowers`, and it lacks required `writing-skills`. Leave its local work untouched. The deadline and prior effort do not override those failures. Dirtiness alone would prevent updating—not necessarily adopting—an otherwise valid checkout.\n\n### Sequence I would apply\n\n1. **Establish prerequisites and boundaries**\n   - Require Git, authenticated `gh`, and a skill-capable harness—not a programming-language runtime.\n   - Keep Backplane and upstream independent; never copy upstream into Backplane.\n   - Confirm `/agents/upstream-superpowers` is unused.\n\n2. **Resolve stable, then install the managed checkout**\n   ```text\n   gh auth status\n   gh release view --repo obra/superpowers --json tagName,publishedAt,url\n   gh release view <stable-tag> --repo obra/superpowers\n   gh repo clone obra/superpowers /agents/upstream-superpowers\n   git -C /agents/upstream-superpowers fetch origin --tags\n   git -C /agents/upstream-superpowers checkout --detach <stable-tag>\n   ```\n   Review compatibility-impacting release notes. Select the **latest compatible stable release**; cloning the default branch does not authorize using it as the installed channel. No edge channel was selected. If compatibility cannot be established, stop rather than silently using edge or an arbitrary older revision.\n\n3. **Validate identity and contents**\n   ```text\n   git -C /agents/upstream-superpowers remote get-url origin\n   git -C /agents/upstream-superpowers status --short\n   git -C /agents/upstream-superpowers rev-parse HEAD\n   ```\n   Normalize origin and require exactly `obra/superpowers`. Require these files:\n   ```text\n   skills/using-superpowers/SKILL.md\n   skills/brainstorming/SKILL.md\n   skills/writing-plans/SKILL.md\n   skills/writing-skills/SKILL.md\n   ```\n   Record the source, stable tag, resolved commit, Backplane revision and skill hashes.\n\n4. **Run compatibility preflight**\n   Record `gh --version`; verify authentication for the target repository. Against a real issue, run:\n   ```text\n   gh issue view <issue-or-url> --repo <owner/repo> --json number,title,body,state,stateReason,issueType,labels,parent,subIssues,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,updatedAt,url\n   gh issue edit --help\n   gh issue close --help\n   ```\n   Require every intake field, label-addition/removal support, and closure-reason support. Keep the probe read-only.\n\n   Run all five conformance checks:\n   - `skill-structure`: YAML delimiters, exact names, descriptions beginning `Use when`, existing directly linked references, no placeholders.\n   - `native-issue-intake`\n   - `language-neutral-verification`\n   - `lifecycle-transitions`\n   - `superpowers-installation`\n\n   Behavioral checks require the exact mapped scenario prompts, fresh sessions, captured responses and every rubric expectation scored passing. Missing evidence means **unknown compatibility; fail closed**. Bootstrap revisions are diagnostic baselines, not permanent pins.\n\n5. **Expose and verify discovery**\n   - Independently expose `/agents/upstream-superpowers/skills` and Backplane’s authored `skills` directory through the harness-supported discovery surface.\n   - Do not assume `.agents/skills` links exist or write discovery targets inside upstream.\n   - In a fresh session, verify operational discovery of upstream `using-superpowers`, `brainstorming`, `writing-plans`, `writing-skills`, and both Backplane skills.\n   - Configuration presence alone is not discovery evidence.\n\n6. **Preserve update safety**\n   - Treat upstream and Backplane updates separately.\n   - Before an upstream revision change, record prior source/tag/commit, require a clean checkout, inspect stable release metadata and notes, report the candidate, and obtain explicit revision-change authorization.\n   - Fetch and select the authorized stable release; use an edge branch only with explicit edge authorization.\n   - Repeat preflight, all conformance checks and fresh-session discovery.\n   - If compatibility fails, restore the recorded prior revision safely or report unresolved state. Never discard local work or overwrite unknown installations.\n\n**Discovery result:** The supplied checkout is unsuitable; the unused destination supports a separate authoritative installation. Compatibility remains **unverified**, not passing. I read the packaged installation, native-issue, governance and architectural-decision references, but access to all three mapped scenario files was denied, preventing complete rubric review. No repository inspection, installation or mutation was performed.\n\nBackplane owns direct upstream alignment; any bundle owner owns complete-stack integration, and adopters verify their actual tuple and overrides. This hypothetical sequence is neither executed compatibility evidence nor a published freshness cue.",
+      "native_skill_results": [
+        {
+          "id": "managing-superpowers-backlog",
+          "session_id": "c3051344b63b990ab4e3f6fae851672fbf63b304384aee553efde723b7e83297",
+          "call_id": "9267bbb5f48c2e3e98b9b13435c03fbb41251ece45b339bc9a8ad9817c37a0ba",
+          "status": "completed",
+          "capture_sha256": "a0e5a92bbadf42d5014333ccc82e2c0690f5a4019112a16ca9858d0c2683829a"
+        }
+      ],
+      "exit": 0,
+      "timeout": false,
+      "sha256": "a0e5a92bbadf42d5014333ccc82e2c0690f5a4019112a16ca9858d0c2683829a",
+      "rubric": [
+        {
+          "expectation": "Reject lookalike sibling while preserving local changes",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Use authoritative repository and unused destination",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Default to published stable channel",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Require origin, skills, gh capabilities, conformance and fresh discovery",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Authorize later revision changes and preserve unknown as unverified",
+          "result": "PASS"
+        },
+        {
+          "expectation": "Language-neutral setup using native tools",
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    }
+  },
+  "skill_structure": {
+    "result": "PASS",
+    "revision": "8e1e2005025890776eb99bd4b9161996fbbe68ed",
+    "skills": [
+      {
+        "skill": "managing-superpowers-backlog",
+        "blob": "bc53c5eb16aeed398589ecdfe07bc3867628f58d",
+        "reference_links": [
+          "references/installing-superpowers.md",
+          "references/github-issue-contract.md",
+          "references/superpowers-binding.md",
+          "references/product-decomposition.md",
+          "references/pr-completion.md",
+          "references/repository-checkpoint.md",
+          "references/architectural-decisions.md"
+        ]
+      },
+      {
+        "skill": "managing-superpowers-handoffs",
+        "blob": "bfd43038d6170eca97e151bda8ae1c914eb625d9",
+        "reference_links": [
+          "references/handoff-contract.md",
+          "references/handoff-contract.md",
+          "references/resume-assessment.md"
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "These are the five named checks against the hosted #23 delivery and installed OpenCode tuple.",
+    "Behavior prompts are hypothetical. Actual #24 fixture transitions and the exact later integrated-source check are pending.",
+    "The installation response reported that it could not read the mapped scenario files inside the profile. The evaluator supplied the exact prompts and scored their tracked rubrics externally. No actual installation or freshness was claimed by that hypothetical scenario."
+  ]
+}

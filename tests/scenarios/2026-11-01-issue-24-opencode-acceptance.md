@@ -26,3 +26,21 @@ The [structured receipt](2026-11-01-issue-24-opencode-acceptance.json) retains s
 ## Task 2 — Installed conformance and native issue lifecycle
 
 This Task 1 record establishes the package operation rows. The five named checks, the authorized fixture's native lifecycle evidence, whole-change review, and exact integrated delivery are separate stages of #24 acceptance.
+
+### Read-only conformance
+
+All five named checks passed on the exact hosted #23 package at
+8e1e2005025890776eb99bd4b9161996fbbe68ed. The skill-structure check confirmed
+both Backplane entry-point names, metadata, Git blobs, and ten directly linked
+references. The four behavioral prompts ran in separate fresh authenticated
+OpenCode V2 2.1.4 sessions. Each completed a native backlog Skill call, and all
+23 rubric expectations passed. Native #24 intake and protected files matched
+before and after the suite.
+
+The [scored transcript](2026-11-01-issue-24-opencode-conformance.json) records
+the exact prompts, responses, screened native events and scores. Its installation
+scenario notes that the historical test sources are outside the installed
+package. The verifier supplied the exact repository prompts and evaluated the
+rubrics. The adopter guide links to the hosted evidence record so the installed
+guide can reach it. The actual authorized fixture lifecycle and exact #24
+integrated package verification remain pending.

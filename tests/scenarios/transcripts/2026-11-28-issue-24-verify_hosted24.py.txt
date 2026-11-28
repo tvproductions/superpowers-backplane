@@ -1,0 +1,70 @@
+"""Verify issue #24's exact merged hosted package in a fresh owned profile."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+import archive_reviewed_operations
+import lifecycle
+import native_lifecycle as native
+import v2_cases
+
+
+def main() -> int:
+    """Install the supplied live main SHA and compare every file and fresh Skill result."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("revision")
+    parser.add_argument("--attempt", type=int, required=True)
+    args = parser.parse_args()
+    revision = args.revision
+    if not lifecycle.sha(revision, 40):
+        raise SystemExit("Expected the exact merged Git commit")
+    if v2_cases.git(Path.cwd(), "rev-parse", "origin/main") != revision:
+        raise SystemExit("The supplied SHA is not the fetched integration target")
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("The approved OpenCode executable digest differs")
+    fixture = native.make_fixture(args.attempt)
+    baseline = native.observe(fixture, "hosted-baseline", None)
+    installed = native.observe(fixture, "hosted-exact", revision)
+    package = lifecycle.expected_package_files(revision, Path.cwd())
+    row = {
+        "id": "L-install",
+        "kind": "native",
+        "variant": "V2",
+        "host_version": "2.1.4",
+        "host_sha256": native.HOST_SHA,
+        "expected_revision": revision,
+        "before": baseline,
+        "after": installed,
+    }
+    result = lifecycle.classify(row)
+    if result == "PASS" and package != installed["installed_manifest"]:
+        result = "FAIL"
+    receipt = {
+        "revision": revision,
+        "scope": "Exact hosted issue #24 integration verification",
+        "row": archive_reviewed_operations.screened(row),
+        "baseline_capture_sha256": native.digest(fixture["profile"] / "hosted-baseline-raw.json"),
+        "delivery_capture_sha256": native.digest(fixture["profile"] / "hosted-exact-raw.json"),
+        "verified_package_files": len(package),
+        "result": result,
+    }
+    v2_cases.dump(fixture["profile"] / "exact-hosted-receipt.json", receipt)
+    print(
+        json.dumps(
+            {
+                "revision": revision,
+                "result": result,
+                "files": len(package),
+                "fresh_skill_results": len(installed["loaded_skills"]),
+            },
+            indent=2,
+        )
+    )
+    return 0 if result == "PASS" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

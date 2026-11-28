@@ -61,7 +61,7 @@ def qualify(attempt: int) -> None:
     print(json.dumps({"host_version": value, "sha256": digest}))
 
 
-def replay_lifecycle(attempt: int) -> None:
+def replay_lifecycle(attempt: int, *, recovery_only: bool = False) -> None:
     """Apply the current guide checks to the prior and current hosted pins."""
     fixture = native.make_fixture(attempt)
     profile = fixture["profile"]
@@ -76,37 +76,43 @@ def replay_lifecycle(attempt: int) -> None:
             "L-failed-verification-recovery": PRIOR,
         }
     )
-    baseline = native.observe(fixture, "baseline", None)
+    baseline = None if recovery_only else native.observe(fixture, "baseline", None)
     installed = native.observe(fixture, "install", PRIOR)
-    native.record_row(rows, profile, "L-install", baseline, installed)
-    repeated = native.observe(fixture, "repeat", PRIOR)
-    native.record_row(rows, profile, "L-repeat", installed, repeated)
-    checks = {"update_before": capability(fixture, BASELINE)}
-    updated = native.observe(fixture, "update", BASELINE)
-    checks["update_after"] = capability(fixture, BASELINE)
-    native.record_row(rows, profile, "L-update", repeated, updated)
-    checks["rollback_before"] = capability(fixture, PRIOR)
-    rolled_back = native.observe(fixture, "rollback", PRIOR)
-    checks["rollback_after"] = capability(fixture, PRIOR)
-    native.record_row(rows, profile, "L-rollback", updated, rolled_back)
-    removed = native.observe(fixture, "uninstall", None)
-    native.record_row(rows, profile, "L-uninstall", rolled_back, removed)
-    restored = native.observe(fixture, "restore", PRIOR)
-    native.record_row(rows, profile, "L-test-restore", removed, restored)
+    checks = {}
+    restored = installed
+    if baseline is not None:
+        native.record_row(rows, profile, "L-install", baseline, installed)
+        repeated = native.observe(fixture, "repeat", PRIOR)
+        native.record_row(rows, profile, "L-repeat", installed, repeated)
+        checks["update_before"] = capability(fixture, BASELINE)
+        updated = native.observe(fixture, "update", BASELINE)
+        checks["update_after"] = capability(fixture, BASELINE)
+        native.record_row(rows, profile, "L-update", repeated, updated)
+        checks["rollback_before"] = capability(fixture, PRIOR)
+        rolled_back = native.observe(fixture, "rollback", PRIOR)
+        checks["rollback_after"] = capability(fixture, PRIOR)
+        native.record_row(rows, profile, "L-rollback", updated, rolled_back)
+        removed = native.observe(fixture, "uninstall", None)
+        native.record_row(rows, profile, "L-uninstall", rolled_back, removed)
+        restored = native.observe(fixture, "restore", PRIOR)
+        native.record_row(rows, profile, "L-test-restore", removed, restored)
 
     unavailable = native_failures.unavailable_source(fixture)
+    checks["unavailable_before"] = capability(fixture, PRIOR)
     recovered = native.observe(fixture, "recover-unavailable", PRIOR)
+    checks["unavailable_after"] = capability(fixture, PRIOR)
     if recovered["config_sha256"] != restored["config_sha256"]:
         raise SystemExit("Recovery did not restore the exact prior configuration")
     native.EXPECTED_REVISIONS["L-unavailable-source"] = PRIOR
     native.record_row(rows, profile, "L-unavailable-source", restored, recovered, unavailable)
-    checks["recovery_before"] = capability(fixture, BASELINE)
+    checks["denied_candidate_preflight"] = capability(fixture, BASELINE)
     denied = native.observe(fixture, "failed-verification", BASELINE, denied=True)
     observed = denied["load_exit"] == 0 and set(denied["loaded_skills"]) == set(native.SKILLS[:-1])
     denied.update(
         result="observed" if observed else "unknown",
         diagnostic="Candidate loaded but the owned fixture denied the required handoff Skill call",
     )
+    checks["recovery_before"] = capability(fixture, PRIOR)
     final = native.observe(fixture, "recover-denied", PRIOR)
     checks["recovery_after"] = capability(fixture, PRIOR)
     if final["config_sha256"] != restored["config_sha256"]:
@@ -120,7 +126,8 @@ def replay_lifecycle(attempt: int) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "case", choices=("qualify", "native-baseline", "lifecycle", *acceptance.SETUP_CASES)
+        "case",
+        choices=("qualify", "native-baseline", "lifecycle", "recovery", *acceptance.SETUP_CASES),
     )
     parser.add_argument("--attempt", type=int, required=True)
     parser.add_argument("--score-only", action="store_true")
@@ -129,8 +136,8 @@ def main() -> None:
     if args.case == "qualify":
         qualify(args.attempt)
         return
-    if args.case == "lifecycle":
-        replay_lifecycle(args.attempt)
+    if args.case in {"lifecycle", "recovery"}:
+        replay_lifecycle(args.attempt, recovery_only=args.case == "recovery")
         return
     if args.case == "native-baseline":
         fixture = native.make_fixture(args.attempt)

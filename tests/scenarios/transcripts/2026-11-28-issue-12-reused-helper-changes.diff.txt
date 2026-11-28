@@ -43,3 +43,28 @@ index ed45a01..b150ca0 100644
 +        table_cell = line.strip("|").split("|")[-1].strip()
 +        if RECOVERY_ACTION.search(table_cell) and table_cell != line:
 +            return line, table_cell, "fresh native setup response table"
+diff --git a/tests/scenarios/transcripts/2026-11-01-issue-24-lifecycle.py.txt b/../lifecycle.py
+index 93a25b9..9f6b184 100644
+--- a/tests/scenarios/transcripts/2026-11-01-issue-24-lifecycle.py.txt
++++ b/../lifecycle.py
+@@ -313 +313,3 @@ def matches_discovery(observed: dict[str, Any], prompt: str) -> bool:
+-def matches_recovery_failure(row: dict[str, Any], prompt: str) -> bool:
++def matches_recovery_failure(
++    row: dict[str, Any], prompt: str, candidate_revision: str = REPLAY_CANDIDATE
++) -> bool:
+@@ -327 +329 @@ def matches_recovery_failure(row: dict[str, Any], prompt: str) -> bool:
+-        failure.get("revision") == REPLAY_CANDIDATE
++        failure.get("revision") == candidate_revision
+@@ -342 +344,6 @@ def matches_recovery_failure(row: dict[str, Any], prompt: str) -> bool:
+-def matches_archived_evidence(row: dict[str, Any], prompt: str, manifest: dict[str, str]) -> bool:
++def matches_archived_evidence(
++    row: dict[str, Any],
++    prompt: str,
++    manifest: dict[str, str],
++    candidate_revision: str = REPLAY_CANDIDATE,
++) -> bool:
+@@ -363 +370,3 @@ def matches_archived_evidence(row: dict[str, Any], prompt: str, manifest: dict[s
+-    return row["id"] not in FAILURE_CASES or matches_recovery_failure(row, prompt)
++    return row["id"] not in FAILURE_CASES or matches_recovery_failure(
++        row, prompt, candidate_revision
++    )

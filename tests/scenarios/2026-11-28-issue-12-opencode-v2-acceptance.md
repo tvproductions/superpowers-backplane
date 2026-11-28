@@ -73,11 +73,16 @@ The actual V2 2.0.3 negative remains a separately identified refusal.
   matched 109 files. The lifecycle sequence used exact prior `d6f0f6a` with
   107 files and exact target `9bf8cba` with 109. Update, rollback, and failed
   verification recovery observed the required capabilities using gh 2.106.0.
-  Uninstall removed only Backplane and loaded upstream. The unavailable SHA
-  returned HTTP 422 with exit 1 before apply. The owned configuration SHA-256
-  stayed `12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d`.
-  The after-apply controls separately observed a resolver failure and a missing
-  required Skill result, then restored the recorded package and configuration.
+  Uninstall removed only Backplane and loaded upstream. A separate read-only
+  before-apply lookup at `2026-11-28T16:57:36Z` returned HTTP 422 with exit 1.
+  The configuration SHA-256 stayed
+  `12bcaf826c2f007fe0de826186541c6b819f322a5358fa2ab03f21426a5d881d`
+  and the complete issue intake matched. The after-apply probes changed the
+  owned configuration to exercise a resolver failure and a missing required
+  Skill result, then restored the recorded package and configuration. A fresh
+  recovery-only replay verified the prior pin, gh capabilities, and complete
+  native state before and after both restorations. Each restored package
+  matched 107 files and completed all three Skill calls.
 
 The first replay stopped when the copied lifecycle harness rejected #12 under
 its original #24-only issue assertion. The next profile passed. The sibling
@@ -92,7 +97,8 @@ The [execution source](transcripts/2026-11-28-issue-12-replay.py.txt),
 [copied-helper changes](transcripts/2026-11-28-issue-12-reused-helper-changes.diff.txt),
 [matrix builder](transcripts/2026-11-28-issue-12-build_matrix.py.txt),
 [screened receipt builder](transcripts/2026-11-28-issue-12-record_replays.py.txt),
-and [refusal controls](transcripts/2026-11-28-issue-12-test_refusal_receipt.py.txt)
+[refusal controls](transcripts/2026-11-28-issue-12-test_refusal_receipt.py.txt),
+and [review controls](transcripts/2026-11-28-issue-12-test_replay_evidence.py.txt)
 identify the procedures. The copied-helper changes record the precise
 substitutions to the archived #23/#24 inputs. Raw captures remain in owned
 ignored fixtures and their screened observations are recorded in the matrix.
@@ -100,18 +106,32 @@ ignored fixtures and their screened observations are recorded in the matrix.
 The candidate changes the README and guide introduction to reflect the V2
 support scope and link the accepted source revisions. The setup/discovery
 prompts, refusal threshold, maintenance commands, adapter and skills match
-the replay inputs. The new plan and revised prose change the packaged
-manifest, which requires its own exact hosted Git-tree comparison in Task 3.
-Issue #4 owns the separate adopter-operations guide follow-up.
+the replay inputs. The structured matrix records all 110 expected package
+paths and Git blobs at local source `622bce7df4ba84c83cf75a67e0b1dcd2655d10f2`.
+The 109-file tested package differs only in the README, guide introduction,
+and approved plan. Task 3 checks the exact hosted installation against its
+own Git manifest. Issue #4 owns the separate adopter-operations guide follow-up.
+
+## Independent review
+
+Fresh review of `9bf8cba..622bce7` found four Important gaps. The corrected
+evidence stores the exact candidate manifest and a separate before-apply
+receipt. Both recovery cases were replayed with prior-pin checks before
+restoration and fresh discovery and capabilities afterward. The projection
+reruns the owning scoped verifiers, checks reported Skill blobs and the
+required maintenance results, and checks retained plan authority and fixture
+ordering. The altered Skill blob reproduced the earlier gap with a failing
+assertion. The corrected verifier rejected that altered blob, missing approval,
+completion before integration, and missing capability evidence.
 
 ## Local engineering verification
 
 The registered worktree ran the [canonical gate](../../docs/engineering/python.md#canonical-commands).
 Managed Python 3.14.10, uv 0.13.10, Ruff 0.17.5 and ty 0.0.104 were directly
 observed. The five repository unittests, four hooks, nine Node adapter checks
-and whitespace checks passed. The four added scratch helpers passed locked
+and whitespace checks passed. The five added scratch helpers passed locked
 Ruff lint and format, ty with the explicit scratch import path, and Lizard's
-20-complexity ceiling. All 48 scoped controls passed with deprecation warnings
+20-complexity ceiling. All 54 scoped controls passed with deprecation warnings
 treated as errors.
 
 | Acceptance rows | Result and evidence |
@@ -119,5 +139,5 @@ treated as errors.
 | A01, A04, A05 | Verified registered workspace and locked project configuration. Actual managed Python and tool selections are identified above. |
 | A06, A07, A08, A10, A17 | Retained the unchanged [accepted engineering baseline](2026-11-07-strict-astral-full-verification.md). Exact all-group sync, lock check, lint, format, type checking and test commands passed in this worktree. |
 | A09 | All four local hooks passed. Exact candidate CI requires hosted delivery. |
-| A18 | Scoped deprecation check, Lizard, 48 receipt controls and guide verification passed. The whole-change review applies separately to the candidate source and the matrix claims. |
+| A18 | Scoped deprecation check, Lizard, 54 receipt controls and guide verification passed. The whole-change review identified four evidence gaps and the corrected replay and verifier addressed them. |
 | A02, A03, A11–A16 | N/A for the shipped Node adapter and Markdown skills. This non-package Python development scope delivers fixture and receipt tools, with no wheel, runtime API, private resolution, workspace or deployment target. |

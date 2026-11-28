@@ -1,0 +1,103 @@
+"""Exercise the two guarded failure and recovery cases in native OpenCode V2."""
+
+from __future__ import annotations
+
+import argparse
+import time
+from pathlib import Path
+from typing import Any
+
+import lifecycle
+import native_lifecycle as native
+import v2_cases
+
+
+def unavailable_source(fixture: dict[str, Any]) -> dict[str, Any]:
+    """Capture the failed fetch and preserved fixture before restoring its prior config."""
+    unavailable_config = native.settings(fixture, native.UNAVAILABLE, False)
+    config_path = fixture["config"]
+    profile = fixture["profile"]
+    v2_cases.dump(config_path, unavailable_config, "w")
+    server_log = profile / "server.log"
+    before_log = server_log.stat().st_size
+    target = native.pin(native.UNAVAILABLE)
+    with v2_cases.private(native.EXECUTABLE, profile, fixture["env"]) as (_, _, read, argv):
+        deadline = time.monotonic() + 60
+        capture = None
+        diagnostic = None
+        qualified = False
+        while time.monotonic() < deadline:
+            capture = read()
+            if capture:
+                for entry in capture["plugin"]["data"]:
+                    if entry.get("source", {}).get("target") == target and (
+                        entry["state"]["status"] in ("failed", "error")
+                    ):
+                        diagnostic = "OpenCode's plugin inventory reported a failed fetch for the absent pinned commit."
+                with server_log.open("rb") as stream:
+                    stream.seek(before_log)
+                    output = stream.read().decode("utf-8", errors="replace")
+                if native.UNAVAILABLE in output and (
+                    "not our ref" in output.lower()
+                    or "failed to resolve" in output.lower()
+                    or "could not resolve" in output.lower()
+                    or "reference is not a tree" in output.lower()
+                ):
+                    diagnostic = (
+                        "OpenCode's native resolver log rejected the absent pinned Git revision."
+                    )
+                if diagnostic and native.inventory_matches(capture, fixture, None):
+                    qualified = True
+                    break
+            time.sleep(0.3)
+        v2_cases.dump(profile / "unavailable-raw.json", {"inventory": capture, "server": argv})
+    return {
+        "result": "observed" if qualified else "unknown",
+        "diagnostic": diagnostic,
+        "failed_target": target,
+        "config_sha256": native.digest(config_path),
+        "protected": native.protected(fixture, unavailable_config),
+    }
+
+
+def main() -> int:
+    """Run the failure and recovery probes in their own profile."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--attempt", required=True, type=int)
+    args = parser.parse_args()
+    if native.digest(native.EXECUTABLE) != native.HOST_SHA:
+        raise SystemExit("Unexpected OpenCode executable")
+    fixture = native.make_fixture(args.attempt)
+    profile: Path = fixture["profile"]
+    rows: list[dict[str, Any]] = []
+    prior = native.observe(fixture, "prior", native.PRIOR)
+    absent = unavailable_source(fixture)
+    restored = native.observe(fixture, "after-unavailable", native.PRIOR)
+    if restored["config_sha256"] != prior["config_sha256"]:
+        raise RuntimeError("Prior configuration bytes changed across unavailable-source recovery")
+    native.record_row(rows, profile, "L-unavailable-source", prior, restored, absent)
+
+    denied = native.observe(fixture, "failed-verification", native.CANDIDATE, denied=True)
+    denied_requested = native.SKILLS[-1]
+    observed_denial = denied["load_exit"] == 0 and set(denied["loaded_skills"]) == set(
+        native.SKILLS[:-1]
+    )
+    failed = {
+        **denied,
+        "result": "observed" if observed_denial else "unknown",
+        "diagnostic": (
+            f"Candidate {native.CANDIDATE} was active, but the configured permission withheld the "
+            f"required {denied_requested} result while the other two native Skill calls completed."
+            if observed_denial
+            else None
+        ),
+    }
+    recovered = native.observe(fixture, "after-failed-verification", native.PRIOR)
+    if recovered["config_sha256"] != prior["config_sha256"]:
+        raise RuntimeError("Prior configuration bytes changed across verification recovery")
+    native.record_row(rows, profile, "L-failed-verification-recovery", restored, recovered, failed)
+    return 0 if all(lifecycle.classify(row) == "PASS" for row in rows) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

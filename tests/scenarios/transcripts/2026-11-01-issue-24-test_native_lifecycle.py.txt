@@ -1,0 +1,33 @@
+"""Negative controls for readiness on native OpenCode V2 inventories."""
+
+import unittest
+from pathlib import Path
+
+import native_lifecycle as native
+
+
+class NativeInventoryTests(unittest.TestCase):
+    """Keep failed and unresolved plugin records separate from effective entries."""
+
+    def test_failed_pin_without_registered_id_preserves_prior_installs(self):
+        """The failed resolver record has a source but no registered plugin ID."""
+        config = Path(__file__).resolve().with_name("opencode.json")
+        inventory = {
+            "config": [{"path": str(config)}],
+            "plugin": {
+                "data": [
+                    {"id": native.SENTINEL, "state": {"status": "active"}},
+                    {
+                        "id": "superpowers",
+                        "state": {"status": "active"},
+                        "source": {"target": native.UPSTREAM, "version": native.UPSTREAM_SHA},
+                    },
+                    {
+                        "state": {"status": "failed"},
+                        "source": {"target": native.pin(native.UNAVAILABLE)},
+                    },
+                ]
+            },
+            "skill": {"data": [{"id": native.SKILLS[0]}, {"id": native.SENTINEL}]},
+        }
+        self.assertTrue(native.inventory_matches(inventory, {"config": config}, None))

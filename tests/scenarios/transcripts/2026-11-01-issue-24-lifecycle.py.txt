@@ -1,0 +1,150 @@
+"""Score native OpenCode V2 lifecycle observations."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+CASES = (
+    "L-install",
+    "L-repeat",
+    "L-update",
+    "L-rollback",
+    "L-unavailable-source",
+    "L-failed-verification-recovery",
+    "L-uninstall",
+    "L-test-restore",
+)
+UPSTREAM_SKILL = "using-superpowers"
+BACKPLANE_SKILLS = ("managing-superpowers-backlog", "managing-superpowers-handoffs")
+FAILURE_CASES = {"L-unavailable-source", "L-failed-verification-recovery"}
+
+
+def record(value: object) -> dict[str, Any]:
+    """Read a JSON object while leaving missing observations empty."""
+    return value if isinstance(value, dict) else {}
+
+
+def sha(value: object, length: int) -> bool:
+    """Check the recorded identity is a complete hexadecimal digest."""
+    return isinstance(value, str) and re.fullmatch(rf"[a-f0-9]{{{length}}}", value) is not None
+
+
+def protected_state(value: object) -> bool:
+    """Require evidence for user files and the native issue snapshot."""
+    observed = record(value)
+    return bool(record(observed.get("files")) and record(observed.get("issue")))
+
+
+def classify(row: dict[str, object]) -> str:
+    """Score contradictions first and preserve missing evidence as unknown."""
+    case = row.get("id")
+    if row.get("kind") != "native" or case not in CASES:
+        return "UNKNOWN"
+
+    before = record(row.get("before"))
+    after = record(row.get("after"))
+    protected_before = before.get("protected")
+    protected_after = after.get("protected")
+    if protected_state(protected_before) and protected_state(protected_after):
+        if protected_before != protected_after:
+            return "FAIL"
+    else:
+        return "UNKNOWN"
+    upstream = before.get("upstream_revision")
+    if not sha(upstream, 40) or not sha(after.get("upstream_revision"), 40):
+        return "UNKNOWN"
+    if upstream != after["upstream_revision"]:
+        return "FAIL"
+    if after.get("inventory_ready") is not True:
+        return "UNKNOWN"
+
+    if case == "L-uninstall":
+        if after.get("effective_entries") == 1 or after.get("revision") is not None:
+            return "FAIL"
+        count, wanted = 0, {UPSTREAM_SKILL}
+    else:
+        expected = row.get("expected_revision")
+        if not sha(expected, 40):
+            return "UNKNOWN"
+        if after.get("revision") != expected:
+            return "FAIL"
+        count, wanted = 1, {UPSTREAM_SKILL, *BACKPLANE_SKILLS}
+    before_revision = before.get("revision")
+    if case in {"L-update", "L-rollback"}:
+        if not sha(before_revision, 40):
+            return "UNKNOWN"
+        if before_revision == after["revision"]:
+            return "FAIL"
+    if case == "L-repeat" and before_revision != after["revision"]:
+        return "FAIL"
+    if case in {"L-install", "L-test-restore"} and before_revision is not None:
+        return "FAIL"
+    if case in FAILURE_CASES or case == "L-repeat":
+        prior_config = before.get("config_sha256")
+        current_config = after.get("config_sha256")
+        if not sha(prior_config, 64) or not sha(current_config, 64):
+            return "UNKNOWN"
+        if prior_config != current_config:
+            return "FAIL"
+    entries = after.get("effective_entries")
+    if entries != count:
+        return "FAIL" if isinstance(entries, int) else "UNKNOWN"
+
+    expected_manifest = record(after.get("expected_manifest"))
+    installed_manifest = record(after.get("installed_manifest"))
+    if count and not (expected_manifest and installed_manifest):
+        return "UNKNOWN"
+    if expected_manifest != installed_manifest or (not count and installed_manifest):
+        return "FAIL"
+
+    loaded = after.get("loaded_skills")
+    if isinstance(loaded, list) and set(loaded) - wanted:
+        return "FAIL"
+    if (
+        not isinstance(loaded, list)
+        or set(loaded) != wanted
+        or after.get("load_exit") != 0
+        or not after.get("session_id")
+        or not row.get("host_version")
+        or not sha(row.get("host_sha256"), 64)
+    ):
+        return "UNKNOWN"
+
+    if case in FAILURE_CASES:
+        failure = record(row.get("failure"))
+        if failure.get("result") != "observed" or not failure.get("diagnostic"):
+            return "UNKNOWN"
+        if not protected_state(failure.get("protected")):
+            return "UNKNOWN"
+        if failure["protected"] != protected_before or before.get("revision") != after["revision"]:
+            return "FAIL"
+    return "PASS"
+
+
+def verify(path: Path) -> dict[str, object]:
+    """Require each lifecycle row exactly once and all results to pass."""
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    rows = [record(row) for row in receipt["rows"]]
+    results = [{"id": row.get("id"), "result": classify(row)} for row in rows]
+    identifiers = [row["id"] for row in results]
+    valid = len(identifiers) == len(CASES) and set(identifiers) == set(CASES)
+    return {"valid": valid and all(row["result"] == "PASS" for row in results), "rows": results}
+
+
+def main() -> int:
+    """Run a read-only lifecycle-receipt verification."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("action", choices=("verify",))
+    parser.add_argument("receipt", type=Path)
+    args = parser.parse_args()
+    results = verify(args.receipt)
+    print(json.dumps(results, indent=2))
+    return 0 if results["valid"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

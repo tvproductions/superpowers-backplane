@@ -153,8 +153,35 @@ installed plugin list alone leaves actual load evidence unverified.
 | `gh` authentication, native intake, label or closure-reason capability is missing | Reauthenticate through the host's supported account flow or use a `gh` release that supplies the failed capability. Stop before issue writes. |
 | OpenCode model authentication is unavailable or package loads remain pending | Verify authentication in the intended profile or wait for readiness there, then retry the fresh-session discovery check. |
 
-## Later operations
+## Maintain OpenCode V2
 
-Update, rollback and Backplane-only removal remain pending the owning OpenCode
-verification leaves. Do not infer these operations from the initial smoke test
-or remove upstream Superpowers as part of Backplane maintenance.
+Record the full Git commit of the currently verified Backplane package before
+editing `plugins`. Keep the prior source available until the candidate passes
+a fresh discovery check. Keep the independent Superpowers entry, unrelated
+plugins and other settings in place.
+
+| Operation | Edit and verify |
+| --- | --- |
+| Install or repeat install | Extend `plugins` with one Backplane Git entry pinned to its full commit. If that entry is already configured, reuse it. Wait for one effective Backplane package and run the fresh-session discovery request above. |
+| Update | Confirm the candidate commit is available from the same trusted repository. Replace only the Backplane pin with the candidate's full commit. Restart in the intended configuration, confirm the resolved revision, and load all three skills from their installed sources. |
+| Roll back | Replace the Backplane pin with the recorded verified prior commit and restart. Confirm the restored revision and repeat fresh discovery. |
+| Recover from an unavailable source or failed verification | Record the failed source or discovery check before any repair. Keep the verified prior pin when the candidate is unavailable at preflight. If a candidate was already applied, restore the previous Backplane pin and prove the prior revision and all three skill loads again. Report recovery as unverified if the previous source or its loads cannot be confirmed. |
+| Remove Backplane | Remove only the Backplane entry and restart. Confirm that both Backplane skills are absent and that the independently installed Superpowers skill still loads. |
+| Restore a disposable test profile | Restore its original Backplane entry and verify its revision and all three skill loads again. |
+
+This shows the single entry to change inside the existing V2 configuration:
+
+```json
+{
+  "plugins": [
+    "EXISTING_SUPERPOWERS_ENTRY",
+    "git+https://github.com/tvproductions/superpowers-backplane.git#FULL_COMMIT_SHA"
+  ]
+}
+```
+
+Use a new session at each stage. Verify the actual package and skill sources in
+the same OpenCode server and working directory after the expected inventory is
+ready. Preserve unrelated files, plugin entries, upstream and GitHub issue
+state. See the [V2 lifecycle verification record](../tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md)
+for the tested revisions and observed results.

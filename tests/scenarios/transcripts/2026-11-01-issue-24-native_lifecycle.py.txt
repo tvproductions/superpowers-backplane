@@ -1,0 +1,345 @@
+"""Collect owned native OpenCode V2 lifecycle observations for issue #24."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import time
+from pathlib import Path
+from typing import Any
+
+import acceptance
+import lifecycle
+import v2_cases
+
+AREA = Path(__file__).resolve().parent
+ROOT = AREA.parents[2]
+EXECUTABLE = AREA.parent / "issue-23-v2-freshness/official-2.1.4/package/bin/opencode.exe"
+HOST_SHA = "b12b0613e9b4a491e5b12d90a5e9bbae6d261fe9688c82bf73125a036963d399"
+REPO = "tvproductions/superpowers-backplane"
+UPSTREAM = "superpowers@git+https://github.com/obra/superpowers.git#v7.0.1"
+UPSTREAM_SHA = "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b"
+UPSTREAM_BLOB = "069d578445805a28b8dacbf70cdf045e1673def0"
+PRIOR = "386bdb5a8570360f5d34359c68f68947eb7a90fc"
+CANDIDATE = "8e1e2005025890776eb99bd4b9161996fbbe68ed"
+UNAVAILABLE = "0" * 40
+SENTINEL = "issue-23-sentinel"
+BP = "superpowers-backplane"
+SKILLS = tuple(acceptance.SKILLS)
+ISSUE = ["gh", "issue", "view", "24", "--repo", REPO, "--json", v2_cases.FIELDS]
+
+
+def pin(revision: str) -> str:
+    """Return the same configured Git source at one exact revision."""
+    return f"git+https://github.com/{REPO}.git#{revision}"
+
+
+def digest(path: Path, algorithm: str = "sha256") -> str:
+    """Hash a file without loading it all into memory."""
+    with path.open("rb") as content:
+        return hashlib.file_digest(content, algorithm).hexdigest()
+
+
+def blob(path: Path) -> str:
+    """Hash raw bytes with Git's blob header."""
+    content = path.read_bytes()
+    hashed = hashlib.sha1(usedforsecurity=False)
+    hashed.update(f"blob {len(content)}\x00".encode("ascii"))
+    hashed.update(content)
+    return hashed.hexdigest()
+
+
+def expected_files(revision: str) -> dict[str, str]:
+    """Read the exact applicable hosted package manifest from its Git tree."""
+    metadata = json.loads(v2_cases.git(ROOT, "show", f"{revision}:package.json"))
+    includes = (*metadata["files"], "package.json", "LICENSE")
+    expected = {}
+    for entry in v2_cases.git(ROOT, "ls-tree", "-r", revision).splitlines():
+        identity, path = entry.split("\t", 1)
+        if any(path == item or (item.endswith("/") and path.startswith(item)) for item in includes):
+            expected[path] = identity.split()[-1]
+    return expected
+
+
+def protected(fixture: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
+    """Capture user files, unrelated settings and complete current native issue intake."""
+    issue_capture = v2_cases.run(ISSUE)
+    if issue_capture["exit"] != 0 or issue_capture["timeout"]:
+        raise RuntimeError("Native read-only issue intake failed")
+    issue = json.loads(issue_capture["stdout"])
+    if set(issue) != set(v2_cases.FIELDS.split(",")) or issue["number"] != 24:
+        raise RuntimeError("Incomplete native issue intake")
+    return {
+        "files": {path.name: digest(path) for path in fixture["files"]},
+        "unrelated_plugins": [
+            entry for entry in config["plugins"] if entry in (UPSTREAM, fixture["sentinel"])
+        ],
+        "issue": issue,
+    }
+
+
+def make_fixture(attempt: int) -> dict[str, Any]:
+    """Create and record the owned profile and the bare-scope consumer project."""
+    profile = AREA / f"native-{attempt:02d}"
+    if not v2_cases.git(ROOT, "check-ignore", str(profile)):
+        raise RuntimeError("Issue profile is outside ignored scratch")
+    profile.mkdir()
+    if profile.resolve(strict=True).parent != AREA:
+        raise RuntimeError("Issue profile escapes the owned area")
+    env = v2_cases.environment(profile)
+    directory = Path(env["OPENCODE_CONFIG_DIR"])
+    config = directory / "opencode.json"
+    keep = v2_cases.sentinel(profile)
+    user_file = directory / "user-work.txt"
+    user_file.write_text(
+        "Unrelated user work retained through all lifecycle probes.\n", encoding="utf-8"
+    )
+    user_rules = directory / "AGENTS.md"
+    user_rules.write_text(
+        "Use only the skills requested by the caller in this disposable verification. Stop after reporting discovery.\n",
+        encoding="utf-8",
+    )
+    if not directory.resolve(strict=True).is_relative_to(profile):
+        raise RuntimeError("Consumer project would escape the owned profile")
+    v2_cases.git(directory, "init", "--quiet", "--initial-branch=fixture")
+    if Path(v2_cases.git(directory, "rev-parse", "--show-toplevel")).resolve() != directory:
+        raise RuntimeError("Consumer fixture initialized outside its owned root")
+    with (AREA / "progress.md").open("a", encoding="utf-8") as ledger:
+        ledger.write(
+            f"\n- Native lifecycle fixture {directory}; unborn fixture branch, no remote; isolates ancestor discovery.\n"
+        )
+    return {
+        "profile": profile,
+        "env": env,
+        "config": config,
+        "sentinel": keep.as_posix(),
+        "files": (
+            user_file,
+            user_rules,
+            *(keep / name for name in ("index.js", "package.json", "SKILL.md")),
+        ),
+    }
+
+
+def settings(fixture: dict[str, Any], revision: str | None, denied: bool) -> dict[str, Any]:
+    """Construct the owned fixture config with only the selected entry varied."""
+    plugins = [fixture["sentinel"], UPSTREAM]
+    if revision:
+        plugins.append(pin(revision))
+    policies = [
+        {"action": action, "resource": "*", "effect": "deny"}
+        for action in (
+            "shell",
+            "edit",
+            "subagent",
+            "read",
+            "glob",
+            "grep",
+            "webfetch",
+            "websearch",
+            "execute",
+            "question",
+        )
+    ]
+    policies.append({"action": "skill", "resource": "*", "effect": "allow"})
+    if denied:
+        policies.append({"action": "skill", "resource": SKILLS[-1], "effect": "deny"})
+    return {"plugins": plugins, "permissions": policies}
+
+
+def inventory_matches(data: dict[str, Any], fixture: dict[str, Any], revision: str | None) -> bool:
+    """Require the intended config and exact active package identities."""
+    config = fixture["config"].resolve()
+    config_paths = {Path(row["path"]).resolve() for row in data["config"] if "path" in row}
+    if config not in config_paths or not all(
+        path.is_relative_to(config.parent) for path in config_paths
+    ):
+        return False
+    plugins = data["plugin"]["data"]
+    active = {row["id"] for row in plugins if row["state"]["status"] == "active"}
+    if SENTINEL not in active or not acceptance.plugin_matches(
+        plugins, "superpowers", UPSTREAM, UPSTREAM_SHA
+    ):
+        return False
+    skill_ids = {item["id"] for item in data["skill"]["data"]}
+    if not {SKILLS[0], SENTINEL} <= skill_ids:
+        return False
+    if revision is None:
+        return BP not in {row.get("id") for row in plugins} and not set(SKILLS[1:]) & skill_ids
+    return (
+        acceptance.plugin_matches(plugins, BP, pin(revision), revision) and set(SKILLS) <= skill_ids
+    )
+
+
+def wait(fixture: dict[str, Any], read: Any, revision: str | None) -> dict[str, Any]:
+    """Poll the same private server until the configured observation is attributable."""
+    deadline = time.monotonic() + 65
+    data = None
+    while time.monotonic() < deadline:
+        data = read()
+        if data and inventory_matches(data, fixture, revision):
+            return data
+        time.sleep(0.3)
+    v2_cases.dump(fixture["profile"] / "last-inventory.json", data, "w")
+    raise TimeoutError(f"Exact native inventory did not become ready for {revision}")
+
+
+def native_manifest(
+    inventory: dict[str, Any], revision: str | None, profile: Path
+) -> tuple[dict, dict, dict]:
+    """Compare actual installed package bytes and the scoped Skill file identities."""
+    paths = {
+        entry["id"]: Path(entry["path"]).resolve(strict=True)
+        for entry in inventory["skill"]["data"]
+        if entry["id"] in SKILLS
+    }
+    cache = (profile / "cache").resolve(strict=True)
+    if not all(path.is_relative_to(cache) for path in paths.values()):
+        raise RuntimeError("Native skills resolved outside the owned package cache")
+    expected, installed = {}, {}
+    if revision:
+        root = paths[SKILLS[1]].parents[2]
+        if paths[SKILLS[2]].parents[2] != root or paths[SKILLS[0]].parents[2] == root:
+            raise RuntimeError(
+                "Skill package source identities do not match the expected independent packages"
+            )
+        expected = expected_files(revision)
+        installed = {path: blob(root / path) for path in expected if (root / path).is_file()}
+    skill_files = {name: {"path": str(path), "blob": blob(path)} for name, path in paths.items()}
+    if skill_files[SKILLS[0]]["blob"] != UPSTREAM_BLOB:
+        raise RuntimeError("The upstream Skill file differs from its recorded Git blob")
+    return expected, installed, skill_files
+
+
+def observe(
+    fixture: dict[str, Any], label: str, revision: str | None, *, denied: bool = False
+) -> dict[str, Any]:
+    """Capture native inventory, package bytes and a fresh authenticated Skill session."""
+    config = settings(fixture, revision, denied)
+    v2_cases.dump(fixture["config"], config, "w")
+    cwd = fixture["config"].parent
+    profile = fixture["profile"]
+    wanted = SKILLS if revision else SKILLS[:1]
+    prompt = (
+        "Use the native skill tool with each requested ID: "
+        + ", ".join(wanted)
+        + ". Report each result. Only use the skill tool, then stop. Preserve all files and issue state."
+    )
+    with v2_cases.private(EXECUTABLE, profile, fixture["env"]) as (server, child, read, vector):
+        inventory = wait(fixture, read, revision)
+        auth = v2_cases.run([str(EXECUTABLE), "auth", "list", "--server", server], cwd, child, 25)
+        if auth["exit"] != 0 or "openai" not in (auth["stdout"] + auth["stderr"]).lower():
+            raise RuntimeError("Private server did not confirm OpenAI auth")
+        command = [
+            str(EXECUTABLE),
+            "run",
+            "--server",
+            server,
+            "--format",
+            "json",
+            "--model",
+            v2_cases.MODEL,
+            prompt,
+        ]
+        call = v2_cases.run(command, cwd, child, 105)
+        final_inventory = wait(fixture, read, revision)
+    native_results = acceptance.parse_skill_results(call["stdout"])
+    completed = [item for item in native_results if item["status"] == "completed"]
+    session_ids = {item["session_id"] for item in native_results}
+    expected, installed, skills = native_manifest(final_inventory, revision, profile)
+    v2_cases.dump(
+        profile / f"{label}-raw.json",
+        {
+            "server": vector,
+            "command": call,
+            "inventory_before": inventory,
+            "inventory_after": final_inventory,
+        },
+    )
+    return {
+        "revision": revision,
+        "inventory_ready": True,
+        "effective_entries": 1 if revision else 0,
+        "expected_manifest": expected,
+        "installed_manifest": installed,
+        "skill_files": skills,
+        "upstream_revision": UPSTREAM_SHA,
+        "upstream_target": UPSTREAM,
+        "protected": protected(fixture, config),
+        "configuration_sources": [item["path"] for item in final_inventory["config"]],
+        "native_results": native_results,
+        "loaded_skills": [item["id"] for item in completed],
+        "load_exit": call["exit"],
+        "session_id": next(iter(session_ids)) if len(session_ids) == 1 else None,
+        "config_sha256": digest(fixture["config"]),
+        "auth": {"model": v2_cases.MODEL, "openai": True, "exit": auth["exit"]},
+        "command": command,
+    }
+
+
+def record_row(
+    rows: list[dict[str, Any]],
+    profile: Path,
+    case: str,
+    before: dict[str, Any],
+    after: dict[str, Any],
+    failure: dict[str, Any] | None = None,
+) -> None:
+    """Persist and score a native row before attempting another operation."""
+    row = {
+        "id": case,
+        "kind": "native",
+        "host_version": "2.1.4",
+        "host_sha256": HOST_SHA,
+        "expected_revision": after["revision"],
+        "before": before,
+        "after": after,
+    }
+    if failure is not None:
+        row["failure"] = failure
+    row["result"] = lifecycle.classify(row)
+    rows.append(row)
+    v2_cases.dump(profile / "lifecycle-receipt.json", {"rows": rows}, "w")
+    print(
+        case,
+        row["result"],
+        "files",
+        len(after["installed_manifest"]),
+        "skills",
+        len(after["loaded_skills"]),
+        flush=True,
+    )
+
+
+def main() -> int:
+    """Replay the positive native lifecycle paths in an owned profile."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--attempt", type=int, required=True)
+    parser.add_argument("--install-only", action="store_true")
+    args = parser.parse_args()
+    if digest(EXECUTABLE) != HOST_SHA:
+        raise SystemExit("Unexpected OpenCode executable")
+    fixture = make_fixture(args.attempt)
+    rows = []
+    profile = fixture["profile"]
+    baseline = observe(fixture, "baseline", None)
+    installed = observe(fixture, "install", PRIOR)
+    record_row(rows, profile, "L-install", baseline, installed)
+    if args.install_only:
+        return 0 if rows[-1]["result"] == "PASS" else 1
+    repeated = observe(fixture, "repeat", PRIOR)
+    record_row(rows, profile, "L-repeat", installed, repeated)
+    updated = observe(fixture, "update", CANDIDATE)
+    record_row(rows, profile, "L-update", repeated, updated)
+    rolled_back = observe(fixture, "rollback", PRIOR)
+    record_row(rows, profile, "L-rollback", updated, rolled_back)
+    removed = observe(fixture, "uninstall", None)
+    record_row(rows, profile, "L-uninstall", rolled_back, removed)
+    restored = observe(fixture, "restore", PRIOR)
+    record_row(rows, profile, "L-test-restore", removed, restored)
+    return 0 if all(row["result"] == "PASS" for row in rows) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -160,6 +160,16 @@ editing `plugins`. Keep the prior source available until the candidate passes
 a fresh discovery check. Keep the independent Superpowers entry, unrelated
 plugins and other settings in place.
 
+Before applying a new pin, check that GitHub resolves the exact candidate commit:
+
+```text
+gh api repos/tvproductions/superpowers-backplane/commits/FULL_COMMIT_SHA --jq .sha
+```
+
+Compare the returned SHA with the proposed pin. If the lookup fails or the
+returned identity differs, keep the verified configuration and record the
+preflight failure.
+
 | Operation | Edit and verify |
 | --- | --- |
 | Install or repeat install | Extend `plugins` with one Backplane Git entry pinned to its full commit. If that entry is already configured, reuse it. Wait for one effective Backplane package and run the fresh-session discovery request above. |

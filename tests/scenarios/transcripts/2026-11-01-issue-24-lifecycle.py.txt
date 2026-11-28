@@ -5,7 +5,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from pathlib import Path
+import subprocess
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 CASES = (
@@ -33,17 +34,116 @@ def sha(value: object, length: int) -> bool:
     return isinstance(value, str) and re.fullmatch(rf"[a-f0-9]{{{length}}}", value) is not None
 
 
+NATIVE_ISSUE_FIELDS = {
+    "number",
+    "title",
+    "body",
+    "state",
+    "stateReason",
+    "issueType",
+    "labels",
+    "parent",
+    "subIssues",
+    "subIssuesSummary",
+    "blockedBy",
+    "blocking",
+    "closedByPullRequestsReferences",
+    "updatedAt",
+    "url",
+}
+REQUIRED_PACKAGE_FILES = {
+    "package.json",
+    "index.js",
+    *(f"skills/{name}/SKILL.md" for name in BACKPLANE_SKILLS),
+}
+
+
+def owned_path(value: object) -> PurePosixPath | None:
+    """Normalize a live or safely screened native path without consulting the host."""
+    if not isinstance(value, str) or not value:
+        return None
+    path = PurePosixPath(value.replace("\\", "/"))
+    return path if path.parts and ".." not in path.parts else None
+
+
+def native_skill_proof(after: dict[str, Any], wanted: set[str]) -> str:
+    """Require attributed native results, a scoped config, and authenticated observation."""
+    profile, cache = owned_path(after.get("profile_root")), owned_path(after.get("cache_root"))
+    raw_config = after.get("configuration_sources")
+    sources = record(after.get("skill_files"))
+    auth = record(after.get("auth"))
+    if not profile or not cache or not isinstance(raw_config, list) or not sources or not auth:
+        return "UNKNOWN"
+    config_root = profile / "config" / "opencode"
+    configs = [owned_path(item) for item in raw_config]
+    if cache != profile / "cache" or any(
+        not item or not item.is_relative_to(config_root) for item in configs
+    ):
+        return "FAIL"
+    if config_root / "opencode.json" not in configs:
+        return "UNKNOWN"
+    if auth.get("openai") is not True or auth.get("exit") != 0 or not auth.get("model"):
+        return "UNKNOWN"
+    if not wanted <= set(sources):
+        return "UNKNOWN"
+    for name in wanted:
+        source = record(sources[name])
+        path = owned_path(source.get("path"))
+        package = "superpowers" if name == UPSTREAM_SKILL else "superpowers-backplane"
+        if not path or not sha(source.get("blob"), 40):
+            return "UNKNOWN"
+        expected = ("node_modules", package, "skills", name, "SKILL.md")
+        if not path.is_relative_to(cache) or path.parts[-len(expected) :] != expected:
+            return "FAIL"
+
+    observed = after.get("native_results")
+    if not isinstance(observed, list):
+        return "UNKNOWN"
+    results = [record(item) for item in observed]
+    completed = [result for result in results if result.get("status") == "completed"]
+    if {result.get("id") for result in completed} != wanted:
+        return "UNKNOWN"
+    if any(result.get("status") != "completed" for result in results):
+        return "FAIL"
+    call_ids = {item.get("call_id") for item in completed}
+    digests = {item.get("capture_sha256") for item in completed}
+    if len(call_ids) != len(completed) or len(completed) != len(wanted) or None in call_ids:
+        return "UNKNOWN"
+    if len(digests) != 1 or not sha(next(iter(digests)), 64):
+        return "UNKNOWN"
+    if not after.get("session_id") or any(
+        item.get("session_id") != after["session_id"] for item in completed
+    ):
+        return "UNKNOWN"
+    return "PASS"
+
+
 def protected_state(value: object) -> bool:
     """Require evidence for user files and the native issue snapshot."""
     observed = record(value)
-    return bool(record(observed.get("files")) and record(observed.get("issue")))
+    issue = record(observed.get("issue"))
+    supplied = {"body" if name == "body_sha256" else name for name in issue}
+    if supplied != NATIVE_ISSUE_FIELDS or not record(observed.get("files")):
+        return False
+    for field in ("subIssues", "blockedBy", "blocking"):
+        connection = record(issue.get(field))
+        nodes = connection.get("nodes")
+        if not isinstance(nodes, list) or connection.get("totalCount") != len(nodes):
+            return False
+    return True
 
 
 def classify(row: dict[str, object]) -> str:
     """Score contradictions first and preserve missing evidence as unknown."""
     case = row.get("id")
-    if row.get("kind") != "native" or case not in CASES:
+    if row.get("kind") != "native" or case not in CASES or row.get("variant") != "V2":
         return "UNKNOWN"
+    version = row.get("host_version")
+    if not isinstance(version, str) or not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
+        return "UNKNOWN"
+    host = tuple(int(part) for part in version.split("."))
+    if host[0] != 2 or host < (2, 0, 4):
+        return "FAIL"
 
     before = record(row.get("before"))
     after = record(row.get("after"))
@@ -98,6 +198,8 @@ def classify(row: dict[str, object]) -> str:
     installed_manifest = record(after.get("installed_manifest"))
     if count and not (expected_manifest and installed_manifest):
         return "UNKNOWN"
+    if count and not REQUIRED_PACKAGE_FILES.issubset(expected_manifest):
+        return "FAIL"
     if expected_manifest != installed_manifest or (not count and installed_manifest):
         return "FAIL"
 
@@ -114,6 +216,13 @@ def classify(row: dict[str, object]) -> str:
     ):
         return "UNKNOWN"
 
+    reported = after.get("reported_skill_paths")
+    if not isinstance(reported, list) or set(reported) != wanted:
+        return "UNKNOWN"
+    native_result = native_skill_proof(after, wanted)
+    if native_result != "PASS":
+        return native_result
+
     if case in FAILURE_CASES:
         failure = record(row.get("failure"))
         if failure.get("result") != "observed" or not failure.get("diagnostic"):
@@ -125,14 +234,70 @@ def classify(row: dict[str, object]) -> str:
     return "PASS"
 
 
+def expected_package_files(revision: str, root: Path) -> dict[str, str]:
+    """Derive every owned package path and blob from the exact known Git tree."""
+    metadata = json.loads(
+        subprocess.check_output(
+            ["git", "show", f"{revision}:package.json"], cwd=root, encoding="utf-8", timeout=20
+        )
+    )
+    includes = (*metadata["files"], "package.json", "LICENSE")
+    listing = subprocess.check_output(
+        ["git", "ls-tree", "-r", revision], cwd=root, encoding="utf-8", timeout=20
+    )
+    expected = {}
+    for entry in listing.splitlines():
+        identity, path = entry.split(chr(9), 1)
+        if any(path == item or (item.endswith("/") and path.startswith(item)) for item in includes):
+            expected[path] = identity.split()[-1]
+    return expected
+
+
+def verified_preflight(value: object) -> bool:
+    """Require the actual refused lookup with prior package and configuration intact."""
+    observed = record(value)
+    config_hash = observed.get("config_sha256_before")
+    return (
+        observed.get("passed") is True
+        and observed.get("positive_exit") == 0
+        and observed.get("unavailable_exit") == 1
+        and observed.get("reported_absent_commit") is True
+        and observed.get("http_status") == 422
+        and observed.get("prior_active_before_and_after") is True
+        and observed.get("native_config_matches") is True
+        and observed.get("protected_equal") is True
+        and observed.get("retained_manifest_matches") is True
+        and sha(observed.get("prior_revision"), 40)
+        and sha(observed.get("raw_capture_sha256"), 64)
+        and sha(config_hash, 64)
+        and config_hash == observed.get("config_sha256_after")
+    )
+
+
 def verify(path: Path) -> dict[str, object]:
     """Require each lifecycle row exactly once and all results to pass."""
     receipt = json.loads(path.read_text(encoding="utf-8"))
     rows = [record(row) for row in receipt["rows"]]
-    results = [{"id": row.get("id"), "result": classify(row)} for row in rows]
+    manifests = {}
+    results = []
+    for row in rows:
+        result = classify(row)
+        after = record(row.get("after"))
+        revision = after.get("revision")
+        if result == "PASS" and revision:
+            if revision not in manifests:
+                manifests[revision] = expected_package_files(revision, Path.cwd())
+            if after["installed_manifest"] != manifests[revision]:
+                result = "FAIL"
+        results.append({"id": row.get("id"), "result": result})
     identifiers = [row["id"] for row in results]
     valid = len(identifiers) == len(CASES) and set(identifiers) == set(CASES)
-    return {"valid": valid and all(row["result"] == "PASS" for row in results), "rows": results}
+    preflight = verified_preflight(receipt.get("preflight_before_apply"))
+    return {
+        "valid": valid and preflight and all(row["result"] == "PASS" for row in results),
+        "preflight_before_apply": "PASS" if preflight else "UNKNOWN",
+        "rows": results,
+    }
 
 
 def main() -> int:

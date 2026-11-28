@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import time
 from pathlib import Path
 from typing import Any
@@ -24,6 +25,16 @@ UPSTREAM_BLOB = "069d578445805a28b8dacbf70cdf045e1673def0"
 PRIOR = "386bdb5a8570360f5d34359c68f68947eb7a90fc"
 CANDIDATE = "8e1e2005025890776eb99bd4b9161996fbbe68ed"
 UNAVAILABLE = "0" * 40
+EXPECTED_REVISIONS = {
+    "L-install": PRIOR,
+    "L-repeat": PRIOR,
+    "L-update": CANDIDATE,
+    "L-rollback": PRIOR,
+    "L-unavailable-source": PRIOR,
+    "L-failed-verification-recovery": PRIOR,
+    "L-uninstall": None,
+    "L-test-restore": PRIOR,
+}
 SENTINEL = "issue-23-sentinel"
 BP = "superpowers-backplane"
 SKILLS = tuple(acceptance.SKILLS)
@@ -48,18 +59,6 @@ def blob(path: Path) -> str:
     hashed.update(f"blob {len(content)}\x00".encode("ascii"))
     hashed.update(content)
     return hashed.hexdigest()
-
-
-def expected_files(revision: str) -> dict[str, str]:
-    """Read the exact applicable hosted package manifest from its Git tree."""
-    metadata = json.loads(v2_cases.git(ROOT, "show", f"{revision}:package.json"))
-    includes = (*metadata["files"], "package.json", "LICENSE")
-    expected = {}
-    for entry in v2_cases.git(ROOT, "ls-tree", "-r", revision).splitlines():
-        identity, path = entry.split("\t", 1)
-        if any(path == item or (item.endswith("/") and path.startswith(item)) for item in includes):
-            expected[path] = identity.split()[-1]
-    return expected
 
 
 def protected(fixture: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
@@ -204,12 +203,58 @@ def native_manifest(
             raise RuntimeError(
                 "Skill package source identities do not match the expected independent packages"
             )
-        expected = expected_files(revision)
-        installed = {path: blob(root / path) for path in expected if (root / path).is_file()}
+        expected = lifecycle.expected_package_files(revision, ROOT)
+        for file in root.rglob("*"):
+            if file.is_file():
+                if not file.resolve(strict=True).is_relative_to(root):
+                    raise RuntimeError("Installed package file escapes the owned cache")
+                installed[file.relative_to(root).as_posix()] = blob(file)
     skill_files = {name: {"path": str(path), "blob": blob(path)} for name, path in paths.items()}
     if skill_files[SKILLS[0]]["blob"] != UPSTREAM_BLOB:
         raise RuntimeError("The upstream Skill file differs from its recorded Git blob")
     return expected, installed, skill_files
+
+
+def discovery_request() -> str:
+    """Replay the exact recorded request from the current verified adopter guide."""
+    guide = Path.cwd() / "docs/installing-opencode.md"
+    return next(
+        line
+        for line in guide.read_text(encoding="utf-8").splitlines()
+        if line.startswith("Use the native skill tool to load ")
+    )
+
+
+def reported_paths(
+    stdout: str, skills: dict[str, Any], completed: list[dict[str, str]]
+) -> list[str]:
+    """Verify the visible native response reports each completed result's installed path."""
+    parts = []
+    for line in stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("type") == "text":
+            parts.append((event.get("part") or {}).get("text", ""))
+    visible = "\n".join(parts).replace(chr(92), "/").lower()
+    matched = []
+    for row in completed:
+        name = row["id"]
+        file = skills[name]["path"].replace(chr(92), "/").lower()
+        directory = file.rsplit("/", 1)[0]
+        if file in visible or re.search(re.escape(directory) + r"(?=$|[\x60\x22/\s])", visible):
+            matched.append(name)
+    return matched
+
+
+def config_observation(data: dict[str, Any], config: Path) -> dict[str, Any]:
+    """Read the actual config sourced by the private native server."""
+    return next(
+        entry["info"]
+        for entry in data["config"]
+        if Path(entry["path"]).resolve() == config.resolve() and "info" in entry
+    )
 
 
 def observe(
@@ -220,11 +265,13 @@ def observe(
     v2_cases.dump(fixture["config"], config, "w")
     cwd = fixture["config"].parent
     profile = fixture["profile"]
-    wanted = SKILLS if revision else SKILLS[:1]
     prompt = (
-        "Use the native skill tool with each requested ID: "
-        + ", ".join(wanted)
-        + ". Report each result. Only use the skill tool, then stop. Preserve all files and issue state."
+        discovery_request()
+        if revision
+        else (
+            "Use the native skill tool to load using-superpowers. Report the tool result and its source path. "
+            "Do not query GitHub, mutate any issue or file, run setup, or delegate. Stop after reporting discovery."
+        )
     )
     with v2_cases.private(EXECUTABLE, profile, fixture["env"]) as (server, child, read, vector):
         inventory = wait(fixture, read, revision)
@@ -257,8 +304,26 @@ def observe(
             "inventory_after": final_inventory,
         },
     )
+    observed_before = config_observation(inventory, fixture["config"])
+    observed_after = config_observation(final_inventory, fixture["config"])
+    disk = json.loads(fixture["config"].read_text(encoding="utf-8"))
+    if observed_before != observed_after or observed_after != config or disk != config:
+        raise RuntimeError("Owned native configuration changed across the exact guide replay")
+    active_revision = next(
+        (
+            item["source"]["version"]
+            for item in final_inventory["plugin"]["data"]
+            if item.get("id") == BP and item["state"]["status"] == "active"
+        ),
+        None,
+    )
     return {
-        "revision": revision,
+        "revision": active_revision,
+        "profile_root": str(profile),
+        "cache_root": str(profile / "cache"),
+        "ordered_plugins": observed_after["plugins"],
+        "reported_skill_paths": reported_paths(call["stdout"], skills, completed),
+        "discovery_prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
         "inventory_ready": True,
         "effective_entries": 1 if revision else 0,
         "expected_manifest": expected,
@@ -287,12 +352,13 @@ def record_row(
     failure: dict[str, Any] | None = None,
 ) -> None:
     """Persist and score a native row before attempting another operation."""
-    row = {
+    row: dict[str, Any] = {
         "id": case,
         "kind": "native",
         "host_version": "2.1.4",
         "host_sha256": HOST_SHA,
-        "expected_revision": after["revision"],
+        "variant": "V2",
+        "expected_revision": EXPECTED_REVISIONS[case],
         "before": before,
         "after": after,
     }

@@ -12,28 +12,77 @@ FILE = "d" * 40
 SKILLS = ["using-superpowers", "managing-superpowers-backlog", "managing-superpowers-handoffs"]
 
 
+CACHE = "U:/fixture/cache"
+PROFILE = "U:/fixture"
+ISSUE = {
+    "number": 24,
+    "title": "test fixture",
+    "state": "OPEN",
+    "stateReason": "",
+    "body_sha256": "f" * 64,
+    "issueType": None,
+    "labels": [{"name": "backplane:active"}],
+    "parent": None,
+    "subIssues": {"totalCount": 0, "nodes": []},
+    "subIssuesSummary": {"total": 0, "completed": 0, "percentCompleted": 0},
+    "blockedBy": {"totalCount": 0, "nodes": []},
+    "blocking": {"totalCount": 0, "nodes": []},
+    "closedByPullRequestsReferences": [],
+    "updatedAt": "2026-11-27T23:54:01Z",
+    "url": "https://github.com/tvproductions/superpowers-backplane/issues/24",
+}
+PACKAGE = {
+    "package.json": FILE,
+    "index.js": FILE,
+    **{f"skills/{name}/SKILL.md": FILE for name in SKILLS[1:]},
+}
+
+
 def recorded_row() -> dict:
     """Build the fully observed native rollback-shaped control."""
     return {
         "id": "L-rollback",
         "kind": "native",
+        "variant": "V2",
         "host_version": "2.1.4",
         "host_sha256": "e" * 64,
         "expected_revision": PRIOR,
         "before": {
             "revision": CANDIDATE,
-            "protected": {"files": {"user-work.txt": FILE}, "issue": {"number": 24}},
+            "protected": {"files": {"user-work.txt": FILE}, "issue": copy.deepcopy(ISSUE)},
             "upstream_revision": UPSTREAM,
         },
         "after": {
             "revision": PRIOR,
-            "protected": {"files": {"user-work.txt": FILE}, "issue": {"number": 24}},
+            "protected": {"files": {"user-work.txt": FILE}, "issue": copy.deepcopy(ISSUE)},
             "upstream_revision": UPSTREAM,
             "inventory_ready": True,
             "effective_entries": 1,
-            "expected_manifest": {"index.js": FILE},
-            "installed_manifest": {"index.js": FILE},
+            "expected_manifest": PACKAGE.copy(),
+            "installed_manifest": PACKAGE.copy(),
+            "profile_root": PROFILE,
+            "cache_root": CACHE,
+            "configuration_sources": [f"{PROFILE}/config/opencode/opencode.json"],
+            "auth": {"model": "openai/gpt-6.1-sol", "openai": True, "exit": 0},
+            "skill_files": {
+                name: {
+                    "path": f"{CACHE}/npm/example/node_modules/{'superpowers' if index == 0 else 'superpowers-backplane'}/skills/{name}/SKILL.md",
+                    "blob": FILE,
+                }
+                for index, name in enumerate(SKILLS)
+            },
+            "native_results": [
+                {
+                    "id": name,
+                    "status": "completed",
+                    "session_id": "fresh-session",
+                    "call_id": f"call-{index}",
+                    "capture_sha256": "e" * 64,
+                }
+                for index, name in enumerate(SKILLS)
+            ],
             "loaded_skills": SKILLS,
+            "reported_skill_paths": SKILLS,
             "load_exit": 0,
             "session_id": "fresh-session",
         },
@@ -99,3 +148,37 @@ class LifecycleEvidenceTests(unittest.TestCase):
             "protected": row["before"]["protected"],
         }
         self.assertEqual(classify(row), "FAIL")
+
+    def test_missing_native_events(self):
+        """Skill names alone cannot mark a replay as native evidence."""
+        row = recorded_row()
+        row["after"].pop("native_results", None)
+        self.assertEqual(classify(row), "UNKNOWN")
+
+    def test_unsupported_host_does_not_pass(self):
+        """A plan that covers V2 rejects a real below-floor host version."""
+        row = recorded_row()
+        row["host_version"] = "1.0.0"
+        self.assertEqual(classify(row), "FAIL")
+
+    def test_skill_outside_cache_does_not_pass(self):
+        """A matching name found outside the owned native cache fails."""
+        row = recorded_row()
+        row["after"]["skill_files"]["managing-superpowers-handoffs"]["path"] = (
+            "U:/unrelated/skills/managing-superpowers-handoffs/SKILL.md"
+        )
+        self.assertEqual(classify(row), "FAIL")
+
+    def test_both_manifest_maps_missing_package_identity(self):
+        """Matching maps that omit the required package file cannot pass."""
+        row = recorded_row()
+        for name in ("expected_manifest", "installed_manifest"):
+            row["after"][name].pop("package.json")
+        self.assertEqual(classify(row), "FAIL")
+
+    def test_truncated_issue_relationship_does_not_pass(self):
+        """A native relationship count must match its observed nodes."""
+        row = recorded_row()
+        for phase in ("before", "after"):
+            row[phase]["protected"]["issue"]["blocking"]["totalCount"] = 1
+        self.assertEqual(classify(row), "UNKNOWN")

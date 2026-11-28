@@ -1,0 +1,123 @@
+"""Bind corrected native replay captures to the reviewed lifecycle receipt."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+import lifecycle
+import native_lifecycle as native
+
+AREA = Path(__file__).resolve().parent
+CAPTURES = {
+    7: {
+        "L-install": "install",
+        "L-repeat": "repeat",
+        "L-update": "update",
+        "L-rollback": "rollback",
+        "L-uninstall": "uninstall",
+        "L-test-restore": "restore",
+    },
+    8: {
+        "L-unavailable-source": "after-unavailable",
+        "L-failed-verification-recovery": "after-failed-verification",
+    },
+}
+
+
+def read(path: Path) -> Any:
+    """Read one retained native capture or score record."""
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def screened(value: Any, key: str = "") -> Any:
+    """Keep public authority facts while hashing native app identifiers."""
+    if isinstance(value, dict):
+        result = {}
+        for name, item in value.items():
+            if name == "body":
+                result["body_sha256"] = hashlib.sha256(item.encode("utf-8")).hexdigest()
+            else:
+                result[name] = screened(item, name)
+        return result
+    if isinstance(value, list):
+        return [screened(item, key) for item in value]
+    if isinstance(value, str):
+        if key in {"call_id", "session_id"}:
+            return hashlib.sha256(value.encode("utf-8")).hexdigest()
+        return value.replace(str(AREA), ".sp-bp/work/issue-24").replace(
+            AREA.as_posix(), ".sp-bp/work/issue-24"
+        )
+    return value
+
+
+def main() -> int:
+    """Reconcile exact prompt, native source reports, all case snapshots and preflight."""
+    historical = read(AREA / "task1-record.json")
+    preflight = read(AREA / "native-06/preflight-receipt.json")
+    assert lifecycle.verified_preflight(preflight)
+    assert preflight["raw_capture_sha256"] == native.digest(AREA / "native-06/preflight-raw.json")
+    rows: dict[str, dict[str, Any]] = {}
+    sessions = set()
+    captured = {}
+    guide_prompt = native.discovery_request()
+    for attempt, raw_names in CAPTURES.items():
+        folder = AREA / f"native-{attempt:02d}"
+        digest_table = {raw.name: native.digest(raw) for raw in sorted(folder.glob("*-raw.json"))}
+        captured[str(attempt)] = digest_table
+        for row in read(folder / "lifecycle-receipt.json")["rows"]:
+            case = row["id"]
+            assert case not in rows and case in raw_names
+            after = row["after"]
+            raw = read(folder / f"{raw_names[case]}-raw.json")
+            command = raw["command"]
+            if case != "L-uninstall":
+                assert command["argv"][-1] == guide_prompt
+                assert (
+                    hashlib.sha256(guide_prompt.encode()).hexdigest()
+                    == after["discovery_prompt_sha256"]
+                )
+            completed = [
+                result for result in after["native_results"] if result["status"] == "completed"
+            ]
+            assert completed
+            assert after["session_id"] not in sessions
+            sessions.add(after["session_id"])
+            after["reported_skill_paths"] = native.reported_paths(
+                command["stdout"], after["skill_files"], completed
+            )
+            assert lifecycle.classify(row) == "PASS", case
+            assert row["before"]["protected"] == after["protected"]
+            if case in lifecycle.FAILURE_CASES:
+                assert row["failure"]["protected"] == after["protected"]
+            row["result"] = "PASS"
+            row["capture_attempt"] = attempt
+            rows[case] = screened(row)
+    assert set(rows) == set(lifecycle.CASES)
+    historical["scope"] = (
+        "Issue #24 exact guide replay of eight V2 operation rows and separate before-apply preflight"
+    )
+    historical["historical_receipt_commit"] = "dff28c0725932e3c681f8cc79b1c5e4109cd1af1"
+    historical["capture_hashes"] = captured
+    historical["preflight_before_apply"] = screened(preflight)
+    historical["rows"] = [rows[case] for case in lifecycle.CASES]
+    text = json.dumps(historical, ensure_ascii=False, indent=2) + "\n"
+    assert not re.search(
+        r"github_pat_|gh[pousr]_[A-Za-z0-9]{25,}|\bsk-[A-Za-z0-9_-]{25,}|Authorization: (Basic|Bearer)|[A-Za-z]:[\\/]Users[\\/]",
+        text,
+    )
+    destination = AREA / "review-corrected-operations.json"
+    with destination.open("x", encoding="utf-8", newline="\n") as output:
+        output.write(text)
+    assert lifecycle.verify(destination)["valid"]
+    print(
+        "Eight exact native operations plus before-apply preflight pass. Full manifests independently match Git."
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

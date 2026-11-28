@@ -73,6 +73,38 @@ The [screened native fixture receipt](2026-11-01-issue-24-opencode-native-fixtur
 retains all eleven stage results, the actual command evidence, and hashes of
 the separately retained raw captures.
 
+### Whole-change review corrections
+
+Independent review of `dff28c0725932e3c681f8cc79b1c5e4109cd1af1` identified
+two gaps. The lifecycle scorer accepted incomplete or misattributed native
+evidence, and the earlier replay covered recovery after an unavailable source
+had been configured. Its discovery prompt also differed from the guide.
+The earlier capture remains at its original commit.
+
+The before-apply preflight replay used a real published candidate control and
+a real unavailable SHA. GitHub returned HTTP 422 for the unavailable source.
+The exact prior pin, configuration bytes, protected files and issue, and all
+70 package files remained in place. The separate after-apply recovery replay
+still covers the resolver failure and restoration.
+
+All eight operation cases passed on replay. Each applicable positive stage
+used the exact guide discovery request and reported all three installed
+source paths. Removal reported the independently installed upstream source.
+The capture verifier accepts the exact file or its exact skill directory,
+and the private inventory supplies each individual file identity. The full
+installed file set matches the canonical package paths and Git blobs.
+
+Fifteen helper controls cover the original cases and the review corrections.
+The new controls reject missing native tool events, an unsupported host,
+out-of-cache attribution, missing required package files, and truncated
+native relationships. Separate archived-receipt controls reject a missing
+preflight and removal of the same path from both manifest maps.
+
+The [reviewed replay builder](transcripts/2026-11-01-issue-24-archive_reviewed_operations.py.txt)
+and [preflight probe](transcripts/2026-11-01-issue-24-native_preflight.py.txt)
+bind these results to the screened operation receipt.
+
+
 ## Criterion mapping
 
 | Issue #24 criterion | Evidence | Current result |

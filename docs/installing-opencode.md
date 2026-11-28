@@ -155,6 +155,11 @@ installed plugin list alone leaves actual load evidence unverified.
 
 ## Later operations
 
-Update, rollback and Backplane-only removal remain pending the owning OpenCode
-verification leaves. Do not infer these operations from the initial smoke test
-or remove upstream Superpowers as part of Backplane maintenance.
+OpenCode lifecycle and conformance acceptances are tracked by their owning
+issues. Keep independently installed Superpowers available while maintaining
+Backplane.
+
+### V2 lifecycle verification evidence
+
+The [V2 lifecycle verification record](https://github.com/tvproductions/superpowers-backplane/blob/203c5730c15617b9780e7767c6b201b8642b02fd/tests/scenarios/2026-11-01-issue-24-opencode-acceptance.md#task-1--native-package-operations)
+identifies the pinned package revisions, host and observed lifecycle results.
